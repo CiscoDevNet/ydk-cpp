@@ -84,14 +84,6 @@ std::shared_ptr<Entity> MdtOperData::get_child_by_name(const std::string & child
 
     if(child_yang_name == "mdt-subscriptions")
     {
-        for(auto const & c : mdt_subscriptions)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MdtOperData::MdtSubscriptions>();
         c->parent = this;
         mdt_subscriptions.push_back(c);
@@ -100,14 +92,6 @@ std::shared_ptr<Entity> MdtOperData::get_child_by_name(const std::string & child
 
     if(child_yang_name == "mdt-connections")
     {
-        for(auto const & c : mdt_connections)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MdtOperData::MdtConnections>();
         c->parent = this;
         mdt_connections.push_back(c);
@@ -120,19 +104,28 @@ std::shared_ptr<Entity> MdtOperData::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> MdtOperData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mdt_streams != nullptr)
     {
         children["mdt-streams"] = mdt_streams;
     }
 
+    count = 0;
     for (auto const & c : mdt_subscriptions)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : mdt_connections)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -244,6 +237,7 @@ std::shared_ptr<Entity> MdtOperData::MdtStreams::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtStreams::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -369,14 +363,6 @@ std::shared_ptr<Entity> MdtOperData::MdtSubscriptions::get_child_by_name(const s
 
     if(child_yang_name == "mdt-receivers")
     {
-        for(auto const & c : mdt_receivers)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MdtOperData::MdtSubscriptions::MdtReceivers>();
         c->parent = this;
         mdt_receivers.push_back(c);
@@ -389,14 +375,19 @@ std::shared_ptr<Entity> MdtOperData::MdtSubscriptions::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtSubscriptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(base != nullptr)
     {
         children["base"] = base;
     }
 
+    count = 0;
     for (auto const & c : mdt_receivers)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -571,6 +562,7 @@ std::shared_ptr<Entity> MdtOperData::MdtSubscriptions::Base::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtSubscriptions::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -753,6 +745,7 @@ std::shared_ptr<Entity> MdtOperData::MdtSubscriptions::MdtReceivers::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtSubscriptions::MdtReceivers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -906,14 +899,6 @@ std::shared_ptr<Entity> MdtOperData::MdtConnections::get_child_by_name(const std
 {
     if(child_yang_name == "mdt-sub-con-stats")
     {
-        for(auto const & c : mdt_sub_con_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MdtOperData::MdtConnections::MdtSubConStats>();
         c->parent = this;
         mdt_sub_con_stats.push_back(c);
@@ -926,9 +911,14 @@ std::shared_ptr<Entity> MdtOperData::MdtConnections::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtConnections::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mdt_sub_con_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1075,6 +1065,7 @@ std::shared_ptr<Entity> MdtOperData::MdtConnections::MdtSubConStats::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtConnections::MdtSubConStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

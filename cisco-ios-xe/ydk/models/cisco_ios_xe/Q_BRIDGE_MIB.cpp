@@ -263,6 +263,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1qbase != nullptr)
     {
         children["dot1qBase"] = dot1qbase;
@@ -457,6 +458,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qbase::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qbase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -592,6 +594,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlan::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -707,14 +710,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qfdbtable::get_child_by_name(const std::
 {
     if(child_yang_name == "dot1qFdbEntry")
     {
-        for(auto const & c : dot1qfdbentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry>();
         c->parent = this;
         dot1qfdbentry.push_back(c);
@@ -727,9 +722,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qfdbtable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qfdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qfdbentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -809,6 +809,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -904,14 +905,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpfdbtable::get_child_by_name(const std
 {
     if(child_yang_name == "dot1qTpFdbEntry")
     {
-        for(auto const & c : dot1qtpfdbentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry>();
         c->parent = this;
         dot1qtpfdbentry.push_back(c);
@@ -924,9 +917,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpfdbtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpfdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qtpfdbentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1014,6 +1012,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1129,14 +1128,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpgrouptable::get_child_by_name(const s
 {
     if(child_yang_name == "dot1qTpGroupEntry")
     {
-        for(auto const & c : dot1qtpgroupentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry>();
         c->parent = this;
         dot1qtpgroupentry.push_back(c);
@@ -1149,9 +1140,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpgrouptable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpgrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qtpgroupentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1239,6 +1235,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1354,14 +1351,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardalltable::get_child_by_name(cons
 {
     if(child_yang_name == "dot1qForwardAllEntry")
     {
-        for(auto const & c : dot1qforwardallentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry>();
         c->parent = this;
         dot1qforwardallentry.push_back(c);
@@ -1374,9 +1363,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardalltable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardalltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qforwardallentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1464,6 +1458,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1579,14 +1574,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardunregisteredtable::get_child_by_
 {
     if(child_yang_name == "dot1qForwardUnregisteredEntry")
     {
-        for(auto const & c : dot1qforwardunregisteredentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry>();
         c->parent = this;
         dot1qforwardunregisteredentry.push_back(c);
@@ -1599,9 +1586,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardunregisteredtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardunregisteredtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qforwardunregisteredentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1689,6 +1681,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardu
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1804,14 +1797,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticunicasttable::get_child_by_name(c
 {
     if(child_yang_name == "dot1qStaticUnicastEntry")
     {
-        for(auto const & c : dot1qstaticunicastentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry>();
         c->parent = this;
         dot1qstaticunicastentry.push_back(c);
@@ -1824,9 +1809,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticunicasttable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticunicasttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qstaticunicastentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1918,6 +1908,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicaste
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2043,14 +2034,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticmulticasttable::get_child_by_name
 {
     if(child_yang_name == "dot1qStaticMulticastEntry")
     {
-        for(auto const & c : dot1qstaticmulticastentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry>();
         c->parent = this;
         dot1qstaticmulticastentry.push_back(c);
@@ -2063,9 +2046,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticmulticasttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticmulticasttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qstaticmulticastentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2161,6 +2149,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmultic
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2296,14 +2285,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlancurrenttable::get_child_by_name(con
 {
     if(child_yang_name == "dot1qVlanCurrentEntry")
     {
-        for(auto const & c : dot1qvlancurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry>();
         c->parent = this;
         dot1qvlancurrententry.push_back(c);
@@ -2316,9 +2297,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlancurrenttable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlancurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qvlancurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2418,6 +2404,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2563,14 +2550,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlanstatictable::get_child_by_name(cons
 {
     if(child_yang_name == "dot1qVlanStaticEntry")
     {
-        for(auto const & c : dot1qvlanstaticentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry>();
         c->parent = this;
         dot1qvlanstaticentry.push_back(c);
@@ -2583,9 +2562,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlanstatictable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlanstatictable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qvlanstaticentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2681,6 +2665,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2816,14 +2801,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanstatisticstable::get_child_by_n
 {
     if(child_yang_name == "dot1qPortVlanStatisticsEntry")
     {
-        for(auto const & c : dot1qportvlanstatisticsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry>();
         c->parent = this;
         dot1qportvlanstatisticsentry.push_back(c);
@@ -2836,9 +2813,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanstatisticstable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanstatisticstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qportvlanstatisticsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2942,6 +2924,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlans
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3097,14 +3080,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::get_child_by
 {
     if(child_yang_name == "dot1qPortVlanHCStatisticsEntry")
     {
-        for(auto const & c : dot1qportvlanhcstatisticsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry>();
         c->parent = this;
         dot1qportvlanhcstatisticsentry.push_back(c);
@@ -3117,9 +3092,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qportvlanhcstatisticsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3211,6 +3191,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvla
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3336,14 +3317,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qlearningconstraintstable::get_child_by_
 {
     if(child_yang_name == "dot1qLearningConstraintsEntry")
     {
-        for(auto const & c : dot1qlearningconstraintsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry>();
         c->parent = this;
         dot1qlearningconstraintsentry.push_back(c);
@@ -3356,9 +3329,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qlearningconstraintstable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qlearningconstraintstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1qlearningconstraintsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3446,6 +3424,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearning
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3561,14 +3540,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolgrouptable::get_child_by_name(c
 {
     if(child_yang_name == "dot1vProtocolGroupEntry")
     {
-        for(auto const & c : dot1vprotocolgroupentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry>();
         c->parent = this;
         dot1vprotocolgroupentry.push_back(c);
@@ -3581,9 +3552,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolgrouptable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolgrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1vprotocolgroupentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3671,6 +3647,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupe
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3786,14 +3763,6 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolporttable::get_child_by_name(co
 {
     if(child_yang_name == "dot1vProtocolPortEntry")
     {
-        for(auto const & c : dot1vprotocolportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry>();
         c->parent = this;
         dot1vprotocolportentry.push_back(c);
@@ -3806,9 +3775,14 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolporttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1vprotocolportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3896,6 +3870,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportent
 std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

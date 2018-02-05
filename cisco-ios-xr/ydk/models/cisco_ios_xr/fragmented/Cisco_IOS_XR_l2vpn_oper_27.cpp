@@ -72,6 +72,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::LocalSignalling::StatusTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -190,6 +191,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::LocalSignalling::Tlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -316,14 +318,6 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 
     if(child_yang_name == "tlv")
     {
-        for(auto const & c : tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::RemoteSignalling::Tlv>();
         c->parent = this;
         tlv.push_back(c);
@@ -336,14 +330,19 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::RemoteSignalling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(status_tlv != nullptr)
     {
         children["status-tlv"] = status_tlv;
     }
 
+    count = 0;
     for (auto const & c : tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -434,6 +433,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::RemoteSignalling::StatusTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -552,6 +552,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::RemoteSignalling::Tlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -693,6 +694,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(impostion_stats != nullptr)
     {
         children["impostion-stats"] = impostion_stats;
@@ -874,6 +876,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::ImpostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(imposition_stat != nullptr)
     {
         children["imposition-stat"] = imposition_stat;
@@ -984,6 +987,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1074,6 +1078,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1164,6 +1169,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1254,6 +1260,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::ImpostionStats::L2FsbiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1344,6 +1351,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::ImpostionStats::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1434,6 +1442,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::ImpostionStats::Broadcast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1524,6 +1533,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1614,6 +1624,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1865,6 +1876,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(disposition_stat != nullptr)
     {
         children["disposition-stat"] = disposition_stat;
@@ -2000,6 +2012,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::DispositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2090,6 +2103,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2180,6 +2194,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2270,6 +2285,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2360,6 +2376,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2450,6 +2467,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2540,6 +2558,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2630,6 +2649,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::DaiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2720,6 +2740,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2810,6 +2831,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2900,6 +2922,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::DispositionP2MpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2990,6 +3013,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3080,6 +3104,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::DispostionStats::MacMove::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3178,6 +3203,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::Statistics::SequenceNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3336,6 +3362,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::Pseudowire::P2MpPw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3605,6 +3632,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::SecurityParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(base != nullptr)
     {
         children["base"] = base;
@@ -3959,6 +3987,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::SecurityParameters::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(storm_control != nullptr)
     {
         children["storm-control"] = storm_control;
@@ -4462,6 +4491,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::SecurityParameters::Base::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4580,6 +4610,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::SecurityParameters::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4694,6 +4725,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessPws::BridgeAccessPw::StaticMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5074,14 +5106,6 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 
     if(child_yang_name == "mac-filter")
     {
-        for(auto const & c : mac_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::MacFilter>();
         c->parent = this;
         mac_filter.push_back(c);
@@ -5090,14 +5114,6 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 
     if(child_yang_name == "bridge-vfi")
     {
-        for(auto const & c : bridge_vfi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi>();
         c->parent = this;
         bridge_vfi.push_back(c);
@@ -5106,14 +5122,6 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 
     if(child_yang_name == "bridge-access-vfi")
     {
-        for(auto const & c : bridge_access_vfi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeAccessVfi>();
         c->parent = this;
         bridge_access_vfi.push_back(c);
@@ -5126,6 +5134,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(security_parameters != nullptr)
     {
         children["security-parameters"] = security_parameters;
@@ -5151,19 +5160,31 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomai
         children["rd"] = rd;
     }
 
+    count = 0;
     for (auto const & c : mac_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : bridge_vfi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : bridge_access_vfi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5900,6 +5921,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::SecurityParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(storm_control != nullptr)
     {
         children["storm-control"] = storm_control;
@@ -6403,6 +6425,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::SecurityParameters::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6536,6 +6559,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pbb_edge != nullptr)
     {
         children["pbb-edge"] = pbb_edge;
@@ -6652,6 +6676,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(edge_port != nullptr)
     {
         children["edge-port"] = edge_port;
@@ -6818,14 +6843,6 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 
     if(child_yang_name == "bmac-mapping")
     {
-        for(auto const & c : bmac_mapping)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::BmacMapping>();
         c->parent = this;
         bmac_mapping.push_back(c);
@@ -6838,6 +6855,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(security_parameters != nullptr)
     {
         children["security-parameters"] = security_parameters;
@@ -6848,9 +6866,13 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomai
         children["statistics"] = statistics;
     }
 
+    count = 0;
     for (auto const & c : bmac_mapping)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7022,6 +7044,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::SecurityParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(base != nullptr)
     {
         children["base"] = base;
@@ -7376,6 +7399,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::SecurityParameters::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(storm_control != nullptr)
     {
         children["storm-control"] = storm_control;
@@ -7879,6 +7903,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::SecurityParameters::Base::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7997,6 +8022,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::SecurityParameters::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8138,6 +8164,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(impostion_stats != nullptr)
     {
         children["impostion-stats"] = impostion_stats;
@@ -8319,6 +8346,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(imposition_stat != nullptr)
     {
         children["imposition-stat"] = imposition_stat;
@@ -8429,6 +8457,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8519,6 +8548,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8609,6 +8639,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8699,6 +8730,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::L2FsbiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8789,6 +8821,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8879,6 +8912,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::Broadcast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8969,6 +9003,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9059,6 +9094,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9310,6 +9346,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(disposition_stat != nullptr)
     {
         children["disposition-stat"] = disposition_stat;
@@ -9445,6 +9482,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9535,6 +9573,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9625,6 +9664,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9715,6 +9755,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9805,6 +9846,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9895,6 +9937,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9985,6 +10028,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10075,6 +10119,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DaiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10165,6 +10210,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10255,6 +10301,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10345,6 +10392,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::DispositionP2MpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10435,6 +10483,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10525,6 +10574,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::DispostionStats::MacMove::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10623,6 +10673,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::Statistics::SequenceNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10737,6 +10788,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbEdge::EdgePort::BmacMapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10847,6 +10899,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(core_port != nullptr)
     {
         children["core-port"] = core_port;
@@ -10950,6 +11003,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(security_parameters != nullptr)
     {
         children["security-parameters"] = security_parameters;
@@ -11114,6 +11168,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(base != nullptr)
     {
         children["base"] = base;
@@ -11468,6 +11523,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(storm_control != nullptr)
     {
         children["storm-control"] = storm_control;
@@ -11971,6 +12027,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::Base::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12089,6 +12146,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbParameters::PbbCore::CorePort::SecurityParameters::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12209,6 +12267,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_port != nullptr)
     {
         children["evpn-port"] = evpn_port;
@@ -12321,6 +12380,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(security_parameters != nullptr)
     {
         children["security-parameters"] = security_parameters;
@@ -12480,6 +12540,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(base != nullptr)
     {
         children["base"] = base;
@@ -12834,6 +12895,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(storm_control != nullptr)
     {
         children["storm-control"] = storm_control;
@@ -13337,6 +13399,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::Base::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13455,6 +13518,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::SecurityParameters::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13596,6 +13660,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(impostion_stats != nullptr)
     {
         children["impostion-stats"] = impostion_stats;
@@ -13777,6 +13842,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(imposition_stat != nullptr)
     {
         children["imposition-stat"] = imposition_stat;
@@ -13887,6 +13953,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13977,6 +14044,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14067,6 +14135,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14157,6 +14226,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::L2FsbiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14247,6 +14317,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14337,6 +14408,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::Broadcast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14427,6 +14499,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14517,6 +14590,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14768,6 +14842,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(disposition_stat != nullptr)
     {
         children["disposition-stat"] = disposition_stat;
@@ -14903,6 +14978,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14993,6 +15069,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15083,6 +15160,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15173,6 +15251,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15263,6 +15342,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15353,6 +15433,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15443,6 +15524,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15533,6 +15615,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DaiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15623,6 +15706,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15713,6 +15797,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15803,6 +15888,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::DispositionP2MpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15893,6 +15979,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15983,6 +16070,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::DispostionStats::MacMove::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16081,6 +16169,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::EvpnParameters::EvpnPort::Statistics::SequenceNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16264,14 +16353,6 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 
     if(child_yang_name == "static-mac")
     {
-        for(auto const & c : static_mac)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac>();
         c->parent = this;
         static_mac.push_back(c);
@@ -16284,6 +16365,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(security_parameters != nullptr)
     {
         children["security-parameters"] = security_parameters;
@@ -16294,9 +16376,13 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomai
         children["statistics"] = statistics;
     }
 
+    count = 0;
     for (auto const & c : static_mac)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16548,6 +16634,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(base != nullptr)
     {
         children["base"] = base;
@@ -16902,6 +16989,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(storm_control != nullptr)
     {
         children["storm-control"] = storm_control;
@@ -17405,6 +17493,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::Base::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17523,6 +17612,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::SecurityParameters::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17664,6 +17754,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(impostion_stats != nullptr)
     {
         children["impostion-stats"] = impostion_stats;
@@ -17845,6 +17936,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(imposition_stat != nullptr)
     {
         children["imposition-stat"] = imposition_stat;
@@ -17955,6 +18047,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18045,6 +18138,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18135,6 +18229,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18225,6 +18320,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::L2FsbiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18315,6 +18411,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18405,6 +18502,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::Broadcast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18495,6 +18593,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18585,6 +18684,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18836,6 +18936,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(disposition_stat != nullptr)
     {
         children["disposition-stat"] = disposition_stat;
@@ -18971,6 +19072,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19061,6 +19163,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19151,6 +19254,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19241,6 +19345,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19331,6 +19436,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19421,6 +19527,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19511,6 +19618,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19601,6 +19709,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DaiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19691,6 +19800,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19781,6 +19891,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19871,6 +19982,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::DispositionP2MpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19961,6 +20073,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20051,6 +20164,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::DispostionStats::MacMove::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20149,6 +20263,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::Statistics::SequenceNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20263,6 +20378,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20315,7 +20431,7 @@ L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Rd()
     :
     rd{YType::enumeration, "rd"}
     	,
-    auto_(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_>())
+    auto_(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto>())
 	,two_byte_as(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs>())
 	,four_byte_as(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs>())
 	,v4_addr(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr>())
@@ -20374,7 +20490,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
     {
         if(auto_ == nullptr)
         {
-            auto_ = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_>();
+            auto_ = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto>();
         }
         return auto_;
     }
@@ -20412,6 +20528,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_ != nullptr)
     {
         children["auto"] = auto_;
@@ -20460,7 +20577,7 @@ bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::ha
     return false;
 }
 
-L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::Auto_()
+L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::Auto()
     :
     router_id{YType::str, "router-id"},
     auto_index{YType::uint16, "auto-index"}
@@ -20469,31 +20586,31 @@ L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::
     yang_name = "auto"; yang_parent_name = "rd"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::~Auto_()
+L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::~Auto()
 {
 }
 
-bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::has_data() const
+bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::has_data() const
 {
     return router_id.is_set
 	|| auto_index.is_set;
 }
 
-bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::has_operation() const
+bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(router_id.yfilter)
 	|| ydk::is_set(auto_index.yfilter);
 }
 
-std::string L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::get_segment_path() const
+std::string L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auto";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20504,18 +20621,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::BridgeDomai
 
 }
 
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "router-id")
     {
@@ -20531,7 +20649,7 @@ void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Au
     }
 }
 
-void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::set_filter(const std::string & value_path, YFilter yfilter)
+void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "router-id")
     {
@@ -20543,7 +20661,7 @@ void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Au
     }
 }
 
-bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto_::has_leaf_or_child_of_name(const std::string & name) const
+bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "router-id" || name == "auto-index")
         return true;
@@ -20602,6 +20720,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20692,6 +20811,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20782,6 +20902,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20876,6 +20997,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::MacFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21008,14 +21130,6 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 
     if(child_yang_name == "p2mp-information")
     {
-        for(auto const & c : p2mp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::P2MpInformation>();
         c->parent = this;
         p2mp_information.push_back(c);
@@ -21028,14 +21142,19 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(discovery_information != nullptr)
     {
         children["discovery-information"] = discovery_information;
     }
 
+    count = 0;
     for (auto const & c : p2mp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21241,14 +21360,6 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 
     if(child_yang_name == "import-rt")
     {
-        for(auto const & c : import_rt)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ImportRt>();
         c->parent = this;
         import_rt.push_back(c);
@@ -21257,14 +21368,6 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 
     if(child_yang_name == "export-rt")
     {
-        for(auto const & c : export_rt)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::ExportRt>();
         c->parent = this;
         export_rt.push_back(c);
@@ -21277,6 +21380,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rd_value != nullptr)
     {
         children["rd-value"] = rd_value;
@@ -21287,14 +21391,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomai
         children["vpls-id"] = vpls_id;
     }
 
+    count = 0;
     for (auto const & c : import_rt)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : export_rt)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21439,7 +21551,7 @@ L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::
     :
     rd{YType::enumeration, "rd"}
     	,
-    auto_(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_>())
+    auto_(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto>())
 	,two_byte_as(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::TwoByteAs>())
 	,four_byte_as(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::FourByteAs>())
 	,v4_addr(std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::V4Addr>())
@@ -21498,7 +21610,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
     {
         if(auto_ == nullptr)
         {
-            auto_ = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_>();
+            auto_ = std::make_shared<L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto>();
         }
         return auto_;
     }
@@ -21536,6 +21648,7 @@ std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::Bridg
 std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_ != nullptr)
     {
         children["auto"] = auto_;
@@ -21584,7 +21697,7 @@ bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bridge
     return false;
 }
 
-L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::Auto_()
+L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::Auto()
     :
     router_id{YType::str, "router-id"},
     auto_index{YType::uint16, "auto-index"}
@@ -21593,31 +21706,31 @@ L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::
     yang_name = "auto"; yang_parent_name = "rd-value"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::~Auto_()
+L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::~Auto()
 {
 }
 
-bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::has_data() const
+bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::has_data() const
 {
     return router_id.is_set
 	|| auto_index.is_set;
 }
 
-bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::has_operation() const
+bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(router_id.yfilter)
 	|| ydk::is_set(auto_index.yfilter);
 }
 
-std::string L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_segment_path() const
+std::string L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auto";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21628,18 +21741,19 @@ std::vector<std::pair<std::string, LeafData> > L2Vpnv2::Nodes::Node::BridgeDomai
 
 }
 
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "router-id")
     {
@@ -21655,7 +21769,7 @@ void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bridge
     }
 }
 
-void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::set_filter(const std::string & value_path, YFilter yfilter)
+void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "router-id")
     {
@@ -21667,7 +21781,7 @@ void L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::Bridge
     }
 }
 
-bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto_::has_leaf_or_child_of_name(const std::string & name) const
+bool L2Vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeDomainInfo::BridgeVfi::DiscoveryInformation::RdValue::Auto::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "router-id" || name == "auto-index")
         return true;

@@ -211,6 +211,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mteresource != nullptr)
     {
         children["mteResource"] = mteresource;
@@ -385,6 +386,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteresource::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteresource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -508,6 +510,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetrigger::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -591,6 +594,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteevent::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteevent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -676,14 +680,6 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggertable::get_child_by_name(const
 {
     if(child_yang_name == "mteTriggerEntry")
     {
-        for(auto const & c : mtetriggerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry>();
         c->parent = this;
         mtetriggerentry.push_back(c);
@@ -696,9 +692,14 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggertable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mtetriggerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -830,6 +831,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggertable::Mtetriggerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1053,14 +1055,6 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerdeltatable::get_child_by_name(
 {
     if(child_yang_name == "mteTriggerDeltaEntry")
     {
-        for(auto const & c : mtetriggerdeltaentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DISMANEVENTMIB::Mtetriggerdeltatable::Mtetriggerdeltaentry>();
         c->parent = this;
         mtetriggerdeltaentry.push_back(c);
@@ -1073,9 +1067,14 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerdeltatable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggerdeltatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mtetriggerdeltaentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1167,6 +1166,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerdeltatable::Mtetriggerdeltaent
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggerdeltatable::Mtetriggerdeltaentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1292,14 +1292,6 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerexistencetable::get_child_by_n
 {
     if(child_yang_name == "mteTriggerExistenceEntry")
     {
-        for(auto const & c : mtetriggerexistenceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DISMANEVENTMIB::Mtetriggerexistencetable::Mtetriggerexistenceentry>();
         c->parent = this;
         mtetriggerexistenceentry.push_back(c);
@@ -1312,9 +1304,14 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerexistencetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggerexistencetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mtetriggerexistenceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1418,6 +1415,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerexistencetable::Mtetriggerexis
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggerexistencetable::Mtetriggerexistenceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1569,14 +1567,6 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerbooleantable::get_child_by_nam
 {
     if(child_yang_name == "mteTriggerBooleanEntry")
     {
-        for(auto const & c : mtetriggerbooleanentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DISMANEVENTMIB::Mtetriggerbooleantable::Mtetriggerbooleanentry>();
         c->parent = this;
         mtetriggerbooleanentry.push_back(c);
@@ -1589,9 +1579,14 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerbooleantable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggerbooleantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mtetriggerbooleanentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1699,6 +1694,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerbooleantable::Mtetriggerboolea
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggerbooleantable::Mtetriggerbooleanentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1864,14 +1860,6 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerthresholdtable::get_child_by_n
 {
     if(child_yang_name == "mteTriggerThresholdEntry")
     {
-        for(auto const & c : mtetriggerthresholdentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DISMANEVENTMIB::Mtetriggerthresholdtable::Mtetriggerthresholdentry>();
         c->parent = this;
         mtetriggerthresholdentry.push_back(c);
@@ -1884,9 +1872,14 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerthresholdtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggerthresholdtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mtetriggerthresholdentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2026,6 +2019,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mtetriggerthresholdtable::Mtetriggerthre
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mtetriggerthresholdtable::Mtetriggerthresholdentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2271,14 +2265,6 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteobjectstable::get_child_by_name(const
 {
     if(child_yang_name == "mteObjectsEntry")
     {
-        for(auto const & c : mteobjectsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DISMANEVENTMIB::Mteobjectstable::Mteobjectsentry>();
         c->parent = this;
         mteobjectsentry.push_back(c);
@@ -2291,9 +2277,14 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteobjectstable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteobjectstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mteobjectsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2389,6 +2380,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteobjectstable::Mteobjectsentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteobjectstable::Mteobjectsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2524,14 +2516,6 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteeventtable::get_child_by_name(const s
 {
     if(child_yang_name == "mteEventEntry")
     {
-        for(auto const & c : mteevententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DISMANEVENTMIB::Mteeventtable::Mteevententry>();
         c->parent = this;
         mteevententry.push_back(c);
@@ -2544,9 +2528,14 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteeventtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteeventtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mteevententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2642,6 +2631,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteeventtable::Mteevententry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteeventtable::Mteevententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2775,14 +2765,6 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteeventnotificationtable::get_child_by_
 {
     if(child_yang_name == "mteEventNotificationEntry")
     {
-        for(auto const & c : mteeventnotificationentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DISMANEVENTMIB::Mteeventnotificationtable::Mteeventnotificationentry>();
         c->parent = this;
         mteeventnotificationentry.push_back(c);
@@ -2795,9 +2777,14 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteeventnotificationtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteeventnotificationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mteeventnotificationentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2889,6 +2876,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteeventnotificationtable::Mteeventnotif
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteeventnotificationtable::Mteeventnotificationentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3014,14 +3002,6 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteeventsettable::get_child_by_name(cons
 {
     if(child_yang_name == "mteEventSetEntry")
     {
-        for(auto const & c : mteeventsetentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DISMANEVENTMIB::Mteeventsettable::Mteeventsetentry>();
         c->parent = this;
         mteeventsetentry.push_back(c);
@@ -3034,9 +3014,14 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteeventsettable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteeventsettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mteeventsetentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3140,6 +3125,7 @@ std::shared_ptr<Entity> DISMANEVENTMIB::Mteeventsettable::Mteeventsetentry::get_
 std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::Mteeventsettable::Mteeventsetentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

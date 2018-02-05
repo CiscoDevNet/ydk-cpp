@@ -848,18 +848,18 @@ class Srlg::Interfaces::Interface::Values : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: Srlg::Interfaces::Interface::Values::Value_
+        class Value; //type: Srlg::Interfaces::Interface::Values::Value
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::Interfaces::Interface::Values::Value_> > value_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::Interfaces::Interface::Values::Value> > value_;
         
 }; // Srlg::Interfaces::Interface::Values
 
 
-class Srlg::Interfaces::Interface::Values::Value_ : public ydk::Entity
+class Srlg::Interfaces::Interface::Values::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -875,7 +875,7 @@ class Srlg::Interfaces::Interface::Values::Value_ : public ydk::Entity
         ydk::YLeaf srlg_value; //type: uint32
         ydk::YLeaf srlg_priority; //type: SrlgPriority
 
-}; // Srlg::Interfaces::Interface::Values::Value_
+}; // Srlg::Interfaces::Interface::Values::Value
 
 
 class Srlg::Interfaces::Interface::InterfaceSrlgNames : public ydk::Entity

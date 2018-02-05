@@ -102,6 +102,7 @@ std::shared_ptr<Entity> SessionRedundancy::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(groups != nullptr)
     {
         children["groups"] = groups;
@@ -262,14 +263,6 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::get_child_by_name(const std::
 {
     if(child_yang_name == "group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SessionRedundancy::Groups::Group>();
         c->parent = this;
         group.push_back(c);
@@ -282,9 +275,14 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -432,6 +430,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer != nullptr)
     {
         children["peer"] = peer;
@@ -612,6 +611,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::Peer::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipaddress != nullptr)
     {
         children["ipaddress"] = ipaddress;
@@ -687,6 +687,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_c
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -777,6 +778,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::RevertiveTimer::get_ch
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::RevertiveTimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -890,6 +892,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::get_chi
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_ranges != nullptr)
     {
         children["interface-ranges"] = interface_ranges;
@@ -978,14 +981,6 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfa
 {
     if(child_yang_name == "interface-range")
     {
-        for(auto const & c : interface_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange>();
         c->parent = this;
         interface_range.push_back(c);
@@ -998,9 +993,14 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfa
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1085,6 +1085,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfa
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1203,14 +1204,6 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfa
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -1223,9 +1216,14 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfa
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1298,6 +1296,7 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfa
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1395,6 +1394,7 @@ std::shared_ptr<Entity> SessionRedundancy::RevertiveTimer::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::RevertiveTimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

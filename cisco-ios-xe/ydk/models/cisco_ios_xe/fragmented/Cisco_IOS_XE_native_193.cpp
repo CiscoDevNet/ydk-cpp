@@ -68,14 +68,6 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::LocalServer::get_c
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -88,9 +80,14 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::LocalServer::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::LocalServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -197,6 +194,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profi
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(block_page_interface != nullptr)
     {
         children["block-page-interface"] = block_page_interface;
@@ -293,6 +291,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profi
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -373,6 +372,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profi
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -468,14 +468,6 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::Page::get_child_by
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Block::Page::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -488,9 +480,14 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::Page::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::Page::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -578,6 +575,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::Page::Profile::get
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::Page::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -693,14 +691,6 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::get_child_by_name
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -713,9 +703,14 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -833,6 +828,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(blacklist != nullptr)
     {
         children["blacklist"] = blacklist;
@@ -943,6 +939,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklis
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(parameter_map != nullptr)
     {
         children["parameter-map"] = parameter_map;
@@ -1014,6 +1011,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklis
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1094,6 +1092,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::Redirect
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1189,6 +1188,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelis
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(parameter_map != nullptr)
     {
         children["parameter-map"] = parameter_map;
@@ -1260,6 +1260,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelis
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1357,6 +1358,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Sourcedb::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Sourcedb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(logging != nullptr)
     {
         children["logging"] = logging;
@@ -1438,6 +1440,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1523,14 +1526,6 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::get_child_by_name(co
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -1543,9 +1538,14 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1724,6 +1724,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(blacklist != nullptr)
     {
         children["blacklist"] = blacklist;
@@ -1852,6 +1853,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(parameter_map != nullptr)
     {
         children["parameter-map"] = parameter_map;
@@ -1923,6 +1925,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2019,6 +2022,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories:
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(allow != nullptr)
     {
         children["allow"] = allow;
@@ -2097,14 +2101,6 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories:
 {
     if(child_yang_name == "category")
     {
-        for(auto const & c : category)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category>();
         c->parent = this;
         category.push_back(c);
@@ -2117,9 +2113,14 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories:
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : category)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2188,6 +2189,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories:
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2266,14 +2268,6 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories:
 {
     if(child_yang_name == "category")
     {
-        for(auto const & c : category)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category>();
         c->parent = this;
         category.push_back(c);
@@ -2286,9 +2280,14 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories:
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : category)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2357,6 +2356,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories:
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2437,6 +2437,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Block::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Block::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2523,6 +2524,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Log::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Log::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2599,6 +2601,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation:
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2684,6 +2687,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::g
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fail != nullptr)
     {
         children["fail"] = fail;
@@ -2755,6 +2759,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::F
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2840,6 +2845,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(parameter_map != nullptr)
     {
         children["parameter-map"] = parameter_map;
@@ -2911,6 +2917,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3015,6 +3022,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(advanced != nullptr)
     {
         children["advanced"] = advanced;
@@ -3106,6 +3114,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Advanced::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Advanced::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threat != nullptr)
     {
         children["threat"] = threat;
@@ -3184,6 +3193,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Advanced::Threat::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Advanced::Threat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3300,6 +3310,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(logging != nullptr)
     {
         children["logging"] = logging;
@@ -3394,14 +3405,6 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::Logging::get_child
 {
     if(child_yang_name == "host")
     {
-        for(auto const & c : host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::UtdSt::Utd::Engine::Standard::Logging::Host>();
         c->parent = this;
         host.push_back(c);
@@ -3414,9 +3417,14 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::Logging::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : host)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3502,6 +3510,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::Logging::Host::get
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::Logging::Host::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3620,6 +3629,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(signature != nullptr)
     {
         children["signature"] = signature;
@@ -3742,6 +3752,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(update != nullptr)
     {
         children["update"] = update;
@@ -3842,6 +3853,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(occur_at != nullptr)
     {
         children["occur-at"] = occur_at;
@@ -3941,6 +3953,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4086,6 +4099,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cisco != nullptr)
     {
         children["cisco"] = cisco;
@@ -4173,6 +4187,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4280,6 +4295,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all != nullptr)
     {
         children["all"] = all;
@@ -4376,6 +4392,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4479,6 +4496,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4570,6 +4588,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::WebFilter::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::WebFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4681,6 +4700,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::ThreatInspection::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::ThreatInspection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(whitelist != nullptr)
     {
         children["whitelist"] = whitelist;
@@ -4761,14 +4781,6 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::ThreatInspection::Whitelist::get_chi
 {
     if(child_yang_name == "signature")
     {
-        for(auto const & c : signature)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature>();
         c->parent = this;
         signature.push_back(c);
@@ -4781,9 +4793,14 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::ThreatInspection::Whitelist::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::ThreatInspection::Whitelist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : signature)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4863,6 +4880,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::ThreatInspection::Whitelist::Signatu
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4958,14 +4976,6 @@ std::shared_ptr<Entity> Native::Voice::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "service")
     {
-        for(auto const & c : service)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Voice::Service>();
         c->parent = this;
         service.push_back(c);
@@ -4978,9 +4988,14 @@ std::shared_ptr<Entity> Native::Voice::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Voice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5070,6 +5085,7 @@ std::shared_ptr<Entity> Native::Voice::Service::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Voice::Service::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fax != nullptr)
     {
         children["fax"] = fax;
@@ -5171,6 +5187,7 @@ std::shared_ptr<Entity> Native::Voice::Service::Fax::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Voice::Service::Fax::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5304,6 +5321,7 @@ std::shared_ptr<Entity> Native::VoiceCard::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::VoiceCard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5405,6 +5423,7 @@ std::shared_ptr<Entity> Native::Vpdn::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Vpdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

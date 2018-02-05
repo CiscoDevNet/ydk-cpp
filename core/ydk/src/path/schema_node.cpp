@@ -126,14 +126,14 @@ ydk::path::SchemaNodeImpl::find(const string& path)
     if(path.empty())
     {
         YLOG_ERROR("Path is empty");
-        throw(YCPPInvalidArgumentError{"path is empty"});
+        throw(YInvalidArgumentError{"path is empty"});
     }
 
     //has to be a relative path
     if(path.at(0) == '/')
     {
         YLOG_ERROR("Path must be a relative path");
-        throw(YCPPInvalidArgumentError{"path must be a relative path"});
+        throw(YInvalidArgumentError{"path must be a relative path"});
     }
 
     vector<SchemaNode*> ret;
@@ -284,7 +284,7 @@ ydk::path::SchemaNodeImpl::get_keys() const
         //sanity check
         if(m_node->nodetype != LYS_LIST) {
             YLOG_ERROR("Mismatch in schema");
-            throw(YCPPIllegalStateError{"Mismatch in schema"});
+            throw(YIllegalStateError{"Mismatch in schema"});
         }
         struct lys_node_list *slist = (struct lys_node_list *)m_node;
         for(uint8_t i=0; i < slist->keys_size; ++i) {

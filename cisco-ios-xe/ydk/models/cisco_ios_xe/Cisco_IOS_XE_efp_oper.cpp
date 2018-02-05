@@ -61,14 +61,6 @@ std::shared_ptr<Entity> EfpStats::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "efp-stat")
     {
-        for(auto const & c : efp_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EfpStats::EfpStat>();
         c->parent = this;
         efp_stat.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> EfpStats::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> EfpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : efp_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -204,6 +201,7 @@ std::shared_ptr<Entity> EfpStats::EfpStat::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> EfpStats::EfpStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

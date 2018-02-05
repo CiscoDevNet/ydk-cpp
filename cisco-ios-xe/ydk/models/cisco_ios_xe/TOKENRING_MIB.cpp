@@ -144,6 +144,7 @@ std::shared_ptr<Entity> TOKENRINGMIB::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot5table != nullptr)
     {
         children["dot5Table"] = dot5table;
@@ -259,14 +260,6 @@ std::shared_ptr<Entity> TOKENRINGMIB::Dot5Table::get_child_by_name(const std::st
 {
     if(child_yang_name == "dot5Entry")
     {
-        for(auto const & c : dot5entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TOKENRINGMIB::Dot5Table::Dot5Entry>();
         c->parent = this;
         dot5entry.push_back(c);
@@ -279,9 +272,14 @@ std::shared_ptr<Entity> TOKENRINGMIB::Dot5Table::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5Table::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot5entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -393,6 +391,7 @@ std::shared_ptr<Entity> TOKENRINGMIB::Dot5Table::Dot5Entry::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5Table::Dot5Entry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -568,14 +567,6 @@ std::shared_ptr<Entity> TOKENRINGMIB::Dot5Statstable::get_child_by_name(const st
 {
     if(child_yang_name == "dot5StatsEntry")
     {
-        for(auto const & c : dot5statsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TOKENRINGMIB::Dot5Statstable::Dot5Statsentry>();
         c->parent = this;
         dot5statsentry.push_back(c);
@@ -588,9 +579,14 @@ std::shared_ptr<Entity> TOKENRINGMIB::Dot5Statstable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5Statstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot5statsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -738,6 +734,7 @@ std::shared_ptr<Entity> TOKENRINGMIB::Dot5Statstable::Dot5Statsentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5Statstable::Dot5Statsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1003,14 +1000,6 @@ std::shared_ptr<Entity> TOKENRINGMIB::Dot5Timertable::get_child_by_name(const st
 {
     if(child_yang_name == "dot5TimerEntry")
     {
-        for(auto const & c : dot5timerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TOKENRINGMIB::Dot5Timertable::Dot5Timerentry>();
         c->parent = this;
         dot5timerentry.push_back(c);
@@ -1023,9 +1012,14 @@ std::shared_ptr<Entity> TOKENRINGMIB::Dot5Timertable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5Timertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot5timerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1141,6 +1135,7 @@ std::shared_ptr<Entity> TOKENRINGMIB::Dot5Timertable::Dot5Timerentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5Timertable::Dot5Timerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

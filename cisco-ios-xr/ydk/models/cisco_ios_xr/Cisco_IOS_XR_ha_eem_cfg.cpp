@@ -111,6 +111,7 @@ std::shared_ptr<Entity> EventManager::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> EventManager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policies != nullptr)
     {
         children["policies"] = policies;
@@ -266,14 +267,6 @@ std::shared_ptr<Entity> EventManager::Policies::get_child_by_name(const std::str
 {
     if(child_yang_name == "policy")
     {
-        for(auto const & c : policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EventManager::Policies::Policy>();
         c->parent = this;
         policy.push_back(c);
@@ -286,9 +279,14 @@ std::shared_ptr<Entity> EventManager::Policies::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> EventManager::Policies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -392,6 +390,7 @@ std::shared_ptr<Entity> EventManager::Policies::Policy::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EventManager::Policies::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -554,6 +553,7 @@ std::shared_ptr<Entity> EventManager::SchedulerScript::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thread_classes != nullptr)
     {
         children["thread-classes"] = thread_classes;
@@ -634,14 +634,6 @@ std::shared_ptr<Entity> EventManager::SchedulerScript::ThreadClasses::get_child_
 {
     if(child_yang_name == "thread-class")
     {
-        for(auto const & c : thread_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EventManager::SchedulerScript::ThreadClasses::ThreadClass>();
         c->parent = this;
         thread_class.push_back(c);
@@ -654,9 +646,14 @@ std::shared_ptr<Entity> EventManager::SchedulerScript::ThreadClasses::get_child_
 std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::ThreadClasses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : thread_class)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -736,6 +733,7 @@ std::shared_ptr<Entity> EventManager::SchedulerScript::ThreadClasses::ThreadClas
 std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -831,14 +829,6 @@ std::shared_ptr<Entity> EventManager::Environments::get_child_by_name(const std:
 {
     if(child_yang_name == "environment")
     {
-        for(auto const & c : environment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EventManager::Environments::Environment>();
         c->parent = this;
         environment.push_back(c);
@@ -851,9 +841,14 @@ std::shared_ptr<Entity> EventManager::Environments::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> EventManager::Environments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : environment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -933,6 +928,7 @@ std::shared_ptr<Entity> EventManager::Environments::Environment::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> EventManager::Environments::Environment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

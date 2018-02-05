@@ -91,6 +91,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(si_start_time != nullptr)
     {
         children["si-start-time"] = si_start_time;
@@ -191,6 +192,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiStartTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -281,6 +283,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime::SiDuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -402,6 +405,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sp_start_time != nullptr)
     {
         children["sp-start-time"] = sp_start_time;
@@ -512,6 +516,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::SpStartTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -602,6 +607,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime::SpDuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -723,6 +729,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sp_start_time != nullptr)
     {
         children["sp-start-time"] = sp_start_time;
@@ -833,6 +840,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::SpStartTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -923,6 +931,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime::SpDuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1043,14 +1052,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 
     if(child_yang_name == "lsa-info")
     {
-        for(auto const & c : lsa_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::LsaInfo>();
         c->parent = this;
         lsa_info.push_back(c);
@@ -1059,14 +1060,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 
     if(child_yang_name == "area-stat")
     {
-        for(auto const & c : area_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat>();
         c->parent = this;
         area_stat.push_back(c);
@@ -1079,19 +1072,28 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gbl_spf_time != nullptr)
     {
         children["gbl-spf-time"] = gbl_spf_time;
     }
 
+    count = 0;
     for (auto const & c : lsa_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : area_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1204,6 +1206,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::GblSpfTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1356,6 +1359,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::LsaInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1492,14 +1496,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 
     if(child_yang_name == "lsa-type-cnt")
     {
-        for(auto const & c : lsa_type_cnt)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt>();
         c->parent = this;
         lsa_type_cnt.push_back(c);
@@ -1512,14 +1508,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spf_time != nullptr)
     {
         children["spf-time"] = spf_time;
     }
 
+    count = 0;
     for (auto const & c : lsa_type_cnt)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1622,6 +1623,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1758,6 +1760,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1836,14 +1839,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatc
 {
     if(child_yang_name == "priority-batch")
     {
-        for(auto const & c : priority_batch)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats::PriorityBatch>();
         c->parent = this;
         priority_batch.push_back(c);
@@ -1856,9 +1851,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatc
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : priority_batch)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1983,6 +1983,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatc
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats::PriorityBatch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2306,6 +2307,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuSta
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nsr_thd_sched != nullptr)
     {
         children["nsr-thd-sched"] = nsr_thd_sched;
@@ -2626,14 +2628,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuSta
 {
     if(child_yang_name == "nsr-pri")
     {
-        for(auto const & c : nsr_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched::NsrPri>();
         c->parent = this;
         nsr_pri.push_back(c);
@@ -2646,9 +2640,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuSta
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nsr_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2829,6 +2828,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuSta
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSched::NsrPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3019,14 +3019,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuSta
 {
     if(child_yang_name == "nsr-pri")
     {
-        for(auto const & c : nsr_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri>();
         c->parent = this;
         nsr_pri.push_back(c);
@@ -3039,9 +3031,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuSta
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nsr_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3222,6 +3219,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuSta
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3393,14 +3391,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThre
 
     if(child_yang_name == "ribqueue")
     {
-        for(auto const & c : ribqueue)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue>();
         c->parent = this;
         ribqueue.push_back(c);
@@ -3413,14 +3403,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThre
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(internalwq != nullptr)
     {
         children["internalwq"] = internalwq;
     }
 
+    count = 0;
     for (auto const & c : ribqueue)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3583,6 +3578,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThre
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalwq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rib_base_time != nullptr)
     {
         children["rib-base-time"] = rib_base_time;
@@ -3868,6 +3864,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThre
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Internalwq::RibBaseTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4048,6 +4045,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThre
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rib_base_time != nullptr)
     {
         children["rib-base-time"] = rib_base_time;
@@ -4333,6 +4331,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThre
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Ribqueue::RibBaseTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4421,14 +4420,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 {
     if(child_yang_name == "ncd-pri")
     {
-        for(auto const & c : ncd_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri>();
         c->parent = this;
         ncd_pri.push_back(c);
@@ -4441,9 +4432,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ncd_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4544,14 +4540,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 {
     if(child_yang_name == "num-sent")
     {
-        for(auto const & c : num_sent)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSent>();
         c->parent = this;
         num_sent.push_back(c);
@@ -4560,14 +4548,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 
     if(child_yang_name == "num-recv")
     {
-        for(auto const & c : num_recv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRecv>();
         c->parent = this;
         num_recv.push_back(c);
@@ -4576,14 +4556,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 
     if(child_yang_name == "num-sent-drop")
     {
-        for(auto const & c : num_sent_drop)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSentDrop>();
         c->parent = this;
         num_sent_drop.push_back(c);
@@ -4592,14 +4564,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 
     if(child_yang_name == "num-recv-drop")
     {
-        for(auto const & c : num_recv_drop)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRecvDrop>();
         c->parent = this;
         num_recv_drop.push_back(c);
@@ -4612,24 +4576,41 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : num_sent)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : num_recv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : num_sent_drop)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : num_recv_drop)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4698,6 +4679,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4774,6 +4756,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRecv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4852,14 +4835,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 {
     if(child_yang_name == "nsr-pl-send-drop-array")
     {
-        for(auto const & c : nsr_pl_send_drop_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSentDrop::NsrPlSendDropArray>();
         c->parent = this;
         nsr_pl_send_drop_array.push_back(c);
@@ -4872,9 +4847,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSentDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nsr_pl_send_drop_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4943,6 +4923,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumSentDrop::NsrPlSendDropArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5021,14 +5002,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 {
     if(child_yang_name == "nsr-pl-recv-drop-array")
     {
-        for(auto const & c : nsr_pl_recv_drop_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRecvDrop::NsrPlRecvDropArray>();
         c->parent = this;
         nsr_pl_recv_drop_array.push_back(c);
@@ -5041,9 +5014,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRecvDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nsr_pl_recv_drop_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5112,6 +5090,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlSt
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri::NumRecvDrop::NsrPlRecvDropArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5295,6 +5274,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nsr_thd_sched != nullptr)
     {
         children["nsr-thd-sched"] = nsr_thd_sched;
@@ -5615,14 +5595,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStat
 {
     if(child_yang_name == "nsr-pri")
     {
-        for(auto const & c : nsr_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched::NsrPri>();
         c->parent = this;
         nsr_pri.push_back(c);
@@ -5635,9 +5607,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nsr_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5818,6 +5795,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSched::NsrPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6008,14 +5986,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStat
 {
     if(child_yang_name == "nsr-pri")
     {
-        for(auto const & c : nsr_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched::NsrPri>();
         c->parent = this;
         nsr_pri.push_back(c);
@@ -6028,9 +5998,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nsr_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6211,6 +6186,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThdSched::NsrPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6375,6 +6351,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::FrrStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::FrrStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6595,6 +6572,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7085,6 +7063,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::Protoco
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::ProtocolStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7485,6 +7464,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RawIoSt
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::RawIoStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7723,14 +7703,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::Interfa
 {
     if(child_yang_name == "interface-stats-entry")
     {
-        for(auto const & c : interface_stats_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry>();
         c->parent = this;
         interface_stats_entry.push_back(c);
@@ -7743,9 +7715,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::Interfa
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_stats_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7828,14 +7805,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::Interfa
 {
     if(child_yang_name == "if-entry")
     {
-        for(auto const & c : if_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry>();
         c->parent = this;
         if_entry.push_back(c);
@@ -7848,9 +7817,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::Interfa
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : if_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7963,14 +7937,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::Interfa
 {
     if(child_yang_name == "if-stat")
     {
-        for(auto const & c : if_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry::IfStat>();
         c->parent = this;
         if_stat.push_back(c);
@@ -7983,9 +7949,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::Interfa
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : if_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8084,6 +8055,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::Interfa
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries::InterfaceStatsEntry::IfEntry::IfStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8208,6 +8180,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbors != nullptr)
     {
         children["neighbors"] = neighbors;
@@ -8296,14 +8269,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -8316,9 +8281,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8441,6 +8411,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor_bfd_information != nullptr)
     {
         children["neighbor-bfd-information"] = neighbor_bfd_information;
@@ -8626,6 +8597,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Neighbors::Neighbor::NeighborBfdInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8714,14 +8686,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 {
     if(child_yang_name == "request")
     {
-        for(auto const & c : request)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Requests::Request>();
         c->parent = this;
         request.push_back(c);
@@ -8734,9 +8698,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Requests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : request)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8827,14 +8796,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 {
     if(child_yang_name == "request")
     {
-        for(auto const & c : request)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Requests::Request::Request_>();
         c->parent = this;
         request.push_back(c);
@@ -8847,9 +8808,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Requests::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : request)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8988,6 +8954,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Requests::Request::Request_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9116,14 +9083,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 {
     if(child_yang_name == "retransmission")
     {
-        for(auto const & c : retransmission)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmissions::Retransmission>();
         c->parent = this;
         retransmission.push_back(c);
@@ -9136,9 +9095,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmissions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : retransmission)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9247,14 +9211,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 {
     if(child_yang_name == "retransmission-area-db")
     {
-        for(auto const & c : retransmission_area_db)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmissions::Retransmission::RetransmissionAreaDb>();
         c->parent = this;
         retransmission_area_db.push_back(c);
@@ -9263,14 +9219,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 
     if(child_yang_name == "retransmission-asdb")
     {
-        for(auto const & c : retransmission_asdb)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmissions::Retransmission::RetransmissionAsdb>();
         c->parent = this;
         retransmission_asdb.push_back(c);
@@ -9283,14 +9231,23 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmissions::Retransmission::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : retransmission_area_db)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : retransmission_asdb)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9449,6 +9406,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmissions::Retransmission::RetransmissionAreaDb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9595,6 +9553,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmissions::Retransmission::RetransmissionAsdb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9723,14 +9682,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 {
     if(child_yang_name == "neighbor-detail")
     {
-        for(auto const & c : neighbor_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborDetails::NeighborDetail>();
         c->parent = this;
         neighbor_detail.push_back(c);
@@ -9743,9 +9694,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9958,6 +9914,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborDetails::NeighborDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor_summary != nullptr)
     {
         children["neighbor-summary"] = neighbor_summary;
@@ -10355,6 +10312,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor_bfd_information != nullptr)
     {
         children["neighbor-bfd-information"] = neighbor_bfd_information;
@@ -10520,6 +10478,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborSummary::NeighborBfdInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10610,6 +10569,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborBfdInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10768,6 +10728,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformatio
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborDetails::NeighborDetail::NeighborRetransmissionInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11137,6 +11098,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::g
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(backup_routes != nullptr)
     {
         children["backup-routes"] = backup_routes;
@@ -11250,14 +11212,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 {
     if(child_yang_name == "backup-route")
     {
-        for(auto const & c : backup_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute>();
         c->parent = this;
         backup_route.push_back(c);
@@ -11270,9 +11224,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : backup_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11385,14 +11344,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -11405,14 +11356,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_info != nullptr)
     {
         children["route-info"] = route_info;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11614,6 +11570,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RouteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_update_time != nullptr)
     {
         children["route-update-time"] = route_update_time;
@@ -11794,6 +11751,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RouteInfo::RouteUpdateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11884,6 +11842,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RouteInfo::RouteFailTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12029,6 +11988,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_backup_path != nullptr)
     {
         children["route-backup-path"] = route_backup_path;
@@ -12245,14 +12205,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 {
     if(child_yang_name == "backup-repair")
     {
-        for(auto const & c : backup_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RoutePath::RouteBackupPath::BackupRepair>();
         c->parent = this;
         backup_repair.push_back(c);
@@ -12265,9 +12217,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RoutePath::RouteBackupPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : backup_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12464,6 +12421,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RoutePath::RouteBackupPath::BackupRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12574,14 +12532,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 {
     if(child_yang_name == "microloop-repair")
     {
-        for(auto const & c : microloop_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
         c->parent = this;
         microloop_repair.push_back(c);
@@ -12594,9 +12544,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RoutePath::SrMicroloopAvoidancePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : microloop_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12703,6 +12658,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::B
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::BackupRoute::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12801,14 +12757,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 {
     if(child_yang_name == "route")
     {
-        for(auto const & c : route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route>();
         c->parent = this;
         route.push_back(c);
@@ -12821,9 +12769,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12936,14 +12889,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -12956,14 +12901,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_info != nullptr)
     {
         children["route-info"] = route_info;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13165,6 +13115,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route::RouteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_update_time != nullptr)
     {
         children["route-update-time"] = route_update_time;
@@ -13345,6 +13296,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route::RouteInfo::RouteUpdateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13435,6 +13387,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route::RouteInfo::RouteFailTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13571,6 +13524,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sr_microloop_avoidance_path != nullptr)
     {
         children["sr-microloop-avoidance-path"] = sr_microloop_avoidance_path;
@@ -13756,14 +13710,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 {
     if(child_yang_name == "microloop-repair")
     {
-        for(auto const & c : microloop_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
         c->parent = this;
         microloop_repair.push_back(c);
@@ -13776,9 +13722,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route::RoutePath::SrMicroloopAvoidancePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : microloop_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13885,6 +13836,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRouteTable::Route::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13983,14 +13935,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 {
     if(child_yang_name == "multicast-intact-backup-route")
     {
-        for(auto const & c : multicast_intact_backup_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute>();
         c->parent = this;
         multicast_intact_backup_route.push_back(c);
@@ -14003,9 +13947,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : multicast_intact_backup_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14118,14 +14067,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -14138,14 +14079,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_info != nullptr)
     {
         children["route-info"] = route_info;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14347,6 +14293,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RouteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_update_time != nullptr)
     {
         children["route-update-time"] = route_update_time;
@@ -14527,6 +14474,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RouteInfo::RouteUpdateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14617,6 +14565,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RouteInfo::RouteFailTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14762,6 +14711,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_backup_path != nullptr)
     {
         children["route-backup-path"] = route_backup_path;
@@ -14978,14 +14928,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 {
     if(child_yang_name == "backup-repair")
     {
-        for(auto const & c : backup_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RoutePath::RouteBackupPath::BackupRepair>();
         c->parent = this;
         backup_repair.push_back(c);
@@ -14998,9 +14940,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RoutePath::RouteBackupPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : backup_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15197,6 +15144,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RoutePath::RouteBackupPath::BackupRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15307,14 +15255,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 {
     if(child_yang_name == "microloop-repair")
     {
-        for(auto const & c : microloop_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
         c->parent = this;
         microloop_repair.push_back(c);
@@ -15327,9 +15267,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RoutePath::SrMicroloopAvoidancePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : microloop_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15436,6 +15381,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::M
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBackupRoutes::MulticastIntactBackupRoute::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15563,6 +15509,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::S
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::SummaryInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(failure_time != nullptr)
     {
         children["failure-time"] = failure_time;
@@ -15663,6 +15610,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::S
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::SummaryInformation::FailureTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15773,6 +15721,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::S
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::SummaryInformation::Common::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15911,14 +15860,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 {
     if(child_yang_name == "connected-route")
     {
-        for(auto const & c : connected_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute>();
         c->parent = this;
         connected_route.push_back(c);
@@ -15931,9 +15872,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : connected_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16046,14 +15992,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -16066,14 +16004,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_info != nullptr)
     {
         children["route-info"] = route_info;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16275,6 +16218,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RouteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_update_time != nullptr)
     {
         children["route-update-time"] = route_update_time;
@@ -16455,6 +16399,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RouteInfo::RouteUpdateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16545,6 +16490,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RouteInfo::RouteFailTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16681,6 +16627,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sr_microloop_avoidance_path != nullptr)
     {
         children["sr-microloop-avoidance-path"] = sr_microloop_avoidance_path;
@@ -16866,14 +16813,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 {
     if(child_yang_name == "microloop-repair")
     {
-        for(auto const & c : microloop_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
         c->parent = this;
         microloop_repair.push_back(c);
@@ -16886,9 +16825,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RoutePath::SrMicroloopAvoidancePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : microloop_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16995,6 +16939,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::C
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::ConnectedRoute::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17093,14 +17038,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 {
     if(child_yang_name == "local-route")
     {
-        for(auto const & c : local_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute>();
         c->parent = this;
         local_route.push_back(c);
@@ -17113,9 +17050,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17228,14 +17170,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -17248,14 +17182,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_info != nullptr)
     {
         children["route-info"] = route_info;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17457,6 +17396,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute::RouteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_update_time != nullptr)
     {
         children["route-update-time"] = route_update_time;
@@ -17637,6 +17577,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute::RouteInfo::RouteUpdateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17727,6 +17668,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute::RouteInfo::RouteFailTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17863,6 +17805,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sr_microloop_avoidance_path != nullptr)
     {
         children["sr-microloop-avoidance-path"] = sr_microloop_avoidance_path;
@@ -18048,14 +17991,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 {
     if(child_yang_name == "microloop-repair")
     {
-        for(auto const & c : microloop_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
         c->parent = this;
         microloop_repair.push_back(c);
@@ -18068,9 +18003,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute::RoutePath::SrMicroloopAvoidancePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : microloop_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18177,6 +18117,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::L
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalRoute::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18275,14 +18216,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "route-area")
     {
-        for(auto const & c : route_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea>();
         c->parent = this;
         route_area.push_back(c);
@@ -18295,9 +18228,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18458,6 +18396,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multicast_intact_backup_route_areas != nullptr)
     {
         children["multicast-intact-backup-route-areas"] = multicast_intact_backup_route_areas;
@@ -18571,14 +18510,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "multicast-intact-backup-route-area")
     {
-        for(auto const & c : multicast_intact_backup_route_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea>();
         c->parent = this;
         multicast_intact_backup_route_area.push_back(c);
@@ -18591,9 +18522,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : multicast_intact_backup_route_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18706,14 +18642,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -18726,14 +18654,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_info != nullptr)
     {
         children["route-info"] = route_info;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18935,6 +18868,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RouteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_update_time != nullptr)
     {
         children["route-update-time"] = route_update_time;
@@ -19115,6 +19049,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RouteInfo::RouteUpdateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19205,6 +19140,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RouteInfo::RouteFailTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19350,6 +19286,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_backup_path != nullptr)
     {
         children["route-backup-path"] = route_backup_path;
@@ -19566,14 +19503,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "backup-repair")
     {
-        for(auto const & c : backup_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RoutePath::RouteBackupPath::BackupRepair>();
         c->parent = this;
         backup_repair.push_back(c);
@@ -19586,9 +19515,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RoutePath::RouteBackupPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : backup_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19785,6 +19719,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19895,14 +19830,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "microloop-repair")
     {
-        for(auto const & c : microloop_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
         c->parent = this;
         microloop_repair.push_back(c);
@@ -19915,9 +19842,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RoutePath::SrMicroloopAvoidancePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : microloop_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20024,6 +19956,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::MulticastIntactBackupRouteAreas::MulticastIntactBackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20122,14 +20055,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "connected-route-area")
     {
-        for(auto const & c : connected_route_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea>();
         c->parent = this;
         connected_route_area.push_back(c);
@@ -20142,9 +20067,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : connected_route_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20257,14 +20187,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -20277,14 +20199,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_info != nullptr)
     {
         children["route-info"] = route_info;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20486,6 +20413,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RouteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_update_time != nullptr)
     {
         children["route-update-time"] = route_update_time;
@@ -20666,6 +20594,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RouteInfo::RouteUpdateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20756,6 +20685,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RouteInfo::RouteFailTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20892,6 +20822,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sr_microloop_avoidance_path != nullptr)
     {
         children["sr-microloop-avoidance-path"] = sr_microloop_avoidance_path;
@@ -21077,14 +21008,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "microloop-repair")
     {
-        for(auto const & c : microloop_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
         c->parent = this;
         microloop_repair.push_back(c);
@@ -21097,9 +21020,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::SrMicroloopAvoidancePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : microloop_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21206,6 +21134,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::ConnectedRouteAreas::ConnectedRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21304,14 +21233,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "backup-route-area")
     {
-        for(auto const & c : backup_route_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea>();
         c->parent = this;
         backup_route_area.push_back(c);
@@ -21324,9 +21245,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : backup_route_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21439,14 +21365,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -21459,14 +21377,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_info != nullptr)
     {
         children["route-info"] = route_info;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21668,6 +21591,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_update_time != nullptr)
     {
         children["route-update-time"] = route_update_time;
@@ -21848,6 +21772,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteUpdateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21938,6 +21863,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RouteInfo::RouteFailTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22083,6 +22009,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_backup_path != nullptr)
     {
         children["route-backup-path"] = route_backup_path;
@@ -22299,14 +22226,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "backup-repair")
     {
-        for(auto const & c : backup_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair>();
         c->parent = this;
         backup_repair.push_back(c);
@@ -22319,9 +22238,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : backup_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22518,6 +22442,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::RouteBackupPath::BackupRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22628,14 +22553,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "microloop-repair")
     {
-        for(auto const & c : microloop_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
         c->parent = this;
         microloop_repair.push_back(c);
@@ -22648,9 +22565,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : microloop_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22757,6 +22679,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::BackupRouteAreas::BackupRouteArea::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22855,14 +22778,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "route-area-information")
     {
-        for(auto const & c : route_area_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation>();
         c->parent = this;
         route_area_information.push_back(c);
@@ -22875,9 +22790,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route_area_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22990,14 +22910,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -23010,14 +22922,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_info != nullptr)
     {
         children["route-info"] = route_info;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -23219,6 +23136,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_update_time != nullptr)
     {
         children["route-update-time"] = route_update_time;
@@ -23399,6 +23317,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteUpdateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23489,6 +23408,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RouteInfo::RouteFailTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23625,6 +23545,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sr_microloop_avoidance_path != nullptr)
     {
         children["sr-microloop-avoidance-path"] = sr_microloop_avoidance_path;
@@ -23810,14 +23731,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 {
     if(child_yang_name == "microloop-repair")
     {
-        for(auto const & c : microloop_repair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::MicroloopRepair>();
         c->parent = this;
         microloop_repair.push_back(c);
@@ -23830,9 +23743,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::R
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteArea::RouteAreaInformations::RouteAreaInformation::RoutePath::SrMicroloopAvoidancePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : microloop_repair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;

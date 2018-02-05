@@ -94,6 +94,7 @@ std::shared_ptr<Entity> EthernetFeatures::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(egress_filtering != nullptr)
     {
         children["egress-filtering"] = egress_filtering;
@@ -207,6 +208,7 @@ std::shared_ptr<Entity> EthernetFeatures::EgressFiltering::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EgressFiltering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -317,6 +319,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traceroute_cache != nullptr)
     {
         children["traceroute-cache"] = traceroute_cache;
@@ -414,6 +417,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::TracerouteCache::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::TracerouteCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -509,14 +513,6 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::get_child_by_name(const 
 {
     if(child_yang_name == "domain")
     {
-        for(auto const & c : domain)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain>();
         c->parent = this;
         domain.push_back(c);
@@ -529,9 +525,14 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : domain)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -634,6 +635,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(services != nullptr)
     {
         children["services"] = services;
@@ -722,14 +724,6 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::get_ch
 {
     if(child_yang_name == "service")
     {
-        for(auto const & c : service)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service>();
         c->parent = this;
         service.push_back(c);
@@ -742,9 +736,14 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::get_ch
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -924,6 +923,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(efd2 != nullptr)
     {
         children["efd2"] = efd2;
@@ -1124,6 +1124,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1214,6 +1215,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1304,6 +1306,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1398,6 +1401,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmission != nullptr)
     {
         children["transmission"] = transmission;
@@ -1473,6 +1477,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1573,6 +1578,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cross_check_meps != nullptr)
     {
         children["cross-check-meps"] = cross_check_meps;
@@ -1656,14 +1662,6 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 {
     if(child_yang_name == "cross-check-mep")
     {
-        for(auto const & c : cross_check_mep)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep>();
         c->parent = this;
         cross_check_mep.push_back(c);
@@ -1676,9 +1674,14 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cross_check_mep)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1755,6 +1758,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1899,6 +1903,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2111,6 +2116,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::DomainProperties
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2243,6 +2249,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(profiles != nullptr)
     {
         children["profiles"] = profiles;
@@ -2323,14 +2330,6 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::get_child_by_n
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -2343,9 +2342,14 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2485,6 +2489,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::get_c
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -2672,6 +2677,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::Actio
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2850,6 +2856,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::Requi
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3009,6 +3016,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(symbol_period != nullptr)
     {
         children["symbol-period"] = symbol_period;
@@ -3126,6 +3134,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(window != nullptr)
     {
         children["window"] = window;
@@ -3210,6 +3219,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3322,6 +3332,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3459,6 +3470,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(window != nullptr)
     {
         children["window"] = window;
@@ -3543,6 +3555,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3655,6 +3668,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3785,6 +3799,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -3870,6 +3885,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3970,6 +3986,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -4063,6 +4080,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
 std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

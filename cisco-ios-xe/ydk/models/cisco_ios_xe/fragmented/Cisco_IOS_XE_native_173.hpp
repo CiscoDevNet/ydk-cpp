@@ -310,11 +310,11 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::
 }; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Ospf::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static_ : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -326,14 +326,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static_
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -351,7 +351,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Static::MapCacheContainer
 
 
 class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv4::RouteImport::MapCache::Rip : public ydk::Entity
@@ -685,7 +685,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6 :
         ydk::YLeaf proxy_etr; //type: empty
         ydk::YLeaf sgt; //type: empty
         ydk::YLeaf map_request_source; //type: string
-        class Default_; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_
+        class Default; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default
         class EidTable; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::EidTable
         class Itr; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Itr
         class ItrEnable; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::ItrEnable
@@ -704,7 +704,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6 :
         class RouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport
         class DatabaseMapping; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::DatabaseMapping
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::EidTable> eid_table;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Itr> itr;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::ItrEnable> itr_enable;
@@ -726,11 +726,11 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6 :
 }; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_ : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -746,46 +746,46 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf proxy_etr; //type: empty
         ydk::YLeaf sgt; //type: empty
         ydk::YLeaf map_request_source; //type: string
-        class EidTable; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::EidTable
-        class Itr; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Itr
-        class ItrEnable; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::ItrEnable
-        class EtrEnable; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::EtrEnable
-        class Etr; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr
-        class MapCacheLimit; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCacheLimit
-        class SiteRegistration; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::SiteRegistration
-        class SolicitMapRequest; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::SolicitMapRequest
-        class Alt; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Alt
-        class Distance; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Distance
-        class MapCache; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache
-        class MapCachePersistent; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCachePersistent
-        class ProxyItr; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::ProxyItr
-        class RouteExport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteExport
-        class UsePetr; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::UsePetr
-        class RouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport
-        class DatabaseMapping; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping
+        class EidTable; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::EidTable
+        class Itr; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Itr
+        class ItrEnable; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::ItrEnable
+        class EtrEnable; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::EtrEnable
+        class Etr; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr
+        class MapCacheLimit; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCacheLimit
+        class SiteRegistration; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::SiteRegistration
+        class SolicitMapRequest; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::SolicitMapRequest
+        class Alt; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Alt
+        class Distance; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Distance
+        class MapCache; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache
+        class MapCachePersistent; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCachePersistent
+        class ProxyItr; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::ProxyItr
+        class RouteExport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteExport
+        class UsePetr; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::UsePetr
+        class RouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport
+        class DatabaseMapping; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::EidTable> eid_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Itr> itr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::ItrEnable> itr_enable;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::EtrEnable> etr_enable;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr> etr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCacheLimit> map_cache_limit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::SiteRegistration> site_registration;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::SolicitMapRequest> solicit_map_request;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Alt> alt;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Distance> distance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache> map_cache;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCachePersistent> map_cache_persistent;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::ProxyItr> proxy_itr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteExport> route_export;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::UsePetr> > use_petr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport> route_import;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping> database_mapping;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::EidTable> eid_table;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Itr> itr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::ItrEnable> itr_enable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::EtrEnable> etr_enable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr> etr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCacheLimit> map_cache_limit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::SiteRegistration> site_registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::SolicitMapRequest> solicit_map_request;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Alt> alt;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Distance> distance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache> map_cache;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCachePersistent> map_cache_persistent;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::ProxyItr> proxy_itr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteExport> route_export;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::UsePetr> > use_petr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport> route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping> database_mapping;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::EidTable : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::EidTable : public ydk::Entity
 {
     public:
         EidTable();
@@ -805,10 +805,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf default_; //type: empty
         ydk::YLeaf vrf; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::EidTable
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::EidTable
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Itr : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Itr : public ydk::Entity
 {
     public:
         Itr();
@@ -824,14 +824,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MapResolver; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Itr::MapResolver
+        class MapResolver; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Itr::MapResolver
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Itr::MapResolver> > map_resolver;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Itr::MapResolver> > map_resolver;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Itr
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Itr
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Itr::MapResolver : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Itr::MapResolver : public ydk::Entity
 {
     public:
         MapResolver();
@@ -849,10 +849,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf ip_addr; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Itr::MapResolver
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Itr::MapResolver
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::ItrEnable : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::ItrEnable : public ydk::Entity
 {
     public:
         ItrEnable();
@@ -870,10 +870,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf itr; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::ItrEnable
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::ItrEnable
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::EtrEnable : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::EtrEnable : public ydk::Entity
 {
     public:
         EtrEnable();
@@ -891,10 +891,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf etr; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::EtrEnable
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::EtrEnable
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr : public ydk::Entity
 {
     public:
         Etr();
@@ -911,16 +911,16 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf map_cache_ttl; //type: uint16
-        class MapServer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer
-        class AcceptMapRequestMapping; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::AcceptMapRequestMapping
+        class MapServer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer
+        class AcceptMapRequestMapping; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::AcceptMapRequestMapping
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer> > map_server;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::AcceptMapRequestMapping> accept_map_request_mapping;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer> > map_server;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::AcceptMapRequestMapping> accept_map_request_mapping;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer : public ydk::Entity
 {
     public:
         MapServer();
@@ -938,14 +938,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf ip_addr; //type: string
         ydk::YLeaf proxy_reply; //type: empty
-        class Key; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key
+        class Key; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key> key;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key> key;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key : public ydk::Entity
 {
     public:
         Key();
@@ -961,20 +961,20 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyPwd; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd
-        class Key0; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key0
-        class Key6; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key6
-        class Key7; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key7
+        class KeyPwd; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd
+        class Key0; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key0
+        class Key6; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key6
+        class Key7; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key7
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd> key_pwd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key0> key_0;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key6> key_6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key7> key_7;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd> key_pwd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key0> key_0;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key6> key_6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key7> key_7;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd : public ydk::Entity
 {
     public:
         KeyPwd();
@@ -994,10 +994,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key0 : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key0 : public ydk::Entity
 {
     public:
         Key0();
@@ -1017,10 +1017,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key0
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key0
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key6 : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key6 : public ydk::Entity
 {
     public:
         Key6();
@@ -1040,10 +1040,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key6
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key6
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key7 : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key7 : public ydk::Entity
 {
     public:
         Key7();
@@ -1063,10 +1063,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key7
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key7
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::AcceptMapRequestMapping : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::AcceptMapRequestMapping : public ydk::Entity
 {
     public:
         AcceptMapRequestMapping();
@@ -1085,10 +1085,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf accept_mappping; //type: empty
         ydk::YLeaf verify; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::AcceptMapRequestMapping
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::AcceptMapRequestMapping
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCacheLimit : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCacheLimit : public ydk::Entity
 {
     public:
         MapCacheLimit();
@@ -1108,10 +1108,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf reserve_list; //type: string
         ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCacheLimit
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCacheLimit
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::SiteRegistration : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::SiteRegistration : public ydk::Entity
 {
     public:
         SiteRegistration();
@@ -1130,10 +1130,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf limit; //type: uint32
         ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::SiteRegistration
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::SiteRegistration
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::SolicitMapRequest : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::SolicitMapRequest : public ydk::Entity
 {
     public:
         SolicitMapRequest();
@@ -1153,10 +1153,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf max_per_entry; //type: uint8
         ydk::YLeaf suppression_time; //type: uint16
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::SolicitMapRequest
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::SolicitMapRequest
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Alt : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Alt : public ydk::Entity
 {
     public:
         Alt();
@@ -1172,14 +1172,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SummaryRoute; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Alt::SummaryRoute
+        class SummaryRoute; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Alt::SummaryRoute
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Alt::SummaryRoute> > summary_route;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Alt::SummaryRoute> > summary_route;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Alt
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Alt
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Alt::SummaryRoute : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Alt::SummaryRoute : public ydk::Entity
 {
     public:
         SummaryRoute();
@@ -1198,10 +1198,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf eid_prefix; //type: string
         ydk::YLeaf route_tag; //type: uint32
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Alt::SummaryRoute
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Alt::SummaryRoute
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Distance : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Distance : public ydk::Entity
 {
     public:
         Distance();
@@ -1222,10 +1222,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf dyn_eid; //type: uint8
         ydk::YLeaf site_registrations; //type: uint8
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Distance
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Distance
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache : public ydk::Entity
 {
     public:
         MapCache();
@@ -1242,16 +1242,16 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf site_registration; //type: empty
-        class EidInterface; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::EidInterface
-        class AwayEids; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::AwayEids
+        class EidInterface; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::EidInterface
+        class AwayEids; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::AwayEids
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::EidInterface> > eid_interface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::AwayEids> away_eids;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::EidInterface> > eid_interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::AwayEids> away_eids;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::EidInterface : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::EidInterface : public ydk::Entity
 {
     public:
         EidInterface();
@@ -1271,14 +1271,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf drop; //type: empty
         ydk::YLeaf map_request; //type: empty
         ydk::YLeaf native_forward; //type: empty
-        class EtrInterfaceIp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::EidInterface::EtrInterfaceIp
+        class EtrInterfaceIp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::EidInterface::EtrInterfaceIp
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::EidInterface::EtrInterfaceIp> etr_interface_ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::EidInterface::EtrInterfaceIp> etr_interface_ip;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::EidInterface
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::EidInterface
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::EidInterface::EtrInterfaceIp : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::EidInterface::EtrInterfaceIp : public ydk::Entity
 {
     public:
         EtrInterfaceIp();
@@ -1298,10 +1298,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf priority; //type: uint8
         ydk::YLeaf weight; //type: uint8
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::EidInterface::EtrInterfaceIp
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::EidInterface::EtrInterfaceIp
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::AwayEids : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::AwayEids : public ydk::Entity
 {
     public:
         AwayEids();
@@ -1319,10 +1319,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf send_map_request; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCache::AwayEids
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCache::AwayEids
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCachePersistent : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCachePersistent : public ydk::Entity
 {
     public:
         MapCachePersistent();
@@ -1340,10 +1340,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf interval; //type: uint16
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::MapCachePersistent
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::MapCachePersistent
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::ProxyItr : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::ProxyItr : public ydk::Entity
 {
     public:
         ProxyItr();
@@ -1362,10 +1362,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf ipv4_addr; //type: string
         ydk::YLeaf ipv6_addr; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::ProxyItr
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::ProxyItr
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteExport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteExport : public ydk::Entity
 {
     public:
         RouteExport();
@@ -1384,10 +1384,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf site_registrations; //type: empty
         ydk::YLeaf away_eids; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteExport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteExport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::UsePetr : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::UsePetr : public ydk::Entity
 {
     public:
         UsePetr();
@@ -1404,14 +1404,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf locator_address; //type: string
-        class Priority; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::UsePetr::Priority
+        class Priority; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::UsePetr::Priority
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::UsePetr::Priority> priority;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::UsePetr::Priority> priority;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::UsePetr
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::UsePetr
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::UsePetr::Priority : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::UsePetr::Priority : public ydk::Entity
 {
     public:
         Priority();
@@ -1430,10 +1430,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf priority_value; //type: uint8
         ydk::YLeaf weight; //type: uint8
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::UsePetr::Priority
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::UsePetr::Priority
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport : public ydk::Entity
 {
     public:
         RouteImport();
@@ -1449,16 +1449,16 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Database; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database
-        class MapCache; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache
+        class Database; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database
+        class MapCache; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database> database;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache> map_cache;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database> database;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache> map_cache;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database : public ydk::Entity
 {
     public:
         Database();
@@ -1474,32 +1474,32 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Application; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Application
-        class Bgp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Bgp
-        class Connected; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Connected
-        class Eigrp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Eigrp
-        class Isis; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Isis
-        class MaximumPrefix; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::MaximumPrefix
-        class Nd; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Nd
-        class Ospf; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Ospf
-        class Static_; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Static_
-        class Rip; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Rip
+        class Application; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Application
+        class Bgp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Bgp
+        class Connected; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Connected
+        class Eigrp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Eigrp
+        class Isis; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Isis
+        class MaximumPrefix; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::MaximumPrefix
+        class Nd; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Nd
+        class Ospf; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Ospf
+        class Static; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Static
+        class Rip; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Rip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Application> application;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Bgp> > bgp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Connected> connected;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Eigrp> > eigrp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Isis> isis;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::MaximumPrefix> maximum_prefix;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Nd> nd;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Ospf> > ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Static_> static_;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Rip> > rip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Application> application;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Bgp> > bgp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Connected> connected;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Eigrp> > eigrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Isis> isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::MaximumPrefix> maximum_prefix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Nd> nd;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Ospf> > ospf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Static> static_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Rip> > rip;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Application : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Application : public ydk::Entity
 {
     public:
         Application();
@@ -1515,14 +1515,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Application::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Application::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Application::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Application::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Application
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Application
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Application::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Application::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -1541,10 +1541,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Application::LispIpRouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Application::LispIpRouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Bgp : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -1561,14 +1561,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: one of string, uint32
-        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Bgp::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Bgp::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Bgp::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Bgp::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Bgp
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Bgp
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Bgp::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Bgp::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -1587,10 +1587,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Bgp::LispIpRouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Bgp::LispIpRouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Connected : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Connected : public ydk::Entity
 {
     public:
         Connected();
@@ -1606,14 +1606,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Connected::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Connected::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Connected::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Connected::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Connected
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Connected
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Connected::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Connected::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -1632,10 +1632,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Connected::LispIpRouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Connected::LispIpRouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Eigrp : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Eigrp : public ydk::Entity
 {
     public:
         Eigrp();
@@ -1652,14 +1652,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Eigrp::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Eigrp::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Eigrp::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Eigrp::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Eigrp
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Eigrp
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Eigrp::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Eigrp::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -1678,10 +1678,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Eigrp::LispIpRouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Eigrp::LispIpRouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Isis : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -1698,14 +1698,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf process_id; //type: string
-        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Isis::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Isis::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Isis::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Isis::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Isis
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Isis
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Isis::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Isis::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -1724,10 +1724,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Isis::LispIpRouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Isis::LispIpRouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::MaximumPrefix : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::MaximumPrefix : public ydk::Entity
 {
     public:
         MaximumPrefix();
@@ -1749,10 +1749,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf threshold1; //type: uint8
         ydk::YLeaf warning_only1; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::MaximumPrefix
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::MaximumPrefix
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Nd : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Nd : public ydk::Entity
 {
     public:
         Nd();
@@ -1768,14 +1768,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Nd::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Nd::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Nd::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Nd::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Nd
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Nd
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Nd::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Nd::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -1794,10 +1794,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Nd::LispIpRouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Nd::LispIpRouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Ospf : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -1814,14 +1814,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Ospf::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Ospf::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Ospf::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Ospf::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Ospf
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Ospf
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Ospf::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Ospf::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -1840,14 +1840,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Ospf::LispIpRouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Ospf::LispIpRouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Static_ : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1859,14 +1859,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Static_::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Static::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Static_::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Static::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Static_
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Static
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Static_::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Static::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -1885,10 +1885,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Static_::LispIpRouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Static::LispIpRouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Rip : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Rip : public ydk::Entity
 {
     public:
         Rip();
@@ -1905,14 +1905,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Rip::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Rip::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Rip::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Rip::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Rip
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Rip
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Rip::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Rip::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -1931,10 +1931,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::Database::Rip::LispIpRouteImport
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::Database::Rip::LispIpRouteImport
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache : public ydk::Entity
 {
     public:
         MapCache();
@@ -1950,32 +1950,32 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Application; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Application
-        class Bgp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Bgp
-        class Connected; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Connected
-        class Eigrp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Eigrp
-        class Isis; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Isis
-        class MaximumPrefix; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::MaximumPrefix
-        class Nd; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Nd
-        class Ospf; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Ospf
-        class Static_; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Static_
-        class Rip; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Rip
+        class Application; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Application
+        class Bgp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Bgp
+        class Connected; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Connected
+        class Eigrp; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Eigrp
+        class Isis; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Isis
+        class MaximumPrefix; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::MaximumPrefix
+        class Nd; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Nd
+        class Ospf; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Ospf
+        class Static; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Static
+        class Rip; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Rip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Application> application; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Bgp> > bgp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Connected> connected; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Eigrp> > eigrp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Isis> isis;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::MaximumPrefix> maximum_prefix;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Nd> nd; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Ospf> > ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Static_> static_; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Rip> > rip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Application> application; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Bgp> > bgp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Connected> connected; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Eigrp> > eigrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Isis> isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::MaximumPrefix> maximum_prefix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Nd> nd; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Ospf> > ospf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Static> static_; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Rip> > rip;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Application : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Application : public ydk::Entity
 {
     public:
         Application();
@@ -1991,14 +1991,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Application::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Application::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Application::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Application::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Application
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Application
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Application::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Application::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2016,10 +2016,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Application::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Application::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Bgp : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -2036,14 +2036,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: one of string, uint32
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Bgp::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Bgp::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Bgp::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Bgp::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Bgp
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Bgp
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Bgp::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Bgp::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2061,10 +2061,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Bgp::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Bgp::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Connected : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Connected : public ydk::Entity
 {
     public:
         Connected();
@@ -2080,14 +2080,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Connected::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Connected::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Connected::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Connected::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Connected
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Connected
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Connected::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Connected::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2105,10 +2105,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Connected::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Connected::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Eigrp : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Eigrp : public ydk::Entity
 {
     public:
         Eigrp();
@@ -2125,14 +2125,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Eigrp::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Eigrp::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Eigrp::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Eigrp::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Eigrp
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Eigrp
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Eigrp::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Eigrp::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2150,10 +2150,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Eigrp::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Eigrp::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Isis : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -2170,14 +2170,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Isis::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Isis::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Isis::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Isis::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Isis
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Isis
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Isis::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Isis::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2195,10 +2195,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Isis::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Isis::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::MaximumPrefix : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::MaximumPrefix : public ydk::Entity
 {
     public:
         MaximumPrefix();
@@ -2220,10 +2220,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf threshold1; //type: uint8
         ydk::YLeaf warning_only1; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::MaximumPrefix
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::MaximumPrefix
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Nd : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Nd : public ydk::Entity
 {
     public:
         Nd();
@@ -2239,14 +2239,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Nd::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Nd::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Nd::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Nd::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Nd
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Nd
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Nd::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Nd::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2264,10 +2264,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Nd::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Nd::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Ospf : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -2284,14 +2284,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: uint16
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Ospf::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Ospf::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Ospf::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Ospf::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Ospf
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Ospf
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Ospf::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Ospf::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2309,14 +2309,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Ospf::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Ospf::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Static_ : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2328,14 +2328,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Static_::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Static::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Static_::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Static::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Static_
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Static
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Static_::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Static::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2353,10 +2353,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Static_::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Static::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Rip : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Rip : public ydk::Entity
 {
     public:
         Rip();
@@ -2373,14 +2373,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Rip::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Rip::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Rip::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Rip::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Rip
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Rip
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Rip::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Rip::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2398,10 +2398,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::RouteImport::MapCache::Rip::MapCacheContainer
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::RouteImport::MapCache::Rip::MapCacheContainer
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping : public ydk::Entity
 {
     public:
         DatabaseMapping();
@@ -2417,16 +2417,16 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class EidCont; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont
-        class Limit; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::Limit
+        class EidCont; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont
+        class Limit; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::Limit
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont> > eid_cont;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::Limit> limit;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont> > eid_cont;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::Limit> limit;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont : public ydk::Entity
 {
     public:
         EidCont();
@@ -2445,20 +2445,20 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf eid_prefix; //type: string
         ydk::YLeaf locator_set; //type: string
         ydk::YLeaf auto_discover_rlocs; //type: empty
-        class Ipv4Addrees; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv4Addrees
-        class Ipv6Addrees; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv6Addrees
-        class IPv4Interface; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv4Interface
-        class IPv6Interface; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv6Interface
+        class Ipv4Addrees; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv4Addrees
+        class Ipv6Addrees; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv6Addrees
+        class IPv4Interface; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv4Interface
+        class IPv6Interface; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv6Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv4Addrees> > ipv4_addrees;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv6Addrees> > ipv6_addrees;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv4Interface> > ipv4_interface;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv6Interface> > ipv6_interface;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv4Addrees> > ipv4_addrees;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv6Addrees> > ipv6_addrees;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv4Interface> > ipv4_interface;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv6Interface> > ipv6_interface;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv4Addrees : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv4Addrees : public ydk::Entity
 {
     public:
         Ipv4Addrees();
@@ -2475,14 +2475,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: string
-        class DatabaseMappingOption; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption
+        class DatabaseMappingOption; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption> database_mapping_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption> database_mapping_option;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv4Addrees
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv4Addrees
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption : public ydk::Entity
 {
     public:
         DatabaseMappingOption();
@@ -2502,10 +2502,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf weight; //type: uint8
         ydk::YLeaf down; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv6Addrees : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv6Addrees : public ydk::Entity
 {
     public:
         Ipv6Addrees();
@@ -2522,14 +2522,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: string
-        class DatabaseMappingOption; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption
+        class DatabaseMappingOption; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption> database_mapping_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption> database_mapping_option;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv6Addrees
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv6Addrees
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption : public ydk::Entity
 {
     public:
         DatabaseMappingOption();
@@ -2549,10 +2549,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf weight; //type: uint8
         ydk::YLeaf down; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv4Interface : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv4Interface : public ydk::Entity
 {
     public:
         IPv4Interface();
@@ -2569,14 +2569,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class DatabaseMappingOption; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption
+        class DatabaseMappingOption; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption> database_mapping_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption> database_mapping_option;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv4Interface
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv4Interface
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption : public ydk::Entity
 {
     public:
         DatabaseMappingOption();
@@ -2596,10 +2596,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf weight; //type: uint8
         ydk::YLeaf down; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv6Interface : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv6Interface : public ydk::Entity
 {
     public:
         IPv6Interface();
@@ -2616,14 +2616,14 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class DatabaseMappingOption; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption
+        class DatabaseMappingOption; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption> database_mapping_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption> database_mapping_option;
         
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv6Interface
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv6Interface
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption : public ydk::Entity
 {
     public:
         DatabaseMappingOption();
@@ -2643,10 +2643,10 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf weight; //type: uint8
         ydk::YLeaf down; //type: empty
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption
 
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::Limit : public ydk::Entity
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::Limit : public ydk::Entity
 {
     public:
         Limit();
@@ -2665,7 +2665,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         ydk::YLeaf dynamic; //type: uint32
         ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::DatabaseMapping::Limit
+}; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::DatabaseMapping::Limit
 
 
 class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::EidTable : public ydk::Entity
@@ -3365,7 +3365,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         class MaximumPrefix; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::MaximumPrefix
         class Nd; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Nd
         class Ospf; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Ospf
-        class Static_; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Static_
+        class Static; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Static
         class Rip; //type: Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Rip
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Application> application;
@@ -3376,7 +3376,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::MaximumPrefix> maximum_prefix;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Nd> nd;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Ospf> > ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Static> static_;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Rip> > rip;
         
 }; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database
@@ -3609,7 +3609,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
 }; // Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::RouteImport::Database::Isis::LispIpRouteImport
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd::HashFunction : public ydk::Enum
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3617,7 +3617,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
 };
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key0::HashFunction : public ydk::Enum
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key0::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3625,7 +3625,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
 };
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key6::HashFunction : public ydk::Enum
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key6::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3633,7 +3633,7 @@ class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::
 
 };
 
-class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default_::Etr::MapServer::Key::Key7::HashFunction : public ydk::Enum
+class Native::Router::LispList::InstanceContainer::InstanceList::Service::Ipv6::Default::Etr::MapServer::Key::Key7::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;

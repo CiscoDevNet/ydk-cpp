@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Cdp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Cdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Cdp::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Cdp::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -311,6 +309,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbors != nullptr)
     {
         children["neighbors"] = neighbors;
@@ -437,6 +436,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -520,14 +520,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::get_child_by_name(
 {
     if(child_yang_name == "detail")
     {
-        for(auto const & c : detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail>();
         c->parent = this;
         detail.push_back(c);
@@ -540,9 +532,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -621,14 +618,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::get_child_
 {
     if(child_yang_name == "cdp-neighbor")
     {
-        for(auto const & c : cdp_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor>();
         c->parent = this;
         cdp_neighbor.push_back(c);
@@ -641,9 +630,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -770,6 +764,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -954,6 +949,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network_addresses != nullptr)
     {
         children["network-addresses"] = network_addresses;
@@ -1082,14 +1078,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
 {
     if(child_yang_name == "cdp-addr-entry")
     {
-        for(auto const & c : cdp_addr_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry>();
         c->parent = this;
         cdp_addr_entry.push_back(c);
@@ -1102,9 +1090,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_addr_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1182,6 +1175,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1261,6 +1255,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1359,14 +1354,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
 {
     if(child_yang_name == "cdp-prot-hello-entry")
     {
-        for(auto const & c : cdp_prot_hello_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry>();
         c->parent = this;
         cdp_prot_hello_entry.push_back(c);
@@ -1379,9 +1366,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_prot_hello_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1450,6 +1442,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1528,14 +1521,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::get_child_by_name(
 {
     if(child_yang_name == "device")
     {
-        for(auto const & c : device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device>();
         c->parent = this;
         device.push_back(c);
@@ -1548,9 +1533,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1625,14 +1615,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::get_child_
 {
     if(child_yang_name == "cdp-neighbor")
     {
-        for(auto const & c : cdp_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor>();
         c->parent = this;
         cdp_neighbor.push_back(c);
@@ -1645,9 +1627,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1764,6 +1751,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -1948,6 +1936,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network_addresses != nullptr)
     {
         children["network-addresses"] = network_addresses;
@@ -2076,14 +2065,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
 {
     if(child_yang_name == "cdp-addr-entry")
     {
-        for(auto const & c : cdp_addr_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
         c->parent = this;
         cdp_addr_entry.push_back(c);
@@ -2096,9 +2077,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_addr_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2176,6 +2162,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -2255,6 +2242,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2353,14 +2341,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
 {
     if(child_yang_name == "cdp-prot-hello-entry")
     {
-        for(auto const & c : cdp_prot_hello_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
         c->parent = this;
         cdp_prot_hello_entry.push_back(c);
@@ -2373,9 +2353,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_prot_hello_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2444,6 +2429,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2522,14 +2508,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::get_child_by_nam
 {
     if(child_yang_name == "summary")
     {
-        for(auto const & c : summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary>();
         c->parent = this;
         summary.push_back(c);
@@ -2542,9 +2520,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2623,14 +2606,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_chi
 {
     if(child_yang_name == "cdp-neighbor")
     {
-        for(auto const & c : cdp_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor>();
         c->parent = this;
         cdp_neighbor.push_back(c);
@@ -2643,9 +2618,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2772,6 +2752,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -2956,6 +2937,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network_addresses != nullptr)
     {
         children["network-addresses"] = network_addresses;
@@ -3084,14 +3066,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
 {
     if(child_yang_name == "cdp-addr-entry")
     {
-        for(auto const & c : cdp_addr_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
         c->parent = this;
         cdp_addr_entry.push_back(c);
@@ -3104,9 +3078,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_addr_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3184,6 +3163,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -3263,6 +3243,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3361,14 +3342,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
 {
     if(child_yang_name == "cdp-prot-hello-entry")
     {
-        for(auto const & c : cdp_prot_hello_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
         c->parent = this;
         cdp_prot_hello_entry.push_back(c);
@@ -3381,9 +3354,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_prot_hello_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3452,6 +3430,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3580,6 +3559,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Statistics::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3788,14 +3768,6 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::get_child_by_name(const st
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cdp::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -3808,9 +3780,14 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3895,6 +3872,7 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::Interface::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

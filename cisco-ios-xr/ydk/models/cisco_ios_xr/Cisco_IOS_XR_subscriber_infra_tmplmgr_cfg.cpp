@@ -94,6 +94,7 @@ std::shared_ptr<Entity> DynamicTemplate::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ppps != nullptr)
     {
         children["ppps"] = ppps;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::get_child_by_name(const std::stri
 {
     if(child_yang_name == "ppp")
     {
-        for(auto const & c : ppp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DynamicTemplate::Ppps::Ppp>();
         c->parent = this;
         ppp.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ppp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -481,6 +479,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(span_monitor_sessions != nullptr)
     {
         children["Cisco-IOS-XR-Ethernet-SPAN-subscriber-cfg:span-monitor-sessions"] = span_monitor_sessions;
@@ -634,14 +633,6 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::get_chi
 {
     if(child_yang_name == "span-monitor-session")
     {
-        for(auto const & c : span_monitor_session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession>();
         c->parent = this;
         span_monitor_session.push_back(c);
@@ -654,9 +645,14 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::get_chi
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : span_monitor_session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -758,6 +754,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMon
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attachment != nullptr)
     {
         children["attachment"] = attachment;
@@ -872,6 +869,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMon
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -972,6 +970,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMon
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1079,6 +1078,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::get_child_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(outbound != nullptr)
     {
         children["outbound"] = outbound;
@@ -1167,6 +1167,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1285,6 +1286,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::g
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1412,6 +1414,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::get_child_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inbound != nullptr)
     {
         children["inbound"] = inbound;
@@ -1496,6 +1499,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::g
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1600,6 +1604,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1705,6 +1710,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Igmp::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Igmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_vrf != nullptr)
     {
         children["default-vrf"] = default_vrf;
@@ -1809,6 +1815,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_child_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(explicit_tracking != nullptr)
     {
         children["explicit-tracking"] = explicit_tracking;
@@ -1944,6 +1951,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTr
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2042,6 +2050,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2170,6 +2179,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addresses != nullptr)
     {
         children["addresses"] = addresses;
@@ -2280,6 +2290,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::get_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_configuration != nullptr)
     {
         children["auto-configuration"] = auto_configuration;
@@ -2351,6 +2362,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::Auto
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2529,6 +2541,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ra_interval != nullptr)
     {
         children["ra-interval"] = ra_interval;
@@ -2759,6 +2772,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::ge
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2849,6 +2863,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2935,6 +2950,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddre
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3015,6 +3031,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::get
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3134,6 +3151,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Dhcpv6::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Dhcpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delegated_prefix != nullptr)
     {
         children["delegated-prefix"] = delegated_prefix;
@@ -3269,6 +3287,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::get
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3369,6 +3388,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Pbr::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Pbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy != nullptr)
     {
         children["service-policy"] = service_policy;
@@ -3450,6 +3470,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_chil
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3574,6 +3595,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fsm != nullptr)
     {
         children["fsm"] = fsm;
@@ -3672,6 +3694,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::get_child_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3843,6 +3866,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::get_child_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(absolute_timeout != nullptr)
     {
         children["absolute-timeout"] = absolute_timeout;
@@ -3973,6 +3997,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTi
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4063,6 +4088,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::get
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4179,6 +4205,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentica
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(methods != nullptr)
     {
         children["methods"] = methods;
@@ -4311,6 +4338,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentica
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4393,6 +4421,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive:
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4501,6 +4530,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::get_chi
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4659,6 +4689,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::get_child
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(wins != nullptr)
     {
         children["wins"] = wins;
@@ -4789,6 +4820,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::get
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(wins_addresses != nullptr)
     {
         children["wins-addresses"] = wins_addresses;
@@ -4864,6 +4896,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::Win
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4959,6 +4992,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::get_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dns_addresses != nullptr)
     {
         children["dns-addresses"] = dns_addresses;
@@ -5034,6 +5068,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsA
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5124,6 +5159,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddre
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5245,6 +5281,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Qos::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy != nullptr)
     {
         children["service-policy"] = service_policy;
@@ -5346,6 +5383,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::get_chil
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5438,6 +5476,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::g
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5570,6 +5609,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5698,6 +5738,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Qos::Account::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::Account::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5804,6 +5845,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Qos::Output::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5920,6 +5962,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Accounting::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(idle_timeout != nullptr)
     {
         children["idle-timeout"] = idle_timeout;
@@ -6019,6 +6062,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6127,6 +6171,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_chi
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6237,6 +6282,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccountin
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6323,6 +6369,7 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppoeTemplate::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppoeTemplate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6408,14 +6455,6 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::get_child_by_name(const 
 {
     if(child_yang_name == "ip-subscriber")
     {
-        for(auto const & c : ip_subscriber)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber>();
         c->parent = this;
         ip_subscriber.push_back(c);
@@ -6428,9 +6467,14 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ip_subscriber)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6667,6 +6711,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(span_monitor_sessions != nullptr)
     {
         children["Cisco-IOS-XR-Ethernet-SPAN-subscriber-cfg:span-monitor-sessions"] = span_monitor_sessions;
@@ -6815,14 +6860,6 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonito
 {
     if(child_yang_name == "span-monitor-session")
     {
-        for(auto const & c : span_monitor_session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession>();
         c->parent = this;
         span_monitor_session.push_back(c);
@@ -6835,9 +6872,14 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonito
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : span_monitor_session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6939,6 +6981,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonito
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attachment != nullptr)
     {
         children["attachment"] = attachment;
@@ -7053,6 +7096,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonito
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7153,6 +7197,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonito
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7260,6 +7305,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Packet
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(outbound != nullptr)
     {
         children["outbound"] = outbound;
@@ -7348,6 +7394,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Packet
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7466,6 +7513,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Packet
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7593,6 +7641,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Packet
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inbound != nullptr)
     {
         children["inbound"] = inbound;
@@ -7677,6 +7726,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Packet
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7781,6 +7831,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Packet
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7889,6 +7940,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::get
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8004,6 +8056,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_vrf != nullptr)
     {
         children["default-vrf"] = default_vrf;
@@ -8108,6 +8161,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::Defa
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(explicit_tracking != nullptr)
     {
         children["explicit-tracking"] = explicit_tracking;
@@ -8243,6 +8297,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::Defa
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8341,6 +8396,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Networ
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8469,6 +8525,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Networ
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addresses != nullptr)
     {
         children["addresses"] = addresses;
@@ -8579,6 +8636,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Networ
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_configuration != nullptr)
     {
         children["auto-configuration"] = auto_configuration;
@@ -8650,6 +8708,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Networ
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8828,6 +8887,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighb
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ra_interval != nullptr)
     {
         children["ra-interval"] = ra_interval;
@@ -9058,6 +9118,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighb
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9148,6 +9209,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighb
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9234,6 +9296,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighb
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9314,6 +9377,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighb
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9433,6 +9497,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::ge
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delegated_prefix != nullptr)
     {
         children["delegated-prefix"] = delegated_prefix;
@@ -9568,6 +9633,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::De
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9668,6 +9734,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_c
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy != nullptr)
     {
         children["service-policy"] = service_policy;
@@ -9749,6 +9816,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::Servi
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9860,6 +9928,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::get_c
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy != nullptr)
     {
         children["service-policy"] = service_policy;
@@ -9961,6 +10030,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Servi
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -10053,6 +10123,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Servi
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10185,6 +10256,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Servi
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10313,6 +10385,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Accou
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10419,6 +10492,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Outpu
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10535,6 +10609,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_accounting != nullptr)
     {
         children["service-accounting"] = service_accounting;
@@ -10630,6 +10705,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10728,6 +10804,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10842,6 +10919,7 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10947,14 +11025,6 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::get_child_by_name(c
 {
     if(child_yang_name == "subscriber-service")
     {
-        for(auto const & c : subscriber_service)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService>();
         c->parent = this;
         subscriber_service.push_back(c);
@@ -10967,9 +11037,14 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscriber_service)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11167,6 +11242,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(span_monitor_sessions != nullptr)
     {
         children["Cisco-IOS-XR-Ethernet-SPAN-subscriber-cfg:span-monitor-sessions"] = span_monitor_sessions;
@@ -11300,14 +11376,6 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 {
     if(child_yang_name == "span-monitor-session")
     {
-        for(auto const & c : span_monitor_session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession>();
         c->parent = this;
         span_monitor_session.push_back(c);
@@ -11320,9 +11388,14 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : span_monitor_session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11424,6 +11497,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attachment != nullptr)
     {
         children["attachment"] = attachment;
@@ -11538,6 +11612,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11638,6 +11713,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11745,6 +11821,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(outbound != nullptr)
     {
         children["outbound"] = outbound;
@@ -11833,6 +11910,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11951,6 +12029,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12078,6 +12157,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inbound != nullptr)
     {
         children["inbound"] = inbound;
@@ -12162,6 +12242,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12266,6 +12347,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12374,6 +12456,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12502,6 +12585,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addresses != nullptr)
     {
         children["addresses"] = addresses;
@@ -12612,6 +12696,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_configuration != nullptr)
     {
         children["auto-configuration"] = auto_configuration;
@@ -12683,6 +12768,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12861,6 +12947,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ra_interval != nullptr)
     {
         children["ra-interval"] = ra_interval;
@@ -13091,6 +13178,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13181,6 +13269,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13267,6 +13356,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13347,6 +13437,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13447,6 +13538,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy != nullptr)
     {
         children["service-policy"] = service_policy;
@@ -13528,6 +13620,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13639,6 +13732,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Qos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy != nullptr)
     {
         children["service-policy"] = service_policy;
@@ -13740,6 +13834,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -13832,6 +13927,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13964,6 +14060,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14092,6 +14189,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14198,6 +14296,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14314,6 +14413,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_accounting != nullptr)
     {
         children["service-accounting"] = service_accounting;
@@ -14409,6 +14509,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14507,6 +14608,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14621,6 +14723,7 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
 std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

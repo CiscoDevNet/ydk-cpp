@@ -629,7 +629,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed : public ydk::Entity
         ydk::YLeaf is_out_ero_valid; //type: boolean
         class Session; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Session
         class S2LSubLsp; //type: RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp
-        class Template_; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template_
+        class Template; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template
         class SessionAttribute; //type: RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute
         class TrafficSpec; //type: RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec
         class GenericTrafficSpec; //type: RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec
@@ -648,7 +648,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Session> session;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp> s2l_sub_lsp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template_> template_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template> template_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute> session_attribute;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec> traffic_spec;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec> generic_traffic_spec;
@@ -841,11 +841,11 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp : public ydk::Entity
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::Template_ : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -858,14 +858,14 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Template_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RsvpFilter; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter
+        class RsvpFilter; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter> rsvp_filter;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter> rsvp_filter;
         
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template_
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter : public ydk::Entity
 {
     public:
         RsvpFilter();
@@ -883,16 +883,16 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter : public ydk
         std::string get_absolute_path() const override;
 
         ydk::YLeaf filter_type; //type: RsvpMgmtFilter
-        class UdpIpv4Session; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session
-        class P2MpIpv4Session; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session
+        class UdpIpv4Session; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session
+        class P2MpIpv4Session; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session> udp_ipv4_session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session> p2mp_ipv4_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session> udp_ipv4_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session> p2mp_ipv4_session;
         
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session : public ydk::Entity
 {
     public:
         UdpIpv4Session();
@@ -912,10 +912,10 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Sess
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_port; //type: uint16
 
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session : public ydk::Entity
 {
     public:
         P2MpIpv4Session();
@@ -937,7 +937,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Ses
         ydk::YLeaf p2mp_sub_group_origin; //type: string
         ydk::YLeaf sub_group_id; //type: uint16
 
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute : public ydk::Entity

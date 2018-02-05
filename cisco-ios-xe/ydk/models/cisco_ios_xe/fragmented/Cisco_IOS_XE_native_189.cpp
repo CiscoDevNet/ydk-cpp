@@ -60,6 +60,7 @@ std::shared_ptr<Entity> Native::Line::LineList::NoExec::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::NoExec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -145,6 +146,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Exec::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prompt != nullptr)
     {
         children["prompt"] = prompt;
@@ -216,6 +218,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Exec::Prompt::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Exec::Prompt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -296,6 +299,7 @@ std::shared_ptr<Entity> Native::Line::LineList::ExecTimeout::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::ExecTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -390,6 +394,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Flowcontrol::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Flowcontrol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -486,6 +491,7 @@ std::shared_ptr<Entity> Native::Line::LineList::History::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -575,6 +581,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Ip::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(netmask_format != nullptr)
     {
         children["netmask-format"] = netmask_format;
@@ -656,6 +663,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Ip::NetmaskFormat::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Ip::NetmaskFormat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -741,6 +749,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Ipv6::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_class != nullptr)
     {
         children["access-class"] = access_class;
@@ -814,14 +823,6 @@ std::shared_ptr<Entity> Native::Line::LineList::Ipv6::AccessClass::get_child_by_
 {
     if(child_yang_name == "access-class")
     {
-        for(auto const & c : access_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Line::LineList::Ipv6::AccessClass::AccessClass_>();
         c->parent = this;
         access_class.push_back(c);
@@ -834,9 +835,14 @@ std::shared_ptr<Entity> Native::Line::LineList::Ipv6::AccessClass::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Ipv6::AccessClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_class)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -909,6 +915,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Ipv6::AccessClass::AccessClass_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Ipv6::AccessClass::AccessClass_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1003,6 +1010,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Logging::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(synchronous != nullptr)
     {
         children["synchronous"] = synchronous;
@@ -1070,6 +1078,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Logging::Synchronous::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Logging::Synchronous::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1138,6 +1147,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Login::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Login::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1224,6 +1234,7 @@ std::shared_ptr<Entity> Native::Line::LineList::MediaType::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::MediaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1328,6 +1339,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Modem::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Modem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1478,6 +1490,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Padding::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Padding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1580,6 +1593,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Parity::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Parity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1704,6 +1718,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Password::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1804,6 +1819,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Prc::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Prc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1898,6 +1914,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Privilege::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Privilege::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(level != nullptr)
     {
         children["level"] = level;
@@ -1969,6 +1986,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Privilege::Level::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Privilege::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2049,6 +2067,7 @@ std::shared_ptr<Entity> Native::Line::LineList::SessionTimeout::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::SessionTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2135,6 +2154,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Timeout::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2211,6 +2231,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Telnet::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2321,6 +2342,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Transport::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2413,6 +2435,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Transport::Input::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Transport::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2498,6 +2521,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Transport::Output::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Transport::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2572,6 +2596,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Transport::Preferred::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Transport::Preferred::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2648,6 +2673,7 @@ std::shared_ptr<Entity> Native::Line::LineList::UsbInactivityTimeout::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::UsbInactivityTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3184,6 +3210,7 @@ std::shared_ptr<Entity> Native::Line::Aux::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authorization != nullptr)
     {
         children["authorization"] = authorization;
@@ -3664,6 +3691,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Authorization::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(command != nullptr)
     {
         children["command"] = command;
@@ -3739,6 +3767,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Authorization::Command::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Authorization::Command::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3827,14 +3856,6 @@ std::shared_ptr<Entity> Native::Line::Aux::AccessClass::get_child_by_name(const 
 {
     if(child_yang_name == "acccess-list")
     {
-        for(auto const & c : acccess_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Line::Aux::AccessClass::AcccessList>();
         c->parent = this;
         acccess_list.push_back(c);
@@ -3847,9 +3868,14 @@ std::shared_ptr<Entity> Native::Line::Aux::AccessClass::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::AccessClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : acccess_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3926,6 +3952,7 @@ std::shared_ptr<Entity> Native::Line::Aux::AccessClass::AcccessList::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::AccessClass::AcccessList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4035,6 +4062,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Autocommand::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Autocommand::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(no_suppress_linenumber != nullptr)
     {
         children["no-suppress-linenumber"] = no_suppress_linenumber;
@@ -4116,6 +4144,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Autocommand::NoSuppressLinenumber::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Autocommand::NoSuppressLinenumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4224,6 +4253,7 @@ std::shared_ptr<Entity> Native::Line::Aux::AutocommandOptions::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::AutocommandOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(abort_character != nullptr)
     {
         children["abort-character"] = abort_character;
@@ -4305,6 +4335,7 @@ std::shared_ptr<Entity> Native::Line::Aux::AutocommandOptions::AbortCharacter::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::AutocommandOptions::AbortCharacter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4381,6 +4412,7 @@ std::shared_ptr<Entity> Native::Line::Aux::AutocommandOptions::Delay::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::AutocommandOptions::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4461,6 +4493,7 @@ std::shared_ptr<Entity> Native::Line::Aux::AutocommandOptions::Nohangup::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::AutocommandOptions::Nohangup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4559,6 +4592,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Databits::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Databits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4669,6 +4703,7 @@ std::shared_ptr<Entity> Native::Line::Aux::EscapeCharacter::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::EscapeCharacter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4755,6 +4790,7 @@ std::shared_ptr<Entity> Native::Line::Aux::NoExec::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::NoExec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4840,6 +4876,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Exec::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prompt != nullptr)
     {
         children["prompt"] = prompt;
@@ -4911,6 +4948,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Exec::Prompt::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Exec::Prompt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4991,6 +5029,7 @@ std::shared_ptr<Entity> Native::Line::Aux::ExecTimeout::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::ExecTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5085,6 +5124,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Flowcontrol::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Flowcontrol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5181,6 +5221,7 @@ std::shared_ptr<Entity> Native::Line::Aux::History::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5270,6 +5311,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Ip::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(netmask_format != nullptr)
     {
         children["netmask-format"] = netmask_format;
@@ -5351,6 +5393,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Ip::NetmaskFormat::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Ip::NetmaskFormat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5436,6 +5479,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Ipv6::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_class != nullptr)
     {
         children["access-class"] = access_class;
@@ -5509,14 +5553,6 @@ std::shared_ptr<Entity> Native::Line::Aux::Ipv6::AccessClass::get_child_by_name(
 {
     if(child_yang_name == "access-class")
     {
-        for(auto const & c : access_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Line::Aux::Ipv6::AccessClass::AccessClass_>();
         c->parent = this;
         access_class.push_back(c);
@@ -5529,9 +5565,14 @@ std::shared_ptr<Entity> Native::Line::Aux::Ipv6::AccessClass::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Ipv6::AccessClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_class)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5604,6 +5645,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Ipv6::AccessClass::AccessClass_::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Ipv6::AccessClass::AccessClass_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5698,6 +5740,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Logging::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(synchronous != nullptr)
     {
         children["synchronous"] = synchronous;
@@ -5765,6 +5808,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Logging::Synchronous::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Logging::Synchronous::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5833,6 +5877,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Login::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Login::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5919,6 +5964,7 @@ std::shared_ptr<Entity> Native::Line::Aux::MediaType::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::MediaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6023,6 +6069,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Modem::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Modem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6173,6 +6220,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Padding::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Padding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6275,6 +6323,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Parity::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Parity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6399,6 +6448,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Password::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6499,6 +6549,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Prc::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Prc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6593,6 +6644,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Privilege::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Privilege::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(level != nullptr)
     {
         children["level"] = level;
@@ -6664,6 +6716,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Privilege::Level::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Privilege::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6744,6 +6797,7 @@ std::shared_ptr<Entity> Native::Line::Aux::SessionTimeout::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::SessionTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6830,6 +6884,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Timeout::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6906,6 +6961,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Telnet::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7016,6 +7072,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Transport::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -7108,6 +7165,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Transport::Input::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Transport::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7193,6 +7251,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Transport::Output::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Transport::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7267,6 +7326,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Transport::Preferred::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Transport::Preferred::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7343,6 +7403,7 @@ std::shared_ptr<Entity> Native::Line::Aux::UsbInactivityTimeout::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::UsbInactivityTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7879,6 +7940,7 @@ std::shared_ptr<Entity> Native::Line::Console::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authorization != nullptr)
     {
         children["authorization"] = authorization;
@@ -8359,6 +8421,7 @@ std::shared_ptr<Entity> Native::Line::Console::Authorization::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(command != nullptr)
     {
         children["command"] = command;
@@ -8434,6 +8497,7 @@ std::shared_ptr<Entity> Native::Line::Console::Authorization::Command::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Authorization::Command::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8522,14 +8586,6 @@ std::shared_ptr<Entity> Native::Line::Console::AccessClass::get_child_by_name(co
 {
     if(child_yang_name == "acccess-list")
     {
-        for(auto const & c : acccess_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Line::Console::AccessClass::AcccessList>();
         c->parent = this;
         acccess_list.push_back(c);
@@ -8542,9 +8598,14 @@ std::shared_ptr<Entity> Native::Line::Console::AccessClass::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::AccessClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : acccess_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8621,6 +8682,7 @@ std::shared_ptr<Entity> Native::Line::Console::AccessClass::AcccessList::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::AccessClass::AcccessList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8730,6 +8792,7 @@ std::shared_ptr<Entity> Native::Line::Console::Autocommand::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Autocommand::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(no_suppress_linenumber != nullptr)
     {
         children["no-suppress-linenumber"] = no_suppress_linenumber;
@@ -8811,6 +8874,7 @@ std::shared_ptr<Entity> Native::Line::Console::Autocommand::NoSuppressLinenumber
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Autocommand::NoSuppressLinenumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8919,6 +8983,7 @@ std::shared_ptr<Entity> Native::Line::Console::AutocommandOptions::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::AutocommandOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(abort_character != nullptr)
     {
         children["abort-character"] = abort_character;
@@ -9000,6 +9065,7 @@ std::shared_ptr<Entity> Native::Line::Console::AutocommandOptions::AbortCharacte
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::AutocommandOptions::AbortCharacter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9076,6 +9142,7 @@ std::shared_ptr<Entity> Native::Line::Console::AutocommandOptions::Delay::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::AutocommandOptions::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9156,6 +9223,7 @@ std::shared_ptr<Entity> Native::Line::Console::AutocommandOptions::Nohangup::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::AutocommandOptions::Nohangup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9254,6 +9322,7 @@ std::shared_ptr<Entity> Native::Line::Console::Databits::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Databits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9364,6 +9433,7 @@ std::shared_ptr<Entity> Native::Line::Console::EscapeCharacter::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::EscapeCharacter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9450,6 +9520,7 @@ std::shared_ptr<Entity> Native::Line::Console::NoExec::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::NoExec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9535,6 +9606,7 @@ std::shared_ptr<Entity> Native::Line::Console::Exec::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prompt != nullptr)
     {
         children["prompt"] = prompt;
@@ -9606,6 +9678,7 @@ std::shared_ptr<Entity> Native::Line::Console::Exec::Prompt::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Exec::Prompt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9686,6 +9759,7 @@ std::shared_ptr<Entity> Native::Line::Console::ExecTimeout::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::ExecTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9780,6 +9854,7 @@ std::shared_ptr<Entity> Native::Line::Console::Flowcontrol::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Flowcontrol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9876,6 +9951,7 @@ std::shared_ptr<Entity> Native::Line::Console::History::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9965,6 +10041,7 @@ std::shared_ptr<Entity> Native::Line::Console::Ip::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(netmask_format != nullptr)
     {
         children["netmask-format"] = netmask_format;
@@ -10046,6 +10123,7 @@ std::shared_ptr<Entity> Native::Line::Console::Ip::NetmaskFormat::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Ip::NetmaskFormat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10131,6 +10209,7 @@ std::shared_ptr<Entity> Native::Line::Console::Ipv6::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_class != nullptr)
     {
         children["access-class"] = access_class;
@@ -10204,14 +10283,6 @@ std::shared_ptr<Entity> Native::Line::Console::Ipv6::AccessClass::get_child_by_n
 {
     if(child_yang_name == "access-class")
     {
-        for(auto const & c : access_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Line::Console::Ipv6::AccessClass::AccessClass_>();
         c->parent = this;
         access_class.push_back(c);
@@ -10224,9 +10295,14 @@ std::shared_ptr<Entity> Native::Line::Console::Ipv6::AccessClass::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Ipv6::AccessClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_class)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10299,6 +10375,7 @@ std::shared_ptr<Entity> Native::Line::Console::Ipv6::AccessClass::AccessClass_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Ipv6::AccessClass::AccessClass_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10393,6 +10470,7 @@ std::shared_ptr<Entity> Native::Line::Console::Logging::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(synchronous != nullptr)
     {
         children["synchronous"] = synchronous;
@@ -10460,6 +10538,7 @@ std::shared_ptr<Entity> Native::Line::Console::Logging::Synchronous::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Logging::Synchronous::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10528,6 +10607,7 @@ std::shared_ptr<Entity> Native::Line::Console::Login::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Login::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10614,6 +10694,7 @@ std::shared_ptr<Entity> Native::Line::Console::MediaType::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::MediaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10718,6 +10799,7 @@ std::shared_ptr<Entity> Native::Line::Console::Modem::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Modem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10868,6 +10950,7 @@ std::shared_ptr<Entity> Native::Line::Console::Padding::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Padding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10970,6 +11053,7 @@ std::shared_ptr<Entity> Native::Line::Console::Parity::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Parity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11094,6 +11178,7 @@ std::shared_ptr<Entity> Native::Line::Console::Password::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11194,6 +11279,7 @@ std::shared_ptr<Entity> Native::Line::Console::Prc::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Prc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11288,6 +11374,7 @@ std::shared_ptr<Entity> Native::Line::Console::Privilege::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Privilege::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(level != nullptr)
     {
         children["level"] = level;
@@ -11359,6 +11446,7 @@ std::shared_ptr<Entity> Native::Line::Console::Privilege::Level::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Privilege::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11439,6 +11527,7 @@ std::shared_ptr<Entity> Native::Line::Console::SessionTimeout::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::SessionTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11525,6 +11614,7 @@ std::shared_ptr<Entity> Native::Line::Console::Timeout::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11601,6 +11691,7 @@ std::shared_ptr<Entity> Native::Line::Console::Telnet::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11711,6 +11802,7 @@ std::shared_ptr<Entity> Native::Line::Console::Transport::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -11803,6 +11895,7 @@ std::shared_ptr<Entity> Native::Line::Console::Transport::Input::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Transport::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11888,6 +11981,7 @@ std::shared_ptr<Entity> Native::Line::Console::Transport::Output::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Transport::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11962,6 +12056,7 @@ std::shared_ptr<Entity> Native::Line::Console::Transport::Preferred::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::Transport::Preferred::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12038,6 +12133,7 @@ std::shared_ptr<Entity> Native::Line::Console::UsbInactivityTimeout::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Console::UsbInactivityTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12578,6 +12674,7 @@ std::shared_ptr<Entity> Native::Line::Vty::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authorization != nullptr)
     {
         children["authorization"] = authorization;
@@ -13068,6 +13165,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Authorization::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(command != nullptr)
     {
         children["command"] = command;
@@ -13143,6 +13241,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Authorization::Command::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Authorization::Command::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13231,14 +13330,6 @@ std::shared_ptr<Entity> Native::Line::Vty::AccessClass::get_child_by_name(const 
 {
     if(child_yang_name == "acccess-list")
     {
-        for(auto const & c : acccess_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Line::Vty::AccessClass::AcccessList>();
         c->parent = this;
         acccess_list.push_back(c);
@@ -13251,9 +13342,14 @@ std::shared_ptr<Entity> Native::Line::Vty::AccessClass::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::AccessClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : acccess_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13330,6 +13426,7 @@ std::shared_ptr<Entity> Native::Line::Vty::AccessClass::AcccessList::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::AccessClass::AcccessList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13439,6 +13536,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Autocommand::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Autocommand::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(no_suppress_linenumber != nullptr)
     {
         children["no-suppress-linenumber"] = no_suppress_linenumber;
@@ -13520,6 +13618,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Autocommand::NoSuppressLinenumber::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Autocommand::NoSuppressLinenumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13628,6 +13727,7 @@ std::shared_ptr<Entity> Native::Line::Vty::AutocommandOptions::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::AutocommandOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(abort_character != nullptr)
     {
         children["abort-character"] = abort_character;
@@ -13709,6 +13809,7 @@ std::shared_ptr<Entity> Native::Line::Vty::AutocommandOptions::AbortCharacter::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::AutocommandOptions::AbortCharacter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13785,6 +13886,7 @@ std::shared_ptr<Entity> Native::Line::Vty::AutocommandOptions::Delay::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::AutocommandOptions::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13865,6 +13967,7 @@ std::shared_ptr<Entity> Native::Line::Vty::AutocommandOptions::Nohangup::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::AutocommandOptions::Nohangup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13963,6 +14066,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Databits::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Databits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14073,6 +14177,7 @@ std::shared_ptr<Entity> Native::Line::Vty::EscapeCharacter::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::EscapeCharacter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14159,6 +14264,7 @@ std::shared_ptr<Entity> Native::Line::Vty::NoExec::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::NoExec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14244,6 +14350,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Exec::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prompt != nullptr)
     {
         children["prompt"] = prompt;
@@ -14315,6 +14422,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Exec::Prompt::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Exec::Prompt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14395,6 +14503,7 @@ std::shared_ptr<Entity> Native::Line::Vty::ExecTimeout::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::ExecTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14489,6 +14598,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Flowcontrol::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Flowcontrol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14585,6 +14695,7 @@ std::shared_ptr<Entity> Native::Line::Vty::History::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14674,6 +14785,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Ip::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(netmask_format != nullptr)
     {
         children["netmask-format"] = netmask_format;
@@ -14755,6 +14867,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Ip::NetmaskFormat::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Ip::NetmaskFormat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14840,6 +14953,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Ipv6::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_class != nullptr)
     {
         children["access-class"] = access_class;
@@ -14913,14 +15027,6 @@ std::shared_ptr<Entity> Native::Line::Vty::Ipv6::AccessClass::get_child_by_name(
 {
     if(child_yang_name == "access-class")
     {
-        for(auto const & c : access_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Line::Vty::Ipv6::AccessClass::AccessClass_>();
         c->parent = this;
         access_class.push_back(c);
@@ -14933,9 +15039,14 @@ std::shared_ptr<Entity> Native::Line::Vty::Ipv6::AccessClass::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Ipv6::AccessClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_class)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15008,6 +15119,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Ipv6::AccessClass::AccessClass_::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Ipv6::AccessClass::AccessClass_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15102,6 +15214,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Logging::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(synchronous != nullptr)
     {
         children["synchronous"] = synchronous;
@@ -15169,6 +15282,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Logging::Synchronous::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Logging::Synchronous::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15237,6 +15351,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Login::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Login::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15323,6 +15438,7 @@ std::shared_ptr<Entity> Native::Line::Vty::MediaType::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::MediaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15427,6 +15543,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Modem::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Modem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15577,6 +15694,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Padding::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Padding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15679,6 +15797,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Parity::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Parity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15803,6 +15922,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Password::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15903,6 +16023,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Prc::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Prc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15997,6 +16118,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Privilege::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Privilege::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(level != nullptr)
     {
         children["level"] = level;

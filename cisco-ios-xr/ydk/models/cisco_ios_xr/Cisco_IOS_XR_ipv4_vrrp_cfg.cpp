@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Vrrp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(logging != nullptr)
     {
         children["logging"] = logging;
@@ -189,6 +190,7 @@ std::shared_ptr<Entity> Vrrp::Logging::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -274,14 +276,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -294,9 +288,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -428,6 +427,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
@@ -556,6 +556,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(version3 != nullptr)
     {
         children["version3"] = version3;
@@ -641,6 +642,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(virtual_routers != nullptr)
     {
         children["virtual-routers"] = virtual_routers;
@@ -714,14 +716,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 {
     if(child_yang_name == "virtual-router")
     {
-        for(auto const & c : virtual_router)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter>();
         c->parent = this;
         virtual_router.push_back(c);
@@ -734,9 +728,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : virtual_router)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -891,6 +890,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_ipv6_addresses != nullptr)
     {
         children["global-ipv6-addresses"] = global_ipv6_addresses;
@@ -1044,14 +1044,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 {
     if(child_yang_name == "global-ipv6-address")
     {
-        for(auto const & c : global_ipv6_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address>();
         c->parent = this;
         global_ipv6_address.push_back(c);
@@ -1064,9 +1056,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : global_ipv6_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1135,6 +1132,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1213,14 +1211,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 {
     if(child_yang_name == "track")
     {
-        for(auto const & c : track)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track>();
         c->parent = this;
         track.push_back(c);
@@ -1233,9 +1223,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : track)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1308,6 +1303,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1406,6 +1402,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1514,14 +1511,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 {
     if(child_yang_name == "tracked-object")
     {
-        for(auto const & c : tracked_object)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject>();
         c->parent = this;
         tracked_object.push_back(c);
@@ -1534,9 +1523,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tracked_object)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1609,6 +1603,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1699,6 +1694,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::LinkLocalIpv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1787,14 +1783,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::
 {
     if(child_yang_name == "slave-virtual-router")
     {
-        for(auto const & c : slave_virtual_router)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter>();
         c->parent = this;
         slave_virtual_router.push_back(c);
@@ -1807,9 +1795,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slave_virtual_router)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1913,6 +1906,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_local_ipv6_address != nullptr)
     {
         children["link-local-ipv6-address"] = link_local_ipv6_address;
@@ -2023,6 +2017,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::LinkLocalIpv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2111,14 +2106,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::
 {
     if(child_yang_name == "global-ipv6-address")
     {
-        for(auto const & c : global_ipv6_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address>();
         c->parent = this;
         global_ipv6_address.push_back(c);
@@ -2131,9 +2118,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : global_ipv6_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2202,6 +2194,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2282,6 +2275,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Delay::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2403,6 +2397,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(version3 != nullptr)
     {
         children["version3"] = version3;
@@ -2493,6 +2488,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(virtual_routers != nullptr)
     {
         children["virtual-routers"] = virtual_routers;
@@ -2566,14 +2562,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 {
     if(child_yang_name == "virtual-router")
     {
-        for(auto const & c : virtual_router)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter>();
         c->parent = this;
         virtual_router.push_back(c);
@@ -2586,9 +2574,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : virtual_router)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2734,6 +2727,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timer != nullptr)
     {
         children["timer"] = timer;
@@ -2902,6 +2896,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3010,14 +3005,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 {
     if(child_yang_name == "secondary-ipv4-address")
     {
-        for(auto const & c : secondary_ipv4_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address>();
         c->parent = this;
         secondary_ipv4_address.push_back(c);
@@ -3030,9 +3017,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : secondary_ipv4_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3101,6 +3093,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3179,14 +3172,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 {
     if(child_yang_name == "tracked-object")
     {
-        for(auto const & c : tracked_object)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject>();
         c->parent = this;
         tracked_object.push_back(c);
@@ -3199,9 +3184,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tracked_object)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3274,6 +3264,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3362,14 +3353,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 {
     if(child_yang_name == "track")
     {
-        for(auto const & c : track)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track>();
         c->parent = this;
         track.push_back(c);
@@ -3382,9 +3365,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : track)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3457,6 +3445,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3545,14 +3534,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::
 {
     if(child_yang_name == "slave-virtual-router")
     {
-        for(auto const & c : slave_virtual_router)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter>();
         c->parent = this;
         slave_virtual_router.push_back(c);
@@ -3565,9 +3546,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slave_virtual_router)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3662,6 +3648,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(secondary_ipv4_addresses != nullptr)
     {
         children["secondary-ipv4-addresses"] = secondary_ipv4_addresses;
@@ -3775,14 +3762,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::
 {
     if(child_yang_name == "secondary-ipv4-address")
     {
-        for(auto const & c : secondary_ipv4_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address>();
         c->parent = this;
         secondary_ipv4_address.push_back(c);
@@ -3795,9 +3774,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : secondary_ipv4_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3866,6 +3850,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3951,6 +3936,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(virtual_routers != nullptr)
     {
         children["virtual-routers"] = virtual_routers;
@@ -4024,14 +4010,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 {
     if(child_yang_name == "virtual-router")
     {
-        for(auto const & c : virtual_router)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter>();
         c->parent = this;
         virtual_router.push_back(c);
@@ -4044,9 +4022,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : virtual_router)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4196,6 +4179,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timer != nullptr)
     {
         children["timer"] = timer;
@@ -4374,6 +4358,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4482,14 +4467,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 {
     if(child_yang_name == "secondary-ipv4-address")
     {
-        for(auto const & c : secondary_ipv4_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address>();
         c->parent = this;
         secondary_ipv4_address.push_back(c);
@@ -4502,9 +4479,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : secondary_ipv4_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4573,6 +4555,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4651,14 +4634,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 {
     if(child_yang_name == "track")
     {
-        for(auto const & c : track)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track>();
         c->parent = this;
         track.push_back(c);
@@ -4671,9 +4646,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : track)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4746,6 +4726,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4834,14 +4815,6 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 {
     if(child_yang_name == "tracked-object")
     {
-        for(auto const & c : tracked_object)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject>();
         c->parent = this;
         tracked_object.push_back(c);
@@ -4854,9 +4827,14 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tracked_object)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4929,6 +4907,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRout
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5019,6 +4998,7 @@ std::shared_ptr<Entity> Vrrp::Interfaces::Interface::Bfd::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -114,6 +114,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fallback != nullptr)
     {
         children["fallback"] = fallback;
@@ -224,6 +225,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Fallback::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Fallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_chain != nullptr)
     {
         children["key-chain"] = key_chain;
@@ -322,6 +324,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Fallback::KeyChain
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Fallback::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -407,14 +410,6 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::get_child_
 {
     if(child_yang_name == "seq-num")
     {
-        for(auto const & c : seq_num)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::Ldp::Enable2::Password::Option::SeqNum>();
         c->parent = this;
         seq_num.push_back(c);
@@ -427,9 +422,14 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : seq_num)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -454,7 +454,7 @@ Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::SeqNum()
     :
     seq_num{YType::uint16, "seq-num"}
     	,
-    for_(std::make_shared<Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_>())
+    for_(std::make_shared<Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For>())
 {
     for_->parent = this;
 
@@ -508,7 +508,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::ge
     {
         if(for_ == nullptr)
         {
-            for_ = std::make_shared<Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_>();
+            for_ = std::make_shared<Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For>();
         }
         return for_;
     }
@@ -519,6 +519,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(for_ != nullptr)
     {
         children["for"] = for_;
@@ -552,17 +553,17 @@ bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::has_leaf_or_child_of_
     return false;
 }
 
-Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::For_()
+Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::For()
 {
 
     yang_name = "for"; yang_parent_name = "seq-num"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::~For_()
+Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::~For()
 {
 }
 
-bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::has_data() const
+bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::has_data() const
 {
     for (std::size_t index=0; index<line.size(); index++)
     {
@@ -572,7 +573,7 @@ bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::has_data() cons
     return false;
 }
 
-bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::has_operation() const
+bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::has_operation() const
 {
     for (std::size_t index=0; index<line.size(); index++)
     {
@@ -582,14 +583,14 @@ bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::has_operation()
     return is_set(yfilter);
 }
 
-std::string Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::get_segment_path() const
+std::string Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "for";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -598,19 +599,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Passw
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "LINE")
     {
-        for(auto const & c : line)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE>();
+        auto c = std::make_shared<Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE>();
         c->parent = this;
         line.push_back(c);
         return c;
@@ -619,33 +612,38 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::Fo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : line)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "LINE")
         return true;
     return false;
 }
 
-Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::LINE()
+Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::LINE()
     :
     acl_name{YType::str, "acl-name"},
     encryption_type{YType::uint8, "encryption-type"},
@@ -657,11 +655,11 @@ Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::LINE()
     yang_name = "LINE"; yang_parent_name = "for"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::~LINE()
+Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::~LINE()
 {
 }
 
-bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::has_data() const
+bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::has_data() const
 {
     return acl_name.is_set
 	|| encryption_type.is_set
@@ -669,7 +667,7 @@ bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::has_data(
 	|| (key_chain !=  nullptr && key_chain->has_data());
 }
 
-bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::has_operation() const
+bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_name.yfilter)
@@ -678,14 +676,14 @@ bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::has_opera
 	|| (key_chain !=  nullptr && key_chain->has_operation());
 }
 
-std::string Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::get_segment_path() const
+std::string Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LINE" <<"[acl-name='" <<acl_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -697,13 +695,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Passw
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-chain")
     {
         if(key_chain == nullptr)
         {
-            key_chain = std::make_shared<Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain>();
+            key_chain = std::make_shared<Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain>();
         }
         return key_chain;
     }
@@ -711,9 +709,10 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::Fo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_chain != nullptr)
     {
         children["key-chain"] = key_chain;
@@ -722,7 +721,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Passw
     return children;
 }
 
-void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-name")
     {
@@ -744,7 +743,7 @@ void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::set_value
     }
 }
 
-void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-name")
     {
@@ -760,14 +759,14 @@ void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::set_filte
     }
 }
 
-bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-chain" || name == "acl-name" || name == "encryption-type" || name == "LINE")
         return true;
     return false;
 }
 
-Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::KeyChain()
+Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::KeyChain()
     :
     line{YType::str, "LINE"}
 {
@@ -775,29 +774,29 @@ Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::KeyC
     yang_name = "key-chain"; yang_parent_name = "LINE"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::~KeyChain()
+Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::~KeyChain()
 {
 }
 
-bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::has_data() const
+bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::has_data() const
 {
     return line.is_set;
 }
 
-bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::has_operation() const
+bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(line.yfilter);
 }
 
-std::string Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::get_segment_path() const
+std::string Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-chain";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -807,18 +806,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Passw
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "LINE")
     {
@@ -828,7 +828,7 @@ void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain:
     }
 }
 
-void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "LINE")
     {
@@ -836,7 +836,7 @@ void Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain:
     }
 }
 
-bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "LINE")
         return true;
@@ -898,6 +898,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Required::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Required::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -981,6 +982,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Password::Rollover::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Password::Rollover::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1064,6 +1066,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RequestLabels::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RequestLabels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1162,14 +1165,6 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::get_child_by_name(
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::Ldp::Enable2::RouterId::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -1182,14 +1177,19 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1434,6 +1434,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Interface::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -1827,6 +1828,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Interface::ATMSubi
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1910,6 +1912,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Interface::ATMACRs
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1993,6 +1996,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Interface::LISPSub
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2076,6 +2080,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Interface::PortCha
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2173,6 +2178,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Vrf::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -2423,6 +2429,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -2809,6 +2816,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::AT
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2885,6 +2893,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::AT
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2961,6 +2970,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::LI
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3037,6 +3047,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::Po
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::RouterId::Vrf::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3120,6 +3131,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Tcp::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3205,14 +3217,6 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::get_child_by_name(const
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_>();
         c->parent = this;
         vrf.push_back(c);
@@ -3225,9 +3229,14 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3317,6 +3326,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -3445,6 +3455,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fallback != nullptr)
     {
         children["fallback"] = fallback;
@@ -3548,6 +3559,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Fallbac
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Fallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_chain != nullptr)
     {
         children["key-chain"] = key_chain;
@@ -3639,6 +3651,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Fallbac
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Fallback::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3717,14 +3730,6 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option:
 {
     if(child_yang_name == "seq-num")
     {
-        for(auto const & c : seq_num)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum>();
         c->parent = this;
         seq_num.push_back(c);
@@ -3737,9 +3742,14 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option:
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : seq_num)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3764,7 +3774,7 @@ Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::SeqNum()
     :
     seq_num{YType::uint16, "seq-num"}
     	,
-    for_(std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_>())
+    for_(std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For>())
 {
     for_->parent = this;
 
@@ -3811,7 +3821,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option:
     {
         if(for_ == nullptr)
         {
-            for_ = std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_>();
+            for_ = std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For>();
         }
         return for_;
     }
@@ -3822,6 +3832,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option:
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(for_ != nullptr)
     {
         children["for"] = for_;
@@ -3855,17 +3866,17 @@ bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::has_leaf_o
     return false;
 }
 
-Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::For_()
+Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::For()
 {
 
     yang_name = "for"; yang_parent_name = "seq-num"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::~For_()
+Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::~For()
 {
 }
 
-bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::has_data() const
+bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::has_data() const
 {
     for (std::size_t index=0; index<line.size(); index++)
     {
@@ -3875,7 +3886,7 @@ bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::has_
     return false;
 }
 
-bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::has_operation() const
+bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::has_operation() const
 {
     for (std::size_t index=0; index<line.size(); index++)
     {
@@ -3885,14 +3896,14 @@ bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::has_
     return is_set(yfilter);
 }
 
-std::string Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::get_segment_path() const
+std::string Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "for";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3901,19 +3912,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Vrf::
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "LINE")
     {
-        for(auto const & c : line)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE>();
+        auto c = std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE>();
         c->parent = this;
         line.push_back(c);
         return c;
@@ -3922,33 +3925,38 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : line)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "LINE")
         return true;
     return false;
 }
 
-Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::LINE()
+Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::LINE()
     :
     acl_name{YType::str, "acl-name"},
     encryption_type{YType::uint8, "encryption-type"},
@@ -3960,11 +3968,11 @@ Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::LIN
     yang_name = "LINE"; yang_parent_name = "for"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::~LINE()
+Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::~LINE()
 {
 }
 
-bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::has_data() const
+bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::has_data() const
 {
     return acl_name.is_set
 	|| encryption_type.is_set
@@ -3972,7 +3980,7 @@ bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE
 	|| (key_chain !=  nullptr && key_chain->has_data());
 }
 
-bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::has_operation() const
+bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_name.yfilter)
@@ -3981,14 +3989,14 @@ bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE
 	|| (key_chain !=  nullptr && key_chain->has_operation());
 }
 
-std::string Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::get_segment_path() const
+std::string Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LINE" <<"[acl-name='" <<acl_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4000,13 +4008,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Vrf::
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-chain")
     {
         if(key_chain == nullptr)
         {
-            key_chain = std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain>();
+            key_chain = std::make_shared<Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain>();
         }
         return key_chain;
     }
@@ -4014,9 +4022,10 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_chain != nullptr)
     {
         children["key-chain"] = key_chain;
@@ -4025,7 +4034,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::
     return children;
 }
 
-void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-name")
     {
@@ -4047,7 +4056,7 @@ void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE
     }
 }
 
-void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-name")
     {
@@ -4063,14 +4072,14 @@ void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE
     }
 }
 
-bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-chain" || name == "acl-name" || name == "encryption-type" || name == "LINE")
         return true;
     return false;
 }
 
-Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::KeyChain()
+Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::KeyChain()
     :
     line{YType::str, "LINE"}
 {
@@ -4078,29 +4087,29 @@ Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::Key
     yang_name = "key-chain"; yang_parent_name = "LINE"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::~KeyChain()
+Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::~KeyChain()
 {
 }
 
-bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::has_data() const
+bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::has_data() const
 {
     return line.is_set;
 }
 
-bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::has_operation() const
+bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(line.yfilter);
 }
 
-std::string Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::get_segment_path() const
+std::string Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "key-chain";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4110,18 +4119,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Enable2::Vrf::
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "LINE")
     {
@@ -4131,7 +4141,7 @@ void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE
     }
 }
 
-void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "LINE")
     {
@@ -4139,7 +4149,7 @@ void Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE
     }
 }
 
-bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "LINE")
         return true;
@@ -4194,6 +4204,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Require
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Required::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4270,6 +4281,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Rollove
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Rollover::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4361,6 +4373,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protection != nullptr)
     {
         children["protection"] = protection;
@@ -4387,7 +4400,7 @@ bool Native::Mpls::Ldp::Session::has_leaf_or_child_of_name(const std::string & n
 Native::Mpls::Ldp::Session::Protection::Protection()
     :
     duration(std::make_shared<Native::Mpls::Ldp::Session::Protection::Duration>())
-	,for_(std::make_shared<Native::Mpls::Ldp::Session::Protection::For_>())
+	,for_(std::make_shared<Native::Mpls::Ldp::Session::Protection::For>())
 	,vrf(std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf>())
 {
     duration->parent = this;
@@ -4454,7 +4467,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::get_child_by_nam
     {
         if(for_ == nullptr)
         {
-            for_ = std::make_shared<Native::Mpls::Ldp::Session::Protection::For_>();
+            for_ = std::make_shared<Native::Mpls::Ldp::Session::Protection::For>();
         }
         return for_;
     }
@@ -4474,6 +4487,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(duration != nullptr)
     {
         children["duration"] = duration;
@@ -4566,6 +4580,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Duration::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::Duration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4604,49 +4619,49 @@ bool Native::Mpls::Ldp::Session::Protection::Duration::has_leaf_or_child_of_name
     return false;
 }
 
-Native::Mpls::Ldp::Session::Protection::For_::For_()
+Native::Mpls::Ldp::Session::Protection::For::For()
     :
     acl_name{YType::str, "acl-name"}
     	,
-    duration(std::make_shared<Native::Mpls::Ldp::Session::Protection::For_::Duration>())
+    duration(std::make_shared<Native::Mpls::Ldp::Session::Protection::For::Duration>())
 {
     duration->parent = this;
 
     yang_name = "for"; yang_parent_name = "protection"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Mpls::Ldp::Session::Protection::For_::~For_()
+Native::Mpls::Ldp::Session::Protection::For::~For()
 {
 }
 
-bool Native::Mpls::Ldp::Session::Protection::For_::has_data() const
+bool Native::Mpls::Ldp::Session::Protection::For::has_data() const
 {
     return acl_name.is_set
 	|| (duration !=  nullptr && duration->has_data());
 }
 
-bool Native::Mpls::Ldp::Session::Protection::For_::has_operation() const
+bool Native::Mpls::Ldp::Session::Protection::For::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_name.yfilter)
 	|| (duration !=  nullptr && duration->has_operation());
 }
 
-std::string Native::Mpls::Ldp::Session::Protection::For_::get_absolute_path() const
+std::string Native::Mpls::Ldp::Session::Protection::For::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/mpls/Cisco-IOS-XE-mpls:ldp/session/protection/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Mpls::Ldp::Session::Protection::For_::get_segment_path() const
+std::string Native::Mpls::Ldp::Session::Protection::For::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "for";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Protection::For_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Protection::For::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4656,13 +4671,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Prote
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::For_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::For::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "duration")
     {
         if(duration == nullptr)
         {
-            duration = std::make_shared<Native::Mpls::Ldp::Session::Protection::For_::Duration>();
+            duration = std::make_shared<Native::Mpls::Ldp::Session::Protection::For::Duration>();
         }
         return duration;
     }
@@ -4670,9 +4685,10 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::For_::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::For_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::For::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(duration != nullptr)
     {
         children["duration"] = duration;
@@ -4681,7 +4697,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Prote
     return children;
 }
 
-void Native::Mpls::Ldp::Session::Protection::For_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Session::Protection::For::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-name")
     {
@@ -4691,7 +4707,7 @@ void Native::Mpls::Ldp::Session::Protection::For_::set_value(const std::string &
     }
 }
 
-void Native::Mpls::Ldp::Session::Protection::For_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Session::Protection::For::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-name")
     {
@@ -4699,14 +4715,14 @@ void Native::Mpls::Ldp::Session::Protection::For_::set_filter(const std::string 
     }
 }
 
-bool Native::Mpls::Ldp::Session::Protection::For_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Session::Protection::For::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "duration" || name == "acl-name")
         return true;
     return false;
 }
 
-Native::Mpls::Ldp::Session::Protection::For_::Duration::Duration()
+Native::Mpls::Ldp::Session::Protection::For::Duration::Duration()
     :
     holdup_time{YType::uint32, "holdup-time"},
     infinite{YType::empty, "infinite"}
@@ -4715,38 +4731,38 @@ Native::Mpls::Ldp::Session::Protection::For_::Duration::Duration()
     yang_name = "duration"; yang_parent_name = "for"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Mpls::Ldp::Session::Protection::For_::Duration::~Duration()
+Native::Mpls::Ldp::Session::Protection::For::Duration::~Duration()
 {
 }
 
-bool Native::Mpls::Ldp::Session::Protection::For_::Duration::has_data() const
+bool Native::Mpls::Ldp::Session::Protection::For::Duration::has_data() const
 {
     return holdup_time.is_set
 	|| infinite.is_set;
 }
 
-bool Native::Mpls::Ldp::Session::Protection::For_::Duration::has_operation() const
+bool Native::Mpls::Ldp::Session::Protection::For::Duration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(holdup_time.yfilter)
 	|| ydk::is_set(infinite.yfilter);
 }
 
-std::string Native::Mpls::Ldp::Session::Protection::For_::Duration::get_absolute_path() const
+std::string Native::Mpls::Ldp::Session::Protection::For::Duration::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/mpls/Cisco-IOS-XE-mpls:ldp/session/protection/for/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Mpls::Ldp::Session::Protection::For_::Duration::get_segment_path() const
+std::string Native::Mpls::Ldp::Session::Protection::For::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "duration";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Protection::For_::Duration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Protection::For::Duration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4757,18 +4773,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Prote
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::For_::Duration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::For::Duration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::For_::Duration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::For::Duration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::Ldp::Session::Protection::For_::Duration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Session::Protection::For::Duration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "holdup-time")
     {
@@ -4784,7 +4801,7 @@ void Native::Mpls::Ldp::Session::Protection::For_::Duration::set_value(const std
     }
 }
 
-void Native::Mpls::Ldp::Session::Protection::For_::Duration::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Session::Protection::For::Duration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "holdup-time")
     {
@@ -4796,7 +4813,7 @@ void Native::Mpls::Ldp::Session::Protection::For_::Duration::set_filter(const st
     }
 }
 
-bool Native::Mpls::Ldp::Session::Protection::For_::Duration::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Session::Protection::For::Duration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "holdup-time" || name == "infinite")
         return true;
@@ -4860,14 +4877,6 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::get_child_b
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_>();
         c->parent = this;
         vrf.push_back(c);
@@ -4880,9 +4889,14 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4907,7 +4921,7 @@ Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::Vrf_()
     :
     vrf_name{YType::str, "vrf-name"}
     	,
-    for_(std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_>())
+    for_(std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For>())
 	,duration(std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::Duration>())
 {
     for_->parent = this;
@@ -4965,7 +4979,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::get_c
     {
         if(for_ == nullptr)
         {
-            for_ = std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_>();
+            for_ = std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For>();
         }
         return for_;
     }
@@ -4985,6 +4999,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(for_ != nullptr)
     {
         children["for"] = for_;
@@ -5023,42 +5038,42 @@ bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::has_leaf_or_child_of_nam
     return false;
 }
 
-Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::For_()
+Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::For()
     :
     acl_name{YType::str, "acl-name"}
     	,
-    duration(std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration>())
+    duration(std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration>())
 {
     duration->parent = this;
 
     yang_name = "for"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::~For_()
+Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::~For()
 {
 }
 
-bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::has_data() const
+bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::has_data() const
 {
     return acl_name.is_set
 	|| (duration !=  nullptr && duration->has_data());
 }
 
-bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::has_operation() const
+bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_name.yfilter)
 	|| (duration !=  nullptr && duration->has_operation());
 }
 
-std::string Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::get_segment_path() const
+std::string Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "for";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5068,13 +5083,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Prote
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "duration")
     {
         if(duration == nullptr)
         {
-            duration = std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration>();
+            duration = std::make_shared<Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration>();
         }
         return duration;
     }
@@ -5082,9 +5097,10 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(duration != nullptr)
     {
         children["duration"] = duration;
@@ -5093,7 +5109,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Prote
     return children;
 }
 
-void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-name")
     {
@@ -5103,7 +5119,7 @@ void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::set_value(const st
     }
 }
 
-void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-name")
     {
@@ -5111,14 +5127,14 @@ void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::set_filter(const s
     }
 }
 
-bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "duration" || name == "acl-name")
         return true;
     return false;
 }
 
-Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::Duration()
+Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::Duration()
     :
     holdup_time{YType::uint32, "holdup-time"},
     infinite{YType::empty, "infinite"}
@@ -5127,31 +5143,31 @@ Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::Duration()
     yang_name = "duration"; yang_parent_name = "for"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::~Duration()
+Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::~Duration()
 {
 }
 
-bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::has_data() const
+bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::has_data() const
 {
     return holdup_time.is_set
 	|| infinite.is_set;
 }
 
-bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::has_operation() const
+bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(holdup_time.yfilter)
 	|| ydk::is_set(infinite.yfilter);
 }
 
-std::string Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::get_segment_path() const
+std::string Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "duration";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5162,18 +5178,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Ldp::Session::Prote
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "holdup-time")
     {
@@ -5189,7 +5206,7 @@ void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::set_valu
     }
 }
 
-void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "holdup-time")
     {
@@ -5201,7 +5218,7 @@ void Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::set_filt
     }
 }
 
-bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "holdup-time" || name == "infinite")
         return true;
@@ -5260,6 +5277,7 @@ std::shared_ptr<Entity> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::Durat
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::Duration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5361,6 +5379,7 @@ std::shared_ptr<Entity> Native::Mpls::PrefixMap::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::PrefixMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5409,45 +5428,45 @@ bool Native::Mpls::PrefixMap::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-Native::Mpls::Static_::Static_()
+Native::Mpls::Static::Static()
     :
-    binding(std::make_shared<Native::Mpls::Static_::Binding>())
+    binding(std::make_shared<Native::Mpls::Static::Binding>())
 {
     binding->parent = this;
 
     yang_name = "static"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Mpls::Static_::~Static_()
+Native::Mpls::Static::~Static()
 {
 }
 
-bool Native::Mpls::Static_::has_data() const
+bool Native::Mpls::Static::has_data() const
 {
     return (binding !=  nullptr && binding->has_data());
 }
 
-bool Native::Mpls::Static_::has_operation() const
+bool Native::Mpls::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| (binding !=  nullptr && binding->has_operation());
 }
 
-std::string Native::Mpls::Static_::get_absolute_path() const
+std::string Native::Mpls::Static::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/mpls/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Mpls::Static_::get_segment_path() const
+std::string Native::Mpls::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-mpls:static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5456,13 +5475,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::get_name_l
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding")
     {
         if(binding == nullptr)
         {
-            binding = std::make_shared<Native::Mpls::Static_::Binding>();
+            binding = std::make_shared<Native::Mpls::Static::Binding>();
         }
         return binding;
     }
@@ -5470,9 +5489,10 @@ std::shared_ptr<Entity> Native::Mpls::Static_::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(binding != nullptr)
     {
         children["binding"] = binding;
@@ -5481,60 +5501,60 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::get_childr
     return children;
 }
 
-void Native::Mpls::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Mpls::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Mpls::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "binding")
         return true;
     return false;
 }
 
-Native::Mpls::Static_::Binding::Binding()
+Native::Mpls::Static::Binding::Binding()
     :
-    ipv4(std::make_shared<Native::Mpls::Static_::Binding::Ipv4>())
+    ipv4(std::make_shared<Native::Mpls::Static::Binding::Ipv4>())
 {
     ipv4->parent = this;
 
     yang_name = "binding"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Mpls::Static_::Binding::~Binding()
+Native::Mpls::Static::Binding::~Binding()
 {
 }
 
-bool Native::Mpls::Static_::Binding::has_data() const
+bool Native::Mpls::Static::Binding::has_data() const
 {
     return (ipv4 !=  nullptr && ipv4->has_data());
 }
 
-bool Native::Mpls::Static_::Binding::has_operation() const
+bool Native::Mpls::Static::Binding::has_operation() const
 {
     return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
-std::string Native::Mpls::Static_::Binding::get_absolute_path() const
+std::string Native::Mpls::Static::Binding::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/mpls/Cisco-IOS-XE-mpls:static/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Mpls::Static_::Binding::get_segment_path() const
+std::string Native::Mpls::Static::Binding::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "binding";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static::Binding::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5543,13 +5563,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::g
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Static_::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Static::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
         if(ipv4 == nullptr)
         {
-            ipv4 = std::make_shared<Native::Mpls::Static_::Binding::Ipv4>();
+            ipv4 = std::make_shared<Native::Mpls::Static::Binding::Ipv4>();
         }
         return ipv4;
     }
@@ -5557,9 +5577,10 @@ std::shared_ptr<Entity> Native::Mpls::Static_::Binding::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static::Binding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -5568,32 +5589,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::g
     return children;
 }
 
-void Native::Mpls::Static_::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Static::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Mpls::Static_::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Static::Binding::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Mpls::Static_::Binding::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Static::Binding::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4")
         return true;
     return false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Ipv4()
+Native::Mpls::Static::Binding::Ipv4::Ipv4()
 {
 
     yang_name = "ipv4"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::~Ipv4()
+Native::Mpls::Static::Binding::Ipv4::~Ipv4()
 {
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::has_data() const
+bool Native::Mpls::Static::Binding::Ipv4::has_data() const
 {
     for (std::size_t index=0; index<global.size(); index++)
     {
@@ -5608,7 +5629,7 @@ bool Native::Mpls::Static_::Binding::Ipv4::has_data() const
     return false;
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::has_operation() const
+bool Native::Mpls::Static::Binding::Ipv4::has_operation() const
 {
     for (std::size_t index=0; index<global.size(); index++)
     {
@@ -5623,21 +5644,21 @@ bool Native::Mpls::Static_::Binding::Ipv4::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::get_absolute_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/mpls/Cisco-IOS-XE-mpls:static/binding/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::get_segment_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static::Binding::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5646,19 +5667,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::I
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Static::Binding::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
-        for(auto const & c : global)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Global>();
+        auto c = std::make_shared<Native::Mpls::Static::Binding::Ipv4::Global>();
         c->parent = this;
         global.push_back(c);
         return c;
@@ -5666,15 +5679,7 @@ std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::get_child_by_name(
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Vrf>();
+        auto c = std::make_shared<Native::Mpls::Static::Binding::Ipv4::Vrf>();
         c->parent = this;
         vrf.push_back(c);
         return c;
@@ -5683,45 +5688,54 @@ std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static::Binding::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : global)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Static::Binding::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Static::Binding::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Static::Binding::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "global" || name == "vrf")
         return true;
     return false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Global::Global()
+Native::Mpls::Static::Binding::Ipv4::Global::Global()
     :
     address{YType::str, "address"},
     mask{YType::str, "mask"},
     label{YType::uint32, "label"}
     	,
-    input(std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Global::Input>())
-	,output(std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Global::Output>())
+    input(std::make_shared<Native::Mpls::Static::Binding::Ipv4::Global::Input>())
+	,output(std::make_shared<Native::Mpls::Static::Binding::Ipv4::Global::Output>())
 {
     input->parent = this;
     output->parent = this;
@@ -5729,11 +5743,11 @@ Native::Mpls::Static_::Binding::Ipv4::Global::Global()
     yang_name = "global"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Global::~Global()
+Native::Mpls::Static::Binding::Ipv4::Global::~Global()
 {
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Global::has_data() const
+bool Native::Mpls::Static::Binding::Ipv4::Global::has_data() const
 {
     return address.is_set
 	|| mask.is_set
@@ -5742,7 +5756,7 @@ bool Native::Mpls::Static_::Binding::Ipv4::Global::has_data() const
 	|| (output !=  nullptr && output->has_data());
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Global::has_operation() const
+bool Native::Mpls::Static::Binding::Ipv4::Global::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
@@ -5752,21 +5766,21 @@ bool Native::Mpls::Static_::Binding::Ipv4::Global::has_operation() const
 	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::Global::get_absolute_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::Global::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/mpls/Cisco-IOS-XE-mpls:static/binding/ipv4/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::Global::get_segment_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::Global::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "global" <<"[address='" <<address <<"']" <<"[mask='" <<mask <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::Ipv4::Global::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static::Binding::Ipv4::Global::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5778,13 +5792,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::I
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Static::Binding::Ipv4::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Global::Input>();
+            input = std::make_shared<Native::Mpls::Static::Binding::Ipv4::Global::Input>();
         }
         return input;
     }
@@ -5793,7 +5807,7 @@ std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Global::get_child_
     {
         if(output == nullptr)
         {
-            output = std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Global::Output>();
+            output = std::make_shared<Native::Mpls::Static::Binding::Ipv4::Global::Output>();
         }
         return output;
     }
@@ -5801,9 +5815,10 @@ std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Global::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::Ipv4::Global::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static::Binding::Ipv4::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5817,7 +5832,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::I
     return children;
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Static::Binding::Ipv4::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -5839,7 +5854,7 @@ void Native::Mpls::Static_::Binding::Ipv4::Global::set_value(const std::string &
     }
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Global::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Static::Binding::Ipv4::Global::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -5855,14 +5870,14 @@ void Native::Mpls::Static_::Binding::Ipv4::Global::set_filter(const std::string 
     }
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Global::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Static::Binding::Ipv4::Global::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "input" || name == "output" || name == "address" || name == "mask" || name == "label")
         return true;
     return false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Global::Input::Input()
+Native::Mpls::Static::Binding::Ipv4::Global::Input::Input()
     :
     label{YType::uint32, "label"}
 {
@@ -5870,29 +5885,29 @@ Native::Mpls::Static_::Binding::Ipv4::Global::Input::Input()
     yang_name = "input"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Global::Input::~Input()
+Native::Mpls::Static::Binding::Ipv4::Global::Input::~Input()
 {
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Global::Input::has_data() const
+bool Native::Mpls::Static::Binding::Ipv4::Global::Input::has_data() const
 {
     return label.is_set;
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Global::Input::has_operation() const
+bool Native::Mpls::Static::Binding::Ipv4::Global::Input::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(label.yfilter);
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::Global::Input::get_segment_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::Global::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::Ipv4::Global::Input::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static::Binding::Ipv4::Global::Input::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5902,18 +5917,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::I
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Global::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Static::Binding::Ipv4::Global::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::Ipv4::Global::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static::Binding::Ipv4::Global::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Global::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Static::Binding::Ipv4::Global::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label")
     {
@@ -5923,7 +5939,7 @@ void Native::Mpls::Static_::Binding::Ipv4::Global::Input::set_value(const std::s
     }
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Global::Input::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Static::Binding::Ipv4::Global::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "label")
     {
@@ -5931,14 +5947,14 @@ void Native::Mpls::Static_::Binding::Ipv4::Global::Input::set_filter(const std::
     }
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Global::Input::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Static::Binding::Ipv4::Global::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "label")
         return true;
     return false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Global::Output::Output()
+Native::Mpls::Static::Binding::Ipv4::Global::Output::Output()
     :
     dst_next_hop{YType::str, "dst-next-hop"},
     label{YType::str, "label"}
@@ -5947,31 +5963,31 @@ Native::Mpls::Static_::Binding::Ipv4::Global::Output::Output()
     yang_name = "output"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Global::Output::~Output()
+Native::Mpls::Static::Binding::Ipv4::Global::Output::~Output()
 {
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Global::Output::has_data() const
+bool Native::Mpls::Static::Binding::Ipv4::Global::Output::has_data() const
 {
     return dst_next_hop.is_set
 	|| label.is_set;
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Global::Output::has_operation() const
+bool Native::Mpls::Static::Binding::Ipv4::Global::Output::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dst_next_hop.yfilter)
 	|| ydk::is_set(label.yfilter);
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::Global::Output::get_segment_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::Global::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::Ipv4::Global::Output::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static::Binding::Ipv4::Global::Output::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5982,18 +5998,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::I
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Global::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Static::Binding::Ipv4::Global::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::Ipv4::Global::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static::Binding::Ipv4::Global::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Global::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Static::Binding::Ipv4::Global::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dst-next-hop")
     {
@@ -6009,7 +6026,7 @@ void Native::Mpls::Static_::Binding::Ipv4::Global::Output::set_value(const std::
     }
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Global::Output::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Static::Binding::Ipv4::Global::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dst-next-hop")
     {
@@ -6021,22 +6038,22 @@ void Native::Mpls::Static_::Binding::Ipv4::Global::Output::set_filter(const std:
     }
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Global::Output::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Static::Binding::Ipv4::Global::Output::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dst-next-hop" || name == "label")
         return true;
     return false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Vrf::Vrf()
+Native::Mpls::Static::Binding::Ipv4::Vrf::Vrf()
     :
     name{YType::str, "name"},
     address{YType::str, "address"},
     mask{YType::str, "mask"},
     label{YType::uint32, "label"}
     	,
-    input(std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Vrf::Input>())
-	,output(std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Vrf::Output>())
+    input(std::make_shared<Native::Mpls::Static::Binding::Ipv4::Vrf::Input>())
+	,output(std::make_shared<Native::Mpls::Static::Binding::Ipv4::Vrf::Output>())
 {
     input->parent = this;
     output->parent = this;
@@ -6044,11 +6061,11 @@ Native::Mpls::Static_::Binding::Ipv4::Vrf::Vrf()
     yang_name = "vrf"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Vrf::~Vrf()
+Native::Mpls::Static::Binding::Ipv4::Vrf::~Vrf()
 {
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Vrf::has_data() const
+bool Native::Mpls::Static::Binding::Ipv4::Vrf::has_data() const
 {
     return name.is_set
 	|| address.is_set
@@ -6058,7 +6075,7 @@ bool Native::Mpls::Static_::Binding::Ipv4::Vrf::has_data() const
 	|| (output !=  nullptr && output->has_data());
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Vrf::has_operation() const
+bool Native::Mpls::Static::Binding::Ipv4::Vrf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
@@ -6069,21 +6086,21 @@ bool Native::Mpls::Static_::Binding::Ipv4::Vrf::has_operation() const
 	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::Vrf::get_absolute_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::Vrf::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/mpls/Cisco-IOS-XE-mpls:static/binding/ipv4/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::Vrf::get_segment_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[name='" <<name <<"']" <<"[address='" <<address <<"']" <<"[mask='" <<mask <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::Ipv4::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static::Binding::Ipv4::Vrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6096,13 +6113,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::I
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Static::Binding::Ipv4::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Vrf::Input>();
+            input = std::make_shared<Native::Mpls::Static::Binding::Ipv4::Vrf::Input>();
         }
         return input;
     }
@@ -6111,7 +6128,7 @@ std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Vrf::get_child_by_
     {
         if(output == nullptr)
         {
-            output = std::make_shared<Native::Mpls::Static_::Binding::Ipv4::Vrf::Output>();
+            output = std::make_shared<Native::Mpls::Static::Binding::Ipv4::Vrf::Output>();
         }
         return output;
     }
@@ -6119,9 +6136,10 @@ std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Vrf::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::Ipv4::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static::Binding::Ipv4::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -6135,7 +6153,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::I
     return children;
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Static::Binding::Ipv4::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -6163,7 +6181,7 @@ void Native::Mpls::Static_::Binding::Ipv4::Vrf::set_value(const std::string & va
     }
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Static::Binding::Ipv4::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -6183,14 +6201,14 @@ void Native::Mpls::Static_::Binding::Ipv4::Vrf::set_filter(const std::string & v
     }
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Static::Binding::Ipv4::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "input" || name == "output" || name == "name" || name == "address" || name == "mask" || name == "label")
         return true;
     return false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::Input()
+Native::Mpls::Static::Binding::Ipv4::Vrf::Input::Input()
     :
     label{YType::uint32, "label"}
 {
@@ -6198,29 +6216,29 @@ Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::Input()
     yang_name = "input"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::~Input()
+Native::Mpls::Static::Binding::Ipv4::Vrf::Input::~Input()
 {
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::has_data() const
+bool Native::Mpls::Static::Binding::Ipv4::Vrf::Input::has_data() const
 {
     return label.is_set;
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::has_operation() const
+bool Native::Mpls::Static::Binding::Ipv4::Vrf::Input::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(label.yfilter);
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::get_segment_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::Vrf::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static::Binding::Ipv4::Vrf::Input::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6230,18 +6248,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::I
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Static::Binding::Ipv4::Vrf::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static::Binding::Ipv4::Vrf::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Static::Binding::Ipv4::Vrf::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label")
     {
@@ -6251,7 +6270,7 @@ void Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::set_value(const std::stri
     }
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Static::Binding::Ipv4::Vrf::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "label")
     {
@@ -6259,14 +6278,14 @@ void Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::set_filter(const std::str
     }
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Vrf::Input::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Static::Binding::Ipv4::Vrf::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "label")
         return true;
     return false;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::Output()
+Native::Mpls::Static::Binding::Ipv4::Vrf::Output::Output()
     :
     dst_next_hop{YType::str, "dst-next-hop"},
     label{YType::str, "label"}
@@ -6275,31 +6294,31 @@ Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::Output()
     yang_name = "output"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::~Output()
+Native::Mpls::Static::Binding::Ipv4::Vrf::Output::~Output()
 {
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::has_data() const
+bool Native::Mpls::Static::Binding::Ipv4::Vrf::Output::has_data() const
 {
     return dst_next_hop.is_set
 	|| label.is_set;
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::has_operation() const
+bool Native::Mpls::Static::Binding::Ipv4::Vrf::Output::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dst_next_hop.yfilter)
 	|| ydk::is_set(label.yfilter);
 }
 
-std::string Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::get_segment_path() const
+std::string Native::Mpls::Static::Binding::Ipv4::Vrf::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static::Binding::Ipv4::Vrf::Output::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6310,18 +6329,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::Static_::Binding::I
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::Static::Binding::Ipv4::Vrf::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::Static::Binding::Ipv4::Vrf::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::Static::Binding::Ipv4::Vrf::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dst-next-hop")
     {
@@ -6337,7 +6357,7 @@ void Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::set_value(const std::str
     }
 }
 
-void Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::Static::Binding::Ipv4::Vrf::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dst-next-hop")
     {
@@ -6349,7 +6369,7 @@ void Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::set_filter(const std::st
     }
 }
 
-bool Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::Static::Binding::Ipv4::Vrf::Output::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dst-next-hop" || name == "label")
         return true;
@@ -6602,6 +6622,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_bw != nullptr)
     {
         children["auto-bw"] = auto_bw;
@@ -6783,6 +6804,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoBw::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoBw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timers != nullptr)
     {
         children["timers"] = timers;
@@ -6861,6 +6883,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoBw::Timers::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoBw::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6989,6 +7012,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(backup != nullptr)
     {
         children["backup"] = backup;
@@ -7135,6 +7159,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7260,6 +7285,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(affinity_mask != nullptr)
     {
         children["affinity-mask"] = affinity_mask;
@@ -7347,6 +7373,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::Af
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::AffinityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7605,6 +7632,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::Un
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::UnnumberedInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -7988,6 +8016,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::Un
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::UnnumberedInterface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8071,6 +8100,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::Un
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::UnnumberedInterface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8154,6 +8184,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::Un
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::UnnumberedInterface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8237,6 +8268,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::Un
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Config::UnnumberedInterface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8320,6 +8352,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Srlg::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Srlg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8412,6 +8445,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Timers::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(removal != nullptr)
     {
         children["removal"] = removal;
@@ -8499,6 +8533,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Timers::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Timers::Removal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unused != nullptr)
     {
         children["unused"] = unused;
@@ -8581,6 +8616,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::Timers::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::Timers::Removal::Unused::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8683,6 +8719,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::TunnelNum:
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::TunnelNum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(min_max != nullptr)
     {
         children["min-max"] = min_max;
@@ -8765,6 +8802,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Backup::TunnelNum:
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Backup::TunnelNum::MinMax::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8867,6 +8905,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Mesh::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Mesh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tunnel_num != nullptr)
     {
         children["tunnel-num"] = tunnel_num;
@@ -8954,6 +8993,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Mesh::TunnelNum::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Mesh::TunnelNum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(min_max != nullptr)
     {
         children["min-max"] = min_max;
@@ -9036,6 +9076,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Mesh::TunnelNum::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Mesh::TunnelNum::MinMax::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9151,6 +9192,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::P2P::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::P2P::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9243,6 +9285,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unnumbered_interface != nullptr)
     {
         children["unnumbered-interface"] = unnumbered_interface;
@@ -9486,6 +9529,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::Unnum
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::UnnumberedInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -9869,6 +9913,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::Unnum
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::UnnumberedInterface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9952,6 +9997,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::Unnum
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::UnnumberedInterface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10035,6 +10081,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::Unnum
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::UnnumberedInterface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10118,6 +10165,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::Unnum
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::P2P::Config::UnnumberedInterface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10210,6 +10258,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::P2P::TunnelNum::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::P2P::TunnelNum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(min_max != nullptr)
     {
         children["min-max"] = min_max;
@@ -10292,6 +10341,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::P2P::TunnelNum::Mi
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::P2P::TunnelNum::MinMax::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10425,6 +10475,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -10545,6 +10596,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpls != nullptr)
     {
         children["mpls"] = mpls;
@@ -10628,6 +10680,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::Mpls_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10876,6 +10929,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::U
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::UnnumberedInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -11259,6 +11313,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::U
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::UnnumberedInterface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11342,6 +11397,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::U
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::UnnumberedInterface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11425,6 +11481,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::U
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::UnnumberedInterface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11508,6 +11565,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::U
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::Config::UnnumberedInterface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11600,6 +11658,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::Timers::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(removal != nullptr)
     {
         children["removal"] = removal;
@@ -11678,6 +11737,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::Timers::R
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::Timers::Removal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11770,6 +11830,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::TunnelNum
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::TunnelNum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(min_max != nullptr)
     {
         children["min-max"] = min_max;
@@ -11852,6 +11913,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::AutoTunnel::Primary::TunnelNum
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::AutoTunnel::Primary::TunnelNum::MinMax::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11962,6 +12024,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::DsTe::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::DsTe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(te_classes != nullptr)
     {
         children["te-classes"] = te_classes;
@@ -12062,14 +12125,6 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::DsTe::TeClasses::get_child_by_
 {
     if(child_yang_name == "te-class")
     {
-        for(auto const & c : te_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::TrafficEng::DsTe::TeClasses::TeClass>();
         c->parent = this;
         te_class.push_back(c);
@@ -12082,9 +12137,14 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::DsTe::TeClasses::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::DsTe::TeClasses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : te_class)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12178,6 +12238,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::DsTe::TeClasses::TeClass::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::DsTe::TeClasses::TeClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(class_type != nullptr)
     {
         children["class-type"] = class_type;
@@ -12273,6 +12334,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::DsTe::TeClasses::TeClass::Clas
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::DsTe::TeClasses::TeClass::ClassType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12388,6 +12450,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::FastReroute::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(backup_prot_preempt != nullptr)
     {
         children["backup-prot-preempt"] = backup_prot_preempt;
@@ -12471,6 +12534,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::FastReroute::BackupProtPreempt
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::FastReroute::BackupProtPreempt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12554,6 +12618,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::FastReroute::Timers::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::FastReroute::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12646,6 +12711,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::LinkManagement::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::LinkManagement::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timers != nullptr)
     {
         children["timers"] = timers;
@@ -12728,6 +12794,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::LinkManagement::Timers::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::LinkManagement::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12843,6 +12910,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsp != nullptr)
     {
         children["lsp"] = lsp;
@@ -12982,6 +13050,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Lsp::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Lsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path_errors != nullptr)
     {
         children["path-errors"] = path_errors;
@@ -13080,6 +13149,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Lsp::PathErrors::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Lsp::PathErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13163,6 +13233,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Lsp::Preemption::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Lsp::Preemption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13246,6 +13317,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Lsp::ReservationError
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Lsp::ReservationErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13329,6 +13401,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Lsp::Setups::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Lsp::Setups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13412,6 +13485,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Lsp::Teardowns::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Lsp::Teardowns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13528,6 +13602,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Tunnel::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsp_selection != nullptr)
     {
         children["lsp-selection"] = lsp_selection;
@@ -13616,6 +13691,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Tunnel::LspSelection:
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Tunnel::LspSelection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13699,6 +13775,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Tunnel::LspSwitchover
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Tunnel::LspSwitchover::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13790,6 +13867,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Tunnel::Path::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Tunnel::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(change != nullptr)
     {
         children["change"] = change;
@@ -13868,6 +13946,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Logging::Tunnel::Path::Change:
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Logging::Tunnel::Path::Change::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13953,14 +14032,6 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::get_child_by_name(const s
 {
     if(child_yang_name == "attributes")
     {
-        for(auto const & c : attributes)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::TrafficEng::Lsp::Attributes>();
         c->parent = this;
         attributes.push_back(c);
@@ -13973,9 +14044,14 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : attributes)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14065,6 +14141,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpls_te_mode_config_lsp_attr != nullptr)
     {
         children["mpls-te-mode-config-lsp-attr"] = mpls_te_mode_config_lsp_attr;
@@ -14259,6 +14336,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(affinity_mask != nullptr)
     {
         children["affinity-mask"] = affinity_mask;
@@ -14384,6 +14462,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::AffinityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14500,6 +14579,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::AutoBw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(overflow_limit != nullptr)
     {
         children["overflow-limit"] = overflow_limit;
@@ -14625,6 +14705,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::AutoBw::OverflowLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14715,6 +14796,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14801,6 +14883,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::BfdReversePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14877,6 +14960,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::Lockdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14980,6 +15064,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::PathSelection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(invalidation != nullptr)
     {
         children["invalidation"] = invalidation;
@@ -15070,6 +15155,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::PathSelection::Invalidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15156,6 +15242,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::PathSelection::SegmentRouting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15241,6 +15328,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::Pce::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(disjoint_path != nullptr)
     {
         children["disjoint-path"] = disjoint_path;
@@ -15320,6 +15408,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::Pce::DisjointPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15420,6 +15509,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15514,6 +15604,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::Protection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fast_reroute != nullptr)
     {
         children["fast-reroute"] = fast_reroute;
@@ -15585,6 +15676,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeCon
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::Lsp::Attributes::MplsTeModeConfigLspAttr::Protection::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15677,6 +15769,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(list != nullptr)
     {
         children["list"] = list;
@@ -15767,14 +15860,6 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::get_child_by
 {
     if(child_yang_name == "identifier")
     {
-        for(auto const & c : identifier)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier>();
         c->parent = this;
         identifier.push_back(c);
@@ -15783,14 +15868,6 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::get_child_by
 
     if(child_yang_name == "name")
     {
-        for(auto const & c : name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name>();
         c->parent = this;
         name.push_back(c);
@@ -15803,14 +15880,23 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : identifier)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15892,14 +15978,6 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::
 {
     if(child_yang_name == "path-option")
     {
-        for(auto const & c : path_option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_>();
         c->parent = this;
         path_option.push_back(c);
@@ -15912,9 +15990,14 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Identifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : path_option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15949,7 +16032,7 @@ Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::PathOption_
     :
     po_num{YType::uint16, "po-num"}
     	,
-    explicit_(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_>())
+    explicit_(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit>())
 {
     explicit_->parent = this;
 
@@ -15996,7 +16079,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::
     {
         if(explicit_ == nullptr)
         {
-            explicit_ = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_>();
+            explicit_ = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit>();
         }
         return explicit_;
     }
@@ -16007,6 +16090,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(explicit_ != nullptr)
     {
         children["explicit"] = explicit_;
@@ -16040,10 +16124,10 @@ bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::has_le
     return false;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Explicit_()
+Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Explicit()
     :
-    identifier(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_>())
-	,name(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name>())
+    identifier(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_>())
+	,name(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name>())
 {
     identifier->parent = this;
     name->parent = this;
@@ -16051,31 +16135,31 @@ Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::
     yang_name = "explicit"; yang_parent_name = "path-option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::~Explicit_()
+Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::~Explicit()
 {
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::has_data() const
+bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::has_data() const
 {
     return (identifier !=  nullptr && identifier->has_data())
 	|| (name !=  nullptr && name->has_data());
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::has_operation() const
+bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::has_operation() const
 {
     return is_set(yfilter)
 	|| (identifier !=  nullptr && identifier->has_operation())
 	|| (name !=  nullptr && name->has_operation());
 }
 
-std::string Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::get_segment_path() const
+std::string Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16084,13 +16168,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOpt
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "identifier")
     {
         if(identifier == nullptr)
         {
-            identifier = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_>();
+            identifier = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_>();
         }
         return identifier;
     }
@@ -16099,7 +16183,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::
     {
         if(name == nullptr)
         {
-            name = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name>();
+            name = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name>();
         }
         return name;
     }
@@ -16107,9 +16191,10 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(identifier != nullptr)
     {
         children["identifier"] = identifier;
@@ -16123,22 +16208,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOpt
     return children;
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "identifier" || name == "name")
         return true;
     return false;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::Identifier_()
+Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::Identifier_()
     :
     pnum{YType::uint16, "pnum"},
     verbatim{YType::empty, "verbatim"}
@@ -16147,31 +16232,31 @@ Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::
     yang_name = "identifier"; yang_parent_name = "explicit"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::~Identifier_()
+Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::~Identifier_()
 {
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::has_data() const
+bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::has_data() const
 {
     return pnum.is_set
 	|| verbatim.is_set;
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::has_operation() const
+bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pnum.yfilter)
 	|| ydk::is_set(verbatim.yfilter);
 }
 
-std::string Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::get_segment_path() const
+std::string Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "identifier";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16182,18 +16267,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOpt
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pnum")
     {
@@ -16209,7 +16295,7 @@ void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explic
     }
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pnum")
     {
@@ -16221,14 +16307,14 @@ void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explic
     }
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pnum" || name == "verbatim")
         return true;
     return false;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::Name()
+Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::Name()
     :
     pname{YType::str, "pname"},
     verbatim{YType::empty, "verbatim"}
@@ -16237,31 +16323,31 @@ Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::
     yang_name = "name"; yang_parent_name = "explicit"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::~Name()
+Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::~Name()
 {
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::has_data() const
+bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::has_data() const
 {
     return pname.is_set
 	|| verbatim.is_set;
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::has_operation() const
+bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pname.yfilter)
 	|| ydk::is_set(verbatim.yfilter);
 }
 
-std::string Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::get_segment_path() const
+std::string Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "name";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16272,18 +16358,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOpt
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pname")
     {
@@ -16299,7 +16386,7 @@ void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explic
     }
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pname")
     {
@@ -16311,7 +16398,7 @@ void Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explic
     }
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pname" || name == "verbatim")
         return true;
@@ -16379,14 +16466,6 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::get_ch
 {
     if(child_yang_name == "path-option")
     {
-        for(auto const & c : path_option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_>();
         c->parent = this;
         path_option.push_back(c);
@@ -16399,9 +16478,14 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : path_option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16436,7 +16520,7 @@ Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::PathOption_()
     :
     po_num{YType::uint16, "po-num"}
     	,
-    explicit_(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_>())
+    explicit_(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit>())
 {
     explicit_->parent = this;
 
@@ -16483,7 +16567,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOp
     {
         if(explicit_ == nullptr)
         {
-            explicit_ = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_>();
+            explicit_ = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit>();
         }
         return explicit_;
     }
@@ -16494,6 +16578,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOp
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(explicit_ != nullptr)
     {
         children["explicit"] = explicit_;
@@ -16527,10 +16612,10 @@ bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::has_leaf_or_
     return false;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Explicit_()
+Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Explicit()
     :
-    identifier(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier>())
-	,name(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_>())
+    identifier(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier>())
+	,name(std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_>())
 {
     identifier->parent = this;
     name->parent = this;
@@ -16538,31 +16623,31 @@ Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Explic
     yang_name = "explicit"; yang_parent_name = "path-option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::~Explicit_()
+Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::~Explicit()
 {
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::has_data() const
+bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::has_data() const
 {
     return (identifier !=  nullptr && identifier->has_data())
 	|| (name !=  nullptr && name->has_data());
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::has_operation() const
+bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::has_operation() const
 {
     return is_set(yfilter)
 	|| (identifier !=  nullptr && identifier->has_operation())
 	|| (name !=  nullptr && name->has_operation());
 }
 
-std::string Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::get_segment_path() const
+std::string Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16571,13 +16656,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOpt
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "identifier")
     {
         if(identifier == nullptr)
         {
-            identifier = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier>();
+            identifier = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier>();
         }
         return identifier;
     }
@@ -16586,7 +16671,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOp
     {
         if(name == nullptr)
         {
-            name = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_>();
+            name = std::make_shared<Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_>();
         }
         return name;
     }
@@ -16594,9 +16679,10 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(identifier != nullptr)
     {
         children["identifier"] = identifier;
@@ -16610,22 +16696,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOpt
     return children;
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "identifier" || name == "name")
         return true;
     return false;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::Identifier()
+Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::Identifier()
     :
     pnum{YType::uint16, "pnum"},
     verbatim{YType::empty, "verbatim"}
@@ -16634,31 +16720,31 @@ Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identi
     yang_name = "identifier"; yang_parent_name = "explicit"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::~Identifier()
+Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::~Identifier()
 {
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::has_data() const
+bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::has_data() const
 {
     return pnum.is_set
 	|| verbatim.is_set;
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::has_operation() const
+bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pnum.yfilter)
 	|| ydk::is_set(verbatim.yfilter);
 }
 
-std::string Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::get_segment_path() const
+std::string Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "identifier";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16669,18 +16755,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOpt
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pnum")
     {
@@ -16696,7 +16783,7 @@ void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::I
     }
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pnum")
     {
@@ -16708,14 +16795,14 @@ void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::I
     }
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pnum" || name == "verbatim")
         return true;
     return false;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::Name_()
+Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::Name_()
     :
     pname{YType::str, "pname"},
     verbatim{YType::empty, "verbatim"}
@@ -16724,31 +16811,31 @@ Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_:
     yang_name = "name"; yang_parent_name = "explicit"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::~Name_()
+Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::~Name_()
 {
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::has_data() const
+bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::has_data() const
 {
     return pname.is_set
 	|| verbatim.is_set;
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::has_operation() const
+bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pname.yfilter)
 	|| ydk::is_set(verbatim.yfilter);
 }
 
-std::string Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::get_segment_path() const
+std::string Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "name";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16759,18 +16846,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Mpls::TrafficEng::PathOpt
 
 }
 
-std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pname")
     {
@@ -16786,7 +16874,7 @@ void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::N
     }
 }
 
-void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pname")
     {
@@ -16798,7 +16886,7 @@ void Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::N
     }
 }
 
-bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pname" || name == "verbatim")
         return true;
@@ -16891,6 +16979,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathSelection::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathSelection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(invalidation != nullptr)
     {
         children["invalidation"] = invalidation;
@@ -16998,6 +17087,7 @@ std::shared_ptr<Entity> Native::Mpls::TrafficEng::PathSelection::Invalidation::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Mpls::TrafficEng::PathSelection::Invalidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17036,11 +17126,11 @@ bool Native::Mpls::TrafficEng::PathSelection::Invalidation::has_leaf_or_child_of
     return false;
 }
 
-const Enum::YLeaf Native::Mpls::Static_::Binding::Ipv4::Global::Output::Label::explicit_null {0, "explicit-null"};
-const Enum::YLeaf Native::Mpls::Static_::Binding::Ipv4::Global::Output::Label::implicit_null {1, "implicit-null"};
+const Enum::YLeaf Native::Mpls::Static::Binding::Ipv4::Global::Output::Label::explicit_null {0, "explicit-null"};
+const Enum::YLeaf Native::Mpls::Static::Binding::Ipv4::Global::Output::Label::implicit_null {1, "implicit-null"};
 
-const Enum::YLeaf Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::Label::explicit_null {0, "explicit-null"};
-const Enum::YLeaf Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::Label::implicit_null {1, "implicit-null"};
+const Enum::YLeaf Native::Mpls::Static::Binding::Ipv4::Vrf::Output::Label::explicit_null {0, "explicit-null"};
+const Enum::YLeaf Native::Mpls::Static::Binding::Ipv4::Vrf::Output::Label::implicit_null {1, "implicit-null"};
 
 const Enum::YLeaf Native::Mpls::TrafficEng::AutoTunnel::Backup::Srlg::Exclude::force {0, "force"};
 const Enum::YLeaf Native::Mpls::TrafficEng::AutoTunnel::Backup::Srlg::Exclude::preferred {1, "preferred"};

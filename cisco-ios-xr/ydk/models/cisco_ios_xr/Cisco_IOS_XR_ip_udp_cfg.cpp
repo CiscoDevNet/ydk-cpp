@@ -84,6 +84,7 @@ std::shared_ptr<Entity> IpUdp::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> IpUdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(num_thread != nullptr)
     {
         children["num-thread"] = num_thread;
@@ -206,6 +207,7 @@ std::shared_ptr<Entity> IpUdp::NumThread::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> IpUdp::NumThread::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -307,6 +309,7 @@ std::shared_ptr<Entity> IpUdp::Directory::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> IpUdp::Directory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

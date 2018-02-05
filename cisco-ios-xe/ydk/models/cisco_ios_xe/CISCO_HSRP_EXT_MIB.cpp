@@ -107,6 +107,7 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chsrpextiftrackedtable != nullptr)
     {
         children["cHsrpExtIfTrackedTable"] = chsrpextiftrackedtable;
@@ -227,14 +228,6 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftrackedtable::get_child_by_na
 {
     if(child_yang_name == "cHsrpExtIfTrackedEntry")
     {
-        for(auto const & c : chsrpextiftrackedentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry>();
         c->parent = this;
         chsrpextiftrackedentry.push_back(c);
@@ -247,9 +240,14 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftrackedtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftrackedtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : chsrpextiftrackedentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -345,6 +343,7 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrack
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -480,14 +479,6 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextsecaddrtable::get_child_by_name
 {
     if(child_yang_name == "cHsrpExtSecAddrEntry")
     {
-        for(auto const & c : chsrpextsecaddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry>();
         c->parent = this;
         chsrpextsecaddrentry.push_back(c);
@@ -500,9 +491,14 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextsecaddrtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextsecaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : chsrpextsecaddrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -590,6 +586,7 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddren
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -705,14 +702,6 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextifstandbytable::get_child_by_na
 {
     if(child_yang_name == "cHsrpExtIfStandbyEntry")
     {
-        for(auto const & c : chsrpextifstandbyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry>();
         c->parent = this;
         chsrpextifstandbyentry.push_back(c);
@@ -725,9 +714,14 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextifstandbytable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextifstandbytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : chsrpextifstandbyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -831,6 +825,7 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstand
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -986,14 +981,6 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftable::get_child_by_name(cons
 {
     if(child_yang_name == "cHsrpExtIfEntry")
     {
-        for(auto const & c : chsrpextifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry>();
         c->parent = this;
         chsrpextifentry.push_back(c);
@@ -1006,9 +993,14 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : chsrpextifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1092,6 +1084,7 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

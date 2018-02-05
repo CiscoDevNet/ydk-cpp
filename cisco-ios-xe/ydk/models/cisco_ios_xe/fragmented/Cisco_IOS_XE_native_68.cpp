@@ -64,6 +64,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Broadcast::Level::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -154,6 +155,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Broadcast::Level::Bps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -244,6 +246,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Broadcast::Level::Pps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -339,6 +342,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(level != nullptr)
     {
         children["level"] = level;
@@ -445,6 +449,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Multicast::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -530,6 +535,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Multicast::Level::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -620,6 +626,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Multicast::Level::Bps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -710,6 +717,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Multicast::Level::Pps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -805,6 +813,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(level != nullptr)
     {
         children["level"] = level;
@@ -911,6 +920,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Unicast::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -996,6 +1006,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Unicast::Level::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1086,6 +1097,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Unicast::Level::Bps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1176,6 +1188,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::StormControl::Unicast::Level::Pps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1262,6 +1275,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Trust::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1352,6 +1366,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::PriorityQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cos_map != nullptr)
     {
         children["cos-map"] = cos_map;
@@ -1447,6 +1462,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::PriorityQueue::CosMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1533,14 +1549,6 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 {
     if(child_yang_name == "cos-map")
     {
-        for(auto const & c : cos_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::RcvQueue::CosMap>();
         c->parent = this;
         cos_map.push_back(c);
@@ -1553,9 +1561,14 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::RcvQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cos_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1642,6 +1655,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::RcvQueue::CosMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1690,7 +1704,7 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::RcvQueue::CosMap::
 
 Native::Interface::PortChannelSubinterface::PortChannel::Peer::Peer()
     :
-    default_(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_>())
+    default_(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default>())
 {
     default_->parent = this;
 
@@ -1734,7 +1748,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_>();
+            default_ = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default>();
         }
         return default_;
     }
@@ -1745,6 +1759,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -1768,38 +1783,38 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::has_leaf_or_
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Default_()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Default()
     :
-    ip(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip>())
+    ip(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip>())
 {
     ip->parent = this;
 
     yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::~Default_()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::~Default()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::has_data() const
 {
     return (ip !=  nullptr && ip->has_data());
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (ip !=  nullptr && ip->has_operation());
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1808,13 +1823,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
         if(ip == nullptr)
         {
-            ip = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip>();
+            ip = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip>();
         }
         return ip;
     }
@@ -1822,9 +1837,10 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -1833,53 +1849,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Ip()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Ip()
     :
-    address(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address>())
+    address(std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address>())
 {
     address->parent = this;
 
     yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::~Ip()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::~Ip()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::has_data() const
 {
     return (address !=  nullptr && address->has_data());
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::has_operation() const
 {
     return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1888,13 +1904,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
         if(address == nullptr)
         {
-            address = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address>();
+            address = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address>();
         }
         return address;
     }
@@ -1902,9 +1918,10 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1913,22 +1930,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Address()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Address()
     :
     dhcp{YType::empty, "dhcp"}
     	,
@@ -1939,18 +1956,18 @@ Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Add
     yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::~Address()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::~Address()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::has_data() const
 {
     return dhcp.is_set
 	|| (dhcp_pool !=  nullptr && dhcp_pool->has_data())
 	|| (pool !=  nullptr && pool->has_data());
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dhcp.yfilter)
@@ -1958,14 +1975,14 @@ bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip
 	|| (pool !=  nullptr && pool->has_operation());
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1975,13 +1992,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp-pool")
     {
         if(dhcp_pool == nullptr)
         {
-            dhcp_pool = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool>();
+            dhcp_pool = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool>();
         }
         return dhcp_pool;
     }
@@ -1990,7 +2007,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     {
         if(pool == nullptr)
         {
-            pool = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool>();
+            pool = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool>();
         }
         return pool;
     }
@@ -1998,9 +2015,10 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp_pool != nullptr)
     {
         children["dhcp-pool"] = dhcp_pool;
@@ -2014,7 +2032,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSub
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dhcp")
     {
@@ -2024,7 +2042,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dhcp")
     {
@@ -2032,14 +2050,14 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dhcp-pool" || name == "pool" || name == "dhcp")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::DhcpPool()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::DhcpPool()
     :
     pools{YType::str, "pools"}
 {
@@ -2047,29 +2065,29 @@ Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Add
     yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::~DhcpPool()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::has_data() const
 {
     return pools.is_set;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pools.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dhcp-pool";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2079,18 +2097,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pools")
     {
@@ -2100,7 +2119,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pools")
     {
@@ -2108,14 +2127,14 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::DhcpPool::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::DhcpPool::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pools")
         return true;
     return false;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::Pool()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::Pool()
     :
     pools{YType::str, "pools"}
 {
@@ -2123,29 +2142,29 @@ Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Add
     yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::~Pool()
+Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::~Pool()
 {
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::has_data() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::has_data() const
 {
     return pools.is_set;
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::has_operation() const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pools.yfilter);
 }
 
-std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::get_segment_path() const
+std::string Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pool";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2155,18 +2174,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannelSub
 
 }
 
-std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pools")
     {
@@ -2176,7 +2196,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip
     }
 }
 
-void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pools")
     {
@@ -2184,7 +2204,7 @@ void Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip
     }
 }
 
-bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default_::Ip::Address::Pool::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannelSubinterface::PortChannel::Peer::Default::Ip::Address::Pool::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pools")
         return true;
@@ -2243,6 +2263,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::PmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2360,6 +2381,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(down != nullptr)
     {
         children["down"] = down;
@@ -2460,6 +2482,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Down::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2550,6 +2573,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::CarrierDelay::Up::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2652,6 +2676,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::ChannelGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2776,6 +2801,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(oam != nullptr)
     {
         children["oam"] = oam;
@@ -2899,6 +2925,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_monitor != nullptr)
     {
         children["link-monitor"] = link_monitor;
@@ -3103,6 +3130,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frame != nullptr)
     {
         children["frame"] = frame;
@@ -3233,6 +3261,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -3328,6 +3357,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -3413,6 +3443,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3513,6 +3544,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -3608,6 +3640,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -3693,6 +3726,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3793,6 +3827,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -3888,6 +3923,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -3973,6 +4009,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4068,6 +4105,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -4139,6 +4177,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4229,6 +4268,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -4324,6 +4364,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -4409,6 +4450,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4509,6 +4551,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -4604,6 +4647,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -4689,6 +4733,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4810,6 +4855,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(critical_event != nullptr)
     {
         children["critical-event"] = critical_event;
@@ -4900,6 +4946,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -4971,6 +5018,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5055,6 +5103,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::DyingGasp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -5126,6 +5175,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5210,6 +5260,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::LinkFault::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -5281,6 +5332,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5361,6 +5413,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Ethernet::Oam::RemoteLoopback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5447,6 +5500,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Negotiation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5532,6 +5586,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Eapol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_address != nullptr)
     {
         children["destination-address"] = destination_address;
@@ -5603,6 +5658,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Eapol::DestinationAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5679,6 +5735,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Synchronous::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5775,6 +5832,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Speed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5923,6 +5981,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ethernet != nullptr)
     {
         children["ethernet"] = ethernet;
@@ -6008,6 +6067,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan != nullptr)
     {
         children["vlan"] = vlan;
@@ -6088,6 +6148,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(filter != nullptr)
     {
         children["filter"] = filter;
@@ -6159,6 +6220,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Ethernet::Vlan::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6244,6 +6306,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -6324,6 +6387,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queue != nullptr)
     {
         children["queue"] = queue;
@@ -6417,6 +6481,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(zero != nullptr)
     {
         children["zero"] = zero;
@@ -6502,6 +6567,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::Zero::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pause != nullptr)
     {
         children["pause"] = pause;
@@ -6577,6 +6643,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::Zero::Pause::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6672,6 +6739,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::StrictPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pause != nullptr)
     {
         children["pause"] = pause;
@@ -6747,6 +6815,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Plim::Qos::Input::Queue::StrictPriority::Pause::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6846,6 +6915,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enable != nullptr)
     {
         children["enable"] = enable;
@@ -6927,6 +6997,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Pppoe::Enable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7005,14 +7076,6 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 {
     if(child_yang_name == "instance")
     {
-        for(auto const & c : instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance>();
         c->parent = this;
         instance.push_back(c);
@@ -7025,9 +7088,14 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7285,6 +7353,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encapsulation != nullptr)
     {
         children["encapsulation"] = encapsulation;
@@ -7553,6 +7622,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1ad != nullptr)
     {
         children["dot1ad"] = dot1ad;
@@ -7719,6 +7789,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cos2 != nullptr)
     {
         children["cos2"] = cos2;
@@ -7843,6 +7914,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7991,6 +8063,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cos2 != nullptr)
     {
         children["cos2"] = cos2;
@@ -8125,6 +8198,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8223,6 +8297,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cos_container != nullptr)
     {
         children["cos-container"] = cos_container;
@@ -8313,6 +8388,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::PriorityTagged::CosContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8383,6 +8459,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Encapsulation::Untagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8482,6 +8559,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(acl != nullptr)
     {
         children["acl"] = acl;
@@ -8571,6 +8649,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8676,6 +8755,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(relay != nullptr)
     {
         children["relay"] = relay;
@@ -8756,6 +8836,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::Relay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -8836,6 +8917,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::Relay::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option != nullptr)
     {
         children["option"] = option;
@@ -8907,6 +8989,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Dhcp::Relay::Information::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8995,6 +9078,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ip::Verify::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9109,6 +9193,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9214,6 +9299,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ingress != nullptr)
     {
         children["ingress"] = ingress;
@@ -9294,6 +9380,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tag != nullptr)
     {
         children["tag"] = tag;
@@ -9400,6 +9487,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pop != nullptr)
     {
         children["pop"] = pop;
@@ -9485,6 +9573,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Pop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9575,6 +9664,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Push::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9709,6 +9799,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(t1_to_1 != nullptr)
     {
         children["t1-to-1"] = t1_to_1;
@@ -9799,6 +9890,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9893,6 +9985,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9993,6 +10086,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10087,6 +10181,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10192,6 +10287,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(recovery != nullptr)
     {
         children["recovery"] = recovery;
@@ -10272,6 +10368,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable::Recovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cause != nullptr)
     {
         children["cause"] = cause;
@@ -10343,6 +10440,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Errdisable::Recovery::Cause::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10428,6 +10526,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ethernet != nullptr)
     {
         children["ethernet"] = ethernet;
@@ -10521,6 +10620,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lmi != nullptr)
     {
         children["lmi"] = lmi;
@@ -10606,6 +10706,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ce_vlan != nullptr)
     {
         children["ce-vlan"] = ce_vlan;
@@ -10686,6 +10787,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(map != nullptr)
     {
         children["map"] = map;
@@ -10779,6 +10881,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::Map::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan_range != nullptr)
     {
         children["vlan-range"] = vlan_range;
@@ -10892,6 +10995,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::Map::VlanRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11007,6 +11111,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Loopback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(permit != nullptr)
     {
         children["permit"] = permit;
@@ -11082,6 +11187,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::EthernetContainer::Ethernet::Loopback::Permit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11190,6 +11296,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(trap != nullptr)
     {
         children["trap"] = trap;
@@ -11266,6 +11373,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Trap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11342,6 +11450,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Snmp::Ifindex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11436,6 +11545,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::BridgeDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(split_horizon != nullptr)
     {
         children["split-horizon"] = split_horizon;
@@ -11527,6 +11637,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::BridgeDomain::SplitHorizon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11617,14 +11728,6 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 
     if(child_yang_name == "access-group")
     {
-        for(auto const & c : access_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::AccessGroup>();
         c->parent = this;
         access_group.push_back(c);
@@ -11637,14 +11740,19 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(security != nullptr)
     {
         children["security"] = security;
     }
 
+    count = 0;
     for (auto const & c : access_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11727,6 +11835,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum != nullptr)
     {
         children["maximum"] = maximum;
@@ -11808,6 +11917,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::Security::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11892,6 +12002,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Mac::AccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12000,14 +12111,6 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 {
     if(child_yang_name == "input")
     {
-        for(auto const & c : input)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Input>();
         c->parent = this;
         input.push_back(c);
@@ -12016,14 +12119,6 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 
     if(child_yang_name == "output")
     {
-        for(auto const & c : output)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Output>();
         c->parent = this;
         output.push_back(c);
@@ -12036,14 +12131,23 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : input)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : output)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12112,6 +12216,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12188,6 +12293,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::ServicePolicy::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12299,6 +12405,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encapsulation != nullptr)
     {
         children["encapsulation"] = encapsulation;
@@ -12402,6 +12509,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1ad != nullptr)
     {
         children["dot1ad"] = dot1ad;
@@ -12486,6 +12594,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12590,6 +12699,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Encapsulation::Dot1Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12690,6 +12800,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12776,6 +12887,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::Cfm::Mip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12896,6 +13008,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(discard != nullptr)
     {
         children["discard"] = discard;
@@ -12993,6 +13106,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Discard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13078,6 +13192,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13163,6 +13278,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Forward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13248,6 +13364,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannelSubinterface::PortChannel:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannelSubinterface::PortChannel::Service::Instance::L2Protocol::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13462,6 +13579,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["Cisco-IOS-XE-l2vpn:ip"] = ip;
@@ -13679,6 +13797,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dfbit != nullptr)
     {
         children["dfbit"] = dfbit;
@@ -13785,6 +13904,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::Dfbit::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::Dfbit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13870,6 +13990,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::Local::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -14106,6 +14227,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::Local::Interface_::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::Local::Interface_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -14482,6 +14604,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::Local::Interface_::AT
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::Local::Interface_::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14558,6 +14681,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::Local::Interface_::AT
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::Local::Interface_::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14634,6 +14758,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::Local::Interface_::LI
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::Local::Interface_::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14710,6 +14835,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::Local::Interface_::Po
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::Local::Interface_::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14786,6 +14912,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::Pmtu::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::Pmtu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14866,6 +14993,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::Ip::Tos::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::Ip::Tos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14960,6 +15088,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::LoadBalance::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::LoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flow != nullptr)
     {
         children["flow"] = flow;
@@ -15031,6 +15160,7 @@ std::shared_ptr<Entity> Native::Interface::Pseudowire::LoadBalance::Flow::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Pseudowire::LoadBalance::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

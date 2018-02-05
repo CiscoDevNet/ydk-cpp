@@ -1407,7 +1407,7 @@ class Bgp::PeerGroups::PeerGroup::Transport::Config : public ydk::Entity
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // Bgp::PeerGroups::PeerGroup::Transport::Config
 
@@ -1431,7 +1431,7 @@ class Bgp::PeerGroups::PeerGroup::Transport::State : public ydk::Entity
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // Bgp::PeerGroups::PeerGroup::Transport::State
 
@@ -1753,7 +1753,7 @@ class Bgp::PeerGroups::PeerGroup::RouteReflector::Config : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf route_reflector_cluster_id; //type: one of uint32, string
+        ydk::YLeaf route_reflector_cluster_id; //type: one of string, uint32
         ydk::YLeaf route_reflector_client; //type: boolean
 
 }; // Bgp::PeerGroups::PeerGroup::RouteReflector::Config
@@ -1775,7 +1775,7 @@ class Bgp::PeerGroups::PeerGroup::RouteReflector::State : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf route_reflector_cluster_id; //type: one of uint32, string
+        ydk::YLeaf route_reflector_cluster_id; //type: one of string, uint32
         ydk::YLeaf route_reflector_client; //type: boolean
 
 }; // Bgp::PeerGroups::PeerGroup::RouteReflector::State

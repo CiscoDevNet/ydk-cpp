@@ -94,6 +94,7 @@ std::shared_ptr<Entity> CISCONTPMIB::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cntpsystem != nullptr)
     {
         children["cntpSystem"] = cntpsystem;
@@ -247,6 +248,7 @@ std::shared_ptr<Entity> CISCONTPMIB::Cntpsystem::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntpsystem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -432,14 +434,6 @@ std::shared_ptr<Entity> CISCONTPMIB::Cntppeersvartable::get_child_by_name(const 
 {
     if(child_yang_name == "cntpPeersVarEntry")
     {
-        for(auto const & c : cntppeersvarentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry>();
         c->parent = this;
         cntppeersvarentry.push_back(c);
@@ -452,9 +446,14 @@ std::shared_ptr<Entity> CISCONTPMIB::Cntppeersvartable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntppeersvartable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cntppeersvarentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -650,6 +649,7 @@ std::shared_ptr<Entity> CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1035,14 +1035,6 @@ std::shared_ptr<Entity> CISCONTPMIB::Cntpfilterregistertable::get_child_by_name(
 {
     if(child_yang_name == "cntpFilterRegisterEntry")
     {
-        for(auto const & c : cntpfilterregisterentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry>();
         c->parent = this;
         cntpfilterregisterentry.push_back(c);
@@ -1055,9 +1047,14 @@ std::shared_ptr<Entity> CISCONTPMIB::Cntpfilterregistertable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntpfilterregistertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cntpfilterregisterentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1149,6 +1146,7 @@ std::shared_ptr<Entity> CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregister
 std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

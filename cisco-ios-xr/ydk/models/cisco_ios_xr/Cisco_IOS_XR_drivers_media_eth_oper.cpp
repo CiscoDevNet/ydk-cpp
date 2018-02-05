@@ -94,6 +94,7 @@ std::shared_ptr<Entity> EthernetInterface::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> EthernetInterface::Statistics::get_child_by_name(const s
 {
     if(child_yang_name == "statistic")
     {
-        for(auto const & c : statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetInterface::Statistics::Statistic>();
         c->parent = this;
         statistic.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> EthernetInterface::Statistics::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -527,6 +525,7 @@ std::shared_ptr<Entity> EthernetInterface::Statistics::Statistic::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Statistics::Statistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1162,14 +1161,6 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::get_child_by_name(const s
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetInterface::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -1182,9 +1173,14 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1321,6 +1317,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(phy_info != nullptr)
     {
         children["phy-info"] = phy_info;
@@ -1478,14 +1475,6 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::get_c
 
     if(child_yang_name == "extended-loopback")
     {
-        for(auto const & c : extended_loopback)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback>();
         c->parent = this;
         extended_loopback.push_back(c);
@@ -1498,6 +1487,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(phy_details != nullptr)
     {
         children["phy-details"] = phy_details;
@@ -1508,9 +1498,13 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::In
         children["fec-details"] = fec_details;
     }
 
+    count = 0;
     for (auto const & c : extended_loopback)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1695,14 +1689,6 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDe
 
     if(child_yang_name == "lane")
     {
-        for(auto const & c : lane)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane>();
         c->parent = this;
         lane.push_back(c);
@@ -1715,6 +1701,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDe
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lane_field_validity != nullptr)
     {
         children["lane-field-validity"] = lane_field_validity;
@@ -1730,9 +1717,13 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::In
         children["dig-opt-mon-alarms"] = dig_opt_mon_alarms;
     }
 
+    count = 0;
     for (auto const & c : lane)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1923,6 +1914,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDe
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2119,6 +2111,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDe
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(field_validity != nullptr)
     {
         children["field-validity"] = field_validity;
@@ -2406,6 +2399,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDe
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::FieldValidity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2538,6 +2532,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDe
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2684,6 +2679,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDe
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dig_opt_mon_alarm != nullptr)
     {
         children["dig-opt-mon-alarm"] = dig_opt_mon_alarm;
@@ -2813,6 +2809,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDe
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOptMonAlarm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2917,6 +2914,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::FecDe
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3017,6 +3015,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::Exten
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3227,6 +3226,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::ge
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(autoneg != nullptr)
     {
         children["autoneg"] = autoneg;
@@ -3442,6 +3442,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Au
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3614,6 +3615,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Cu
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3816,6 +3818,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Pr
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3986,6 +3989,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Er
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4086,6 +4090,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Be
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(settings != nullptr)
     {
         children["settings"] = settings;
@@ -4183,6 +4188,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Be
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4313,6 +4319,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Op
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(settings != nullptr)
     {
         children["settings"] = settings;
@@ -4398,6 +4405,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Op
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Settings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4516,6 +4524,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::Layer1Info::Pf
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4657,6 +4666,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::MacInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::MacInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unicast_mac_filters != nullptr)
     {
         children["unicast-mac-filters"] = unicast_mac_filters;
@@ -4784,6 +4794,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::MacInfo::Unica
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4864,14 +4875,6 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::MacInfo::Multi
 {
     if(child_yang_name == "multicast-mac-address")
     {
-        for(auto const & c : multicast_mac_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress>();
         c->parent = this;
         multicast_mac_address.push_back(c);
@@ -4884,9 +4887,14 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::MacInfo::Multi
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : multicast_mac_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4969,6 +4977,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::MacInfo::Multi
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5067,6 +5076,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::TransportInfo:
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::Interface::TransportInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5182,14 +5192,6 @@ std::shared_ptr<Entity> EthernetInterface::Berts::get_child_by_name(const std::s
 {
     if(child_yang_name == "bert")
     {
-        for(auto const & c : bert)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EthernetInterface::Berts::Bert>();
         c->parent = this;
         bert.push_back(c);
@@ -5202,9 +5204,14 @@ std::shared_ptr<Entity> EthernetInterface::Berts::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Berts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bert)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5302,6 +5309,7 @@ std::shared_ptr<Entity> EthernetInterface::Berts::Bert::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Berts::Bert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bert_status != nullptr)
     {
         children["bert-status"] = bert_status;
@@ -5435,6 +5443,7 @@ std::shared_ptr<Entity> EthernetInterface::Berts::Bert::BertStatus::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Berts::Bert::BertStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

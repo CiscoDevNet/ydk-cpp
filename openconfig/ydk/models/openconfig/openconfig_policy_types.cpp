@@ -101,13 +101,13 @@ OSPF3::~OSPF3()
 {
 }
 
-STATIC_::STATIC_()
+STATIC::STATIC()
      : Identity("http://openconfig.net/yang/policy-types", "openconfig-policy-types", "openconfig-policy-types:STATIC")
 {
 
 }
 
-STATIC_::~STATIC_()
+STATIC::~STATIC()
 {
 }
 

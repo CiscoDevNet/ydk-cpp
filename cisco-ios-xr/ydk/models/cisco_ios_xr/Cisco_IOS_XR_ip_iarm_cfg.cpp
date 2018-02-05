@@ -81,6 +81,7 @@ std::shared_ptr<Entity> IpArm::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> IpArm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -211,6 +212,7 @@ std::shared_ptr<Entity> IpArm::Ipv4::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(conflict_policy_table != nullptr)
     {
         children["conflict-policy-table"] = conflict_policy_table;
@@ -294,6 +296,7 @@ std::shared_ptr<Entity> IpArm::Ipv4::ConflictPolicyTable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv4::ConflictPolicyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -377,6 +380,7 @@ std::shared_ptr<Entity> IpArm::Ipv4::MulticastHost::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv4::MulticastHost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -482,6 +486,7 @@ std::shared_ptr<Entity> IpArm::Ipv6::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(conflict_policy_table != nullptr)
     {
         children["conflict-policy-table"] = conflict_policy_table;
@@ -565,6 +570,7 @@ std::shared_ptr<Entity> IpArm::Ipv6::ConflictPolicyTable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv6::ConflictPolicyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -648,6 +654,7 @@ std::shared_ptr<Entity> IpArm::Ipv6::MulticastHost::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv6::MulticastHost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

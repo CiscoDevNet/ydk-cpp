@@ -133,6 +133,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cisconetsyncmibnotifcontrol != nullptr)
     {
         children["ciscoNetsyncMIBNotifControl"] = cisconetsyncmibnotifcontrol;
@@ -261,6 +262,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -346,14 +348,6 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsclkselglobaltable::get_child_by_name
 {
     if(child_yang_name == "cnsClkSelGlobalEntry")
     {
-        for(auto const & c : cnsclkselglobalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry>();
         c->parent = this;
         cnsclkselglobalentry.push_back(c);
@@ -366,9 +360,14 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsclkselglobaltable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsclkselglobaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cnsclkselglobalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -492,6 +491,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalen
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -697,14 +697,6 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsselectedinputsourcetable::get_child_
 {
     if(child_yang_name == "cnsSelectedInputSourceEntry")
     {
-        for(auto const & c : cnsselectedinputsourceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry>();
         c->parent = this;
         cnsselectedinputsourceentry.push_back(c);
@@ -717,9 +709,14 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsselectedinputsourcetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsselectedinputsourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cnsselectedinputsourceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -823,6 +820,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselecte
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -978,14 +976,6 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsinputsourcetable::get_child_by_name(
 {
     if(child_yang_name == "cnsInputSourceEntry")
     {
-        for(auto const & c : cnsinputsourceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry>();
         c->parent = this;
         cnsinputsourceentry.push_back(c);
@@ -998,9 +988,14 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsinputsourcetable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsinputsourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cnsinputsourceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1148,6 +1143,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentr
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1411,14 +1407,6 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsextoutputtable::get_child_by_name(co
 {
     if(child_yang_name == "cnsExtOutputEntry")
     {
-        for(auto const & c : cnsextoutputentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry>();
         c->parent = this;
         cnsextoutputentry.push_back(c);
@@ -1431,9 +1419,14 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsextoutputtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsextoutputtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cnsextoutputentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1541,6 +1534,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::g
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1706,14 +1700,6 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnst4Clocksourcetable::get_child_by_nam
 {
     if(child_yang_name == "cnsT4ClockSourceEntry")
     {
-        for(auto const & c : cnst4clocksourceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry>();
         c->parent = this;
         cnst4clocksourceentry.push_back(c);
@@ -1726,9 +1712,14 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnst4Clocksourcetable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnst4Clocksourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cnst4clocksourceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1880,6 +1871,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksource
 std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

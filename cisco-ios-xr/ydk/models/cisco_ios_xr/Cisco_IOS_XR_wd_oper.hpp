@@ -107,20 +107,20 @@ class Watchdog::Nodes::Node::ThresholdMemory : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Default_; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_
+        class Default; //type: Watchdog::Nodes::Node::ThresholdMemory::Default
         class Configured; //type: Watchdog::Nodes::Node::ThresholdMemory::Configured
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_> default_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default> default_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Configured> configured;
         
 }; // Watchdog::Nodes::Node::ThresholdMemory
 
 
-class Watchdog::Nodes::Node::ThresholdMemory::Default_ : public ydk::Entity
+class Watchdog::Nodes::Node::ThresholdMemory::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -132,16 +132,16 @@ class Watchdog::Nodes::Node::ThresholdMemory::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConfiguredMemory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory
-        class Memory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory
+        class ConfiguredMemory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory
+        class Memory; //type: Watchdog::Nodes::Node::ThresholdMemory::Default::Memory
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory> configured_memory;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory> memory;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory> configured_memory;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wd_oper::Watchdog::Nodes::Node::ThresholdMemory::Default::Memory> memory;
         
-}; // Watchdog::Nodes::Node::ThresholdMemory::Default_
+}; // Watchdog::Nodes::Node::ThresholdMemory::Default
 
 
-class Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory : public ydk::Entity
+class Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory : public ydk::Entity
 {
     public:
         ConfiguredMemory();
@@ -161,10 +161,10 @@ class Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory : publi
         ydk::YLeaf severe; //type: uint32
         ydk::YLeaf critical; //type: uint64
 
-}; // Watchdog::Nodes::Node::ThresholdMemory::Default_::ConfiguredMemory
+}; // Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory
 
 
-class Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory : public ydk::Entity
+class Watchdog::Nodes::Node::ThresholdMemory::Default::Memory : public ydk::Entity
 {
     public:
         Memory();
@@ -184,7 +184,7 @@ class Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory : public ydk::Ent
         ydk::YLeaf free_memory; //type: uint64
         ydk::YLeaf memory_state; //type: MemoryState
 
-}; // Watchdog::Nodes::Node::ThresholdMemory::Default_::Memory
+}; // Watchdog::Nodes::Node::ThresholdMemory::Default::Memory
 
 
 class Watchdog::Nodes::Node::ThresholdMemory::Configured : public ydk::Entity

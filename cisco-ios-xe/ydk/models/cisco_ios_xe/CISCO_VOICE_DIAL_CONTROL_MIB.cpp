@@ -367,6 +367,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cvgeneralconfiguration != nullptr)
     {
         children["cvGeneralConfiguration"] = cvgeneralconfiguration;
@@ -597,6 +598,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -726,6 +728,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -853,6 +856,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvolume::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvolume::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -958,6 +962,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1075,6 +1080,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1170,14 +1176,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::get_child_by_n
 {
     if(child_yang_name == "cvPeerCfgEntry")
     {
-        for(auto const & c : cvpeercfgentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry>();
         c->parent = this;
         cvpeercfgentry.push_back(c);
@@ -1190,9 +1188,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvpeercfgentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1292,6 +1295,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1437,14 +1441,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::get_child
 {
     if(child_yang_name == "cvVoicePeerCfgEntry")
     {
-        for(auto const & c : cvvoicepeercfgentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry>();
         c->parent = this;
         cvvoicepeercfgentry.push_back(c);
@@ -1457,9 +1453,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvvoicepeercfgentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1563,6 +1564,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepe
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1718,14 +1720,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::get_child_
 {
     if(child_yang_name == "cvVoIPPeerCfgEntry")
     {
-        for(auto const & c : cvvoippeercfgentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry>();
         c->parent = this;
         cvvoippeercfgentry.push_back(c);
@@ -1738,9 +1732,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvvoippeercfgentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1936,6 +1935,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeer
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2317,14 +2317,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::get_chil
 {
     if(child_yang_name == "cvPeerCommonCfgEntry")
     {
-        for(auto const & c : cvpeercommoncfgentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry>();
         c->parent = this;
         cvpeercommoncfgentry.push_back(c);
@@ -2337,9 +2329,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvpeercommoncfgentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2455,6 +2452,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeerco
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2640,14 +2638,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::get_child_b
 {
     if(child_yang_name == "cvCallActiveEntry")
     {
-        for(auto const & c : cvcallactiveentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry>();
         c->parent = this;
         cvcallactiveentry.push_back(c);
@@ -2660,9 +2650,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvcallactiveentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2814,6 +2809,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiv
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3089,14 +3085,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::get_chi
 {
     if(child_yang_name == "cvVoIPCallActiveEntry")
     {
-        for(auto const & c : cvvoipcallactiveentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry>();
         c->parent = this;
         cvvoipcallactiveentry.push_back(c);
@@ -3109,9 +3097,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvvoipcallactiveentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3375,6 +3368,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipc
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3928,14 +3922,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::get_child_
 {
     if(child_yang_name == "cvCallVolConnEntry")
     {
-        for(auto const & c : cvcallvolconnentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry>();
         c->parent = this;
         cvcallvolconnentry.push_back(c);
@@ -3948,9 +3934,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvcallvolconnentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4030,6 +4021,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolc
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4125,14 +4117,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::get_child_by
 {
     if(child_yang_name == "cvCallVolIfEntry")
     {
-        for(auto const & c : cvcallvolifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry>();
         c->parent = this;
         cvcallvolifentry.push_back(c);
@@ -4145,9 +4129,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvcallvolifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4231,6 +4220,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolife
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4336,14 +4326,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::get_child_
 {
     if(child_yang_name == "cvCallHistoryEntry")
     {
-        for(auto const & c : cvcallhistoryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry>();
         c->parent = this;
         cvcallhistoryentry.push_back(c);
@@ -4356,9 +4338,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvcallhistoryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4486,6 +4473,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhist
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4701,14 +4689,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::get_ch
 {
     if(child_yang_name == "cvVoIPCallHistoryEntry")
     {
-        for(auto const & c : cvvoipcallhistoryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry>();
         c->parent = this;
         cvvoipcallhistoryentry.push_back(c);
@@ -4721,9 +4701,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvvoipcallhistoryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4991,6 +4976,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoip
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5554,14 +5540,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::get_chil
 {
     if(child_yang_name == "cvCallRateStatsEntry")
     {
-        for(auto const & c : cvcallratestatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry>();
         c->parent = this;
         cvcallratestatsentry.push_back(c);
@@ -5574,9 +5552,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvcallratestatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5664,6 +5647,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallra
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5779,14 +5763,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::get_c
 {
     if(child_yang_name == "cvCallLegRateStatsEntry")
     {
-        for(auto const & c : cvcalllegratestatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry>();
         c->parent = this;
         cvcalllegratestatsentry.push_back(c);
@@ -5799,9 +5775,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvcalllegratestatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5889,6 +5870,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcal
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6004,14 +5986,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::get_ch
 {
     if(child_yang_name == "cvActiveCallStatsEntry")
     {
-        for(auto const & c : cvactivecallstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry>();
         c->parent = this;
         cvactivecallstatsentry.push_back(c);
@@ -6024,9 +5998,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvactivecallstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6114,6 +6093,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvacti
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6229,14 +6209,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::get_
 {
     if(child_yang_name == "cvCallDurationStatsEntry")
     {
-        for(auto const & c : cvcalldurationstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry>();
         c->parent = this;
         cvcalldurationstatsentry.push_back(c);
@@ -6249,9 +6221,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvcalldurationstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6339,6 +6316,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvca
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6454,14 +6432,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::get_ch
 {
     if(child_yang_name == "cvSipMsgRateStatsEntry")
     {
-        for(auto const & c : cvsipmsgratestatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry>();
         c->parent = this;
         cvsipmsgratestatsentry.push_back(c);
@@ -6474,9 +6444,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvsipmsgratestatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6564,6 +6539,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipm
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6679,14 +6655,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::get_child_b
 {
     if(child_yang_name == "cvCallRateWMEntry")
     {
-        for(auto const & c : cvcallratewmentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry>();
         c->parent = this;
         cvcallratewmentry.push_back(c);
@@ -6699,9 +6667,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvcallratewmentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6789,6 +6762,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratew
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6904,14 +6878,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::get_chil
 {
     if(child_yang_name == "cvCallLegRateWMEntry")
     {
-        for(auto const & c : cvcalllegratewmentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry>();
         c->parent = this;
         cvcalllegratewmentry.push_back(c);
@@ -6924,9 +6890,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvcalllegratewmentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7014,6 +6985,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcallle
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7129,14 +7101,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::get_child
 {
     if(child_yang_name == "cvActiveCallWMEntry")
     {
-        for(auto const & c : cvactivecallwmentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry>();
         c->parent = this;
         cvactivecallwmentry.push_back(c);
@@ -7149,9 +7113,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvactivecallwmentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7239,6 +7208,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivec
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7354,14 +7324,6 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::get_child
 {
     if(child_yang_name == "cvSipMsgRateWMEntry")
     {
-        for(auto const & c : cvsipmsgratewmentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry>();
         c->parent = this;
         cvsipmsgratewmentry.push_back(c);
@@ -7374,9 +7336,14 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvsipmsgratewmentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7464,6 +7431,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgr
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

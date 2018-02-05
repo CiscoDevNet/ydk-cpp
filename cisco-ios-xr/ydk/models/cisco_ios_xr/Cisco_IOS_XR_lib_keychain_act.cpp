@@ -68,6 +68,7 @@ std::shared_ptr<Entity> MasterKeyAdd::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> MasterKeyAdd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -171,6 +172,7 @@ std::shared_ptr<Entity> MasterKeyAdd::Input::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> MasterKeyAdd::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -243,6 +245,7 @@ std::shared_ptr<Entity> MasterKeyDelete::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> MasterKeyDelete::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -341,6 +344,7 @@ std::shared_ptr<Entity> MasterKeyUpdate::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> MasterKeyUpdate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -448,6 +452,7 @@ std::shared_ptr<Entity> MasterKeyUpdate::Input::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> MasterKeyUpdate::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

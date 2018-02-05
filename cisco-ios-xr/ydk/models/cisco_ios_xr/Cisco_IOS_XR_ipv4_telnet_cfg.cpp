@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Ipv6Telnet::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["client"] = client;
@@ -171,6 +172,7 @@ std::shared_ptr<Entity> Ipv6Telnet::Client::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Telnet::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -256,6 +258,7 @@ std::shared_ptr<Entity> Ipv4Telnet::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["client"] = client;
@@ -359,6 +362,7 @@ std::shared_ptr<Entity> Ipv4Telnet::Client::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Telnet::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> CrossBarStats::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::get_child_by_name(const std::strin
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CrossBarStats::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cross_bar_table != nullptr)
     {
         children["cross-bar-table"] = cross_bar_table;
@@ -388,6 +387,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pkt_stats != nullptr)
     {
         children["pkt-stats"] = pkt_stats;
@@ -466,14 +466,6 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get
 {
     if(child_yang_name == "pkt-stat")
     {
-        for(auto const & c : pkt_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat>();
         c->parent = this;
         pkt_stat.push_back(c);
@@ -486,9 +478,14 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pkt_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -741,6 +738,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::Pkt
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1279,14 +1277,6 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::ge
 {
     if(child_yang_name == "sm15-stat")
     {
-        for(auto const & c : sm15_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat>();
         c->parent = this;
         sm15_stat.push_back(c);
@@ -1299,9 +1289,14 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::ge
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sm15_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1548,6 +1543,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ua0_stats != nullptr)
     {
         children["ua0-stats"] = ua0_stats;
@@ -1737,6 +1733,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1911,6 +1908,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2085,6 +2083,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2263,6 +2262,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2439,6 +2439,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2577,6 +2578,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2699,6 +2701,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2955,6 +2958,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3509,6 +3513,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4021,6 +4026,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4507,6 +4513,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4947,6 +4954,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5243,6 +5251,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm
 std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

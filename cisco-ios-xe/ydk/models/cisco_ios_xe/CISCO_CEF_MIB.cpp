@@ -315,6 +315,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ceffib != nullptr)
     {
         children["cefFIB"] = ceffib;
@@ -513,6 +514,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceffib::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -604,6 +606,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefcc::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -723,6 +726,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefnotifcntl::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefnotifcntl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -848,14 +852,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceffibsummarytable::get_child_by_name(const
 {
     if(child_yang_name == "cefFIBSummaryEntry")
     {
-        for(auto const & c : ceffibsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry>();
         c->parent = this;
         ceffibsummaryentry.push_back(c);
@@ -868,9 +864,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceffibsummarytable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffibsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceffibsummaryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -954,6 +955,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1059,14 +1061,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefprefixtable::get_child_by_name(const std
 {
     if(child_yang_name == "cefPrefixEntry")
     {
-        for(auto const & c : cefprefixentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefprefixtable::Cefprefixentry>();
         c->parent = this;
         cefprefixentry.push_back(c);
@@ -1079,9 +1073,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefprefixtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefprefixentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1221,6 +1220,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefprefixtable::Cefprefixentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefprefixtable::Cefprefixentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1466,14 +1466,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceflmprefixtable::get_child_by_name(const s
 {
     if(child_yang_name == "cefLMPrefixEntry")
     {
-        for(auto const & c : ceflmprefixentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry>();
         c->parent = this;
         ceflmprefixentry.push_back(c);
@@ -1486,9 +1478,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceflmprefixtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceflmprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceflmprefixentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1588,6 +1585,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1733,14 +1731,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefpathtable::get_child_by_name(const std::
 {
     if(child_yang_name == "cefPathEntry")
     {
-        for(auto const & c : cefpathentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefpathtable::Cefpathentry>();
         c->parent = this;
         cefpathentry.push_back(c);
@@ -1753,9 +1743,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefpathtable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpathtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefpathentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1863,6 +1858,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefpathtable::Cefpathentry::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpathtable::Cefpathentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2028,14 +2024,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefadjsummarytable::get_child_by_name(const
 {
     if(child_yang_name == "cefAdjSummaryEntry")
     {
-        for(auto const & c : cefadjsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry>();
         c->parent = this;
         cefadjsummaryentry.push_back(c);
@@ -2048,9 +2036,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefadjsummarytable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefadjsummaryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2146,6 +2139,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2281,14 +2275,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefadjtable::get_child_by_name(const std::s
 {
     if(child_yang_name == "cefAdjEntry")
     {
-        for(auto const & c : cefadjentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefadjtable::Cefadjentry>();
         c->parent = this;
         cefadjentry.push_back(c);
@@ -2301,9 +2287,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefadjtable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefadjentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2435,6 +2426,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefadjtable::Cefadjentry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjtable::Cefadjentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2658,14 +2650,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceffeselectiontable::get_child_by_name(cons
 {
     if(child_yang_name == "cefFESelectionEntry")
     {
-        for(auto const & c : ceffeselectionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry>();
         c->parent = this;
         ceffeselectionentry.push_back(c);
@@ -2678,9 +2662,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceffeselectiontable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffeselectiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceffeselectionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2800,6 +2789,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::g
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2995,14 +2985,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefcfgtable::get_child_by_name(const std::s
 {
     if(child_yang_name == "cefCfgEntry")
     {
-        for(auto const & c : cefcfgentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefcfgtable::Cefcfgentry>();
         c->parent = this;
         cefcfgentry.push_back(c);
@@ -3015,9 +2997,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefcfgtable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefcfgentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3133,6 +3120,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefcfgtable::Cefcfgentry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcfgtable::Cefcfgentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3316,14 +3304,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefresourcetable::get_child_by_name(const s
 {
     if(child_yang_name == "cefResourceEntry")
     {
-        for(auto const & c : cefresourceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefresourcetable::Cefresourceentry>();
         c->parent = this;
         cefresourceentry.push_back(c);
@@ -3336,9 +3316,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefresourcetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefresourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefresourceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3422,6 +3407,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefresourcetable::Cefresourceentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefresourcetable::Cefresourceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3527,14 +3513,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefinttable::get_child_by_name(const std::s
 {
     if(child_yang_name == "cefIntEntry")
     {
-        for(auto const & c : cefintentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefinttable::Cefintentry>();
         c->parent = this;
         cefintentry.push_back(c);
@@ -3547,9 +3525,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefinttable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefintentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3645,6 +3628,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefinttable::Cefintentry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinttable::Cefintentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3780,14 +3764,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefpeertable::get_child_by_name(const std::
 {
     if(child_yang_name == "cefPeerEntry")
     {
-        for(auto const & c : cefpeerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefpeertable::Cefpeerentry>();
         c->parent = this;
         cefpeerentry.push_back(c);
@@ -3800,9 +3776,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefpeertable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefpeerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3890,6 +3871,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefpeertable::Cefpeerentry::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeertable::Cefpeerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4005,14 +3987,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefpeerfibtable::get_child_by_name(const st
 {
     if(child_yang_name == "cefPeerFIBEntry")
     {
-        for(auto const & c : cefpeerfibentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry>();
         c->parent = this;
         cefpeerfibentry.push_back(c);
@@ -4025,9 +3999,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefpeerfibtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeerfibtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefpeerfibentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4115,6 +4094,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4230,14 +4210,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefccglobaltable::get_child_by_name(const s
 {
     if(child_yang_name == "cefCCGlobalEntry")
     {
-        for(auto const & c : cefccglobalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry>();
         c->parent = this;
         cefccglobalentry.push_back(c);
@@ -4250,9 +4222,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefccglobaltable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefccglobaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefccglobalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4352,6 +4329,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4497,14 +4475,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefcctypetable::get_child_by_name(const std
 {
     if(child_yang_name == "cefCCTypeEntry")
     {
-        for(auto const & c : cefcctypeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefcctypetable::Cefcctypeentry>();
         c->parent = this;
         cefcctypeentry.push_back(c);
@@ -4517,9 +4487,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefcctypetable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcctypetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefcctypeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4627,6 +4602,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4792,14 +4768,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefinconsistencyrecordtable::get_child_by_n
 {
     if(child_yang_name == "cefInconsistencyRecordEntry")
     {
-        for(auto const & c : cefinconsistencyrecordentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry>();
         c->parent = this;
         cefinconsistencyrecordentry.push_back(c);
@@ -4812,9 +4780,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefinconsistencyrecordtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinconsistencyrecordtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefinconsistencyrecordentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4922,6 +4895,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsisten
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5087,14 +5061,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefstatsprefixlentable::get_child_by_name(c
 {
     if(child_yang_name == "cefStatsPrefixLenEntry")
     {
-        for(auto const & c : cefstatsprefixlenentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry>();
         c->parent = this;
         cefstatsprefixlenentry.push_back(c);
@@ -5107,9 +5073,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefstatsprefixlentable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefstatsprefixlentable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefstatsprefixlenentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5225,6 +5196,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenen
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5410,14 +5382,6 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefswitchingstatstable::get_child_by_name(c
 {
     if(child_yang_name == "cefSwitchingStatsEntry")
     {
-        for(auto const & c : cefswitchingstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry>();
         c->parent = this;
         cefswitchingstatsentry.push_back(c);
@@ -5430,9 +5394,14 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefswitchingstatstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefswitchingstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cefswitchingstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5544,6 +5513,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsen
 std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

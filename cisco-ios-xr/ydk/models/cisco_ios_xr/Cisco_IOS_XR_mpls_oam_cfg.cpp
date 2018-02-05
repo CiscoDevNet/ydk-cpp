@@ -77,6 +77,7 @@ std::shared_ptr<Entity> MplsOam::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reply_mode != nullptr)
     {
         children["reply-mode"] = reply_mode;
@@ -209,6 +210,7 @@ std::shared_ptr<Entity> MplsOam::ReplyMode::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::ReplyMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(control_channel != nullptr)
     {
         children["control-channel"] = control_channel;
@@ -287,6 +289,7 @@ std::shared_ptr<Entity> MplsOam::ReplyMode::ControlChannel::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::ReplyMode::ControlChannel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

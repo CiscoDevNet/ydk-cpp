@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_84.hpp"
-#include "Cisco_IOS_XE_native_85.hpp"
 #include "Cisco_IOS_XE_native_86.hpp"
+#include "Cisco_IOS_XE_native_85.hpp"
 #include "Cisco_IOS_XE_native_87.hpp"
 
 using namespace ydk;
@@ -62,6 +62,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::S
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Snmp::Ifindex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -156,6 +157,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::B
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::BridgeDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(split_horizon != nullptr)
     {
         children["split-horizon"] = split_horizon;
@@ -247,6 +249,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::B
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::BridgeDomain::SplitHorizon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -337,14 +340,6 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::M
 
     if(child_yang_name == "access-group")
     {
-        for(auto const & c : access_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::VirtualTemplate::Service::Instance::Mac::AccessGroup>();
         c->parent = this;
         access_group.push_back(c);
@@ -357,14 +352,19 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(security != nullptr)
     {
         children["security"] = security;
     }
 
+    count = 0;
     for (auto const & c : access_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -447,6 +447,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Mac::Security::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum != nullptr)
     {
         children["maximum"] = maximum;
@@ -528,6 +529,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Mac::Security::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -612,6 +614,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Mac::AccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -720,14 +723,6 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::S
 {
     if(child_yang_name == "input")
     {
-        for(auto const & c : input)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::VirtualTemplate::Service::Instance::ServicePolicy::Input>();
         c->parent = this;
         input.push_back(c);
@@ -736,14 +731,6 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::S
 
     if(child_yang_name == "output")
     {
-        for(auto const & c : output)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::VirtualTemplate::Service::Instance::ServicePolicy::Output>();
         c->parent = this;
         output.push_back(c);
@@ -756,14 +743,23 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::S
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : input)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : output)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -832,6 +828,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::S
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::ServicePolicy::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -908,6 +905,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::S
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::ServicePolicy::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1019,6 +1017,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::C
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Cfm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encapsulation != nullptr)
     {
         children["encapsulation"] = encapsulation;
@@ -1122,6 +1121,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::C
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Cfm::Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1ad != nullptr)
     {
         children["dot1ad"] = dot1ad;
@@ -1206,6 +1206,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::C
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1310,6 +1311,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::C
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Cfm::Encapsulation::Dot1Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1410,6 +1412,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::C
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Cfm::Mep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1496,6 +1499,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::C
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::Cfm::Mip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1616,6 +1620,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::L2Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(discard != nullptr)
     {
         children["discard"] = discard;
@@ -1713,6 +1718,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::L2Protocol::Discard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1798,6 +1804,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::L2Protocol::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1883,6 +1890,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::L2Protocol::Forward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1968,6 +1976,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Service::Instance::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Service::Instance::L2Protocol::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2046,6 +2055,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Lacp::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Lacp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2146,6 +2156,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cdp::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tlv != nullptr)
     {
         children["tlv"] = tlv;
@@ -2244,6 +2255,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cdp::Tlv::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cdp::Tlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(app != nullptr)
     {
         children["app"] = app;
@@ -2339,6 +2351,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cdp::Tlv::App::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cdp::Tlv::App::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2447,6 +2460,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Snmp::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ifindex != nullptr)
     {
         children["ifindex"] = ifindex;
@@ -2527,6 +2541,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Snmp::Ifindex::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Snmp::Ifindex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2627,6 +2642,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Snmp::Trap::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Snmp::Trap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_status_capas != nullptr)
     {
         children["link-status-capas"] = link_status_capas;
@@ -2717,6 +2733,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Snmp::Trap::LinkStat
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Snmp::Trap::LinkStatusCapas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_status != nullptr)
     {
         children["link-status"] = link_status;
@@ -2797,6 +2814,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Snmp::Trap::LinkStat
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Snmp::Trap::LinkStatusCapas::LinkStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(permit != nullptr)
     {
         children["permit"] = permit;
@@ -2868,6 +2886,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Snmp::Trap::LinkStat
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2975,6 +2994,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Nhrp::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Nhrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(event_publisher != nullptr)
     {
         children["event-publisher"] = event_publisher;
@@ -3071,6 +3091,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Nhrp::EventPublisher
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Nhrp::EventPublisher::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3156,6 +3177,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Nhrp::Map::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Nhrp::Map::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group != nullptr)
     {
         children["group"] = group;
@@ -3229,14 +3251,6 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Nhrp::Map::Group::ge
 {
     if(child_yang_name == "nhrp-name")
     {
-        for(auto const & c : nhrp_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::VirtualTemplate::Nhrp::Map::Group::NhrpName>();
         c->parent = this;
         nhrp_name.push_back(c);
@@ -3249,9 +3263,14 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Nhrp::Map::Group::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Nhrp::Map::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrp_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3334,6 +3353,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Nhrp::Map::Group::Nh
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Nhrp::Map::Group::NhrpName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy != nullptr)
     {
         children["service-policy"] = service_policy;
@@ -3415,6 +3435,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Nhrp::Map::Group::Nh
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Nhrp::Map::Group::NhrpName::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3731,6 +3752,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tun_6rd != nullptr)
     {
         children["tun-6rd"] = tun_6rd;
@@ -3989,6 +4011,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Tun6rd::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Tun6rd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -4094,6 +4117,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Tun6rd::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Tun6rd::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4184,6 +4208,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Bandwidth::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4284,6 +4309,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Destination:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(list != nullptr)
     {
         children["list"] = list;
@@ -4374,6 +4400,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Destination:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Destination::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpls != nullptr)
     {
         children["mpls"] = mpls;
@@ -4454,6 +4481,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Destination:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Destination::List::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic_eng != nullptr)
     {
         children["traffic-eng"] = traffic_eng;
@@ -4525,6 +4553,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Destination:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Destination::List::Mpls::TrafficEng::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4605,6 +4634,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::DstPort::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::DstPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4700,6 +4730,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Endpoint::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Endpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy != nullptr)
     {
         children["service-policy"] = service_policy;
@@ -4771,6 +4802,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Endpoint::Se
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Endpoint::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4847,6 +4879,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Fixup::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Fixup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4923,6 +4956,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Flow::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5080,6 +5114,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec != nullptr)
     {
         children["ipsec"] = ipsec;
@@ -5216,6 +5251,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipsec:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -5288,6 +5324,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipsec:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipsec::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5348,6 +5385,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipsec:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipsec::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5420,6 +5458,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Mpls::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic_eng != nullptr)
     {
         children["traffic-eng"] = traffic_eng;
@@ -5495,6 +5534,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Mpls::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Mpls::TrafficEng::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5581,6 +5621,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Ethern
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5674,6 +5715,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Gre::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Gre::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multipoint != nullptr)
     {
         children["multipoint"] = multipoint;
@@ -5765,6 +5807,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Gre::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Gre::Multipoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5841,6 +5884,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipip::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5925,6 +5969,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipv6Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mode::Ipv6Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6033,6 +6078,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::NetworkId::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::NetworkId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6135,6 +6181,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::PathMtuDisco
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::PathMtuDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6195,6 +6242,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Protection::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Protection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6268,6 +6316,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic_eng != nullptr)
     {
         children["traffic-eng"] = traffic_eng;
@@ -6547,6 +6596,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(affinity_mask != nullptr)
     {
         children["affinity-mask"] = affinity_mask;
@@ -6717,6 +6767,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::AffinityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6833,6 +6884,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::AutoBw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(overflow_limit != nullptr)
     {
         children["overflow-limit"] = overflow_limit;
@@ -6958,6 +7010,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::AutoBw::OverflowLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7062,6 +7115,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::Autoroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -7161,6 +7215,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::Autoroute::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7297,6 +7352,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::BackupBw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sub_pool != nullptr)
     {
         children["sub-pool"] = sub_pool;
@@ -7402,6 +7458,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::BackupBw::SubPool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sub_pool_config != nullptr)
     {
         children["sub-pool-config"] = sub_pool_config;
@@ -7510,6 +7567,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::BackupBw::SubPool::SubPoolConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(class_type != nullptr)
     {
         children["class-type"] = class_type;
@@ -7604,6 +7662,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::BackupBw::SubPool::SubPoolConfig::ClassType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7704,6 +7763,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::BackupBw::SubPool::SubPoolConfig::GlobalPool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7798,6 +7858,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::BackupBw::ClassType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7898,6 +7959,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::BackupBw::GlobalPool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7992,6 +8054,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8088,6 +8151,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8164,6 +8228,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::BindingSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8254,6 +8319,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::Exp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8352,6 +8418,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::ExpBundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member != nullptr)
     {
         children["member"] = member;
@@ -8433,6 +8500,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::ExpBundle::Member::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8513,6 +8581,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8599,6 +8668,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::ForwardingAdjacency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8684,6 +8754,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::Interface_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(down != nullptr)
     {
         children["down"] = down;
@@ -8755,6 +8826,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::Interface_::Down::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8843,14 +8915,6 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 {
     if(child_yang_name == "working")
     {
-        for(auto const & c : working)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working>();
         c->parent = this;
         working.push_back(c);
@@ -8859,14 +8923,6 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 
     if(child_yang_name == "protect")
     {
-        for(auto const & c : protect)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect>();
         c->parent = this;
         protect.push_back(c);
@@ -8879,14 +8935,23 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : working)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : protect)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8912,7 +8977,7 @@ Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Workin
     id{YType::uint32, "id"}
     	,
     dynamic(nullptr) // presence node
-	,explicit_(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_>())
+	,explicit_(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit>())
 	,segment_routing(nullptr) // presence node
 {
     explicit_->parent = this;
@@ -8973,7 +9038,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
     {
         if(explicit_ == nullptr)
         {
-            explicit_ = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_>();
+            explicit_ = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit>();
         }
         return explicit_;
     }
@@ -8993,6 +9058,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic != nullptr)
     {
         children["dynamic"] = dynamic;
@@ -9130,6 +9196,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(segment_routing != nullptr)
     {
         children["segment-routing"] = segment_routing;
@@ -9286,6 +9353,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Dynamic::SegmentRouting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9416,6 +9484,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Dynamic::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9454,7 +9523,7 @@ bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::W
     return false;
 }
 
-Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Explicit_()
+Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Explicit()
     :
     identifier{YType::uint16, "identifier"},
     name{YType::str, "name"},
@@ -9464,18 +9533,18 @@ Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Workin
     lockdown{YType::empty, "lockdown"},
     sticky{YType::empty, "sticky"}
     	,
-    bandwidth(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth>())
+    bandwidth(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth>())
 {
     bandwidth->parent = this;
 
     yang_name = "explicit"; yang_parent_name = "working"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::~Explicit_()
+Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::~Explicit()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::has_data() const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::has_data() const
 {
     return identifier.is_set
 	|| name.is_set
@@ -9487,7 +9556,7 @@ bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::W
 	|| (bandwidth !=  nullptr && bandwidth->has_data());
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::has_operation() const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(identifier.yfilter)
@@ -9500,14 +9569,14 @@ bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::W
 	|| (bandwidth !=  nullptr && bandwidth->has_operation());
 }
 
-std::string Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9523,13 +9592,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplat
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bandwidth")
     {
         if(bandwidth == nullptr)
         {
-            bandwidth = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth>();
+            bandwidth = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth>();
         }
         return bandwidth;
     }
@@ -9537,9 +9606,10 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -9548,7 +9618,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplat
     return children;
 }
 
-void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "identifier")
     {
@@ -9594,7 +9664,7 @@ void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::W
     }
 }
 
-void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "identifier")
     {
@@ -9626,14 +9696,14 @@ void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::W
     }
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bandwidth" || name == "identifier" || name == "name" || name == "segment-routing" || name == "verbatim" || name == "attributes" || name == "lockdown" || name == "sticky")
         return true;
     return false;
 }
 
-Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::Bandwidth()
+Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::Bandwidth()
     :
     bandwidth{YType::uint32, "bandwidth"},
     sub_pool{YType::uint32, "sub-pool"}
@@ -9642,31 +9712,31 @@ Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Workin
     yang_name = "bandwidth"; yang_parent_name = "explicit"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::~Bandwidth()
+Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::~Bandwidth()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::has_data() const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::has_data() const
 {
     return bandwidth.is_set
 	|| sub_pool.is_set;
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::has_operation() const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bandwidth.yfilter)
 	|| ydk::is_set(sub_pool.yfilter);
 }
 
-std::string Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9677,18 +9747,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplat
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
@@ -9704,7 +9775,7 @@ void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::W
     }
 }
 
-void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bandwidth")
     {
@@ -9716,7 +9787,7 @@ void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::W
     }
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bandwidth" || name == "sub-pool")
         return true;
@@ -9775,6 +9846,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::SegmentRouting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9818,7 +9890,7 @@ Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protec
     id{YType::str, "id"}
     	,
     diverse(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Diverse>())
-	,explicit_(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_>())
+	,explicit_(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit>())
 	,list(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::List>())
 {
     diverse->parent = this;
@@ -9881,7 +9953,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
     {
         if(explicit_ == nullptr)
         {
-            explicit_ = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_>();
+            explicit_ = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit>();
         }
         return explicit_;
     }
@@ -9901,6 +9973,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(diverse != nullptr)
     {
         children["diverse"] = diverse;
@@ -10038,6 +10111,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Diverse::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -10203,6 +10277,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Diverse::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10241,7 +10316,7 @@ bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::P
     return false;
 }
 
-Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Explicit_()
+Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Explicit()
     :
     identifier{YType::uint16, "identifier"},
     name{YType::str, "name"},
@@ -10250,18 +10325,18 @@ Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protec
     verbatim{YType::empty, "verbatim"},
     attributes{YType::str, "attributes"}
     	,
-    bandwidth(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth>())
+    bandwidth(std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth>())
 {
     bandwidth->parent = this;
 
     yang_name = "explicit"; yang_parent_name = "protect"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::~Explicit_()
+Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::~Explicit()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::has_data() const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::has_data() const
 {
     return identifier.is_set
 	|| name.is_set
@@ -10272,7 +10347,7 @@ bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::P
 	|| (bandwidth !=  nullptr && bandwidth->has_data());
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::has_operation() const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(identifier.yfilter)
@@ -10284,14 +10359,14 @@ bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::P
 	|| (bandwidth !=  nullptr && bandwidth->has_operation());
 }
 
-std::string Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10306,13 +10381,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplat
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bandwidth")
     {
         if(bandwidth == nullptr)
         {
-            bandwidth = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth>();
+            bandwidth = std::make_shared<Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth>();
         }
         return bandwidth;
     }
@@ -10320,9 +10395,10 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -10331,7 +10407,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplat
     return children;
 }
 
-void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "identifier")
     {
@@ -10371,7 +10447,7 @@ void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::P
     }
 }
 
-void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "identifier")
     {
@@ -10399,14 +10475,14 @@ void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::P
     }
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bandwidth" || name == "identifier" || name == "name" || name == "segment-routing" || name == "non-revertive" || name == "verbatim" || name == "attributes")
         return true;
     return false;
 }
 
-Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::Bandwidth()
+Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::Bandwidth()
     :
     bandwidth{YType::uint32, "bandwidth"},
     sub_pool{YType::uint32, "sub-pool"}
@@ -10415,31 +10491,31 @@ Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protec
     yang_name = "bandwidth"; yang_parent_name = "explicit"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::~Bandwidth()
+Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::~Bandwidth()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::has_data() const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::has_data() const
 {
     return bandwidth.is_set
 	|| sub_pool.is_set;
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::has_operation() const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bandwidth.yfilter)
 	|| ydk::is_set(sub_pool.yfilter);
 }
 
-std::string Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10450,18 +10526,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplat
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
@@ -10477,7 +10554,7 @@ void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::P
     }
 }
 
-void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bandwidth")
     {
@@ -10489,7 +10566,7 @@ void Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::P
     }
 }
 
-bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bandwidth" || name == "sub-pool")
         return true;
@@ -10586,6 +10663,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -10741,6 +10819,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::List::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10866,6 +10945,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathSelection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(invalidation != nullptr)
     {
         children["invalidation"] = invalidation;
@@ -10986,6 +11066,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathSelection::Invalidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11072,6 +11153,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathSelection::SegmentRouting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11152,6 +11234,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11234,6 +11317,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Mpls::Traffi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::RecordRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11318,6 +11402,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Rbscp::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Rbscp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11448,6 +11533,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::SrcPort::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::SrcPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11542,6 +11628,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Udlr::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Udlr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11646,6 +11733,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Tunnel::Vlan::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Tunnel::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11764,6 +11852,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Crypto::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Crypto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(map != nullptr)
     {
         children["map"] = map;
@@ -11848,6 +11937,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Crypto::Map::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Crypto::Map::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11948,6 +12038,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Crypto::Ipsec::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Crypto::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12042,6 +12133,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(manual != nullptr)
     {
         children["manual"] = manual;
@@ -12148,6 +12240,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy != nullptr)
     {
         children["policy"] = policy;
@@ -12183,7 +12276,7 @@ bool Native::Interface::VirtualTemplate::Cts::Manual::has_leaf_or_child_of_name(
 
 Native::Interface::VirtualTemplate::Cts::Manual::Policy::Policy()
     :
-    static_(std::make_shared<Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_>())
+    static_(std::make_shared<Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static>())
 {
     static_->parent = this;
 
@@ -12227,7 +12320,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Policy:
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_>();
+            static_ = std::make_shared<Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static>();
         }
         return static_;
     }
@@ -12238,6 +12331,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Policy:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(static_ != nullptr)
     {
         children["static"] = static_;
@@ -12261,7 +12355,7 @@ bool Native::Interface::VirtualTemplate::Cts::Manual::Policy::has_leaf_or_child_
     return false;
 }
 
-Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::Static_()
+Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::Static()
     :
     sgt{YType::uint16, "sgt"},
     trusted{YType::empty, "trusted"}
@@ -12270,31 +12364,31 @@ Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::Static_()
     yang_name = "static"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::~Static_()
+Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::~Static()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::has_data() const
+bool Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::has_data() const
 {
     return sgt.is_set
 	|| trusted.is_set;
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::has_operation() const
+bool Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sgt.yfilter)
 	|| ydk::is_set(trusted.yfilter);
 }
 
-std::string Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12305,18 +12399,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplat
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sgt")
     {
@@ -12332,7 +12427,7 @@ void Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::set_value
     }
 }
 
-void Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sgt")
     {
@@ -12344,7 +12439,7 @@ void Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::set_filte
     }
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sgt" || name == "trusted")
         return true;
@@ -12401,14 +12496,6 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::ge
 {
     if(child_yang_name == "pmk")
     {
-        for(auto const & c : pmk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk>();
         c->parent = this;
         pmk.push_back(c);
@@ -12421,9 +12508,14 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Sap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pmk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12506,6 +12598,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pm
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode_list != nullptr)
     {
         children["mode-list"] = mode_list;
@@ -12607,6 +12700,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pm
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gcm_encrypt != nullptr)
     {
         children["gcm-encrypt"] = gcm_encrypt;
@@ -12691,6 +12785,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pm
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gmac != nullptr)
     {
         children["gmac"] = gmac;
@@ -12762,6 +12857,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pm
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12846,6 +12942,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pm
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gmac != nullptr)
     {
         children["gmac"] = gmac;
@@ -12917,6 +13014,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pm
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12993,6 +13091,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cts::Manual::Propaga
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Propagate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13091,6 +13190,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::ServicePolicy::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(type != nullptr)
     {
         children["type"] = type;
@@ -13227,6 +13327,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::ServicePolicy::Type:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::ServicePolicy::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(control != nullptr)
     {
         children["control"] = control;
@@ -13308,6 +13409,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::ServicePolicy::Type:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::ServicePolicy::Type::Control::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13388,6 +13490,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::ServicePolicy::Type:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::ServicePolicy::Type::PerformanceMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13496,6 +13599,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::ServicePolicy::Type:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::ServicePolicy::Type::ServiceChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -13572,6 +13676,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::ServicePolicy::Type:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::ServicePolicy::Type::ServiceChain::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13648,6 +13753,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::ServicePolicy::Type:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::ServicePolicy::Type::ServiceChain::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13780,6 +13886,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chap != nullptr)
     {
         children["chap"] = chap;
@@ -13890,6 +13997,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Chap::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Chap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14024,6 +14132,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Authentication:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14229,6 +14338,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Ipcp::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Ipcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dns != nullptr)
     {
         children["dns"] = dns;
@@ -14300,6 +14410,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Ipcp::Dns::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Ipcp::Dns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14416,6 +14527,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(links != nullptr)
     {
         children["links"] = links;
@@ -14516,6 +14628,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::Link
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::Links::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minimum != nullptr)
     {
         children["minimum"] = minimum;
@@ -14591,6 +14704,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::Link
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14677,6 +14791,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::Endp
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14762,6 +14877,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::Frag
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay != nullptr)
     {
         children["delay"] = delay;
@@ -14837,6 +14953,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::Frag
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14923,6 +15040,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Mab::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Mab::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15003,6 +15121,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Umbrella::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Umbrella::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15089,6 +15208,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Utd::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Utd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15165,6 +15285,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualTemplate::ZoneMember::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::ZoneMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15663,14 +15784,6 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::get_child_by_name(c
 
     if(child_yang_name == "hold-queue")
     {
-        for(auto const & c : hold_queue)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::HoldQueue>();
         c->parent = this;
         hold_queue.push_back(c);
@@ -15971,6 +16084,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(switchport_conf != nullptr)
     {
         children["switchport-conf"] = switchport_conf;
@@ -16061,9 +16175,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
         children["domain"] = domain;
     }
 
+    count = 0;
     for (auto const & c : hold_queue)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(mpls != nullptr)

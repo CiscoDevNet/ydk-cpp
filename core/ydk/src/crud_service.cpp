@@ -152,7 +152,7 @@ static string get_config_data_payload(Entity & entity, ydk::ServiceProvider & pr
         dn = dn->get_parent();
     path::Codec codec{};
     YLOG_DEBUG("Encoding the subtree filter request using path API DataNode");
-    string payload = codec.encode(*dn, provider.get_encoding(), false);
+    string payload = codec.encode(*dn, provider.get_encoding(), true);
     return payload;
 }
 

@@ -638,7 +638,7 @@ class Native::Ip::Dhcp : public ydk::Entity
 
         ydk::YLeaf smart_relay; //type: empty
         class Bootp; //type: Native::Ip::Dhcp::Bootp
-        class Class_; //type: Native::Ip::Dhcp::Class_
+        class Class; //type: Native::Ip::Dhcp::Class
         class Conflict; //type: Native::Ip::Dhcp::Conflict
         class ExcludedAddress; //type: Native::Ip::Dhcp::ExcludedAddress
         class Relay; //type: Native::Ip::Dhcp::Relay
@@ -647,7 +647,7 @@ class Native::Ip::Dhcp : public ydk::Entity
         class Snooping; //type: Native::Ip::Dhcp::Snooping
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Bootp> bootp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Class> > class_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Conflict> conflict;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::ExcludedAddress> > excluded_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Relay> relay;
@@ -680,11 +680,11 @@ class Native::Ip::Dhcp::Bootp : public ydk::Entity
 }; // Native::Ip::Dhcp::Bootp
 
 
-class Native::Ip::Dhcp::Class_ : public ydk::Entity
+class Native::Ip::Dhcp::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -699,14 +699,14 @@ class Native::Ip::Dhcp::Class_ : public ydk::Entity
 
         ydk::YLeaf id; //type: string
         ydk::YLeaf remark; //type: string
-        class Relay; //type: Native::Ip::Dhcp::Class_::Relay
+        class Relay; //type: Native::Ip::Dhcp::Class::Relay
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Class_::Relay> relay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Class::Relay> relay;
         
-}; // Native::Ip::Dhcp::Class_
+}; // Native::Ip::Dhcp::Class
 
 
-class Native::Ip::Dhcp::Class_::Relay : public ydk::Entity
+class Native::Ip::Dhcp::Class::Relay : public ydk::Entity
 {
     public:
         Relay();
@@ -722,14 +722,14 @@ class Native::Ip::Dhcp::Class_::Relay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Agent; //type: Native::Ip::Dhcp::Class_::Relay::Agent
+        class Agent; //type: Native::Ip::Dhcp::Class::Relay::Agent
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Class_::Relay::Agent> agent;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Class::Relay::Agent> agent;
         
-}; // Native::Ip::Dhcp::Class_::Relay
+}; // Native::Ip::Dhcp::Class::Relay
 
 
-class Native::Ip::Dhcp::Class_::Relay::Agent : public ydk::Entity
+class Native::Ip::Dhcp::Class::Relay::Agent : public ydk::Entity
 {
     public:
         Agent();
@@ -747,7 +747,7 @@ class Native::Ip::Dhcp::Class_::Relay::Agent : public ydk::Entity
 
         ydk::YLeaf information; //type: empty
 
-}; // Native::Ip::Dhcp::Class_::Relay::Agent
+}; // Native::Ip::Dhcp::Class::Relay::Agent
 
 
 class Native::Ip::Dhcp::Conflict : public ydk::Entity
@@ -916,12 +916,12 @@ class Native::Ip::Dhcp::Pool : public ydk::Entity
         ydk::YLeafList default_router; //type: list of  string
         ydk::YLeafList dns_server; //type: list of  string
         class Option; //type: Native::Ip::Dhcp::Pool::Option
-        class Class_; //type: Native::Ip::Dhcp::Pool::Class_
+        class Class; //type: Native::Ip::Dhcp::Pool::Class
         class Lease; //type: Native::Ip::Dhcp::Pool::Lease
         class Network; //type: Native::Ip::Dhcp::Pool::Network
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Option> option;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Class> > class_;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Lease> > lease;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Network> network;
         
@@ -999,11 +999,11 @@ class Native::Ip::Dhcp::Pool::Option::OptionRange::Hex : public ydk::Entity
 }; // Native::Ip::Dhcp::Pool::Option::OptionRange::Hex
 
 
-class Native::Ip::Dhcp::Pool::Class_ : public ydk::Entity
+class Native::Ip::Dhcp::Pool::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1016,14 +1016,14 @@ class Native::Ip::Dhcp::Pool::Class_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Address; //type: Native::Ip::Dhcp::Pool::Class_::Address
+        class Address; //type: Native::Ip::Dhcp::Pool::Class::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Class_::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Class::Address> address;
         
-}; // Native::Ip::Dhcp::Pool::Class_
+}; // Native::Ip::Dhcp::Pool::Class
 
 
-class Native::Ip::Dhcp::Pool::Class_::Address : public ydk::Entity
+class Native::Ip::Dhcp::Pool::Class::Address : public ydk::Entity
 {
     public:
         Address();
@@ -1039,14 +1039,14 @@ class Native::Ip::Dhcp::Pool::Class_::Address : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Range; //type: Native::Ip::Dhcp::Pool::Class_::Address::Range
+        class Range; //type: Native::Ip::Dhcp::Pool::Class::Address::Range
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Class_::Address::Range> range;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Class::Address::Range> range;
         
-}; // Native::Ip::Dhcp::Pool::Class_::Address
+}; // Native::Ip::Dhcp::Pool::Class::Address
 
 
-class Native::Ip::Dhcp::Pool::Class_::Address::Range : public ydk::Entity
+class Native::Ip::Dhcp::Pool::Class::Address::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1065,7 +1065,7 @@ class Native::Ip::Dhcp::Pool::Class_::Address::Range : public ydk::Entity
         ydk::YLeaf ipv4_start; //type: string
         ydk::YLeaf ipv4_end; //type: string
 
-}; // Native::Ip::Dhcp::Pool::Class_::Address::Range
+}; // Native::Ip::Dhcp::Pool::Class::Address::Range
 
 
 class Native::Ip::Dhcp::Pool::Lease : public ydk::Entity
@@ -2002,7 +2002,7 @@ class Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_::GroupList : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group_list_name; //type: one of string, uint16
+        ydk::YLeaf group_list_name; //type: one of uint16, string
 
 }; // Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_::GroupList
 
@@ -2113,7 +2113,7 @@ class Native::Ip::Pim::AcceptRegister : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
 
 }; // Native::Ip::Pim::AcceptRegister
 
@@ -2158,7 +2158,7 @@ class Native::Ip::Pim::RpAddress : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf address; //type: string
-        ydk::YLeaf access_list; //type: one of string, uint16
+        ydk::YLeaf access_list; //type: one of uint16, string
         ydk::YLeaf override; //type: empty
 
 }; // Native::Ip::Pim::RpAddress
@@ -2182,7 +2182,7 @@ class Native::Ip::Pim::SptThreshold : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf how; //type: How
-        ydk::YLeaf group_list; //type: one of string, uint16
+        ydk::YLeaf group_list; //type: one of uint16, string
         class How;
 
 }; // Native::Ip::Pim::SptThreshold
@@ -2394,7 +2394,7 @@ class Native::Ip::Pim::Ssm : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf range; //type: one of string, uint16
+        ydk::YLeaf range; //type: one of uint16, string
         ydk::YLeaf default_; //type: empty
 
 }; // Native::Ip::Pim::Ssm
@@ -2456,7 +2456,7 @@ class Native::Ip::Pim::Vrf::AcceptRegister : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
 
 }; // Native::Ip::Pim::Vrf::AcceptRegister
 
@@ -2499,7 +2499,7 @@ class Native::Ip::Pim::Vrf::RpAddress : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: string
-        ydk::YLeaf access_list; //type: one of string, uint16
+        ydk::YLeaf access_list; //type: one of uint16, string
         ydk::YLeaf override; //type: empty
 
 }; // Native::Ip::Pim::Vrf::RpAddress
@@ -2522,7 +2522,7 @@ class Native::Ip::Pim::Vrf::SptThreshold : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf how; //type: How
-        ydk::YLeaf group_list; //type: one of string, uint16
+        ydk::YLeaf group_list; //type: one of uint16, string
         class How;
 
 }; // Native::Ip::Pim::Vrf::SptThreshold
@@ -2727,7 +2727,7 @@ class Native::Ip::Pim::Vrf::Ssm : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of string, uint16
+        ydk::YLeaf range; //type: one of uint16, string
         ydk::YLeaf default_; //type: empty
 
 }; // Native::Ip::Pim::Vrf::Ssm
@@ -2971,11 +2971,11 @@ class Native::Ip::Route : public ydk::Entity
 
         ydk::YLeaf profile; //type: empty
         class IpRouteInterfaceForwardingList; //type: Native::Ip::Route::IpRouteInterfaceForwardingList
-        class Static_; //type: Native::Ip::Route::Static_
+        class Static; //type: Native::Ip::Route::Static
         class Vrf; //type: Native::Ip::Route::Vrf
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::IpRouteInterfaceForwardingList> > ip_route_interface_forwarding_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::Static> static_;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::Vrf> > vrf;
         
 }; // Native::Ip::Route
@@ -3071,11 +3071,11 @@ class Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList::InterfaceNextH
 }; // Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList::InterfaceNextHop
 
 
-class Native::Ip::Route::Static_ : public ydk::Entity
+class Native::Ip::Route::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3090,16 +3090,16 @@ class Native::Ip::Route::Static_ : public ydk::Entity
 
         ydk::YLeaf adjust_time; //type: uint8
         ydk::YLeaf inter_vrf; //type: empty
-        class Bfd; //type: Native::Ip::Route::Static_::Bfd
-        class InstallRoutesRecurseViaNexthop; //type: Native::Ip::Route::Static_::InstallRoutesRecurseViaNexthop
+        class Bfd; //type: Native::Ip::Route::Static::Bfd
+        class InstallRoutesRecurseViaNexthop; //type: Native::Ip::Route::Static::InstallRoutesRecurseViaNexthop
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::Static_::Bfd> bfd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::Static_::InstallRoutesRecurseViaNexthop> install_routes_recurse_via_nexthop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::Static::Bfd> bfd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Route::Static::InstallRoutesRecurseViaNexthop> install_routes_recurse_via_nexthop;
         
-}; // Native::Ip::Route::Static_
+}; // Native::Ip::Route::Static
 
 
-class Native::Ip::Route::Static_::Bfd : public ydk::Entity
+class Native::Ip::Route::Static::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -3119,10 +3119,10 @@ class Native::Ip::Route::Static_::Bfd : public ydk::Entity
         ydk::YLeaf interface; //type: string
         ydk::YLeaf gateway_ip; //type: string
 
-}; // Native::Ip::Route::Static_::Bfd
+}; // Native::Ip::Route::Static::Bfd
 
 
-class Native::Ip::Route::Static_::InstallRoutesRecurseViaNexthop : public ydk::Entity
+class Native::Ip::Route::Static::InstallRoutesRecurseViaNexthop : public ydk::Entity
 {
     public:
         InstallRoutesRecurseViaNexthop();
@@ -3141,7 +3141,7 @@ class Native::Ip::Route::Static_::InstallRoutesRecurseViaNexthop : public ydk::E
 
         ydk::YLeaf vrf; //type: string
 
-}; // Native::Ip::Route::Static_::InstallRoutesRecurseViaNexthop
+}; // Native::Ip::Route::Static::InstallRoutesRecurseViaNexthop
 
 
 class Native::Ip::Route::Vrf : public ydk::Entity
@@ -3373,19 +3373,19 @@ class Native::Ip::ExplicitPath::Identifier : public ydk::Entity
 
         ydk::YLeaf pnum; //type: uint16
         ydk::YLeaf mode; //type: Mode
-        class Index_; //type: Native::Ip::ExplicitPath::Identifier::Index_
+        class Index; //type: Native::Ip::ExplicitPath::Identifier::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExplicitPath::Identifier::Index_> > index_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExplicitPath::Identifier::Index> > index_;
                 class Mode;
 
 }; // Native::Ip::ExplicitPath::Identifier
 
 
-class Native::Ip::ExplicitPath::Identifier::Index_ : public ydk::Entity
+class Native::Ip::ExplicitPath::Identifier::Index : public ydk::Entity
 {
     public:
-        Index_();
-        ~Index_();
+        Index();
+        ~Index();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3401,14 +3401,14 @@ class Native::Ip::ExplicitPath::Identifier::Index_ : public ydk::Entity
         ydk::YLeaf next_label; //type: uint32
         ydk::YLeaf exclude_address; //type: string
         ydk::YLeaf exclude_srlg; //type: string
-        class NextAddress; //type: Native::Ip::ExplicitPath::Identifier::Index_::NextAddress
+        class NextAddress; //type: Native::Ip::ExplicitPath::Identifier::Index::NextAddress
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExplicitPath::Identifier::Index_::NextAddress> next_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExplicitPath::Identifier::Index::NextAddress> next_address;
         
-}; // Native::Ip::ExplicitPath::Identifier::Index_
+}; // Native::Ip::ExplicitPath::Identifier::Index
 
 
-class Native::Ip::ExplicitPath::Identifier::Index_::NextAddress : public ydk::Entity
+class Native::Ip::ExplicitPath::Identifier::Index::NextAddress : public ydk::Entity
 {
     public:
         NextAddress();
@@ -3427,7 +3427,7 @@ class Native::Ip::ExplicitPath::Identifier::Index_::NextAddress : public ydk::En
         ydk::YLeaf loose; //type: empty
         ydk::YLeaf ipv4; //type: string
 
-}; // Native::Ip::ExplicitPath::Identifier::Index_::NextAddress
+}; // Native::Ip::ExplicitPath::Identifier::Index::NextAddress
 
 
 class Native::Ip::ExplicitPath::Name : public ydk::Entity
@@ -3449,19 +3449,19 @@ class Native::Ip::ExplicitPath::Name : public ydk::Entity
 
         ydk::YLeaf pname; //type: string
         ydk::YLeaf mode; //type: Mode
-        class Index_; //type: Native::Ip::ExplicitPath::Name::Index_
+        class Index; //type: Native::Ip::ExplicitPath::Name::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExplicitPath::Name::Index_> > index_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExplicitPath::Name::Index> > index_;
                 class Mode;
 
 }; // Native::Ip::ExplicitPath::Name
 
 
-class Native::Ip::ExplicitPath::Name::Index_ : public ydk::Entity
+class Native::Ip::ExplicitPath::Name::Index : public ydk::Entity
 {
     public:
-        Index_();
-        ~Index_();
+        Index();
+        ~Index();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3477,14 +3477,14 @@ class Native::Ip::ExplicitPath::Name::Index_ : public ydk::Entity
         ydk::YLeaf next_label; //type: uint32
         ydk::YLeaf exclude_address; //type: string
         ydk::YLeaf exclude_srlg; //type: string
-        class NextAddress; //type: Native::Ip::ExplicitPath::Name::Index_::NextAddress
+        class NextAddress; //type: Native::Ip::ExplicitPath::Name::Index::NextAddress
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExplicitPath::Name::Index_::NextAddress> next_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExplicitPath::Name::Index::NextAddress> next_address;
         
-}; // Native::Ip::ExplicitPath::Name::Index_
+}; // Native::Ip::ExplicitPath::Name::Index
 
 
-class Native::Ip::ExplicitPath::Name::Index_::NextAddress : public ydk::Entity
+class Native::Ip::ExplicitPath::Name::Index::NextAddress : public ydk::Entity
 {
     public:
         NextAddress();
@@ -3503,7 +3503,7 @@ class Native::Ip::ExplicitPath::Name::Index_::NextAddress : public ydk::Entity
         ydk::YLeaf loose; //type: empty
         ydk::YLeaf ipv4; //type: string
 
-}; // Native::Ip::ExplicitPath::Name::Index_::NextAddress
+}; // Native::Ip::ExplicitPath::Name::Index::NextAddress
 
 
 class Native::Ip::Scp : public ydk::Entity

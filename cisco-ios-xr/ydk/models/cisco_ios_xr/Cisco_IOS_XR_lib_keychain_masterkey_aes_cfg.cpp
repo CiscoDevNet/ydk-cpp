@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Password::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encryption != nullptr)
     {
         children["encryption"] = encryption;
@@ -171,6 +172,7 @@ std::shared_ptr<Entity> Password::Encryption::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Password::Encryption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -71,6 +71,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -189,6 +190,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -307,6 +309,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -425,6 +428,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -543,6 +547,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -661,6 +666,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -779,6 +785,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -897,6 +904,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1015,6 +1023,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1133,6 +1142,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1251,6 +1261,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1369,6 +1380,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1487,6 +1499,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1605,6 +1618,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProt
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1713,14 +1727,6 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::get_chil
 {
     if(child_yang_name == "rib-table-itf-hndl")
     {
-        for(auto const & c : rib_table_itf_hndl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl>();
         c->parent = this;
         rib_table_itf_hndl.push_back(c);
@@ -1733,9 +1739,14 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rib_table_itf_hndl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1810,14 +1821,6 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 {
     if(child_yang_name == "itf-route")
     {
-        for(auto const & c : itf_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute>();
         c->parent = this;
         itf_route.push_back(c);
@@ -1830,9 +1833,14 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : itf_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2053,6 +2061,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -2456,14 +2465,6 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 {
     if(child_yang_name == "ipv4-rib-edm-path")
     {
-        for(auto const & c : ipv4_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath>();
         c->parent = this;
         ipv4_rib_edm_path.push_back(c);
@@ -2476,9 +2477,14 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2703,14 +2709,6 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -2719,14 +2717,6 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -2739,14 +2729,23 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3175,6 +3174,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3251,6 +3251,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTable
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3383,6 +3384,7 @@ std::shared_ptr<Entity> Rib::RibTableIds::RibTableId::Information::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Rib::RibTableIds::RibTableId::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

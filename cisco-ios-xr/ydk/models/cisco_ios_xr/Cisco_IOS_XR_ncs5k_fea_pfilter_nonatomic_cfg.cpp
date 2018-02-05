@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Hardware::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Hardware::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_list != nullptr)
     {
         children["access-list"] = access_list;
@@ -171,6 +172,7 @@ std::shared_ptr<Entity> Hardware::AccessList::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Hardware::AccessList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

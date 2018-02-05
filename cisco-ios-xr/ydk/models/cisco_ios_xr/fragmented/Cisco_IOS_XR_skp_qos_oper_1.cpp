@@ -99,6 +99,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(police != nullptr)
     {
         children["police"] = police;
@@ -221,6 +222,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cir != nullptr)
     {
         children["cir"] = cir;
@@ -321,6 +323,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -411,6 +414,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -519,6 +523,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pir != nullptr)
     {
         children["pir"] = pir;
@@ -599,6 +604,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -689,6 +695,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -802,6 +809,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -892,6 +900,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -982,6 +991,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1095,6 +1105,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queue != nullptr)
     {
         children["queue"] = queue;
@@ -1193,6 +1204,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1311,6 +1323,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1419,14 +1432,6 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::get_child_by_nam
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -1439,9 +1444,14 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1537,6 +1547,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::get_c
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output != nullptr)
     {
         children["output"] = output;
@@ -1632,6 +1643,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -1738,6 +1750,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -1831,6 +1844,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1981,6 +1995,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2169,14 +2184,6 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 {
     if(child_yang_name == "qos-show-ea-pclass-st")
     {
-        for(auto const & c : qos_show_ea_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt>();
         c->parent = this;
         qos_show_ea_pclass_st.push_back(c);
@@ -2189,9 +2196,14 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qos_show_ea_pclass_st)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2307,6 +2319,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2483,6 +2496,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(police != nullptr)
     {
         children["police"] = police;
@@ -2605,6 +2619,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cir != nullptr)
     {
         children["cir"] = cir;
@@ -2705,6 +2720,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2795,6 +2811,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2903,6 +2920,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pir != nullptr)
     {
         children["pir"] = pir;
@@ -2983,6 +3001,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3073,6 +3092,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3186,6 +3206,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -3276,6 +3297,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3366,6 +3388,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3479,6 +3502,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queue != nullptr)
     {
         children["queue"] = queue;
@@ -3577,6 +3601,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3695,6 +3720,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Outpu
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3810,6 +3836,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -3916,6 +3943,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -4009,6 +4037,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4159,6 +4188,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4347,14 +4377,6 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 {
     if(child_yang_name == "qos-show-ea-pclass-st")
     {
-        for(auto const & c : qos_show_ea_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt>();
         c->parent = this;
         qos_show_ea_pclass_st.push_back(c);
@@ -4367,9 +4389,14 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qos_show_ea_pclass_st)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4485,6 +4512,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4661,6 +4689,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(police != nullptr)
     {
         children["police"] = police;
@@ -4783,6 +4812,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cir != nullptr)
     {
         children["cir"] = cir;
@@ -4883,6 +4913,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4973,6 +5004,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5081,6 +5113,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pir != nullptr)
     {
         children["pir"] = pir;
@@ -5161,6 +5194,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5251,6 +5285,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5364,6 +5399,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -5454,6 +5490,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5544,6 +5581,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5657,6 +5695,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queue != nullptr)
     {
         children["queue"] = queue;
@@ -5755,6 +5794,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5873,6 +5913,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

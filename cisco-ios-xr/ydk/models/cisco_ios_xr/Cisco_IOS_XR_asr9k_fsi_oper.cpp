@@ -68,6 +68,7 @@ std::shared_ptr<Entity> FabricStats::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> FabricStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> FabricStats::Nodes::get_child_by_name(const std::string 
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FabricStats::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> FabricStats::Nodes::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statses != nullptr)
     {
         children["statses"] = statses;
@@ -368,14 +367,6 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::get_child_by_name(con
 {
     if(child_yang_name == "stats")
     {
-        for(auto const & c : stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FabricStats::Nodes::Node::Statses::Stats>();
         c->parent = this;
         stats.push_back(c);
@@ -388,9 +379,14 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -473,14 +469,6 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::Stats::get_child_by_n
 {
     if(child_yang_name == "stats-table")
     {
-        for(auto const & c : stats_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FabricStats::Nodes::Node::Statses::Stats::StatsTable>();
         c->parent = this;
         stats_table.push_back(c);
@@ -493,9 +481,14 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::Stats::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stats_table)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -596,14 +589,6 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::Stats::StatsTable::ge
 {
     if(child_yang_name == "fsi-stat")
     {
-        for(auto const & c : fsi_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat>();
         c->parent = this;
         fsi_stat.push_back(c);
@@ -616,9 +601,14 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::Stats::StatsTable::ge
 std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses::Stats::StatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fsi_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -691,6 +681,7 @@ std::shared_ptr<Entity> FabricStats::Nodes::Node::Statses::Stats::StatsTable::Fs
 std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

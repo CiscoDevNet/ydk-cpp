@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.9)
+cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
 set(YDK_UNITTEST_TARGET_NAME "ydk_core_test")
 

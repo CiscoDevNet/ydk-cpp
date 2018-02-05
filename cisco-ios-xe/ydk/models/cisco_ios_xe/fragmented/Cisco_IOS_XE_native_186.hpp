@@ -38,11 +38,11 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf::RipMetr
 }; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -54,14 +54,14 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_ : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RipMetricRouteMap; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_
+}; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static
 
 
-class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -78,14 +78,14 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipM
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap
+}; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap
 
 
-class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -104,7 +104,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipM
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric
 
 
 class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Rip_ : public ydk::Entity
@@ -224,11 +224,11 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Timers::Basic : public ydk:
 }; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Timers::Basic
 
 
-class Native::Router::Rip::Default_ : public ydk::Entity
+class Native::Router::Rip::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -249,36 +249,36 @@ class Native::Router::Rip::Default_ : public ydk::Entity
         ydk::YLeaf input_queue; //type: empty
         ydk::YLeaf output_delay; //type: empty
         ydk::YLeaf version; //type: empty
-        class AddressFamily; //type: Native::Router::Rip::Default_::AddressFamily
-        class Neighbor; //type: Native::Router::Rip::Default_::Neighbor
-        class Network; //type: Native::Router::Rip::Default_::Network
-        class DefaultInformation; //type: Native::Router::Rip::Default_::DefaultInformation
-        class Distance; //type: Native::Router::Rip::Default_::Distance
-        class DistributeList; //type: Native::Router::Rip::Default_::DistributeList
-        class OffsetList; //type: Native::Router::Rip::Default_::OffsetList
-        class PassiveInterface; //type: Native::Router::Rip::Default_::PassiveInterface
-        class Disable; //type: Native::Router::Rip::Default_::Disable
-        class Redistribute; //type: Native::Router::Rip::Default_::Redistribute
-        class Timers; //type: Native::Router::Rip::Default_::Timers
-        class TrafficShare; //type: Native::Router::Rip::Default_::TrafficShare
+        class AddressFamily; //type: Native::Router::Rip::Default::AddressFamily
+        class Neighbor; //type: Native::Router::Rip::Default::Neighbor
+        class Network; //type: Native::Router::Rip::Default::Network
+        class DefaultInformation; //type: Native::Router::Rip::Default::DefaultInformation
+        class Distance; //type: Native::Router::Rip::Default::Distance
+        class DistributeList; //type: Native::Router::Rip::Default::DistributeList
+        class OffsetList; //type: Native::Router::Rip::Default::OffsetList
+        class PassiveInterface; //type: Native::Router::Rip::Default::PassiveInterface
+        class Disable; //type: Native::Router::Rip::Default::Disable
+        class Redistribute; //type: Native::Router::Rip::Default::Redistribute
+        class Timers; //type: Native::Router::Rip::Default::Timers
+        class TrafficShare; //type: Native::Router::Rip::Default::TrafficShare
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::AddressFamily> address_family;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Neighbor> > neighbor;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Network> > network;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::DefaultInformation> default_information;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Distance> distance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::DistributeList> distribute_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::OffsetList> > offset_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::PassiveInterface> passive_interface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Disable> disable;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute> redistribute;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Timers> timers;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::TrafficShare> traffic_share;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::AddressFamily> address_family;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Neighbor> > neighbor;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Network> > network;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DefaultInformation> default_information;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Distance> distance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList> distribute_list;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::OffsetList> > offset_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::PassiveInterface> passive_interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Disable> disable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute> redistribute;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Timers> timers;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::TrafficShare> traffic_share;
         
-}; // Native::Router::Rip::Default_
+}; // Native::Router::Rip::Default
 
 
-class Native::Router::Rip::Default_::AddressFamily : public ydk::Entity
+class Native::Router::Rip::Default::AddressFamily : public ydk::Entity
 {
     public:
         AddressFamily();
@@ -295,14 +295,14 @@ class Native::Router::Rip::Default_::AddressFamily : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv4; //type: Native::Router::Rip::Default_::AddressFamily::Ipv4
+        class Ipv4; //type: Native::Router::Rip::Default::AddressFamily::Ipv4
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::AddressFamily::Ipv4> ipv4; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::AddressFamily::Ipv4> ipv4; // presence node
         
-}; // Native::Router::Rip::Default_::AddressFamily
+}; // Native::Router::Rip::Default::AddressFamily
 
 
-class Native::Router::Rip::Default_::AddressFamily::Ipv4 : public ydk::Entity
+class Native::Router::Rip::Default::AddressFamily::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -320,14 +320,14 @@ class Native::Router::Rip::Default_::AddressFamily::Ipv4 : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf unicast; //type: empty
-        class Vrf; //type: Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf
+        class Vrf; //type: Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf> > vrf;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf> > vrf;
         
-}; // Native::Router::Rip::Default_::AddressFamily::Ipv4
+}; // Native::Router::Rip::Default::AddressFamily::Ipv4
 
 
-class Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf : public ydk::Entity
+class Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -346,10 +346,10 @@ class Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf : public ydk::Enti
 
         ydk::YLeaf name; //type: string
 
-}; // Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf
+}; // Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf
 
 
-class Native::Router::Rip::Default_::Neighbor : public ydk::Entity
+class Native::Router::Rip::Default::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -368,10 +368,10 @@ class Native::Router::Rip::Default_::Neighbor : public ydk::Entity
 
         ydk::YLeaf ip; //type: string
 
-}; // Native::Router::Rip::Default_::Neighbor
+}; // Native::Router::Rip::Default::Neighbor
 
 
-class Native::Router::Rip::Default_::Network : public ydk::Entity
+class Native::Router::Rip::Default::Network : public ydk::Entity
 {
     public:
         Network();
@@ -390,10 +390,10 @@ class Native::Router::Rip::Default_::Network : public ydk::Entity
 
         ydk::YLeaf ip; //type: string
 
-}; // Native::Router::Rip::Default_::Network
+}; // Native::Router::Rip::Default::Network
 
 
-class Native::Router::Rip::Default_::DefaultInformation : public ydk::Entity
+class Native::Router::Rip::Default::DefaultInformation : public ydk::Entity
 {
     public:
         DefaultInformation();
@@ -412,10 +412,10 @@ class Native::Router::Rip::Default_::DefaultInformation : public ydk::Entity
 
         ydk::YLeaf originate; //type: empty
 
-}; // Native::Router::Rip::Default_::DefaultInformation
+}; // Native::Router::Rip::Default::DefaultInformation
 
 
-class Native::Router::Rip::Default_::Distance : public ydk::Entity
+class Native::Router::Rip::Default::Distance : public ydk::Entity
 {
     public:
         Distance();
@@ -433,14 +433,14 @@ class Native::Router::Rip::Default_::Distance : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf distance_leaf; //type: uint8
-        class DistanceList; //type: Native::Router::Rip::Default_::Distance::DistanceList
+        class DistanceList; //type: Native::Router::Rip::Default::Distance::DistanceList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Distance::DistanceList> > distance_list;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Distance::DistanceList> > distance_list;
         
-}; // Native::Router::Rip::Default_::Distance
+}; // Native::Router::Rip::Default::Distance
 
 
-class Native::Router::Rip::Default_::Distance::DistanceList : public ydk::Entity
+class Native::Router::Rip::Default::Distance::DistanceList : public ydk::Entity
 {
     public:
         DistanceList();
@@ -460,12 +460,12 @@ class Native::Router::Rip::Default_::Distance::DistanceList : public ydk::Entity
         ydk::YLeaf number; //type: uint8
         ydk::YLeaf ip; //type: string
         ydk::YLeaf mask; //type: string
-        ydk::YLeaf access_list; //type: one of uint8, uint16
+        ydk::YLeaf access_list; //type: one of uint16, uint8
 
-}; // Native::Router::Rip::Default_::Distance::DistanceList
+}; // Native::Router::Rip::Default::Distance::DistanceList
 
 
-class Native::Router::Rip::Default_::DistributeList : public ydk::Entity
+class Native::Router::Rip::Default::DistributeList : public ydk::Entity
 {
     public:
         DistributeList();
@@ -482,20 +482,20 @@ class Native::Router::Rip::Default_::DistributeList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Accesslist; //type: Native::Router::Rip::Default_::DistributeList::Accesslist
-        class AccesslistIfname; //type: Native::Router::Rip::Default_::DistributeList::AccesslistIfname
-        class AccesslistPrefixGateway; //type: Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway
-        class AccesslistPrefixGatewayIfname; //type: Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname
+        class Accesslist; //type: Native::Router::Rip::Default::DistributeList::Accesslist
+        class AccesslistIfname; //type: Native::Router::Rip::Default::DistributeList::AccesslistIfname
+        class AccesslistPrefixGateway; //type: Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway
+        class AccesslistPrefixGatewayIfname; //type: Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::DistributeList::Accesslist> > accesslist;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::DistributeList::AccesslistIfname> > accesslist_ifname;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway> > accesslist_prefix_gateway;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname> > accesslist_prefix_gateway_ifname;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList::Accesslist> > accesslist;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList::AccesslistIfname> > accesslist_ifname;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway> > accesslist_prefix_gateway;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname> > accesslist_prefix_gateway_ifname;
         
-}; // Native::Router::Rip::Default_::DistributeList
+}; // Native::Router::Rip::Default::DistributeList
 
 
-class Native::Router::Rip::Default_::DistributeList::Accesslist : public ydk::Entity
+class Native::Router::Rip::Default::DistributeList::Accesslist : public ydk::Entity
 {
     public:
         Accesslist();
@@ -515,10 +515,10 @@ class Native::Router::Rip::Default_::DistributeList::Accesslist : public ydk::En
         ydk::YLeaf in_out; //type: AccessListInOutType
         ydk::YLeaf id; //type: uint32
 
-}; // Native::Router::Rip::Default_::DistributeList::Accesslist
+}; // Native::Router::Rip::Default::DistributeList::Accesslist
 
 
-class Native::Router::Rip::Default_::DistributeList::AccesslistIfname : public ydk::Entity
+class Native::Router::Rip::Default::DistributeList::AccesslistIfname : public ydk::Entity
 {
     public:
         AccesslistIfname();
@@ -542,10 +542,10 @@ class Native::Router::Rip::Default_::DistributeList::AccesslistIfname : public y
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf id; //type: uint32
 
-}; // Native::Router::Rip::Default_::DistributeList::AccesslistIfname
+}; // Native::Router::Rip::Default::DistributeList::AccesslistIfname
 
 
-class Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway : public ydk::Entity
+class Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway : public ydk::Entity
 {
     public:
         AccesslistPrefixGateway();
@@ -567,10 +567,10 @@ class Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway : p
         ydk::YLeaf name; //type: string
         class PrefixGateway;
 
-}; // Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway
+}; // Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway
 
 
-class Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname : public ydk::Entity
+class Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname : public ydk::Entity
 {
     public:
         AccesslistPrefixGatewayIfname();
@@ -596,10 +596,10 @@ class Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfna
         ydk::YLeaf vrf; //type: string
         class PrefixGateway;
 
-}; // Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname
+}; // Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname
 
 
-class Native::Router::Rip::Default_::OffsetList : public ydk::Entity
+class Native::Router::Rip::Default::OffsetList : public ydk::Entity
 {
     public:
         OffsetList();
@@ -620,10 +620,10 @@ class Native::Router::Rip::Default_::OffsetList : public ydk::Entity
         ydk::YLeaf offset; //type: uint8
         ydk::YLeaf id; //type: uint32
 
-}; // Native::Router::Rip::Default_::OffsetList
+}; // Native::Router::Rip::Default::OffsetList
 
 
-class Native::Router::Rip::Default_::PassiveInterface : public ydk::Entity
+class Native::Router::Rip::Default::PassiveInterface : public ydk::Entity
 {
     public:
         PassiveInterface();
@@ -643,10 +643,10 @@ class Native::Router::Rip::Default_::PassiveInterface : public ydk::Entity
         ydk::YLeaf default_; //type: empty
         ydk::YLeaf interface; //type: string
 
-}; // Native::Router::Rip::Default_::PassiveInterface
+}; // Native::Router::Rip::Default::PassiveInterface
 
 
-class Native::Router::Rip::Default_::Disable : public ydk::Entity
+class Native::Router::Rip::Default::Disable : public ydk::Entity
 {
     public:
         Disable();
@@ -663,14 +663,14 @@ class Native::Router::Rip::Default_::Disable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class PassiveInterface; //type: Native::Router::Rip::Default_::Disable::PassiveInterface
+        class PassiveInterface; //type: Native::Router::Rip::Default::Disable::PassiveInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Disable::PassiveInterface> > passive_interface;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Disable::PassiveInterface> > passive_interface;
         
-}; // Native::Router::Rip::Default_::Disable
+}; // Native::Router::Rip::Default::Disable
 
 
-class Native::Router::Rip::Default_::Disable::PassiveInterface : public ydk::Entity
+class Native::Router::Rip::Default::Disable::PassiveInterface : public ydk::Entity
 {
     public:
         PassiveInterface();
@@ -689,10 +689,10 @@ class Native::Router::Rip::Default_::Disable::PassiveInterface : public ydk::Ent
 
         ydk::YLeaf interface; //type: string
 
-}; // Native::Router::Rip::Default_::Disable::PassiveInterface
+}; // Native::Router::Rip::Default::Disable::PassiveInterface
 
 
-class Native::Router::Rip::Default_::Redistribute : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute : public ydk::Entity
 {
     public:
         Redistribute();
@@ -709,32 +709,32 @@ class Native::Router::Rip::Default_::Redistribute : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Connected; //type: Native::Router::Rip::Default_::Redistribute::Connected
-        class Bgp; //type: Native::Router::Rip::Default_::Redistribute::Bgp
-        class Eigrp; //type: Native::Router::Rip::Default_::Redistribute::Eigrp
-        class Isis; //type: Native::Router::Rip::Default_::Redistribute::Isis
-        class IsoIgrp; //type: Native::Router::Rip::Default_::Redistribute::IsoIgrp
-        class Mobile; //type: Native::Router::Rip::Default_::Redistribute::Mobile
-        class Odr; //type: Native::Router::Rip::Default_::Redistribute::Odr
-        class Ospf; //type: Native::Router::Rip::Default_::Redistribute::Ospf
-        class Static_; //type: Native::Router::Rip::Default_::Redistribute::Static_
-        class Rip_; //type: Native::Router::Rip::Default_::Redistribute::Rip_
+        class Connected; //type: Native::Router::Rip::Default::Redistribute::Connected
+        class Bgp; //type: Native::Router::Rip::Default::Redistribute::Bgp
+        class Eigrp; //type: Native::Router::Rip::Default::Redistribute::Eigrp
+        class Isis; //type: Native::Router::Rip::Default::Redistribute::Isis
+        class IsoIgrp; //type: Native::Router::Rip::Default::Redistribute::IsoIgrp
+        class Mobile; //type: Native::Router::Rip::Default::Redistribute::Mobile
+        class Odr; //type: Native::Router::Rip::Default::Redistribute::Odr
+        class Ospf; //type: Native::Router::Rip::Default::Redistribute::Ospf
+        class Static; //type: Native::Router::Rip::Default::Redistribute::Static
+        class Rip_; //type: Native::Router::Rip::Default::Redistribute::Rip_
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Connected> connected; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Bgp> > bgp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Eigrp> > eigrp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Isis> isis; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::IsoIgrp> iso_igrp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Mobile> mobile; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Odr> odr; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf> > ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Static_> static_; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Rip_> rip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Connected> connected; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Bgp> > bgp;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Eigrp> > eigrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis> isis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::IsoIgrp> iso_igrp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Mobile> mobile; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Odr> odr; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf> > ospf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Static> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Rip_> rip; // presence node
         
-}; // Native::Router::Rip::Default_::Redistribute
+}; // Native::Router::Rip::Default::Redistribute
 
 
-class Native::Router::Rip::Default_::Redistribute::Connected : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Connected : public ydk::Entity
 {
     public:
         Connected();
@@ -751,14 +751,14 @@ class Native::Router::Rip::Default_::Redistribute::Connected : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Connected
+}; // Native::Router::Rip::Default::Redistribute::Connected
 
 
-class Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -776,14 +776,14 @@ class Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap 
         std::string get_absolute_path() const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -803,10 +803,10 @@ class Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap:
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Bgp : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -824,14 +824,14 @@ class Native::Router::Rip::Default_::Redistribute::Bgp : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf as_number; //type: one of string, uint32
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Bgp
+}; // Native::Router::Rip::Default::Redistribute::Bgp
 
 
-class Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -848,14 +848,14 @@ class Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -874,10 +874,10 @@ class Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metri
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Eigrp : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Eigrp : public ydk::Entity
 {
     public:
         Eigrp();
@@ -895,14 +895,14 @@ class Native::Router::Rip::Default_::Redistribute::Eigrp : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf as_number; //type: uint16
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Eigrp
+}; // Native::Router::Rip::Default::Redistribute::Eigrp
 
 
-class Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -919,14 +919,14 @@ class Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -945,10 +945,10 @@ class Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Met
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Isis : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -965,16 +965,16 @@ class Native::Router::Rip::Default_::Redistribute::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class IsisArea; //type: Native::Router::Rip::Default_::Redistribute::Isis::IsisArea
-        class RipIsisRedist; //type: Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist
+        class IsisArea; //type: Native::Router::Rip::Default::Redistribute::Isis::IsisArea
+        class RipIsisRedist; //type: Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Isis::IsisArea> > isis_area;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist> rip_isis_redist;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis::IsisArea> > isis_area;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist> rip_isis_redist;
         
-}; // Native::Router::Rip::Default_::Redistribute::Isis
+}; // Native::Router::Rip::Default::Redistribute::Isis
 
 
-class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Isis::IsisArea : public ydk::Entity
 {
     public:
         IsisArea();
@@ -992,14 +992,14 @@ class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea : public ydk::
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        class RipIsisRedist; //type: Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist
+        class RipIsisRedist; //type: Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist> rip_isis_redist;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist> rip_isis_redist;
         
-}; // Native::Router::Rip::Default_::Redistribute::Isis::IsisArea
+}; // Native::Router::Rip::Default::Redistribute::Isis::IsisArea
 
 
-class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist : public ydk::Entity
 {
     public:
         RipIsisRedist();
@@ -1016,15 +1016,15 @@ class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf isis_level_routes; //type: IsisLevelRoutes
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap> rip_metric_route_map;
                 class IsisLevelRoutes;
 
-}; // Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist
+}; // Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist
 
 
-class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1041,14 +1041,14 @@ class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1067,10 +1067,10 @@ class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist : public ydk::Entity
 {
     public:
         RipIsisRedist();
@@ -1088,15 +1088,15 @@ class Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist : public 
         std::string get_absolute_path() const override;
 
         ydk::YLeaf isis_level_routes; //type: IsisLevelRoutes
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap> rip_metric_route_map;
                 class IsisLevelRoutes;
 
-}; // Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist
+}; // Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist
 
 
-class Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1114,14 +1114,14 @@ class Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetri
         std::string get_absolute_path() const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1141,10 +1141,10 @@ class Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetri
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::IsoIgrp : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::IsoIgrp : public ydk::Entity
 {
     public:
         IsoIgrp();
@@ -1161,16 +1161,16 @@ class Native::Router::Rip::Default_::Redistribute::IsoIgrp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class IsoigrpList; //type: Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap
+        class IsoigrpList; //type: Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList> > isoigrp_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap> rip_metric_route_map;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList> > isoigrp_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::IsoIgrp
+}; // Native::Router::Rip::Default::Redistribute::IsoIgrp
 
 
-class Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList : public ydk::Entity
 {
     public:
         IsoigrpList();
@@ -1188,14 +1188,14 @@ class Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList : public
         std::string get_absolute_path() const override;
 
         ydk::YLeaf iso_area_tag; //type: string
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList
+}; // Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList
 
 
-class Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1212,14 +1212,14 @@ class Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1238,10 +1238,10 @@ class Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetr
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1259,14 +1259,14 @@ class Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap : 
         std::string get_absolute_path() const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1286,10 +1286,10 @@ class Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::M
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Mobile : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Mobile : public ydk::Entity
 {
     public:
         Mobile();
@@ -1306,14 +1306,14 @@ class Native::Router::Rip::Default_::Redistribute::Mobile : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Mobile
+}; // Native::Router::Rip::Default::Redistribute::Mobile
 
 
-class Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1331,14 +1331,14 @@ class Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap : p
         std::string get_absolute_path() const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1358,10 +1358,10 @@ class Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Me
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Odr : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Odr : public ydk::Entity
 {
     public:
         Odr();
@@ -1378,14 +1378,14 @@ class Native::Router::Rip::Default_::Redistribute::Odr : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Odr
+}; // Native::Router::Rip::Default::Redistribute::Odr
 
 
-class Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1403,14 +1403,14 @@ class Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap : publ
         std::string get_absolute_path() const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1430,10 +1430,10 @@ class Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metri
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -1451,18 +1451,18 @@ class Native::Router::Rip::Default_::Redistribute::Ospf : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf process_id; //type: uint16
-        class Vrf; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Vrf
-        class Match; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap
+        class Vrf; //type: Native::Router::Rip::Default::Redistribute::Ospf::Vrf
+        class Match; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Vrf> > vrf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match> match;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap> rip_metric_route_map;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Vrf> > vrf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match> match;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Ospf
+}; // Native::Router::Rip::Default::Redistribute::Ospf
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Vrf : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -1480,10 +1480,10 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Vrf : public ydk::Entit
 
         ydk::YLeaf name; //type: string
 
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Vrf
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Vrf
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match : public ydk::Entity
 {
     public:
         Match();
@@ -1499,18 +1499,18 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Internal; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal
-        class External; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match::External
-        class NssaExternal; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal
+        class Internal; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal
+        class External; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match::External
+        class NssaExternal; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal> internal; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match::External> external; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal> nssa_external; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal> internal; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match::External> external; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal> nssa_external; // presence node
         
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal : public ydk::Entity
 {
     public:
         Internal();
@@ -1526,14 +1526,14 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1550,14 +1550,14 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMet
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1576,10 +1576,10 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMet
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match::External : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match::External : public ydk::Entity
 {
     public:
         External();
@@ -1596,14 +1596,14 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match::External : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf external_routes; //type: RedistOspfExternalType
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match::External
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match::External
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1620,14 +1620,14 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMet
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1646,10 +1646,10 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMet
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal : public ydk::Entity
 {
     public:
         NssaExternal();
@@ -1666,14 +1666,14 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf nssa_external_routes; //type: RedistOspfExternalType
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1690,14 +1690,14 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::Ri
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1716,10 +1716,10 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::Ri
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1736,14 +1736,14 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1762,14 +1762,14 @@ class Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metr
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1782,14 +1782,14 @@ class Native::Router::Rip::Default_::Redistribute::Static_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Static_
+}; // Native::Router::Rip::Default::Redistribute::Static
 
 
-class Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1807,14 +1807,14 @@ class Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap : 
         std::string get_absolute_path() const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1834,10 +1834,10 @@ class Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::M
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Redistribute::Rip_ : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Rip_ : public ydk::Entity
 {
     public:
         Rip_();
@@ -1854,14 +1854,14 @@ class Native::Router::Rip::Default_::Redistribute::Rip_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RipMetricRouteMap; //type: Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Default_::Redistribute::Rip_
+}; // Native::Router::Rip::Default::Redistribute::Rip_
 
 
-class Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -1879,14 +1879,14 @@ class Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap : pub
         std::string get_absolute_path() const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap
+}; // Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap
 
 
-class Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1906,10 +1906,10 @@ class Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metr
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Default_::Timers : public ydk::Entity
+class Native::Router::Rip::Default::Timers : public ydk::Entity
 {
     public:
         Timers();
@@ -1928,10 +1928,10 @@ class Native::Router::Rip::Default_::Timers : public ydk::Entity
 
         ydk::YLeaf basic; //type: empty
 
-}; // Native::Router::Rip::Default_::Timers
+}; // Native::Router::Rip::Default::Timers
 
 
-class Native::Router::Rip::Default_::TrafficShare : public ydk::Entity
+class Native::Router::Rip::Default::TrafficShare : public ydk::Entity
 {
     public:
         TrafficShare();
@@ -1948,14 +1948,14 @@ class Native::Router::Rip::Default_::TrafficShare : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Min; //type: Native::Router::Rip::Default_::TrafficShare::Min
+        class Min; //type: Native::Router::Rip::Default::TrafficShare::Min
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default_::TrafficShare::Min> min;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::TrafficShare::Min> min;
         
-}; // Native::Router::Rip::Default_::TrafficShare
+}; // Native::Router::Rip::Default::TrafficShare
 
 
-class Native::Router::Rip::Default_::TrafficShare::Min : public ydk::Entity
+class Native::Router::Rip::Default::TrafficShare::Min : public ydk::Entity
 {
     public:
         Min();
@@ -1974,7 +1974,7 @@ class Native::Router::Rip::Default_::TrafficShare::Min : public ydk::Entity
 
         ydk::YLeaf across_interfaces; //type: empty
 
-}; // Native::Router::Rip::Default_::TrafficShare::Min
+}; // Native::Router::Rip::Default::TrafficShare::Min
 
 
 class Native::ServiceChain : public ydk::Entity
@@ -2409,11 +2409,11 @@ class Native::Performance::Monitor::Context : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf profile; //type: Profile
         ydk::YLeaf description; //type: string
-        class Default_; //type: Native::Performance::Monitor::Context::Default_
+        class Default; //type: Native::Performance::Monitor::Context::Default
         class Exporter; //type: Native::Performance::Monitor::Context::Exporter
         class TrafficMonitor; //type: Native::Performance::Monitor::Context::TrafficMonitor
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Exporter> exporter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::TrafficMonitor> traffic_monitor;
                 class Profile;
@@ -2421,11 +2421,11 @@ class Native::Performance::Monitor::Context : public ydk::Entity
 }; // Native::Performance::Monitor::Context
 
 
-class Native::Performance::Monitor::Context::Default_ : public ydk::Entity
+class Native::Performance::Monitor::Context::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2438,16 +2438,16 @@ class Native::Performance::Monitor::Context::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf description; //type: empty
-        class Exporter; //type: Native::Performance::Monitor::Context::Default_::Exporter
-        class TrafficMonitor; //type: Native::Performance::Monitor::Context::Default_::TrafficMonitor
+        class Exporter; //type: Native::Performance::Monitor::Context::Default::Exporter
+        class TrafficMonitor; //type: Native::Performance::Monitor::Context::Default::TrafficMonitor
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::Exporter> exporter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::TrafficMonitor> traffic_monitor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::Exporter> exporter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::TrafficMonitor> traffic_monitor;
         
-}; // Native::Performance::Monitor::Context::Default_
+}; // Native::Performance::Monitor::Context::Default
 
 
-class Native::Performance::Monitor::Context::Default_::Exporter : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::Exporter : public ydk::Entity
 {
     public:
         Exporter();
@@ -2470,10 +2470,10 @@ class Native::Performance::Monitor::Context::Default_::Exporter : public ydk::En
         ydk::YLeaf vrf; //type: string
         class Transport;
 
-}; // Native::Performance::Monitor::Context::Default_::Exporter
+}; // Native::Performance::Monitor::Context::Default::Exporter
 
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::TrafficMonitor : public ydk::Entity
 {
     public:
         TrafficMonitor();
@@ -2489,28 +2489,28 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class All; //type: Native::Performance::Monitor::Context::Default_::TrafficMonitor::All
-        class ApplicationResponseTime; //type: Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime
-        class ApplicationTrafficStats; //type: Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats
-        class ConversationTrafficStats; //type: Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats
-        class Media; //type: Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media
-        class Url; //type: Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url
-        class ApplicationClientServerStats; //type: Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats
-        class ApplicationStats; //type: Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats
+        class All; //type: Native::Performance::Monitor::Context::Default::TrafficMonitor::All
+        class ApplicationResponseTime; //type: Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime
+        class ApplicationTrafficStats; //type: Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats
+        class ConversationTrafficStats; //type: Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats
+        class Media; //type: Native::Performance::Monitor::Context::Default::TrafficMonitor::Media
+        class Url; //type: Native::Performance::Monitor::Context::Default::TrafficMonitor::Url
+        class ApplicationClientServerStats; //type: Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats
+        class ApplicationStats; //type: Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::TrafficMonitor::All> all; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime> application_response_time; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats> application_traffic_stats; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats> conversation_traffic_stats; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media> media; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url> url; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats> application_client_server_stats; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats> application_stats; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::TrafficMonitor::All> all; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime> application_response_time; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats> application_traffic_stats; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats> conversation_traffic_stats; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::TrafficMonitor::Media> media; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::TrafficMonitor::Url> url; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats> application_client_server_stats; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats> application_stats; // presence node
         
-}; // Native::Performance::Monitor::Context::Default_::TrafficMonitor
+}; // Native::Performance::Monitor::Context::Default::TrafficMonitor
 
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::All : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::All : public ydk::Entity
 {
     public:
         All();
@@ -2529,10 +2529,10 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::All : pub
         ydk::YLeaf ipv4; //type: empty
         ydk::YLeaf ipv6; //type: empty
 
-}; // Native::Performance::Monitor::Context::Default_::TrafficMonitor::All
+}; // Native::Performance::Monitor::Context::Default::TrafficMonitor::All
 
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime : public ydk::Entity
 {
     public:
         ApplicationResponseTime();
@@ -2557,10 +2557,10 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicati
         ydk::YLeaf ipv6; //type: empty
         class CacheType;
 
-}; // Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime
+}; // Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime
 
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats : public ydk::Entity
 {
     public:
         ApplicationTrafficStats();
@@ -2580,10 +2580,10 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicati
         ydk::YLeaf class_replace; //type: string
         ydk::YLeaf interval_timeout; //type: uint32
 
-}; // Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats
+}; // Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats
 
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats : public ydk::Entity
 {
     public:
         ConversationTrafficStats();
@@ -2607,10 +2607,10 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Conversat
         ydk::YLeaf ipv6; //type: empty
         class CacheType;
 
-}; // Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats
+}; // Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats
 
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::Media : public ydk::Entity
 {
     public:
         Media();
@@ -2635,10 +2635,10 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media : p
         ydk::YLeaf ipv4; //type: empty
         ydk::YLeaf ipv6; //type: empty
 
-}; // Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media
+}; // Native::Performance::Monitor::Context::Default::TrafficMonitor::Media
 
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::Url : public ydk::Entity
 {
     public:
         Url();
@@ -2661,10 +2661,10 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url : pub
         ydk::YLeaf ipv6; //type: empty
         ydk::YLeaf sampling_rate; //type: uint32
 
-}; // Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url
+}; // Native::Performance::Monitor::Context::Default::TrafficMonitor::Url
 
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats : public ydk::Entity
 {
     public:
         ApplicationClientServerStats();
@@ -2688,10 +2688,10 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicati
         ydk::YLeaf ipv6; //type: empty
         class CacheType;
 
-}; // Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats
+}; // Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats
 
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats : public ydk::Entity
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats : public ydk::Entity
 {
     public:
         ApplicationStats();
@@ -2711,7 +2711,7 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicati
         ydk::YLeaf class_replace; //type: string
         ydk::YLeaf interval_timeout; //type: uint32
 
-}; // Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats
+}; // Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats
 
 
 class Native::Performance::Monitor::Context::Exporter : public ydk::Entity
@@ -3252,7 +3252,7 @@ class Native::Otv::Isis::Overlay : public ydk::Entity
         ydk::YLeaf lsp_refresh_interval; //type: uint32
         ydk::YLeaf max_lsp_lifetime; //type: uint32
         class Authentication; //type: Native::Otv::Isis::Overlay::Authentication
-        class Default_; //type: Native::Otv::Isis::Overlay::Default_
+        class Default; //type: Native::Otv::Isis::Overlay::Default
         class Hostname; //type: Native::Otv::Isis::Overlay::Hostname
         class LogAdjacencyChanges; //type: Native::Otv::Isis::Overlay::LogAdjacencyChanges
         class LspGenInterval; //type: Native::Otv::Isis::Overlay::LspGenInterval
@@ -3262,7 +3262,7 @@ class Native::Otv::Isis::Overlay : public ydk::Entity
         class SpfInterval; //type: Native::Otv::Isis::Overlay::SpfInterval
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Hostname> hostname;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::LogAdjacencyChanges> log_adjacency_changes; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::LspGenInterval> lsp_gen_interval;
@@ -3298,11 +3298,11 @@ class Native::Otv::Isis::Overlay::Authentication : public ydk::Entity
 }; // Native::Otv::Isis::Overlay::Authentication
 
 
-class Native::Otv::Isis::Overlay::Default_ : public ydk::Entity
+class Native::Otv::Isis::Overlay::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3322,20 +3322,20 @@ class Native::Otv::Isis::Overlay::Default_ : public ydk::Entity
         ydk::YLeaf max_lsp_lifetime; //type: empty
         ydk::YLeaf prc_interval; //type: empty
         ydk::YLeaf spf_interval; //type: empty
-        class Authentication; //type: Native::Otv::Isis::Overlay::Default_::Authentication
-        class Hostname; //type: Native::Otv::Isis::Overlay::Default_::Hostname
-        class Nsf; //type: Native::Otv::Isis::Overlay::Default_::Nsf
-        class Skeptical; //type: Native::Otv::Isis::Overlay::Default_::Skeptical
+        class Authentication; //type: Native::Otv::Isis::Overlay::Default::Authentication
+        class Hostname; //type: Native::Otv::Isis::Overlay::Default::Hostname
+        class Nsf; //type: Native::Otv::Isis::Overlay::Default::Nsf
+        class Skeptical; //type: Native::Otv::Isis::Overlay::Default::Skeptical
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default_::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default_::Hostname> hostname;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default_::Nsf> nsf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default_::Skeptical> skeptical;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default::Hostname> hostname;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default::Nsf> nsf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Overlay::Default::Skeptical> skeptical;
         
-}; // Native::Otv::Isis::Overlay::Default_
+}; // Native::Otv::Isis::Overlay::Default
 
 
-class Native::Otv::Isis::Overlay::Default_::Authentication : public ydk::Entity
+class Native::Otv::Isis::Overlay::Default::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -3356,10 +3356,10 @@ class Native::Otv::Isis::Overlay::Default_::Authentication : public ydk::Entity
         ydk::YLeaf send_only; //type: empty
         class Mode;
 
-}; // Native::Otv::Isis::Overlay::Default_::Authentication
+}; // Native::Otv::Isis::Overlay::Default::Authentication
 
 
-class Native::Otv::Isis::Overlay::Default_::Hostname : public ydk::Entity
+class Native::Otv::Isis::Overlay::Default::Hostname : public ydk::Entity
 {
     public:
         Hostname();
@@ -3377,10 +3377,10 @@ class Native::Otv::Isis::Overlay::Default_::Hostname : public ydk::Entity
 
         ydk::YLeaf dynamic; //type: empty
 
-}; // Native::Otv::Isis::Overlay::Default_::Hostname
+}; // Native::Otv::Isis::Overlay::Default::Hostname
 
 
-class Native::Otv::Isis::Overlay::Default_::Nsf : public ydk::Entity
+class Native::Otv::Isis::Overlay::Default::Nsf : public ydk::Entity
 {
     public:
         Nsf();
@@ -3399,10 +3399,10 @@ class Native::Otv::Isis::Overlay::Default_::Nsf : public ydk::Entity
         ydk::YLeaf cisco; //type: empty
         ydk::YLeaf interval; //type: empty
 
-}; // Native::Otv::Isis::Overlay::Default_::Nsf
+}; // Native::Otv::Isis::Overlay::Default::Nsf
 
 
-class Native::Otv::Isis::Overlay::Default_::Skeptical : public ydk::Entity
+class Native::Otv::Isis::Overlay::Default::Skeptical : public ydk::Entity
 {
     public:
         Skeptical();
@@ -3420,7 +3420,7 @@ class Native::Otv::Isis::Overlay::Default_::Skeptical : public ydk::Entity
 
         ydk::YLeaf interval; //type: empty
 
-}; // Native::Otv::Isis::Overlay::Default_::Skeptical
+}; // Native::Otv::Isis::Overlay::Default::Skeptical
 
 
 class Native::Otv::Isis::Overlay::Hostname : public ydk::Entity
@@ -3595,22 +3595,22 @@ class Native::Otv::Isis::Site : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf net; //type: string
-        class Default_; //type: Native::Otv::Isis::Site::Default_
+        class Default; //type: Native::Otv::Isis::Site::Default
         class LogAdjacencyChanges; //type: Native::Otv::Isis::Site::LogAdjacencyChanges
         class Skeptical; //type: Native::Otv::Isis::Site::Skeptical
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Site::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Site::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Site::LogAdjacencyChanges> log_adjacency_changes; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Site::Skeptical> skeptical;
         
 }; // Native::Otv::Isis::Site
 
 
-class Native::Otv::Isis::Site::Default_ : public ydk::Entity
+class Native::Otv::Isis::Site::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3625,14 +3625,14 @@ class Native::Otv::Isis::Site::Default_ : public ydk::Entity
 
         ydk::YLeaf log_adjacency_changes; //type: empty
         ydk::YLeaf net; //type: empty
-        class Skeptical; //type: Native::Otv::Isis::Site::Default_::Skeptical
+        class Skeptical; //type: Native::Otv::Isis::Site::Default::Skeptical
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Site::Default_::Skeptical> skeptical;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Isis::Site::Default::Skeptical> skeptical;
         
-}; // Native::Otv::Isis::Site::Default_
+}; // Native::Otv::Isis::Site::Default
 
 
-class Native::Otv::Isis::Site::Default_::Skeptical : public ydk::Entity
+class Native::Otv::Isis::Site::Default::Skeptical : public ydk::Entity
 {
     public:
         Skeptical();
@@ -3651,7 +3651,7 @@ class Native::Otv::Isis::Site::Default_::Skeptical : public ydk::Entity
 
         ydk::YLeaf interval; //type: empty
 
-}; // Native::Otv::Isis::Site::Default_::Skeptical
+}; // Native::Otv::Isis::Site::Default::Skeptical
 
 
 class Native::Otv::Isis::Site::LogAdjacencyChanges : public ydk::Entity
@@ -3716,20 +3716,20 @@ class Native::Otv::Site : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf bridge_domain; //type: uint16
-        class Default_; //type: Native::Otv::Site::Default_
+        class Default; //type: Native::Otv::Site::Default
         class Otv_; //type: Native::Otv::Site::Otv_
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Otv_> otv;
         
 }; // Native::Otv::Site
 
 
-class Native::Otv::Site::Default_ : public ydk::Entity
+class Native::Otv::Site::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3741,14 +3741,14 @@ class Native::Otv::Site::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Otv_; //type: Native::Otv::Site::Default_::Otv_
+        class Otv_; //type: Native::Otv::Site::Default::Otv_
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default_::Otv_> otv;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default::Otv_> otv;
         
-}; // Native::Otv::Site::Default_
+}; // Native::Otv::Site::Default
 
 
-class Native::Otv::Site::Default_::Otv_ : public ydk::Entity
+class Native::Otv::Site::Default::Otv_ : public ydk::Entity
 {
     public:
         Otv_();
@@ -3764,13 +3764,13 @@ class Native::Otv::Site::Default_::Otv_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Isis; //type: Native::Otv::Site::Default_::Otv_::Isis
+        class Isis; //type: Native::Otv::Site::Default::Otv_::Isis
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default_::Otv_::Isis> isis;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default::Otv_::Isis> isis;
         
-}; // Native::Otv::Site::Default_::Otv_
+}; // Native::Otv::Site::Default::Otv_
 
-class Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::PrefixGateway : public ydk::Enum
+class Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::PrefixGateway : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf prefix;
@@ -3779,7 +3779,7 @@ class Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::Pr
 
 };
 
-class Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway : public ydk::Enum
+class Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf prefix;
@@ -3788,7 +3788,7 @@ class Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfna
 
 };
 
-class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes : public ydk::Enum
+class Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level_1;
@@ -3797,7 +3797,7 @@ class Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist
 
 };
 
-class Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes : public ydk::Enum
+class Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level_1;
@@ -3823,14 +3823,14 @@ class Native::Performance::Monitor::Context::Profile : public ydk::Enum
 
 };
 
-class Native::Performance::Monitor::Context::Default_::Exporter::Transport : public ydk::Enum
+class Native::Performance::Monitor::Context::Default::Exporter::Transport : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf udp;
 
 };
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::CacheType : public ydk::Enum
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::CacheType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf normal;
@@ -3838,7 +3838,7 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicati
 
 };
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::CacheType : public ydk::Enum
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::CacheType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf normal;
@@ -3846,7 +3846,7 @@ class Native::Performance::Monitor::Context::Default_::TrafficMonitor::Conversat
 
 };
 
-class Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::CacheType : public ydk::Enum
+class Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::CacheType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf normal;
@@ -3893,7 +3893,7 @@ class Native::Otv::Isis::Overlay::Authentication::Mode : public ydk::Enum
 
 };
 
-class Native::Otv::Isis::Overlay::Default_::Authentication::Mode : public ydk::Enum
+class Native::Otv::Isis::Overlay::Default::Authentication::Mode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf md5;

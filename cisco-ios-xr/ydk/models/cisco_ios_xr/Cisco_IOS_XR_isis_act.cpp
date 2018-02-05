@@ -68,6 +68,7 @@ std::shared_ptr<Entity> ClearIsisProcess::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisProcess::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -185,6 +186,7 @@ std::shared_ptr<Entity> ClearIsisProcess::Input::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisProcess::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -273,6 +275,7 @@ std::shared_ptr<Entity> ClearIsisProcess::Input::Instance::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisProcess::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -358,6 +361,7 @@ std::shared_ptr<Entity> ClearIsisRoute::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -475,6 +479,7 @@ std::shared_ptr<Entity> ClearIsisRoute::Input::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisRoute::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -563,6 +568,7 @@ std::shared_ptr<Entity> ClearIsisRoute::Input::Instance::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisRoute::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -648,6 +654,7 @@ std::shared_ptr<Entity> ClearIsisStat::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -773,6 +780,7 @@ std::shared_ptr<Entity> ClearIsisStat::Input::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisStat::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -856,6 +864,7 @@ std::shared_ptr<Entity> ClearIsisStat::Input::Instance::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisStat::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -939,6 +948,7 @@ std::shared_ptr<Entity> ClearIsisStat::Input::Statistics::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisStat::Input::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1024,6 +1034,7 @@ std::shared_ptr<Entity> ClearIsisDist::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisDist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1141,6 +1152,7 @@ std::shared_ptr<Entity> ClearIsisDist::Input::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisDist::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -1229,6 +1241,7 @@ std::shared_ptr<Entity> ClearIsisDist::Input::Instance::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisDist::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1314,6 +1327,7 @@ std::shared_ptr<Entity> ClearIsisLocalLsp::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisLocalLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1431,6 +1445,7 @@ std::shared_ptr<Entity> ClearIsisLocalLsp::Input::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisLocalLsp::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -1519,6 +1534,7 @@ std::shared_ptr<Entity> ClearIsisLocalLsp::Input::Instance::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ClearIsisLocalLsp::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1604,6 +1620,7 @@ std::shared_ptr<Entity> ClearIsis::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> ClearIsis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1729,6 +1746,7 @@ std::shared_ptr<Entity> ClearIsis::Input::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> ClearIsis::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -1837,6 +1855,7 @@ std::shared_ptr<Entity> ClearIsis::Input::Instance::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> ClearIsis::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

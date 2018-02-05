@@ -68,6 +68,7 @@ std::shared_ptr<Entity> CISCOIETFMPLSIDSTD03MIB::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSIDSTD03MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cmplsidobjects != nullptr)
     {
         children["cmplsIdObjects"] = cmplsidobjects;
@@ -179,6 +180,7 @@ std::shared_ptr<Entity> CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSIDSTD03MIB::Cmplsidobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

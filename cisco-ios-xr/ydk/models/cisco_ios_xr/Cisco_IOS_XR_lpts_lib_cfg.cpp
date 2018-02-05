@@ -80,6 +80,7 @@ std::shared_ptr<Entity> Lpts::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Lpts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipolicer != nullptr)
     {
         children["Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer"] = ipolicer;
@@ -215,6 +216,7 @@ std::shared_ptr<Entity> Lpts::Ipolicer::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4acls != nullptr)
     {
         children["ipv4acls"] = ipv4acls;
@@ -310,14 +312,6 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::get_child_by_name(const std::s
 {
     if(child_yang_name == "ipv4acl")
     {
-        for(auto const & c : ipv4acl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl>();
         c->parent = this;
         ipv4acl.push_back(c);
@@ -330,9 +324,14 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4acl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -422,6 +421,7 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4vrf_names != nullptr)
     {
         children["ipv4vrf-names"] = ipv4vrf_names;
@@ -505,14 +505,6 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_chi
 {
     if(child_yang_name == "ipv4vrf-name")
     {
-        for(auto const & c : ipv4vrf_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName>();
         c->parent = this;
         ipv4vrf_name.push_back(c);
@@ -525,9 +517,14 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4vrf_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -600,6 +597,7 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4Vrf
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -695,14 +693,6 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Flows::get_child_by_name(const std::stri
 {
     if(child_yang_name == "flow")
     {
-        for(auto const & c : flow)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lpts::Ipolicer::Flows::Flow>();
         c->parent = this;
         flow.push_back(c);
@@ -715,9 +705,14 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Flows::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Flows::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -811,6 +806,7 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Flows::Flow::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Flows::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(precedences != nullptr)
     {
         children["precedences"] = precedences;
@@ -913,6 +909,7 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Flows::Flow::Precedences::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Flows::Flow::Precedences::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1003,6 +1000,7 @@ std::shared_ptr<Entity> Lpts::Punt::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flowtrap != nullptr)
     {
         children["flowtrap"] = flowtrap;
@@ -1161,6 +1159,7 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(penalty_rates != nullptr)
     {
         children["penalty-rates"] = penalty_rates;
@@ -1361,14 +1360,6 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::get_child_by_name(co
 {
     if(child_yang_name == "penalty-rate")
     {
-        for(auto const & c : penalty_rate)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate>();
         c->parent = this;
         penalty_rate.push_back(c);
@@ -1381,9 +1372,14 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyRates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : penalty_rate)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1463,6 +1459,7 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1558,14 +1555,6 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_child_by_name
 {
     if(child_yang_name == "penalty-timeout")
     {
-        for(auto const & c : penalty_timeout)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout>();
         c->parent = this;
         penalty_timeout.push_back(c);
@@ -1578,9 +1567,14 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : penalty_timeout)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1660,6 +1654,7 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::g
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1762,6 +1757,7 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::Exclude::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::Exclude::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_names != nullptr)
     {
         children["interface-names"] = interface_names;
@@ -1842,14 +1838,6 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_child
 {
     if(child_yang_name == "interface-name")
     {
-        for(auto const & c : interface_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName>();
         c->parent = this;
         interface_name.push_back(c);
@@ -1862,9 +1850,14 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_child
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1944,6 +1937,7 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::Interface
 std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -61,14 +61,6 @@ std::shared_ptr<Entity> VirtualServices::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "virtual-service")
     {
-        for(auto const & c : virtual_service)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<VirtualServices::VirtualService>();
         c->parent = this;
         virtual_service.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> VirtualServices::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : virtual_service)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -276,6 +273,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -448,6 +446,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package_information != nullptr)
     {
         children["package-information"] = package_information;
@@ -608,6 +607,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInforma
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::PackageInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(application != nullptr)
     {
         children["application"] = application;
@@ -717,6 +717,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInforma
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::PackageInformation::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -817,6 +818,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInforma
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::PackageInformation::Signing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -907,6 +909,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInforma
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::PackageInformation::Licensing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1002,6 +1005,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::DetailedGuestS
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::DetailedGuestStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(processes != nullptr)
     {
         children["processes"] = processes;
@@ -1089,6 +1093,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::DetailedGuestS
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1213,6 +1218,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::ResourceReserv
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::ResourceReservation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1325,6 +1331,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::ResourceAdmiss
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::ResourceAdmission::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1468,6 +1475,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Utilization::get_child_
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Utilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cpu_util != nullptr)
     {
         children["cpu-util"] = cpu_util;
@@ -1562,6 +1570,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Utilization::CpuUtil::g
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Utilization::CpuUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1662,6 +1671,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Utilization::MemoryUtil
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Utilization::MemoryUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1750,14 +1760,6 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkUtils::get_child
 {
     if(child_yang_name == "network-util")
     {
-        for(auto const & c : network_util)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<VirtualServices::VirtualService::NetworkUtils::NetworkUtil>();
         c->parent = this;
         network_util.push_back(c);
@@ -1770,9 +1772,14 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkUtils::get_child
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkUtils::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : network_util)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1869,6 +1876,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkUtils::NetworkUt
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkUtils::NetworkUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2017,14 +2025,6 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::StorageUtils::get_child
 {
     if(child_yang_name == "storage-util")
     {
-        for(auto const & c : storage_util)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<VirtualServices::VirtualService::StorageUtils::StorageUtil>();
         c->parent = this;
         storage_util.push_back(c);
@@ -2037,9 +2037,14 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::StorageUtils::get_child
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::StorageUtils::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : storage_util)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2148,6 +2153,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::StorageUtils::StorageUt
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::StorageUtils::StorageUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2326,14 +2332,6 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::AttachedDevices::get_ch
 {
     if(child_yang_name == "attached-device")
     {
-        for(auto const & c : attached_device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<VirtualServices::VirtualService::AttachedDevices::AttachedDevice>();
         c->parent = this;
         attached_device.push_back(c);
@@ -2346,9 +2344,14 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::AttachedDevices::get_ch
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::AttachedDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : attached_device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2425,6 +2428,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::AttachedDevices::Attach
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::AttachedDevices::AttachedDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2523,14 +2527,6 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkInterfaces::get_
 {
     if(child_yang_name == "network-interface")
     {
-        for(auto const & c : network_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface>();
         c->parent = this;
         network_interface.push_back(c);
@@ -2543,9 +2539,14 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkInterfaces::get_
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : network_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2618,6 +2619,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkInterfaces::Netw
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2706,14 +2708,6 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::GuestRoutes::get_child_
 {
     if(child_yang_name == "guest-route")
     {
-        for(auto const & c : guest_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<VirtualServices::VirtualService::GuestRoutes::GuestRoute>();
         c->parent = this;
         guest_route.push_back(c);
@@ -2726,9 +2720,14 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::GuestRoutes::get_child_
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::GuestRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : guest_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2797,6 +2796,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::GuestRoutes::GuestRoute
 std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::GuestRoutes::GuestRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

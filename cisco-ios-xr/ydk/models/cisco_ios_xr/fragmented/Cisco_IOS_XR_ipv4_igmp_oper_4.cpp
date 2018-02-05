@@ -67,6 +67,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -171,6 +172,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -276,14 +278,6 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Ranges::get_child_by_name(
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Active::DefaultContext::Ranges::Range>();
         c->parent = this;
         range.push_back(c);
@@ -296,9 +290,14 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Ranges::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Ranges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -404,6 +403,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Ranges::Range::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Ranges::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_address_xr != nullptr)
     {
         children["group-address-xr"] = group_address_xr;
@@ -540,6 +540,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Ranges::Range::GroupAddres
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Ranges::Range::GroupAddressXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -645,14 +646,6 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::get_child_
 {
     if(child_yang_name == "ifrs-interface")
     {
-        for(auto const & c : ifrs_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface>();
         c->parent = this;
         ifrs_interface.push_back(c);
@@ -665,9 +658,14 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ifrs_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -761,6 +759,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterf
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igmp_interface_entry != nullptr)
     {
         children["igmp-interface-entry"] = igmp_interface_entry;
@@ -1080,6 +1079,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterf
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1649,6 +1649,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterf
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1753,6 +1754,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterf
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1857,6 +1859,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterf
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2096,6 +2099,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::TrafficCounters::get_child
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::TrafficCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2521,14 +2525,6 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::get_child_by_name(
 {
     if(child_yang_name == "group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Active::DefaultContext::Groups::Group>();
         c->parent = this;
         group.push_back(c);
@@ -2541,9 +2537,14 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2711,6 +2712,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::Group::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_address_xr != nullptr)
     {
         children["group-address-xr"] = group_address_xr;
@@ -2947,6 +2949,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::Group::GroupAddres
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::Group::GroupAddressXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3058,6 +3061,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::Group::LastReporte
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::Group::LastReporter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3169,6 +3173,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::Group::SourceAddre
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::Group::SourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3284,6 +3289,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::GroupSummary::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GroupSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3401,6 +3407,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaceSummary::get_
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaceSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3496,14 +3503,6 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::get_
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -3516,9 +3515,14 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::get_
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3826,6 +3830,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Inte
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -4405,6 +4410,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Inte
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4509,6 +4515,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Inte
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4613,6 +4620,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Inte
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4718,14 +4726,6 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::get_child_b
 {
     if(child_yang_name == "ssm-map-detail")
     {
-        for(auto const & c : ssm_map_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail>();
         c->parent = this;
         ssm_map_detail.push_back(c);
@@ -4738,9 +4738,14 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ssm_map_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4856,14 +4861,6 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetai
 
     if(child_yang_name == "sources")
     {
-        for(auto const & c : sources)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources>();
         c->parent = this;
         sources.push_back(c);
@@ -4876,14 +4873,19 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetai
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(map_info != nullptr)
     {
         children["map-info"] = map_info;
     }
 
+    count = 0;
     for (auto const & c : sources)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5037,6 +5039,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetai
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_address_xr != nullptr)
     {
         children["group-address-xr"] = group_address_xr;
@@ -5143,6 +5146,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetai
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5254,6 +5258,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetai
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5359,14 +5364,6 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::get_ch
 {
     if(child_yang_name == "interface-state-off")
     {
-        for(auto const & c : interface_state_off)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff>();
         c->parent = this;
         interface_state_off.push_back(c);
@@ -5379,9 +5376,14 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_state_off)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5689,6 +5691,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::Interf
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -6268,6 +6271,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::Interf
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6372,6 +6376,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::Interf
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6476,6 +6481,7 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::Interf
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

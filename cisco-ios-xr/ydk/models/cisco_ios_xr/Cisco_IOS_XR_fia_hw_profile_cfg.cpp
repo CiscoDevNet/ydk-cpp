@@ -94,6 +94,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(profile != nullptr)
     {
         children["profile"] = profile;
@@ -242,6 +243,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tcam_table != nullptr)
     {
         children["tcam-table"] = tcam_table;
@@ -339,6 +341,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fib_table != nullptr)
     {
         children["fib-table"] = fib_table;
@@ -439,6 +442,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::get
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_address != nullptr)
     {
         children["ipv4-address"] = ipv4_address;
@@ -531,6 +535,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_unicast != nullptr)
     {
         children["ipv4-unicast"] = ipv4_unicast;
@@ -623,6 +628,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_unicast_prefix_lengths != nullptr)
     {
         children["ipv4-unicast-prefix-lengths"] = ipv4_unicast_prefix_lengths;
@@ -713,14 +719,6 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 {
     if(child_yang_name == "ipv4-unicast-prefix-length")
     {
-        for(auto const & c : ipv4_unicast_prefix_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::Ipv4UnicastPrefixLength>();
         c->parent = this;
         ipv4_unicast_prefix_length.push_back(c);
@@ -733,9 +731,14 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4_unicast_prefix_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -815,6 +818,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::Ipv4UnicastPrefixLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -917,6 +921,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6_unicast != nullptr)
     {
         children["ipv6-unicast"] = ipv6_unicast;
@@ -1009,6 +1014,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6_unicast_prefix_lengths != nullptr)
     {
         children["ipv6-unicast-prefix-lengths"] = ipv6_unicast_prefix_lengths;
@@ -1099,14 +1105,6 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 {
     if(child_yang_name == "ipv6-unicast-prefix-length")
     {
-        for(auto const & c : ipv6_unicast_prefix_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength>();
         c->parent = this;
         ipv6_unicast_prefix_length.push_back(c);
@@ -1119,9 +1117,14 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_unicast_prefix_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1201,6 +1204,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1294,6 +1298,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Stats::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1451,6 +1456,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hqos_enable_all != nullptr)
     {
         children["hqos-enable-all"] = hqos_enable_all;
@@ -1554,6 +1560,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::HqosEnableAll::get_
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::HqosEnableAll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1637,6 +1644,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModelRootDef
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::IngressModelRootDef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1722,14 +1730,6 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::get_
 {
     if(child_yang_name == "ingress-model")
     {
-        for(auto const & c : ingress_model)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel>();
         c->parent = this;
         ingress_model.push_back(c);
@@ -1742,9 +1742,14 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::get_
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::IngressModels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ingress_model)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1826,14 +1831,6 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::Ingr
 {
     if(child_yang_name == "ingress-model-leaf")
     {
-        for(auto const & c : ingress_model_leaf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::IngressModelLeaf>();
         c->parent = this;
         ingress_model_leaf.push_back(c);
@@ -1846,9 +1843,14 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::Ingr
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ingress_model_leaf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1931,6 +1933,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::Ingr
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::IngressModelLeaf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2024,6 +2027,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::Trunks::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::Trunks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2107,6 +2111,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMapsRootDef::g
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::ClassMapsRootDef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2192,14 +2197,6 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::get_chil
 {
     if(child_yang_name == "class-map")
     {
-        for(auto const & c : class_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap>();
         c->parent = this;
         class_map.push_back(c);
@@ -2212,9 +2209,14 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::get_chil
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::ClassMaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2296,14 +2298,6 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap
 {
     if(child_yang_name == "class-map-size")
     {
-        for(auto const & c : class_map_size)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::ClassMapSize>();
         c->parent = this;
         class_map_size.push_back(c);
@@ -2316,9 +2310,14 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_map_size)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2401,6 +2400,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::ClassMapSize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2516,6 +2516,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6_unicast_scale_no_tcam != nullptr)
     {
         children["ipv6-unicast-scale-no-tcam"] = ipv6_unicast_scale_no_tcam;
@@ -2608,6 +2609,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam:
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scale_ipv6_no_tcam != nullptr)
     {
         children["scale-ipv6-no-tcam"] = scale_ipv6_no_tcam;
@@ -2686,6 +2688,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam:
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::ScaleIpv6NoTcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2778,6 +2781,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam:
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scale_ipv4_no_tcam != nullptr)
     {
         children["scale-ipv4-no-tcam"] = scale_ipv4_no_tcam;
@@ -2860,6 +2864,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam:
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2962,6 +2967,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Tcam::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fib_tcam_scale != nullptr)
     {
         children["fib-tcam-scale"] = fib_tcam_scale;
@@ -3049,6 +3055,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Tcam::FibTcamScale::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Tcam::FibTcamScale::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_unicast_scale != nullptr)
     {
         children["ipv4-unicast-scale"] = ipv4_unicast_scale;
@@ -3127,6 +3134,7 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Tcam::FibTcamScale::Ipv4UnicastSc
 std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Tcam::FibTcamScale::Ipv4UnicastScale::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

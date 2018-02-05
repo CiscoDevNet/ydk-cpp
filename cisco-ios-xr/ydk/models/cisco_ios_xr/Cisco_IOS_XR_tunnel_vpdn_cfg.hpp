@@ -166,18 +166,18 @@ class Vpdn::Templates : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: Vpdn::Templates::Template_
+        class Template; //type: Vpdn::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template> > template_;
         
 }; // Vpdn::Templates
 
 
-class Vpdn::Templates::Template_ : public ydk::Entity
+class Vpdn::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -195,22 +195,22 @@ class Vpdn::Templates::Template_ : public ydk::Entity
         ydk::YLeaf description; //type: string
         ydk::YLeaf l2tp_class; //type: string
         ydk::YLeaf dsl_line_forwarding; //type: empty
-        class CallerId; //type: Vpdn::Templates::Template_::CallerId
-        class Vpn; //type: Vpdn::Templates::Template_::Vpn
-        class Tunnel; //type: Vpdn::Templates::Template_::Tunnel
-        class Ip; //type: Vpdn::Templates::Template_::Ip
-        class Ipv4; //type: Vpdn::Templates::Template_::Ipv4
+        class CallerId; //type: Vpdn::Templates::Template::CallerId
+        class Vpn; //type: Vpdn::Templates::Template::Vpn
+        class Tunnel; //type: Vpdn::Templates::Template::Tunnel
+        class Ip; //type: Vpdn::Templates::Template::Ip
+        class Ipv4; //type: Vpdn::Templates::Template::Ipv4
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::CallerId> caller_id;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Vpn> vpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Tunnel> tunnel;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Ip> ip;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template::CallerId> caller_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template::Vpn> vpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template::Tunnel> tunnel;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template::Ip> ip;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template::Ipv4> ipv4;
         
-}; // Vpdn::Templates::Template_
+}; // Vpdn::Templates::Template
 
 
-class Vpdn::Templates::Template_::CallerId : public ydk::Entity
+class Vpdn::Templates::Template::CallerId : public ydk::Entity
 {
     public:
         CallerId();
@@ -228,10 +228,10 @@ class Vpdn::Templates::Template_::CallerId : public ydk::Entity
 
         ydk::YLeaf mask; //type: string
 
-}; // Vpdn::Templates::Template_::CallerId
+}; // Vpdn::Templates::Template::CallerId
 
 
-class Vpdn::Templates::Template_::Vpn : public ydk::Entity
+class Vpdn::Templates::Template::Vpn : public ydk::Entity
 {
     public:
         Vpn();
@@ -248,14 +248,14 @@ class Vpdn::Templates::Template_::Vpn : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrf; //type: string
-        class Id; //type: Vpdn::Templates::Template_::Vpn::Id
+        class Id; //type: Vpdn::Templates::Template::Vpn::Id
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template_::Vpn::Id> id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template::Vpn::Id> id;
         
-}; // Vpdn::Templates::Template_::Vpn
+}; // Vpdn::Templates::Template::Vpn
 
 
-class Vpdn::Templates::Template_::Vpn::Id : public ydk::Entity
+class Vpdn::Templates::Template::Vpn::Id : public ydk::Entity
 {
     public:
         Id();
@@ -274,10 +274,10 @@ class Vpdn::Templates::Template_::Vpn::Id : public ydk::Entity
         ydk::YLeaf oui; //type: string
         ydk::YLeaf index_; //type: string
 
-}; // Vpdn::Templates::Template_::Vpn::Id
+}; // Vpdn::Templates::Template::Vpn::Id
 
 
-class Vpdn::Templates::Template_::Tunnel : public ydk::Entity
+class Vpdn::Templates::Template::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -295,10 +295,10 @@ class Vpdn::Templates::Template_::Tunnel : public ydk::Entity
 
         ydk::YLeaf busy_timeout; //type: uint32
 
-}; // Vpdn::Templates::Template_::Tunnel
+}; // Vpdn::Templates::Template::Tunnel
 
 
-class Vpdn::Templates::Template_::Ip : public ydk::Entity
+class Vpdn::Templates::Template::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -316,10 +316,10 @@ class Vpdn::Templates::Template_::Ip : public ydk::Entity
 
         ydk::YLeaf tos; //type: int32
 
-}; // Vpdn::Templates::Template_::Ip
+}; // Vpdn::Templates::Template::Ip
 
 
-class Vpdn::Templates::Template_::Ipv4 : public ydk::Entity
+class Vpdn::Templates::Template::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -338,7 +338,7 @@ class Vpdn::Templates::Template_::Ipv4 : public ydk::Entity
         ydk::YLeaf df_bit; //type: DfBit
         ydk::YLeaf source; //type: string
 
-}; // Vpdn::Templates::Template_::Ipv4
+}; // Vpdn::Templates::Template::Ipv4
 
 
 class Vpdn::CallerId : public ydk::Entity

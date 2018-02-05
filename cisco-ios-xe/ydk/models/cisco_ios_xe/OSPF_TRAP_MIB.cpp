@@ -68,6 +68,7 @@ std::shared_ptr<Entity> OSPFTRAPMIB::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> OSPFTRAPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ospftrapcontrol != nullptr)
     {
         children["ospfTrapControl"] = ospftrapcontrol;
@@ -183,6 +184,7 @@ std::shared_ptr<Entity> OSPFTRAPMIB::Ospftrapcontrol::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> OSPFTRAPMIB::Ospftrapcontrol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

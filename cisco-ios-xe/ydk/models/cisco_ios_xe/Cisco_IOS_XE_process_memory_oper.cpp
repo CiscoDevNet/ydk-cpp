@@ -61,14 +61,6 @@ std::shared_ptr<Entity> MemoryUsageProcesses::get_child_by_name(const std::strin
 {
     if(child_yang_name == "memory-usage-process")
     {
-        for(auto const & c : memory_usage_process)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MemoryUsageProcesses::MemoryUsageProcess>();
         c->parent = this;
         memory_usage_process.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> MemoryUsageProcesses::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> MemoryUsageProcesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : memory_usage_process)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -212,6 +209,7 @@ std::shared_ptr<Entity> MemoryUsageProcesses::MemoryUsageProcess::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> MemoryUsageProcesses::MemoryUsageProcess::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

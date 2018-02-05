@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Dot1X::get_child_by_name(const std::string & child_yang_
 {
     if(child_yang_name == "dot1x-profile")
     {
-        for(auto const & c : dot1x_profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dot1X::Dot1XProfile>();
         c->parent = this;
         dot1x_profile.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Dot1X::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1x_profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -215,6 +212,7 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(supplicant != nullptr)
     {
         children["supplicant"] = supplicant;
@@ -311,6 +309,7 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::Supplicant::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Supplicant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -396,6 +395,7 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::Authenticator::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Authenticator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timers != nullptr)
     {
         children["timers"] = timers;
@@ -476,6 +476,7 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::Authenticator::Timers::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Authenticator::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reauth_time != nullptr)
     {
         children["reauth-time"] = reauth_time;
@@ -551,6 +552,7 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -639,14 +641,6 @@ std::shared_ptr<Entity> Eap::get_child_by_name(const std::string & child_yang_na
 {
     if(child_yang_name == "eap-profile")
     {
-        for(auto const & c : eap_profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Eap::EapProfile>();
         c->parent = this;
         eap_profile.push_back(c);
@@ -659,9 +653,14 @@ std::shared_ptr<Entity> Eap::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Eap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eap_profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -780,6 +779,7 @@ std::shared_ptr<Entity> Eap::EapProfile::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Eap::EapProfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eaptls != nullptr)
     {
         children["eaptls"] = eaptls;
@@ -871,6 +871,7 @@ std::shared_ptr<Entity> Eap::EapProfile::Eaptls::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Eap::EapProfile::Eaptls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

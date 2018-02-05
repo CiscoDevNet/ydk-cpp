@@ -94,6 +94,7 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cipslaicmpechotmpltable != nullptr)
     {
         children["cipslaIcmpEchoTmplTable"] = cipslaicmpechotmpltable;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::get_child_by
 {
     if(child_yang_name == "cipslaIcmpEchoTmplEntry")
     {
-        for(auto const & c : cipslaicmpechotmplentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry>();
         c->parent = this;
         cipslaicmpechotmplentry.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipslaicmpechotmplentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -375,6 +373,7 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpec
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -630,14 +629,6 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::get_child_by_
 {
     if(child_yang_name == "cipslaUdpEchoTmplEntry")
     {
-        for(auto const & c : cipslaudpechotmplentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry>();
         c->parent = this;
         cipslaudpechotmplentry.push_back(c);
@@ -650,9 +641,14 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipslaudpechotmplentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -804,6 +800,7 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpecho
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1079,14 +1076,6 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::get_child_by_
 {
     if(child_yang_name == "cipslaTcpConnTmplEntry")
     {
-        for(auto const & c : cipslatcpconntmplentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry>();
         c->parent = this;
         cipslatcpconntmplentry.push_back(c);
@@ -1099,9 +1088,14 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipslatcpconntmplentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1245,6 +1239,7 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconn
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

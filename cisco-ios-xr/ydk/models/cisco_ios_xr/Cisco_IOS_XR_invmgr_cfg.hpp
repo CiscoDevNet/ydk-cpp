@@ -31,18 +31,18 @@ class InventoryConfigurations : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Entity_; //type: InventoryConfigurations::Entity_
+        class Entity; //type: InventoryConfigurations::Entity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_cfg::InventoryConfigurations::Entity_> > entity_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_cfg::InventoryConfigurations::Entity> > entity_;
         
 }; // InventoryConfigurations
 
 
-class InventoryConfigurations::Entity_ : public ydk::Entity
+class InventoryConfigurations::Entity : public ydk::Entity
 {
     public:
-        Entity_();
-        ~Entity_();
+        Entity();
+        ~Entity();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -58,7 +58,7 @@ class InventoryConfigurations::Entity_ : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf name_xr; //type: string
 
-}; // InventoryConfigurations::Entity_
+}; // InventoryConfigurations::Entity
 
 
 }

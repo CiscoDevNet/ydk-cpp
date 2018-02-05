@@ -71,14 +71,6 @@ std::shared_ptr<Entity> DiffservInterfacesState::get_child_by_name(const std::st
 {
     if(child_yang_name == "diffserv-interface")
     {
-        for(auto const & c : diffserv_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface>();
         c->parent = this;
         diffserv_interface.push_back(c);
@@ -91,9 +83,14 @@ std::shared_ptr<Entity> DiffservInterfacesState::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffserv_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -200,14 +197,6 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::get_child_by
 {
     if(child_yang_name == "diffserv-target-entry")
     {
-        for(auto const & c : diffserv_target_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry>();
         c->parent = this;
         diffserv_target_entry.push_back(c);
@@ -220,9 +209,14 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffserv_target_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -311,14 +305,6 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 {
     if(child_yang_name == "diffserv-target-classifier-statistics")
     {
-        for(auto const & c : diffserv_target_classifier_statistics)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics>();
         c->parent = this;
         diffserv_target_classifier_statistics.push_back(c);
@@ -331,9 +317,14 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffserv_target_classifier_statistics)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -450,14 +441,6 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 
     if(child_yang_name == "meter-statistics")
     {
-        for(auto const & c : meter_statistics)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics>();
         c->parent = this;
         meter_statistics.push_back(c);
@@ -479,14 +462,19 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(classifier_entry_statistics != nullptr)
     {
         children["classifier-entry-statistics"] = classifier_entry_statistics;
     }
 
+    count = 0;
     for (auto const & c : meter_statistics)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(queuing_statistics != nullptr)
@@ -588,6 +576,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -700,6 +689,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -850,6 +840,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(wred_stats != nullptr)
     {
         children["wred-stats"] = wred_stats;
@@ -985,6 +976,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -94,6 +94,7 @@ std::shared_ptr<Entity> Dot1X::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -216,6 +217,7 @@ std::shared_ptr<Entity> Dot1X::Statistics::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_statistics != nullptr)
     {
         children["interface-statistics"] = interface_statistics;
@@ -296,14 +298,6 @@ std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::get_child_by_nam
 {
     if(child_yang_name == "interface-statistic")
     {
-        for(auto const & c : interface_statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic>();
         c->parent = this;
         interface_statistic.push_back(c);
@@ -316,9 +310,14 @@ std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -442,6 +441,7 @@ std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatist
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(idb != nullptr)
     {
         children["idb"] = idb;
@@ -561,6 +561,7 @@ std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatist
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -697,6 +698,7 @@ std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatist
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -905,6 +907,7 @@ std::shared_ptr<Entity> Dot1X::Statistics::InterfaceStatistics::InterfaceStatist
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1070,14 +1073,6 @@ std::shared_ptr<Entity> Dot1X::Nodes::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dot1X::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -1090,9 +1085,14 @@ std::shared_ptr<Entity> Dot1X::Nodes::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1195,6 +1195,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1x_defaults != nullptr)
     {
         children["dot1x-defaults"] = dot1x_defaults;
@@ -1308,6 +1309,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Dot1XDefaults::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Dot1XDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auth_timers != nullptr)
     {
         children["auth-timers"] = auth_timers;
@@ -1414,6 +1416,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::get_child
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Dot1XDefaults::AuthTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1552,6 +1555,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::get_child
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Dot1XDefaults::SuppTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1673,14 +1677,6 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::get_child_by_name(const 
 
     if(child_yang_name == "if-stats")
     {
-        for(auto const & c : if_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dot1X::Nodes::Node::Statistics::IfStats>();
         c->parent = this;
         if_stats.push_back(c);
@@ -1693,14 +1689,19 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gl_stats != nullptr)
     {
         children["gl-stats"] = gl_stats;
     }
 
+    count = 0;
     for (auto const & c : if_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1777,6 +1778,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::GlStats::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::GlStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1917,6 +1919,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::IfStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(idb != nullptr)
     {
         children["idb"] = idb;
@@ -2026,6 +2029,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::Idb::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::IfStats::Idb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2162,6 +2166,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::Auth::get_child
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::IfStats::Auth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2370,6 +2375,7 @@ std::shared_ptr<Entity> Dot1X::Nodes::Node::Statistics::IfStats::Supp::get_child
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Nodes::Node::Statistics::IfStats::Supp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2542,6 +2548,7 @@ std::shared_ptr<Entity> Dot1X::Session::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_sessions != nullptr)
     {
         children["interface-sessions"] = interface_sessions;
@@ -2622,14 +2629,6 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::get_child_by_name(con
 {
     if(child_yang_name == "interface-session")
     {
-        for(auto const & c : interface_session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession>();
         c->parent = this;
         interface_session.push_back(c);
@@ -2642,9 +2641,14 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2767,6 +2771,7 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::get
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(intf_info != nullptr)
     {
         children["intf-info"] = intf_info;
@@ -2938,6 +2943,7 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Int
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auth_info != nullptr)
     {
         children["auth-info"] = auth_info;
@@ -3054,14 +3060,6 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Int
 {
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client>();
         c->parent = this;
         client.push_back(c);
@@ -3074,9 +3072,14 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Int
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3181,6 +3184,7 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Int
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3307,14 +3311,6 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Int
 {
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client>();
         c->parent = this;
         client.push_back(c);
@@ -3327,9 +3323,14 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Int
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3434,6 +3435,7 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Int
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3566,6 +3568,7 @@ std::shared_ptr<Entity> Dot1X::Session::InterfaceSessions::InterfaceSession::Mka
 std::map<std::string, std::shared_ptr<Entity>> Dot1X::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

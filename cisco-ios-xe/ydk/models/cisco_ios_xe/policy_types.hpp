@@ -30,7 +30,7 @@ class ClassType : public virtual ydk::Identity
 
 }; // ClassType
 
-class Cos : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Cos : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Cos();
@@ -39,7 +39,7 @@ class Cos : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Iden
 
 }; // Cos
 
-class CosInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class CosInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         CosInner();
@@ -48,7 +48,7 @@ class CosInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // CosInner
 
-class Ipv4AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Ipv4AclName : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Ipv4AclName();
@@ -57,7 +57,7 @@ class Ipv4AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual y
 
 }; // Ipv4AclName
 
-class Ipv6AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Ipv6AclName : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Ipv6AclName();
@@ -66,7 +66,7 @@ class Ipv6AclName : public ietf::ietf_diffserv_classifier::FilterType, virtual y
 
 }; // Ipv6AclName
 
-class Ipv4Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Ipv4Acl : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Ipv4Acl();
@@ -75,7 +75,7 @@ class Ipv4Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::
 
 }; // Ipv4Acl
 
-class Ipv6Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Ipv6Acl : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Ipv6Acl();
@@ -84,7 +84,7 @@ class Ipv6Acl : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::
 
 }; // Ipv6Acl
 
-class InputInterface : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class InputInterface : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         InputInterface();
@@ -93,7 +93,7 @@ class InputInterface : public ietf::ietf_diffserv_classifier::FilterType, virtua
 
 }; // InputInterface
 
-class SrcMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class SrcMac : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         SrcMac();
@@ -102,7 +102,7 @@ class SrcMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::I
 
 }; // SrcMac
 
-class DstMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class DstMac : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         DstMac();
@@ -111,7 +111,7 @@ class DstMac : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::I
 
 }; // DstMac
 
-class MplsExpTop : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class MplsExpTop : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         MplsExpTop();
@@ -120,7 +120,7 @@ class MplsExpTop : public ietf::ietf_diffserv_classifier::FilterType, virtual yd
 
 }; // MplsExpTop
 
-class MplsExpImp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class MplsExpImp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         MplsExpImp();
@@ -129,7 +129,7 @@ class MplsExpImp : public ietf::ietf_diffserv_classifier::FilterType, virtual yd
 
 }; // MplsExpImp
 
-class PacketLength : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class PacketLength : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         PacketLength();
@@ -138,7 +138,7 @@ class PacketLength : public ietf::ietf_diffserv_classifier::FilterType, virtual 
 
 }; // PacketLength
 
-class Prec : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Prec : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Prec();
@@ -147,7 +147,7 @@ class Prec : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Ide
 
 }; // Prec
 
-class QosGroup : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class QosGroup : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         QosGroup();
@@ -156,7 +156,7 @@ class QosGroup : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // QosGroup
 
-class Vlan : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Vlan : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Vlan();
@@ -165,7 +165,7 @@ class Vlan : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Ide
 
 }; // Vlan
 
-class VlanInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class VlanInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         VlanInner();
@@ -174,7 +174,7 @@ class VlanInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk
 
 }; // VlanInner
 
-class AtmClp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class AtmClp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         AtmClp();
@@ -183,7 +183,7 @@ class AtmClp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::I
 
 }; // AtmClp
 
-class AtmVci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class AtmVci : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         AtmVci();
@@ -192,7 +192,7 @@ class AtmVci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::I
 
 }; // AtmVci
 
-class Dei : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Dei : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Dei();
@@ -201,7 +201,7 @@ class Dei : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Iden
 
 }; // Dei
 
-class DeiInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class DeiInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         DeiInner();
@@ -210,7 +210,7 @@ class DeiInner : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // DeiInner
 
-class FlowIp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class FlowIp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         FlowIp();
@@ -219,7 +219,7 @@ class FlowIp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::I
 
 }; // FlowIp
 
-class FlowRecord : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class FlowRecord : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         FlowRecord();
@@ -228,7 +228,7 @@ class FlowRecord : public ietf::ietf_diffserv_classifier::FilterType, virtual yd
 
 }; // FlowRecord
 
-class FlowDe : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class FlowDe : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         FlowDe();
@@ -237,7 +237,7 @@ class FlowDe : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::I
 
 }; // FlowDe
 
-class FlowDlci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class FlowDlci : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         FlowDlci();
@@ -246,7 +246,7 @@ class FlowDlci : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // FlowDlci
 
-class WlanUserPriority : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class WlanUserPriority : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         WlanUserPriority();
@@ -255,7 +255,7 @@ class WlanUserPriority : public ietf::ietf_diffserv_classifier::FilterType, virt
 
 }; // WlanUserPriority
 
-class DiscardClass : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class DiscardClass : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         DiscardClass();
@@ -264,7 +264,7 @@ class DiscardClass : public ietf::ietf_diffserv_classifier::FilterType, virtual 
 
 }; // DiscardClass
 
-class ClassMap : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class ClassMap : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         ClassMap();
@@ -273,7 +273,7 @@ class ClassMap : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // ClassMap
 
-class Metadata : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Metadata : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Metadata();
@@ -282,7 +282,7 @@ class Metadata : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // Metadata
 
-class Application : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Application : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Application();
@@ -291,7 +291,7 @@ class Application : public ietf::ietf_diffserv_classifier::FilterType, virtual y
 
 }; // Application
 
-class SecurityGroupName : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class SecurityGroupName : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         SecurityGroupName();
@@ -300,7 +300,7 @@ class SecurityGroupName : public ietf::ietf_diffserv_classifier::FilterType, vir
 
 }; // SecurityGroupName
 
-class SecurityGroupTag : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class SecurityGroupTag : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         SecurityGroupTag();
@@ -309,7 +309,7 @@ class SecurityGroupTag : public ietf::ietf_diffserv_classifier::FilterType, virt
 
 }; // SecurityGroupTag
 
-class IpRtp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class IpRtp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         IpRtp();
@@ -318,7 +318,7 @@ class IpRtp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Id
 
 }; // IpRtp
 
-class Vpls : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class Vpls : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
         Vpls();

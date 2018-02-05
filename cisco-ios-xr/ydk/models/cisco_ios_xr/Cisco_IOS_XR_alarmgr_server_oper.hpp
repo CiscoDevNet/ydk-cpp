@@ -1556,7 +1556,7 @@ class AlarmSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf not_reported;
         static const ydk::Enum::YLeaf not_alarmed;
         static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf critical;
         static const ydk::Enum::YLeaf severity_last;
 

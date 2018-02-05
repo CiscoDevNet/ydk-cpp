@@ -107,6 +107,7 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cipslaautogrouptable != nullptr)
     {
         children["cipslaAutoGroupTable"] = cipslaautogrouptable;
@@ -227,14 +228,6 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::get_chil
 {
     if(child_yang_name == "cipslaAutoGroupEntry")
     {
-        for(auto const & c : cipslaautogroupentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry>();
         c->parent = this;
         cipslaautogroupentry.push_back(c);
@@ -247,9 +240,14 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipslaautogroupentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -373,6 +371,7 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaau
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -578,14 +577,6 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::get_
 {
     if(child_yang_name == "cipslaAutoGroupDestEntry")
     {
-        for(auto const & c : cipslaautogroupdestentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry>();
         c->parent = this;
         cipslaautogroupdestentry.push_back(c);
@@ -598,9 +589,14 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipslaautogroupdestentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -696,6 +692,7 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cips
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -831,14 +828,6 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::get_child_by
 {
     if(child_yang_name == "cipslaReactEntry")
     {
-        for(auto const & c : cipslareactentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry>();
         c->parent = this;
         cipslareactentry.push_back(c);
@@ -851,9 +840,14 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipslareactentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -973,6 +967,7 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareacte
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1168,14 +1163,6 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::get
 {
     if(child_yang_name == "cipslaAutoGroupSchedEntry")
     {
-        for(auto const & c : cipslaautogroupschedentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry>();
         c->parent = this;
         cipslaautogroupschedentry.push_back(c);
@@ -1188,9 +1175,14 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipslaautogroupschedentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1302,6 +1294,7 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cip
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

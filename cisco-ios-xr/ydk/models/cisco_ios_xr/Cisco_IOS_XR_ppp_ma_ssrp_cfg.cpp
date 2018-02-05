@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Ssrp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Ssrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(profiles != nullptr)
     {
         children["profiles"] = profiles;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Ssrp::Profiles::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ssrp::Profiles::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Ssrp::Profiles::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Ssrp::Profiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -279,6 +277,7 @@ std::shared_ptr<Entity> Ssrp::Profiles::Profile::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Ssrp::Profiles::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

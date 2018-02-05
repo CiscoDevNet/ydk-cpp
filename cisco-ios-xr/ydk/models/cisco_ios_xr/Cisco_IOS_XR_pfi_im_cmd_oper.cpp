@@ -133,6 +133,7 @@ std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_xr != nullptr)
     {
         children["interface-xr"] = interface_xr;
@@ -263,14 +264,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::get_child_by_name(const std::st
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -283,9 +276,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -646,6 +644,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dampening_information != nullptr)
     {
         children["dampening-information"] = dampening_information;
@@ -1130,6 +1129,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::DampeningInformation
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::DampeningInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1276,6 +1276,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::MacAddress::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1352,6 +1353,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::BurnedInAddress::get
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::BurnedInAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1432,6 +1434,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::CarrierDelay::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::CarrierDelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1526,6 +1529,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::ArpInformation::get_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::ArpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1626,6 +1630,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::IpInformation::get_c
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::IpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1752,6 +1757,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frame_relay_information != nullptr)
     {
         children["frame-relay-information"] = frame_relay_information;
@@ -1895,6 +1901,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2110,6 +2117,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encapsulation_details != nullptr)
     {
         children["encapsulation-details"] = encapsulation_details;
@@ -2245,6 +2253,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stack != nullptr)
     {
         children["stack"] = stack;
@@ -2400,6 +2409,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2540,14 +2550,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 
     if(child_yang_name == "tags-to-match")
     {
-        for(auto const & c : tags_to_match)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
         c->parent = this;
         tags_to_match.push_back(c);
@@ -2556,14 +2558,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 
     if(child_yang_name == "pushe")
     {
-        for(auto const & c : pushe)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
         c->parent = this;
         pushe.push_back(c);
@@ -2576,19 +2570,28 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_traffic_stack != nullptr)
     {
         children["local-traffic-stack"] = local_traffic_stack;
     }
 
+    count = 0;
     for (auto const & c : tags_to_match)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : pushe)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2729,14 +2732,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 {
     if(child_yang_name == "local-traffic-tag")
     {
-        for(auto const & c : local_traffic_tag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
         c->parent = this;
         local_traffic_tag.push_back(c);
@@ -2749,9 +2744,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_traffic_tag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2824,6 +2824,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2920,14 +2921,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 {
     if(child_yang_name == "vlan-range")
     {
-        for(auto const & c : vlan_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
         c->parent = this;
         vlan_range.push_back(c);
@@ -2940,9 +2933,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3035,6 +3033,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3125,6 +3124,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3215,6 +3215,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3323,14 +3324,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 {
     if(child_yang_name == "ncp-info-array")
     {
-        for(auto const & c : ncp_info_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray>();
         c->parent = this;
         ncp_info_array.push_back(c);
@@ -3343,9 +3336,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ncp_info_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3468,6 +3466,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3672,6 +3671,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(srp_information != nullptr)
     {
         children["srp-information"] = srp_information;
@@ -3815,6 +3815,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(srp_information != nullptr)
     {
         children["srp-information"] = srp_information;
@@ -3939,6 +3940,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ips_info != nullptr)
     {
         children["ips-info"] = ips_info;
@@ -4031,14 +4033,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 {
     if(child_yang_name == "local-information")
     {
-        for(auto const & c : local_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation>();
         c->parent = this;
         local_information.push_back(c);
@@ -4051,9 +4045,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4167,6 +4166,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(side_a != nullptr)
     {
         children["side-a"] = side_a;
@@ -4347,14 +4347,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 {
     if(child_yang_name == "asserted-failure")
     {
-        for(auto const & c : asserted_failure)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure>();
         c->parent = this;
         asserted_failure.push_back(c);
@@ -4367,9 +4359,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : asserted_failure)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4638,6 +4635,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4838,14 +4836,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 {
     if(child_yang_name == "asserted-failure")
     {
-        for(auto const & c : asserted_failure)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure>();
         c->parent = this;
         asserted_failure.push_back(c);
@@ -4858,9 +4848,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : asserted_failure)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5129,6 +5124,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5261,14 +5257,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 {
     if(child_yang_name == "local-information")
     {
-        for(auto const & c : local_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation>();
         c->parent = this;
         local_information.push_back(c);
@@ -5281,9 +5269,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5384,14 +5377,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 {
     if(child_yang_name == "ring-node")
     {
-        for(auto const & c : ring_node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode>();
         c->parent = this;
         ring_node.push_back(c);
@@ -5404,9 +5389,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ring_node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5545,6 +5535,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5681,14 +5672,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 {
     if(child_yang_name == "srr-detailed-info")
     {
-        for(auto const & c : srr_detailed_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo>();
         c->parent = this;
         srr_detailed_info.push_back(c);
@@ -5701,9 +5684,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : srr_detailed_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5868,14 +5856,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 {
     if(child_yang_name == "nodes-on-ring")
     {
-        for(auto const & c : nodes_on_ring)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing>();
         c->parent = this;
         nodes_on_ring.push_back(c);
@@ -5884,14 +5864,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 
     if(child_yang_name == "nodes-not-on-ring")
     {
-        for(auto const & c : nodes_not_on_ring)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing>();
         c->parent = this;
         nodes_not_on_ring.push_back(c);
@@ -5904,14 +5876,23 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nodes_on_ring)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : nodes_not_on_ring)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6164,6 +6145,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6324,6 +6306,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6466,14 +6449,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 {
     if(child_yang_name == "rate-limit-detailed-info")
     {
-        for(auto const & c : rate_limit_detailed_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo>();
         c->parent = this;
         rate_limit_detailed_info.push_back(c);
@@ -6486,9 +6461,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rate_limit_detailed_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6567,6 +6547,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6696,6 +6677,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(side_a_data_rate != nullptr)
     {
         children["side-a-data-rate"] = side_a_data_rate;
@@ -6804,6 +6786,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6922,6 +6905,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7060,6 +7044,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7248,6 +7233,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7424,6 +7410,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7552,14 +7539,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 {
     if(child_yang_name == "member")
     {
-        for(auto const & c : member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member>();
         c->parent = this;
         member.push_back(c);
@@ -7572,9 +7551,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7732,6 +7716,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -7958,6 +7943,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8190,6 +8176,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8436,6 +8423,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_mux_state_reason_data != nullptr)
     {
         children["member-mux-state-reason-data"] = member_mux_state_reason_data;
@@ -8561,6 +8549,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8647,6 +8636,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8723,6 +8713,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8799,6 +8790,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8946,6 +8938,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source_ip_address != nullptr)
     {
         children["source-ip-address"] = source_ip_address;
@@ -9150,6 +9143,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9254,6 +9248,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9358,6 +9353,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9466,6 +9462,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9576,6 +9573,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9710,6 +9708,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::DataRates::get_child
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::DataRates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9933,6 +9932,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics:
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(full_interface_stats != nullptr)
     {
         children["full-interface-stats"] = full_interface_stats;
@@ -10159,6 +10159,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics:
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10645,6 +10646,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics:
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10905,14 +10907,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
 
     if(child_yang_name == "block-array")
     {
-        for(auto const & c : block_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray>();
         c->parent = this;
         block_array.push_back(c);
@@ -10921,14 +10915,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
 
     if(child_yang_name == "element-array")
     {
-        for(auto const & c : element_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray>();
         c->parent = this;
         element_array.push_back(c);
@@ -10941,19 +10927,28 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stats_id != nullptr)
     {
         children["stats-id"] = stats_id;
     }
 
+    count = 0;
     for (auto const & c : block_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : element_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11062,6 +11057,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11196,6 +11192,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11298,14 +11295,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
 {
     if(child_yang_name == "block-array")
     {
-        for(auto const & c : block_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray>();
         c->parent = this;
         block_array.push_back(c);
@@ -11318,9 +11307,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : block_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11407,6 +11401,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11503,6 +11498,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::NvOptical::get_child
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::NvOptical::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11588,14 +11584,6 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::get_child_by_name(const std::s
 {
     if(child_yang_name == "node-type-set")
     {
-        for(auto const & c : node_type_set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet>();
         c->parent = this;
         node_type_set.push_back(c);
@@ -11608,9 +11596,14 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node_type_set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11704,6 +11697,7 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_summary != nullptr)
     {
         children["interface-summary"] = interface_summary;
@@ -11817,14 +11811,6 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary:
 
     if(child_yang_name == "interface-type")
     {
-        for(auto const & c : interface_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType>();
         c->parent = this;
         interface_type.push_back(c);
@@ -11837,14 +11823,19 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary:
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_counts != nullptr)
     {
         children["interface-counts"] = interface_counts;
     }
 
+    count = 0;
     for (auto const & c : interface_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11932,6 +11923,7 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary:
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12063,6 +12055,7 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary:
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_counts != nullptr)
     {
         children["interface-counts"] = interface_counts;
@@ -12173,6 +12166,7 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary:
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12288,14 +12282,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceBriefs::get_child_by_name(const std
 {
     if(child_yang_name == "interface-brief")
     {
-        for(auto const & c : interface_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceBriefs::InterfaceBrief>();
         c->parent = this;
         interface_brief.push_back(c);
@@ -12308,9 +12294,14 @@ std::shared_ptr<Entity> Interfaces::InterfaceBriefs::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceBriefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12438,6 +12429,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceBriefs::InterfaceBrief::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceBriefs::InterfaceBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12666,14 +12658,6 @@ std::shared_ptr<Entity> Interfaces::InventorySummary::get_child_by_name(const st
 
     if(child_yang_name == "interface-type")
     {
-        for(auto const & c : interface_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InventorySummary::InterfaceType>();
         c->parent = this;
         interface_type.push_back(c);
@@ -12686,14 +12670,19 @@ std::shared_ptr<Entity> Interfaces::InventorySummary::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_counts != nullptr)
     {
         children["interface-counts"] = interface_counts;
     }
 
+    count = 0;
     for (auto const & c : interface_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12781,6 +12770,7 @@ std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceCounts::get_child
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::InterfaceCounts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12912,6 +12902,7 @@ std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceType::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::InterfaceType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_counts != nullptr)
     {
         children["interface-counts"] = interface_counts;
@@ -13022,6 +13013,7 @@ std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceType::InterfaceCo
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13137,14 +13129,6 @@ std::shared_ptr<Entity> Interfaces::Interfaces_::get_child_by_name(const std::st
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interfaces_::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -13157,9 +13141,14 @@ std::shared_ptr<Entity> Interfaces::Interfaces_::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interfaces_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13251,6 +13240,7 @@ std::shared_ptr<Entity> Interfaces::Interfaces_::Interface::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interfaces_::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13389,14 +13379,6 @@ std::shared_ptr<Entity> Interfaces::InterfaceSummary::get_child_by_name(const st
 
     if(child_yang_name == "interface-type")
     {
-        for(auto const & c : interface_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::InterfaceSummary::InterfaceType>();
         c->parent = this;
         interface_type.push_back(c);
@@ -13409,14 +13391,19 @@ std::shared_ptr<Entity> Interfaces::InterfaceSummary::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_counts != nullptr)
     {
         children["interface-counts"] = interface_counts;
     }
 
+    count = 0;
     for (auto const & c : interface_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13504,6 +13491,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceCounts::get_child
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::InterfaceCounts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13635,6 +13623,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceType::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::InterfaceType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_counts != nullptr)
     {
         children["interface-counts"] = interface_counts;
@@ -13745,6 +13734,7 @@ std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceType::InterfaceCo
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

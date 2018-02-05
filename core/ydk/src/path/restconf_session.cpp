@@ -143,7 +143,7 @@ std::shared_ptr<path::DataNode> RestconfSession::invoke(
     else
     {
         YLOG_ERROR("rpc is not supported");
-        throw(YCPPOperationNotSupportedError{"rpc is not supported!"});
+        throw(YOperationNotSupportedError{"rpc is not supported!"});
     }
 
     return datanode;
@@ -156,7 +156,7 @@ std::shared_ptr<path::DataNode> RestconfSession::handle_read(path::Rpc& rpc) con
     auto filter = rpc.get_input_node().find("filter");
     if(filter.empty()){
         YLOG_ERROR("Failed to get entity node.");
-        throw(YCPPInvalidArgumentError{"Failed to get entity node"});
+        throw(YInvalidArgumentError{"Failed to get entity node"});
     }
 
     path::DataNode* filter_node = filter[0].get();
@@ -184,7 +184,7 @@ std::shared_ptr<path::DataNode> RestconfSession::handle_edit(path::Rpc& rpc, con
     auto entity = rpc.get_input_node().find("entity");
     if(entity.empty()){
         YLOG_ERROR("Failed to get entity node");
-        throw(YCPPInvalidArgumentError{"Failed to get entity node"});
+        throw(YInvalidArgumentError{"Failed to get entity node"});
     }
 
     path::DataNode* entity_node = entity[0].get();
@@ -207,7 +207,7 @@ static std::shared_ptr<path::DataNode> handle_read_reply(const string & reply, p
 
     if(!datanode){
         YLOG_INFO("Codec service failed to decode datanode");
-        throw(YCPPError{"Problems deserializing output"});
+        throw(YError{"Problems deserializing output"});
     }
     return datanode;
 }
@@ -218,7 +218,7 @@ static path::SchemaNode* get_schema_for_operation(path::RootSchemaNode & root_sc
     if(c.empty())
     {
         YLOG_ERROR("{} rpc schema not found!", operation);
-        throw(YCPPIllegalStateError{operation + " rpc schema not found!"});
+        throw(YIllegalStateError{operation + " rpc schema not found!"});
     }
     return c[0];
 }

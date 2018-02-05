@@ -89,6 +89,7 @@ std::shared_ptr<Entity> Msdp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Msdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -219,14 +220,6 @@ std::shared_ptr<Entity> Msdp::Vrfs::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Msdp::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -239,9 +232,14 @@ std::shared_ptr<Entity> Msdp::Vrfs::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -393,6 +391,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache_state != nullptr)
     {
         children["cache-state"] = cache_state;
@@ -557,6 +556,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::CacheState::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::CacheState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -657,6 +657,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::KeepAlive::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::KeepAlive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -745,14 +746,6 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::get_child_by_name(const std::str
 {
     if(child_yang_name == "peer")
     {
-        for(auto const & c : peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer>();
         c->parent = this;
         peer.push_back(c);
@@ -765,9 +758,14 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -910,6 +908,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote_as != nullptr)
     {
         children["remote-as"] = remote_as;
@@ -1095,6 +1094,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1185,6 +1185,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1273,14 +1274,6 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::get_child_by_na
 {
     if(child_yang_name == "sa-filter")
     {
-        for(auto const & c : sa_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter>();
         c->parent = this;
         sa_filter.push_back(c);
@@ -1293,9 +1286,14 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sa_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1372,6 +1370,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::get_c
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1470,14 +1469,6 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::SaFilters::get_child_by_name(const std:
 {
     if(child_yang_name == "sa-filter")
     {
-        for(auto const & c : sa_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Msdp::Vrfs::Vrf::SaFilters::SaFilter>();
         c->parent = this;
         sa_filter.push_back(c);
@@ -1490,9 +1481,14 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::SaFilters::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::SaFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sa_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1569,6 +1565,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::SaFilters::SaFilter::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::SaFilters::SaFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1744,6 +1741,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache_state != nullptr)
     {
         children["cache-state"] = cache_state;
@@ -1905,6 +1903,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::CacheState::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::CacheState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2012,6 +2011,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::KeepAlive::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::KeepAlive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2107,14 +2107,6 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::get_child_by_name(const std
 {
     if(child_yang_name == "peer")
     {
-        for(auto const & c : peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Msdp::DefaultContext::Peers::Peer>();
         c->parent = this;
         peer.push_back(c);
@@ -2127,9 +2119,14 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2279,6 +2276,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote_as != nullptr)
     {
         children["remote-as"] = remote_as;
@@ -2464,6 +2462,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::RemoteAs::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::RemoteAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2554,6 +2553,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::KeepAlive::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::KeepAlive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2642,14 +2642,6 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::SaFilters::get_child_
 {
     if(child_yang_name == "sa-filter")
     {
-        for(auto const & c : sa_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter>();
         c->parent = this;
         sa_filter.push_back(c);
@@ -2662,9 +2654,14 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::SaFilters::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::SaFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sa_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2741,6 +2738,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2846,14 +2844,6 @@ std::shared_ptr<Entity> Msdp::DefaultContext::SaFilters::get_child_by_name(const
 {
     if(child_yang_name == "sa-filter")
     {
-        for(auto const & c : sa_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Msdp::DefaultContext::SaFilters::SaFilter>();
         c->parent = this;
         sa_filter.push_back(c);
@@ -2866,9 +2856,14 @@ std::shared_ptr<Entity> Msdp::DefaultContext::SaFilters::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::SaFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sa_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2952,6 +2947,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::SaFilters::SaFilter::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::SaFilters::SaFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

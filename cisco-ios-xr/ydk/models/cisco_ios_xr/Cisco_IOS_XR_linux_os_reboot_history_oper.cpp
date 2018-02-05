@@ -61,14 +61,6 @@ std::shared_ptr<Entity> RebootHistory::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RebootHistory::Node>();
         c->parent = this;
         node.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> RebootHistory::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> RebootHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -190,14 +187,6 @@ std::shared_ptr<Entity> RebootHistory::Node::get_child_by_name(const std::string
 {
     if(child_yang_name == "reboot-history")
     {
-        for(auto const & c : reboot_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RebootHistory::Node::RebootHistory_>();
         c->parent = this;
         reboot_history.push_back(c);
@@ -210,9 +199,14 @@ std::shared_ptr<Entity> RebootHistory::Node::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> RebootHistory::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reboot_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -303,6 +297,7 @@ std::shared_ptr<Entity> RebootHistory::Node::RebootHistory_::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> RebootHistory::Node::RebootHistory_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -15,7 +15,7 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Flow::Record::Default_::Collect::Mpls::Label::Two : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Mpls::Label::Two : public ydk::Entity
 {
     public:
         Two();
@@ -33,10 +33,10 @@ class Native::Flow::Record::Default_::Collect::Mpls::Label::Two : public ydk::En
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Mpls::Label::Two
+}; // Native::Flow::Record::Default::Collect::Mpls::Label::Two
 
 
-class Native::Flow::Record::Default_::Collect::Mpls::Label::Three : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Mpls::Label::Three : public ydk::Entity
 {
     public:
         Three();
@@ -54,10 +54,10 @@ class Native::Flow::Record::Default_::Collect::Mpls::Label::Three : public ydk::
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Mpls::Label::Three
+}; // Native::Flow::Record::Default::Collect::Mpls::Label::Three
 
 
-class Native::Flow::Record::Default_::Collect::Mpls::Label::Four : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Mpls::Label::Four : public ydk::Entity
 {
     public:
         Four();
@@ -75,10 +75,10 @@ class Native::Flow::Record::Default_::Collect::Mpls::Label::Four : public ydk::E
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Mpls::Label::Four
+}; // Native::Flow::Record::Default::Collect::Mpls::Label::Four
 
 
-class Native::Flow::Record::Default_::Collect::Mpls::Label::Five : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Mpls::Label::Five : public ydk::Entity
 {
     public:
         Five();
@@ -96,10 +96,10 @@ class Native::Flow::Record::Default_::Collect::Mpls::Label::Five : public ydk::E
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Mpls::Label::Five
+}; // Native::Flow::Record::Default::Collect::Mpls::Label::Five
 
 
-class Native::Flow::Record::Default_::Collect::Mpls::Label::Six : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Mpls::Label::Six : public ydk::Entity
 {
     public:
         Six();
@@ -117,10 +117,10 @@ class Native::Flow::Record::Default_::Collect::Mpls::Label::Six : public ydk::En
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Mpls::Label::Six
+}; // Native::Flow::Record::Default::Collect::Mpls::Label::Six
 
 
-class Native::Flow::Record::Default_::Collect::Network : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Network : public ydk::Entity
 {
     public:
         Network();
@@ -136,14 +136,14 @@ class Native::Flow::Record::Default_::Collect::Network : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Delay; //type: Native::Flow::Record::Default_::Collect::Network::Delay
+        class Delay; //type: Native::Flow::Record::Default::Collect::Network::Delay
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Network::Delay> delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Network::Delay> delay;
         
-}; // Native::Flow::Record::Default_::Collect::Network
+}; // Native::Flow::Record::Default::Collect::Network
 
 
-class Native::Flow::Record::Default_::Collect::Network::Delay : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Network::Delay : public ydk::Entity
 {
     public:
         Delay();
@@ -162,10 +162,10 @@ class Native::Flow::Record::Default_::Collect::Network::Delay : public ydk::Enti
         ydk::YLeaf sample; //type: empty
         ydk::YLeaf sum; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Network::Delay
+}; // Native::Flow::Record::Default::Collect::Network::Delay
 
 
-class Native::Flow::Record::Default_::Collect::Pfr : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr : public ydk::Entity
 {
     public:
         Pfr();
@@ -181,20 +181,20 @@ class Native::Flow::Record::Default_::Collect::Pfr : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Label; //type: Native::Flow::Record::Default_::Collect::Pfr::Label
-        class OneWayDelay; //type: Native::Flow::Record::Default_::Collect::Pfr::OneWayDelay
-        class Service; //type: Native::Flow::Record::Default_::Collect::Pfr::Service
-        class Site; //type: Native::Flow::Record::Default_::Collect::Pfr::Site
+        class Label; //type: Native::Flow::Record::Default::Collect::Pfr::Label
+        class OneWayDelay; //type: Native::Flow::Record::Default::Collect::Pfr::OneWayDelay
+        class Service; //type: Native::Flow::Record::Default::Collect::Pfr::Service
+        class Site; //type: Native::Flow::Record::Default::Collect::Pfr::Site
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Label> label;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::OneWayDelay> one_way_delay;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Service> service;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Site> site;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Label> label;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::OneWayDelay> one_way_delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Service> service;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Site> site;
         
-}; // Native::Flow::Record::Default_::Collect::Pfr
+}; // Native::Flow::Record::Default::Collect::Pfr
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Label : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Label : public ydk::Entity
 {
     public:
         Label();
@@ -212,10 +212,10 @@ class Native::Flow::Record::Default_::Collect::Pfr::Label : public ydk::Entity
 
         ydk::YLeaf identifier; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Pfr::Label
+}; // Native::Flow::Record::Default::Collect::Pfr::Label
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::OneWayDelay : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::OneWayDelay : public ydk::Entity
 {
     public:
         OneWayDelay();
@@ -234,10 +234,10 @@ class Native::Flow::Record::Default_::Collect::Pfr::OneWayDelay : public ydk::En
         ydk::YLeaf samples; //type: empty
         ydk::YLeaf sum; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Pfr::OneWayDelay
+}; // Native::Flow::Record::Default::Collect::Pfr::OneWayDelay
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Service : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Service : public ydk::Entity
 {
     public:
         Service();
@@ -257,10 +257,10 @@ class Native::Flow::Record::Default_::Collect::Pfr::Service : public ydk::Entity
         ydk::YLeaf tag; //type: empty
         ydk::YLeaf identifier; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Pfr::Service
+}; // Native::Flow::Record::Default::Collect::Pfr::Service
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Site : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Site : public ydk::Entity
 {
     public:
         Site();
@@ -276,16 +276,16 @@ class Native::Flow::Record::Default_::Collect::Pfr::Site : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Destination; //type: Native::Flow::Record::Default_::Collect::Pfr::Site::Destination
-        class Source; //type: Native::Flow::Record::Default_::Collect::Pfr::Site::Source
+        class Destination; //type: Native::Flow::Record::Default::Collect::Pfr::Site::Destination
+        class Source; //type: Native::Flow::Record::Default::Collect::Pfr::Site::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Site::Destination> destination;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Site::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Site::Destination> destination;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Site::Source> source;
         
-}; // Native::Flow::Record::Default_::Collect::Pfr::Site
+}; // Native::Flow::Record::Default::Collect::Pfr::Site
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Site::Destination : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Site::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -301,16 +301,16 @@ class Native::Flow::Record::Default_::Collect::Pfr::Site::Destination : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Id; //type: Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Id
-        class Prefix; //type: Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix
+        class Id; //type: Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Id
+        class Prefix; //type: Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Prefix
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Id> id;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix> prefix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Id> id;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Prefix> prefix;
         
-}; // Native::Flow::Record::Default_::Collect::Pfr::Site::Destination
+}; // Native::Flow::Record::Default::Collect::Pfr::Site::Destination
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Id : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Id : public ydk::Entity
 {
     public:
         Id();
@@ -328,10 +328,10 @@ class Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Id : publ
 
         ydk::YLeaf ipv4; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Id
+}; // Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Id
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -348,14 +348,14 @@ class Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ipv4; //type: empty
-        class Mask; //type: Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix::Mask
+        class Mask; //type: Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Prefix::Mask
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix::Mask> mask;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Prefix::Mask> mask;
         
-}; // Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix
+}; // Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Prefix
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix::Mask : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Prefix::Mask : public ydk::Entity
 {
     public:
         Mask();
@@ -373,10 +373,10 @@ class Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix::M
 
         ydk::YLeaf ipv4; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Pfr::Site::Destination::Prefix::Mask
+}; // Native::Flow::Record::Default::Collect::Pfr::Site::Destination::Prefix::Mask
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Site::Source : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Site::Source : public ydk::Entity
 {
     public:
         Source();
@@ -392,16 +392,16 @@ class Native::Flow::Record::Default_::Collect::Pfr::Site::Source : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Id; //type: Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Id
-        class Prefix; //type: Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix
+        class Id; //type: Native::Flow::Record::Default::Collect::Pfr::Site::Source::Id
+        class Prefix; //type: Native::Flow::Record::Default::Collect::Pfr::Site::Source::Prefix
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Id> id;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix> prefix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Site::Source::Id> id;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Site::Source::Prefix> prefix;
         
-}; // Native::Flow::Record::Default_::Collect::Pfr::Site::Source
+}; // Native::Flow::Record::Default::Collect::Pfr::Site::Source
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Id : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Site::Source::Id : public ydk::Entity
 {
     public:
         Id();
@@ -419,10 +419,10 @@ class Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Id : public yd
 
         ydk::YLeaf ipv4; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Id
+}; // Native::Flow::Record::Default::Collect::Pfr::Site::Source::Id
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Site::Source::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -439,14 +439,14 @@ class Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ipv4; //type: empty
-        class Mask; //type: Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix::Mask
+        class Mask; //type: Native::Flow::Record::Default::Collect::Pfr::Site::Source::Prefix::Mask
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix::Mask> mask;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Pfr::Site::Source::Prefix::Mask> mask;
         
-}; // Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix
+}; // Native::Flow::Record::Default::Collect::Pfr::Site::Source::Prefix
 
 
-class Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix::Mask : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Pfr::Site::Source::Prefix::Mask : public ydk::Entity
 {
     public:
         Mask();
@@ -464,10 +464,10 @@ class Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix::Mask :
 
         ydk::YLeaf ipv4; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Pfr::Site::Source::Prefix::Mask
+}; // Native::Flow::Record::Default::Collect::Pfr::Site::Source::Prefix::Mask
 
 
-class Native::Flow::Record::Default_::Collect::Policy : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Policy : public ydk::Entity
 {
     public:
         Policy();
@@ -483,16 +483,16 @@ class Native::Flow::Record::Default_::Collect::Policy : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PerformanceMonitor; //type: Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor
-        class Qos; //type: Native::Flow::Record::Default_::Collect::Policy::Qos
+        class PerformanceMonitor; //type: Native::Flow::Record::Default::Collect::Policy::PerformanceMonitor
+        class Qos; //type: Native::Flow::Record::Default::Collect::Policy::Qos
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor> performance_monitor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Policy::Qos> qos;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Policy::PerformanceMonitor> performance_monitor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Policy::Qos> qos;
         
-}; // Native::Flow::Record::Default_::Collect::Policy
+}; // Native::Flow::Record::Default::Collect::Policy
 
 
-class Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Policy::PerformanceMonitor : public ydk::Entity
 {
     public:
         PerformanceMonitor();
@@ -508,14 +508,14 @@ class Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Classification; //type: Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor::Classification
+        class Classification; //type: Native::Flow::Record::Default::Collect::Policy::PerformanceMonitor::Classification
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor::Classification> classification;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Policy::PerformanceMonitor::Classification> classification;
         
-}; // Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor
+}; // Native::Flow::Record::Default::Collect::Policy::PerformanceMonitor
 
 
-class Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor::Classification : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Policy::PerformanceMonitor::Classification : public ydk::Entity
 {
     public:
         Classification();
@@ -533,10 +533,10 @@ class Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor::Class
 
         ydk::YLeaf hierarchy; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Policy::PerformanceMonitor::Classification
+}; // Native::Flow::Record::Default::Collect::Policy::PerformanceMonitor::Classification
 
 
-class Native::Flow::Record::Default_::Collect::Policy::Qos : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Policy::Qos : public ydk::Entity
 {
     public:
         Qos();
@@ -552,16 +552,16 @@ class Native::Flow::Record::Default_::Collect::Policy::Qos : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Classification; //type: Native::Flow::Record::Default_::Collect::Policy::Qos::Classification
-        class Queue; //type: Native::Flow::Record::Default_::Collect::Policy::Qos::Queue
+        class Classification; //type: Native::Flow::Record::Default::Collect::Policy::Qos::Classification
+        class Queue; //type: Native::Flow::Record::Default::Collect::Policy::Qos::Queue
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Policy::Qos::Classification> classification;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Policy::Qos::Queue> queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Policy::Qos::Classification> classification;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Policy::Qos::Queue> queue;
         
-}; // Native::Flow::Record::Default_::Collect::Policy::Qos
+}; // Native::Flow::Record::Default::Collect::Policy::Qos
 
 
-class Native::Flow::Record::Default_::Collect::Policy::Qos::Classification : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Policy::Qos::Classification : public ydk::Entity
 {
     public:
         Classification();
@@ -579,10 +579,10 @@ class Native::Flow::Record::Default_::Collect::Policy::Qos::Classification : pub
 
         ydk::YLeaf hierarchy; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Policy::Qos::Classification
+}; // Native::Flow::Record::Default::Collect::Policy::Qos::Classification
 
 
-class Native::Flow::Record::Default_::Collect::Policy::Qos::Queue : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Policy::Qos::Queue : public ydk::Entity
 {
     public:
         Queue();
@@ -601,10 +601,10 @@ class Native::Flow::Record::Default_::Collect::Policy::Qos::Queue : public ydk::
         ydk::YLeaf drops; //type: empty
         ydk::YLeaf index_; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Policy::Qos::Queue
+}; // Native::Flow::Record::Default::Collect::Policy::Qos::Queue
 
 
-class Native::Flow::Record::Default_::Collect::Routing : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing : public ydk::Entity
 {
     public:
         Routing();
@@ -621,24 +621,24 @@ class Native::Flow::Record::Default_::Collect::Routing : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf is_multicast; //type: empty
-        class Destination; //type: Native::Flow::Record::Default_::Collect::Routing::Destination
-        class ForwardingStatus; //type: Native::Flow::Record::Default_::Collect::Routing::ForwardingStatus
-        class NextHop; //type: Native::Flow::Record::Default_::Collect::Routing::NextHop
-        class Pw; //type: Native::Flow::Record::Default_::Collect::Routing::Pw
-        class Source; //type: Native::Flow::Record::Default_::Collect::Routing::Source
-        class Vrf; //type: Native::Flow::Record::Default_::Collect::Routing::Vrf
+        class Destination; //type: Native::Flow::Record::Default::Collect::Routing::Destination
+        class ForwardingStatus; //type: Native::Flow::Record::Default::Collect::Routing::ForwardingStatus
+        class NextHop; //type: Native::Flow::Record::Default::Collect::Routing::NextHop
+        class Pw; //type: Native::Flow::Record::Default::Collect::Routing::Pw
+        class Source; //type: Native::Flow::Record::Default::Collect::Routing::Source
+        class Vrf; //type: Native::Flow::Record::Default::Collect::Routing::Vrf
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::Destination> destination;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::ForwardingStatus> forwarding_status; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::NextHop> next_hop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::Pw> pw;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::Source> source;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::Vrf> vrf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::Destination> destination;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::ForwardingStatus> forwarding_status; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::NextHop> next_hop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::Pw> pw;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::Vrf> vrf;
         
-}; // Native::Flow::Record::Default_::Collect::Routing
+}; // Native::Flow::Record::Default::Collect::Routing
 
 
-class Native::Flow::Record::Default_::Collect::Routing::Destination : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -655,14 +655,14 @@ class Native::Flow::Record::Default_::Collect::Routing::Destination : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf traffic_index; //type: empty
-        class As; //type: Native::Flow::Record::Default_::Collect::Routing::Destination::As
+        class As; //type: Native::Flow::Record::Default::Collect::Routing::Destination::As
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::Destination::As> as; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::Destination::As> as; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Routing::Destination
+}; // Native::Flow::Record::Default::Collect::Routing::Destination
 
 
-class Native::Flow::Record::Default_::Collect::Routing::Destination::As : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::Destination::As : public ydk::Entity
 {
     public:
         As();
@@ -679,14 +679,14 @@ class Native::Flow::Record::Default_::Collect::Routing::Destination::As : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf as4_octet; //type: empty
-        class Peer; //type: Native::Flow::Record::Default_::Collect::Routing::Destination::As::Peer
+        class Peer; //type: Native::Flow::Record::Default::Collect::Routing::Destination::As::Peer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::Destination::As::Peer> peer; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::Destination::As::Peer> peer; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Routing::Destination::As
+}; // Native::Flow::Record::Default::Collect::Routing::Destination::As
 
 
-class Native::Flow::Record::Default_::Collect::Routing::Destination::As::Peer : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::Destination::As::Peer : public ydk::Entity
 {
     public:
         Peer();
@@ -704,10 +704,10 @@ class Native::Flow::Record::Default_::Collect::Routing::Destination::As::Peer : 
 
         ydk::YLeaf peer4_octet; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Routing::Destination::As::Peer
+}; // Native::Flow::Record::Default::Collect::Routing::Destination::As::Peer
 
 
-class Native::Flow::Record::Default_::Collect::Routing::ForwardingStatus : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::ForwardingStatus : public ydk::Entity
 {
     public:
         ForwardingStatus();
@@ -725,10 +725,10 @@ class Native::Flow::Record::Default_::Collect::Routing::ForwardingStatus : publi
 
         ydk::YLeaf reason; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Routing::ForwardingStatus
+}; // Native::Flow::Record::Default::Collect::Routing::ForwardingStatus
 
 
-class Native::Flow::Record::Default_::Collect::Routing::NextHop : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -744,14 +744,14 @@ class Native::Flow::Record::Default_::Collect::Routing::NextHop : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Flow::Record::Default_::Collect::Routing::NextHop::Address
+        class Address; //type: Native::Flow::Record::Default::Collect::Routing::NextHop::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::NextHop::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::NextHop::Address> address;
         
-}; // Native::Flow::Record::Default_::Collect::Routing::NextHop
+}; // Native::Flow::Record::Default::Collect::Routing::NextHop
 
 
-class Native::Flow::Record::Default_::Collect::Routing::NextHop::Address : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::NextHop::Address : public ydk::Entity
 {
     public:
         Address();
@@ -767,16 +767,16 @@ class Native::Flow::Record::Default_::Collect::Routing::NextHop::Address : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4; //type: Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv4
-        class Ipv6; //type: Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv6
+        class Ipv4; //type: Native::Flow::Record::Default::Collect::Routing::NextHop::Address::Ipv4
+        class Ipv6; //type: Native::Flow::Record::Default::Collect::Routing::NextHop::Address::Ipv6
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv4> ipv4; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv6> ipv6; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::NextHop::Address::Ipv4> ipv4; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::NextHop::Address::Ipv6> ipv6; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Routing::NextHop::Address
+}; // Native::Flow::Record::Default::Collect::Routing::NextHop::Address
 
 
-class Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv4 : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::NextHop::Address::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -794,10 +794,10 @@ class Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv4 :
 
         ydk::YLeaf bgp; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv4
+}; // Native::Flow::Record::Default::Collect::Routing::NextHop::Address::Ipv4
 
 
-class Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv6 : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::NextHop::Address::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -815,10 +815,10 @@ class Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv6 :
 
         ydk::YLeaf bgp; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Routing::NextHop::Address::Ipv6
+}; // Native::Flow::Record::Default::Collect::Routing::NextHop::Address::Ipv6
 
 
-class Native::Flow::Record::Default_::Collect::Routing::Pw : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::Pw : public ydk::Entity
 {
     public:
         Pw();
@@ -834,14 +834,14 @@ class Native::Flow::Record::Default_::Collect::Routing::Pw : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Destination; //type: Native::Flow::Record::Default_::Collect::Routing::Pw::Destination
+        class Destination; //type: Native::Flow::Record::Default::Collect::Routing::Pw::Destination
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::Pw::Destination> destination;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::Pw::Destination> destination;
         
-}; // Native::Flow::Record::Default_::Collect::Routing::Pw
+}; // Native::Flow::Record::Default::Collect::Routing::Pw
 
 
-class Native::Flow::Record::Default_::Collect::Routing::Pw::Destination : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::Pw::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -859,10 +859,10 @@ class Native::Flow::Record::Default_::Collect::Routing::Pw::Destination : public
 
         ydk::YLeaf address; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Routing::Pw::Destination
+}; // Native::Flow::Record::Default::Collect::Routing::Pw::Destination
 
 
-class Native::Flow::Record::Default_::Collect::Routing::Source : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::Source : public ydk::Entity
 {
     public:
         Source();
@@ -879,14 +879,14 @@ class Native::Flow::Record::Default_::Collect::Routing::Source : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf traffic_index; //type: empty
-        class As; //type: Native::Flow::Record::Default_::Collect::Routing::Source::As
+        class As; //type: Native::Flow::Record::Default::Collect::Routing::Source::As
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::Source::As> as; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::Source::As> as; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Routing::Source
+}; // Native::Flow::Record::Default::Collect::Routing::Source
 
 
-class Native::Flow::Record::Default_::Collect::Routing::Source::As : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::Source::As : public ydk::Entity
 {
     public:
         As();
@@ -903,14 +903,14 @@ class Native::Flow::Record::Default_::Collect::Routing::Source::As : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf as4_octet; //type: empty
-        class Peer; //type: Native::Flow::Record::Default_::Collect::Routing::Source::As::Peer
+        class Peer; //type: Native::Flow::Record::Default::Collect::Routing::Source::As::Peer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Routing::Source::As::Peer> peer; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Routing::Source::As::Peer> peer; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Routing::Source::As
+}; // Native::Flow::Record::Default::Collect::Routing::Source::As
 
 
-class Native::Flow::Record::Default_::Collect::Routing::Source::As::Peer : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::Source::As::Peer : public ydk::Entity
 {
     public:
         Peer();
@@ -928,10 +928,10 @@ class Native::Flow::Record::Default_::Collect::Routing::Source::As::Peer : publi
 
         ydk::YLeaf peer4_octet; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Routing::Source::As::Peer
+}; // Native::Flow::Record::Default::Collect::Routing::Source::As::Peer
 
 
-class Native::Flow::Record::Default_::Collect::Routing::Vrf : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Routing::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -950,10 +950,10 @@ class Native::Flow::Record::Default_::Collect::Routing::Vrf : public ydk::Entity
         ydk::YLeaf input; //type: empty
         ydk::YLeaf output; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Routing::Vrf
+}; // Native::Flow::Record::Default::Collect::Routing::Vrf
 
 
-class Native::Flow::Record::Default_::Collect::Services : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Services : public ydk::Entity
 {
     public:
         Services();
@@ -969,14 +969,14 @@ class Native::Flow::Record::Default_::Collect::Services : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Waas; //type: Native::Flow::Record::Default_::Collect::Services::Waas
+        class Waas; //type: Native::Flow::Record::Default::Collect::Services::Waas
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Services::Waas> waas;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Services::Waas> waas;
         
-}; // Native::Flow::Record::Default_::Collect::Services
+}; // Native::Flow::Record::Default::Collect::Services
 
 
-class Native::Flow::Record::Default_::Collect::Services::Waas : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Services::Waas : public ydk::Entity
 {
     public:
         Waas();
@@ -993,14 +993,14 @@ class Native::Flow::Record::Default_::Collect::Services::Waas : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf passthrough_reason; //type: empty
-        class Segment; //type: Native::Flow::Record::Default_::Collect::Services::Waas::Segment
+        class Segment; //type: Native::Flow::Record::Default::Collect::Services::Waas::Segment
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Services::Waas::Segment> segment; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Services::Waas::Segment> segment; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Services::Waas
+}; // Native::Flow::Record::Default::Collect::Services::Waas
 
 
-class Native::Flow::Record::Default_::Collect::Services::Waas::Segment : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Services::Waas::Segment : public ydk::Entity
 {
     public:
         Segment();
@@ -1018,10 +1018,10 @@ class Native::Flow::Record::Default_::Collect::Services::Waas::Segment : public 
 
         ydk::YLeaf account_on_resolution; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Services::Waas::Segment
+}; // Native::Flow::Record::Default::Collect::Services::Waas::Segment
 
 
-class Native::Flow::Record::Default_::Collect::Timestamp : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Timestamp : public ydk::Entity
 {
     public:
         Timestamp();
@@ -1038,16 +1038,16 @@ class Native::Flow::Record::Default_::Collect::Timestamp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interval; //type: empty
-        class Absolute; //type: Native::Flow::Record::Default_::Collect::Timestamp::Absolute
-        class SysUptime; //type: Native::Flow::Record::Default_::Collect::Timestamp::SysUptime
+        class Absolute; //type: Native::Flow::Record::Default::Collect::Timestamp::Absolute
+        class SysUptime; //type: Native::Flow::Record::Default::Collect::Timestamp::SysUptime
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Timestamp::Absolute> absolute;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Timestamp::SysUptime> sys_uptime;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Timestamp::Absolute> absolute;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Timestamp::SysUptime> sys_uptime;
         
-}; // Native::Flow::Record::Default_::Collect::Timestamp
+}; // Native::Flow::Record::Default::Collect::Timestamp
 
 
-class Native::Flow::Record::Default_::Collect::Timestamp::Absolute : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Timestamp::Absolute : public ydk::Entity
 {
     public:
         Absolute();
@@ -1065,14 +1065,14 @@ class Native::Flow::Record::Default_::Collect::Timestamp::Absolute : public ydk:
 
         ydk::YLeaf first; //type: empty
         ydk::YLeaf last; //type: empty
-        class MonitoringInterval; //type: Native::Flow::Record::Default_::Collect::Timestamp::Absolute::MonitoringInterval
+        class MonitoringInterval; //type: Native::Flow::Record::Default::Collect::Timestamp::Absolute::MonitoringInterval
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Timestamp::Absolute::MonitoringInterval> monitoring_interval;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Timestamp::Absolute::MonitoringInterval> monitoring_interval;
         
-}; // Native::Flow::Record::Default_::Collect::Timestamp::Absolute
+}; // Native::Flow::Record::Default::Collect::Timestamp::Absolute
 
 
-class Native::Flow::Record::Default_::Collect::Timestamp::Absolute::MonitoringInterval : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Timestamp::Absolute::MonitoringInterval : public ydk::Entity
 {
     public:
         MonitoringInterval();
@@ -1091,10 +1091,10 @@ class Native::Flow::Record::Default_::Collect::Timestamp::Absolute::MonitoringIn
         ydk::YLeaf end; //type: empty
         ydk::YLeaf start; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Timestamp::Absolute::MonitoringInterval
+}; // Native::Flow::Record::Default::Collect::Timestamp::Absolute::MonitoringInterval
 
 
-class Native::Flow::Record::Default_::Collect::Timestamp::SysUptime : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Timestamp::SysUptime : public ydk::Entity
 {
     public:
         SysUptime();
@@ -1113,10 +1113,10 @@ class Native::Flow::Record::Default_::Collect::Timestamp::SysUptime : public ydk
         ydk::YLeaf first; //type: empty
         ydk::YLeaf last; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Timestamp::SysUptime
+}; // Native::Flow::Record::Default::Collect::Timestamp::SysUptime
 
 
-class Native::Flow::Record::Default_::Collect::Transport : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport : public ydk::Entity
 {
     public:
         Transport();
@@ -1134,30 +1134,30 @@ class Native::Flow::Record::Default_::Collect::Transport : public ydk::Entity
 
         ydk::YLeaf destination_port; //type: empty
         ydk::YLeaf source_port; //type: empty
-        class Bytes; //type: Native::Flow::Record::Default_::Collect::Transport::Bytes
-        class Icmp; //type: Native::Flow::Record::Default_::Collect::Transport::Icmp
-        class Igmp; //type: Native::Flow::Record::Default_::Collect::Transport::Igmp
-        class Tcp; //type: Native::Flow::Record::Default_::Collect::Transport::Tcp
-        class Udp; //type: Native::Flow::Record::Default_::Collect::Transport::Udp
-        class Event; //type: Native::Flow::Record::Default_::Collect::Transport::Event
-        class Packets; //type: Native::Flow::Record::Default_::Collect::Transport::Packets
-        class RoundTripTime; //type: Native::Flow::Record::Default_::Collect::Transport::RoundTripTime
-        class Rtp; //type: Native::Flow::Record::Default_::Collect::Transport::Rtp
+        class Bytes; //type: Native::Flow::Record::Default::Collect::Transport::Bytes
+        class Icmp; //type: Native::Flow::Record::Default::Collect::Transport::Icmp
+        class Igmp; //type: Native::Flow::Record::Default::Collect::Transport::Igmp
+        class Tcp; //type: Native::Flow::Record::Default::Collect::Transport::Tcp
+        class Udp; //type: Native::Flow::Record::Default::Collect::Transport::Udp
+        class Event; //type: Native::Flow::Record::Default::Collect::Transport::Event
+        class Packets; //type: Native::Flow::Record::Default::Collect::Transport::Packets
+        class RoundTripTime; //type: Native::Flow::Record::Default::Collect::Transport::RoundTripTime
+        class Rtp; //type: Native::Flow::Record::Default::Collect::Transport::Rtp
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Bytes> bytes;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Icmp> icmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Igmp> igmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Tcp> tcp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Udp> udp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Event> event;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Packets> packets;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::RoundTripTime> round_trip_time; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Rtp> rtp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Bytes> bytes;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Icmp> icmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Igmp> igmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Tcp> tcp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Udp> udp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Event> event;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Packets> packets;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::RoundTripTime> round_trip_time; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Rtp> rtp;
         
-}; // Native::Flow::Record::Default_::Collect::Transport
+}; // Native::Flow::Record::Default::Collect::Transport
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Bytes : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Bytes : public ydk::Entity
 {
     public:
         Bytes();
@@ -1175,14 +1175,14 @@ class Native::Flow::Record::Default_::Collect::Transport::Bytes : public ydk::En
 
         ydk::YLeaf expected; //type: empty
         ydk::YLeaf out_of_order; //type: empty
-        class Lost; //type: Native::Flow::Record::Default_::Collect::Transport::Bytes::Lost
+        class Lost; //type: Native::Flow::Record::Default::Collect::Transport::Bytes::Lost
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Bytes::Lost> lost; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Bytes::Lost> lost; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Bytes
+}; // Native::Flow::Record::Default::Collect::Transport::Bytes
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Bytes::Lost : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Bytes::Lost : public ydk::Entity
 {
     public:
         Lost();
@@ -1200,10 +1200,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Bytes::Lost : public y
 
         ydk::YLeaf rate; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Bytes::Lost
+}; // Native::Flow::Record::Default::Collect::Transport::Bytes::Lost
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Icmp : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Icmp : public ydk::Entity
 {
     public:
         Icmp();
@@ -1219,16 +1219,16 @@ class Native::Flow::Record::Default_::Collect::Transport::Icmp : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4; //type: Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv4
-        class Ipv6; //type: Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv6
+        class Ipv4; //type: Native::Flow::Record::Default::Collect::Transport::Icmp::Ipv4
+        class Ipv6; //type: Native::Flow::Record::Default::Collect::Transport::Icmp::Ipv6
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Icmp::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Icmp::Ipv6> ipv6;
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Icmp
+}; // Native::Flow::Record::Default::Collect::Transport::Icmp
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv4 : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Icmp::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -1247,10 +1247,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv4 : public yd
         ydk::YLeaf code; //type: empty
         ydk::YLeaf type; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv4
+}; // Native::Flow::Record::Default::Collect::Transport::Icmp::Ipv4
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv6 : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Icmp::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -1269,10 +1269,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv6 : public yd
         ydk::YLeaf code; //type: empty
         ydk::YLeaf type; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Icmp::Ipv6
+}; // Native::Flow::Record::Default::Collect::Transport::Icmp::Ipv6
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Igmp : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Igmp : public ydk::Entity
 {
     public:
         Igmp();
@@ -1290,10 +1290,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Igmp : public ydk::Ent
 
         ydk::YLeaf type; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Igmp
+}; // Native::Flow::Record::Default::Collect::Transport::Igmp
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Tcp : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Tcp : public ydk::Entity
 {
     public:
         Tcp();
@@ -1316,20 +1316,20 @@ class Native::Flow::Record::Default_::Collect::Transport::Tcp : public ydk::Enti
         ydk::YLeaf sequence_number; //type: empty
         ydk::YLeaf source_port; //type: empty
         ydk::YLeaf urgent_pointer; //type: empty
-        class Flags; //type: Native::Flow::Record::Default_::Collect::Transport::Tcp::Flags
-        class Flow_; //type: Native::Flow::Record::Default_::Collect::Transport::Tcp::Flow_
-        class Option; //type: Native::Flow::Record::Default_::Collect::Transport::Tcp::Option
-        class WindowSize; //type: Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize
+        class Flags; //type: Native::Flow::Record::Default::Collect::Transport::Tcp::Flags
+        class Flow_; //type: Native::Flow::Record::Default::Collect::Transport::Tcp::Flow_
+        class Option; //type: Native::Flow::Record::Default::Collect::Transport::Tcp::Option
+        class WindowSize; //type: Native::Flow::Record::Default::Collect::Transport::Tcp::WindowSize
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Tcp::Flags> flags; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Tcp::Flow_> flow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Tcp::Option> option;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize> window_size; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Tcp::Flags> flags; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Tcp::Flow_> flow;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Tcp::Option> option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Tcp::WindowSize> window_size; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Tcp
+}; // Native::Flow::Record::Default::Collect::Transport::Tcp
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Tcp::Flags : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Tcp::Flags : public ydk::Entity
 {
     public:
         Flags();
@@ -1354,10 +1354,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Tcp::Flags : public yd
         ydk::YLeaf syn; //type: empty
         ydk::YLeaf urg; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Tcp::Flags
+}; // Native::Flow::Record::Default::Collect::Transport::Tcp::Flags
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Tcp::Flow_ : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Tcp::Flow_ : public ydk::Entity
 {
     public:
         Flow_();
@@ -1375,10 +1375,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Tcp::Flow_ : public yd
 
         ydk::YLeaf count; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Tcp::Flow_
+}; // Native::Flow::Record::Default::Collect::Transport::Tcp::Flow_
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Tcp::Option : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Tcp::Option : public ydk::Entity
 {
     public:
         Option();
@@ -1394,14 +1394,14 @@ class Native::Flow::Record::Default_::Collect::Transport::Tcp::Option : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Map; //type: Native::Flow::Record::Default_::Collect::Transport::Tcp::Option::Map
+        class Map; //type: Native::Flow::Record::Default::Collect::Transport::Tcp::Option::Map
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Tcp::Option::Map> map; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Tcp::Option::Map> map; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Tcp::Option
+}; // Native::Flow::Record::Default::Collect::Transport::Tcp::Option
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Tcp::Option::Map : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Tcp::Option::Map : public ydk::Entity
 {
     public:
         Map();
@@ -1419,10 +1419,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Tcp::Option::Map : pub
 
         ydk::YLeaf long_; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Tcp::Option::Map
+}; // Native::Flow::Record::Default::Collect::Transport::Tcp::Option::Map
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Tcp::WindowSize : public ydk::Entity
 {
     public:
         WindowSize();
@@ -1441,14 +1441,14 @@ class Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize : publ
         ydk::YLeaf maximum; //type: empty
         ydk::YLeaf minimum; //type: empty
         ydk::YLeaf sum; //type: empty
-        class Average; //type: Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize::Average
+        class Average; //type: Native::Flow::Record::Default::Collect::Transport::Tcp::WindowSize::Average
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize::Average> average; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Tcp::WindowSize::Average> average; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize
+}; // Native::Flow::Record::Default::Collect::Transport::Tcp::WindowSize
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize::Average : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Tcp::WindowSize::Average : public ydk::Entity
 {
     public:
         Average();
@@ -1466,10 +1466,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize::Avera
 
         ydk::YLeaf sum; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Tcp::WindowSize::Average
+}; // Native::Flow::Record::Default::Collect::Transport::Tcp::WindowSize::Average
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Udp : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Udp : public ydk::Entity
 {
     public:
         Udp();
@@ -1489,10 +1489,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Udp : public ydk::Enti
         ydk::YLeaf message_length; //type: empty
         ydk::YLeaf source_port; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Udp
+}; // Native::Flow::Record::Default::Collect::Transport::Udp
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Event : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Event : public ydk::Entity
 {
     public:
         Event();
@@ -1508,14 +1508,14 @@ class Native::Flow::Record::Default_::Collect::Transport::Event : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PacketLoss; //type: Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss
+        class PacketLoss; //type: Native::Flow::Record::Default::Collect::Transport::Event::PacketLoss
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss> packet_loss;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Event::PacketLoss> packet_loss;
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Event
+}; // Native::Flow::Record::Default::Collect::Transport::Event
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Event::PacketLoss : public ydk::Entity
 {
     public:
         PacketLoss();
@@ -1531,14 +1531,14 @@ class Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Counter; //type: Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss::Counter
+        class Counter; //type: Native::Flow::Record::Default::Collect::Transport::Event::PacketLoss::Counter
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss::Counter> counter; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Event::PacketLoss::Counter> counter; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss
+}; // Native::Flow::Record::Default::Collect::Transport::Event::PacketLoss
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss::Counter : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Event::PacketLoss::Counter : public ydk::Entity
 {
     public:
         Counter();
@@ -1557,10 +1557,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss::Cou
         ydk::YLeaf max; //type: empty
         ydk::YLeaf min; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Event::PacketLoss::Counter
+}; // Native::Flow::Record::Default::Collect::Transport::Event::PacketLoss::Counter
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Packets : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Packets : public ydk::Entity
 {
     public:
         Packets();
@@ -1577,16 +1577,16 @@ class Native::Flow::Record::Default_::Collect::Transport::Packets : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf out_of_order; //type: empty
-        class Expected; //type: Native::Flow::Record::Default_::Collect::Transport::Packets::Expected
-        class Lost; //type: Native::Flow::Record::Default_::Collect::Transport::Packets::Lost
+        class Expected; //type: Native::Flow::Record::Default::Collect::Transport::Packets::Expected
+        class Lost; //type: Native::Flow::Record::Default::Collect::Transport::Packets::Lost
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Packets::Expected> expected;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Packets::Lost> lost;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Packets::Expected> expected;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Packets::Lost> lost;
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Packets
+}; // Native::Flow::Record::Default::Collect::Transport::Packets
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Packets::Expected : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Packets::Expected : public ydk::Entity
 {
     public:
         Expected();
@@ -1604,10 +1604,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Packets::Expected : pu
 
         ydk::YLeaf counter; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Packets::Expected
+}; // Native::Flow::Record::Default::Collect::Transport::Packets::Expected
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Packets::Lost : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Packets::Lost : public ydk::Entity
 {
     public:
         Lost();
@@ -1623,16 +1623,16 @@ class Native::Flow::Record::Default_::Collect::Transport::Packets::Lost : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Counter; //type: Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Counter
-        class Rate; //type: Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Rate
+        class Counter; //type: Native::Flow::Record::Default::Collect::Transport::Packets::Lost::Counter
+        class Rate; //type: Native::Flow::Record::Default::Collect::Transport::Packets::Lost::Rate
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Counter> counter; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Rate> rate; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Packets::Lost::Counter> counter; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Packets::Lost::Rate> rate; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Packets::Lost
+}; // Native::Flow::Record::Default::Collect::Transport::Packets::Lost
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Counter : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Packets::Lost::Counter : public ydk::Entity
 {
     public:
         Counter();
@@ -1651,10 +1651,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Counter
         ydk::YLeaf max; //type: empty
         ydk::YLeaf min; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Counter
+}; // Native::Flow::Record::Default::Collect::Transport::Packets::Lost::Counter
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Rate : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Packets::Lost::Rate : public ydk::Entity
 {
     public:
         Rate();
@@ -1673,10 +1673,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Rate : 
         ydk::YLeaf max; //type: empty
         ydk::YLeaf min; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Packets::Lost::Rate
+}; // Native::Flow::Record::Default::Collect::Transport::Packets::Lost::Rate
 
 
-class Native::Flow::Record::Default_::Collect::Transport::RoundTripTime : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::RoundTripTime : public ydk::Entity
 {
     public:
         RoundTripTime();
@@ -1697,10 +1697,10 @@ class Native::Flow::Record::Default_::Collect::Transport::RoundTripTime : public
         ydk::YLeaf samples; //type: empty
         ydk::YLeaf sum; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::RoundTripTime
+}; // Native::Flow::Record::Default::Collect::Transport::RoundTripTime
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Rtp : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Rtp : public ydk::Entity
 {
     public:
         Rtp();
@@ -1718,16 +1718,16 @@ class Native::Flow::Record::Default_::Collect::Transport::Rtp : public ydk::Enti
 
         ydk::YLeaf payload_type; //type: empty
         ydk::YLeaf ssrc; //type: empty
-        class Flow_; //type: Native::Flow::Record::Default_::Collect::Transport::Rtp::Flow_
-        class Jitter; //type: Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter
+        class Flow_; //type: Native::Flow::Record::Default::Collect::Transport::Rtp::Flow_
+        class Jitter; //type: Native::Flow::Record::Default::Collect::Transport::Rtp::Jitter
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Rtp::Flow_> flow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter> jitter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Rtp::Flow_> flow;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Rtp::Jitter> jitter;
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Rtp
+}; // Native::Flow::Record::Default::Collect::Transport::Rtp
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Rtp::Flow_ : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Rtp::Flow_ : public ydk::Entity
 {
     public:
         Flow_();
@@ -1745,10 +1745,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Rtp::Flow_ : public yd
 
         ydk::YLeaf count; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Rtp::Flow_
+}; // Native::Flow::Record::Default::Collect::Transport::Rtp::Flow_
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Rtp::Jitter : public ydk::Entity
 {
     public:
         Jitter();
@@ -1766,14 +1766,14 @@ class Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter : public y
 
         ydk::YLeaf maximum; //type: empty
         ydk::YLeaf minimum; //type: empty
-        class Mean; //type: Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter::Mean
+        class Mean; //type: Native::Flow::Record::Default::Collect::Transport::Rtp::Jitter::Mean
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter::Mean> mean; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Transport::Rtp::Jitter::Mean> mean; // presence node
         
-}; // Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter
+}; // Native::Flow::Record::Default::Collect::Transport::Rtp::Jitter
 
 
-class Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter::Mean : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Transport::Rtp::Jitter::Mean : public ydk::Entity
 {
     public:
         Mean();
@@ -1791,10 +1791,10 @@ class Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter::Mean : pu
 
         ydk::YLeaf sum; //type: empty
 
-}; // Native::Flow::Record::Default_::Collect::Transport::Rtp::Jitter::Mean
+}; // Native::Flow::Record::Default::Collect::Transport::Rtp::Jitter::Mean
 
 
-class Native::Flow::Record::Default_::Match : public ydk::Entity
+class Native::Flow::Record::Default::Match : public ydk::Entity
 {
     public:
         Match();
@@ -1810,44 +1810,44 @@ class Native::Flow::Record::Default_::Match : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Application; //type: Native::Flow::Record::Default_::Match::Application
-        class Connection; //type: Native::Flow::Record::Default_::Match::Connection
-        class Datalink; //type: Native::Flow::Record::Default_::Match::Datalink
-        class Flow_; //type: Native::Flow::Record::Default_::Match::Flow_
-        class Interface; //type: Native::Flow::Record::Default_::Match::Interface
-        class Ipv4; //type: Native::Flow::Record::Default_::Match::Ipv4
-        class Ipv6; //type: Native::Flow::Record::Default_::Match::Ipv6
-        class Metadata; //type: Native::Flow::Record::Default_::Match::Metadata
-        class Mpls; //type: Native::Flow::Record::Default_::Match::Mpls
-        class Network; //type: Native::Flow::Record::Default_::Match::Network
-        class Pfr; //type: Native::Flow::Record::Default_::Match::Pfr
-        class Policy; //type: Native::Flow::Record::Default_::Match::Policy
-        class Routing; //type: Native::Flow::Record::Default_::Match::Routing
-        class Services; //type: Native::Flow::Record::Default_::Match::Services
-        class Timestamp; //type: Native::Flow::Record::Default_::Match::Timestamp
-        class Transport; //type: Native::Flow::Record::Default_::Match::Transport
+        class Application; //type: Native::Flow::Record::Default::Match::Application
+        class Connection; //type: Native::Flow::Record::Default::Match::Connection
+        class Datalink; //type: Native::Flow::Record::Default::Match::Datalink
+        class Flow_; //type: Native::Flow::Record::Default::Match::Flow_
+        class Interface; //type: Native::Flow::Record::Default::Match::Interface
+        class Ipv4; //type: Native::Flow::Record::Default::Match::Ipv4
+        class Ipv6; //type: Native::Flow::Record::Default::Match::Ipv6
+        class Metadata; //type: Native::Flow::Record::Default::Match::Metadata
+        class Mpls; //type: Native::Flow::Record::Default::Match::Mpls
+        class Network; //type: Native::Flow::Record::Default::Match::Network
+        class Pfr; //type: Native::Flow::Record::Default::Match::Pfr
+        class Policy; //type: Native::Flow::Record::Default::Match::Policy
+        class Routing; //type: Native::Flow::Record::Default::Match::Routing
+        class Services; //type: Native::Flow::Record::Default::Match::Services
+        class Timestamp; //type: Native::Flow::Record::Default::Match::Timestamp
+        class Transport; //type: Native::Flow::Record::Default::Match::Transport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Application> application;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Connection> connection;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink> datalink;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Flow_> flow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Interface> interface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6> ipv6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Metadata> metadata;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Mpls> mpls;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Network> network;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Pfr> pfr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Policy> policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Routing> routing;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Services> services;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Timestamp> timestamp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Transport> transport;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Application> application;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Connection> connection;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink> datalink;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Flow_> flow;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Interface> interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Metadata> metadata;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Mpls> mpls;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Network> network;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Pfr> pfr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Policy> policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Routing> routing;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Services> services;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Timestamp> timestamp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Transport> transport;
         
-}; // Native::Flow::Record::Default_::Match
+}; // Native::Flow::Record::Default::Match
 
 
-class Native::Flow::Record::Default_::Match::Application : public ydk::Entity
+class Native::Flow::Record::Default::Match::Application : public ydk::Entity
 {
     public:
         Application();
@@ -1865,14 +1865,14 @@ class Native::Flow::Record::Default_::Match::Application : public ydk::Entity
 
         ydk::YLeaf vendor; //type: empty
         ydk::YLeaf version; //type: empty
-        class Name; //type: Native::Flow::Record::Default_::Match::Application::Name
+        class Name; //type: Native::Flow::Record::Default::Match::Application::Name
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Application::Name> name; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Application::Name> name; // presence node
         
-}; // Native::Flow::Record::Default_::Match::Application
+}; // Native::Flow::Record::Default::Match::Application
 
 
-class Native::Flow::Record::Default_::Match::Application::Name : public ydk::Entity
+class Native::Flow::Record::Default::Match::Application::Name : public ydk::Entity
 {
     public:
         Name();
@@ -1890,10 +1890,10 @@ class Native::Flow::Record::Default_::Match::Application::Name : public ydk::Ent
 
         ydk::YLeaf account_on_resolution; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Application::Name
+}; // Native::Flow::Record::Default::Match::Application::Name
 
 
-class Native::Flow::Record::Default_::Match::Connection : public ydk::Entity
+class Native::Flow::Record::Default::Match::Connection : public ydk::Entity
 {
     public:
         Connection();
@@ -1912,16 +1912,16 @@ class Native::Flow::Record::Default_::Match::Connection : public ydk::Entity
         ydk::YLeaf id; //type: empty
         ydk::YLeaf initiator; //type: empty
         ydk::YLeaf transaction_id; //type: empty
-        class Client; //type: Native::Flow::Record::Default_::Match::Connection::Client
-        class Server; //type: Native::Flow::Record::Default_::Match::Connection::Server
+        class Client; //type: Native::Flow::Record::Default::Match::Connection::Client
+        class Server; //type: Native::Flow::Record::Default::Match::Connection::Server
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Connection::Client> client;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Connection::Server> server;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Connection::Client> client;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Connection::Server> server;
         
-}; // Native::Flow::Record::Default_::Match::Connection
+}; // Native::Flow::Record::Default::Match::Connection
 
 
-class Native::Flow::Record::Default_::Match::Connection::Client : public ydk::Entity
+class Native::Flow::Record::Default::Match::Connection::Client : public ydk::Entity
 {
     public:
         Client();
@@ -1937,18 +1937,18 @@ class Native::Flow::Record::Default_::Match::Connection::Client : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4; //type: Native::Flow::Record::Default_::Match::Connection::Client::Ipv4
-        class Ipv6; //type: Native::Flow::Record::Default_::Match::Connection::Client::Ipv6
-        class Transport; //type: Native::Flow::Record::Default_::Match::Connection::Client::Transport
+        class Ipv4; //type: Native::Flow::Record::Default::Match::Connection::Client::Ipv4
+        class Ipv6; //type: Native::Flow::Record::Default::Match::Connection::Client::Ipv6
+        class Transport; //type: Native::Flow::Record::Default::Match::Connection::Client::Transport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Connection::Client::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Connection::Client::Ipv6> ipv6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Connection::Client::Transport> transport;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Connection::Client::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Connection::Client::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Connection::Client::Transport> transport;
         
-}; // Native::Flow::Record::Default_::Match::Connection::Client
+}; // Native::Flow::Record::Default::Match::Connection::Client
 
 
-class Native::Flow::Record::Default_::Match::Connection::Client::Ipv4 : public ydk::Entity
+class Native::Flow::Record::Default::Match::Connection::Client::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -1966,10 +1966,10 @@ class Native::Flow::Record::Default_::Match::Connection::Client::Ipv4 : public y
 
         ydk::YLeaf address; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Connection::Client::Ipv4
+}; // Native::Flow::Record::Default::Match::Connection::Client::Ipv4
 
 
-class Native::Flow::Record::Default_::Match::Connection::Client::Ipv6 : public ydk::Entity
+class Native::Flow::Record::Default::Match::Connection::Client::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -1987,10 +1987,10 @@ class Native::Flow::Record::Default_::Match::Connection::Client::Ipv6 : public y
 
         ydk::YLeaf address; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Connection::Client::Ipv6
+}; // Native::Flow::Record::Default::Match::Connection::Client::Ipv6
 
 
-class Native::Flow::Record::Default_::Match::Connection::Client::Transport : public ydk::Entity
+class Native::Flow::Record::Default::Match::Connection::Client::Transport : public ydk::Entity
 {
     public:
         Transport();
@@ -2008,10 +2008,10 @@ class Native::Flow::Record::Default_::Match::Connection::Client::Transport : pub
 
         ydk::YLeaf port; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Connection::Client::Transport
+}; // Native::Flow::Record::Default::Match::Connection::Client::Transport
 
 
-class Native::Flow::Record::Default_::Match::Connection::Server : public ydk::Entity
+class Native::Flow::Record::Default::Match::Connection::Server : public ydk::Entity
 {
     public:
         Server();
@@ -2027,18 +2027,18 @@ class Native::Flow::Record::Default_::Match::Connection::Server : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4; //type: Native::Flow::Record::Default_::Match::Connection::Server::Ipv4
-        class Ipv6; //type: Native::Flow::Record::Default_::Match::Connection::Server::Ipv6
-        class Transport; //type: Native::Flow::Record::Default_::Match::Connection::Server::Transport
+        class Ipv4; //type: Native::Flow::Record::Default::Match::Connection::Server::Ipv4
+        class Ipv6; //type: Native::Flow::Record::Default::Match::Connection::Server::Ipv6
+        class Transport; //type: Native::Flow::Record::Default::Match::Connection::Server::Transport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Connection::Server::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Connection::Server::Ipv6> ipv6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Connection::Server::Transport> transport;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Connection::Server::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Connection::Server::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Connection::Server::Transport> transport;
         
-}; // Native::Flow::Record::Default_::Match::Connection::Server
+}; // Native::Flow::Record::Default::Match::Connection::Server
 
 
-class Native::Flow::Record::Default_::Match::Connection::Server::Ipv4 : public ydk::Entity
+class Native::Flow::Record::Default::Match::Connection::Server::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -2056,10 +2056,10 @@ class Native::Flow::Record::Default_::Match::Connection::Server::Ipv4 : public y
 
         ydk::YLeaf address; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Connection::Server::Ipv4
+}; // Native::Flow::Record::Default::Match::Connection::Server::Ipv4
 
 
-class Native::Flow::Record::Default_::Match::Connection::Server::Ipv6 : public ydk::Entity
+class Native::Flow::Record::Default::Match::Connection::Server::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -2077,10 +2077,10 @@ class Native::Flow::Record::Default_::Match::Connection::Server::Ipv6 : public y
 
         ydk::YLeaf address; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Connection::Server::Ipv6
+}; // Native::Flow::Record::Default::Match::Connection::Server::Ipv6
 
 
-class Native::Flow::Record::Default_::Match::Connection::Server::Transport : public ydk::Entity
+class Native::Flow::Record::Default::Match::Connection::Server::Transport : public ydk::Entity
 {
     public:
         Transport();
@@ -2098,10 +2098,10 @@ class Native::Flow::Record::Default_::Match::Connection::Server::Transport : pub
 
         ydk::YLeaf port; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Connection::Server::Transport
+}; // Native::Flow::Record::Default::Match::Connection::Server::Transport
 
 
-class Native::Flow::Record::Default_::Match::Datalink : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink : public ydk::Entity
 {
     public:
         Datalink();
@@ -2121,17 +2121,17 @@ class Native::Flow::Record::Default_::Match::Datalink : public ydk::Entity
         ydk::YLeaf ethertype; //type: empty
         ydk::YLeaf vlan; //type: Vlan
         ydk::YLeaf source_vlan_id; //type: empty
-        class Dot1Q; //type: Native::Flow::Record::Default_::Match::Datalink::Dot1Q
-        class Mac; //type: Native::Flow::Record::Default_::Match::Datalink::Mac
+        class Dot1Q; //type: Native::Flow::Record::Default::Match::Datalink::Dot1Q
+        class Mac; //type: Native::Flow::Record::Default::Match::Datalink::Mac
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink::Dot1Q> dot1q;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Dot1Q> dot1q;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Mac> mac;
                 class Vlan;
 
-}; // Native::Flow::Record::Default_::Match::Datalink
+}; // Native::Flow::Record::Default::Match::Datalink
 
 
-class Native::Flow::Record::Default_::Match::Datalink::Dot1Q : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink::Dot1Q : public ydk::Entity
 {
     public:
         Dot1Q();
@@ -2148,14 +2148,14 @@ class Native::Flow::Record::Default_::Match::Datalink::Dot1Q : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: empty
-        class Vlan; //type: Native::Flow::Record::Default_::Match::Datalink::Dot1Q::Vlan
+        class Vlan; //type: Native::Flow::Record::Default::Match::Datalink::Dot1Q::Vlan
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink::Dot1Q::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Dot1Q::Vlan> vlan;
         
-}; // Native::Flow::Record::Default_::Match::Datalink::Dot1Q
+}; // Native::Flow::Record::Default::Match::Datalink::Dot1Q
 
 
-class Native::Flow::Record::Default_::Match::Datalink::Dot1Q::Vlan : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink::Dot1Q::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -2174,10 +2174,10 @@ class Native::Flow::Record::Default_::Match::Datalink::Dot1Q::Vlan : public ydk:
         ydk::YLeaf input; //type: empty
         ydk::YLeaf output; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Datalink::Dot1Q::Vlan
+}; // Native::Flow::Record::Default::Match::Datalink::Dot1Q::Vlan
 
 
-class Native::Flow::Record::Default_::Match::Datalink::Mac : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink::Mac : public ydk::Entity
 {
     public:
         Mac();
@@ -2193,16 +2193,16 @@ class Native::Flow::Record::Default_::Match::Datalink::Mac : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Destination; //type: Native::Flow::Record::Default_::Match::Datalink::Mac::Destination
-        class Source; //type: Native::Flow::Record::Default_::Match::Datalink::Mac::Source
+        class Destination; //type: Native::Flow::Record::Default::Match::Datalink::Mac::Destination
+        class Source; //type: Native::Flow::Record::Default::Match::Datalink::Mac::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink::Mac::Destination> destination;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink::Mac::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Mac::Destination> destination;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Mac::Source> source;
         
-}; // Native::Flow::Record::Default_::Match::Datalink::Mac
+}; // Native::Flow::Record::Default::Match::Datalink::Mac
 
 
-class Native::Flow::Record::Default_::Match::Datalink::Mac::Destination : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink::Mac::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -2218,14 +2218,14 @@ class Native::Flow::Record::Default_::Match::Datalink::Mac::Destination : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Flow::Record::Default_::Match::Datalink::Mac::Destination::Address
+        class Address; //type: Native::Flow::Record::Default::Match::Datalink::Mac::Destination::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink::Mac::Destination::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Mac::Destination::Address> address;
         
-}; // Native::Flow::Record::Default_::Match::Datalink::Mac::Destination
+}; // Native::Flow::Record::Default::Match::Datalink::Mac::Destination
 
 
-class Native::Flow::Record::Default_::Match::Datalink::Mac::Destination::Address : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink::Mac::Destination::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2244,10 +2244,10 @@ class Native::Flow::Record::Default_::Match::Datalink::Mac::Destination::Address
         ydk::YLeaf input; //type: empty
         ydk::YLeaf output; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Datalink::Mac::Destination::Address
+}; // Native::Flow::Record::Default::Match::Datalink::Mac::Destination::Address
 
 
-class Native::Flow::Record::Default_::Match::Datalink::Mac::Source : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink::Mac::Source : public ydk::Entity
 {
     public:
         Source();
@@ -2263,14 +2263,14 @@ class Native::Flow::Record::Default_::Match::Datalink::Mac::Source : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Flow::Record::Default_::Match::Datalink::Mac::Source::Address
+        class Address; //type: Native::Flow::Record::Default::Match::Datalink::Mac::Source::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Datalink::Mac::Source::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Mac::Source::Address> address;
         
-}; // Native::Flow::Record::Default_::Match::Datalink::Mac::Source
+}; // Native::Flow::Record::Default::Match::Datalink::Mac::Source
 
 
-class Native::Flow::Record::Default_::Match::Datalink::Mac::Source::Address : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink::Mac::Source::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2289,10 +2289,10 @@ class Native::Flow::Record::Default_::Match::Datalink::Mac::Source::Address : pu
         ydk::YLeaf input; //type: empty
         ydk::YLeaf output; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Datalink::Mac::Source::Address
+}; // Native::Flow::Record::Default::Match::Datalink::Mac::Source::Address
 
 
-class Native::Flow::Record::Default_::Match::Flow_ : public ydk::Entity
+class Native::Flow::Record::Default::Match::Flow_ : public ydk::Entity
 {
     public:
         Flow_();
@@ -2310,16 +2310,16 @@ class Native::Flow::Record::Default_::Match::Flow_ : public ydk::Entity
 
         ydk::YLeaf direction; //type: empty
         ydk::YLeaf sampler; //type: empty
-        class Cts; //type: Native::Flow::Record::Default_::Match::Flow_::Cts
-        class Observation; //type: Native::Flow::Record::Default_::Match::Flow_::Observation
+        class Cts; //type: Native::Flow::Record::Default::Match::Flow_::Cts
+        class Observation; //type: Native::Flow::Record::Default::Match::Flow_::Observation
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Flow_::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Flow_::Observation> observation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Flow_::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Flow_::Observation> observation;
         
-}; // Native::Flow::Record::Default_::Match::Flow_
+}; // Native::Flow::Record::Default::Match::Flow_
 
 
-class Native::Flow::Record::Default_::Match::Flow_::Cts : public ydk::Entity
+class Native::Flow::Record::Default::Match::Flow_::Cts : public ydk::Entity
 {
     public:
         Cts();
@@ -2335,16 +2335,16 @@ class Native::Flow::Record::Default_::Match::Flow_::Cts : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Destination; //type: Native::Flow::Record::Default_::Match::Flow_::Cts::Destination
-        class Source; //type: Native::Flow::Record::Default_::Match::Flow_::Cts::Source
+        class Destination; //type: Native::Flow::Record::Default::Match::Flow_::Cts::Destination
+        class Source; //type: Native::Flow::Record::Default::Match::Flow_::Cts::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Flow_::Cts::Destination> destination;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Flow_::Cts::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Flow_::Cts::Destination> destination;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Flow_::Cts::Source> source;
         
-}; // Native::Flow::Record::Default_::Match::Flow_::Cts
+}; // Native::Flow::Record::Default::Match::Flow_::Cts
 
 
-class Native::Flow::Record::Default_::Match::Flow_::Cts::Destination : public ydk::Entity
+class Native::Flow::Record::Default::Match::Flow_::Cts::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -2362,10 +2362,10 @@ class Native::Flow::Record::Default_::Match::Flow_::Cts::Destination : public yd
 
         ydk::YLeaf group_tag; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Flow_::Cts::Destination
+}; // Native::Flow::Record::Default::Match::Flow_::Cts::Destination
 
 
-class Native::Flow::Record::Default_::Match::Flow_::Cts::Source : public ydk::Entity
+class Native::Flow::Record::Default::Match::Flow_::Cts::Source : public ydk::Entity
 {
     public:
         Source();
@@ -2383,10 +2383,10 @@ class Native::Flow::Record::Default_::Match::Flow_::Cts::Source : public ydk::En
 
         ydk::YLeaf group_tag; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Flow_::Cts::Source
+}; // Native::Flow::Record::Default::Match::Flow_::Cts::Source
 
 
-class Native::Flow::Record::Default_::Match::Flow_::Observation : public ydk::Entity
+class Native::Flow::Record::Default::Match::Flow_::Observation : public ydk::Entity
 {
     public:
         Observation();
@@ -2404,10 +2404,10 @@ class Native::Flow::Record::Default_::Match::Flow_::Observation : public ydk::En
 
         ydk::YLeaf point; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Flow_::Observation
+}; // Native::Flow::Record::Default::Match::Flow_::Observation
 
 
-class Native::Flow::Record::Default_::Match::Interface : public ydk::Entity
+class Native::Flow::Record::Default::Match::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -2423,16 +2423,16 @@ class Native::Flow::Record::Default_::Match::Interface : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Input; //type: Native::Flow::Record::Default_::Match::Interface::Input
-        class Output; //type: Native::Flow::Record::Default_::Match::Interface::Output
+        class Input; //type: Native::Flow::Record::Default::Match::Interface::Input
+        class Output; //type: Native::Flow::Record::Default::Match::Interface::Output
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Interface::Input> input; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Interface::Output> output; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Interface::Input> input; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Interface::Output> output; // presence node
         
-}; // Native::Flow::Record::Default_::Match::Interface
+}; // Native::Flow::Record::Default::Match::Interface
 
 
-class Native::Flow::Record::Default_::Match::Interface::Input : public ydk::Entity
+class Native::Flow::Record::Default::Match::Interface::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2450,10 +2450,10 @@ class Native::Flow::Record::Default_::Match::Interface::Input : public ydk::Enti
 
         ydk::YLeaf snmp; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Interface::Input
+}; // Native::Flow::Record::Default::Match::Interface::Input
 
 
-class Native::Flow::Record::Default_::Match::Interface::Output : public ydk::Entity
+class Native::Flow::Record::Default::Match::Interface::Output : public ydk::Entity
 {
     public:
         Output();
@@ -2471,10 +2471,10 @@ class Native::Flow::Record::Default_::Match::Interface::Output : public ydk::Ent
 
         ydk::YLeaf snmp; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Interface::Output
+}; // Native::Flow::Record::Default::Match::Interface::Output
 
 
-class Native::Flow::Record::Default_::Match::Ipv4 : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -2497,28 +2497,28 @@ class Native::Flow::Record::Default_::Match::Ipv4 : public ydk::Entity
         ydk::YLeaf protocol; //type: empty
         ydk::YLeaf tos; //type: empty
         ydk::YLeaf version; //type: empty
-        class Destination; //type: Native::Flow::Record::Default_::Match::Ipv4::Destination
-        class Fragmentation; //type: Native::Flow::Record::Default_::Match::Ipv4::Fragmentation
-        class Length; //type: Native::Flow::Record::Default_::Match::Ipv4::Length
-        class Option; //type: Native::Flow::Record::Default_::Match::Ipv4::Option
-        class Section; //type: Native::Flow::Record::Default_::Match::Ipv4::Section
-        class Source; //type: Native::Flow::Record::Default_::Match::Ipv4::Source
-        class TotalLength; //type: Native::Flow::Record::Default_::Match::Ipv4::TotalLength
-        class Ttl; //type: Native::Flow::Record::Default_::Match::Ipv4::Ttl
+        class Destination; //type: Native::Flow::Record::Default::Match::Ipv4::Destination
+        class Fragmentation; //type: Native::Flow::Record::Default::Match::Ipv4::Fragmentation
+        class Length; //type: Native::Flow::Record::Default::Match::Ipv4::Length
+        class Option; //type: Native::Flow::Record::Default::Match::Ipv4::Option
+        class Section; //type: Native::Flow::Record::Default::Match::Ipv4::Section
+        class Source; //type: Native::Flow::Record::Default::Match::Ipv4::Source
+        class TotalLength; //type: Native::Flow::Record::Default::Match::Ipv4::TotalLength
+        class Ttl; //type: Native::Flow::Record::Default::Match::Ipv4::Ttl
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Destination> destination;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Fragmentation> fragmentation;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Length> length;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Option> option;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Section> section;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Source> source;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::TotalLength> total_length; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Ttl> ttl; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Destination> destination;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Fragmentation> fragmentation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Length> length;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Option> option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Section> section;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::TotalLength> total_length; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Ttl> ttl; // presence node
         
-}; // Native::Flow::Record::Default_::Match::Ipv4
+}; // Native::Flow::Record::Default::Match::Ipv4
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Destination : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -2535,16 +2535,16 @@ class Native::Flow::Record::Default_::Match::Ipv4::Destination : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: empty
-        class Mask; //type: Native::Flow::Record::Default_::Match::Ipv4::Destination::Mask
-        class Prefix; //type: Native::Flow::Record::Default_::Match::Ipv4::Destination::Prefix
+        class Mask; //type: Native::Flow::Record::Default::Match::Ipv4::Destination::Mask
+        class Prefix; //type: Native::Flow::Record::Default::Match::Ipv4::Destination::Prefix
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Destination::Mask> mask; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Destination::Prefix> prefix; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Destination::Mask> mask; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Destination::Prefix> prefix; // presence node
         
-}; // Native::Flow::Record::Default_::Match::Ipv4::Destination
+}; // Native::Flow::Record::Default::Match::Ipv4::Destination
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Destination::Mask : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Destination::Mask : public ydk::Entity
 {
     public:
         Mask();
@@ -2562,10 +2562,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Destination::Mask : public yd
 
         ydk::YLeaf minimum_mask; //type: uint8
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Destination::Mask
+}; // Native::Flow::Record::Default::Match::Ipv4::Destination::Mask
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Destination::Prefix : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Destination::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -2583,10 +2583,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Destination::Prefix : public 
 
         ydk::YLeaf minimum_mask; //type: uint8
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Destination::Prefix
+}; // Native::Flow::Record::Default::Match::Ipv4::Destination::Prefix
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Fragmentation : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Fragmentation : public ydk::Entity
 {
     public:
         Fragmentation();
@@ -2605,10 +2605,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Fragmentation : public ydk::E
         ydk::YLeaf flags; //type: empty
         ydk::YLeaf offset; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Fragmentation
+}; // Native::Flow::Record::Default::Match::Ipv4::Fragmentation
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Length : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Length : public ydk::Entity
 {
     public:
         Length();
@@ -2626,14 +2626,14 @@ class Native::Flow::Record::Default_::Match::Ipv4::Length : public ydk::Entity
 
         ydk::YLeaf header; //type: empty
         ydk::YLeaf payload; //type: empty
-        class Total; //type: Native::Flow::Record::Default_::Match::Ipv4::Length::Total
+        class Total; //type: Native::Flow::Record::Default::Match::Ipv4::Length::Total
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Length::Total> total; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Length::Total> total; // presence node
         
-}; // Native::Flow::Record::Default_::Match::Ipv4::Length
+}; // Native::Flow::Record::Default::Match::Ipv4::Length
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Length::Total : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Length::Total : public ydk::Entity
 {
     public:
         Total();
@@ -2652,10 +2652,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Length::Total : public ydk::E
         ydk::YLeaf maximum; //type: empty
         ydk::YLeaf minimum; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Length::Total
+}; // Native::Flow::Record::Default::Match::Ipv4::Length::Total
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Option : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Option : public ydk::Entity
 {
     public:
         Option();
@@ -2673,10 +2673,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Option : public ydk::Entity
 
         ydk::YLeaf map; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Option
+}; // Native::Flow::Record::Default::Match::Ipv4::Option
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Section : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Section : public ydk::Entity
 {
     public:
         Section();
@@ -2692,16 +2692,16 @@ class Native::Flow::Record::Default_::Match::Ipv4::Section : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Header; //type: Native::Flow::Record::Default_::Match::Ipv4::Section::Header
-        class Payload; //type: Native::Flow::Record::Default_::Match::Ipv4::Section::Payload
+        class Header; //type: Native::Flow::Record::Default::Match::Ipv4::Section::Header
+        class Payload; //type: Native::Flow::Record::Default::Match::Ipv4::Section::Payload
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Section::Header> header;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Section::Payload> payload;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Section::Header> header;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Section::Payload> payload;
         
-}; // Native::Flow::Record::Default_::Match::Ipv4::Section
+}; // Native::Flow::Record::Default::Match::Ipv4::Section
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Section::Header : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Section::Header : public ydk::Entity
 {
     public:
         Header();
@@ -2719,10 +2719,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Section::Header : public ydk:
 
         ydk::YLeaf size; //type: uint16
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Section::Header
+}; // Native::Flow::Record::Default::Match::Ipv4::Section::Header
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Section::Payload : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Section::Payload : public ydk::Entity
 {
     public:
         Payload();
@@ -2740,10 +2740,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Section::Payload : public ydk
 
         ydk::YLeaf size; //type: uint16
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Section::Payload
+}; // Native::Flow::Record::Default::Match::Ipv4::Section::Payload
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Source : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Source : public ydk::Entity
 {
     public:
         Source();
@@ -2760,16 +2760,16 @@ class Native::Flow::Record::Default_::Match::Ipv4::Source : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: empty
-        class Mask; //type: Native::Flow::Record::Default_::Match::Ipv4::Source::Mask
-        class Prefix; //type: Native::Flow::Record::Default_::Match::Ipv4::Source::Prefix
+        class Mask; //type: Native::Flow::Record::Default::Match::Ipv4::Source::Mask
+        class Prefix; //type: Native::Flow::Record::Default::Match::Ipv4::Source::Prefix
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Source::Mask> mask; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv4::Source::Prefix> prefix; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Source::Mask> mask; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv4::Source::Prefix> prefix; // presence node
         
-}; // Native::Flow::Record::Default_::Match::Ipv4::Source
+}; // Native::Flow::Record::Default::Match::Ipv4::Source
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Source::Mask : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Source::Mask : public ydk::Entity
 {
     public:
         Mask();
@@ -2787,10 +2787,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Source::Mask : public ydk::En
 
         ydk::YLeaf minimum_mask; //type: uint8
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Source::Mask
+}; // Native::Flow::Record::Default::Match::Ipv4::Source::Mask
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Source::Prefix : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Source::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -2808,10 +2808,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Source::Prefix : public ydk::
 
         ydk::YLeaf minimum_mask; //type: uint8
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Source::Prefix
+}; // Native::Flow::Record::Default::Match::Ipv4::Source::Prefix
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::TotalLength : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::TotalLength : public ydk::Entity
 {
     public:
         TotalLength();
@@ -2830,10 +2830,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::TotalLength : public ydk::Ent
         ydk::YLeaf maximum; //type: empty
         ydk::YLeaf minimum; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::TotalLength
+}; // Native::Flow::Record::Default::Match::Ipv4::TotalLength
 
 
-class Native::Flow::Record::Default_::Match::Ipv4::Ttl : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv4::Ttl : public ydk::Entity
 {
     public:
         Ttl();
@@ -2852,10 +2852,10 @@ class Native::Flow::Record::Default_::Match::Ipv4::Ttl : public ydk::Entity
         ydk::YLeaf maximum; //type: empty
         ydk::YLeaf minimum; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Ipv4::Ttl
+}; // Native::Flow::Record::Default::Match::Ipv4::Ttl
 
 
-class Native::Flow::Record::Default_::Match::Ipv6 : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -2879,26 +2879,26 @@ class Native::Flow::Record::Default_::Match::Ipv6 : public ydk::Entity
         ydk::YLeaf protocol; //type: empty
         ydk::YLeaf traffic_class; //type: empty
         ydk::YLeaf version; //type: empty
-        class Destination; //type: Native::Flow::Record::Default_::Match::Ipv6::Destination
-        class Extension; //type: Native::Flow::Record::Default_::Match::Ipv6::Extension
-        class Fragmentation; //type: Native::Flow::Record::Default_::Match::Ipv6::Fragmentation
-        class HopLimit; //type: Native::Flow::Record::Default_::Match::Ipv6::HopLimit
-        class Length; //type: Native::Flow::Record::Default_::Match::Ipv6::Length
-        class Section; //type: Native::Flow::Record::Default_::Match::Ipv6::Section
-        class Source; //type: Native::Flow::Record::Default_::Match::Ipv6::Source
+        class Destination; //type: Native::Flow::Record::Default::Match::Ipv6::Destination
+        class Extension; //type: Native::Flow::Record::Default::Match::Ipv6::Extension
+        class Fragmentation; //type: Native::Flow::Record::Default::Match::Ipv6::Fragmentation
+        class HopLimit; //type: Native::Flow::Record::Default::Match::Ipv6::HopLimit
+        class Length; //type: Native::Flow::Record::Default::Match::Ipv6::Length
+        class Section; //type: Native::Flow::Record::Default::Match::Ipv6::Section
+        class Source; //type: Native::Flow::Record::Default::Match::Ipv6::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Destination> destination;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Extension> extension;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Fragmentation> fragmentation;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::HopLimit> hop_limit; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Length> length;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Section> section;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Destination> destination;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Extension> extension;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Fragmentation> fragmentation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::HopLimit> hop_limit; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Length> length;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Section> section;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Source> source;
         
-}; // Native::Flow::Record::Default_::Match::Ipv6
+}; // Native::Flow::Record::Default::Match::Ipv6
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Destination : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -2915,16 +2915,16 @@ class Native::Flow::Record::Default_::Match::Ipv6::Destination : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: empty
-        class Mask; //type: Native::Flow::Record::Default_::Match::Ipv6::Destination::Mask
-        class Prefix; //type: Native::Flow::Record::Default_::Match::Ipv6::Destination::Prefix
+        class Mask; //type: Native::Flow::Record::Default::Match::Ipv6::Destination::Mask
+        class Prefix; //type: Native::Flow::Record::Default::Match::Ipv6::Destination::Prefix
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Destination::Mask> mask; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Destination::Prefix> prefix; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Destination::Mask> mask; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Destination::Prefix> prefix; // presence node
         
-}; // Native::Flow::Record::Default_::Match::Ipv6::Destination
+}; // Native::Flow::Record::Default::Match::Ipv6::Destination
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Destination::Mask : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Destination::Mask : public ydk::Entity
 {
     public:
         Mask();
@@ -2942,10 +2942,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::Destination::Mask : public yd
 
         ydk::YLeaf minimum_mask; //type: uint8
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::Destination::Mask
+}; // Native::Flow::Record::Default::Match::Ipv6::Destination::Mask
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Destination::Prefix : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Destination::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -2963,10 +2963,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::Destination::Prefix : public 
 
         ydk::YLeaf minimum_mask; //type: uint8
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::Destination::Prefix
+}; // Native::Flow::Record::Default::Match::Ipv6::Destination::Prefix
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Extension : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Extension : public ydk::Entity
 {
     public:
         Extension();
@@ -2984,10 +2984,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::Extension : public ydk::Entit
 
         ydk::YLeaf map; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::Extension
+}; // Native::Flow::Record::Default::Match::Ipv6::Extension
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Fragmentation : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Fragmentation : public ydk::Entity
 {
     public:
         Fragmentation();
@@ -3007,10 +3007,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::Fragmentation : public ydk::E
         ydk::YLeaf id; //type: empty
         ydk::YLeaf offset; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::Fragmentation
+}; // Native::Flow::Record::Default::Match::Ipv6::Fragmentation
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::HopLimit : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::HopLimit : public ydk::Entity
 {
     public:
         HopLimit();
@@ -3029,10 +3029,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::HopLimit : public ydk::Entity
         ydk::YLeaf maximum; //type: empty
         ydk::YLeaf minimum; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::HopLimit
+}; // Native::Flow::Record::Default::Match::Ipv6::HopLimit
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Length : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Length : public ydk::Entity
 {
     public:
         Length();
@@ -3050,14 +3050,14 @@ class Native::Flow::Record::Default_::Match::Ipv6::Length : public ydk::Entity
 
         ydk::YLeaf header; //type: empty
         ydk::YLeaf payload; //type: empty
-        class Total; //type: Native::Flow::Record::Default_::Match::Ipv6::Length::Total
+        class Total; //type: Native::Flow::Record::Default::Match::Ipv6::Length::Total
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Length::Total> total; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Length::Total> total; // presence node
         
-}; // Native::Flow::Record::Default_::Match::Ipv6::Length
+}; // Native::Flow::Record::Default::Match::Ipv6::Length
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Length::Total : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Length::Total : public ydk::Entity
 {
     public:
         Total();
@@ -3076,10 +3076,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::Length::Total : public ydk::E
         ydk::YLeaf maximum; //type: empty
         ydk::YLeaf minimum; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::Length::Total
+}; // Native::Flow::Record::Default::Match::Ipv6::Length::Total
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Section : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Section : public ydk::Entity
 {
     public:
         Section();
@@ -3095,16 +3095,16 @@ class Native::Flow::Record::Default_::Match::Ipv6::Section : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Header; //type: Native::Flow::Record::Default_::Match::Ipv6::Section::Header
-        class Payload; //type: Native::Flow::Record::Default_::Match::Ipv6::Section::Payload
+        class Header; //type: Native::Flow::Record::Default::Match::Ipv6::Section::Header
+        class Payload; //type: Native::Flow::Record::Default::Match::Ipv6::Section::Payload
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Section::Header> header;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Section::Payload> payload;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Section::Header> header;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Section::Payload> payload;
         
-}; // Native::Flow::Record::Default_::Match::Ipv6::Section
+}; // Native::Flow::Record::Default::Match::Ipv6::Section
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Section::Header : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Section::Header : public ydk::Entity
 {
     public:
         Header();
@@ -3122,10 +3122,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::Section::Header : public ydk:
 
         ydk::YLeaf size; //type: uint16
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::Section::Header
+}; // Native::Flow::Record::Default::Match::Ipv6::Section::Header
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Section::Payload : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Section::Payload : public ydk::Entity
 {
     public:
         Payload();
@@ -3143,10 +3143,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::Section::Payload : public ydk
 
         ydk::YLeaf size; //type: uint16
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::Section::Payload
+}; // Native::Flow::Record::Default::Match::Ipv6::Section::Payload
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Source : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Source : public ydk::Entity
 {
     public:
         Source();
@@ -3163,16 +3163,16 @@ class Native::Flow::Record::Default_::Match::Ipv6::Source : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: empty
-        class Mask; //type: Native::Flow::Record::Default_::Match::Ipv6::Source::Mask
-        class Prefix; //type: Native::Flow::Record::Default_::Match::Ipv6::Source::Prefix
+        class Mask; //type: Native::Flow::Record::Default::Match::Ipv6::Source::Mask
+        class Prefix; //type: Native::Flow::Record::Default::Match::Ipv6::Source::Prefix
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Source::Mask> mask; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Ipv6::Source::Prefix> prefix; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Source::Mask> mask; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Ipv6::Source::Prefix> prefix; // presence node
         
-}; // Native::Flow::Record::Default_::Match::Ipv6::Source
+}; // Native::Flow::Record::Default::Match::Ipv6::Source
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Source::Mask : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Source::Mask : public ydk::Entity
 {
     public:
         Mask();
@@ -3190,10 +3190,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::Source::Mask : public ydk::En
 
         ydk::YLeaf minimum_mask; //type: uint8
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::Source::Mask
+}; // Native::Flow::Record::Default::Match::Ipv6::Source::Mask
 
 
-class Native::Flow::Record::Default_::Match::Ipv6::Source::Prefix : public ydk::Entity
+class Native::Flow::Record::Default::Match::Ipv6::Source::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -3211,10 +3211,10 @@ class Native::Flow::Record::Default_::Match::Ipv6::Source::Prefix : public ydk::
 
         ydk::YLeaf minimum_mask; //type: uint8
 
-}; // Native::Flow::Record::Default_::Match::Ipv6::Source::Prefix
+}; // Native::Flow::Record::Default::Match::Ipv6::Source::Prefix
 
 
-class Native::Flow::Record::Default_::Match::Metadata : public ydk::Entity
+class Native::Flow::Record::Default::Match::Metadata : public ydk::Entity
 {
     public:
         Metadata();
@@ -3233,10 +3233,10 @@ class Native::Flow::Record::Default_::Match::Metadata : public ydk::Entity
         ydk::YLeaf global_session_id; //type: empty
         ydk::YLeaf multi_party_session_id; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Metadata
+}; // Native::Flow::Record::Default::Match::Metadata
 
 
-class Native::Flow::Record::Default_::Match::Mpls : public ydk::Entity
+class Native::Flow::Record::Default::Match::Mpls : public ydk::Entity
 {
     public:
         Mpls();
@@ -3252,14 +3252,14 @@ class Native::Flow::Record::Default_::Match::Mpls : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Label; //type: Native::Flow::Record::Default_::Match::Mpls::Label
+        class Label; //type: Native::Flow::Record::Default::Match::Mpls::Label
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Mpls::Label> label;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Mpls::Label> label;
         
-}; // Native::Flow::Record::Default_::Match::Mpls
+}; // Native::Flow::Record::Default::Match::Mpls
 
 
-class Native::Flow::Record::Default_::Match::Mpls::Label : public ydk::Entity
+class Native::Flow::Record::Default::Match::Mpls::Label : public ydk::Entity
 {
     public:
         Label();
@@ -3275,24 +3275,24 @@ class Native::Flow::Record::Default_::Match::Mpls::Label : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class One; //type: Native::Flow::Record::Default_::Match::Mpls::Label::One
-        class Two; //type: Native::Flow::Record::Default_::Match::Mpls::Label::Two
-        class Three; //type: Native::Flow::Record::Default_::Match::Mpls::Label::Three
-        class Four; //type: Native::Flow::Record::Default_::Match::Mpls::Label::Four
-        class Five; //type: Native::Flow::Record::Default_::Match::Mpls::Label::Five
-        class Six; //type: Native::Flow::Record::Default_::Match::Mpls::Label::Six
+        class One; //type: Native::Flow::Record::Default::Match::Mpls::Label::One
+        class Two; //type: Native::Flow::Record::Default::Match::Mpls::Label::Two
+        class Three; //type: Native::Flow::Record::Default::Match::Mpls::Label::Three
+        class Four; //type: Native::Flow::Record::Default::Match::Mpls::Label::Four
+        class Five; //type: Native::Flow::Record::Default::Match::Mpls::Label::Five
+        class Six; //type: Native::Flow::Record::Default::Match::Mpls::Label::Six
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Mpls::Label::One> one;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Mpls::Label::Two> two;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Mpls::Label::Three> three;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Mpls::Label::Four> four;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Mpls::Label::Five> five;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Mpls::Label::Six> six;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Mpls::Label::One> one;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Mpls::Label::Two> two;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Mpls::Label::Three> three;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Mpls::Label::Four> four;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Mpls::Label::Five> five;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Mpls::Label::Six> six;
         
-}; // Native::Flow::Record::Default_::Match::Mpls::Label
+}; // Native::Flow::Record::Default::Match::Mpls::Label
 
 
-class Native::Flow::Record::Default_::Match::Mpls::Label::One : public ydk::Entity
+class Native::Flow::Record::Default::Match::Mpls::Label::One : public ydk::Entity
 {
     public:
         One();
@@ -3313,10 +3313,10 @@ class Native::Flow::Record::Default_::Match::Mpls::Label::One : public ydk::Enti
         ydk::YLeaf ttl; //type: empty
         ydk::YLeaf type; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Mpls::Label::One
+}; // Native::Flow::Record::Default::Match::Mpls::Label::One
 
 
-class Native::Flow::Record::Default_::Match::Mpls::Label::Two : public ydk::Entity
+class Native::Flow::Record::Default::Match::Mpls::Label::Two : public ydk::Entity
 {
     public:
         Two();
@@ -3334,10 +3334,10 @@ class Native::Flow::Record::Default_::Match::Mpls::Label::Two : public ydk::Enti
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Mpls::Label::Two
+}; // Native::Flow::Record::Default::Match::Mpls::Label::Two
 
 
-class Native::Flow::Record::Default_::Match::Mpls::Label::Three : public ydk::Entity
+class Native::Flow::Record::Default::Match::Mpls::Label::Three : public ydk::Entity
 {
     public:
         Three();
@@ -3355,10 +3355,10 @@ class Native::Flow::Record::Default_::Match::Mpls::Label::Three : public ydk::En
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Mpls::Label::Three
+}; // Native::Flow::Record::Default::Match::Mpls::Label::Three
 
 
-class Native::Flow::Record::Default_::Match::Mpls::Label::Four : public ydk::Entity
+class Native::Flow::Record::Default::Match::Mpls::Label::Four : public ydk::Entity
 {
     public:
         Four();
@@ -3376,10 +3376,10 @@ class Native::Flow::Record::Default_::Match::Mpls::Label::Four : public ydk::Ent
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Mpls::Label::Four
+}; // Native::Flow::Record::Default::Match::Mpls::Label::Four
 
 
-class Native::Flow::Record::Default_::Match::Mpls::Label::Five : public ydk::Entity
+class Native::Flow::Record::Default::Match::Mpls::Label::Five : public ydk::Entity
 {
     public:
         Five();
@@ -3397,10 +3397,10 @@ class Native::Flow::Record::Default_::Match::Mpls::Label::Five : public ydk::Ent
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Mpls::Label::Five
+}; // Native::Flow::Record::Default::Match::Mpls::Label::Five
 
 
-class Native::Flow::Record::Default_::Match::Mpls::Label::Six : public ydk::Entity
+class Native::Flow::Record::Default::Match::Mpls::Label::Six : public ydk::Entity
 {
     public:
         Six();
@@ -3418,10 +3418,10 @@ class Native::Flow::Record::Default_::Match::Mpls::Label::Six : public ydk::Enti
 
         ydk::YLeaf details; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Mpls::Label::Six
+}; // Native::Flow::Record::Default::Match::Mpls::Label::Six
 
 
-class Native::Flow::Record::Default_::Match::Network : public ydk::Entity
+class Native::Flow::Record::Default::Match::Network : public ydk::Entity
 {
     public:
         Network();
@@ -3437,14 +3437,14 @@ class Native::Flow::Record::Default_::Match::Network : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Delay; //type: Native::Flow::Record::Default_::Match::Network::Delay
+        class Delay; //type: Native::Flow::Record::Default::Match::Network::Delay
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Network::Delay> delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Network::Delay> delay;
         
-}; // Native::Flow::Record::Default_::Match::Network
+}; // Native::Flow::Record::Default::Match::Network
 
 
-class Native::Flow::Record::Default_::Match::Network::Delay : public ydk::Entity
+class Native::Flow::Record::Default::Match::Network::Delay : public ydk::Entity
 {
     public:
         Delay();
@@ -3463,10 +3463,10 @@ class Native::Flow::Record::Default_::Match::Network::Delay : public ydk::Entity
         ydk::YLeaf sample; //type: empty
         ydk::YLeaf sum; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Network::Delay
+}; // Native::Flow::Record::Default::Match::Network::Delay
 
 
-class Native::Flow::Record::Default_::Match::Pfr : public ydk::Entity
+class Native::Flow::Record::Default::Match::Pfr : public ydk::Entity
 {
     public:
         Pfr();
@@ -3482,20 +3482,20 @@ class Native::Flow::Record::Default_::Match::Pfr : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Label; //type: Native::Flow::Record::Default_::Match::Pfr::Label
-        class OneWayDelay; //type: Native::Flow::Record::Default_::Match::Pfr::OneWayDelay
-        class Service; //type: Native::Flow::Record::Default_::Match::Pfr::Service
-        class Site; //type: Native::Flow::Record::Default_::Match::Pfr::Site
+        class Label; //type: Native::Flow::Record::Default::Match::Pfr::Label
+        class OneWayDelay; //type: Native::Flow::Record::Default::Match::Pfr::OneWayDelay
+        class Service; //type: Native::Flow::Record::Default::Match::Pfr::Service
+        class Site; //type: Native::Flow::Record::Default::Match::Pfr::Site
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Pfr::Label> label;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Pfr::OneWayDelay> one_way_delay;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Pfr::Service> service;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_::Match::Pfr::Site> site;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Pfr::Label> label;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Pfr::OneWayDelay> one_way_delay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Pfr::Service> service;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Pfr::Site> site;
         
-}; // Native::Flow::Record::Default_::Match::Pfr
+}; // Native::Flow::Record::Default::Match::Pfr
 
 
-class Native::Flow::Record::Default_::Match::Pfr::Label : public ydk::Entity
+class Native::Flow::Record::Default::Match::Pfr::Label : public ydk::Entity
 {
     public:
         Label();
@@ -3513,10 +3513,10 @@ class Native::Flow::Record::Default_::Match::Pfr::Label : public ydk::Entity
 
         ydk::YLeaf identifier; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Pfr::Label
+}; // Native::Flow::Record::Default::Match::Pfr::Label
 
 
-class Native::Flow::Record::Default_::Match::Pfr::OneWayDelay : public ydk::Entity
+class Native::Flow::Record::Default::Match::Pfr::OneWayDelay : public ydk::Entity
 {
     public:
         OneWayDelay();
@@ -3535,10 +3535,10 @@ class Native::Flow::Record::Default_::Match::Pfr::OneWayDelay : public ydk::Enti
         ydk::YLeaf samples; //type: empty
         ydk::YLeaf sum; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Pfr::OneWayDelay
+}; // Native::Flow::Record::Default::Match::Pfr::OneWayDelay
 
 
-class Native::Flow::Record::Default_::Match::Pfr::Service : public ydk::Entity
+class Native::Flow::Record::Default::Match::Pfr::Service : public ydk::Entity
 {
     public:
         Service();
@@ -3558,9 +3558,9 @@ class Native::Flow::Record::Default_::Match::Pfr::Service : public ydk::Entity
         ydk::YLeaf tag; //type: empty
         ydk::YLeaf identifier; //type: empty
 
-}; // Native::Flow::Record::Default_::Match::Pfr::Service
+}; // Native::Flow::Record::Default::Match::Pfr::Service
 
-class Native::Flow::Record::Default_::Match::Datalink::Vlan : public ydk::Enum
+class Native::Flow::Record::Default::Match::Datalink::Vlan : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf input;

@@ -159,6 +159,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mplstescalars != nullptr)
     {
         children["mplsTeScalars"] = mplstescalars;
@@ -313,6 +314,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstescalars::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstescalars::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -446,6 +448,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplsteobjects::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplsteobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -561,14 +564,6 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunneltable::get_child_by_name(const s
 {
     if(child_yang_name == "mplsTunnelEntry")
     {
-        for(auto const & c : mplstunnelentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry>();
         c->parent = this;
         mplstunnelentry.push_back(c);
@@ -581,9 +576,14 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunneltable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunneltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplstunnelentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -823,6 +823,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::get_chil
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1316,14 +1317,6 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelhoptable::get_child_by_name(cons
 {
     if(child_yang_name == "mplsTunnelHopEntry")
     {
-        for(auto const & c : mplstunnelhopentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry>();
         c->parent = this;
         mplstunnelhopentry.push_back(c);
@@ -1336,9 +1329,14 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelhoptable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelhoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplstunnelhopentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1470,6 +1468,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::ge
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelhoptable::Mplstunnelhopentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1695,14 +1694,6 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelresourcetable::get_child_by_name
 {
     if(child_yang_name == "mplsTunnelResourceEntry")
     {
-        for(auto const & c : mplstunnelresourceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry>();
         c->parent = this;
         mplstunnelresourceentry.push_back(c);
@@ -1715,9 +1706,14 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelresourcetable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelresourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplstunnelresourceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1829,6 +1825,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourc
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelresourcetable::Mplstunnelresourceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2004,14 +2001,6 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelarhoptable::get_child_by_name(co
 {
     if(child_yang_name == "mplsTunnelARHopEntry")
     {
-        for(auto const & c : mplstunnelarhopentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry>();
         c->parent = this;
         mplstunnelarhopentry.push_back(c);
@@ -2024,9 +2013,14 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelarhoptable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelarhoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplstunnelarhopentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2122,6 +2116,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelarhoptable::Mplstunnelarhopentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2257,14 +2252,6 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelchoptable::get_child_by_name(con
 {
     if(child_yang_name == "mplsTunnelCHopEntry")
     {
-        for(auto const & c : mplstunnelchopentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry>();
         c->parent = this;
         mplstunnelchopentry.push_back(c);
@@ -2277,9 +2264,14 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelchoptable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelchoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplstunnelchopentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2387,6 +2379,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelchoptable::Mplstunnelchopentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2552,14 +2545,6 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelcrldprestable::get_child_by_name
 {
     if(child_yang_name == "mplsTunnelCRLDPResEntry")
     {
-        for(auto const & c : mplstunnelcrldpresentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry>();
         c->parent = this;
         mplstunnelcrldpresentry.push_back(c);
@@ -2572,9 +2557,14 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelcrldprestable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelcrldprestable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplstunnelcrldpresentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2678,6 +2668,7 @@ std::shared_ptr<Entity> MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpre
 std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::Mplstunnelcrldprestable::Mplstunnelcrldpresentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

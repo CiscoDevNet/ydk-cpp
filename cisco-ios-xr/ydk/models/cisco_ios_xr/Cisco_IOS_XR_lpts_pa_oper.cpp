@@ -81,6 +81,7 @@ std::shared_ptr<Entity> LptsPa::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> LptsPa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(entry_xr != nullptr)
     {
         children["entry-xr"] = entry_xr;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> LptsPa::EntryXr::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "entry")
     {
-        for(auto const & c : entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LptsPa::EntryXr::Entry>();
         c->parent = this;
         entry.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> LptsPa::EntryXr::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> LptsPa::EntryXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -400,6 +398,7 @@ std::shared_ptr<Entity> LptsPa::EntryXr::Entry::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> LptsPa::EntryXr::Entry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ctime != nullptr)
     {
         children["ctime"] = ctime;
@@ -700,6 +699,7 @@ std::shared_ptr<Entity> LptsPa::EntryXr::Entry::Ctime::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> LptsPa::EntryXr::Entry::Ctime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -790,6 +790,7 @@ std::shared_ptr<Entity> LptsPa::EntryXr::Entry::Utime::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> LptsPa::EntryXr::Entry::Utime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -885,14 +886,6 @@ std::shared_ptr<Entity> LptsPa::Entries::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "entry")
     {
-        for(auto const & c : entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LptsPa::Entries::Entry>();
         c->parent = this;
         entry.push_back(c);
@@ -905,9 +898,14 @@ std::shared_ptr<Entity> LptsPa::Entries::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> LptsPa::Entries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1003,6 +1001,7 @@ std::shared_ptr<Entity> LptsPa::Entries::Entry::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> LptsPa::Entries::Entry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

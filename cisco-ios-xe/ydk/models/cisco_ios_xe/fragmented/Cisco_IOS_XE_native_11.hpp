@@ -1038,7 +1038,7 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute : publi
         class Mobile; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile
         class Odr; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr
         class Ospf; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf
-        class Static_; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_
+        class Static; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static
         class Rip_; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Application> application;
@@ -1052,7 +1052,7 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute : publi
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Odr> odr; // presence node
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf> > ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_> rip; // presence node
         
 }; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute
@@ -2137,11 +2137,11 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::
 }; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Ospf::RipMetricRouteMap::Metric
 
 
-class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_ : public ydk::Entity
+class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2153,14 +2153,14 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RipMetricRouteMap; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_
+}; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static
 
 
-class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_::RipMetricRouteMap : public ydk::Entity
+class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -2177,14 +2177,14 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_::RipMetricRouteMap
+}; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap
 
 
-class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -2203,7 +2203,7 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric
+}; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Static::RipMetricRouteMap::Metric
 
 
 class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::Rip_ : public ydk::Entity
@@ -2372,7 +2372,7 @@ class Native::Ipv6::Router::Rip::Redistribute : public ydk::Entity
         class Mobile; //type: Native::Ipv6::Router::Rip::Redistribute::Mobile
         class Odr; //type: Native::Ipv6::Router::Rip::Redistribute::Odr
         class Ospf; //type: Native::Ipv6::Router::Rip::Redistribute::Ospf
-        class Static_; //type: Native::Ipv6::Router::Rip::Redistribute::Static_
+        class Static; //type: Native::Ipv6::Router::Rip::Redistribute::Static
         class Rip_; //type: Native::Ipv6::Router::Rip::Redistribute::Rip_
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Application> application;
@@ -2386,7 +2386,7 @@ class Native::Ipv6::Router::Rip::Redistribute : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Odr> odr; // presence node
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Ospf> > ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Rip_> rip; // presence node
         
 }; // Native::Ipv6::Router::Rip::Redistribute
@@ -3471,11 +3471,11 @@ class Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::Metric :
 }; // Native::Ipv6::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::Metric
 
 
-class Native::Ipv6::Router::Rip::Redistribute::Static_ : public ydk::Entity
+class Native::Ipv6::Router::Rip::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3487,14 +3487,14 @@ class Native::Ipv6::Router::Rip::Redistribute::Static_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RipMetricRouteMap; //type: Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Ipv6::Router::Rip::Redistribute::Static_
+}; // Native::Ipv6::Router::Rip::Redistribute::Static
 
 
-class Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap : public ydk::Entity
+class Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -3511,14 +3511,14 @@ class Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap
+}; // Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap
 
 
-class Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -3537,7 +3537,7 @@ class Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metri
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Ipv6::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metric
+}; // Native::Ipv6::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric
 
 
 class Native::Ipv6::Router::Rip::Redistribute::Rip_ : public ydk::Entity

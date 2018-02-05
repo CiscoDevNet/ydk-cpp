@@ -68,6 +68,7 @@ std::shared_ptr<Entity> SysmgrProcessRestart::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> SysmgrProcessRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -175,6 +176,7 @@ std::shared_ptr<Entity> SysmgrProcessRestart::Input::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> SysmgrProcessRestart::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

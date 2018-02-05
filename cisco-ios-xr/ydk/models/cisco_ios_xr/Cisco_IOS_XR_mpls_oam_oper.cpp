@@ -94,6 +94,7 @@ std::shared_ptr<Entity> MplsOam::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -229,6 +230,7 @@ std::shared_ptr<Entity> MplsOam::Interface::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(briefs != nullptr)
     {
         children["briefs"] = briefs;
@@ -314,14 +316,6 @@ std::shared_ptr<Entity> MplsOam::Interface::Briefs::get_child_by_name(const std:
 {
     if(child_yang_name == "brief")
     {
-        for(auto const & c : brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsOam::Interface::Briefs::Brief>();
         c->parent = this;
         brief.push_back(c);
@@ -334,9 +328,14 @@ std::shared_ptr<Entity> MplsOam::Interface::Briefs::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Briefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -440,6 +439,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Briefs::Brief::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Briefs::Brief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -595,14 +595,6 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::get_child_by_name(const std
 {
     if(child_yang_name == "detail")
     {
-        for(auto const & c : detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsOam::Interface::Details::Detail>();
         c->parent = this;
         detail.push_back(c);
@@ -615,9 +607,14 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -720,6 +717,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_brief != nullptr)
     {
         children["interface-brief"] = interface_brief;
@@ -830,6 +828,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::InterfaceBrief::get
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::InterfaceBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1040,6 +1039,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::g
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received != nullptr)
     {
         children["received"] = received;
@@ -1314,6 +1314,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_good_request != nullptr)
     {
         children["received-good-request"] = received_good_request;
@@ -1454,6 +1455,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1544,6 +1546,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1634,6 +1637,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1724,6 +1728,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1814,6 +1819,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1904,6 +1910,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1994,6 +2001,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2084,6 +2092,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2174,6 +2183,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2264,6 +2274,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2354,6 +2365,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2444,6 +2456,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2534,6 +2547,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2624,6 +2638,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2758,6 +2773,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -2848,6 +2864,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2938,6 +2955,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3028,6 +3046,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3118,6 +3137,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3252,6 +3272,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -3342,6 +3363,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3432,6 +3454,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3522,6 +3545,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3612,6 +3636,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3746,6 +3771,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -3836,6 +3862,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3926,6 +3953,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4016,6 +4044,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4106,6 +4135,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4240,6 +4270,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -4330,6 +4361,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4420,6 +4452,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4510,6 +4543,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4600,6 +4634,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4734,6 +4769,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -4824,6 +4860,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4914,6 +4951,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5004,6 +5042,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5094,6 +5133,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5261,6 +5301,7 @@ std::shared_ptr<Entity> MplsOam::Packet::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received != nullptr)
     {
         children["received"] = received;
@@ -5542,6 +5583,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_good_request != nullptr)
     {
         children["received-good-request"] = received_good_request;
@@ -5689,6 +5731,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodRequest::get_chil
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5786,6 +5829,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodReply::get_child_
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5883,6 +5927,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedUnknown::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedUnknown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5980,6 +6025,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6077,6 +6123,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_c
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6174,6 +6221,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorRunt::get_child_
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorRunt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6271,6 +6319,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_c
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6368,6 +6417,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorGeneral::get_chi
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorGeneral::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6465,6 +6515,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorNoInterface::get
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorNoInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6562,6 +6613,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorNoMemory::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorNoMemory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6659,6 +6711,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRe
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6756,6 +6809,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRe
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6853,6 +6907,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_c
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6950,6 +7005,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodBfdReply::get_chi
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodBfdReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7091,6 +7147,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Sent::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -7188,6 +7245,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitGood::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7285,6 +7343,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitDrop::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7382,6 +7441,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitBfdGood::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7479,6 +7539,7 @@ std::shared_ptr<Entity> MplsOam::Packet::Sent::BfdNoReply::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7620,6 +7681,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -7717,6 +7779,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitGood::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7814,6 +7877,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7911,6 +7975,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8008,6 +8073,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8149,6 +8215,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -8246,6 +8313,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitGood::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8343,6 +8411,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8440,6 +8509,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8537,6 +8607,7 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::BfdNoReply::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8678,6 +8749,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -8775,6 +8847,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitGood::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8872,6 +8945,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8969,6 +9043,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9066,6 +9141,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9207,6 +9283,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transmit_good != nullptr)
     {
         children["transmit-good"] = transmit_good;
@@ -9304,6 +9381,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitGood::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9401,6 +9479,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9498,6 +9577,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9595,6 +9675,7 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9715,6 +9796,7 @@ std::shared_ptr<Entity> MplsOam::Global::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(message_statistics != nullptr)
     {
         children["message-statistics"] = message_statistics;
@@ -9848,6 +9930,7 @@ std::shared_ptr<Entity> MplsOam::Global::MessageStatistics::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::MessageStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10079,6 +10162,7 @@ std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(collaborator_i_parm != nullptr)
     {
         children["collaborator-i-parm"] = collaborator_i_parm;
@@ -10176,6 +10260,7 @@ std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIPa
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10273,6 +10358,7 @@ std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIm:
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10370,6 +10456,7 @@ std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorNet
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10467,6 +10554,7 @@ std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorRib
 std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -1354,14 +1354,14 @@ class Rsvp::PsbBriefs::PsbBrief : public ydk::Entity
         ydk::YLeaf input_interface; //type: string
         class Session; //type: Rsvp::PsbBriefs::PsbBrief::Session
         class S2LSubLsp; //type: Rsvp::PsbBriefs::PsbBrief::S2LSubLsp
-        class Template_; //type: Rsvp::PsbBriefs::PsbBrief::Template_
+        class Template; //type: Rsvp::PsbBriefs::PsbBrief::Template
         class SessionAttribute; //type: Rsvp::PsbBriefs::PsbBrief::SessionAttribute
         class TrafficSpec; //type: Rsvp::PsbBriefs::PsbBrief::TrafficSpec
         class GenericTrafficSpec; //type: Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::Session> session;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::S2LSubLsp> s2l_sub_lsp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::Template_> template_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::Template> template_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::SessionAttribute> session_attribute;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::TrafficSpec> traffic_spec;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::GenericTrafficSpec> generic_traffic_spec;
@@ -1542,11 +1542,11 @@ class Rsvp::PsbBriefs::PsbBrief::S2LSubLsp : public ydk::Entity
 }; // Rsvp::PsbBriefs::PsbBrief::S2LSubLsp
 
 
-class Rsvp::PsbBriefs::PsbBrief::Template_ : public ydk::Entity
+class Rsvp::PsbBriefs::PsbBrief::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1559,14 +1559,14 @@ class Rsvp::PsbBriefs::PsbBrief::Template_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RsvpFilter; //type: Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter
+        class RsvpFilter; //type: Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter> rsvp_filter;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter> rsvp_filter;
         
-}; // Rsvp::PsbBriefs::PsbBrief::Template_
+}; // Rsvp::PsbBriefs::PsbBrief::Template
 
 
-class Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter : public ydk::Entity
+class Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter : public ydk::Entity
 {
     public:
         RsvpFilter();
@@ -1584,16 +1584,16 @@ class Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf filter_type; //type: RsvpMgmtFilter
-        class UdpIpv4Session; //type: Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session
-        class P2MpIpv4Session; //type: Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session
+        class UdpIpv4Session; //type: Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter::UdpIpv4Session
+        class P2MpIpv4Session; //type: Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter::P2MpIpv4Session
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session> udp_ipv4_session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session> p2mp_ipv4_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter::UdpIpv4Session> udp_ipv4_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter::P2MpIpv4Session> p2mp_ipv4_session;
         
-}; // Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter
+}; // Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter
 
 
-class Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session : public ydk::Entity
+class Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter::UdpIpv4Session : public ydk::Entity
 {
     public:
         UdpIpv4Session();
@@ -1613,10 +1613,10 @@ class Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session : public 
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_port; //type: uint16
 
-}; // Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::UdpIpv4Session
+}; // Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter::UdpIpv4Session
 
 
-class Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session : public ydk::Entity
+class Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter::P2MpIpv4Session : public ydk::Entity
 {
     public:
         P2MpIpv4Session();
@@ -1638,7 +1638,7 @@ class Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session : public
         ydk::YLeaf p2mp_sub_group_origin; //type: string
         ydk::YLeaf sub_group_id; //type: uint16
 
-}; // Rsvp::PsbBriefs::PsbBrief::Template_::RsvpFilter::P2MpIpv4Session
+}; // Rsvp::PsbBriefs::PsbBrief::Template::RsvpFilter::P2MpIpv4Session
 
 
 class Rsvp::PsbBriefs::PsbBrief::SessionAttribute : public ydk::Entity

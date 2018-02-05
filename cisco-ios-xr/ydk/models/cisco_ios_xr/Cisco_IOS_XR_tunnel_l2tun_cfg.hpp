@@ -55,18 +55,18 @@ class L2Tp::Classes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Class_; //type: L2Tp::Classes::Class_
+        class Class; //type: L2Tp::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class> > class_;
         
 }; // L2Tp::Classes
 
 
-class L2Tp::Classes::Class_ : public ydk::Entity
+class L2Tp::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -90,22 +90,22 @@ class L2Tp::Classes::Class_ : public ydk::Entity
         ydk::YLeaf authentication; //type: int32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf password; //type: string
-        class Security; //type: L2Tp::Classes::Class_::Security
-        class Retransmit; //type: L2Tp::Classes::Class_::Retransmit
-        class Tunnel; //type: L2Tp::Classes::Class_::Tunnel
-        class Digest; //type: L2Tp::Classes::Class_::Digest
-        class Ip; //type: L2Tp::Classes::Class_::Ip
+        class Security; //type: L2Tp::Classes::Class::Security
+        class Retransmit; //type: L2Tp::Classes::Class::Retransmit
+        class Tunnel; //type: L2Tp::Classes::Class::Tunnel
+        class Digest; //type: L2Tp::Classes::Class::Digest
+        class Ip; //type: L2Tp::Classes::Class::Ip
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Security> security;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Retransmit> retransmit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Tunnel> tunnel;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Digest> digest;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Ip> ip;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Security> security;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Retransmit> retransmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Tunnel> tunnel;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Digest> digest;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Ip> ip;
         
-}; // L2Tp::Classes::Class_
+}; // L2Tp::Classes::Class
 
 
-class L2Tp::Classes::Class_::Security : public ydk::Entity
+class L2Tp::Classes::Class::Security : public ydk::Entity
 {
     public:
         Security();
@@ -121,14 +121,14 @@ class L2Tp::Classes::Class_::Security : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: L2Tp::Classes::Class_::Security::Ip
+        class Ip; //type: L2Tp::Classes::Class::Security::Ip
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Security::Ip> ip;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Security::Ip> ip;
         
-}; // L2Tp::Classes::Class_::Security
+}; // L2Tp::Classes::Class::Security
 
 
-class L2Tp::Classes::Class_::Security::Ip : public ydk::Entity
+class L2Tp::Classes::Class::Security::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -146,10 +146,10 @@ class L2Tp::Classes::Class_::Security::Ip : public ydk::Entity
 
         ydk::YLeaf address_check; //type: empty
 
-}; // L2Tp::Classes::Class_::Security::Ip
+}; // L2Tp::Classes::Class::Security::Ip
 
 
-class L2Tp::Classes::Class_::Retransmit : public ydk::Entity
+class L2Tp::Classes::Class::Retransmit : public ydk::Entity
 {
     public:
         Retransmit();
@@ -166,16 +166,16 @@ class L2Tp::Classes::Class_::Retransmit : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf retry; //type: uint32
-        class Initial; //type: L2Tp::Classes::Class_::Retransmit::Initial
-        class Timeout; //type: L2Tp::Classes::Class_::Retransmit::Timeout
+        class Initial; //type: L2Tp::Classes::Class::Retransmit::Initial
+        class Timeout; //type: L2Tp::Classes::Class::Retransmit::Timeout
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Retransmit::Initial> initial;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Retransmit::Timeout> timeout;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Retransmit::Initial> initial;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Retransmit::Timeout> timeout;
         
-}; // L2Tp::Classes::Class_::Retransmit
+}; // L2Tp::Classes::Class::Retransmit
 
 
-class L2Tp::Classes::Class_::Retransmit::Initial : public ydk::Entity
+class L2Tp::Classes::Class::Retransmit::Initial : public ydk::Entity
 {
     public:
         Initial();
@@ -192,14 +192,14 @@ class L2Tp::Classes::Class_::Retransmit::Initial : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf retry; //type: uint32
-        class Timeout; //type: L2Tp::Classes::Class_::Retransmit::Initial::Timeout
+        class Timeout; //type: L2Tp::Classes::Class::Retransmit::Initial::Timeout
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Retransmit::Initial::Timeout> timeout;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Retransmit::Initial::Timeout> timeout;
         
-}; // L2Tp::Classes::Class_::Retransmit::Initial
+}; // L2Tp::Classes::Class::Retransmit::Initial
 
 
-class L2Tp::Classes::Class_::Retransmit::Initial::Timeout : public ydk::Entity
+class L2Tp::Classes::Class::Retransmit::Initial::Timeout : public ydk::Entity
 {
     public:
         Timeout();
@@ -218,10 +218,10 @@ class L2Tp::Classes::Class_::Retransmit::Initial::Timeout : public ydk::Entity
         ydk::YLeaf minimum; //type: uint32
         ydk::YLeaf maximum; //type: uint32
 
-}; // L2Tp::Classes::Class_::Retransmit::Initial::Timeout
+}; // L2Tp::Classes::Class::Retransmit::Initial::Timeout
 
 
-class L2Tp::Classes::Class_::Retransmit::Timeout : public ydk::Entity
+class L2Tp::Classes::Class::Retransmit::Timeout : public ydk::Entity
 {
     public:
         Timeout();
@@ -240,10 +240,10 @@ class L2Tp::Classes::Class_::Retransmit::Timeout : public ydk::Entity
         ydk::YLeaf minimum; //type: uint32
         ydk::YLeaf maximum; //type: uint32
 
-}; // L2Tp::Classes::Class_::Retransmit::Timeout
+}; // L2Tp::Classes::Class::Retransmit::Timeout
 
 
-class L2Tp::Classes::Class_::Tunnel : public ydk::Entity
+class L2Tp::Classes::Class::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -261,10 +261,10 @@ class L2Tp::Classes::Class_::Tunnel : public ydk::Entity
 
         ydk::YLeaf accounting; //type: string
 
-}; // L2Tp::Classes::Class_::Tunnel
+}; // L2Tp::Classes::Class::Tunnel
 
 
-class L2Tp::Classes::Class_::Digest : public ydk::Entity
+class L2Tp::Classes::Class::Digest : public ydk::Entity
 {
     public:
         Digest();
@@ -282,14 +282,14 @@ class L2Tp::Classes::Class_::Digest : public ydk::Entity
 
         ydk::YLeaf hash; //type: L2tpDigestHashMethod
         ydk::YLeaf check_disable; //type: empty
-        class Secrets; //type: L2Tp::Classes::Class_::Digest::Secrets
+        class Secrets; //type: L2Tp::Classes::Class::Digest::Secrets
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Digest::Secrets> secrets;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Digest::Secrets> secrets;
         
-}; // L2Tp::Classes::Class_::Digest
+}; // L2Tp::Classes::Class::Digest
 
 
-class L2Tp::Classes::Class_::Digest::Secrets : public ydk::Entity
+class L2Tp::Classes::Class::Digest::Secrets : public ydk::Entity
 {
     public:
         Secrets();
@@ -305,14 +305,14 @@ class L2Tp::Classes::Class_::Digest::Secrets : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Secret; //type: L2Tp::Classes::Class_::Digest::Secrets::Secret
+        class Secret; //type: L2Tp::Classes::Class::Digest::Secrets::Secret
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Digest::Secrets::Secret> > secret;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class::Digest::Secrets::Secret> > secret;
         
-}; // L2Tp::Classes::Class_::Digest::Secrets
+}; // L2Tp::Classes::Class::Digest::Secrets
 
 
-class L2Tp::Classes::Class_::Digest::Secrets::Secret : public ydk::Entity
+class L2Tp::Classes::Class::Digest::Secrets::Secret : public ydk::Entity
 {
     public:
         Secret();
@@ -331,10 +331,10 @@ class L2Tp::Classes::Class_::Digest::Secrets::Secret : public ydk::Entity
         ydk::YLeaf secret_name; //type: string
         ydk::YLeaf hash; //type: L2tpHashMethod
 
-}; // L2Tp::Classes::Class_::Digest::Secrets::Secret
+}; // L2Tp::Classes::Class::Digest::Secrets::Secret
 
 
-class L2Tp::Classes::Class_::Ip : public ydk::Entity
+class L2Tp::Classes::Class::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -352,7 +352,7 @@ class L2Tp::Classes::Class_::Ip : public ydk::Entity
 
         ydk::YLeaf tos; //type: uint32
 
-}; // L2Tp::Classes::Class_::Ip
+}; // L2Tp::Classes::Class::Ip
 
 class L2tpHashMethod : public ydk::Enum
 {

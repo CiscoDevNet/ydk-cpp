@@ -120,6 +120,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clogbasic != nullptr)
     {
         children["clogBasic"] = clogbasic;
@@ -267,6 +268,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::Clogbasic::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Clogbasic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -414,6 +416,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::Cloghistory::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Cloghistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -507,6 +510,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::Clogserver::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Clogserver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -592,14 +596,6 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::Cloghistorytable::get_child_by_name(cons
 {
     if(child_yang_name == "clogHistoryEntry")
     {
-        for(auto const & c : cloghistoryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry>();
         c->parent = this;
         cloghistoryentry.push_back(c);
@@ -612,9 +608,14 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::Cloghistorytable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Cloghistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cloghistoryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -710,6 +711,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -845,14 +847,6 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::Clogserverconfigtable::get_child_by_name
 {
     if(child_yang_name == "clogServerConfigEntry")
     {
-        for(auto const & c : clogserverconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry>();
         c->parent = this;
         clogserverconfigentry.push_back(c);
@@ -865,9 +859,14 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::Clogserverconfigtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Clogserverconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clogserverconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -951,6 +950,7 @@ std::shared_ptr<Entity> CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfige
 std::map<std::string, std::shared_ptr<Entity>> CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

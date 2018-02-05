@@ -120,6 +120,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cbfdefine != nullptr)
     {
         children["cbfDefine"] = cbfdefine;
@@ -271,6 +272,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefine::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -436,6 +438,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfstatus::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfstatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -551,14 +554,6 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefinefiletable::get_child_by_name(
 {
     if(child_yang_name == "cbfDefineFileEntry")
     {
-        for(auto const & c : cbfdefinefileentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry>();
         c->parent = this;
         cbfdefinefileentry.push_back(c);
@@ -571,9 +566,14 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefinefiletable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefinefiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbfdefinefileentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -673,6 +673,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry
 std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -818,14 +819,6 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefineobjecttable::get_child_by_nam
 {
     if(child_yang_name == "cbfDefineObjectEntry")
     {
-        for(auto const & c : cbfdefineobjectentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry>();
         c->parent = this;
         cbfdefineobjectentry.push_back(c);
@@ -838,9 +831,14 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefineobjecttable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefineobjecttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbfdefineobjectentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -944,6 +942,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjecte
 std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1099,14 +1098,6 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfstatusfiletable::get_child_by_name(
 {
     if(child_yang_name == "cbfStatusFileEntry")
     {
-        for(auto const & c : cbfstatusfileentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry>();
         c->parent = this;
         cbfstatusfileentry.push_back(c);
@@ -1119,9 +1110,14 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfstatusfiletable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfstatusfiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbfstatusfileentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1213,6 +1209,7 @@ std::shared_ptr<Entity> CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry
 std::map<std::string, std::shared_ptr<Entity>> CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

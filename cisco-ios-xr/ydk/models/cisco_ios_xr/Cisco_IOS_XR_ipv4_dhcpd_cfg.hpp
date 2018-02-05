@@ -1017,18 +1017,18 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Class_; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_
+        class Class; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class> > class_;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_ : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1048,26 +1048,26 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_ : publi
         ydk::YLeaf domain_name; //type: string
         ydk::YLeaf boot_filename; //type: string
         ydk::YLeaf next_server; //type: string
-        class DefaultRouters; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters
-        class NetBiosNameServers; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers
-        class ClassMatch; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch
-        class Lease; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease
-        class NetbiosNodeType; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType
-        class DnsServers; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers
-        class OptionCodes; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes
+        class DefaultRouters; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters
+        class NetBiosNameServers; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers
+        class ClassMatch; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch
+        class Lease; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease
+        class NetbiosNodeType; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType
+        class DnsServers; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers
+        class OptionCodes; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters> default_routers;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers> net_bios_name_servers;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch> class_match;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease> lease;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType> netbios_node_type;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers> dns_servers;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes> option_codes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters> default_routers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers> net_bios_name_servers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch> class_match;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease> lease;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType> netbios_node_type;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers> dns_servers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes> option_codes;
         
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters : public ydk::Entity
 {
     public:
         DefaultRouters();
@@ -1085,10 +1085,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Defaul
 
         ydk::YLeafList default_router; //type: list of  string
 
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers : public ydk::Entity
 {
     public:
         NetBiosNameServers();
@@ -1106,10 +1106,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBio
 
         ydk::YLeafList net_bios_name_server; //type: list of  string
 
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch : public ydk::Entity
 {
     public:
         ClassMatch();
@@ -1127,14 +1127,14 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassM
 
         ydk::YLeaf l2_interface; //type: string
         ydk::YLeaf vrf; //type: string
-        class ClassOptions; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions
+        class ClassOptions; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions> class_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions> class_options;
         
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions : public ydk::Entity
 {
     public:
         ClassOptions();
@@ -1150,14 +1150,14 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassM
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ClassOption; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption
+        class ClassOption; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption> > class_option;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption> > class_option;
         
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption : public ydk::Entity
 {
     public:
         ClassOption();
@@ -1177,10 +1177,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassM
         ydk::YLeaf pattern; //type: string
         ydk::YLeaf bit_mask; //type: string
 
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease : public ydk::Entity
 {
     public:
         Lease();
@@ -1201,10 +1201,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease 
         ydk::YLeaf hours; //type: uint32
         ydk::YLeaf minutes; //type: uint32
 
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType : public ydk::Entity
 {
     public:
         NetbiosNodeType();
@@ -1226,10 +1226,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Netbio
         ydk::YLeaf peer_to_peer_node; //type: string
         ydk::YLeaf hexadecimal; //type: string
 
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers : public ydk::Entity
 {
     public:
         DnsServers();
@@ -1247,10 +1247,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsSer
 
         ydk::YLeafList dns_server; //type: list of  string
 
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes : public ydk::Entity
 {
     public:
         OptionCodes();
@@ -1266,14 +1266,14 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Option
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class OptionCode; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode
+        class OptionCode; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode> > option_code;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode> > option_code;
         
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode : public ydk::Entity
 {
     public:
         OptionCode();
@@ -1295,7 +1295,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Option
         ydk::YLeaf force_insert; //type: int32
         ydk::YLeafList ip_address; //type: list of  string
 
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode
 
 
 class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay : public ydk::Entity
@@ -1711,18 +1711,18 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Class_; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_
+        class Class; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class> > class_;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_ : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1736,16 +1736,16 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_ : public
 
         ydk::YLeaf class_name; //type: string
         ydk::YLeaf enable; //type: empty
-        class Match; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match
-        class Vrfs; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs
+        class Match; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match
+        class Vrfs; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match> match;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs> vrfs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match> match;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs> vrfs;
         
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match : public ydk::Entity
 {
     public:
         Match();
@@ -1762,14 +1762,14 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrf; //type: string
-        class Option; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option
+        class Option; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option> option;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option> option;
         
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option : public ydk::Entity
 {
     public:
         Option();
@@ -1789,10 +1789,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::
         ydk::YLeaf pattern; //type: string
         ydk::YLeaf bit_mask; //type: string
 
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -1808,14 +1808,14 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Vrf; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf
+        class Vrf; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf> > vrf;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf> > vrf;
         
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -1832,14 +1832,14 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::V
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrf_name; //type: string
-        class HelperAddresses; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses
+        class HelperAddresses; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses> helper_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses> helper_addresses;
         
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses : public ydk::Entity
 {
     public:
         HelperAddresses();
@@ -1855,14 +1855,14 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::V
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HelperAddress; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress
+        class HelperAddress; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress> > helper_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress> > helper_address;
         
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses
 
 
-class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress : public ydk::Entity
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress : public ydk::Entity
 {
     public:
         HelperAddress();
@@ -1881,7 +1881,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::V
         ydk::YLeaf server_address; //type: string
         ydk::YLeaf gateway_address; //type: string
 
-}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress
 
 
 class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUsername : public ydk::Entity
@@ -2591,18 +2591,18 @@ class Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Static_; //type: Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_
+        class Static; //type: Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_> > static_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static> > static_;
         
 }; // Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics
 
 
-class Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_ : public ydk::Entity
+class Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2619,7 +2619,7 @@ class Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_ : public yd
         ydk::YLeaf layer; //type: Ipv4dhcpdLayer
         ydk::YLeaf static_address; //type: string
 
-}; // Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_
+}; // Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static
 
 
 class Ipv4Dhcpd::Interfaces::Interface::Profile : public ydk::Entity

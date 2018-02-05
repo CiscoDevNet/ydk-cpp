@@ -94,6 +94,7 @@ std::shared_ptr<Entity> INTSERVMIB::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(intsrvgenobjects != nullptr)
     {
         children["intSrvGenObjects"] = intsrvgenobjects;
@@ -207,6 +208,7 @@ std::shared_ptr<Entity> INTSERVMIB::Intsrvgenobjects::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvgenobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -292,14 +294,6 @@ std::shared_ptr<Entity> INTSERVMIB::Intsrvifattribtable::get_child_by_name(const
 {
     if(child_yang_name == "intSrvIfAttribEntry")
     {
-        for(auto const & c : intsrvifattribentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry>();
         c->parent = this;
         intsrvifattribentry.push_back(c);
@@ -312,9 +306,14 @@ std::shared_ptr<Entity> INTSERVMIB::Intsrvifattribtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvifattribtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : intsrvifattribentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -414,6 +413,7 @@ std::shared_ptr<Entity> INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::ge
 std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -559,14 +559,6 @@ std::shared_ptr<Entity> INTSERVMIB::Intsrvflowtable::get_child_by_name(const std
 {
     if(child_yang_name == "intSrvFlowEntry")
     {
-        for(auto const & c : intsrvflowentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<INTSERVMIB::Intsrvflowtable::Intsrvflowentry>();
         c->parent = this;
         intsrvflowentry.push_back(c);
@@ -579,9 +571,14 @@ std::shared_ptr<Entity> INTSERVMIB::Intsrvflowtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvflowtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : intsrvflowentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -753,6 +750,7 @@ std::shared_ptr<Entity> INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

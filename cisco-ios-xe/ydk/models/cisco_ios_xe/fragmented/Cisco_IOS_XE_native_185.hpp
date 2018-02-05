@@ -131,11 +131,11 @@ class Native::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::Metric : publi
 }; // Native::Router::Rip::Redistribute::Ospf::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Rip::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -148,14 +148,14 @@ class Native::Router::Rip::Redistribute::Static_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RipMetricRouteMap; //type: Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::Redistribute::Static::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Redistribute::Static::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::Redistribute::Static_
+}; // Native::Router::Rip::Redistribute::Static
 
 
-class Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::Redistribute::Static::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -173,14 +173,14 @@ class Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap : public ydk
         std::string get_absolute_path() const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap
+}; // Native::Router::Rip::Redistribute::Static::RipMetricRouteMap
 
 
-class Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -200,7 +200,7 @@ class Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metric : pu
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::Redistribute::Static_::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::Redistribute::Static::RipMetricRouteMap::Metric
 
 
 class Native::Router::Rip::Redistribute::Rip_ : public ydk::Entity
@@ -862,7 +862,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute : public y
         class Mobile; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Mobile
         class Odr; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Odr
         class Ospf; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Ospf
-        class Static_; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_
+        class Static; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static
         class Rip_; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Rip_
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::RipMetricRouteMap> rip_metric_route_map;
@@ -874,7 +874,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute : public y
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Odr> odr; // presence node
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Ospf> > ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Rip_> rip; // presence node
         
 }; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute
@@ -1959,11 +1959,11 @@ class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Ospf::Rip
 }; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Ospf::RipMetricRouteMap::Metric
 
 
-class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1976,14 +1976,14 @@ class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_ :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class RipMetricRouteMap; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::RipMetricRouteMap
+        class RipMetricRouteMap; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static::RipMetricRouteMap
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::RipMetricRouteMap> rip_metric_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static::RipMetricRouteMap> rip_metric_route_map;
         
-}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static
 
 
-class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::RipMetricRouteMap : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static::RipMetricRouteMap : public ydk::Entity
 {
     public:
         RipMetricRouteMap();
@@ -2001,14 +2001,14 @@ class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::
         std::string get_absolute_path() const override;
 
         ydk::YLeaf route_map; //type: string
-        class Metric; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::RipMetricRouteMap::Metric
+        class Metric; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static::RipMetricRouteMap::Metric
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::RipMetricRouteMap::Metric> metric;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static::RipMetricRouteMap::Metric> metric;
         
-}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::RipMetricRouteMap
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static::RipMetricRouteMap
 
 
-class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::RipMetricRouteMap::Metric : public ydk::Entity
+class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static::RipMetricRouteMap::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -2028,7 +2028,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::
         ydk::YLeaf metric_value; //type: uint32
         ydk::YLeaf transparent; //type: empty
 
-}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static_::RipMetricRouteMap::Metric
+}; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Static::RipMetricRouteMap::Metric
 
 
 class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Redistribute::Rip_ : public ydk::Entity
@@ -2619,7 +2619,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute : public ydk::
         class Mobile; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Mobile
         class Odr; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Odr
         class Ospf; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf
-        class Static_; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_
+        class Static; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static
         class Rip_; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Rip_
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::RipMetricRouteMap> rip_metric_route_map;
@@ -2631,7 +2631,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute : public ydk::
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Odr> odr; // presence node
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf> > ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Rip_> rip; // presence node
         
 }; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute

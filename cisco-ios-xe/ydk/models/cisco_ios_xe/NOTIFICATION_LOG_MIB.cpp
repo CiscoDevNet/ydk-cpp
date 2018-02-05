@@ -120,6 +120,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nlmconfig != nullptr)
     {
         children["nlmConfig"] = nlmconfig;
@@ -247,6 +248,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmconfig::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -344,6 +346,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmstats::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmstats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -439,14 +442,6 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmconfiglogtable::get_child_by_name
 {
     if(child_yang_name == "nlmConfigLogEntry")
     {
-        for(auto const & c : nlmconfiglogentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry>();
         c->parent = this;
         nlmconfiglogentry.push_back(c);
@@ -459,9 +454,14 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmconfiglogtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmconfiglogtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nlmconfiglogentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -569,6 +569,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry
 std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -734,14 +735,6 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogtable::get_child_by_name(const
 {
     if(child_yang_name == "nlmLogEntry")
     {
-        for(auto const & c : nlmlogentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry>();
         c->parent = this;
         nlmlogentry.push_back(c);
@@ -754,9 +747,14 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nlmlogentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -868,6 +866,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1043,14 +1042,6 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogvariabletable::get_child_by_na
 {
     if(child_yang_name == "nlmLogVariableEntry")
     {
-        for(auto const & c : nlmlogvariableentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry>();
         c->parent = this;
         nlmlogvariableentry.push_back(c);
@@ -1063,9 +1054,14 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogvariabletable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogvariabletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nlmlogvariableentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1193,6 +1189,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariablee
 std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

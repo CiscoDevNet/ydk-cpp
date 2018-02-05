@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Macsec::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Macsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mka != nullptr)
     {
         children["mka"] = mka;
@@ -180,6 +181,7 @@ std::shared_ptr<Entity> Macsec::Mka::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -260,14 +262,6 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::get_child_by_name(const std::st
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -280,9 +274,14 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -372,6 +371,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session != nullptr)
     {
         children["session"] = session;
@@ -481,14 +481,6 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::get_child_b
 
     if(child_yang_name == "ca")
     {
-        for(auto const & c : ca)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca>();
         c->parent = this;
         ca.push_back(c);
@@ -501,6 +493,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session_summary != nullptr)
     {
         children["session-summary"] = session_summary;
@@ -511,9 +504,13 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
         children["vp"] = vp;
     }
 
+    count = 0;
     for (auto const & c : ca)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -661,6 +658,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::SessionSumm
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(outer_tag != nullptr)
     {
         children["outer-tag"] = outer_tag;
@@ -889,6 +887,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::SessionSumm
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1007,6 +1006,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::SessionSumm
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1183,14 +1183,6 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::get_chi
 {
     if(child_yang_name == "fallback-keepalive")
     {
-        for(auto const & c : fallback_keepalive)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive>();
         c->parent = this;
         fallback_keepalive.push_back(c);
@@ -1203,9 +1195,14 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fallback_keepalive)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1466,6 +1463,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::Fallbac
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peers_status != nullptr)
     {
         children["peers-status"] = peers_status;
@@ -1577,14 +1575,6 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::Fallbac
 {
     if(child_yang_name == "peer")
     {
-        for(auto const & c : peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer>();
         c->parent = this;
         peer.push_back(c);
@@ -1597,9 +1587,14 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::Fallbac
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1702,6 +1697,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::Fallbac
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer_data != nullptr)
     {
         children["peer-data"] = peer_data;
@@ -1791,6 +1787,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::Fallbac
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1975,14 +1972,6 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
 
     if(child_yang_name == "live-peer")
     {
-        for(auto const & c : live_peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer>();
         c->parent = this;
         live_peer.push_back(c);
@@ -1991,14 +1980,6 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
 
     if(child_yang_name == "potential-peer")
     {
-        for(auto const & c : potential_peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer>();
         c->parent = this;
         potential_peer.push_back(c);
@@ -2007,14 +1988,6 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
 
     if(child_yang_name == "dormant-peer")
     {
-        for(auto const & c : dormant_peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer>();
         c->parent = this;
         dormant_peer.push_back(c);
@@ -2027,24 +2000,37 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peers_status != nullptr)
     {
         children["peers-status"] = peers_status;
     }
 
+    count = 0;
     for (auto const & c : live_peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : potential_peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dormant_peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2253,14 +2239,6 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersSt
 {
     if(child_yang_name == "peer")
     {
-        for(auto const & c : peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer>();
         c->parent = this;
         peer.push_back(c);
@@ -2273,9 +2251,14 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersSt
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2378,6 +2361,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersSt
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer_data != nullptr)
     {
         children["peer-data"] = peer_data;
@@ -2467,6 +2451,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersSt
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2579,6 +2564,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::LivePee
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2711,6 +2697,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::Potenti
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2843,6 +2830,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::Dormant
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

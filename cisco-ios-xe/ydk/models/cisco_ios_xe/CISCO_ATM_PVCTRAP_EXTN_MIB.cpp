@@ -211,6 +211,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(catmcurstatchangepvcltable != nullptr)
     {
         children["catmCurStatChangePVclTable"] = catmcurstatchangepvcltable;
@@ -371,14 +372,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::get_
 {
     if(child_yang_name == "catmCurStatChangePVclEntry")
     {
-        for(auto const & c : catmcurstatchangepvclentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry>();
         c->parent = this;
         catmcurstatchangepvclentry.push_back(c);
@@ -391,9 +384,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmcurstatchangepvclentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -537,6 +535,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catm
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -792,14 +791,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::
 {
     if(child_yang_name == "catmStatusChangePVclRangeEntry")
     {
-        for(auto const & c : catmstatuschangepvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry>();
         c->parent = this;
         catmstatuschangepvclrangeentry.push_back(c);
@@ -812,9 +803,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmstatuschangepvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -914,6 +910,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1059,14 +1056,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable:
 {
     if(child_yang_name == "catmSegCCStatusChPVclRangeEntry")
     {
-        for(auto const & c : catmsegccstatuschpvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry>();
         c->parent = this;
         catmsegccstatuschpvclrangeentry.push_back(c);
@@ -1079,9 +1068,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmsegccstatuschpvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1181,6 +1175,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1326,14 +1321,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable:
 {
     if(child_yang_name == "catmEndCCStatusChPVclRangeEntry")
     {
-        for(auto const & c : catmendccstatuschpvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry>();
         c->parent = this;
         catmendccstatuschpvclrangeentry.push_back(c);
@@ -1346,9 +1333,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmendccstatuschpvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1448,6 +1440,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1593,14 +1586,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable
 {
     if(child_yang_name == "catmAISRDIStatusChPVclRangeEntry")
     {
-        for(auto const & c : catmaisrdistatuschpvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry>();
         c->parent = this;
         catmaisrdistatuschpvclrangeentry.push_back(c);
@@ -1613,9 +1598,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmaisrdistatuschpvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1715,6 +1705,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1860,14 +1851,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::get_chil
 {
     if(child_yang_name == "catmDownPVclRangeEntry")
     {
-        for(auto const & c : catmdownpvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry>();
         c->parent = this;
         catmdownpvclrangeentry.push_back(c);
@@ -1880,9 +1863,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmdownpvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1994,6 +1982,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdown
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2169,14 +2158,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::get_ch
 {
     if(child_yang_name == "catmCurStatusUpPVclEntry")
     {
-        for(auto const & c : catmcurstatusuppvclentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry>();
         c->parent = this;
         catmcurstatusuppvclentry.push_back(c);
@@ -2189,9 +2170,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmcurstatusuppvclentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2335,6 +2321,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcu
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2590,14 +2577,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::get_
 {
     if(child_yang_name == "catmStatusUpPVclRangeEntry")
     {
-        for(auto const & c : catmstatusuppvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry>();
         c->parent = this;
         catmstatusuppvclrangeentry.push_back(c);
@@ -2610,9 +2589,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmstatusuppvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2712,6 +2696,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catm
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2857,14 +2842,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable:
 {
     if(child_yang_name == "catmSegCCStatusUpPVclRangeEntry")
     {
-        for(auto const & c : catmsegccstatusuppvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry>();
         c->parent = this;
         catmsegccstatusuppvclrangeentry.push_back(c);
@@ -2877,9 +2854,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmsegccstatusuppvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2979,6 +2961,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3124,14 +3107,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable:
 {
     if(child_yang_name == "catmEndCCStatusUpPVclRangeEntry")
     {
-        for(auto const & c : catmendccstatusuppvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry>();
         c->parent = this;
         catmendccstatusuppvclrangeentry.push_back(c);
@@ -3144,9 +3119,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmendccstatusuppvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3246,6 +3226,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable:
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3391,14 +3372,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable
 {
     if(child_yang_name == "catmAISRDIStatusUpPVclRangeEntry")
     {
-        for(auto const & c : catmaisrdistatusuppvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry>();
         c->parent = this;
         catmaisrdistatusuppvclrangeentry.push_back(c);
@@ -3411,9 +3384,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmaisrdistatusuppvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3513,6 +3491,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3658,14 +3637,6 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::get_child_
 {
     if(child_yang_name == "catmUpPVclRangeEntry")
     {
-        for(auto const & c : catmuppvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry>();
         c->parent = this;
         catmuppvclrangeentry.push_back(c);
@@ -3678,9 +3649,14 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : catmuppvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3792,6 +3768,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvcl
 std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

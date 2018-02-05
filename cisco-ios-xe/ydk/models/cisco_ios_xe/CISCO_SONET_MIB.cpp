@@ -224,6 +224,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(csapsconfig != nullptr)
     {
         children["csApsConfig"] = csapsconfig;
@@ -391,6 +392,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csapsconfig::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csapsconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -484,6 +486,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csnotifications::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csnotifications::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -569,14 +572,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csconfigtable::get_child_by_name(const st
 {
     if(child_yang_name == "csConfigEntry")
     {
-        for(auto const & c : csconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Csconfigtable::Csconfigentry>();
         c->parent = this;
         csconfigentry.push_back(c);
@@ -589,9 +584,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csconfigtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -711,6 +711,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csconfigtable::Csconfigentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csconfigtable::Csconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -906,14 +907,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csapsconfigtable::get_child_by_name(const
 {
     if(child_yang_name == "csApsConfigEntry")
     {
-        for(auto const & c : csapsconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry>();
         c->parent = this;
         csapsconfigentry.push_back(c);
@@ -926,9 +919,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csapsconfigtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csapsconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csapsconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1064,6 +1062,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1297,14 +1296,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csstotaltable::get_child_by_name(const st
 {
     if(child_yang_name == "cssTotalEntry")
     {
-        for(auto const & c : csstotalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Csstotaltable::Csstotalentry>();
         c->parent = this;
         csstotalentry.push_back(c);
@@ -1317,9 +1308,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csstotaltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csstotalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1411,6 +1407,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csstotaltable::Csstotalentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstotaltable::Csstotalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1536,14 +1533,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csstracetable::get_child_by_name(const st
 {
     if(child_yang_name == "cssTraceEntry")
     {
-        for(auto const & c : csstraceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Csstracetable::Csstraceentry>();
         c->parent = this;
         csstraceentry.push_back(c);
@@ -1556,9 +1545,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csstracetable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstracetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csstraceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1650,6 +1644,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csstracetable::Csstraceentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstracetable::Csstraceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1775,14 +1770,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csltotaltable::get_child_by_name(const st
 {
     if(child_yang_name == "cslTotalEntry")
     {
-        for(auto const & c : csltotalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Csltotaltable::Csltotalentry>();
         c->parent = this;
         csltotalentry.push_back(c);
@@ -1795,9 +1782,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csltotaltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csltotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csltotalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1889,6 +1881,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csltotaltable::Csltotalentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csltotaltable::Csltotalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2014,14 +2007,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Cslfarendtotaltable::get_child_by_name(co
 {
     if(child_yang_name == "cslFarEndTotalEntry")
     {
-        for(auto const & c : cslfarendtotalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry>();
         c->parent = this;
         cslfarendtotalentry.push_back(c);
@@ -2034,9 +2019,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Cslfarendtotaltable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cslfarendtotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cslfarendtotalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2128,6 +2118,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2253,14 +2244,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csptotaltable::get_child_by_name(const st
 {
     if(child_yang_name == "cspTotalEntry")
     {
-        for(auto const & c : csptotalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Csptotaltable::Csptotalentry>();
         c->parent = this;
         csptotalentry.push_back(c);
@@ -2273,9 +2256,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csptotaltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csptotalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2367,6 +2355,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csptotaltable::Csptotalentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptotaltable::Csptotalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2492,14 +2481,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Cspfarendtotaltable::get_child_by_name(co
 {
     if(child_yang_name == "cspFarEndTotalEntry")
     {
-        for(auto const & c : cspfarendtotalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry>();
         c->parent = this;
         cspfarendtotalentry.push_back(c);
@@ -2512,9 +2493,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Cspfarendtotaltable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cspfarendtotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cspfarendtotalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2606,6 +2592,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2731,14 +2718,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csptracetable::get_child_by_name(const st
 {
     if(child_yang_name == "cspTraceEntry")
     {
-        for(auto const & c : csptraceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Csptracetable::Csptraceentry>();
         c->parent = this;
         csptraceentry.push_back(c);
@@ -2751,9 +2730,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csptracetable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptracetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csptraceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2845,6 +2829,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csptracetable::Csptraceentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csptracetable::Csptraceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2970,14 +2955,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csstatstable::get_child_by_name(const std
 {
     if(child_yang_name == "csStatsEntry")
     {
-        for(auto const & c : csstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Csstatstable::Csstatsentry>();
         c->parent = this;
         csstatsentry.push_back(c);
@@ -2990,9 +2967,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csstatstable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3092,6 +3074,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csstatstable::Csstatsentry::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csstatstable::Csstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3237,14 +3220,6 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csau4Tug3Configtable::get_child_by_name(c
 {
     if(child_yang_name == "csAu4Tug3ConfigEntry")
     {
-        for(auto const & c : csau4tug3configentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry>();
         c->parent = this;
         csau4tug3configentry.push_back(c);
@@ -3257,9 +3232,14 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csau4Tug3Configtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csau4Tug3Configtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csau4tug3configentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3343,6 +3323,7 @@ std::shared_ptr<Entity> CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentr
 std::map<std::string, std::shared_ptr<Entity>> CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

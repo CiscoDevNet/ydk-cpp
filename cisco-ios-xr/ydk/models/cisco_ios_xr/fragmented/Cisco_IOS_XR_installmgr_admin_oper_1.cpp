@@ -77,6 +77,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Communication::LogContents::V3::get_
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication::LogContents::V3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scope != nullptr)
     {
         children["scope"] = scope;
@@ -172,6 +173,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Communication::LogContents::V3::Scop
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication::LogContents::V3::Scope::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

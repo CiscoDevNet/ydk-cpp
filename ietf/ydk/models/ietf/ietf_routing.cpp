@@ -91,14 +91,6 @@ std::shared_ptr<Entity> RoutingState::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "routing-instance")
     {
-        for(auto const & c : routing_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance>();
         c->parent = this;
         routing_instance.push_back(c);
@@ -111,9 +103,14 @@ std::shared_ptr<Entity> RoutingState::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : routing_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -262,6 +259,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -384,6 +382,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Interfaces::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -460,14 +459,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::get_chi
 {
     if(child_yang_name == "routing-protocol")
     {
-        for(auto const & c : routing_protocol)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol>();
         c->parent = this;
         routing_protocol.push_back(c);
@@ -480,9 +471,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::get_chi
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : routing_protocol)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -569,6 +565,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ospf != nullptr)
     {
         children["ietf-ospf:ospf"] = ospf;
@@ -666,14 +663,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "instance")
     {
-        for(auto const & c : instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance>();
         c->parent = this;
         instance.push_back(c);
@@ -686,9 +675,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -797,14 +791,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "area")
     {
-        for(auto const & c : area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area>();
         c->parent = this;
         area.push_back(c);
@@ -813,14 +799,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 
     if(child_yang_name == "as-scope-lsas")
     {
-        for(auto const & c : as_scope_lsas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas>();
         c->parent = this;
         as_scope_lsas.push_back(c);
@@ -829,14 +807,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -849,19 +819,32 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : as_scope_lsas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -966,14 +949,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "interfaces")
     {
-        for(auto const & c : interfaces)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces>();
         c->parent = this;
         interfaces.push_back(c);
@@ -982,14 +957,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 
     if(child_yang_name == "area-scope-lsas")
     {
-        for(auto const & c : area_scope_lsas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas>();
         c->parent = this;
         area_scope_lsas.push_back(c);
@@ -1002,14 +969,23 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interfaces)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : area_scope_lsas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1256,14 +1232,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -1272,14 +1240,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 
     if(child_yang_name == "link-scope-lsas")
     {
-        for(auto const & c : link_scope_lsas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas>();
         c->parent = this;
         link_scope_lsas.push_back(c);
@@ -1288,14 +1248,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -1308,6 +1260,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multi_area != nullptr)
     {
         children["multi-area"] = multi_area;
@@ -1333,19 +1286,31 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ro
         children["authentication"] = authentication;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : link_scope_lsas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1618,6 +1583,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1706,14 +1672,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -1726,9 +1684,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1809,6 +1772,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1924,6 +1888,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lfa != nullptr)
     {
         children["lfa"] = lfa;
@@ -2013,6 +1978,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote_lfa != nullptr)
     {
         children["remote-lfa"] = remote_lfa;
@@ -2104,6 +2070,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::RemoteLfa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2184,6 +2151,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2292,6 +2260,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(crypto_algorithm != nullptr)
     {
         children["crypto-algorithm"] = crypto_algorithm;
@@ -2421,6 +2390,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::CryptoAlgorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2583,6 +2553,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2705,14 +2676,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "link-scope-lsa")
     {
-        for(auto const & c : link_scope_lsa)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa>();
         c->parent = this;
         link_scope_lsa.push_back(c);
@@ -2725,9 +2688,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link_scope_lsa)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2845,6 +2813,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ospfv2 != nullptr)
     {
         children["ospfv2"] = ospfv2;
@@ -2983,6 +2952,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -3095,6 +3065,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3320,6 +3291,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(router != nullptr)
     {
         children["router"] = router;
@@ -3421,14 +3393,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "link")
     {
-        for(auto const & c : link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link>();
         c->parent = this;
         link.push_back(c);
@@ -3441,9 +3405,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3544,14 +3513,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -3564,9 +3525,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3669,6 +3635,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3769,6 +3736,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3859,14 +3827,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -3879,9 +3839,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3964,6 +3929,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4056,14 +4022,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -4076,9 +4034,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4173,6 +4136,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4297,14 +4261,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "unknown-tlv")
     {
-        for(auto const & c : unknown_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv>();
         c->parent = this;
         unknown_tlv.push_back(c);
@@ -4335,9 +4291,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : unknown_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(router_address_tlv != nullptr)
@@ -4424,6 +4385,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4520,6 +4482,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4654,14 +4617,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "unknown-subtlv")
     {
-        for(auto const & c : unknown_subtlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv>();
         c->parent = this;
         unknown_subtlv.push_back(c);
@@ -4674,9 +4629,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : unknown_subtlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4839,6 +4799,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4957,6 +4918,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -5061,6 +5023,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5305,6 +5268,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(router != nullptr)
     {
         children["router"] = router;
@@ -5421,14 +5385,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "link")
     {
-        for(auto const & c : link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link>();
         c->parent = this;
         link.push_back(c);
@@ -5441,9 +5397,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5544,6 +5505,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5674,6 +5636,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5764,6 +5727,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5868,6 +5832,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5990,6 +5955,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::AsExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6162,6 +6128,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Nssa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6324,14 +6291,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -6344,9 +6303,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6457,6 +6421,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6561,14 +6526,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -6581,9 +6538,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6700,6 +6662,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6796,6 +6759,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6878,14 +6842,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "area-scope-lsa")
     {
-        for(auto const & c : area_scope_lsa)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa>();
         c->parent = this;
         area_scope_lsa.push_back(c);
@@ -6898,9 +6854,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area_scope_lsa)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7018,6 +6979,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ospfv2 != nullptr)
     {
         children["ospfv2"] = ospfv2;
@@ -7156,6 +7118,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -7268,6 +7231,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7493,6 +7457,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(router != nullptr)
     {
         children["router"] = router;
@@ -7594,14 +7559,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "link")
     {
-        for(auto const & c : link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link>();
         c->parent = this;
         link.push_back(c);
@@ -7614,9 +7571,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7717,14 +7679,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -7737,9 +7691,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7842,6 +7801,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7942,6 +7902,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8032,14 +7993,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -8052,9 +8005,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8137,6 +8095,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8229,14 +8188,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -8249,9 +8200,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8346,6 +8302,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8470,14 +8427,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "unknown-tlv")
     {
-        for(auto const & c : unknown_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv>();
         c->parent = this;
         unknown_tlv.push_back(c);
@@ -8508,9 +8457,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : unknown_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(router_address_tlv != nullptr)
@@ -8597,6 +8551,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8693,6 +8648,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8827,14 +8783,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "unknown-subtlv")
     {
-        for(auto const & c : unknown_subtlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv>();
         c->parent = this;
         unknown_subtlv.push_back(c);
@@ -8847,9 +8795,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : unknown_subtlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9012,6 +8965,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9130,6 +9084,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -9234,6 +9189,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9478,6 +9434,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(router != nullptr)
     {
         children["router"] = router;
@@ -9594,14 +9551,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "link")
     {
-        for(auto const & c : link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link>();
         c->parent = this;
         link.push_back(c);
@@ -9614,9 +9563,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9717,6 +9671,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9847,6 +9802,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9937,6 +9893,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10041,6 +9998,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10163,6 +10121,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::AsExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10335,6 +10294,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Nssa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10497,14 +10457,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -10517,9 +10469,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10630,6 +10587,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10734,14 +10692,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -10754,9 +10704,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10873,6 +10828,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10975,14 +10931,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "as-scope-lsa")
     {
-        for(auto const & c : as_scope_lsa)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa>();
         c->parent = this;
         as_scope_lsa.push_back(c);
@@ -10995,9 +10943,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : as_scope_lsa)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11115,6 +11068,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ospfv2 != nullptr)
     {
         children["ospfv2"] = ospfv2;
@@ -11253,6 +11207,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -11365,6 +11320,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11590,6 +11546,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(router != nullptr)
     {
         children["router"] = router;
@@ -11691,14 +11648,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "link")
     {
-        for(auto const & c : link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link>();
         c->parent = this;
         link.push_back(c);
@@ -11711,9 +11660,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11814,14 +11768,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -11834,9 +11780,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11939,6 +11890,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12039,6 +11991,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12129,14 +12082,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -12149,9 +12094,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12234,6 +12184,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12326,14 +12277,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -12346,9 +12289,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12443,6 +12391,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12567,14 +12516,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "unknown-tlv")
     {
-        for(auto const & c : unknown_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv>();
         c->parent = this;
         unknown_tlv.push_back(c);
@@ -12605,9 +12546,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : unknown_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(router_address_tlv != nullptr)
@@ -12694,6 +12640,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12790,6 +12737,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12924,14 +12872,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "unknown-subtlv")
     {
-        for(auto const & c : unknown_subtlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv>();
         c->parent = this;
         unknown_subtlv.push_back(c);
@@ -12944,9 +12884,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : unknown_subtlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13109,6 +13054,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13227,6 +13173,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -13331,6 +13278,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13575,6 +13523,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(router != nullptr)
     {
         children["router"] = router;
@@ -13691,14 +13640,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "link")
     {
-        for(auto const & c : link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link>();
         c->parent = this;
         link.push_back(c);
@@ -13711,9 +13652,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13814,6 +13760,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13944,6 +13891,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14034,6 +13982,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14138,6 +14087,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14260,6 +14210,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::AsExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14432,6 +14383,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Nssa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14594,14 +14546,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -14614,9 +14558,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14727,6 +14676,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14831,14 +14781,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -14851,9 +14793,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14970,6 +14917,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15072,14 +15020,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 {
     if(child_yang_name == "area")
     {
-        for(auto const & c : area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area>();
         c->parent = this;
         area.push_back(c);
@@ -15092,9 +15032,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15173,6 +15118,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::RoutingProtocols::Routing
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15251,14 +15197,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Ribs::get_child_by_name(c
 {
     if(child_yang_name == "rib")
     {
-        for(auto const & c : rib)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::Ribs::Rib>();
         c->parent = this;
         rib.push_back(c);
@@ -15271,9 +15209,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Ribs::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ribs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rib)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15364,6 +15307,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Ribs::Rib::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ribs::Rib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(routes != nullptr)
     {
         children["routes"] = routes;
@@ -15467,14 +15411,6 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Ribs::Rib::Routes::get_ch
 {
     if(child_yang_name == "route")
     {
-        for(auto const & c : route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingState::RoutingInstance::Ribs::Rib::Routes::Route>();
         c->parent = this;
         route.push_back(c);
@@ -15487,9 +15423,14 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Ribs::Rib::Routes::get_ch
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ribs::Rib::Routes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15604,6 +15545,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Ribs::Rib::Routes::Route:
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(next_hop != nullptr)
     {
         children["next-hop"] = next_hop;
@@ -15773,6 +15715,7 @@ std::shared_ptr<Entity> RoutingState::RoutingInstance::Ribs::Rib::Routes::Route:
 std::map<std::string, std::shared_ptr<Entity>> RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15871,14 +15814,6 @@ std::shared_ptr<Entity> Routing::get_child_by_name(const std::string & child_yan
 {
     if(child_yang_name == "routing-instance")
     {
-        for(auto const & c : routing_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance>();
         c->parent = this;
         routing_instance.push_back(c);
@@ -15891,9 +15826,14 @@ std::shared_ptr<Entity> Routing::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Routing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : routing_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16050,6 +15990,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -16192,6 +16133,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::Interfaces::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16268,14 +16210,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::get_child_by
 {
     if(child_yang_name == "routing-protocol")
     {
-        for(auto const & c : routing_protocol)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol>();
         c->parent = this;
         routing_protocol.push_back(c);
@@ -16288,9 +16222,14 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : routing_protocol)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16394,6 +16333,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(static_routes != nullptr)
     {
         children["static-routes"] = static_routes;
@@ -16522,6 +16462,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ietf-ipv4-unicast-routing:ipv4"] = ipv4;
@@ -16600,14 +16541,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 {
     if(child_yang_name == "route")
     {
-        for(auto const & c : route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route>();
         c->parent = this;
         route.push_back(c);
@@ -16620,9 +16553,14 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16709,6 +16647,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(next_hop != nullptr)
     {
         children["next-hop"] = next_hop;
@@ -16808,6 +16747,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16906,14 +16846,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 {
     if(child_yang_name == "route")
     {
-        for(auto const & c : route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route>();
         c->parent = this;
         route.push_back(c);
@@ -16926,9 +16858,14 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17015,6 +16952,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(next_hop != nullptr)
     {
         children["next-hop"] = next_hop;
@@ -17114,6 +17052,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17230,14 +17169,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 
     if(child_yang_name == "instance")
     {
-        for(auto const & c : instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance>();
         c->parent = this;
         instance.push_back(c);
@@ -17250,14 +17181,19 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all_instances_inherit != nullptr)
     {
         children["all-instances-inherit"] = all_instances_inherit;
     }
 
+    count = 0;
     for (auto const & c : instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17358,6 +17294,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(area != nullptr)
     {
         children["area"] = area;
@@ -17430,6 +17367,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17490,6 +17428,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17709,14 +17648,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 
     if(child_yang_name == "area")
     {
-        for(auto const & c : area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area>();
         c->parent = this;
         area.push_back(c);
@@ -17725,14 +17656,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -17745,6 +17668,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(admin_distance != nullptr)
     {
         children["admin-distance"] = admin_distance;
@@ -17795,14 +17719,22 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
         children["all-areas-inherit"] = all_areas_inherit;
     }
 
+    count = 0;
     for (auto const & c : area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17913,6 +17845,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AdminDistance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18019,6 +17952,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18107,6 +18041,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18217,6 +18152,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AutoCost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18303,6 +18239,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::SpfControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18379,6 +18316,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::DatabaseControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18451,6 +18389,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::ReloadControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18537,6 +18476,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(te_rid != nullptr)
     {
         children["te-rid"] = te_rid;
@@ -18617,6 +18557,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::TeRid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18707,6 +18648,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Ldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18802,6 +18744,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lfa != nullptr)
     {
         children["lfa"] = lfa;
@@ -18869,6 +18812,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::Lfa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18955,6 +18899,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(area != nullptr)
     {
         children["area"] = area;
@@ -19027,6 +18972,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19087,6 +19033,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19204,14 +19151,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range>();
         c->parent = this;
         range.push_back(c);
@@ -19229,14 +19168,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 
     if(child_yang_name == "virtual-link")
     {
-        for(auto const & c : virtual_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink>();
         c->parent = this;
         virtual_link.push_back(c);
@@ -19245,14 +19176,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 
     if(child_yang_name == "sham-link")
     {
-        for(auto const & c : sham_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink>();
         c->parent = this;
         sham_link.push_back(c);
@@ -19261,14 +19184,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -19281,9 +19196,14 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all_interfaces_inherit != nullptr)
@@ -19291,19 +19211,31 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
         children["all-interfaces-inherit"] = all_interfaces_inherit;
     }
 
+    count = 0;
     for (auto const & c : virtual_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : sham_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19420,6 +19352,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19525,6 +19458,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -19592,6 +19526,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19723,6 +19658,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ttl_security != nullptr)
     {
         children["ttl-security"] = ttl_security;
@@ -19913,6 +19849,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20021,6 +19958,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(crypto_algorithm != nullptr)
     {
         children["crypto-algorithm"] = crypto_algorithm;
@@ -20150,6 +20088,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::CryptoAlgorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20367,6 +20306,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ttl_security != nullptr)
     {
         children["ttl-security"] = ttl_security;
@@ -20567,6 +20507,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20675,6 +20616,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(crypto_algorithm != nullptr)
     {
         children["crypto-algorithm"] = crypto_algorithm;
@@ -20804,6 +20746,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::CryptoAlgorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21078,14 +21021,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 
     if(child_yang_name == "topology")
     {
-        for(auto const & c : topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology>();
         c->parent = this;
         topology.push_back(c);
@@ -21098,6 +21033,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multi_area != nullptr)
     {
         children["multi-area"] = multi_area;
@@ -21123,9 +21059,13 @@ std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Routing
         children["authentication"] = authentication;
     }
 
+    count = 0;
     for (auto const & c : topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21348,6 +21288,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21436,14 +21377,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -21456,9 +21389,14 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21539,6 +21477,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21654,6 +21593,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lfa != nullptr)
     {
         children["lfa"] = lfa;
@@ -21743,6 +21683,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote_lfa != nullptr)
     {
         children["remote-lfa"] = remote_lfa;
@@ -21834,6 +21775,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::RemoteLfa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21914,6 +21856,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22022,6 +21965,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(crypto_algorithm != nullptr)
     {
         children["crypto-algorithm"] = crypto_algorithm;
@@ -22151,6 +22095,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::CryptoAlgorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22301,6 +22246,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22393,14 +22339,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 {
     if(child_yang_name == "area")
     {
-        for(auto const & c : area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area>();
         c->parent = this;
         area.push_back(c);
@@ -22413,9 +22351,14 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22512,14 +22455,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range>();
         c->parent = this;
         range.push_back(c);
@@ -22532,9 +22467,14 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22651,6 +22591,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProto
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22749,14 +22690,6 @@ std::shared_ptr<Entity> Routing::RoutingInstance::Ribs::get_child_by_name(const 
 {
     if(child_yang_name == "rib")
     {
-        for(auto const & c : rib)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Routing::RoutingInstance::Ribs::Rib>();
         c->parent = this;
         rib.push_back(c);
@@ -22769,9 +22702,14 @@ std::shared_ptr<Entity> Routing::RoutingInstance::Ribs::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Ribs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rib)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22848,6 +22786,7 @@ std::shared_ptr<Entity> Routing::RoutingInstance::Ribs::Rib::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Routing::RoutingInstance::Ribs::Rib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22966,6 +22905,7 @@ std::shared_ptr<Entity> FibRoute::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> FibRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -23088,6 +23028,7 @@ std::shared_ptr<Entity> FibRoute::Input::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> FibRoute::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_address != nullptr)
     {
         children["destination-address"] = destination_address;
@@ -23184,6 +23125,7 @@ std::shared_ptr<Entity> FibRoute::Input::DestinationAddress::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> FibRoute::Input::DestinationAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23296,6 +23238,7 @@ std::shared_ptr<Entity> FibRoute::Output::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> FibRoute::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route != nullptr)
     {
         children["route"] = route;
@@ -23408,6 +23351,7 @@ std::shared_ptr<Entity> FibRoute::Output::Route::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> FibRoute::Output::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(next_hop != nullptr)
     {
         children["next-hop"] = next_hop;
@@ -23562,6 +23506,7 @@ std::shared_ptr<Entity> FibRoute::Output::Route::NextHop::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> FibRoute::Output::Route::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23680,13 +23625,13 @@ Direct::~Direct()
 {
 }
 
-Static_::Static_()
+Static::Static()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:static")
 {
 
 }
 
-Static_::~Static_()
+Static::~Static()
 {
 }
 

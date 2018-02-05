@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Ipv6Network::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::get_child_by_name(const std::string 
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_data != nullptr)
     {
         children["interface-data"] = interface_data;
@@ -388,6 +387,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -466,14 +466,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::get_child
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -486,9 +478,14 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::get_child
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -610,6 +607,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(briefs != nullptr)
     {
         children["briefs"] = briefs;
@@ -708,14 +706,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
 {
     if(child_yang_name == "brief")
     {
-        for(auto const & c : brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief>();
         c->parent = this;
         brief.push_back(c);
@@ -728,9 +718,14 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -827,14 +822,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
 
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address>();
         c->parent = this;
         address.push_back(c);
@@ -847,14 +834,19 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_local_address != nullptr)
     {
         children["link-local-address"] = link_local_address;
     }
 
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -969,6 +961,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1101,6 +1094,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1219,14 +1213,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 {
     if(child_yang_name == "global-detail")
     {
-        for(auto const & c : global_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail>();
         c->parent = this;
         global_detail.push_back(c);
@@ -1239,9 +1225,14 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : global_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1503,14 +1494,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 
     if(child_yang_name == "multicast-group")
     {
-        for(auto const & c : multicast_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup>();
         c->parent = this;
         multicast_group.push_back(c);
@@ -1519,14 +1502,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address>();
         c->parent = this;
         address.push_back(c);
@@ -1535,14 +1510,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 
     if(child_yang_name == "client-multicast-group")
     {
-        for(auto const & c : client_multicast_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup>();
         c->parent = this;
         client_multicast_group.push_back(c);
@@ -1555,6 +1522,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_local_address != nullptr)
     {
         children["link-local-address"] = link_local_address;
@@ -1605,19 +1573,31 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
         children["fwd-dis-utime"] = fwd_dis_utime;
     }
 
+    count = 0;
     for (auto const & c : multicast_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : client_multicast_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1802,6 +1782,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1930,6 +1911,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2075,6 +2057,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2177,6 +2160,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2305,6 +2289,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2389,6 +2374,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2493,6 +2479,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2585,6 +2572,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2645,6 +2633,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2705,6 +2694,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2765,6 +2755,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2825,6 +2816,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2889,6 +2881,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2981,6 +2974,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3097,6 +3091,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3175,14 +3170,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 {
     if(child_yang_name == "global-brief")
     {
-        for(auto const & c : global_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief>();
         c->parent = this;
         global_brief.push_back(c);
@@ -3195,9 +3182,14 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : global_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3294,14 +3286,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address>();
         c->parent = this;
         address.push_back(c);
@@ -3314,14 +3298,19 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_local_address != nullptr)
     {
         children["link-local-address"] = link_local_address;
     }
 
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3436,6 +3425,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3568,6 +3558,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3686,14 +3677,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 {
     if(child_yang_name == "detail")
     {
-        for(auto const & c : detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail>();
         c->parent = this;
         detail.push_back(c);
@@ -3706,9 +3689,14 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3970,14 +3958,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 
     if(child_yang_name == "multicast-group")
     {
-        for(auto const & c : multicast_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup>();
         c->parent = this;
         multicast_group.push_back(c);
@@ -3986,14 +3966,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address>();
         c->parent = this;
         address.push_back(c);
@@ -4002,14 +3974,6 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 
     if(child_yang_name == "client-multicast-group")
     {
-        for(auto const & c : client_multicast_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup>();
         c->parent = this;
         client_multicast_group.push_back(c);
@@ -4022,6 +3986,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_local_address != nullptr)
     {
         children["link-local-address"] = link_local_address;
@@ -4072,19 +4037,31 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
         children["fwd-dis-utime"] = fwd_dis_utime;
     }
 
+    count = 0;
     for (auto const & c : multicast_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : client_multicast_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4269,6 +4246,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4397,6 +4375,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4542,6 +4521,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4644,6 +4624,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4772,6 +4753,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -4856,6 +4838,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4960,6 +4943,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5052,6 +5036,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5112,6 +5097,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5172,6 +5158,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5232,6 +5219,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5292,6 +5280,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5356,6 +5345,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5448,6 +5438,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5564,6 +5555,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5693,6 +5685,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Summary::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(if_up_up != nullptr)
     {
         children["if-up-up"] = if_up_up;
@@ -5797,6 +5790,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5901,6 +5895,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDo
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6005,6 +6000,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDown
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6109,6 +6105,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShut
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

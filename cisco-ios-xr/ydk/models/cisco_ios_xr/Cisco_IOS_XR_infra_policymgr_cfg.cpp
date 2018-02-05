@@ -81,6 +81,7 @@ std::shared_ptr<Entity> PolicyManager::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(class_maps != nullptr)
     {
         children["class-maps"] = class_maps;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::get_child_by_name(const std::s
 {
     if(child_yang_name == "class-map")
     {
-        for(auto const & c : class_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap>();
         c->parent = this;
         class_map.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -332,6 +330,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -1185,14 +1184,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
 {
     if(child_yang_name == "destination-address-ipv4")
     {
-        for(auto const & c : destination_address_ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4>();
         c->parent = this;
         destination_address_ipv4.push_back(c);
@@ -1201,14 +1192,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
 
     if(child_yang_name == "destination-address-ipv6")
     {
-        for(auto const & c : destination_address_ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6>();
         c->parent = this;
         destination_address_ipv6.push_back(c);
@@ -1217,14 +1200,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
 
     if(child_yang_name == "source-address-ipv4")
     {
-        for(auto const & c : source_address_ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4>();
         c->parent = this;
         source_address_ipv4.push_back(c);
@@ -1233,14 +1208,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
 
     if(child_yang_name == "source-address-ipv6")
     {
-        for(auto const & c : source_address_ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6>();
         c->parent = this;
         source_address_ipv6.push_back(c);
@@ -1249,14 +1216,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
 
     if(child_yang_name == "dhcp-client-id")
     {
-        for(auto const & c : dhcp_client_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DhcpClientId>();
         c->parent = this;
         dhcp_client_id.push_back(c);
@@ -1265,14 +1224,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
 
     if(child_yang_name == "dhcp-client-id-regex")
     {
-        for(auto const & c : dhcp_client_id_regex)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DhcpClientIdRegex>();
         c->parent = this;
         dhcp_client_id_regex.push_back(c);
@@ -1281,14 +1232,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
 
     if(child_yang_name == "domain-name")
     {
-        for(auto const & c : domain_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DomainName>();
         c->parent = this;
         domain_name.push_back(c);
@@ -1297,14 +1240,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
 
     if(child_yang_name == "domain-name-regex")
     {
-        for(auto const & c : domain_name_regex)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex>();
         c->parent = this;
         domain_name_regex.push_back(c);
@@ -1326,44 +1261,77 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : destination_address_ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : destination_address_ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : source_address_ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : source_address_ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dhcp_client_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dhcp_client_id_regex)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : domain_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : domain_name_regex)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(flow != nullptr)
@@ -1959,6 +1927,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DestinationAd
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2049,6 +2018,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DestinationAd
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2139,6 +2109,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::SourceAddress
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2229,6 +2200,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::SourceAddress
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2319,6 +2291,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DhcpClientId:
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DhcpClientId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2409,6 +2382,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DhcpClientIdR
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DhcpClientIdRegex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2499,6 +2473,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DomainName::g
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2589,6 +2564,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::DomainNameReg
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2699,6 +2675,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::Flow::get_chi
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flow_cache != nullptr)
     {
         children["flow-cache"] = flow_cache;
@@ -2778,6 +2755,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCac
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3565,14 +3543,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
 {
     if(child_yang_name == "destination-address-ipv4")
     {
-        for(auto const & c : destination_address_ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4>();
         c->parent = this;
         destination_address_ipv4.push_back(c);
@@ -3581,14 +3551,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
 
     if(child_yang_name == "destination-address-ipv6")
     {
-        for(auto const & c : destination_address_ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6>();
         c->parent = this;
         destination_address_ipv6.push_back(c);
@@ -3597,14 +3559,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
 
     if(child_yang_name == "source-address-ipv4")
     {
-        for(auto const & c : source_address_ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4>();
         c->parent = this;
         source_address_ipv4.push_back(c);
@@ -3613,14 +3567,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
 
     if(child_yang_name == "source-address-ipv6")
     {
-        for(auto const & c : source_address_ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6>();
         c->parent = this;
         source_address_ipv6.push_back(c);
@@ -3629,14 +3575,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
 
     if(child_yang_name == "dhcp-client-id")
     {
-        for(auto const & c : dhcp_client_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DhcpClientId>();
         c->parent = this;
         dhcp_client_id.push_back(c);
@@ -3645,14 +3583,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
 
     if(child_yang_name == "dhcp-client-id-regex")
     {
-        for(auto const & c : dhcp_client_id_regex)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DhcpClientIdRegex>();
         c->parent = this;
         dhcp_client_id_regex.push_back(c);
@@ -3661,14 +3591,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
 
     if(child_yang_name == "domain-name")
     {
-        for(auto const & c : domain_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName>();
         c->parent = this;
         domain_name.push_back(c);
@@ -3677,14 +3599,6 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
 
     if(child_yang_name == "domain-name-regex")
     {
-        for(auto const & c : domain_name_regex)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex>();
         c->parent = this;
         domain_name_regex.push_back(c);
@@ -3706,44 +3620,77 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::get_child_
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : destination_address_ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : destination_address_ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : source_address_ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : source_address_ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dhcp_client_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dhcp_client_id_regex)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : domain_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : domain_name_regex)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(flow != nullptr)
@@ -4299,6 +4246,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::Destinatio
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4389,6 +4337,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::Destinatio
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4479,6 +4428,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4569,6 +4519,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4659,6 +4610,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::DhcpClient
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DhcpClientId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4749,6 +4701,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::DhcpClient
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DhcpClientIdRegex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4839,6 +4792,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4929,6 +4883,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5026,6 +4981,7 @@ std::shared_ptr<Entity> PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5109,14 +5065,6 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::get_child_by_name(const std::
 {
     if(child_yang_name == "policy-map")
     {
-        for(auto const & c : policy_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap>();
         c->parent = this;
         policy_map.push_back(c);
@@ -5129,9 +5077,14 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5231,14 +5184,6 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::get_child_by_name(
 {
     if(child_yang_name == "event")
     {
-        for(auto const & c : event)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event>();
         c->parent = this;
         event.push_back(c);
@@ -5247,14 +5192,6 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::get_child_by_name(
 
     if(child_yang_name == "policy-map-rule")
     {
-        for(auto const & c : policy_map_rule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule>();
         c->parent = this;
         policy_map_rule.push_back(c);
@@ -5267,14 +5204,23 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : event)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : policy_map_rule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5387,15 +5333,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::get_child_b
 {
     if(child_yang_name == "class")
     {
-        for(auto const & c : class_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_>();
+        auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class>();
         c->parent = this;
         class_.push_back(c);
         return c;
@@ -5407,9 +5345,14 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5460,7 +5403,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::has_leaf_or_child_of_name(cons
     return false;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::Class_()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::Class()
     :
     class_name{YType::str, "class-name"},
     class_type{YType::enumeration, "class-type"},
@@ -5470,11 +5413,11 @@ PolicyManager::PolicyMaps::PolicyMap::Event::Class_::Class_()
     yang_name = "class"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::~Class_()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::~Class()
 {
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::has_data() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::has_data() const
 {
     for (std::size_t index=0; index<action_rule.size(); index++)
     {
@@ -5486,7 +5429,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::has_data() const
 	|| class_execution_strategy.is_set;
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::has_operation() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::has_operation() const
 {
     for (std::size_t index=0; index<action_rule.size(); index++)
     {
@@ -5499,14 +5442,14 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::has_operation() const
 	|| ydk::is_set(class_execution_strategy.yfilter);
 }
 
-std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_segment_path() const
+std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "class" <<"[class-name='" <<class_name <<"']" <<"[class-type='" <<class_type <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5518,19 +5461,11 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::Policy
 
 }
 
-std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action-rule")
     {
-        for(auto const & c : action_rule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule>();
+        auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule>();
         c->parent = this;
         action_rule.push_back(c);
         return c;
@@ -5539,18 +5474,23 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : action_rule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
@@ -5572,7 +5512,7 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::set_value(const std::s
     }
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "class-name")
     {
@@ -5588,25 +5528,25 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::set_filter(const std::
     }
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action-rule" || name == "class-name" || name == "class-type" || name == "class-execution-strategy")
         return true;
     return false;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActionRule()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActionRule()
     :
     action_sequence_number{YType::uint16, "action-sequence-number"},
     disconnect{YType::empty, "disconnect"},
     monitor{YType::empty, "monitor"}
     	,
     activate_dynamic_template(nullptr) // presence node
-	,authenticate(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate>())
+	,authenticate(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate>())
 	,authorize(nullptr) // presence node
 	,deactivate_dynamic_template(nullptr) // presence node
 	,set_timer(nullptr) // presence node
-	,stop_timer(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer>())
+	,stop_timer(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer>())
 {
     authenticate->parent = this;
     stop_timer->parent = this;
@@ -5614,11 +5554,11 @@ PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActionRule()
     yang_name = "action-rule"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::~ActionRule()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::~ActionRule()
 {
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::has_data() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::has_data() const
 {
     return action_sequence_number.is_set
 	|| disconnect.is_set
@@ -5631,7 +5571,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::has_data()
 	|| (stop_timer !=  nullptr && stop_timer->has_data());
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::has_operation() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(action_sequence_number.yfilter)
@@ -5645,14 +5585,14 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::has_operat
 	|| (stop_timer !=  nullptr && stop_timer->has_operation());
 }
 
-std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_segment_path() const
+std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "action-rule" <<"[action-sequence-number='" <<action_sequence_number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5664,13 +5604,13 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::Policy
 
 }
 
-std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "activate-dynamic-template")
     {
         if(activate_dynamic_template == nullptr)
         {
-            activate_dynamic_template = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate>();
+            activate_dynamic_template = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate>();
         }
         return activate_dynamic_template;
     }
@@ -5679,7 +5619,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::Act
     {
         if(authenticate == nullptr)
         {
-            authenticate = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate>();
+            authenticate = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate>();
         }
         return authenticate;
     }
@@ -5688,7 +5628,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::Act
     {
         if(authorize == nullptr)
         {
-            authorize = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize>();
+            authorize = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize>();
         }
         return authorize;
     }
@@ -5697,7 +5637,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::Act
     {
         if(deactivate_dynamic_template == nullptr)
         {
-            deactivate_dynamic_template = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate>();
+            deactivate_dynamic_template = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate>();
         }
         return deactivate_dynamic_template;
     }
@@ -5706,7 +5646,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::Act
     {
         if(set_timer == nullptr)
         {
-            set_timer = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer>();
+            set_timer = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer>();
         }
         return set_timer;
     }
@@ -5715,7 +5655,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::Act
     {
         if(stop_timer == nullptr)
         {
-            stop_timer = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer>();
+            stop_timer = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer>();
         }
         return stop_timer;
     }
@@ -5723,9 +5663,10 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::Act
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(activate_dynamic_template != nullptr)
     {
         children["activate-dynamic-template"] = activate_dynamic_template;
@@ -5759,7 +5700,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-sequence-number")
     {
@@ -5781,7 +5722,7 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::set_value(
     }
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action-sequence-number")
     {
@@ -5797,14 +5738,14 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::set_filter
     }
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "activate-dynamic-template" || name == "authenticate" || name == "authorize" || name == "deactivate-dynamic-template" || name == "set-timer" || name == "stop-timer" || name == "action-sequence-number" || name == "disconnect" || name == "monitor")
         return true;
     return false;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::ActivateDynamicTemplate()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::ActivateDynamicTemplate()
     :
     name{YType::str, "name"},
     aaa_list{YType::str, "aaa-list"}
@@ -5813,31 +5754,31 @@ PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamic
     yang_name = "activate-dynamic-template"; yang_parent_name = "action-rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::~ActivateDynamicTemplate()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::~ActivateDynamicTemplate()
 {
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::has_data() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::has_data() const
 {
     return name.is_set
 	|| aaa_list.is_set;
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::has_operation() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(aaa_list.yfilter);
 }
 
-std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_segment_path() const
+std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "activate-dynamic-template";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5848,18 +5789,19 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::Policy
 
 }
 
-std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -5875,7 +5817,7 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDy
     }
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -5887,14 +5829,14 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDy
     }
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "aaa-list")
         return true;
     return false;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::Authenticate()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::Authenticate()
     :
     aaa_list{YType::str, "aaa-list"}
 {
@@ -5902,29 +5844,29 @@ PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::A
     yang_name = "authenticate"; yang_parent_name = "action-rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::~Authenticate()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::~Authenticate()
 {
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::has_data() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::has_data() const
 {
     return aaa_list.is_set;
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::has_operation() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(aaa_list.yfilter);
 }
 
-std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_segment_path() const
+std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authenticate";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5934,18 +5876,19 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::Policy
 
 }
 
-std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aaa-list")
     {
@@ -5955,7 +5898,7 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authentica
     }
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "aaa-list")
     {
@@ -5963,14 +5906,14 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authentica
     }
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aaa-list")
         return true;
     return false;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::Authorize()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::Authorize()
     :
     aaa_list{YType::str, "aaa-list"},
     format{YType::str, "format"},
@@ -5981,11 +5924,11 @@ PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::Auth
     yang_name = "authorize"; yang_parent_name = "action-rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::~Authorize()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::~Authorize()
 {
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::has_data() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::has_data() const
 {
     return aaa_list.is_set
 	|| format.is_set
@@ -5993,7 +5936,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize:
 	|| password.is_set;
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::has_operation() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(aaa_list.yfilter)
@@ -6002,14 +5945,14 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize:
 	|| ydk::is_set(password.yfilter);
 }
 
-std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_segment_path() const
+std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authorize";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6022,18 +5965,19 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::Policy
 
 }
 
-std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aaa-list")
     {
@@ -6061,7 +6005,7 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize:
     }
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "aaa-list")
     {
@@ -6081,14 +6025,14 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize:
     }
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aaa-list" || name == "format" || name == "identifier" || name == "password")
         return true;
     return false;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::DeactivateDynamicTemplate()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::DeactivateDynamicTemplate()
     :
     name{YType::str, "name"},
     aaa_list{YType::str, "aaa-list"}
@@ -6097,31 +6041,31 @@ PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynam
     yang_name = "deactivate-dynamic-template"; yang_parent_name = "action-rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::~DeactivateDynamicTemplate()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::~DeactivateDynamicTemplate()
 {
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::has_data() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::has_data() const
 {
     return name.is_set
 	|| aaa_list.is_set;
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::has_operation() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(aaa_list.yfilter);
 }
 
-std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_segment_path() const
+std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "deactivate-dynamic-template";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6132,18 +6076,19 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::Policy
 
 }
 
-std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -6159,7 +6104,7 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Deactivate
     }
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -6171,14 +6116,14 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Deactivate
     }
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "aaa-list")
         return true;
     return false;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::SetTimer()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::SetTimer()
     :
     timer_name{YType::str, "timer-name"},
     timer_value{YType::uint32, "timer-value"}
@@ -6187,31 +6132,31 @@ PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::SetTi
     yang_name = "set-timer"; yang_parent_name = "action-rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::~SetTimer()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::~SetTimer()
 {
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::has_data() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::has_data() const
 {
     return timer_name.is_set
 	|| timer_value.is_set;
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::has_operation() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(timer_name.yfilter)
 	|| ydk::is_set(timer_value.yfilter);
 }
 
-std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_segment_path() const
+std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "set-timer";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6222,18 +6167,19 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::Policy
 
 }
 
-std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timer-name")
     {
@@ -6249,7 +6195,7 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::
     }
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "timer-name")
     {
@@ -6261,14 +6207,14 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::
     }
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timer-name" || name == "timer-value")
         return true;
     return false;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::StopTimer()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::StopTimer()
     :
     timer_name{YType::str, "timer-name"}
 {
@@ -6276,29 +6222,29 @@ PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::Stop
     yang_name = "stop-timer"; yang_parent_name = "action-rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::~StopTimer()
+PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::~StopTimer()
 {
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::has_data() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::has_data() const
 {
     return timer_name.is_set;
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::has_operation() const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(timer_name.yfilter);
 }
 
-std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_segment_path() const
+std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stop-timer";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6308,18 +6254,19 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::PolicyMaps::Policy
 
 }
 
-std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timer-name")
     {
@@ -6329,7 +6276,7 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer:
     }
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "timer-name")
     {
@@ -6337,7 +6284,7 @@ void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer:
     }
 }
 
-bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timer-name")
         return true;
@@ -6543,14 +6490,6 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get
 
     if(child_yang_name == "random-detect")
     {
-        for(auto const & c : random_detect)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect>();
         c->parent = this;
         random_detect.push_back(c);
@@ -6653,6 +6592,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(shape != nullptr)
     {
         children["shape"] = shape;
@@ -6678,9 +6618,13 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
         children["pfc"] = pfc;
     }
 
+    count = 0;
     for (auto const & c : random_detect)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(set != nullptr)
@@ -6931,6 +6875,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Sha
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rate != nullptr)
     {
         children["rate"] = rate;
@@ -7011,6 +6956,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Sha
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7101,6 +7047,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Sha
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7191,6 +7138,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Min
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7281,6 +7229,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Ban
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7371,6 +7320,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Que
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7497,6 +7447,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pfc_buffer_size != nullptr)
     {
         children["pfc-buffer-size"] = pfc_buffer_size;
@@ -7592,6 +7543,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7682,6 +7634,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7772,6 +7725,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7948,6 +7902,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Ran
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8182,6 +8137,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8515,6 +8471,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rate != nullptr)
     {
         children["rate"] = rate;
@@ -8620,6 +8577,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8710,6 +8668,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8800,6 +8759,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8890,6 +8850,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8994,6 +8955,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(set != nullptr)
     {
         children["set"] = set;
@@ -9153,6 +9115,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9417,6 +9380,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(set != nullptr)
     {
         children["set"] = set;
@@ -9576,6 +9540,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9840,6 +9805,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(set != nullptr)
     {
         children["set"] = set;
@@ -9999,6 +9965,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pol
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10249,6 +10216,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Ser
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10362,6 +10330,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Cac
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rate != nullptr)
     {
         children["rate"] = rate;
@@ -10452,6 +10421,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Cac
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10542,6 +10512,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Cac
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10640,6 +10611,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Flo
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10768,6 +10740,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Met
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rate != nullptr)
     {
         children["rate"] = rate;
@@ -10852,6 +10825,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Met
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10952,6 +10926,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Met
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11098,6 +11073,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Rea
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -11243,6 +11219,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Rea
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11343,6 +11320,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Rea
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(type != nullptr)
     {
         children["type"] = type;
@@ -11432,6 +11410,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Rea
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11550,6 +11529,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Rea
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(trigger_value != nullptr)
     {
         children["trigger-value"] = trigger_value;
@@ -11642,6 +11622,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Rea
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11762,6 +11743,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Rea
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11883,6 +11865,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pbr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -11968,6 +11951,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pbr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12058,6 +12042,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pbr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12153,6 +12138,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pbr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_target != nullptr)
     {
         children["route-target"] = route_target;
@@ -12242,6 +12228,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pbr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_address != nullptr)
     {
         children["ipv4-address"] = ipv4_address;
@@ -12337,6 +12324,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pbr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12437,6 +12425,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pbr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(next_hop != nullptr)
     {
         children["next-hop"] = next_hop;
@@ -12526,6 +12515,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pbr
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12630,6 +12620,7 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Ser
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

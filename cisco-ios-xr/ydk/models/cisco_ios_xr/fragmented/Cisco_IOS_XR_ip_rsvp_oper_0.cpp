@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_rsvp_oper_0.hpp"
-#include "Cisco_IOS_XR_ip_rsvp_oper_2.hpp"
 #include "Cisco_IOS_XR_ip_rsvp_oper_1.hpp"
+#include "Cisco_IOS_XR_ip_rsvp_oper_2.hpp"
 
 using namespace ydk;
 
@@ -460,6 +460,7 @@ std::shared_ptr<Entity> RsvpStandby::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_neighbor_briefs != nullptr)
     {
         children["interface-neighbor-briefs"] = interface_neighbor_briefs;
@@ -715,14 +716,6 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborBriefs::get_child_by_name(
 {
     if(child_yang_name == "interface-neighbor-brief")
     {
-        for(auto const & c : interface_neighbor_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief>();
         c->parent = this;
         interface_neighbor_brief.push_back(c);
@@ -735,9 +728,14 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborBriefs::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceNeighborBriefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_neighbor_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -823,14 +821,6 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborB
 {
     if(child_yang_name == "interface-neighbor-list-compact")
     {
-        for(auto const & c : interface_neighbor_list_compact)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact>();
         c->parent = this;
         interface_neighbor_list_compact.push_back(c);
@@ -843,9 +833,14 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborB
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_neighbor_list_compact)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -938,6 +933,7 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborB
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1033,14 +1029,6 @@ std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::get_child_by_name(cons
 {
     if(child_yang_name == "controller-summary")
     {
-        for(auto const & c : controller_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::ControllerSummaries::ControllerSummary>();
         c->parent = this;
         controller_summary.push_back(c);
@@ -1053,9 +1041,14 @@ std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : controller_summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1165,6 +1158,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::get
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth_information != nullptr)
     {
         children["bandwidth-information"] = bandwidth_information;
@@ -1323,6 +1317,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::Ban
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pre_standard_dste_interface != nullptr)
     {
         children["pre-standard-dste-interface"] = pre_standard_dste_interface;
@@ -1429,6 +1424,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::Ban
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1583,6 +1579,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::Ban
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::StandardDsteInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1738,14 +1735,6 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationBriefs::get_child_by_name(con
 {
     if(child_yang_name == "authentication-brief")
     {
-        for(auto const & c : authentication_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::AuthenticationBriefs::AuthenticationBrief>();
         c->parent = this;
         authentication_brief.push_back(c);
@@ -1758,9 +1747,14 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationBriefs::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationBriefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : authentication_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1880,6 +1874,7 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationBriefs::AuthenticationBrief::
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationBriefs::AuthenticationBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2075,14 +2070,6 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::get_child_by_name(const std:
 {
     if(child_yang_name == "session-brief")
     {
-        for(auto const & c : session_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::SessionBriefs::SessionBrief>();
         c->parent = this;
         session_brief.push_back(c);
@@ -2095,9 +2082,14 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : session_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2227,6 +2219,7 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session != nullptr)
     {
         children["session"] = session;
@@ -2424,6 +2417,7 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::get_c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_session != nullptr)
     {
         children["rsvp-session"] = rsvp_session;
@@ -2555,6 +2549,7 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpS
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -2666,6 +2661,7 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpS
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2777,6 +2773,7 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpS
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2888,6 +2885,7 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpS
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2999,6 +2997,7 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpS
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3104,14 +3103,6 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::get_child_by_name(const std::
 {
     if(child_yang_name == "psb-detailed")
     {
-        for(auto const & c : psb_detailed)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed>();
         c->parent = this;
         psb_detailed.push_back(c);
@@ -3124,9 +3115,14 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : psb_detailed)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3167,7 +3163,7 @@ RsvpStandby::PsbDetaileds::PsbDetailed::PsbDetailed()
     	,
     session(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Session>())
 	,s2l_sub_lsp(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp>())
-	,template_(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template_>())
+	,template_(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template>())
 	,session_attribute(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute>())
 	,traffic_spec(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec>())
 	,generic_traffic_spec(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec>())
@@ -3365,7 +3361,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::get_child_by_nam
     {
         if(template_ == nullptr)
         {
-            template_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template_>();
+            template_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template>();
         }
         return template_;
     }
@@ -3480,14 +3476,6 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::get_child_by_nam
 
     if(child_yang_name == "pfc")
     {
-        for(auto const & c : pfc)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Pfc>();
         c->parent = this;
         pfc.push_back(c);
@@ -3496,14 +3484,6 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::get_child_by_nam
 
     if(child_yang_name == "in-ero")
     {
-        for(auto const & c : in_ero)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::InEro>();
         c->parent = this;
         in_ero.push_back(c);
@@ -3512,14 +3492,6 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::get_child_by_nam
 
     if(child_yang_name == "out-ero")
     {
-        for(auto const & c : out_ero)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::OutEro>();
         c->parent = this;
         out_ero.push_back(c);
@@ -3532,6 +3504,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session != nullptr)
     {
         children["session"] = session;
@@ -3607,19 +3580,31 @@ std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDet
         children["class-type"] = class_type;
     }
 
+    count = 0;
     for (auto const & c : pfc)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : in_ero)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : out_ero)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3854,6 +3839,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::get_chi
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_session != nullptr)
     {
         children["rsvp-session"] = rsvp_session;
@@ -3985,6 +3971,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -4096,6 +4083,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4207,6 +4195,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4318,6 +4307,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4429,6 +4419,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4532,6 +4523,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp::get_c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4560,45 +4552,45 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp::has_leaf_or_child_of_nam
     return false;
 }
 
-RsvpStandby::PsbDetaileds::PsbDetailed::Template_::Template_()
+RsvpStandby::PsbDetaileds::PsbDetailed::Template::Template()
     :
-    rsvp_filter(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter>())
+    rsvp_filter(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter>())
 {
     rsvp_filter->parent = this;
 
     yang_name = "template"; yang_parent_name = "psb-detailed"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RsvpStandby::PsbDetaileds::PsbDetailed::Template_::~Template_()
+RsvpStandby::PsbDetaileds::PsbDetailed::Template::~Template()
 {
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::has_data() const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::has_data() const
 {
     return (rsvp_filter !=  nullptr && rsvp_filter->has_data());
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::has_operation() const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::has_operation() const
 {
     return is_set(yfilter)
 	|| (rsvp_filter !=  nullptr && rsvp_filter->has_operation());
 }
 
-std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::get_absolute_path() const
+std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/psb-detaileds/psb-detailed/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::get_segment_path() const
+std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "template";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDetailed::Template_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4607,13 +4599,13 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-filter")
     {
         if(rsvp_filter == nullptr)
         {
-            rsvp_filter = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter>();
+            rsvp_filter = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter>();
         }
         return rsvp_filter;
     }
@@ -4621,9 +4613,10 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_filter != nullptr)
     {
         children["rsvp-filter"] = rsvp_filter;
@@ -4632,27 +4625,27 @@ std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDet
     return children;
 }
 
-void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::PsbDetaileds::PsbDetailed::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::PsbDetaileds::PsbDetailed::Template::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvp-filter")
         return true;
     return false;
 }
 
-RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::RsvpFilter()
+RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::RsvpFilter()
     :
     filter_type{YType::enumeration, "filter-type"}
     	,
-    udp_ipv4_session(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session>())
-	,p2mp_ipv4_session(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session>())
+    udp_ipv4_session(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session>())
+	,p2mp_ipv4_session(std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session>())
 {
     udp_ipv4_session->parent = this;
     p2mp_ipv4_session->parent = this;
@@ -4660,18 +4653,18 @@ RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::RsvpFilter()
     yang_name = "rsvp-filter"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::~RsvpFilter()
+RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::~RsvpFilter()
 {
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::has_data() const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::has_data() const
 {
     return filter_type.is_set
 	|| (udp_ipv4_session !=  nullptr && udp_ipv4_session->has_data())
 	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_data());
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::has_operation() const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(filter_type.yfilter)
@@ -4679,21 +4672,21 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::has_operatio
 	|| (p2mp_ipv4_session !=  nullptr && p2mp_ipv4_session->has_operation());
 }
 
-std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::get_absolute_path() const
+std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/psb-detaileds/psb-detailed/template/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::get_segment_path() const
+std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-filter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4703,13 +4696,13 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp-ipv4-session")
     {
         if(udp_ipv4_session == nullptr)
         {
-            udp_ipv4_session = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session>();
+            udp_ipv4_session = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session>();
         }
         return udp_ipv4_session;
     }
@@ -4718,7 +4711,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpF
     {
         if(p2mp_ipv4_session == nullptr)
         {
-            p2mp_ipv4_session = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session>();
+            p2mp_ipv4_session = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session>();
         }
         return p2mp_ipv4_session;
     }
@@ -4726,9 +4719,10 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpF
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(udp_ipv4_session != nullptr)
     {
         children["udp-ipv4-session"] = udp_ipv4_session;
@@ -4742,7 +4736,7 @@ std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDet
     return children;
 }
 
-void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "filter-type")
     {
@@ -4752,7 +4746,7 @@ void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::set_value(co
     }
 }
 
-void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "filter-type")
     {
@@ -4760,14 +4754,14 @@ void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::set_filter(c
     }
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "udp-ipv4-session" || name == "p2mp-ipv4-session" || name == "filter-type")
         return true;
     return false;
 }
 
-RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::UdpIpv4Session()
+RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::UdpIpv4Session()
     :
     source_address{YType::str, "source-address"},
     source_port{YType::uint16, "source-port"}
@@ -4776,38 +4770,38 @@ RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::U
     yang_name = "udp-ipv4-session"; yang_parent_name = "rsvp-filter"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::~UdpIpv4Session()
+RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::~UdpIpv4Session()
 {
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::has_data() const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::has_data() const
 {
     return source_address.is_set
 	|| source_port.is_set;
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::has_operation() const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_address.yfilter)
 	|| ydk::is_set(source_port.yfilter);
 }
 
-std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::get_absolute_path() const
+std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/psb-detaileds/psb-detailed/template/rsvp-filter/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::get_segment_path() const
+std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "udp-ipv4-session";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4818,18 +4812,19 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
@@ -4845,7 +4840,7 @@ void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Sessi
     }
 }
 
-void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-address")
     {
@@ -4857,14 +4852,14 @@ void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Sessi
     }
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source-address" || name == "source-port")
         return true;
     return false;
 }
 
-RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::P2MpIpv4Session()
+RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::P2MpIpv4Session()
     :
     source_address{YType::str, "source-address"},
     source_port{YType::uint16, "source-port"},
@@ -4875,11 +4870,11 @@ RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::
     yang_name = "p2mp-ipv4-session"; yang_parent_name = "rsvp-filter"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::~P2MpIpv4Session()
+RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::~P2MpIpv4Session()
 {
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::has_data() const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::has_data() const
 {
     return source_address.is_set
 	|| source_port.is_set
@@ -4887,7 +4882,7 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Sess
 	|| sub_group_id.is_set;
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::has_operation() const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_address.yfilter)
@@ -4896,21 +4891,21 @@ bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Sess
 	|| ydk::is_set(sub_group_id.yfilter);
 }
 
-std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::get_absolute_path() const
+std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp-standby/psb-detaileds/psb-detailed/template/rsvp-filter/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::get_segment_path() const
+std::string RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "p2mp-ipv4-session";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4923,18 +4918,19 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
@@ -4962,7 +4958,7 @@ void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Sess
     }
 }
 
-void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::set_filter(const std::string & value_path, YFilter yfilter)
+void RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-address")
     {
@@ -4982,7 +4978,7 @@ void RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Sess
     }
 }
 
-bool RsvpStandby::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session::has_leaf_or_child_of_name(const std::string & name) const
+bool RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source-address" || name == "source-port" || name == "p2mp-sub-group-origin" || name == "sub-group-id")
         return true;
@@ -5062,6 +5058,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sess_attribute_flags != nullptr)
     {
         children["sess-attribute-flags"] = sess_attribute_flags;
@@ -5176,6 +5173,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5315,6 +5313,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec::get
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5465,6 +5464,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSp
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(g709otn_tspec != nullptr)
     {
         children["g709otn-tspec"] = g709otn_tspec;
@@ -5570,6 +5570,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSp
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5699,6 +5700,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSp
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5842,6 +5844,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PathFlags::get_c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PathFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5979,6 +5982,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Hop::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Hop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6088,6 +6092,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PolicySourceInfo
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PolicySourceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6235,6 +6240,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Header::get_chil
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6382,6 +6388,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::ExpiryTime::get_
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::ExpiryTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6483,6 +6490,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyFlags::get
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6598,6 +6606,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyQueryFlags
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyQueryFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6818,6 +6827,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generic_local_downstream_label != nullptr)
     {
         children["generic-local-downstream-label"] = generic_local_downstream_label;
@@ -7015,6 +7025,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -7114,6 +7125,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7209,6 +7221,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -7308,6 +7321,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7403,6 +7417,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -7502,6 +7517,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7597,6 +7613,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -7696,6 +7713,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7791,6 +7809,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -7890,6 +7909,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7985,6 +8005,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -8084,6 +8105,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8169,6 +8191,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::ClassType::get_c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::ClassType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8289,6 +8312,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy_flags != nullptr)
     {
         children["policy-flags"] = policy_flags;
@@ -8390,6 +8414,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8505,6 +8530,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyQuery
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8645,6 +8671,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::get_child
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4ero_sub_object != nullptr)
     {
         children["ipv4ero-sub-object"] = ipv4ero_sub_object;
@@ -8746,6 +8773,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSu
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8861,6 +8889,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Unnumbere
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9001,6 +9030,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::get_chil
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4ero_sub_object != nullptr)
     {
         children["ipv4ero-sub-object"] = ipv4ero_sub_object;
@@ -9102,6 +9132,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroS
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9217,6 +9248,7 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Unnumber
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9332,14 +9364,6 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::get_child_by_name(cons
 {
     if(child_yang_name == "controller-detailed")
     {
-        for(auto const & c : controller_detailed)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::ControllerDetaileds::ControllerDetailed>();
         c->parent = this;
         controller_detailed.push_back(c);
@@ -9352,9 +9376,14 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : controller_detailed)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9555,14 +9584,6 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::ge
 
     if(child_yang_name == "neighbor-array")
     {
-        for(auto const & c : neighbor_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray>();
         c->parent = this;
         neighbor_array.push_back(c);
@@ -9575,6 +9596,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::ge
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth_information != nullptr)
     {
         children["bandwidth-information"] = bandwidth_information;
@@ -9585,9 +9607,13 @@ std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds:
         children["flags"] = flags;
     }
 
+    count = 0;
     for (auto const & c : neighbor_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9923,6 +9949,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Ba
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pre_standard_dste_interface != nullptr)
     {
         children["pre-standard-dste-interface"] = pre_standard_dste_interface;
@@ -10029,6 +10056,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Ba
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10183,6 +10211,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Ba
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10373,6 +10402,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Fl
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::Flags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10591,14 +10621,6 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Ne
 
     if(child_yang_name == "neighbor-message-id")
     {
-        for(auto const & c : neighbor_message_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId>();
         c->parent = this;
         neighbor_message_id.push_back(c);
@@ -10611,14 +10633,19 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Ne
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(expiry_time != nullptr)
     {
         children["expiry-time"] = expiry_time;
     }
 
+    count = 0;
     for (auto const & c : neighbor_message_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10731,6 +10758,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Ne
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10817,6 +10845,7 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Ne
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10922,6 +10951,7 @@ std::shared_ptr<Entity> RsvpStandby::FrrSummary::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::FrrSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path_states != nullptr)
     {
         children["path-states"] = path_states;
@@ -11017,6 +11047,7 @@ std::shared_ptr<Entity> RsvpStandby::FrrSummary::PathStates::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::FrrSummary::PathStates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11142,6 +11173,7 @@ std::shared_ptr<Entity> RsvpStandby::FrrSummary::ReservationStates::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::FrrSummary::ReservationStates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11257,14 +11289,6 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::get_child_by_name(const std::
 {
     if(child_yang_name == "rsb-detailed")
     {
-        for(auto const & c : rsb_detailed)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed>();
         c->parent = this;
         rsb_detailed.push_back(c);
@@ -11277,9 +11301,14 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsb_detailed)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11586,6 +11615,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flow_spec != nullptr)
     {
         children["flow-spec"] = flow_spec;
@@ -11887,6 +11917,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::FlowSpec::get_ch
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::FlowSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12054,6 +12085,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec:
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(g709otn_flow_spec != nullptr)
     {
         children["g709otn-flow-spec"] = g709otn_flow_spec;
@@ -12154,6 +12186,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec:
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12276,6 +12309,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::get_chi
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_session != nullptr)
     {
         children["rsvp-session"] = rsvp_session;
@@ -12407,6 +12441,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -12518,6 +12553,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12629,6 +12665,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12740,6 +12777,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12851,6 +12889,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSes
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12954,6 +12993,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::S2LSubLsp::get_c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::S2LSubLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13037,6 +13077,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Style::get_child
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Style::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13129,6 +13170,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::get_chil
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_filter != nullptr)
     {
         children["rsvp-filter"] = rsvp_filter;
@@ -13234,6 +13276,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilt
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(udp_ipv4_session != nullptr)
     {
         children["udp-ipv4-session"] = udp_ipv4_session;
@@ -13331,6 +13374,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilt
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13436,6 +13480,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilt
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13565,6 +13610,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags::get_ch
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13692,6 +13738,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Hop::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Hop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13801,6 +13848,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::PolicySources::g
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::PolicySources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13948,6 +13996,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Header::get_chil
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14099,6 +14148,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyFlags::get
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14206,6 +14256,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::ExpiryTime::get_
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::ExpiryTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14311,6 +14362,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyQueryFlags
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyQueryFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14531,6 +14583,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generic_local_downstream_label != nullptr)
     {
         children["generic-local-downstream-label"] = generic_local_downstream_label;
@@ -14728,6 +14781,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -14827,6 +14881,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14922,6 +14977,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -15021,6 +15077,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15116,6 +15173,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -15215,6 +15273,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15310,6 +15369,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -15409,6 +15469,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15504,6 +15565,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -15603,6 +15665,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15698,6 +15761,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(generalized_label != nullptr)
     {
         children["generalized-label"] = generalized_label;
@@ -15797,6 +15861,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15880,14 +15945,6 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::get_child_by_name(const
 {
     if(child_yang_name == "interface-summary")
     {
-        for(auto const & c : interface_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::InterfaceSummaries::InterfaceSummary>();
         c->parent = this;
         interface_summary.push_back(c);
@@ -15900,9 +15957,14 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16012,6 +16074,7 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::get_c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth_information != nullptr)
     {
         children["bandwidth-information"] = bandwidth_information;
@@ -16170,6 +16233,7 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::Bandw
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pre_standard_dste_interface != nullptr)
     {
         children["pre-standard-dste-interface"] = pre_standard_dste_interface;
@@ -16276,6 +16340,7 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::Bandw
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16430,6 +16495,7 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::Bandw
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16585,14 +16651,6 @@ std::shared_ptr<Entity> RsvpStandby::HelloInstanceBriefs::get_child_by_name(cons
 {
     if(child_yang_name == "hello-instance-brief")
     {
-        for(auto const & c : hello_instance_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief>();
         c->parent = this;
         hello_instance_brief.push_back(c);
@@ -16605,9 +16663,14 @@ std::shared_ptr<Entity> RsvpStandby::HelloInstanceBriefs::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::HelloInstanceBriefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hello_instance_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16711,6 +16774,7 @@ std::shared_ptr<Entity> RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief::ge
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16866,14 +16930,6 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::get_child_by_name(co
 {
     if(child_yang_name == "authentication-detail")
     {
-        for(auto const & c : authentication_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::AuthenticationDetails::AuthenticationDetail>();
         c->parent = this;
         authentication_detail.push_back(c);
@@ -16886,9 +16942,14 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : authentication_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17023,6 +17084,7 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auth_compact != nullptr)
     {
         children["auth-compact"] = auth_compact;
@@ -17217,6 +17279,7 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17390,6 +17453,7 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(send_info != nullptr)
     {
         children["send-info"] = send_info;
@@ -17490,6 +17554,7 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -17583,6 +17648,7 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17725,6 +17791,7 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -17894,6 +17961,7 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18129,14 +18197,6 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::get_child_by_name(const std::str
 {
     if(child_yang_name == "rsb-brief")
     {
-        for(auto const & c : rsb_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RsvpStandby::RsbBriefs::RsbBrief>();
         c->parent = this;
         rsb_brief.push_back(c);
@@ -18149,9 +18209,14 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsb_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18350,6 +18415,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session != nullptr)
     {
         children["session"] = session;
@@ -18582,6 +18648,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_session != nullptr)
     {
         children["rsvp-session"] = rsvp_session;
@@ -18713,6 +18780,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -18824,6 +18892,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18935,6 +19004,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19046,6 +19116,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19157,6 +19228,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2MpLspSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19260,6 +19332,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::S2LSubLsp::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::S2LSubLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19371,6 +19444,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::FlowSpec::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::FlowSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19538,6 +19612,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::get_c
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(g709otn_flow_spec != nullptr)
     {
         children["g709otn-flow-spec"] = g709otn_flow_spec;
@@ -19638,6 +19713,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::G709O
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19751,6 +19827,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Style::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Style::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19843,6 +19920,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Filter::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_filter != nullptr)
     {
         children["rsvp-filter"] = rsvp_filter;
@@ -19948,6 +20026,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::ge
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(udp_ipv4_session != nullptr)
     {
         children["udp-ipv4-session"] = udp_ipv4_session;
@@ -20045,6 +20124,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::Ud
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20150,6 +20230,7 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20285,6 +20366,7 @@ std::shared_ptr<Entity> RsvpStandby::OpenConfig::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::OpenConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_counters != nullptr)
     {
         children["global-counters"] = global_counters;

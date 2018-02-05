@@ -2281,18 +2281,18 @@ class Native::Interface::BDI::Peer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Default_; //type: Native::Interface::BDI::Peer::Default_
+        class Default; //type: Native::Interface::BDI::Peer::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default> default_;
         
 }; // Native::Interface::BDI::Peer
 
 
-class Native::Interface::BDI::Peer::Default_ : public ydk::Entity
+class Native::Interface::BDI::Peer::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2304,14 +2304,14 @@ class Native::Interface::BDI::Peer::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Interface::BDI::Peer::Default_::Ip
+        class Ip; //type: Native::Interface::BDI::Peer::Default::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default_::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default::Ip> ip;
         
-}; // Native::Interface::BDI::Peer::Default_
+}; // Native::Interface::BDI::Peer::Default
 
 
-class Native::Interface::BDI::Peer::Default_::Ip : public ydk::Entity
+class Native::Interface::BDI::Peer::Default::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -2327,14 +2327,14 @@ class Native::Interface::BDI::Peer::Default_::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Interface::BDI::Peer::Default_::Ip::Address
+        class Address; //type: Native::Interface::BDI::Peer::Default::Ip::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default_::Ip::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default::Ip::Address> address;
         
-}; // Native::Interface::BDI::Peer::Default_::Ip
+}; // Native::Interface::BDI::Peer::Default::Ip
 
 
-class Native::Interface::BDI::Peer::Default_::Ip::Address : public ydk::Entity
+class Native::Interface::BDI::Peer::Default::Ip::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2351,16 +2351,16 @@ class Native::Interface::BDI::Peer::Default_::Ip::Address : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dhcp; //type: empty
-        class DhcpPool; //type: Native::Interface::BDI::Peer::Default_::Ip::Address::DhcpPool
-        class Pool; //type: Native::Interface::BDI::Peer::Default_::Ip::Address::Pool
+        class DhcpPool; //type: Native::Interface::BDI::Peer::Default::Ip::Address::DhcpPool
+        class Pool; //type: Native::Interface::BDI::Peer::Default::Ip::Address::Pool
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default_::Ip::Address::DhcpPool> dhcp_pool; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default_::Ip::Address::Pool> pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default::Ip::Address::DhcpPool> dhcp_pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer::Default::Ip::Address::Pool> pool; // presence node
         
-}; // Native::Interface::BDI::Peer::Default_::Ip::Address
+}; // Native::Interface::BDI::Peer::Default::Ip::Address
 
 
-class Native::Interface::BDI::Peer::Default_::Ip::Address::DhcpPool : public ydk::Entity
+class Native::Interface::BDI::Peer::Default::Ip::Address::DhcpPool : public ydk::Entity
 {
     public:
         DhcpPool();
@@ -2378,10 +2378,10 @@ class Native::Interface::BDI::Peer::Default_::Ip::Address::DhcpPool : public ydk
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::BDI::Peer::Default_::Ip::Address::DhcpPool
+}; // Native::Interface::BDI::Peer::Default::Ip::Address::DhcpPool
 
 
-class Native::Interface::BDI::Peer::Default_::Ip::Address::Pool : public ydk::Entity
+class Native::Interface::BDI::Peer::Default::Ip::Address::Pool : public ydk::Entity
 {
     public:
         Pool();
@@ -2399,7 +2399,7 @@ class Native::Interface::BDI::Peer::Default_::Ip::Address::Pool : public ydk::En
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::BDI::Peer::Default_::Ip::Address::Pool
+}; // Native::Interface::BDI::Peer::Default::Ip::Address::Pool
 
 
 class Native::Interface::BDI::PmPath : public ydk::Entity

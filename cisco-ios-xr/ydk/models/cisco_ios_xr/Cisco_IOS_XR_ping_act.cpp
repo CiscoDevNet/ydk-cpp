@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Ping::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Ping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -208,14 +209,6 @@ std::shared_ptr<Entity> Ping::Input::get_child_by_name(const std::string & child
 
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ping::Input::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -237,14 +230,19 @@ std::shared_ptr<Entity> Ping::Input::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Ping::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
     }
 
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(ipv6 != nullptr)
@@ -381,6 +379,7 @@ std::shared_ptr<Entity> Ping::Input::Destination::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Ping::Input::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -652,6 +651,7 @@ std::shared_ptr<Entity> Ping::Input::Ipv4::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Ping::Input::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -899,6 +899,7 @@ std::shared_ptr<Entity> Ping::Input::Ipv6::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Ping::Input::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1101,6 +1102,7 @@ std::shared_ptr<Entity> Ping::Output::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ping_response != nullptr)
     {
         children["ping-response"] = ping_response;
@@ -1185,14 +1187,6 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::get_child_by_name(const std:
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ping::Output::PingResponse::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -1214,9 +1208,14 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(ipv6 != nullptr)
@@ -1375,6 +1374,7 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv4::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(replies != nullptr)
     {
         children["replies"] = replies;
@@ -1618,14 +1618,6 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv4::Replies::get_child_by_
 {
     if(child_yang_name == "reply")
     {
-        for(auto const & c : reply)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ping::Output::PingResponse::Ipv4::Replies::Reply>();
         c->parent = this;
         reply.push_back(c);
@@ -1638,9 +1630,14 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv4::Replies::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv4::Replies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reply)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1727,6 +1724,7 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv4::Replies::Reply::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv4::Replies::Reply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(broadcast_reply_addresses != nullptr)
     {
         children["broadcast-reply-addresses"] = broadcast_reply_addresses;
@@ -1820,14 +1818,6 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv4::Replies::Reply::Broadc
 {
     if(child_yang_name == "broadcast-reply-address")
     {
-        for(auto const & c : broadcast_reply_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress>();
         c->parent = this;
         broadcast_reply_address.push_back(c);
@@ -1840,9 +1830,14 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv4::Replies::Reply::Broadc
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : broadcast_reply_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1915,6 +1910,7 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv4::Replies::Reply::Broadc
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2082,6 +2078,7 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv6::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(replies != nullptr)
     {
         children["replies"] = replies;
@@ -2322,14 +2319,6 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv6::Replies::get_child_by_
 {
     if(child_yang_name == "reply")
     {
-        for(auto const & c : reply)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ping::Output::PingResponse::Ipv6::Replies::Reply>();
         c->parent = this;
         reply.push_back(c);
@@ -2342,9 +2331,14 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv6::Replies::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv6::Replies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reply)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2424,6 +2418,7 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv6::Replies::Reply::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv6::Replies::Reply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

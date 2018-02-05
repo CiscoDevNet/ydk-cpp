@@ -263,6 +263,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cufwconnectionglobals != nullptr)
     {
         children["cuFwConnectionGlobals"] = cufwconnectionglobals;
@@ -485,6 +486,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -690,6 +692,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -807,6 +810,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::g
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -904,6 +908,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1069,6 +1074,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1336,6 +1342,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1437,6 +1444,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1564,6 +1572,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1743,6 +1752,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1920,6 +1930,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2015,14 +2026,6 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_child
 {
     if(child_yang_name == "cufwConnSummaryEntry")
     {
-        for(auto const & c : cufwconnsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry>();
         c->parent = this;
         cufwconnsummaryentry.push_back(c);
@@ -2035,9 +2038,14 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cufwconnsummaryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2149,6 +2157,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconns
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2324,14 +2333,6 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_ch
 {
     if(child_yang_name == "cufwAppConnSummaryEntry")
     {
-        for(auto const & c : cufwappconnsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry>();
         c->parent = this;
         cufwappconnsummaryentry.push_back(c);
@@ -2344,9 +2345,14 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cufwappconnsummaryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2458,6 +2464,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwap
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2633,14 +2640,6 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get
 {
     if(child_yang_name == "cufwPolicyConnSummaryEntry")
     {
-        for(auto const & c : cufwpolicyconnsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry>();
         c->parent = this;
         cufwpolicyconnsummaryentry.push_back(c);
@@ -2653,9 +2652,14 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cufwpolicyconnsummaryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2771,6 +2775,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cuf
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2956,14 +2961,6 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::
 {
     if(child_yang_name == "cufwPolicyAppConnSummaryEntry")
     {
-        for(auto const & c : cufwpolicyappconnsummaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry>();
         c->parent = this;
         cufwpolicyappconnsummaryentry.push_back(c);
@@ -2976,9 +2973,14 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cufwpolicyappconnsummaryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3094,6 +3096,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3279,14 +3282,6 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_child_
 {
     if(child_yang_name == "cufwInspectionEntry")
     {
-        for(auto const & c : cufwinspectionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry>();
         c->parent = this;
         cufwinspectionentry.push_back(c);
@@ -3299,9 +3294,14 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cufwinspectionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3385,6 +3385,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspec
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3490,14 +3491,6 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_child_
 {
     if(child_yang_name == "cufwUrlfServerEntry")
     {
-        for(auto const & c : cufwurlfserverentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry>();
         c->parent = this;
         cufwurlfserverentry.push_back(c);
@@ -3510,9 +3503,14 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cufwurlfserverentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3640,6 +3638,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfse
 std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

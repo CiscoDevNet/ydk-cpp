@@ -71,14 +71,6 @@ std::shared_ptr<Entity> Policies::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "policy-entry")
     {
-        for(auto const & c : policy_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry>();
         c->parent = this;
         policy_entry.push_back(c);
@@ -91,9 +83,14 @@ std::shared_ptr<Entity> Policies::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Policies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -204,14 +201,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::get_child_by_name(const std::stri
 {
     if(child_yang_name == "classifier-entry")
     {
-        for(auto const & c : classifier_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry>();
         c->parent = this;
         classifier_entry.push_back(c);
@@ -224,9 +213,14 @@ std::shared_ptr<Entity> Policies::PolicyEntry::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : classifier_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -339,14 +333,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::get_child_by_nam
 {
     if(child_yang_name == "filter-entry")
     {
-        for(auto const & c : filter_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry>();
         c->parent = this;
         filter_entry.push_back(c);
@@ -355,14 +341,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::get_child_by_nam
 
     if(child_yang_name == "classifier-action-entry-cfg")
     {
-        for(auto const & c : classifier_action_entry_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg>();
         c->parent = this;
         classifier_action_entry_cfg.push_back(c);
@@ -375,14 +353,23 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : filter_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : classifier_action_entry_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -541,14 +528,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
 {
     if(child_yang_name == "dscp-cfg")
     {
-        for(auto const & c : dscp_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg>();
         c->parent = this;
         dscp_cfg.push_back(c);
@@ -557,14 +536,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
 
     if(child_yang_name == "source-ip-address-cfg")
     {
-        for(auto const & c : source_ip_address_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg>();
         c->parent = this;
         source_ip_address_cfg.push_back(c);
@@ -573,14 +544,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
 
     if(child_yang_name == "destination-ip-address-cfg")
     {
-        for(auto const & c : destination_ip_address_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg>();
         c->parent = this;
         destination_ip_address_cfg.push_back(c);
@@ -589,14 +552,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
 
     if(child_yang_name == "source-port-cfg")
     {
-        for(auto const & c : source_port_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg>();
         c->parent = this;
         source_port_cfg.push_back(c);
@@ -605,14 +560,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
 
     if(child_yang_name == "destination-port-cfg")
     {
-        for(auto const & c : destination_port_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg>();
         c->parent = this;
         destination_port_cfg.push_back(c);
@@ -621,14 +568,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
 
     if(child_yang_name == "protocol-cfg")
     {
-        for(auto const & c : protocol_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg>();
         c->parent = this;
         protocol_cfg.push_back(c);
@@ -641,34 +580,59 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dscp_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : source_ip_address_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : destination_ip_address_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : source_port_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : destination_port_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : protocol_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -761,6 +725,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::Dsc
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -847,6 +812,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::Sou
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -923,6 +889,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::Des
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1003,6 +970,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::Sou
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1093,6 +1061,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::Des
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1183,6 +1152,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::Pro
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1374,6 +1344,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(marking_cfg != nullptr)
     {
         children["ietf-diffserv-action:marking-cfg"] = marking_cfg;
@@ -1490,6 +1461,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1580,6 +1552,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rate_burst != nullptr)
     {
         children["rate-burst"] = rate_burst;
@@ -1685,6 +1658,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1823,14 +1797,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 {
     if(child_yang_name == "meter-list")
     {
-        for(auto const & c : meter_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList>();
         c->parent = this;
         meter_list.push_back(c);
@@ -1843,9 +1809,14 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : meter_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1966,6 +1937,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color != nullptr)
     {
         children["color"] = color;
@@ -2095,6 +2067,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2203,6 +2176,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2321,6 +2295,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2457,6 +2432,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bw_excess_share_cfg != nullptr)
     {
         children["bw-excess-share-cfg"] = bw_excess_share_cfg;
@@ -2594,6 +2570,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2734,6 +2711,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2870,6 +2848,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2948,14 +2927,6 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 {
     if(child_yang_name == "qlimit-dscp-thresh")
     {
-        for(auto const & c : qlimit_dscp_thresh)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh>();
         c->parent = this;
         qlimit_dscp_thresh.push_back(c);
@@ -2968,9 +2939,14 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qlimit_dscp_thresh)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3057,6 +3033,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -3152,6 +3129,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3269,6 +3247,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(red_min_thresh != nullptr)
     {
         children["red-min-thresh"] = red_min_thresh;
@@ -3374,6 +3353,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -3449,6 +3429,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3544,6 +3525,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -3619,6 +3601,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
 std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

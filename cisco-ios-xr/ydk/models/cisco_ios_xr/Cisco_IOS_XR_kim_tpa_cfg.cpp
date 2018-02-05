@@ -94,6 +94,7 @@ std::shared_ptr<Entity> Tpa::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Tpa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf_names != nullptr)
     {
         children["vrf-names"] = vrf_names;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> Tpa::VrfNames::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "vrf-name")
     {
-        for(auto const & c : vrf_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tpa::VrfNames::VrfName>();
         c->parent = this;
         vrf_name.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> Tpa::VrfNames::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -334,6 +332,7 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(east_west_names != nullptr)
     {
         children["east-west-names"] = east_west_names;
@@ -422,14 +421,6 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::EastWestNames::get_child_by_name
 {
     if(child_yang_name == "east-west-name")
     {
-        for(auto const & c : east_west_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tpa::VrfNames::VrfName::EastWestNames::EastWestName>();
         c->parent = this;
         east_west_name.push_back(c);
@@ -442,9 +433,14 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::EastWestNames::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::EastWestNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : east_west_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -521,6 +517,7 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::EastWestNames::EastWestName::get
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::EastWestNames::EastWestName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -639,6 +636,7 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
@@ -733,6 +731,7 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lpts_allow_entries != nullptr)
     {
         children["lpts-allow-entries"] = lpts_allow_entries;
@@ -826,14 +825,6 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEn
 {
     if(child_yang_name == "lpts-allow-entry")
     {
-        for(auto const & c : lpts_allow_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry>();
         c->parent = this;
         lpts_allow_entry.push_back(c);
@@ -846,9 +837,14 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEn
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lpts_allow_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -961,6 +957,7 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEn
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::LptsAllowEntries::LptsAllowEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1165,6 +1162,7 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lpts_allow_entries != nullptr)
     {
         children["lpts-allow-entries"] = lpts_allow_entries;
@@ -1258,14 +1256,6 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEn
 {
     if(child_yang_name == "lpts-allow-entry")
     {
-        for(auto const & c : lpts_allow_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry>();
         c->parent = this;
         lpts_allow_entry.push_back(c);
@@ -1278,9 +1268,14 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEn
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lpts_allow_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1393,6 +1388,7 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEn
 std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::LptsAllowEntries::LptsAllowEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1595,6 +1591,7 @@ std::shared_ptr<Entity> Tpa::Logging::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Tpa::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(kim != nullptr)
     {
         children["kim"] = kim;
@@ -1677,6 +1674,7 @@ std::shared_ptr<Entity> Tpa::Logging::Kim::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Tpa::Logging::Kim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1778,6 +1776,7 @@ std::shared_ptr<Entity> Tpa::Statistics::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Tpa::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

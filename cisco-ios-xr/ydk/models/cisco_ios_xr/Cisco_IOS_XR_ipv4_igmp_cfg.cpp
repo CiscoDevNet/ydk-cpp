@@ -80,6 +80,7 @@ std::shared_ptr<Entity> Igmp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Igmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -190,14 +191,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -210,9 +203,14 @@ std::shared_ptr<Entity> Igmp::Vrfs::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -362,6 +360,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic != nullptr)
     {
         children["traffic"] = traffic;
@@ -483,6 +482,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Traffic::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -604,6 +604,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::InheritableDefaults::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::InheritableDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum_groups_per_interface_oor != nullptr)
     {
         children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
@@ -748,6 +749,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerIn
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -848,6 +850,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -936,14 +939,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(cons
 {
     if(child_yang_name == "ssm-access-group")
     {
-        for(auto const & c : ssm_access_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup>();
         c->parent = this;
         ssm_access_group.push_back(c);
@@ -956,9 +951,14 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::SsmAccessGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ssm_access_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1031,6 +1031,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1117,6 +1118,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Maximum::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1195,14 +1197,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::get_child_by_name(const std
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -1215,9 +1209,14 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1360,6 +1359,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(join_groups != nullptr)
     {
         children["join-groups"] = join_groups;
@@ -1528,14 +1528,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_
 {
     if(child_yang_name == "join-group")
     {
-        for(auto const & c : join_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup>();
         c->parent = this;
         join_group.push_back(c);
@@ -1544,14 +1536,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_
 
     if(child_yang_name == "join-group-source-address")
     {
-        for(auto const & c : join_group_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
         c->parent = this;
         join_group_source_address.push_back(c);
@@ -1564,14 +1548,23 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : join_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : join_group_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1644,6 +1637,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::Join
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1738,6 +1732,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::Join
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1886,14 +1881,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 {
     if(child_yang_name == "static-group-group-address")
     {
-        for(auto const & c : static_group_group_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
         c->parent = this;
         static_group_group_address.push_back(c);
@@ -1902,14 +1889,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 
     if(child_yang_name == "static-group-group-address-source-address")
     {
-        for(auto const & c : static_group_group_address_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
         c->parent = this;
         static_group_group_address_source_address.push_back(c);
@@ -1918,14 +1897,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 
     if(child_yang_name == "static-group-group-address-source-address-source-address-mask")
     {
-        for(auto const & c : static_group_group_address_source_address_source_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
         c->parent = this;
         static_group_group_address_source_address_source_address_mask.push_back(c);
@@ -1934,14 +1905,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 
     if(child_yang_name == "static-group-group-address-group-address-mask")
     {
-        for(auto const & c : static_group_group_address_group_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
         c->parent = this;
         static_group_group_address_group_address_mask.push_back(c);
@@ -1950,14 +1913,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address")
     {
-        for(auto const & c : static_group_group_address_group_address_mask_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
         c->parent = this;
         static_group_group_address_group_address_mask_source_address.push_back(c);
@@ -1966,14 +1921,6 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address-source-address-mask")
     {
-        for(auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
         c->parent = this;
         static_group_group_address_group_address_mask_source_address_source_address_mask.push_back(c);
@@ -1986,34 +1933,59 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : static_group_group_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_source_address_source_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2094,6 +2066,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2216,6 +2189,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2352,6 +2326,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2494,6 +2469,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2630,6 +2606,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2780,6 +2757,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2924,6 +2902,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPer
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3024,6 +3003,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking
 std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3226,6 +3206,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nsf != nullptr)
     {
         children["nsf"] = nsf;
@@ -3359,6 +3340,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Nsf::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Nsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3450,6 +3432,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::UnicastQosAdjust::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::UnicastQosAdjust::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3553,6 +3536,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Accounting::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3636,6 +3620,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Traffic::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3764,6 +3749,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::InheritableDefaults::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::InheritableDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum_groups_per_interface_oor != nullptr)
     {
         children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
@@ -3915,6 +3901,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::InheritableDefaults::MaximumGroups
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4022,6 +4009,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::InheritableDefaults::ExplicitTrack
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4117,14 +4105,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::SsmAccessGroups::get_child_by_name
 {
     if(child_yang_name == "ssm-access-group")
     {
-        for(auto const & c : ssm_access_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup>();
         c->parent = this;
         ssm_access_group.push_back(c);
@@ -4137,9 +4117,14 @@ std::shared_ptr<Entity> Igmp::DefaultContext::SsmAccessGroups::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::SsmAccessGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ssm_access_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4219,6 +4204,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::g
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4312,6 +4298,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Maximum::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4397,14 +4384,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::get_child_by_name(cons
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -4417,9 +4396,14 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4569,6 +4553,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(join_groups != nullptr)
     {
         children["join-groups"] = join_groups;
@@ -4737,14 +4722,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups:
 {
     if(child_yang_name == "join-group")
     {
-        for(auto const & c : join_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup>();
         c->parent = this;
         join_group.push_back(c);
@@ -4753,14 +4730,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups:
 
     if(child_yang_name == "join-group-source-address")
     {
-        for(auto const & c : join_group_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
         c->parent = this;
         join_group_source_address.push_back(c);
@@ -4773,14 +4742,23 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups:
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : join_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : join_group_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4853,6 +4831,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups:
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4947,6 +4926,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups:
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5095,14 +5075,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 {
     if(child_yang_name == "static-group-group-address")
     {
-        for(auto const & c : static_group_group_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
         c->parent = this;
         static_group_group_address.push_back(c);
@@ -5111,14 +5083,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 
     if(child_yang_name == "static-group-group-address-source-address")
     {
-        for(auto const & c : static_group_group_address_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
         c->parent = this;
         static_group_group_address_source_address.push_back(c);
@@ -5127,14 +5091,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 
     if(child_yang_name == "static-group-group-address-source-address-source-address-mask")
     {
-        for(auto const & c : static_group_group_address_source_address_source_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
         c->parent = this;
         static_group_group_address_source_address_source_address_mask.push_back(c);
@@ -5143,14 +5099,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 
     if(child_yang_name == "static-group-group-address-group-address-mask")
     {
-        for(auto const & c : static_group_group_address_group_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
         c->parent = this;
         static_group_group_address_group_address_mask.push_back(c);
@@ -5159,14 +5107,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address")
     {
-        for(auto const & c : static_group_group_address_group_address_mask_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
         c->parent = this;
         static_group_group_address_group_address_mask_source_address.push_back(c);
@@ -5175,14 +5115,6 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address-source-address-mask")
     {
-        for(auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
         c->parent = this;
         static_group_group_address_group_address_mask_source_address_source_address_mask.push_back(c);
@@ -5195,34 +5127,59 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : static_group_group_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_source_address_source_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5303,6 +5260,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5425,6 +5383,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5561,6 +5520,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5703,6 +5663,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5839,6 +5800,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5989,6 +5951,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6133,6 +6096,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::MaximumGrou
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6233,6 +6197,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::ExplicitTra
 std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6380,6 +6345,7 @@ std::shared_ptr<Entity> Amt::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Amt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(relay_adv_add != nullptr)
     {
         children["relay-adv-add"] = relay_adv_add;
@@ -6592,6 +6558,7 @@ std::shared_ptr<Entity> Amt::RelayAdvAdd::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Amt::RelayAdvAdd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6689,6 +6656,7 @@ std::shared_ptr<Entity> Amt::RelayAnycastPrefix::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Amt::RelayAnycastPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6796,6 +6764,7 @@ std::shared_ptr<Entity> Mld::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Mld::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -6906,14 +6875,6 @@ std::shared_ptr<Entity> Mld::Vrfs::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -6926,9 +6887,14 @@ std::shared_ptr<Entity> Mld::Vrfs::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7078,6 +7044,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic != nullptr)
     {
         children["traffic"] = traffic;
@@ -7199,6 +7166,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Traffic::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7320,6 +7288,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::InheritableDefaults::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::InheritableDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum_groups_per_interface_oor != nullptr)
     {
         children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
@@ -7464,6 +7433,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInt
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7564,6 +7534,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::g
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7652,14 +7623,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(const
 {
     if(child_yang_name == "ssm-access-group")
     {
-        for(auto const & c : ssm_access_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup>();
         c->parent = this;
         ssm_access_group.push_back(c);
@@ -7672,9 +7635,14 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::SsmAccessGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ssm_access_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7747,6 +7715,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7833,6 +7802,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Maximum::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7911,14 +7881,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::get_child_by_name(const std:
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -7931,9 +7893,14 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8076,6 +8043,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(join_groups != nullptr)
     {
         children["join-groups"] = join_groups;
@@ -8244,14 +8212,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_c
 {
     if(child_yang_name == "join-group")
     {
-        for(auto const & c : join_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup>();
         c->parent = this;
         join_group.push_back(c);
@@ -8260,14 +8220,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_c
 
     if(child_yang_name == "join-group-source-address")
     {
-        for(auto const & c : join_group_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
         c->parent = this;
         join_group_source_address.push_back(c);
@@ -8280,14 +8232,23 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_c
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : join_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : join_group_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8360,6 +8321,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinG
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8454,6 +8416,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinG
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8602,14 +8565,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 {
     if(child_yang_name == "static-group-group-address")
     {
-        for(auto const & c : static_group_group_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
         c->parent = this;
         static_group_group_address.push_back(c);
@@ -8618,14 +8573,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 
     if(child_yang_name == "static-group-group-address-source-address")
     {
-        for(auto const & c : static_group_group_address_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
         c->parent = this;
         static_group_group_address_source_address.push_back(c);
@@ -8634,14 +8581,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 
     if(child_yang_name == "static-group-group-address-source-address-source-address-mask")
     {
-        for(auto const & c : static_group_group_address_source_address_source_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
         c->parent = this;
         static_group_group_address_source_address_source_address_mask.push_back(c);
@@ -8650,14 +8589,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 
     if(child_yang_name == "static-group-group-address-group-address-mask")
     {
-        for(auto const & c : static_group_group_address_group_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
         c->parent = this;
         static_group_group_address_group_address_mask.push_back(c);
@@ -8666,14 +8597,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address")
     {
-        for(auto const & c : static_group_group_address_group_address_mask_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
         c->parent = this;
         static_group_group_address_group_address_mask_source_address.push_back(c);
@@ -8682,14 +8605,6 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address-source-address-mask")
     {
-        for(auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
         c->parent = this;
         static_group_group_address_group_address_mask_source_address_source_address_mask.push_back(c);
@@ -8702,34 +8617,59 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : static_group_group_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_source_address_source_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8810,6 +8750,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8932,6 +8873,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9068,6 +9010,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9210,6 +9153,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9346,6 +9290,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9496,6 +9441,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9640,6 +9586,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerI
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9740,6 +9687,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking:
 std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9942,6 +9890,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nsf != nullptr)
     {
         children["nsf"] = nsf;
@@ -10075,6 +10024,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Nsf::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Nsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10166,6 +10116,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::UnicastQosAdjust::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::UnicastQosAdjust::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10269,6 +10220,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Accounting::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10352,6 +10304,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Traffic::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10480,6 +10433,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::InheritableDefaults::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::InheritableDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum_groups_per_interface_oor != nullptr)
     {
         children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
@@ -10631,6 +10585,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::InheritableDefaults::MaximumGroupsP
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10738,6 +10693,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::InheritableDefaults::ExplicitTracki
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::InheritableDefaults::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10833,14 +10789,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::SsmAccessGroups::get_child_by_name(
 {
     if(child_yang_name == "ssm-access-group")
     {
-        for(auto const & c : ssm_access_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup>();
         c->parent = this;
         ssm_access_group.push_back(c);
@@ -10853,9 +10801,14 @@ std::shared_ptr<Entity> Mld::DefaultContext::SsmAccessGroups::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::SsmAccessGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ssm_access_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10935,6 +10888,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::ge
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11028,6 +10982,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Maximum::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11113,14 +11068,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::get_child_by_name(const
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -11133,9 +11080,14 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11285,6 +11237,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(join_groups != nullptr)
     {
         children["join-groups"] = join_groups;
@@ -11453,14 +11406,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::
 {
     if(child_yang_name == "join-group")
     {
-        for(auto const & c : join_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup>();
         c->parent = this;
         join_group.push_back(c);
@@ -11469,14 +11414,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::
 
     if(child_yang_name == "join-group-source-address")
     {
-        for(auto const & c : join_group_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
         c->parent = this;
         join_group_source_address.push_back(c);
@@ -11489,14 +11426,23 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::JoinGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : join_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : join_group_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11569,6 +11515,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11663,6 +11610,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11811,14 +11759,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 {
     if(child_yang_name == "static-group-group-address")
     {
-        for(auto const & c : static_group_group_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
         c->parent = this;
         static_group_group_address.push_back(c);
@@ -11827,14 +11767,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 
     if(child_yang_name == "static-group-group-address-source-address")
     {
-        for(auto const & c : static_group_group_address_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
         c->parent = this;
         static_group_group_address_source_address.push_back(c);
@@ -11843,14 +11775,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 
     if(child_yang_name == "static-group-group-address-source-address-source-address-mask")
     {
-        for(auto const & c : static_group_group_address_source_address_source_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
         c->parent = this;
         static_group_group_address_source_address_source_address_mask.push_back(c);
@@ -11859,14 +11783,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 
     if(child_yang_name == "static-group-group-address-group-address-mask")
     {
-        for(auto const & c : static_group_group_address_group_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
         c->parent = this;
         static_group_group_address_group_address_mask.push_back(c);
@@ -11875,14 +11791,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address")
     {
-        for(auto const & c : static_group_group_address_group_address_mask_source_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
         c->parent = this;
         static_group_group_address_group_address_mask_source_address.push_back(c);
@@ -11891,14 +11799,6 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address-source-address-mask")
     {
-        for(auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
         c->parent = this;
         static_group_group_address_group_address_mask_source_address_source_address_mask.push_back(c);
@@ -11911,34 +11811,59 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : static_group_group_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_source_address_source_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask_source_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12019,6 +11944,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12141,6 +12067,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12277,6 +12204,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12419,6 +12347,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12555,6 +12484,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12705,6 +12635,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12849,6 +12780,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::MaximumGroup
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12949,6 +12881,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::ExplicitTrac
 std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

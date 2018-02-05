@@ -133,9 +133,9 @@ class PolicyManager::ClassMaps::ClassMap::Match : public ydk::Entity
         ydk::YLeafList ipv4_dscp; //type: list of  string
         ydk::YLeafList ipv6_dscp; //type: list of  string
         ydk::YLeafList dscp; //type: list of  string
-        ydk::YLeafList ipv4_precedence; //type: list of  one of uint8, string
-        ydk::YLeafList ipv6_precedence; //type: list of  one of uint8, string
-        ydk::YLeafList precedence; //type: list of  one of uint8, string
+        ydk::YLeafList ipv4_precedence; //type: list of  one of string, uint8
+        ydk::YLeafList ipv6_precedence; //type: list of  one of string, uint8
+        ydk::YLeafList precedence; //type: list of  one of string, uint8
         ydk::YLeafList qos_group; //type: list of  string
         ydk::YLeafList traffic_class; //type: list of  string
         ydk::YLeafList cos; //type: list of  uint8
@@ -410,7 +410,7 @@ class PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf idle_timeout; //type: one of uint16, string
+        ydk::YLeaf idle_timeout; //type: one of string, uint16
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache
 
@@ -449,9 +449,9 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public ydk::Entity
         ydk::YLeafList ipv4_dscp; //type: list of  string
         ydk::YLeafList ipv6_dscp; //type: list of  string
         ydk::YLeafList dscp; //type: list of  string
-        ydk::YLeafList ipv4_precedence; //type: list of  one of uint8, string
-        ydk::YLeafList ipv6_precedence; //type: list of  one of uint8, string
-        ydk::YLeafList precedence; //type: list of  one of uint8, string
+        ydk::YLeafList ipv4_precedence; //type: list of  one of string, uint8
+        ydk::YLeafList ipv6_precedence; //type: list of  one of string, uint8
+        ydk::YLeafList precedence; //type: list of  one of string, uint8
         ydk::YLeafList qos_group; //type: list of  string
         ydk::YLeafList traffic_class; //type: list of  string
         ydk::YLeafList cos; //type: list of  uint8
@@ -779,18 +779,18 @@ class PolicyManager::PolicyMaps::PolicyMap::Event : public ydk::Entity
         ydk::YLeaf event_type; //type: EventType
         ydk::YLeaf event_mode_match_all; //type: empty
         ydk::YLeaf event_mode_match_first; //type: empty
-        class Class_; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_
+        class Class; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class> > class_;
         
 }; // PolicyManager::PolicyMaps::PolicyMap::Event
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_ : public ydk::Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -805,14 +805,14 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_ : public ydk::Entity
         ydk::YLeaf class_name; //type: string
         ydk::YLeaf class_type; //type: PmapClassMapType
         ydk::YLeaf class_execution_strategy; //type: ExecutionStrategy
-        class ActionRule; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
+        class ActionRule; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule> > action_rule;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule> > action_rule;
         
-}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_
+}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule : public ydk::Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule : public ydk::Entity
 {
     public:
         ActionRule();
@@ -831,24 +831,24 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule : public y
         ydk::YLeaf action_sequence_number; //type: uint16
         ydk::YLeaf disconnect; //type: empty
         ydk::YLeaf monitor; //type: empty
-        class ActivateDynamicTemplate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate
-        class Authenticate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate
-        class Authorize; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
-        class DeactivateDynamicTemplate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate
-        class SetTimer; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer
-        class StopTimer; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer
+        class ActivateDynamicTemplate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate
+        class Authenticate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate
+        class Authorize; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize
+        class DeactivateDynamicTemplate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate
+        class SetTimer; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer
+        class StopTimer; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate> activate_dynamic_template; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate> authenticate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize> authorize; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate> deactivate_dynamic_template; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer> set_timer; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer> stop_timer;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate> activate_dynamic_template; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate> authenticate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize> authorize; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate> deactivate_dynamic_template; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer> set_timer; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer> stop_timer;
         
-}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
+}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate : public ydk::Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate : public ydk::Entity
 {
     public:
         ActivateDynamicTemplate();
@@ -867,10 +867,10 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateD
         ydk::YLeaf name; //type: string
         ydk::YLeaf aaa_list; //type: string
 
-}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate
+}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::ActivateDynamicTemplate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate : public ydk::Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate : public ydk::Entity
 {
     public:
         Authenticate();
@@ -888,10 +888,10 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authentic
 
         ydk::YLeaf aaa_list; //type: string
 
-}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate
+}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authenticate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize : public ydk::Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize : public ydk::Entity
 {
     public:
         Authorize();
@@ -912,10 +912,10 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
         ydk::YLeaf identifier; //type: AuthorizeIdentifier
         ydk::YLeaf password; //type: string
 
-}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
+}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::Authorize
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate : public ydk::Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate : public ydk::Entity
 {
     public:
         DeactivateDynamicTemplate();
@@ -934,10 +934,10 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Deactivat
         ydk::YLeaf name; //type: string
         ydk::YLeaf aaa_list; //type: string
 
-}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate
+}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::DeactivateDynamicTemplate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer : public ydk::Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer : public ydk::Entity
 {
     public:
         SetTimer();
@@ -956,10 +956,10 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer 
         ydk::YLeaf timer_name; //type: string
         ydk::YLeaf timer_value; //type: uint32
 
-}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer
+}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::SetTimer
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer : public ydk::Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer : public ydk::Entity
 {
     public:
         StopTimer();
@@ -977,7 +977,7 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer
 
         ydk::YLeaf timer_name; //type: string
 
-}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer
+}; // PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule::StopTimer
 
 
 class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public ydk::Entity
@@ -1299,7 +1299,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect : public
         ydk::YLeafList discard_class; //type: list of  uint8
         ydk::YLeafList dscp; //type: list of  string
         ydk::YLeafList mpls_exp; //type: list of  uint8
-        ydk::YLeafList precedence; //type: list of  one of uint8, string
+        ydk::YLeafList precedence; //type: list of  one of string, uint8
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect
 
@@ -1328,8 +1328,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set : public ydk::Ent
         ydk::YLeaf df; //type: uint8
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf inner_cos; //type: uint8
-        ydk::YLeaf precedence; //type: one of uint8, string
-        ydk::YLeaf precedence_tunnel; //type: one of uint8, string
+        ydk::YLeaf precedence; //type: one of string, uint8
+        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
         ydk::YLeaf mpls_experimental_top_most; //type: uint8
         ydk::YLeaf mpls_experimental_imposition; //type: uint8
         ydk::YLeaf srp_priority; //type: uint8
@@ -1514,8 +1514,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
         ydk::YLeaf df; //type: uint8
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf inner_cos; //type: uint8
-        ydk::YLeaf precedence; //type: one of uint8, string
-        ydk::YLeaf precedence_tunnel; //type: one of uint8, string
+        ydk::YLeaf precedence; //type: one of string, uint8
+        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
         ydk::YLeaf mpls_experimental_top_most; //type: uint8
         ydk::YLeaf mpls_experimental_imposition; //type: uint8
         ydk::YLeaf srp_priority; //type: uint8
@@ -1577,8 +1577,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction:
         ydk::YLeaf df; //type: uint8
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf inner_cos; //type: uint8
-        ydk::YLeaf precedence; //type: one of uint8, string
-        ydk::YLeaf precedence_tunnel; //type: one of uint8, string
+        ydk::YLeaf precedence; //type: one of string, uint8
+        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
         ydk::YLeaf mpls_experimental_top_most; //type: uint8
         ydk::YLeaf mpls_experimental_imposition; //type: uint8
         ydk::YLeaf srp_priority; //type: uint8
@@ -1640,8 +1640,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
         ydk::YLeaf df; //type: uint8
         ydk::YLeaf cos; //type: uint8
         ydk::YLeaf inner_cos; //type: uint8
-        ydk::YLeaf precedence; //type: one of uint8, string
-        ydk::YLeaf precedence_tunnel; //type: one of uint8, string
+        ydk::YLeaf precedence; //type: one of string, uint8
+        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
         ydk::YLeaf mpls_experimental_top_most; //type: uint8
         ydk::YLeaf mpls_experimental_imposition; //type: uint8
         ydk::YLeaf srp_priority; //type: uint8
@@ -1692,7 +1692,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf flow_idle_timeout; //type: one of uint16, string
+        ydk::YLeaf flow_idle_timeout; //type: one of string, uint16
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate
         class FlowRate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate
 

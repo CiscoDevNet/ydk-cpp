@@ -107,6 +107,7 @@ std::shared_ptr<Entity> SNMPv2MIB::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system != nullptr)
     {
         children["system"] = system;
@@ -253,6 +254,7 @@ std::shared_ptr<Entity> SNMPv2MIB::System::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::System::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -522,6 +524,7 @@ std::shared_ptr<Entity> SNMPv2MIB::Snmp::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -895,6 +898,7 @@ std::shared_ptr<Entity> SNMPv2MIB::Snmpset::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Snmpset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -980,14 +984,6 @@ std::shared_ptr<Entity> SNMPv2MIB::Sysortable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "sysOREntry")
     {
-        for(auto const & c : sysorentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SNMPv2MIB::Sysortable::Sysorentry>();
         c->parent = this;
         sysorentry.push_back(c);
@@ -1000,9 +996,14 @@ std::shared_ptr<Entity> SNMPv2MIB::Sysortable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Sysortable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sysorentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1090,6 +1091,7 @@ std::shared_ptr<Entity> SNMPv2MIB::Sysortable::Sysorentry::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Sysortable::Sysorentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

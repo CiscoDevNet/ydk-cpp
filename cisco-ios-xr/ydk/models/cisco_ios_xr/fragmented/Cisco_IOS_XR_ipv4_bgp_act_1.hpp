@@ -721,7 +721,7 @@ class ClearBgpBestpathVrfIpAddrIpNetmask::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf ip_addr; //type: string
         ydk::YLeaf ip_netmask; //type: string
 
@@ -772,7 +772,7 @@ class ClearBgpBestpathVrfIpAddr::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf ip_addr; //type: string
 
 }; // ClearBgpBestpathVrfIpAddr::Input
@@ -822,7 +822,7 @@ class ClearBgpBestpathVrfIpPrefix::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf ip_prefix; //type: string
 
 }; // ClearBgpBestpathVrfIpPrefix::Input
@@ -872,7 +872,7 @@ class ClearBgpBestpathVrfAfiSafiIpv4Prefix::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ipv4_prefix; //type: string
 
@@ -923,7 +923,7 @@ class ClearBgpBestpathVrfAfiSafiIpv4AddrIpv4Mask::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ipv4_addr; //type: string
         ydk::YLeaf ipv4_mask; //type: string
@@ -975,7 +975,7 @@ class ClearBgpBestpathVrfAfiSafiIpv4Addr::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ipv4_addr; //type: string
 
@@ -1026,7 +1026,7 @@ class ClearBgpBestpathVrfAfiSafiNetwork::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf network; //type: string
 
@@ -1077,7 +1077,7 @@ class ClearBgpBestpathVrfAfiSafiRdNetwork::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf rd; //type: string
         ydk::YLeaf network; //type: string
@@ -1129,7 +1129,7 @@ class ClearBgpBestpathVrfAfiSafiVrfNetwork::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf network; //type: string
@@ -1181,7 +1181,7 @@ class ClearBgpBestpathVrfAfiSafiIpv6AddrIpv6Netmask::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ipv6_addr; //type: string
         ydk::YLeaf ipv6_netmask; //type: string
@@ -1233,7 +1233,7 @@ class ClearBgpBestpathVrfAfiSafiIpv6Addr::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ipv6_addr; //type: string
 
@@ -1284,7 +1284,7 @@ class ClearBgpBestpathVrfAfiSafiIpv6Prefix::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ipv6_prefix; //type: string
 
@@ -1335,7 +1335,7 @@ class ClearBgpBestpathVrfAfiSafiRd::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf rd; //type: string
 
@@ -1386,7 +1386,7 @@ class ClearBgpBestpathVrfAfiSafiVrf::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf vrf_name; //type: string
 
@@ -1437,7 +1437,7 @@ class ClearBgpBestpathVrfAfiSafi::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vrf_all; //type: one of enumeration, string
+        ydk::YLeaf vrf_all; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpBestpathVrfAfiSafi::Input
@@ -1535,7 +1535,7 @@ class ClearBgpInstanceAllGraceful::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
 
 }; // ClearBgpInstanceAllGraceful::Input
 
@@ -1584,7 +1584,7 @@ class ClearBgpInstanceAll::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
 
 }; // ClearBgpInstanceAll::Input
 
@@ -1633,7 +1633,7 @@ class ClearBgpInstanceIpAddrGraceful::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf ip_addr; //type: string
 
 }; // ClearBgpInstanceIpAddrGraceful::Input
@@ -1683,7 +1683,7 @@ class ClearBgpInstanceIpAddrLongLivedStale::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf ip_addr; //type: string
 
 }; // ClearBgpInstanceIpAddrLongLivedStale::Input
@@ -1733,7 +1733,7 @@ class ClearBgpInstanceIpAddr::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf ip_addr; //type: string
 
 }; // ClearBgpInstanceIpAddr::Input
@@ -1783,7 +1783,7 @@ class ClearBgpInstanceAfiSafiAllSoftInPrefixFilter::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiAllSoftInPrefixFilter::Input
@@ -1833,7 +1833,7 @@ class ClearBgpInstanceAfiSafiAllSoftIn::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiAllSoftIn::Input
@@ -1883,7 +1883,7 @@ class ClearBgpInstanceAfiSafiAllSoftOut::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiAllSoftOut::Input
@@ -1933,7 +1933,7 @@ class ClearBgpInstanceAfiSafiAllSoft::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiAllSoft::Input
@@ -1983,7 +1983,7 @@ class ClearBgpInstanceAfiSafiIpAddrLongLivedStale::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -2034,7 +2034,7 @@ class ClearBgpInstanceAfiSafiIpAddrSoftInPrefixFilter::Input : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -2085,7 +2085,7 @@ class ClearBgpInstanceAfiSafiIpAddrSoftIn::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -2136,7 +2136,7 @@ class ClearBgpInstanceAfiSafiIpAddrSoftOut::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -2187,7 +2187,7 @@ class ClearBgpInstanceAfiSafiIpAddrSoft::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -2238,9 +2238,9 @@ class ClearBgpInstanceAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAfiSafiAsSoftInPrefixFilter::Input
 
@@ -2289,9 +2289,9 @@ class ClearBgpInstanceAfiSafiAsSoftIn::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAfiSafiAsSoftIn::Input
 
@@ -2340,9 +2340,9 @@ class ClearBgpInstanceAfiSafiAsSoftOut::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAfiSafiAsSoftOut::Input
 
@@ -2391,9 +2391,9 @@ class ClearBgpInstanceAfiSafiAsSoft::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAfiSafiAsSoft::Input
 
@@ -2442,7 +2442,7 @@ class ClearBgpInstanceAfiSafiDampeningIpPrefix::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_prefix; //type: string
 
@@ -2493,7 +2493,7 @@ class ClearBgpInstanceAfiSafiDampening::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiDampening::Input
@@ -2543,7 +2543,7 @@ class ClearBgpInstanceAfiSafiExternalSoftInPrefixFilter::Input : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiExternalSoftInPrefixFilter::Input
@@ -2593,7 +2593,7 @@ class ClearBgpInstanceAfiSafiExternalSoftIn::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiExternalSoftIn::Input
@@ -2643,7 +2643,7 @@ class ClearBgpInstanceAfiSafiExternalSoftOut::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiExternalSoftOut::Input
@@ -2693,7 +2693,7 @@ class ClearBgpInstanceAfiSafiExternalSoft::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiExternalSoft::Input
@@ -2743,7 +2743,7 @@ class ClearBgpInstanceAfiSafiFlapStatisticsIpAddrIpv4Mask::Input : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
         ydk::YLeaf ipv4_mask; //type: string
@@ -2795,7 +2795,7 @@ class ClearBgpInstanceAfiSafiFlapStatisticsIpAddr::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -2846,7 +2846,7 @@ class ClearBgpInstanceAfiSafiFlapStatisticsIpPrefix::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_prefix; //type: string
 
@@ -2897,7 +2897,7 @@ class ClearBgpInstanceAfiSafiFlapStatisticsRegexp::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf regexp_pattern; //type: string
 
@@ -2948,7 +2948,7 @@ class ClearBgpInstanceAfiSafiFlapStatisticsRoutePolicy::Input : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf route_policy_name; //type: string
 
@@ -2999,7 +2999,7 @@ class ClearBgpInstanceAfiSafiFlapStatistics::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiFlapStatistics::Input
@@ -3049,7 +3049,7 @@ class ClearBgpInstanceAfiSafiNexthopPerformanceStatistics::Input : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiNexthopPerformanceStatistics::Input
@@ -3099,7 +3099,7 @@ class ClearBgpInstanceAfiSafiNexthopRegistrationIpAddr::Input : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -3150,7 +3150,7 @@ class ClearBgpInstanceAfiSafiSelfOriginated::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiSelfOriginated::Input
@@ -3200,7 +3200,7 @@ class ClearBgpInstanceAfiSafiShutdown::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiShutdown::Input
@@ -3250,7 +3250,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParent::Input : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiUpdateOutqAddressFamilyUpdateParent::Input
@@ -3300,7 +3300,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqAddressFamily::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
 }; // ClearBgpInstanceAfiSafiUpdateOutqAddressFamily::Input
@@ -3350,7 +3350,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent::Input 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -3401,7 +3401,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrRefresh::Input : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -3452,7 +3452,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddrUpdateParent::Input : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -3503,7 +3503,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqNeighborIpAddr::Input : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf ip_addr; //type: string
 
@@ -3554,7 +3554,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent::Input : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf update_group; //type: string
         ydk::YLeaf sub_group; //type: string
@@ -3606,7 +3606,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroup::Input : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf update_group; //type: string
         ydk::YLeaf sub_group; //type: string
@@ -3658,7 +3658,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateP
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf update_group; //type: string
         ydk::YLeaf refresh_sub_group; //type: string
@@ -3710,7 +3710,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup::Input
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf update_group; //type: string
         ydk::YLeaf refresh_sub_group; //type: string
@@ -3762,7 +3762,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqUpdateGroupUpdateParent::Input : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf update_group; //type: string
 
@@ -3813,7 +3813,7 @@ class ClearBgpInstanceAfiSafiUpdateOutqUpdateGroup::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf instance_name; //type: one of enumeration, string
+        ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
         ydk::YLeaf update_group; //type: string
 

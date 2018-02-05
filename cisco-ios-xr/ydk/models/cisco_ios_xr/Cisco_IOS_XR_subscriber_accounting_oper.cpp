@@ -68,6 +68,7 @@ std::shared_ptr<Entity> SubscriberAccounting::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::get_child_by_name(const std
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -311,6 +309,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(subscriber_accounting_session_features != nullptr)
     {
         children["subscriber-accounting-session-features"] = subscriber_accounting_session_features;
@@ -404,14 +403,6 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 {
     if(child_yang_name == "subscriber-accounting-session-feature")
     {
-        for(auto const & c : subscriber_accounting_session_feature)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature>();
         c->parent = this;
         subscriber_accounting_session_feature.push_back(c);
@@ -424,9 +415,14 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscriber_accounting_session_feature)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -509,6 +505,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session_feature_data != nullptr)
     {
         children["session-feature-data"] = session_feature_data;
@@ -684,14 +681,6 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 {
     if(child_yang_name == "service-accounting-feature")
     {
-        for(auto const & c : service_accounting_feature)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature>();
         c->parent = this;
         service_accounting_feature.push_back(c);
@@ -704,9 +693,14 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_accounting_feature)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1029,6 +1023,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1213,6 +1208,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aaa_counters != nullptr)
     {
         children["aaa-counters"] = aaa_counters;
@@ -1435,6 +1431,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1879,6 +1876,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2029,6 +2027,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2131,6 +2130,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2249,14 +2249,6 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingF
 {
     if(child_yang_name == "subscriber-accounting-flow-feature")
     {
-        for(auto const & c : subscriber_accounting_flow_feature)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature>();
         c->parent = this;
         subscriber_accounting_flow_feature.push_back(c);
@@ -2269,9 +2261,14 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingF
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscriber_accounting_flow_feature)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2354,6 +2351,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingF
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flow_feature_data != nullptr)
     {
         children["flow-feature-data"] = flow_feature_data;
@@ -2615,6 +2613,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingF
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

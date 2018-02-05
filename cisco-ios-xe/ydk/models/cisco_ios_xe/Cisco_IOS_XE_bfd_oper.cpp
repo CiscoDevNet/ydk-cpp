@@ -68,6 +68,7 @@ std::shared_ptr<Entity> BfdState::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> BfdState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sessions != nullptr)
     {
         children["sessions"] = sessions;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> BfdState::Sessions::get_child_by_name(const std::string 
 {
     if(child_yang_name == "session")
     {
-        for(auto const & c : session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BfdState::Sessions::Session>();
         c->parent = this;
         session.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> BfdState::Sessions::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -337,6 +335,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bfd_tunnel_paths != nullptr)
     {
         children["bfd-tunnel-paths"] = bfd_tunnel_paths;
@@ -440,14 +439,6 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::get_child_b
 {
     if(child_yang_name == "bfd-tunnel-path")
     {
-        for(auto const & c : bfd_tunnel_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath>();
         c->parent = this;
         bfd_tunnel_path.push_back(c);
@@ -460,9 +451,14 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdTunnelPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bfd_tunnel_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -551,6 +547,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPa
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -679,14 +676,6 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdCircuits::get_child_by_n
 {
     if(child_yang_name == "bfd-circuit")
     {
-        for(auto const & c : bfd_circuit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdCircuits::BfdCircuit>();
         c->parent = this;
         bfd_circuit.push_back(c);
@@ -699,9 +688,14 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdCircuits::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdCircuits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bfd_circuit)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -790,6 +784,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdCircuits::BfdCircuit::ge
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdCircuits::BfdCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -918,14 +913,6 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::get_child_by_name(
 {
     if(child_yang_name == "bfd-nbr")
     {
-        for(auto const & c : bfd_nbr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdNbrs::BfdNbr>();
         c->parent = this;
         bfd_nbr.push_back(c);
@@ -938,9 +925,14 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdNbrs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bfd_nbr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1029,6 +1021,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_child_
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1157,14 +1150,6 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopNbrs::get_child_by_n
 {
     if(child_yang_name == "bfd-mhop-nbr")
     {
-        for(auto const & c : bfd_mhop_nbr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr>();
         c->parent = this;
         bfd_mhop_nbr.push_back(c);
@@ -1177,9 +1162,14 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopNbrs::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopNbrs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bfd_mhop_nbr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1264,6 +1254,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::ge
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1382,14 +1373,6 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_child_b
 {
     if(child_yang_name == "bfd-mhop-vrf-nbr")
     {
-        for(auto const & c : bfd_mhop_vrf_nbr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr>();
         c->parent = this;
         bfd_mhop_vrf_nbr.push_back(c);
@@ -1402,9 +1385,14 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bfd_mhop_vrf_nbr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1493,6 +1481,7 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfN
 std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

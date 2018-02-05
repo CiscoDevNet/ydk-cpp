@@ -107,6 +107,7 @@ std::shared_ptr<Entity> MplsLsd::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
@@ -250,6 +251,7 @@ std::shared_ptr<Entity> MplsLsd::Ipv6::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -333,6 +335,7 @@ std::shared_ptr<Entity> MplsLsd::Ipv4::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -418,14 +421,6 @@ std::shared_ptr<Entity> MplsLsd::LabelDatabases::get_child_by_name(const std::st
 {
     if(child_yang_name == "label-database")
     {
-        for(auto const & c : label_database)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::LabelDatabases::LabelDatabase>();
         c->parent = this;
         label_database.push_back(c);
@@ -438,9 +433,14 @@ std::shared_ptr<Entity> MplsLsd::LabelDatabases::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : label_database)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -530,6 +530,7 @@ std::shared_ptr<Entity> MplsLsd::LabelDatabases::LabelDatabase::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::LabelDatabase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label_range != nullptr)
     {
         children["label-range"] = label_range;
@@ -623,6 +624,7 @@ std::shared_ptr<Entity> MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -81,6 +81,7 @@ std::shared_ptr<Entity> ArpGmp::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf_infos != nullptr)
     {
         children["vrf-infos"] = vrf_infos;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> ArpGmp::VrfInfos::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "vrf-info")
     {
-        for(auto const & c : vrf_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ArpGmp::VrfInfos::VrfInfo>();
         c->parent = this;
         vrf_info.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> ArpGmp::VrfInfos::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::VrfInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -309,6 +307,7 @@ std::shared_ptr<Entity> ArpGmp::VrfInfos::VrfInfo::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::VrfInfos::VrfInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -444,14 +443,6 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ArpGmp::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -464,9 +455,14 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -582,6 +578,7 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(configured_ip_addresses != nullptr)
     {
         children["configured-ip-addresses"] = configured_ip_addresses;
@@ -675,14 +672,6 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_child_by_n
 {
     if(child_yang_name == "configured-ip-address")
     {
-        for(auto const & c : configured_ip_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress>();
         c->parent = this;
         configured_ip_address.push_back(c);
@@ -695,9 +684,14 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : configured_ip_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -782,6 +776,7 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAd
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -900,14 +895,6 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::Routes::get_child_by_name(const std::
 {
     if(child_yang_name == "route")
     {
-        for(auto const & c : route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ArpGmp::Vrfs::Vrf::Routes::Route>();
         c->parent = this;
         route.push_back(c);
@@ -920,9 +907,14 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::Routes::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::Routes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1021,6 +1013,7 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::Routes::Route::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::Routes::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1147,14 +1140,6 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_child_by_
 {
     if(child_yang_name == "interface-configured-ip")
     {
-        for(auto const & c : interface_configured_ip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp>();
         c->parent = this;
         interface_configured_ip.push_back(c);
@@ -1167,9 +1152,14 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_configured_ip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1264,6 +1254,7 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConf
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(associated_configuration_entry != nullptr)
     {
         children["associated-configuration-entry"] = associated_configuration_entry;
@@ -1387,6 +1378,7 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConf
 std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1502,6 +1494,7 @@ std::shared_ptr<Entity> Arp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Arp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -1607,14 +1600,6 @@ std::shared_ptr<Entity> Arp::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Arp::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -1627,9 +1612,14 @@ std::shared_ptr<Entity> Arp::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1784,6 +1774,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(resolution_history_dynamic != nullptr)
     {
         children["resolution-history-dynamic"] = resolution_history_dynamic;
@@ -1892,14 +1883,6 @@ std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryDynamic::get_child_by
 {
     if(child_yang_name == "arp-entry")
     {
-        for(auto const & c : arp_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry>();
         c->parent = this;
         arp_entry.push_back(c);
@@ -1912,9 +1895,14 @@ std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryDynamic::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHistoryDynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : arp_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2011,6 +1999,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::ge
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2159,14 +2148,6 @@ std::shared_ptr<Entity> Arp::Nodes::Node::TrafficVrfs::get_child_by_name(const s
 {
     if(child_yang_name == "traffic-vrf")
     {
-        for(auto const & c : traffic_vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Arp::Nodes::Node::TrafficVrfs::TrafficVrf>();
         c->parent = this;
         traffic_vrf.push_back(c);
@@ -2179,9 +2160,14 @@ std::shared_ptr<Entity> Arp::Nodes::Node::TrafficVrfs::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficVrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : traffic_vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2366,6 +2352,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2844,6 +2831,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::TrafficNode::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3202,14 +3190,6 @@ std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryClient::get_child_by_
 {
     if(child_yang_name == "arp-entry")
     {
-        for(auto const & c : arp_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry>();
         c->parent = this;
         arp_entry.push_back(c);
@@ -3222,9 +3202,14 @@ std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryClient::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHistoryClient::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : arp_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3321,6 +3306,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3469,14 +3455,6 @@ std::shared_ptr<Entity> Arp::Nodes::Node::Entries::get_child_by_name(const std::
 {
     if(child_yang_name == "entry")
     {
-        for(auto const & c : entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Arp::Nodes::Node::Entries::Entry>();
         c->parent = this;
         entry.push_back(c);
@@ -3489,9 +3467,14 @@ std::shared_ptr<Entity> Arp::Nodes::Node::Entries::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::Entries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3592,6 +3575,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::Entries::Entry::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::Entries::Entry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3750,14 +3734,6 @@ std::shared_ptr<Entity> Arp::Nodes::Node::TrafficInterfaces::get_child_by_name(c
 {
     if(child_yang_name == "traffic-interface")
     {
-        for(auto const & c : traffic_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Arp::Nodes::Node::TrafficInterfaces::TrafficInterface>();
         c->parent = this;
         traffic_interface.push_back(c);
@@ -3770,9 +3746,14 @@ std::shared_ptr<Entity> Arp::Nodes::Node::TrafficInterfaces::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : traffic_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3957,6 +3938,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::g
 std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

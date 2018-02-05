@@ -6,8 +6,8 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_6.hpp"
 #include "Cisco_IOS_XE_native_10.hpp"
-#include "Cisco_IOS_XE_native_8.hpp"
 #include "Cisco_IOS_XE_native_7.hpp"
+#include "Cisco_IOS_XE_native_8.hpp"
 #include "Cisco_IOS_XE_native_9.hpp"
 
 using namespace ydk;
@@ -72,6 +72,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Routing::Pw::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Routing::Pw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -143,6 +144,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Routing::Pw::Destination::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Routing::Pw::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -232,6 +234,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Routing::Source::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Routing::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(as != nullptr)
     {
         children["as"] = as;
@@ -326,6 +329,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Routing::Source::As::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Routing::Source::As::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer != nullptr)
     {
         children["peer"] = peer;
@@ -407,6 +411,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Routing::Source::As::Peer::
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Routing::Source::As::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -487,6 +492,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Routing::Vrf::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Routing::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -582,6 +588,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Services::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Services::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(waas != nullptr)
     {
         children["waas"] = waas;
@@ -666,6 +673,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Services::Waas::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Services::Waas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(segment != nullptr)
     {
         children["segment"] = segment;
@@ -747,6 +755,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Services::Waas::Segment::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Services::Waas::Segment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -832,6 +841,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Timestamp::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Timestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(absolute != nullptr)
     {
         children["absolute"] = absolute;
@@ -912,6 +922,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Timestamp::Absolute::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Timestamp::Absolute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(monitoring_interval != nullptr)
     {
         children["monitoring-interval"] = monitoring_interval;
@@ -983,6 +994,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Timestamp::Absolute::Monito
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Timestamp::Absolute::MonitoringInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1142,6 +1154,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bytes != nullptr)
     {
         children["bytes"] = bytes;
@@ -1271,6 +1284,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Bytes::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Bytes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lost != nullptr)
     {
         children["lost"] = lost;
@@ -1352,6 +1366,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Bytes::Lost::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Bytes::Lost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1428,6 +1443,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Rtp::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Rtp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1526,6 +1542,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Icmp::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Icmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -1606,6 +1623,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Icmp::Ipv4::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Icmp::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1696,6 +1714,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Icmp::Ipv6::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Icmp::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1782,6 +1801,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Igmp::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Igmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1933,6 +1953,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Tcp::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flags != nullptr)
     {
         children["flags"] = flags;
@@ -2117,6 +2138,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Tcp::Flags::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Tcp::Flags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2263,6 +2285,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Tcp::Flow_::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Tcp::Flow_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2347,6 +2370,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Tcp::Option::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Tcp::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(map != nullptr)
     {
         children["map"] = map;
@@ -2418,6 +2442,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Tcp::Option::Map
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Tcp::Option::Map::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2515,6 +2540,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Tcp::WindowSize:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Tcp::WindowSize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(average != nullptr)
     {
         children["average"] = average;
@@ -2616,6 +2642,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Tcp::WindowSize:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Tcp::WindowSize::Average::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2700,6 +2727,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Match::Transport::Udp::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Match::Transport::Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2760,9 +2788,9 @@ Native::Flow::Exporter::Exporter()
 	,option(std::make_shared<Native::Flow::Exporter::Option>())
 	,output_features(nullptr) // presence node
 	,source(std::make_shared<Native::Flow::Exporter::Source>())
-	,template_(std::make_shared<Native::Flow::Exporter::Template_>())
+	,template_(std::make_shared<Native::Flow::Exporter::Template>())
 	,transport(std::make_shared<Native::Flow::Exporter::Transport>())
-	,default_(std::make_shared<Native::Flow::Exporter::Default_>())
+	,default_(std::make_shared<Native::Flow::Exporter::Default>())
 {
     destination->parent = this;
     option->parent = this;
@@ -2881,7 +2909,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::get_child_by_name(const std::str
     {
         if(template_ == nullptr)
         {
-            template_ = std::make_shared<Native::Flow::Exporter::Template_>();
+            template_ = std::make_shared<Native::Flow::Exporter::Template>();
         }
         return template_;
     }
@@ -2899,7 +2927,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::get_child_by_name(const std::str
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Flow::Exporter::Default_>();
+            default_ = std::make_shared<Native::Flow::Exporter::Default>();
         }
         return default_;
     }
@@ -2910,6 +2938,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -3065,6 +3094,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Destination::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3267,6 +3297,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(application_attributes != nullptr)
     {
         children["application-attributes"] = application_attributes;
@@ -3383,6 +3414,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::ApplicationAttributes::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::ApplicationAttributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3459,6 +3491,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::ApplicationTable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::ApplicationTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3535,6 +3568,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::C3PlClassTable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::C3PlClassTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3611,6 +3645,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::C3PlPolicyTable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::C3PlPolicyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3687,6 +3722,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::ExporterStats::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::ExporterStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3763,6 +3799,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::InterfaceTable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::InterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3839,6 +3876,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::MetadataVersionTable::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::MetadataVersionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3915,6 +3953,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::SamplerTable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::SamplerTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3991,6 +4030,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::SubApplicationTable::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::SubApplicationTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4067,6 +4107,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Option::VrfTable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Option::VrfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4139,6 +4180,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::OutputFeatures::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::OutputFeatures::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4368,6 +4410,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Source::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -4744,6 +4787,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Source::ATMSubinterface::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Source::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4820,6 +4864,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Source::ATMACRsubinterface::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Source::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4896,6 +4941,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Source::LISPSubinterface::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Source::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4972,6 +5018,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Source::PortChannelSubinterface:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Source::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5000,38 +5047,38 @@ bool Native::Flow::Exporter::Source::PortChannelSubinterface::has_leaf_or_child_
     return false;
 }
 
-Native::Flow::Exporter::Template_::Template_()
+Native::Flow::Exporter::Template::Template()
     :
-    data(std::make_shared<Native::Flow::Exporter::Template_::Data>())
+    data(std::make_shared<Native::Flow::Exporter::Template::Data>())
 {
     data->parent = this;
 
     yang_name = "template"; yang_parent_name = "exporter"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Template_::~Template_()
+Native::Flow::Exporter::Template::~Template()
 {
 }
 
-bool Native::Flow::Exporter::Template_::has_data() const
+bool Native::Flow::Exporter::Template::has_data() const
 {
     return (data !=  nullptr && data->has_data());
 }
 
-bool Native::Flow::Exporter::Template_::has_operation() const
+bool Native::Flow::Exporter::Template::has_operation() const
 {
     return is_set(yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
-std::string Native::Flow::Exporter::Template_::get_segment_path() const
+std::string Native::Flow::Exporter::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "template";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Template_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Template::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5040,13 +5087,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Template_
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
         if(data == nullptr)
         {
-            data = std::make_shared<Native::Flow::Exporter::Template_::Data>();
+            data = std::make_shared<Native::Flow::Exporter::Template::Data>();
         }
         return data;
     }
@@ -5054,9 +5101,10 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Template_::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Template_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Template::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -5065,22 +5113,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Template_
     return children;
 }
 
-void Native::Flow::Exporter::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Template::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Template_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data")
         return true;
     return false;
 }
 
-Native::Flow::Exporter::Template_::Data::Data()
+Native::Flow::Exporter::Template::Data::Data()
     :
     timeout{YType::uint32, "timeout"}
 {
@@ -5088,29 +5136,29 @@ Native::Flow::Exporter::Template_::Data::Data()
     yang_name = "data"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Template_::Data::~Data()
+Native::Flow::Exporter::Template::Data::~Data()
 {
 }
 
-bool Native::Flow::Exporter::Template_::Data::has_data() const
+bool Native::Flow::Exporter::Template::Data::has_data() const
 {
     return timeout.is_set;
 }
 
-bool Native::Flow::Exporter::Template_::Data::has_operation() const
+bool Native::Flow::Exporter::Template::Data::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(timeout.yfilter);
 }
 
-std::string Native::Flow::Exporter::Template_::Data::get_segment_path() const
+std::string Native::Flow::Exporter::Template::Data::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Template_::Data::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Template::Data::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5120,18 +5168,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Template_
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Template_::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Template::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Template_::Data::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Template::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Template_::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Template::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeout")
     {
@@ -5141,7 +5190,7 @@ void Native::Flow::Exporter::Template_::Data::set_value(const std::string & valu
     }
 }
 
-void Native::Flow::Exporter::Template_::Data::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Template::Data::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "timeout")
     {
@@ -5149,7 +5198,7 @@ void Native::Flow::Exporter::Template_::Data::set_filter(const std::string & val
     }
 }
 
-bool Native::Flow::Exporter::Template_::Data::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Template::Data::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timeout")
         return true;
@@ -5204,6 +5253,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Transport::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5232,7 +5282,7 @@ bool Native::Flow::Exporter::Transport::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-Native::Flow::Exporter::Default_::Default_()
+Native::Flow::Exporter::Default::Default()
     :
     description{YType::empty, "description"},
     dscp{YType::empty, "dscp"},
@@ -5240,8 +5290,8 @@ Native::Flow::Exporter::Default_::Default_()
     transport{YType::empty, "transport"},
     ttl{YType::empty, "ttl"}
     	,
-    option(std::make_shared<Native::Flow::Exporter::Default_::Option>())
-	,template_(std::make_shared<Native::Flow::Exporter::Default_::Template_>())
+    option(std::make_shared<Native::Flow::Exporter::Default::Option>())
+	,template_(std::make_shared<Native::Flow::Exporter::Default::Template>())
 {
     option->parent = this;
     template_->parent = this;
@@ -5249,11 +5299,11 @@ Native::Flow::Exporter::Default_::Default_()
     yang_name = "default"; yang_parent_name = "exporter"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::~Default_()
+Native::Flow::Exporter::Default::~Default()
 {
 }
 
-bool Native::Flow::Exporter::Default_::has_data() const
+bool Native::Flow::Exporter::Default::has_data() const
 {
     return description.is_set
 	|| dscp.is_set
@@ -5264,7 +5314,7 @@ bool Native::Flow::Exporter::Default_::has_data() const
 	|| (template_ !=  nullptr && template_->has_data());
 }
 
-bool Native::Flow::Exporter::Default_::has_operation() const
+bool Native::Flow::Exporter::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -5276,14 +5326,14 @@ bool Native::Flow::Exporter::Default_::has_operation() const
 	|| (template_ !=  nullptr && template_->has_operation());
 }
 
-std::string Native::Flow::Exporter::Default_::get_segment_path() const
+std::string Native::Flow::Exporter::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5297,13 +5347,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "option")
     {
         if(option == nullptr)
         {
-            option = std::make_shared<Native::Flow::Exporter::Default_::Option>();
+            option = std::make_shared<Native::Flow::Exporter::Default::Option>();
         }
         return option;
     }
@@ -5312,7 +5362,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::get_child_by_name(cons
     {
         if(template_ == nullptr)
         {
-            template_ = std::make_shared<Native::Flow::Exporter::Default_::Template_>();
+            template_ = std::make_shared<Native::Flow::Exporter::Default::Template>();
         }
         return template_;
     }
@@ -5320,9 +5370,10 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option != nullptr)
     {
         children["option"] = option;
@@ -5336,7 +5387,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_:
     return children;
 }
 
-void Native::Flow::Exporter::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -5370,7 +5421,7 @@ void Native::Flow::Exporter::Default_::set_value(const std::string & value_path,
     }
 }
 
-void Native::Flow::Exporter::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -5394,14 +5445,14 @@ void Native::Flow::Exporter::Default_::set_filter(const std::string & value_path
     }
 }
 
-bool Native::Flow::Exporter::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "option" || name == "template" || name == "description" || name == "dscp" || name == "export-protocol" || name == "transport" || name == "ttl")
         return true;
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::Option()
+Native::Flow::Exporter::Default::Option::Option()
     :
     application_attributes(nullptr) // presence node
 	,c3pl_class_table(nullptr) // presence node
@@ -5417,11 +5468,11 @@ Native::Flow::Exporter::Default_::Option::Option()
     yang_name = "option"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::~Option()
+Native::Flow::Exporter::Default::Option::~Option()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::has_data() const
+bool Native::Flow::Exporter::Default::Option::has_data() const
 {
     return (application_attributes !=  nullptr && application_attributes->has_data())
 	|| (c3pl_class_table !=  nullptr && c3pl_class_table->has_data())
@@ -5434,7 +5485,7 @@ bool Native::Flow::Exporter::Default_::Option::has_data() const
 	|| (vrf_table !=  nullptr && vrf_table->has_data());
 }
 
-bool Native::Flow::Exporter::Default_::Option::has_operation() const
+bool Native::Flow::Exporter::Default::Option::has_operation() const
 {
     return is_set(yfilter)
 	|| (application_attributes !=  nullptr && application_attributes->has_operation())
@@ -5448,14 +5499,14 @@ bool Native::Flow::Exporter::Default_::Option::has_operation() const
 	|| (vrf_table !=  nullptr && vrf_table->has_operation());
 }
 
-std::string Native::Flow::Exporter::Default_::Option::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "option";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5464,13 +5515,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application-attributes")
     {
         if(application_attributes == nullptr)
         {
-            application_attributes = std::make_shared<Native::Flow::Exporter::Default_::Option::ApplicationAttributes>();
+            application_attributes = std::make_shared<Native::Flow::Exporter::Default::Option::ApplicationAttributes>();
         }
         return application_attributes;
     }
@@ -5479,7 +5530,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_n
     {
         if(c3pl_class_table == nullptr)
         {
-            c3pl_class_table = std::make_shared<Native::Flow::Exporter::Default_::Option::C3PlClassTable>();
+            c3pl_class_table = std::make_shared<Native::Flow::Exporter::Default::Option::C3PlClassTable>();
         }
         return c3pl_class_table;
     }
@@ -5488,7 +5539,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_n
     {
         if(c3pl_policy_table == nullptr)
         {
-            c3pl_policy_table = std::make_shared<Native::Flow::Exporter::Default_::Option::C3PlPolicyTable>();
+            c3pl_policy_table = std::make_shared<Native::Flow::Exporter::Default::Option::C3PlPolicyTable>();
         }
         return c3pl_policy_table;
     }
@@ -5497,7 +5548,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_n
     {
         if(exporter_stats == nullptr)
         {
-            exporter_stats = std::make_shared<Native::Flow::Exporter::Default_::Option::ExporterStats>();
+            exporter_stats = std::make_shared<Native::Flow::Exporter::Default::Option::ExporterStats>();
         }
         return exporter_stats;
     }
@@ -5506,7 +5557,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_n
     {
         if(interface_table == nullptr)
         {
-            interface_table = std::make_shared<Native::Flow::Exporter::Default_::Option::InterfaceTable>();
+            interface_table = std::make_shared<Native::Flow::Exporter::Default::Option::InterfaceTable>();
         }
         return interface_table;
     }
@@ -5515,7 +5566,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_n
     {
         if(metadata_version_table == nullptr)
         {
-            metadata_version_table = std::make_shared<Native::Flow::Exporter::Default_::Option::MetadataVersionTable>();
+            metadata_version_table = std::make_shared<Native::Flow::Exporter::Default::Option::MetadataVersionTable>();
         }
         return metadata_version_table;
     }
@@ -5524,7 +5575,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_n
     {
         if(sampler_table == nullptr)
         {
-            sampler_table = std::make_shared<Native::Flow::Exporter::Default_::Option::SamplerTable>();
+            sampler_table = std::make_shared<Native::Flow::Exporter::Default::Option::SamplerTable>();
         }
         return sampler_table;
     }
@@ -5533,7 +5584,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_n
     {
         if(sub_application_table == nullptr)
         {
-            sub_application_table = std::make_shared<Native::Flow::Exporter::Default_::Option::SubApplicationTable>();
+            sub_application_table = std::make_shared<Native::Flow::Exporter::Default::Option::SubApplicationTable>();
         }
         return sub_application_table;
     }
@@ -5542,7 +5593,7 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_n
     {
         if(vrf_table == nullptr)
         {
-            vrf_table = std::make_shared<Native::Flow::Exporter::Default_::Option::VrfTable>();
+            vrf_table = std::make_shared<Native::Flow::Exporter::Default::Option::VrfTable>();
         }
         return vrf_table;
     }
@@ -5550,9 +5601,10 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(application_attributes != nullptr)
     {
         children["application-attributes"] = application_attributes;
@@ -5601,49 +5653,49 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_:
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "application-attributes" || name == "c3pl-class-table" || name == "c3pl-policy-table" || name == "exporter-stats" || name == "interface-table" || name == "metadata-version-table" || name == "sampler-table" || name == "sub-application-table" || name == "vrf-table")
         return true;
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::ApplicationAttributes::ApplicationAttributes()
+Native::Flow::Exporter::Default::Option::ApplicationAttributes::ApplicationAttributes()
 {
 
     yang_name = "application-attributes"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::ApplicationAttributes::~ApplicationAttributes()
+Native::Flow::Exporter::Default::Option::ApplicationAttributes::~ApplicationAttributes()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::ApplicationAttributes::has_data() const
+bool Native::Flow::Exporter::Default::Option::ApplicationAttributes::has_data() const
 {
     return false;
 }
 
-bool Native::Flow::Exporter::Default_::Option::ApplicationAttributes::has_operation() const
+bool Native::Flow::Exporter::Default::Option::ApplicationAttributes::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Option::ApplicationAttributes::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::ApplicationAttributes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "application-attributes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::ApplicationAttributes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::ApplicationAttributes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5652,58 +5704,59 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::ApplicationAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::ApplicationAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::ApplicationAttributes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::ApplicationAttributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::ApplicationAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::ApplicationAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::ApplicationAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::ApplicationAttributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::ApplicationAttributes::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::ApplicationAttributes::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::C3PlClassTable::C3PlClassTable()
+Native::Flow::Exporter::Default::Option::C3PlClassTable::C3PlClassTable()
 {
 
     yang_name = "c3pl-class-table"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::C3PlClassTable::~C3PlClassTable()
+Native::Flow::Exporter::Default::Option::C3PlClassTable::~C3PlClassTable()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::C3PlClassTable::has_data() const
+bool Native::Flow::Exporter::Default::Option::C3PlClassTable::has_data() const
 {
     return false;
 }
 
-bool Native::Flow::Exporter::Default_::Option::C3PlClassTable::has_operation() const
+bool Native::Flow::Exporter::Default::Option::C3PlClassTable::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Option::C3PlClassTable::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::C3PlClassTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "c3pl-class-table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::C3PlClassTable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::C3PlClassTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5712,58 +5765,59 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::C3PlClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::C3PlClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::C3PlClassTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::C3PlClassTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::C3PlClassTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::C3PlClassTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::C3PlClassTable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::C3PlClassTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::C3PlClassTable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::C3PlClassTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::C3PlPolicyTable()
+Native::Flow::Exporter::Default::Option::C3PlPolicyTable::C3PlPolicyTable()
 {
 
     yang_name = "c3pl-policy-table"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::~C3PlPolicyTable()
+Native::Flow::Exporter::Default::Option::C3PlPolicyTable::~C3PlPolicyTable()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::has_data() const
+bool Native::Flow::Exporter::Default::Option::C3PlPolicyTable::has_data() const
 {
     return false;
 }
 
-bool Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::has_operation() const
+bool Native::Flow::Exporter::Default::Option::C3PlPolicyTable::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::C3PlPolicyTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "c3pl-policy-table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::C3PlPolicyTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5772,58 +5826,59 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::C3PlPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::C3PlPolicyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::C3PlPolicyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::C3PlPolicyTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::C3PlPolicyTable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::C3PlPolicyTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::ExporterStats::ExporterStats()
+Native::Flow::Exporter::Default::Option::ExporterStats::ExporterStats()
 {
 
     yang_name = "exporter-stats"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::ExporterStats::~ExporterStats()
+Native::Flow::Exporter::Default::Option::ExporterStats::~ExporterStats()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::ExporterStats::has_data() const
+bool Native::Flow::Exporter::Default::Option::ExporterStats::has_data() const
 {
     return false;
 }
 
-bool Native::Flow::Exporter::Default_::Option::ExporterStats::has_operation() const
+bool Native::Flow::Exporter::Default::Option::ExporterStats::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Option::ExporterStats::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::ExporterStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "exporter-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::ExporterStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::ExporterStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5832,58 +5887,59 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::ExporterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::ExporterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::ExporterStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::ExporterStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::ExporterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::ExporterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::ExporterStats::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::ExporterStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::ExporterStats::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::ExporterStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::InterfaceTable::InterfaceTable()
+Native::Flow::Exporter::Default::Option::InterfaceTable::InterfaceTable()
 {
 
     yang_name = "interface-table"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::InterfaceTable::~InterfaceTable()
+Native::Flow::Exporter::Default::Option::InterfaceTable::~InterfaceTable()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::InterfaceTable::has_data() const
+bool Native::Flow::Exporter::Default::Option::InterfaceTable::has_data() const
 {
     return false;
 }
 
-bool Native::Flow::Exporter::Default_::Option::InterfaceTable::has_operation() const
+bool Native::Flow::Exporter::Default::Option::InterfaceTable::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Option::InterfaceTable::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::InterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::InterfaceTable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::InterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5892,58 +5948,59 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::InterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::InterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::InterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::InterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::InterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::InterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::MetadataVersionTable::MetadataVersionTable()
+Native::Flow::Exporter::Default::Option::MetadataVersionTable::MetadataVersionTable()
 {
 
     yang_name = "metadata-version-table"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::MetadataVersionTable::~MetadataVersionTable()
+Native::Flow::Exporter::Default::Option::MetadataVersionTable::~MetadataVersionTable()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::MetadataVersionTable::has_data() const
+bool Native::Flow::Exporter::Default::Option::MetadataVersionTable::has_data() const
 {
     return false;
 }
 
-bool Native::Flow::Exporter::Default_::Option::MetadataVersionTable::has_operation() const
+bool Native::Flow::Exporter::Default::Option::MetadataVersionTable::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Option::MetadataVersionTable::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::MetadataVersionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metadata-version-table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::MetadataVersionTable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::MetadataVersionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5952,58 +6009,59 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::MetadataVersionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::MetadataVersionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::MetadataVersionTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::MetadataVersionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::MetadataVersionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::MetadataVersionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::MetadataVersionTable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::MetadataVersionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::MetadataVersionTable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::MetadataVersionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::SamplerTable::SamplerTable()
+Native::Flow::Exporter::Default::Option::SamplerTable::SamplerTable()
 {
 
     yang_name = "sampler-table"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::SamplerTable::~SamplerTable()
+Native::Flow::Exporter::Default::Option::SamplerTable::~SamplerTable()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::SamplerTable::has_data() const
+bool Native::Flow::Exporter::Default::Option::SamplerTable::has_data() const
 {
     return false;
 }
 
-bool Native::Flow::Exporter::Default_::Option::SamplerTable::has_operation() const
+bool Native::Flow::Exporter::Default::Option::SamplerTable::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Option::SamplerTable::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::SamplerTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sampler-table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::SamplerTable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::SamplerTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6012,58 +6070,59 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::SamplerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::SamplerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::SamplerTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::SamplerTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::SamplerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::SamplerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::SamplerTable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::SamplerTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::SamplerTable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::SamplerTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::SubApplicationTable::SubApplicationTable()
+Native::Flow::Exporter::Default::Option::SubApplicationTable::SubApplicationTable()
 {
 
     yang_name = "sub-application-table"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::SubApplicationTable::~SubApplicationTable()
+Native::Flow::Exporter::Default::Option::SubApplicationTable::~SubApplicationTable()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::SubApplicationTable::has_data() const
+bool Native::Flow::Exporter::Default::Option::SubApplicationTable::has_data() const
 {
     return false;
 }
 
-bool Native::Flow::Exporter::Default_::Option::SubApplicationTable::has_operation() const
+bool Native::Flow::Exporter::Default::Option::SubApplicationTable::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Option::SubApplicationTable::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::SubApplicationTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sub-application-table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::SubApplicationTable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::SubApplicationTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6072,58 +6131,59 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::SubApplicationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::SubApplicationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::SubApplicationTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::SubApplicationTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::SubApplicationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::SubApplicationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::SubApplicationTable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::SubApplicationTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::SubApplicationTable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::SubApplicationTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-Native::Flow::Exporter::Default_::Option::VrfTable::VrfTable()
+Native::Flow::Exporter::Default::Option::VrfTable::VrfTable()
 {
 
     yang_name = "vrf-table"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Option::VrfTable::~VrfTable()
+Native::Flow::Exporter::Default::Option::VrfTable::~VrfTable()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::VrfTable::has_data() const
+bool Native::Flow::Exporter::Default::Option::VrfTable::has_data() const
 {
     return false;
 }
 
-bool Native::Flow::Exporter::Default_::Option::VrfTable::has_operation() const
+bool Native::Flow::Exporter::Default::Option::VrfTable::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Option::VrfTable::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Option::VrfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf-table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Option::VrfTable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Option::VrfTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6132,62 +6192,63 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Option::VrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Option::VrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Option::VrfTable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Option::VrfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Option::VrfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Option::VrfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Option::VrfTable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Option::VrfTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Option::VrfTable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Option::VrfTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-Native::Flow::Exporter::Default_::Template_::Template_()
+Native::Flow::Exporter::Default::Template::Template()
     :
-    data(std::make_shared<Native::Flow::Exporter::Default_::Template_::Data>())
+    data(std::make_shared<Native::Flow::Exporter::Default::Template::Data>())
 {
     data->parent = this;
 
     yang_name = "template"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Template_::~Template_()
+Native::Flow::Exporter::Default::Template::~Template()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Template_::has_data() const
+bool Native::Flow::Exporter::Default::Template::has_data() const
 {
     return (data !=  nullptr && data->has_data());
 }
 
-bool Native::Flow::Exporter::Default_::Template_::has_operation() const
+bool Native::Flow::Exporter::Default::Template::has_operation() const
 {
     return is_set(yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
-std::string Native::Flow::Exporter::Default_::Template_::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "template";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Template_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Template::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6196,13 +6257,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
         if(data == nullptr)
         {
-            data = std::make_shared<Native::Flow::Exporter::Default_::Template_::Data>();
+            data = std::make_shared<Native::Flow::Exporter::Default::Template::Data>();
         }
         return data;
     }
@@ -6210,9 +6271,10 @@ std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Template_::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Template_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Template::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -6221,22 +6283,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_:
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Exporter::Default_::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Template::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Exporter::Default_::Template_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data")
         return true;
     return false;
 }
 
-Native::Flow::Exporter::Default_::Template_::Data::Data()
+Native::Flow::Exporter::Default::Template::Data::Data()
     :
     timeout{YType::empty, "timeout"}
 {
@@ -6244,29 +6306,29 @@ Native::Flow::Exporter::Default_::Template_::Data::Data()
     yang_name = "data"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Exporter::Default_::Template_::Data::~Data()
+Native::Flow::Exporter::Default::Template::Data::~Data()
 {
 }
 
-bool Native::Flow::Exporter::Default_::Template_::Data::has_data() const
+bool Native::Flow::Exporter::Default::Template::Data::has_data() const
 {
     return timeout.is_set;
 }
 
-bool Native::Flow::Exporter::Default_::Template_::Data::has_operation() const
+bool Native::Flow::Exporter::Default::Template::Data::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(timeout.yfilter);
 }
 
-std::string Native::Flow::Exporter::Default_::Template_::Data::get_segment_path() const
+std::string Native::Flow::Exporter::Default::Template::Data::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_::Template_::Data::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default::Template::Data::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6276,18 +6338,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Exporter::Default_:
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Exporter::Default_::Template_::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Exporter::Default::Template::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default_::Template_::Data::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Exporter::Default::Template::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Exporter::Default_::Template_::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Exporter::Default::Template::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeout")
     {
@@ -6297,7 +6360,7 @@ void Native::Flow::Exporter::Default_::Template_::Data::set_value(const std::str
     }
 }
 
-void Native::Flow::Exporter::Default_::Template_::Data::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Exporter::Default::Template::Data::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "timeout")
     {
@@ -6305,7 +6368,7 @@ void Native::Flow::Exporter::Default_::Template_::Data::set_filter(const std::st
     }
 }
 
-bool Native::Flow::Exporter::Default_::Template_::Data::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Exporter::Default::Template::Data::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timeout")
         return true;
@@ -6322,7 +6385,7 @@ Native::Flow::Monitor::Monitor()
 	,history(std::make_shared<Native::Flow::Monitor::History>())
 	,record(std::make_shared<Native::Flow::Monitor::Record>())
 	,statistics(std::make_shared<Native::Flow::Monitor::Statistics>())
-	,default_(std::make_shared<Native::Flow::Monitor::Default_>())
+	,default_(std::make_shared<Native::Flow::Monitor::Default>())
 {
     cache->parent = this;
     history->parent = this;
@@ -6411,14 +6474,6 @@ std::shared_ptr<Entity> Native::Flow::Monitor::get_child_by_name(const std::stri
 
     if(child_yang_name == "exporter")
     {
-        for(auto const & c : exporter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Flow::Monitor::Exporter>();
         c->parent = this;
         exporter.push_back(c);
@@ -6456,7 +6511,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::get_child_by_name(const std::stri
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Flow::Monitor::Default_>();
+            default_ = std::make_shared<Native::Flow::Monitor::Default>();
         }
         return default_;
     }
@@ -6467,14 +6522,19 @@ std::shared_ptr<Entity> Native::Flow::Monitor::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache != nullptr)
     {
         children["cache"] = cache;
     }
 
+    count = 0;
     for (auto const & c : exporter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(history != nullptr)
@@ -6611,6 +6671,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Cache::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Cache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timeout != nullptr)
     {
         children["timeout"] = timeout;
@@ -6728,6 +6789,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Cache::Timeout::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Cache::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(event != nullptr)
     {
         children["event"] = event;
@@ -6839,6 +6901,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Cache::Timeout::Event::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Cache::Timeout::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6915,6 +6978,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Exporter::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Exporter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6995,6 +7059,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::History::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7095,6 +7160,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(netflow != nullptr)
     {
         children["netflow"] = netflow;
@@ -7198,6 +7264,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -7415,6 +7482,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(as != nullptr)
     {
         children["as"] = as;
@@ -7566,6 +7634,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::As::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::As::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7642,6 +7711,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::Destinatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::DestinationPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7718,6 +7788,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::OriginalIn
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::OriginalInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7794,6 +7865,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::OriginalOu
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::OriginalOutput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7870,6 +7942,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::Prefix::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7946,6 +8019,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::SourcePref
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::SourcePrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8022,6 +8096,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::AsTos::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::AsTos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8098,6 +8173,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::BgpNexthop
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::BgpNexthopTos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8174,6 +8250,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::Destinatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::DestinationPrefixTos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8250,6 +8327,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::PrefixTos:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::PrefixTos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8326,6 +8404,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv4::SourcePref
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv4::SourcePrefixTos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8487,6 +8566,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv6::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(as != nullptr)
     {
         children["as"] = as;
@@ -8598,6 +8678,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv6::As::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv6::As::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8674,6 +8755,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv6::Destinatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv6::DestinationPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8750,6 +8832,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv6::OriginalIn
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv6::OriginalInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8826,6 +8909,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv6::OriginalOu
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv6::OriginalOutput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8902,6 +8986,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv6::Prefix::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv6::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8978,6 +9063,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv6::SourcePref
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv6::SourcePrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9054,6 +9140,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Record::Netflow::Ipv6::BgpNexthop
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Record::Netflow::Ipv6::BgpNexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9139,6 +9226,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Statistics::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(packet != nullptr)
     {
         children["packet"] = packet;
@@ -9214,6 +9302,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Statistics::Packet::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Statistics::Packet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9252,14 +9341,14 @@ bool Native::Flow::Monitor::Statistics::Packet::has_leaf_or_child_of_name(const 
     return false;
 }
 
-Native::Flow::Monitor::Default_::Default_()
+Native::Flow::Monitor::Default::Default()
     :
     description{YType::empty, "description"},
     exporter{YType::empty, "exporter"},
     record{YType::empty, "record"}
     	,
-    cache(std::make_shared<Native::Flow::Monitor::Default_::Cache>())
-	,statistics(std::make_shared<Native::Flow::Monitor::Default_::Statistics>())
+    cache(std::make_shared<Native::Flow::Monitor::Default::Cache>())
+	,statistics(std::make_shared<Native::Flow::Monitor::Default::Statistics>())
 {
     cache->parent = this;
     statistics->parent = this;
@@ -9267,11 +9356,11 @@ Native::Flow::Monitor::Default_::Default_()
     yang_name = "default"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Monitor::Default_::~Default_()
+Native::Flow::Monitor::Default::~Default()
 {
 }
 
-bool Native::Flow::Monitor::Default_::has_data() const
+bool Native::Flow::Monitor::Default::has_data() const
 {
     return description.is_set
 	|| exporter.is_set
@@ -9280,7 +9369,7 @@ bool Native::Flow::Monitor::Default_::has_data() const
 	|| (statistics !=  nullptr && statistics->has_data());
 }
 
-bool Native::Flow::Monitor::Default_::has_operation() const
+bool Native::Flow::Monitor::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -9290,14 +9379,14 @@ bool Native::Flow::Monitor::Default_::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string Native::Flow::Monitor::Default_::get_segment_path() const
+std::string Native::Flow::Monitor::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9309,13 +9398,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Monitor::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Monitor::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cache")
     {
         if(cache == nullptr)
         {
-            cache = std::make_shared<Native::Flow::Monitor::Default_::Cache>();
+            cache = std::make_shared<Native::Flow::Monitor::Default::Cache>();
         }
         return cache;
     }
@@ -9324,7 +9413,7 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Default_::get_child_by_name(const
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<Native::Flow::Monitor::Default_::Statistics>();
+            statistics = std::make_shared<Native::Flow::Monitor::Default::Statistics>();
         }
         return statistics;
     }
@@ -9332,9 +9421,10 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Default_::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache != nullptr)
     {
         children["cache"] = cache;
@@ -9348,7 +9438,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::
     return children;
 }
 
-void Native::Flow::Monitor::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Monitor::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -9370,7 +9460,7 @@ void Native::Flow::Monitor::Default_::set_value(const std::string & value_path, 
     }
 }
 
-void Native::Flow::Monitor::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Monitor::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -9386,37 +9476,37 @@ void Native::Flow::Monitor::Default_::set_filter(const std::string & value_path,
     }
 }
 
-bool Native::Flow::Monitor::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Monitor::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cache" || name == "statistics" || name == "description" || name == "exporter" || name == "record")
         return true;
     return false;
 }
 
-Native::Flow::Monitor::Default_::Cache::Cache()
+Native::Flow::Monitor::Default::Cache::Cache()
     :
     entries{YType::empty, "entries"},
     type{YType::empty, "type"}
     	,
-    timeout(std::make_shared<Native::Flow::Monitor::Default_::Cache::Timeout>())
+    timeout(std::make_shared<Native::Flow::Monitor::Default::Cache::Timeout>())
 {
     timeout->parent = this;
 
     yang_name = "cache"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Monitor::Default_::Cache::~Cache()
+Native::Flow::Monitor::Default::Cache::~Cache()
 {
 }
 
-bool Native::Flow::Monitor::Default_::Cache::has_data() const
+bool Native::Flow::Monitor::Default::Cache::has_data() const
 {
     return entries.is_set
 	|| type.is_set
 	|| (timeout !=  nullptr && timeout->has_data());
 }
 
-bool Native::Flow::Monitor::Default_::Cache::has_operation() const
+bool Native::Flow::Monitor::Default::Cache::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entries.yfilter)
@@ -9424,14 +9514,14 @@ bool Native::Flow::Monitor::Default_::Cache::has_operation() const
 	|| (timeout !=  nullptr && timeout->has_operation());
 }
 
-std::string Native::Flow::Monitor::Default_::Cache::get_segment_path() const
+std::string Native::Flow::Monitor::Default::Cache::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cache";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::Cache::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default::Cache::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9442,13 +9532,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Monitor::Default_::Cache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Monitor::Default::Cache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timeout")
     {
         if(timeout == nullptr)
         {
-            timeout = std::make_shared<Native::Flow::Monitor::Default_::Cache::Timeout>();
+            timeout = std::make_shared<Native::Flow::Monitor::Default::Cache::Timeout>();
         }
         return timeout;
     }
@@ -9456,9 +9546,10 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Default_::Cache::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::Cache::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default::Cache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timeout != nullptr)
     {
         children["timeout"] = timeout;
@@ -9467,7 +9558,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::
     return children;
 }
 
-void Native::Flow::Monitor::Default_::Cache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Monitor::Default::Cache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entries")
     {
@@ -9483,7 +9574,7 @@ void Native::Flow::Monitor::Default_::Cache::set_value(const std::string & value
     }
 }
 
-void Native::Flow::Monitor::Default_::Cache::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Monitor::Default::Cache::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entries")
     {
@@ -9495,32 +9586,32 @@ void Native::Flow::Monitor::Default_::Cache::set_filter(const std::string & valu
     }
 }
 
-bool Native::Flow::Monitor::Default_::Cache::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Monitor::Default::Cache::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timeout" || name == "entries" || name == "type")
         return true;
     return false;
 }
 
-Native::Flow::Monitor::Default_::Cache::Timeout::Timeout()
+Native::Flow::Monitor::Default::Cache::Timeout::Timeout()
     :
     active{YType::empty, "active"},
     inactive{YType::empty, "inactive"},
     synchronized{YType::empty, "synchronized"},
     update{YType::empty, "update"}
     	,
-    event(std::make_shared<Native::Flow::Monitor::Default_::Cache::Timeout::Event>())
+    event(std::make_shared<Native::Flow::Monitor::Default::Cache::Timeout::Event>())
 {
     event->parent = this;
 
     yang_name = "timeout"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Monitor::Default_::Cache::Timeout::~Timeout()
+Native::Flow::Monitor::Default::Cache::Timeout::~Timeout()
 {
 }
 
-bool Native::Flow::Monitor::Default_::Cache::Timeout::has_data() const
+bool Native::Flow::Monitor::Default::Cache::Timeout::has_data() const
 {
     return active.is_set
 	|| inactive.is_set
@@ -9529,7 +9620,7 @@ bool Native::Flow::Monitor::Default_::Cache::Timeout::has_data() const
 	|| (event !=  nullptr && event->has_data());
 }
 
-bool Native::Flow::Monitor::Default_::Cache::Timeout::has_operation() const
+bool Native::Flow::Monitor::Default::Cache::Timeout::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(active.yfilter)
@@ -9539,14 +9630,14 @@ bool Native::Flow::Monitor::Default_::Cache::Timeout::has_operation() const
 	|| (event !=  nullptr && event->has_operation());
 }
 
-std::string Native::Flow::Monitor::Default_::Cache::Timeout::get_segment_path() const
+std::string Native::Flow::Monitor::Default::Cache::Timeout::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "timeout";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::Cache::Timeout::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default::Cache::Timeout::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9559,13 +9650,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Monitor::Default_::Cache::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Monitor::Default::Cache::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event")
     {
         if(event == nullptr)
         {
-            event = std::make_shared<Native::Flow::Monitor::Default_::Cache::Timeout::Event>();
+            event = std::make_shared<Native::Flow::Monitor::Default::Cache::Timeout::Event>();
         }
         return event;
     }
@@ -9573,9 +9664,10 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Default_::Cache::Timeout::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::Cache::Timeout::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default::Cache::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(event != nullptr)
     {
         children["event"] = event;
@@ -9584,7 +9676,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::
     return children;
 }
 
-void Native::Flow::Monitor::Default_::Cache::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Monitor::Default::Cache::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active")
     {
@@ -9612,7 +9704,7 @@ void Native::Flow::Monitor::Default_::Cache::Timeout::set_value(const std::strin
     }
 }
 
-void Native::Flow::Monitor::Default_::Cache::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Monitor::Default::Cache::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "active")
     {
@@ -9632,14 +9724,14 @@ void Native::Flow::Monitor::Default_::Cache::Timeout::set_filter(const std::stri
     }
 }
 
-bool Native::Flow::Monitor::Default_::Cache::Timeout::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Monitor::Default::Cache::Timeout::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "event" || name == "active" || name == "inactive" || name == "synchronized" || name == "update")
         return true;
     return false;
 }
 
-Native::Flow::Monitor::Default_::Cache::Timeout::Event::Event()
+Native::Flow::Monitor::Default::Cache::Timeout::Event::Event()
     :
     transaction_end{YType::empty, "transaction-end"}
 {
@@ -9647,29 +9739,29 @@ Native::Flow::Monitor::Default_::Cache::Timeout::Event::Event()
     yang_name = "event"; yang_parent_name = "timeout"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Monitor::Default_::Cache::Timeout::Event::~Event()
+Native::Flow::Monitor::Default::Cache::Timeout::Event::~Event()
 {
 }
 
-bool Native::Flow::Monitor::Default_::Cache::Timeout::Event::has_data() const
+bool Native::Flow::Monitor::Default::Cache::Timeout::Event::has_data() const
 {
     return transaction_end.is_set;
 }
 
-bool Native::Flow::Monitor::Default_::Cache::Timeout::Event::has_operation() const
+bool Native::Flow::Monitor::Default::Cache::Timeout::Event::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(transaction_end.yfilter);
 }
 
-std::string Native::Flow::Monitor::Default_::Cache::Timeout::Event::get_segment_path() const
+std::string Native::Flow::Monitor::Default::Cache::Timeout::Event::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "event";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::Cache::Timeout::Event::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default::Cache::Timeout::Event::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9679,18 +9771,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Monitor::Default_::Cache::Timeout::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Monitor::Default::Cache::Timeout::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::Cache::Timeout::Event::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default::Cache::Timeout::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Monitor::Default_::Cache::Timeout::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Monitor::Default::Cache::Timeout::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transaction-end")
     {
@@ -9700,7 +9793,7 @@ void Native::Flow::Monitor::Default_::Cache::Timeout::Event::set_value(const std
     }
 }
 
-void Native::Flow::Monitor::Default_::Cache::Timeout::Event::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Monitor::Default::Cache::Timeout::Event::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "transaction-end")
     {
@@ -9708,45 +9801,45 @@ void Native::Flow::Monitor::Default_::Cache::Timeout::Event::set_filter(const st
     }
 }
 
-bool Native::Flow::Monitor::Default_::Cache::Timeout::Event::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Monitor::Default::Cache::Timeout::Event::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "transaction-end")
         return true;
     return false;
 }
 
-Native::Flow::Monitor::Default_::Statistics::Statistics()
+Native::Flow::Monitor::Default::Statistics::Statistics()
     :
-    packet(std::make_shared<Native::Flow::Monitor::Default_::Statistics::Packet>())
+    packet(std::make_shared<Native::Flow::Monitor::Default::Statistics::Packet>())
 {
     packet->parent = this;
 
     yang_name = "statistics"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Monitor::Default_::Statistics::~Statistics()
+Native::Flow::Monitor::Default::Statistics::~Statistics()
 {
 }
 
-bool Native::Flow::Monitor::Default_::Statistics::has_data() const
+bool Native::Flow::Monitor::Default::Statistics::has_data() const
 {
     return (packet !=  nullptr && packet->has_data());
 }
 
-bool Native::Flow::Monitor::Default_::Statistics::has_operation() const
+bool Native::Flow::Monitor::Default::Statistics::has_operation() const
 {
     return is_set(yfilter)
 	|| (packet !=  nullptr && packet->has_operation());
 }
 
-std::string Native::Flow::Monitor::Default_::Statistics::get_segment_path() const
+std::string Native::Flow::Monitor::Default::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9755,13 +9848,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Monitor::Default_::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Monitor::Default::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "packet")
     {
         if(packet == nullptr)
         {
-            packet = std::make_shared<Native::Flow::Monitor::Default_::Statistics::Packet>();
+            packet = std::make_shared<Native::Flow::Monitor::Default::Statistics::Packet>();
         }
         return packet;
     }
@@ -9769,9 +9862,10 @@ std::shared_ptr<Entity> Native::Flow::Monitor::Default_::Statistics::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(packet != nullptr)
     {
         children["packet"] = packet;
@@ -9780,22 +9874,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::
     return children;
 }
 
-void Native::Flow::Monitor::Default_::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Monitor::Default::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Flow::Monitor::Default_::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Monitor::Default::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Flow::Monitor::Default_::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Monitor::Default::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet")
         return true;
     return false;
 }
 
-Native::Flow::Monitor::Default_::Statistics::Packet::Packet()
+Native::Flow::Monitor::Default::Statistics::Packet::Packet()
     :
     protocol{YType::empty, "protocol"},
     size{YType::empty, "size"}
@@ -9804,31 +9898,31 @@ Native::Flow::Monitor::Default_::Statistics::Packet::Packet()
     yang_name = "packet"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Flow::Monitor::Default_::Statistics::Packet::~Packet()
+Native::Flow::Monitor::Default::Statistics::Packet::~Packet()
 {
 }
 
-bool Native::Flow::Monitor::Default_::Statistics::Packet::has_data() const
+bool Native::Flow::Monitor::Default::Statistics::Packet::has_data() const
 {
     return protocol.is_set
 	|| size.is_set;
 }
 
-bool Native::Flow::Monitor::Default_::Statistics::Packet::has_operation() const
+bool Native::Flow::Monitor::Default::Statistics::Packet::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protocol.yfilter)
 	|| ydk::is_set(size.yfilter);
 }
 
-std::string Native::Flow::Monitor::Default_::Statistics::Packet::get_segment_path() const
+std::string Native::Flow::Monitor::Default::Statistics::Packet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "packet";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::Statistics::Packet::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default::Statistics::Packet::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9839,18 +9933,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Monitor::Default_::
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Monitor::Default_::Statistics::Packet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Flow::Monitor::Default::Statistics::Packet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default_::Statistics::Packet::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Monitor::Default::Statistics::Packet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Flow::Monitor::Default_::Statistics::Packet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Flow::Monitor::Default::Statistics::Packet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -9866,7 +9961,7 @@ void Native::Flow::Monitor::Default_::Statistics::Packet::set_value(const std::s
     }
 }
 
-void Native::Flow::Monitor::Default_::Statistics::Packet::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Flow::Monitor::Default::Statistics::Packet::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -9878,7 +9973,7 @@ void Native::Flow::Monitor::Default_::Statistics::Packet::set_filter(const std::
     }
 }
 
-bool Native::Flow::Monitor::Default_::Statistics::Packet::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Flow::Monitor::Default::Statistics::Packet::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol" || name == "size")
         return true;
@@ -10216,14 +10311,6 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -10632,6 +10719,7 @@ std::shared_ptr<Entity> Native::Ip::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(admission != nullptr)
     {
         children["admission"] = admission;
@@ -10662,9 +10750,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ip::get_children() const
         children["bgp-community"] = bgp_community;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(as_path != nullptr)
@@ -11042,6 +11134,7 @@ std::shared_ptr<Entity> Native::Ip::Admission::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Admission::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(watch_list != nullptr)
     {
         children["watch-list"] = watch_list;
@@ -11125,6 +11218,7 @@ std::shared_ptr<Entity> Native::Ip::Admission::WatchList::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Admission::WatchList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11217,6 +11311,7 @@ std::shared_ptr<Entity> Native::Ip::Admission::Name::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Admission::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(webauth != nullptr)
     {
         children["webauth"] = webauth;
@@ -11304,6 +11399,7 @@ std::shared_ptr<Entity> Native::Ip::Admission::Name::Webauth::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Admission::Name::Webauth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(proxy != nullptr)
     {
         children["proxy"] = proxy;
@@ -11382,6 +11478,7 @@ std::shared_ptr<Entity> Native::Ip::Admission::Name::Webauth::Proxy::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Admission::Name::Webauth::Proxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11500,6 +11597,7 @@ std::shared_ptr<Entity> Native::Ip::Arp::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(incomplete != nullptr)
     {
         children["incomplete"] = incomplete;
@@ -11588,6 +11686,7 @@ std::shared_ptr<Entity> Native::Ip::Arp::Incomplete::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::Incomplete::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11686,14 +11785,6 @@ std::shared_ptr<Entity> Native::Ip::Arp::Inspection::get_child_by_name(const std
 {
     if(child_yang_name == "filter")
     {
-        for(auto const & c : filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Arp::Inspection::Filter>();
         c->parent = this;
         filter.push_back(c);
@@ -11724,9 +11815,14 @@ std::shared_ptr<Entity> Native::Ip::Arp::Inspection::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::Inspection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(validate != nullptr)
@@ -11828,14 +11924,6 @@ std::shared_ptr<Entity> Native::Ip::Arp::Inspection::Filter::get_child_by_name(c
 {
     if(child_yang_name == "vlan")
     {
-        for(auto const & c : vlan)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Arp::Inspection::Filter::Vlan>();
         c->parent = this;
         vlan.push_back(c);
@@ -11848,9 +11936,14 @@ std::shared_ptr<Entity> Native::Ip::Arp::Inspection::Filter::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::Inspection::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11933,6 +12026,7 @@ std::shared_ptr<Entity> Native::Ip::Arp::Inspection::Filter::Vlan::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::Inspection::Filter::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12048,6 +12142,7 @@ std::shared_ptr<Entity> Native::Ip::Arp::Inspection::Validate::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::Inspection::Validate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(allow != nullptr)
     {
         children["allow"] = allow;
@@ -12156,6 +12251,7 @@ std::shared_ptr<Entity> Native::Ip::Arp::Inspection::Validate::Allow::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::Inspection::Validate::Allow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12253,6 +12349,7 @@ std::shared_ptr<Entity> Native::Ip::Arp::Inspection::LogBuffer::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::Inspection::LogBuffer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(logs != nullptr)
     {
         children["logs"] = logs;
@@ -12345,6 +12442,7 @@ std::shared_ptr<Entity> Native::Ip::Arp::Inspection::LogBuffer::Logs::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::Inspection::LogBuffer::Logs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12438,6 +12536,7 @@ std::shared_ptr<Entity> Native::Ip::Arp::Proxy::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Arp::Proxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12535,6 +12634,7 @@ std::shared_ptr<Entity> Native::Ip::DomainList::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::DomainList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf != nullptr)
     {
         children["vrf"] = vrf;
@@ -12627,6 +12727,7 @@ std::shared_ptr<Entity> Native::Ip::DomainList::Vrf::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::DomainList::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12716,6 +12817,7 @@ std::shared_ptr<Entity> Native::Ip::Finger::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Finger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12791,6 +12893,7 @@ std::shared_ptr<Entity> Native::Ip::Rcmd::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rcmd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12884,6 +12987,7 @@ std::shared_ptr<Entity> Native::Ip::BgpCommunity::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::BgpCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12920,7 +13024,7 @@ Native::Ip::Vrf::Vrf()
     rd{YType::str, "rd"}
     	,
     bgp(std::make_shared<Native::Ip::Vrf::Bgp>())
-	,export_(std::make_shared<Native::Ip::Vrf::Export_>())
+	,export_(std::make_shared<Native::Ip::Vrf::Export>())
 	,import(std::make_shared<Native::Ip::Vrf::Import>())
 	,maximum(nullptr) // presence node
 	,mdt(nullptr) // presence node
@@ -13019,7 +13123,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::get_child_by_name(const std::string & c
     {
         if(export_ == nullptr)
         {
-            export_ = std::make_shared<Native::Ip::Vrf::Export_>();
+            export_ = std::make_shared<Native::Ip::Vrf::Export>();
         }
         return export_;
     }
@@ -13053,14 +13157,6 @@ std::shared_ptr<Entity> Native::Ip::Vrf::get_child_by_name(const std::string & c
 
     if(child_yang_name == "route-target")
     {
-        for(auto const & c : route_target)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Vrf::RouteTarget>();
         c->parent = this;
         route_target.push_back(c);
@@ -13082,6 +13178,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp != nullptr)
     {
         children["bgp"] = bgp;
@@ -13107,9 +13204,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::get_children() c
         children["mdt"] = mdt;
     }
 
+    count = 0;
     for (auto const & c : route_target)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(vpn != nullptr)
@@ -13232,6 +13333,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::Bgp::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(next_hop != nullptr)
     {
         children["next-hop"] = next_hop;
@@ -13303,6 +13405,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::Bgp::NextHop::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Bgp::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13331,42 +13434,42 @@ bool Native::Ip::Vrf::Bgp::NextHop::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-Native::Ip::Vrf::Export_::Export_()
+Native::Ip::Vrf::Export::Export()
     :
     map{YType::str, "map"}
     	,
-    ipv4(std::make_shared<Native::Ip::Vrf::Export_::Ipv4>())
+    ipv4(std::make_shared<Native::Ip::Vrf::Export::Ipv4>())
 {
     ipv4->parent = this;
 
     yang_name = "export"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Ip::Vrf::Export_::~Export_()
+Native::Ip::Vrf::Export::~Export()
 {
 }
 
-bool Native::Ip::Vrf::Export_::has_data() const
+bool Native::Ip::Vrf::Export::has_data() const
 {
     return map.is_set
 	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
 
-bool Native::Ip::Vrf::Export_::has_operation() const
+bool Native::Ip::Vrf::Export::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(map.yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
-std::string Native::Ip::Vrf::Export_::get_segment_path() const
+std::string Native::Ip::Vrf::Export::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "export";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ip::Vrf::Export_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ip::Vrf::Export::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13376,13 +13479,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Ip::Vrf::Export_::get_nam
 
 }
 
-std::shared_ptr<Entity> Native::Ip::Vrf::Export_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ip::Vrf::Export::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
         if(ipv4 == nullptr)
         {
-            ipv4 = std::make_shared<Native::Ip::Vrf::Export_::Ipv4>();
+            ipv4 = std::make_shared<Native::Ip::Vrf::Export::Ipv4>();
         }
         return ipv4;
     }
@@ -13390,9 +13493,10 @@ std::shared_ptr<Entity> Native::Ip::Vrf::Export_::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Export_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Export::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -13401,7 +13505,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Export_::get_chi
     return children;
 }
 
-void Native::Ip::Vrf::Export_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ip::Vrf::Export::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "map")
     {
@@ -13411,7 +13515,7 @@ void Native::Ip::Vrf::Export_::set_value(const std::string & value_path, const s
     }
 }
 
-void Native::Ip::Vrf::Export_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ip::Vrf::Export::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "map")
     {
@@ -13419,14 +13523,14 @@ void Native::Ip::Vrf::Export_::set_filter(const std::string & value_path, YFilte
     }
 }
 
-bool Native::Ip::Vrf::Export_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ip::Vrf::Export::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4" || name == "map")
         return true;
     return false;
 }
 
-Native::Ip::Vrf::Export_::Ipv4::Ipv4()
+Native::Ip::Vrf::Export::Ipv4::Ipv4()
     :
     ipv4_type{YType::enumeration, "ipv4-type"},
     upper_limit{YType::uint32, "upper-limit"},
@@ -13437,11 +13541,11 @@ Native::Ip::Vrf::Export_::Ipv4::Ipv4()
     yang_name = "ipv4"; yang_parent_name = "export"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Ip::Vrf::Export_::Ipv4::~Ipv4()
+Native::Ip::Vrf::Export::Ipv4::~Ipv4()
 {
 }
 
-bool Native::Ip::Vrf::Export_::Ipv4::has_data() const
+bool Native::Ip::Vrf::Export::Ipv4::has_data() const
 {
     return ipv4_type.is_set
 	|| upper_limit.is_set
@@ -13449,7 +13553,7 @@ bool Native::Ip::Vrf::Export_::Ipv4::has_data() const
 	|| map_only.is_set;
 }
 
-bool Native::Ip::Vrf::Export_::Ipv4::has_operation() const
+bool Native::Ip::Vrf::Export::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv4_type.yfilter)
@@ -13458,14 +13562,14 @@ bool Native::Ip::Vrf::Export_::Ipv4::has_operation() const
 	|| ydk::is_set(map_only.yfilter);
 }
 
-std::string Native::Ip::Vrf::Export_::Ipv4::get_segment_path() const
+std::string Native::Ip::Vrf::Export::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ip::Vrf::Export_::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ip::Vrf::Export::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13478,18 +13582,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Ip::Vrf::Export_::Ipv4::g
 
 }
 
-std::shared_ptr<Entity> Native::Ip::Vrf::Export_::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ip::Vrf::Export::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Export_::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Export::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Ip::Vrf::Export_::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ip::Vrf::Export::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-type")
     {
@@ -13517,7 +13622,7 @@ void Native::Ip::Vrf::Export_::Ipv4::set_value(const std::string & value_path, c
     }
 }
 
-void Native::Ip::Vrf::Export_::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ip::Vrf::Export::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv4-type")
     {
@@ -13537,7 +13642,7 @@ void Native::Ip::Vrf::Export_::Ipv4::set_filter(const std::string & value_path, 
     }
 }
 
-bool Native::Ip::Vrf::Export_::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ip::Vrf::Export::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4-type" || name == "upper-limit" || name == "map" || name == "map-only")
         return true;
@@ -13606,6 +13711,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::Import::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Import::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -13695,6 +13801,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::Import::Ipv4::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Import::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13803,6 +13910,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::Maximum::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13927,6 +14035,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::Mdt::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Mdt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -14034,6 +14143,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::Mdt::Data::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Mdt::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14154,6 +14264,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::RouteTarget::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14240,6 +14351,7 @@ std::shared_ptr<Entity> Native::Ip::Vrf::Vpn::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Vrf::Vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14325,14 +14437,6 @@ std::shared_ptr<Entity> Native::Ip::AsPath::get_child_by_name(const std::string 
 {
     if(child_yang_name == "Cisco-IOS-XE-bgp:access-list")
     {
-        for(auto const & c : access_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::AsPath::AccessList>();
         c->parent = this;
         access_list.push_back(c);
@@ -14345,9 +14449,14 @@ std::shared_ptr<Entity> Native::Ip::AsPath::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::AsPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14450,6 +14559,7 @@ std::shared_ptr<Entity> Native::Ip::AsPath::AccessList::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::AsPath::AccessList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(deny != nullptr)
     {
         children["deny"] = deny;
@@ -14547,6 +14657,7 @@ std::shared_ptr<Entity> Native::Ip::AsPath::AccessList::Deny::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::AsPath::AccessList::Deny::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14632,6 +14743,7 @@ std::shared_ptr<Entity> Native::Ip::AsPath::AccessList::Permit::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::AsPath::AccessList::Permit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14715,14 +14827,6 @@ std::shared_ptr<Entity> Native::Ip::Local::get_child_by_name(const std::string &
 {
     if(child_yang_name == "pool")
     {
-        for(auto const & c : pool)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Local::Pool>();
         c->parent = this;
         pool.push_back(c);
@@ -14735,9 +14839,14 @@ std::shared_ptr<Entity> Native::Ip::Local::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pool)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14825,6 +14934,7 @@ std::shared_ptr<Entity> Native::Ip::Local::Pool::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Local::Pool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14991,6 +15101,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accounting != nullptr)
     {
         children["Cisco-IOS-XE-cef:accounting"] = accounting;
@@ -15106,6 +15217,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::Accounting::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15228,6 +15340,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::Optimize::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::Optimize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor != nullptr)
     {
         children["neighbor"] = neighbor;
@@ -15306,6 +15419,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::Optimize::Neighbor::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::Optimize::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15393,6 +15507,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::TrafficStatistics::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::TrafficStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15508,6 +15623,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::LoadSharing::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::LoadSharing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(algorithm != nullptr)
     {
         children["algorithm"] = algorithm;
@@ -15638,6 +15754,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::LoadSharing::Algorithm::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::LoadSharing::Algorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(universal != nullptr)
     {
         children["universal"] = universal;
@@ -15735,6 +15852,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::LoadSharing::Algorithm::Universal::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::LoadSharing::Algorithm::Universal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15832,6 +15950,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::LoadSharing::Algorithm::Tunnel::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::LoadSharing::Algorithm::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15925,6 +16044,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::LoadSharing::Algorithm::Original::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::LoadSharing::Algorithm::Original::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16028,6 +16148,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::LoadSharing::Algorithm::IncludePorts::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::LoadSharing::Algorithm::IncludePorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -16111,6 +16232,7 @@ std::shared_ptr<Entity> Native::Ip::Cef::LoadSharing::Algorithm::IncludePorts::D
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Cef::LoadSharing::Algorithm::IncludePorts::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16154,8 +16276,8 @@ const Enum::YLeaf Native::Flow::Monitor::Record::Type::default_rtp {0, "default-
 const Enum::YLeaf Native::Flow::Monitor::Record::Type::default_tcp {1, "default-tcp"};
 const Enum::YLeaf Native::Flow::Monitor::Record::Type::netflow_original {2, "netflow-original"};
 
-const Enum::YLeaf Native::Ip::Vrf::Export_::Ipv4::Ipv4Type::unicast {0, "unicast"};
-const Enum::YLeaf Native::Ip::Vrf::Export_::Ipv4::Ipv4Type::multicast {1, "multicast"};
+const Enum::YLeaf Native::Ip::Vrf::Export::Ipv4::Ipv4Type::unicast {0, "unicast"};
+const Enum::YLeaf Native::Ip::Vrf::Export::Ipv4::Ipv4Type::multicast {1, "multicast"};
 
 const Enum::YLeaf Native::Ip::Vrf::Import::Ipv4::Ipv4Type::unicast {0, "unicast"};
 const Enum::YLeaf Native::Ip::Vrf::Import::Ipv4::Ipv4Type::multicast {1, "multicast"};

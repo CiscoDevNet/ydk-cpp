@@ -68,6 +68,7 @@ std::shared_ptr<Entity> IpExplicitPaths::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(paths != nullptr)
     {
         children["paths"] = paths;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::get_child_by_name(const std::str
 {
     if(child_yang_name == "path")
     {
-        for(auto const & c : path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpExplicitPaths::Paths::Path>();
         c->parent = this;
         path.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -287,14 +285,6 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::get_child_by_name(const st
 {
     if(child_yang_name == "name")
     {
-        for(auto const & c : name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpExplicitPaths::Paths::Path::Name>();
         c->parent = this;
         name.push_back(c);
@@ -303,14 +293,6 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::get_child_by_name(const st
 
     if(child_yang_name == "identifier")
     {
-        for(auto const & c : identifier)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpExplicitPaths::Paths::Path::Identifier>();
         c->parent = this;
         identifier.push_back(c);
@@ -323,14 +305,23 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : identifier)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -427,6 +418,7 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Name::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hops != nullptr)
     {
         children["hops"] = hops;
@@ -520,14 +512,6 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Name::Hops::get_child_by_n
 {
     if(child_yang_name == "hop")
     {
-        for(auto const & c : hop)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpExplicitPaths::Paths::Path::Name::Hops::Hop>();
         c->parent = this;
         hop.push_back(c);
@@ -540,9 +524,14 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Name::Hops::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Name::Hops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hop)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -631,6 +620,7 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Name::Hops::Hop::get_child
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Name::Hops::Hop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -775,6 +765,7 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Identifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hops != nullptr)
     {
         children["hops"] = hops;
@@ -868,14 +859,6 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::Hops::get_chil
 {
     if(child_yang_name == "hop")
     {
-        for(auto const & c : hop)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpExplicitPaths::Paths::Path::Identifier::Hops::Hop>();
         c->parent = this;
         hop.push_back(c);
@@ -888,9 +871,14 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::Hops::get_chil
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Identifier::Hops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hop)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -979,6 +967,7 @@ std::shared_ptr<Entity> IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get
 std::map<std::string, std::shared_ptr<Entity>> IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

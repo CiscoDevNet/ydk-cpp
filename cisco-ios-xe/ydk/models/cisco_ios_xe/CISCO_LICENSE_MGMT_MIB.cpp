@@ -185,6 +185,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clmgmtlicenseconfiguration != nullptr)
     {
         children["clmgmtLicenseConfiguration"] = clmgmtlicenseconfiguration;
@@ -333,6 +334,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -416,6 +418,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -507,6 +510,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -612,14 +616,6 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::get_child
 {
     if(child_yang_name == "clmgmtLicenseActionEntry")
     {
-        for(auto const & c : clmgmtlicenseactionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry>();
         c->parent = this;
         clmgmtlicenseactionentry.push_back(c);
@@ -632,9 +628,14 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clmgmtlicenseactionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -794,6 +795,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlic
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1089,14 +1091,6 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::get
 {
     if(child_yang_name == "clmgmtLicenseActionResultEntry")
     {
-        for(auto const & c : clmgmtlicenseactionresultentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry>();
         c->parent = this;
         clmgmtlicenseactionresultentry.push_back(c);
@@ -1109,9 +1103,14 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clmgmtlicenseactionresultentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1199,6 +1198,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clm
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1314,14 +1314,6 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::get_ch
 {
     if(child_yang_name == "clmgmtLicenseStoreInfoEntry")
     {
-        for(auto const & c : clmgmtlicensestoreinfoentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry>();
         c->parent = this;
         clmgmtlicensestoreinfoentry.push_back(c);
@@ -1334,9 +1326,14 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clmgmtlicensestoreinfoentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1428,6 +1425,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmt
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1553,14 +1551,6 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::get_c
 {
     if(child_yang_name == "clmgmtLicenseDeviceInfoEntry")
     {
-        for(auto const & c : clmgmtlicensedeviceinfoentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry>();
         c->parent = this;
         clmgmtlicensedeviceinfoentry.push_back(c);
@@ -1573,9 +1563,14 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clmgmtlicensedeviceinfoentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1655,6 +1650,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgm
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1750,14 +1746,6 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::get_child_b
 {
     if(child_yang_name == "clmgmtLicenseInfoEntry")
     {
-        for(auto const & c : clmgmtlicenseinfoentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry>();
         c->parent = this;
         clmgmtlicenseinfoentry.push_back(c);
@@ -1770,9 +1758,14 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clmgmtlicenseinfoentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1916,6 +1909,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicen
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2171,14 +2165,6 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::get_c
 {
     if(child_yang_name == "clmgmtLicensableFeatureEntry")
     {
-        for(auto const & c : clmgmtlicensablefeatureentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry>();
         c->parent = this;
         clmgmtlicensablefeatureentry.push_back(c);
@@ -2191,9 +2177,14 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clmgmtlicensablefeatureentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2301,6 +2292,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgm
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2466,14 +2458,6 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::get
 {
     if(child_yang_name == "clmgmtDevCredExportActionEntry")
     {
-        for(auto const & c : clmgmtdevcredexportactionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry>();
         c->parent = this;
         clmgmtdevcredexportactionentry.push_back(c);
@@ -2486,9 +2470,14 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clmgmtdevcredexportactionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2612,6 +2601,7 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clm
 std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

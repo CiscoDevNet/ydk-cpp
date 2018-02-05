@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Icmp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Icmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
@@ -211,6 +212,7 @@ std::shared_ptr<Entity> Icmp::Ipv6::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rate_limit != nullptr)
     {
         children["rate-limit"] = rate_limit;
@@ -303,6 +305,7 @@ std::shared_ptr<Entity> Icmp::Ipv6::RateLimit::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::RateLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unreachable != nullptr)
     {
         children["unreachable"] = unreachable;
@@ -385,6 +388,7 @@ std::shared_ptr<Entity> Icmp::Ipv6::RateLimit::Unreachable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::RateLimit::Unreachable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -478,6 +482,7 @@ std::shared_ptr<Entity> Icmp::Ipv6::Source::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -583,6 +588,7 @@ std::shared_ptr<Entity> Icmp::Ipv4::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rate_limit != nullptr)
     {
         children["rate-limit"] = rate_limit;
@@ -675,6 +681,7 @@ std::shared_ptr<Entity> Icmp::Ipv4::RateLimit::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::RateLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unreachable != nullptr)
     {
         children["unreachable"] = unreachable;
@@ -757,6 +764,7 @@ std::shared_ptr<Entity> Icmp::Ipv4::RateLimit::Unreachable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::RateLimit::Unreachable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -850,6 +858,7 @@ std::shared_ptr<Entity> Icmp::Ipv4::Source::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

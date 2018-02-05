@@ -68,6 +68,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::get_child_by_name(const 
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(process != nullptr)
     {
         children["process"] = process;
@@ -401,6 +400,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::get_child
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_function_path != nullptr)
     {
         children["service-function-path"] = service_function_path;
@@ -491,6 +491,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path_ids != nullptr)
     {
         children["path-ids"] = path_ids;
@@ -564,14 +565,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 {
     if(child_yang_name == "path-id")
     {
-        for(auto const & c : path_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId>();
         c->parent = this;
         path_id.push_back(c);
@@ -584,9 +577,14 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : path_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -682,6 +680,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_indexes != nullptr)
     {
         children["service-indexes"] = service_indexes;
@@ -770,14 +769,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 {
     if(child_yang_name == "service-index")
     {
-        for(auto const & c : service_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex>();
         c->parent = this;
         service_index.push_back(c);
@@ -790,9 +781,14 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_index)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -881,14 +877,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 
     if(child_yang_name == "si-arr")
     {
-        for(auto const & c : si_arr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr>();
         c->parent = this;
         si_arr.push_back(c);
@@ -901,14 +889,19 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
     }
 
+    count = 0;
     for (auto const & c : si_arr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1066,6 +1059,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sfp != nullptr)
     {
         children["sfp"] = sfp;
@@ -1194,6 +1188,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -1274,6 +1269,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1364,6 +1360,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1454,6 +1451,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1544,6 +1542,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1634,6 +1633,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1724,6 +1724,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1822,6 +1823,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1942,6 +1944,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -2050,6 +2053,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -2140,6 +2144,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2230,6 +2235,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2338,6 +2344,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -2429,14 +2436,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 
     if(child_yang_name == "si-arr")
     {
-        for(auto const & c : si_arr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr>();
         c->parent = this;
         si_arr.push_back(c);
@@ -2449,14 +2448,19 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
     }
 
+    count = 0;
     for (auto const & c : si_arr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2604,6 +2608,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sfp != nullptr)
     {
         children["sfp"] = sfp;
@@ -2732,6 +2737,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -2812,6 +2818,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2902,6 +2909,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2992,6 +3000,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3082,6 +3091,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3172,6 +3182,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3262,6 +3273,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3360,6 +3372,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3480,6 +3493,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -3588,6 +3602,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -3678,6 +3693,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3768,6 +3784,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3869,14 +3886,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 
     if(child_yang_name == "si-arr")
     {
-        for(auto const & c : si_arr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr>();
         c->parent = this;
         si_arr.push_back(c);
@@ -3889,14 +3898,19 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
     }
 
+    count = 0;
     for (auto const & c : si_arr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4044,6 +4058,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sfp != nullptr)
     {
         children["sfp"] = sfp;
@@ -4172,6 +4187,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -4252,6 +4268,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4342,6 +4359,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4432,6 +4450,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4522,6 +4541,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4612,6 +4632,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4702,6 +4723,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4800,6 +4822,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4920,6 +4943,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -5028,6 +5052,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -5118,6 +5143,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5208,6 +5234,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5303,6 +5330,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sf_names != nullptr)
     {
         children["sf-names"] = sf_names;
@@ -5376,14 +5404,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 {
     if(child_yang_name == "sf-name")
     {
-        for(auto const & c : sf_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName>();
         c->parent = this;
         sf_name.push_back(c);
@@ -5396,9 +5416,14 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sf_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5487,14 +5512,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 
     if(child_yang_name == "si-arr")
     {
-        for(auto const & c : si_arr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr>();
         c->parent = this;
         si_arr.push_back(c);
@@ -5507,14 +5524,19 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
     }
 
+    count = 0;
     for (auto const & c : si_arr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5672,6 +5694,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sfp != nullptr)
     {
         children["sfp"] = sfp;
@@ -5800,6 +5823,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -5880,6 +5904,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5970,6 +5995,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6060,6 +6086,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6150,6 +6177,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6240,6 +6268,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6330,6 +6359,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6428,6 +6458,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6548,6 +6579,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -6656,6 +6688,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -6746,6 +6779,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6836,6 +6870,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6944,6 +6979,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local != nullptr)
     {
         children["local"] = local;
@@ -7029,6 +7065,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(error != nullptr)
     {
         children["error"] = error;
@@ -7115,14 +7152,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 
     if(child_yang_name == "si-arr")
     {
-        for(auto const & c : si_arr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr>();
         c->parent = this;
         si_arr.push_back(c);
@@ -7135,14 +7164,19 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
     }
 
+    count = 0;
     for (auto const & c : si_arr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7290,6 +7324,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sfp != nullptr)
     {
         children["sfp"] = sfp;
@@ -7418,6 +7453,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -7498,6 +7534,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7588,6 +7625,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7678,6 +7716,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7768,6 +7807,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7858,6 +7898,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7948,6 +7989,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8046,6 +8088,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8166,6 +8209,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -8274,6 +8318,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -8364,6 +8409,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8454,6 +8500,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8542,14 +8589,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 {
     if(child_yang_name == "sff-name")
     {
-        for(auto const & c : sff_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName>();
         c->parent = this;
         sff_name.push_back(c);
@@ -8562,9 +8601,14 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sff_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8653,14 +8697,6 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 
     if(child_yang_name == "si-arr")
     {
-        for(auto const & c : si_arr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr>();
         c->parent = this;
         si_arr.push_back(c);
@@ -8673,14 +8709,19 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
     }
 
+    count = 0;
     for (auto const & c : si_arr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8838,6 +8879,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sfp != nullptr)
     {
         children["sfp"] = sfp;
@@ -8966,6 +9008,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -9046,6 +9089,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9136,6 +9180,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9226,6 +9271,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9316,6 +9362,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9406,6 +9453,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9496,6 +9544,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9594,6 +9643,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9714,6 +9764,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -9822,6 +9873,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spi_si != nullptr)
     {
         children["spi-si"] = spi_si;
@@ -9912,6 +9964,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10002,6 +10055,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
 std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

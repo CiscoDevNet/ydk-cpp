@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Ntp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Ntp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Ntp::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ntp::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Ntp::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -311,6 +309,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(associations_detail != nullptr)
     {
         children["associations-detail"] = associations_detail;
@@ -412,14 +411,6 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::get_child_by_name(
 {
     if(child_yang_name == "peer-detail-info")
     {
-        for(auto const & c : peer_detail_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo>();
         c->parent = this;
         peer_detail_info.push_back(c);
@@ -432,9 +423,14 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer_detail_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -635,14 +631,6 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ge
 
     if(child_yang_name == "filter-detail")
     {
-        for(auto const & c : filter_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail>();
         c->parent = this;
         filter_detail.push_back(c);
@@ -655,6 +643,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ge
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer_info_common != nullptr)
     {
         children["peer-info-common"] = peer_info_common;
@@ -680,9 +669,13 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDet
         children["transmit-time"] = transmit_time;
     }
 
+    count = 0;
     for (auto const & c : filter_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -905,6 +898,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Pe
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1113,6 +1107,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Re
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sec != nullptr)
     {
         children["sec"] = sec;
@@ -1189,6 +1184,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Re
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1265,6 +1261,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Re
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1363,6 +1360,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Or
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sec != nullptr)
     {
         children["sec"] = sec;
@@ -1439,6 +1437,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Or
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1515,6 +1514,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Or
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1613,6 +1613,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Re
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sec != nullptr)
     {
         children["sec"] = sec;
@@ -1689,6 +1690,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Re
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1765,6 +1767,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Re
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1863,6 +1866,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Tr
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sec != nullptr)
     {
         children["sec"] = sec;
@@ -1939,6 +1943,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Tr
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2015,6 +2020,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Tr
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2099,6 +2105,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::Fi
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2274,6 +2281,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Status::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sys_ref_time != nullptr)
     {
         children["sys-ref-time"] = sys_ref_time;
@@ -2512,6 +2520,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysRefTime::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysRefTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sec != nullptr)
     {
         children["sec"] = sec;
@@ -2588,6 +2597,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysRefTime::Sec::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysRefTime::Sec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2664,6 +2674,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysRefTime::FracSecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2762,6 +2773,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysDrift::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysDrift::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sec != nullptr)
     {
         children["sec"] = sec;
@@ -2838,6 +2850,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysDrift::Sec::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysDrift::Sec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2914,6 +2927,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Status::SysDrift::FracSecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3000,14 +3014,6 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Associations::get_child_by_name(const 
 {
     if(child_yang_name == "peer-summary-info")
     {
-        for(auto const & c : peer_summary_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ntp::Nodes::Node::Associations::PeerSummaryInfo>();
         c->parent = this;
         peer_summary_info.push_back(c);
@@ -3020,9 +3026,14 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Associations::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Associations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer_summary_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3125,6 +3136,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Associations::PeerSummaryInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer_info_common != nullptr)
     {
         children["peer-info-common"] = peer_info_common;
@@ -3250,6 +3262,7 @@ std::shared_ptr<Entity> Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInf
 std::map<std::string, std::shared_ptr<Entity>> Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -120,6 +120,7 @@ std::shared_ptr<Entity> Vpdn::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sessions != nullptr)
     {
         children["sessions"] = sessions;
@@ -245,14 +246,6 @@ std::shared_ptr<Entity> Vpdn::Sessions::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "session")
     {
-        for(auto const & c : session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vpdn::Sessions::Session>();
         c->parent = this;
         session.push_back(c);
@@ -265,9 +258,14 @@ std::shared_ptr<Entity> Vpdn::Sessions::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -404,6 +402,7 @@ std::shared_ptr<Entity> Vpdn::Sessions::Session::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session != nullptr)
     {
         children["session"] = session;
@@ -548,6 +547,7 @@ std::shared_ptr<Entity> Vpdn::Sessions::Session::Session_::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Session_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -742,6 +742,7 @@ std::shared_ptr<Entity> Vpdn::Sessions::Session::L2Tp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::L2Tp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -964,6 +965,7 @@ std::shared_ptr<Entity> Vpdn::Sessions::Session::Subscriber::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Subscriber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1112,6 +1114,7 @@ std::shared_ptr<Entity> Vpdn::Sessions::Session::Configuration::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vpn_id != nullptr)
     {
         children["vpn-id"] = vpn_id;
@@ -1247,6 +1250,7 @@ std::shared_ptr<Entity> Vpdn::Sessions::Session::Configuration::VpnId::get_child
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::Configuration::VpnId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1342,14 +1346,6 @@ std::shared_ptr<Entity> Vpdn::TunnelDestinations::get_child_by_name(const std::s
 {
     if(child_yang_name == "tunnel-destination")
     {
-        for(auto const & c : tunnel_destination)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vpdn::TunnelDestinations::TunnelDestination>();
         c->parent = this;
         tunnel_destination.push_back(c);
@@ -1362,9 +1358,14 @@ std::shared_ptr<Entity> Vpdn::TunnelDestinations::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::TunnelDestinations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tunnel_destination)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1472,6 +1473,7 @@ std::shared_ptr<Entity> Vpdn::TunnelDestinations::TunnelDestination::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::TunnelDestinations::TunnelDestination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1704,6 +1706,7 @@ std::shared_ptr<Entity> Vpdn::VpdnMirroring::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(qad_send_stats != nullptr)
     {
         children["qad-send-stats"] = qad_send_stats;
@@ -1919,6 +1922,7 @@ std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadSendStats::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadSendStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2206,6 +2210,7 @@ std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadRecvStats::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadRecvStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2421,6 +2426,7 @@ std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadSendStatsLastClear::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadSendStatsLastClear::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2708,6 +2714,7 @@ std::shared_ptr<Entity> Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnMirroring::QadRecvStatsLastClear::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2871,6 +2878,7 @@ std::shared_ptr<Entity> Vpdn::VpdnRedundancy::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdnRedundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3006,14 +3014,6 @@ std::shared_ptr<Entity> Vpdn::HistoryFailures::get_child_by_name(const std::stri
 {
     if(child_yang_name == "history-failure")
     {
-        for(auto const & c : history_failure)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vpdn::HistoryFailures::HistoryFailure>();
         c->parent = this;
         history_failure.push_back(c);
@@ -3026,9 +3026,14 @@ std::shared_ptr<Entity> Vpdn::HistoryFailures::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::HistoryFailures::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : history_failure)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3156,6 +3161,7 @@ std::shared_ptr<Entity> Vpdn::HistoryFailures::HistoryFailure::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::HistoryFailures::HistoryFailure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

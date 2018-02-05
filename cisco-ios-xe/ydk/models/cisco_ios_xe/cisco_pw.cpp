@@ -144,6 +144,7 @@ std::shared_ptr<Entity> PseudowireConfig::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -281,6 +282,7 @@ std::shared_ptr<Entity> PseudowireConfig::Global::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -426,14 +428,6 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const s
 {
     if(child_yang_name == "pw-template")
     {
-        for(auto const & c : pw_template)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate>();
         c->parent = this;
         pw_template.push_back(c);
@@ -446,9 +440,14 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pw_template)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -648,6 +647,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(load_balance != nullptr)
     {
         children["load-balance"] = load_balance;
@@ -857,6 +857,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flow_label != nullptr)
     {
         children["flow-label"] = flow_label;
@@ -956,6 +957,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1064,6 +1066,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1174,6 +1177,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::g
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1260,6 +1264,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_chi
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1344,6 +1349,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDel
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1456,6 +1462,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Status::get_c
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1592,6 +1599,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::PortProfileSp
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1727,14 +1735,6 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(
 {
     if(child_yang_name == "pw-static-oam-class")
     {
-        for(auto const & c : pw_static_oam_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PseudowireConfig::PwStaticOamClasses::PwStaticOamClass>();
         c->parent = this;
         pw_static_oam_class.push_back(c);
@@ -1747,9 +1747,14 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pw_static_oam_class)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1841,6 +1846,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1959,14 +1965,6 @@ std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "pseudowires")
     {
-        for(auto const & c : pseudowires)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PseudowireState::Pseudowires>();
         c->parent = this;
         pseudowires.push_back(c);
@@ -1979,9 +1977,14 @@ std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> PseudowireState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pseudowires)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2168,6 +2171,7 @@ std::shared_ptr<Entity> PseudowireState::Pseudowires::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> PseudowireState::Pseudowires::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -2461,6 +2465,7 @@ std::shared_ptr<Entity> PseudowireState::Pseudowires::Statistics::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> PseudowireState::Pseudowires::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

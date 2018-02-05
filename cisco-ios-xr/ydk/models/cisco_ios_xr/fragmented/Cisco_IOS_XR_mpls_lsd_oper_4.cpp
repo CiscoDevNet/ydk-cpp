@@ -103,6 +103,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Ipv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -332,6 +333,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Tev4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -591,6 +593,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -776,6 +779,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::IpSubData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -929,6 +933,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PseudowireHeadEndData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1128,6 +1133,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::PwListData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1278,6 +1284,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -1423,6 +1430,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1660,14 +1668,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 {
     if(child_yang_name == "label")
     {
-        for(auto const & c : label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label>();
         c->parent = this;
         label.push_back(c);
@@ -1680,9 +1680,14 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1790,6 +1795,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1905,6 +1911,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -2024,6 +2031,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2221,14 +2229,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 {
     if(child_yang_name == "label")
     {
-        for(auto const & c : label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label>();
         c->parent = this;
         label.push_back(c);
@@ -2241,9 +2241,14 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2351,6 +2356,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2468,6 +2474,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::TeHeadData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2611,6 +2618,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiAr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteIpv4S::RewriteIpv4::Mois::MoiArray::Moi::DmtcData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2696,14 +2704,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::get_child_by_name(const st
 {
     if(child_yang_name == "rewrite-te")
     {
-        for(auto const & c : rewrite_te)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe>();
         c->parent = this;
         rewrite_te.push_back(c);
@@ -2716,9 +2716,14 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rewrite_te)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2885,14 +2890,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::get_child_by_na
 
     if(child_yang_name == "associated-fpi")
     {
-        for(auto const & c : associated_fpi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi>();
         c->parent = this;
         associated_fpi.push_back(c);
@@ -2901,14 +2898,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::get_child_by_na
 
     if(child_yang_name == "v4-rpf")
     {
-        for(auto const & c : v4_rpf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe::V4Rpf>();
         c->parent = this;
         v4_rpf.push_back(c);
@@ -2917,14 +2906,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::get_child_by_na
 
     if(child_yang_name == "v6-rpf")
     {
-        for(auto const & c : v6_rpf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe::V6Rpf>();
         c->parent = this;
         v6_rpf.push_back(c);
@@ -2933,14 +2914,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::get_child_by_na
 
     if(child_yang_name == "mois")
     {
-        for(auto const & c : mois)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois>();
         c->parent = this;
         mois.push_back(c);
@@ -2953,6 +2926,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fpi_key != nullptr)
     {
         children["fpi-key"] = fpi_key;
@@ -2963,24 +2937,40 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::Rew
         children["rewrite-id"] = rewrite_id;
     }
 
+    count = 0;
     for (auto const & c : associated_fpi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : v4_rpf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : v6_rpf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : mois)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3144,14 +3134,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::get_chi
 
     if(child_yang_name == "application-owner")
     {
-        for(auto const & c : application_owner)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner>();
         c->parent = this;
         application_owner.push_back(c);
@@ -3164,14 +3146,19 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::get_chi
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fpi != nullptr)
     {
         children["fpi"] = fpi;
     }
 
+    count = 0;
     for (auto const & c : application_owner)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3319,6 +3306,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label_data != nullptr)
     {
         children["label-data"] = label_data;
@@ -3433,6 +3421,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::La
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::LabelData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3533,6 +3522,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::Te
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::TeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3635,6 +3625,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::Ip
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::Ipv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3767,6 +3758,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::Ip
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::Ipv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3883,6 +3875,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::Pw
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::PwListData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3959,6 +3952,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::Dm
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Fpi::DmtcExtIntfData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4051,6 +4045,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::Applica
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4176,6 +4171,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::get_
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rewrite_id != nullptr)
     {
         children["rewrite-id"] = rewrite_id;
@@ -4274,6 +4270,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label_context != nullptr)
     {
         children["label-context"] = label_context;
@@ -4738,6 +4735,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_data != nullptr)
     {
         children["ipv4-data"] = ipv4_data;
@@ -4975,6 +4973,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5107,6 +5106,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5247,6 +5247,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5391,6 +5392,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5495,6 +5497,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5595,6 +5598,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5689,6 +5693,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5793,6 +5798,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5901,6 +5907,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6023,6 +6030,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::LabelBlockData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6143,6 +6151,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::IpSubData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6253,6 +6262,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6405,6 +6415,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::MldPv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6521,6 +6532,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6621,6 +6633,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TpData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6757,6 +6770,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6833,6 +6847,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6917,6 +6932,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::EvpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7017,6 +7033,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7107,6 +7124,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7201,6 +7219,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMiPmsiData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7317,6 +7336,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::PiMsPmsiData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7447,6 +7467,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7537,6 +7558,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrPrefixSegment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7635,6 +7657,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7753,6 +7776,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7867,6 +7891,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7967,6 +7992,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::TeBinding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8061,6 +8087,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8168,6 +8195,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::Rewr
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::LocalLabelRewrite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8257,14 +8285,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 
     if(child_yang_name == "application-owner")
     {
-        for(auto const & c : application_owner)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationOwner>();
         c->parent = this;
         application_owner.push_back(c);
@@ -8277,14 +8297,19 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fpi != nullptr)
     {
         children["fpi"] = fpi;
     }
 
+    count = 0;
     for (auto const & c : application_owner)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8432,6 +8457,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label_data != nullptr)
     {
         children["label-data"] = label_data;
@@ -8546,6 +8572,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::LabelData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8646,6 +8673,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::TeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8748,6 +8776,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::Ipv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8880,6 +8909,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::Ipv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8996,6 +9026,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::PwListData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9072,6 +9103,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::Fpi::DmtcExtIntfData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9164,6 +9196,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationOwner::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9284,6 +9317,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::V4Rpf::get_chil
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::V4Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9374,6 +9408,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::V6Rpf::get_chil
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::V6Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9475,14 +9510,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::get_child
 
     if(child_yang_name == "moi-array")
     {
-        for(auto const & c : moi_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray>();
         c->parent = this;
         moi_array.push_back(c);
@@ -9495,14 +9522,19 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(application_resource != nullptr)
     {
         children["application-resource"] = application_resource;
     }
 
+    count = 0;
     for (auto const & c : moi_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9587,6 +9619,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::Applicati
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::ApplicationResource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9712,6 +9745,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(moi != nullptr)
     {
         children["moi"] = moi;
@@ -9966,6 +10000,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pop_and_lookup_ipv4 != nullptr)
     {
         children["pop-and-lookup-ipv4"] = pop_and_lookup_ipv4;
@@ -10120,6 +10155,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndLookupIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10228,6 +10264,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndLookupTp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10342,6 +10379,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PopAndLookupIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10490,6 +10528,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Ipv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10732,6 +10771,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Ipv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10954,6 +10994,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Tev4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11206,6 +11247,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PseudowireData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11384,6 +11426,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::IpSubData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11530,6 +11573,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PseudowireHeadEndData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11722,6 +11766,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::PwListData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11865,6 +11910,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -12003,6 +12049,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12233,14 +12280,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 {
     if(child_yang_name == "label")
     {
-        for(auto const & c : label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label>();
         c->parent = this;
         label.push_back(c);
@@ -12253,9 +12292,14 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12356,6 +12400,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12464,6 +12509,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -12576,6 +12622,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12766,14 +12813,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 {
     if(child_yang_name == "label")
     {
-        for(auto const & c : label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label>();
         c->parent = this;
         label.push_back(c);
@@ -12786,9 +12825,14 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12889,6 +12933,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12999,6 +13044,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::TeHeadData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13135,6 +13181,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray:
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::DmtcData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13220,14 +13267,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::get_child_by_name(const
 {
     if(child_yang_name == "rewrite-label")
     {
-        for(auto const & c : rewrite_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel>();
         c->parent = this;
         rewrite_label.push_back(c);
@@ -13240,9 +13279,14 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rewrite_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13409,14 +13453,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::get_child
 
     if(child_yang_name == "associated-fpi")
     {
-        for(auto const & c : associated_fpi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi>();
         c->parent = this;
         associated_fpi.push_back(c);
@@ -13425,14 +13461,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::get_child
 
     if(child_yang_name == "v4-rpf")
     {
-        for(auto const & c : v4_rpf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V4Rpf>();
         c->parent = this;
         v4_rpf.push_back(c);
@@ -13441,14 +13469,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::get_child
 
     if(child_yang_name == "v6-rpf")
     {
-        for(auto const & c : v6_rpf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V6Rpf>();
         c->parent = this;
         v6_rpf.push_back(c);
@@ -13457,14 +13477,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::get_child
 
     if(child_yang_name == "mois")
     {
-        for(auto const & c : mois)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Mois>();
         c->parent = this;
         mois.push_back(c);
@@ -13477,6 +13489,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fpi_key != nullptr)
     {
         children["fpi-key"] = fpi_key;
@@ -13487,24 +13500,40 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::
         children["rewrite-id"] = rewrite_id;
     }
 
+    count = 0;
     for (auto const & c : associated_fpi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : v4_rpf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : v6_rpf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : mois)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13668,14 +13697,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::g
 
     if(child_yang_name == "application-owner")
     {
-        for(auto const & c : application_owner)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner>();
         c->parent = this;
         application_owner.push_back(c);
@@ -13688,14 +13709,19 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::g
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fpi != nullptr)
     {
         children["fpi"] = fpi;
     }
 
+    count = 0;
     for (auto const & c : application_owner)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13843,6 +13869,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::F
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label_data != nullptr)
     {
         children["label-data"] = label_data;
@@ -13957,6 +13984,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::F
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::LabelData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14057,6 +14085,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::F
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::TeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14159,6 +14188,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::F
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14291,6 +14321,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::F
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::Ipv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14407,6 +14438,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::F
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::PwListData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14483,6 +14515,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::F
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::Fpi::DmtcExtIntfData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14575,6 +14608,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::A
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOwner::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14700,6 +14734,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rewrite_id != nullptr)
     {
         children["rewrite-id"] = rewrite_id;
@@ -14798,6 +14833,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label_context != nullptr)
     {
         children["label-context"] = label_context;
@@ -15262,6 +15298,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_data != nullptr)
     {
         children["ipv4-data"] = ipv4_data;
@@ -15499,6 +15536,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15631,6 +15669,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15771,6 +15810,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15915,6 +15955,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16019,6 +16060,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16119,6 +16161,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16213,6 +16256,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16317,6 +16361,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16425,6 +16470,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16547,6 +16593,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16667,6 +16714,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::IpSubData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16777,6 +16825,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16929,6 +16978,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::MldPv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17045,6 +17095,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17145,6 +17196,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TpData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17281,6 +17333,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17357,6 +17410,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17441,6 +17495,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::EvpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17541,6 +17596,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17631,6 +17687,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17725,6 +17782,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMiPmsiData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17841,6 +17899,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::PiMsPmsiData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17971,6 +18030,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18061,6 +18121,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrPrefixSegment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18159,6 +18220,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18277,6 +18339,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18391,6 +18454,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18491,6 +18555,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::TeBinding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18585,6 +18650,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18692,6 +18758,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::RewriteId::RewriteId_::LocalLabelRewrite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18781,14 +18848,6 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 
     if(child_yang_name == "application-owner")
     {
-        for(auto const & c : application_owner)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner>();
         c->parent = this;
         application_owner.push_back(c);
@@ -18801,14 +18860,19 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fpi != nullptr)
     {
         children["fpi"] = fpi;
     }
 
+    count = 0;
     for (auto const & c : application_owner)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18956,6 +19020,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label_data != nullptr)
     {
         children["label-data"] = label_data;
@@ -19070,6 +19135,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::LabelData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19170,6 +19236,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::TeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19272,6 +19339,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19404,6 +19472,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::Ipv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19520,6 +19589,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::PwListData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19596,6 +19666,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::Fpi::DmtcExtIntfData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19688,6 +19759,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::Associate
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::AssociatedFpi::ApplicationOwner::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19808,6 +19880,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V4Rpf::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V4Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19898,6 +19971,7 @@ std::shared_ptr<Entity> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V6Rpf::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Rewrite::RewriteLabels::RewriteLabel::V6Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

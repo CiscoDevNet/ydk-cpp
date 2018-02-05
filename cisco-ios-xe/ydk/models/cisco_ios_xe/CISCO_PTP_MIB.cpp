@@ -250,6 +250,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ciscoptpmibsysteminfo != nullptr)
     {
         children["ciscoPtpMIBSystemInfo"] = ciscoptpmibsysteminfo;
@@ -423,6 +424,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Ciscoptpmibsysteminfo::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Ciscoptpmibsysteminfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -508,14 +510,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemtable::get_child_by_name(const st
 {
     if(child_yang_name == "cPtpSystemEntry")
     {
-        for(auto const & c : cptpsystementry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpsystemtable::Cptpsystementry>();
         c->parent = this;
         cptpsystementry.push_back(c);
@@ -528,9 +522,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpsystementry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -618,6 +617,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemtable::Cptpsystementry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -733,14 +733,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemdomaintable::get_child_by_name(co
 {
     if(child_yang_name == "cPtpSystemDomainEntry")
     {
-        for(auto const & c : cptpsystemdomainentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry>();
         c->parent = this;
         cptpsystemdomainentry.push_back(c);
@@ -753,9 +745,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemdomaintable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemdomaintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpsystemdomainentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -835,6 +832,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentr
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpsystemdomaintable::Cptpsystemdomainentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -930,14 +928,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocknodetable::get_child_by_name(const
 {
     if(child_yang_name == "cPtpClockNodeEntry")
     {
-        for(auto const & c : cptpclocknodeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry>();
         c->parent = this;
         cptpclocknodeentry.push_back(c);
@@ -950,9 +940,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocknodetable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocknodetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclocknodeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1076,6 +1071,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocknodetable::Cptpclocknodeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1281,14 +1277,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockcurrentdstable::get_child_by_name(
 {
     if(child_yang_name == "cPtpClockCurrentDSEntry")
     {
-        for(auto const & c : cptpclockcurrentdsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry>();
         c->parent = this;
         cptpclockcurrentdsentry.push_back(c);
@@ -1301,9 +1289,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockcurrentdstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockcurrentdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclockcurrentdsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1399,6 +1392,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentds
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1534,14 +1528,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockparentdstable::get_child_by_name(c
 {
     if(child_yang_name == "cPtpClockParentDSEntry")
     {
-        for(auto const & c : cptpclockparentdsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry>();
         c->parent = this;
         cptpclockparentdsentry.push_back(c);
@@ -1554,9 +1540,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockparentdstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockparentdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclockparentdsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1680,6 +1671,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsen
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockparentdstable::Cptpclockparentdsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1885,14 +1877,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockdefaultdstable::get_child_by_name(
 {
     if(child_yang_name == "cPtpClockDefaultDSEntry")
     {
-        for(auto const & c : cptpclockdefaultdsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry>();
         c->parent = this;
         cptpclockdefaultdsentry.push_back(c);
@@ -1905,9 +1889,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockdefaultdstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockdefaultdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclockdefaultdsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2023,6 +2012,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultds
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2208,14 +2198,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockrunningtable::get_child_by_name(co
 {
     if(child_yang_name == "cPtpClockRunningEntry")
     {
-        for(auto const & c : cptpclockrunningentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry>();
         c->parent = this;
         cptpclockrunningentry.push_back(c);
@@ -2228,9 +2210,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockrunningtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockrunningtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclockrunningentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2326,6 +2313,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentr
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockrunningtable::Cptpclockrunningentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2461,14 +2449,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktimepropertiesdstable::get_child_b
 {
     if(child_yang_name == "cPtpClockTimePropertiesDSEntry")
     {
-        for(auto const & c : cptpclocktimepropertiesdsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry>();
         c->parent = this;
         cptpclocktimepropertiesdsentry.push_back(c);
@@ -2481,9 +2461,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktimepropertiesdstable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktimepropertiesdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclocktimepropertiesdsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2599,6 +2584,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclockti
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2784,14 +2770,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktransdefaultdstable::get_child_by_
 {
     if(child_yang_name == "cPtpClockTransDefaultDSEntry")
     {
-        for(auto const & c : cptpclocktransdefaultdsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry>();
         c->parent = this;
         cptpclocktransdefaultdsentry.push_back(c);
@@ -2804,9 +2782,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktransdefaultdstable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktransdefaultdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclocktransdefaultdsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2902,6 +2885,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktran
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3037,14 +3021,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttable::get_child_by_name(const
 {
     if(child_yang_name == "cPtpClockPortEntry")
     {
-        for(auto const & c : cptpclockportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry>();
         c->parent = this;
         cptpclockportentry.push_back(c);
@@ -3057,9 +3033,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclockportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3171,6 +3152,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttable::Cptpclockportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3346,14 +3328,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportdstable::get_child_by_name(con
 {
     if(child_yang_name == "cPtpClockPortDSEntry")
     {
-        for(auto const & c : cptpclockportdsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry>();
         c->parent = this;
         cptpclockportdsentry.push_back(c);
@@ -3366,9 +3340,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportdstable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclockportdsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3500,6 +3479,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportdstable::Cptpclockportdsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3725,14 +3705,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportrunningtable::get_child_by_nam
 {
     if(child_yang_name == "cPtpClockPortRunningEntry")
     {
-        for(auto const & c : cptpclockportrunningentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry>();
         c->parent = this;
         cptpclockportrunningentry.push_back(c);
@@ -3745,9 +3717,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportrunningtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportrunningtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclockportrunningentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3875,6 +3852,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrun
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportrunningtable::Cptpclockportrunningentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4090,14 +4068,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttransdstable::get_child_by_nam
 {
     if(child_yang_name == "cPtpClockPortTransDSEntry")
     {
-        for(auto const & c : cptpclockporttransdsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry>();
         c->parent = this;
         cptpclockporttransdsentry.push_back(c);
@@ -4110,9 +4080,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttransdstable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttransdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclockporttransdsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4212,6 +4187,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttra
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockporttransdstable::Cptpclockporttransdsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4357,14 +4333,6 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportassociatetable::get_child_by_n
 {
     if(child_yang_name == "cPtpClockPortAssociateEntry")
     {
-        for(auto const & c : cptpclockportassociateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry>();
         c->parent = this;
         cptpclockportassociateentry.push_back(c);
@@ -4377,9 +4345,14 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportassociatetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportassociatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cptpclockportassociateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4495,6 +4468,7 @@ std::shared_ptr<Entity> CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockporta
 std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::Cptpclockportassociatetable::Cptpclockportassociateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

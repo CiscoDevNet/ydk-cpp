@@ -133,6 +133,7 @@ std::shared_ptr<Entity> ShowFpd::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(locations != nullptr)
     {
         children["locations"] = locations;
@@ -263,14 +264,6 @@ std::shared_ptr<Entity> ShowFpd::Locations::get_child_by_name(const std::string 
 {
     if(child_yang_name == "location")
     {
-        for(auto const & c : location)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ShowFpd::Locations::Location>();
         c->parent = this;
         location.push_back(c);
@@ -283,9 +276,14 @@ std::shared_ptr<Entity> ShowFpd::Locations::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : location)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -367,14 +365,6 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::get_child_by_name(const st
 {
     if(child_yang_name == "fpd")
     {
-        for(auto const & c : fpd)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ShowFpd::Locations::Location::Fpd>();
         c->parent = this;
         fpd.push_back(c);
@@ -387,9 +377,14 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fpd)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -474,14 +469,6 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::get_child_by_name(con
 {
     if(child_yang_name == "fpd-info-detaile")
     {
-        for(auto const & c : fpd_info_detaile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ShowFpd::Locations::Location::Fpd::FpdInfoDetaile>();
         c->parent = this;
         fpd_info_detaile.push_back(c);
@@ -494,9 +481,14 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fpd_info_detaile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -603,6 +595,7 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_c
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -758,14 +751,6 @@ std::shared_ptr<Entity> ShowFpd::HwModuleFpd::get_child_by_name(const std::strin
 {
     if(child_yang_name == "fpd-info-detaile")
     {
-        for(auto const & c : fpd_info_detaile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ShowFpd::HwModuleFpd::FpdInfoDetaile>();
         c->parent = this;
         fpd_info_detaile.push_back(c);
@@ -778,9 +763,14 @@ std::shared_ptr<Entity> ShowFpd::HwModuleFpd::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fpd_info_detaile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -884,6 +874,7 @@ std::shared_ptr<Entity> ShowFpd::HwModuleFpd::FpdInfoDetaile::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpd::FpdInfoDetaile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1039,14 +1030,6 @@ std::shared_ptr<Entity> ShowFpd::HelpLocations::get_child_by_name(const std::str
 {
     if(child_yang_name == "help-location")
     {
-        for(auto const & c : help_location)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation>();
         c->parent = this;
         help_location.push_back(c);
@@ -1059,9 +1042,14 @@ std::shared_ptr<Entity> ShowFpd::HelpLocations::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : help_location)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1151,6 +1139,7 @@ std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(help_fpd != nullptr)
     {
         children["help-fpd"] = help_fpd;
@@ -1234,14 +1223,6 @@ std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_child
 {
     if(child_yang_name == "fpd-name")
     {
-        for(auto const & c : fpd_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName>();
         c->parent = this;
         fpd_name.push_back(c);
@@ -1254,9 +1235,14 @@ std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_child
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fpd_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1329,6 +1315,7 @@ std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1424,14 +1411,6 @@ std::shared_ptr<Entity> ShowFpd::HwModuleFpdHelpFpd::get_child_by_name(const std
 {
     if(child_yang_name == "fpd-name")
     {
-        for(auto const & c : fpd_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ShowFpd::HwModuleFpdHelpFpd::FpdName>();
         c->parent = this;
         fpd_name.push_back(c);
@@ -1444,9 +1423,14 @@ std::shared_ptr<Entity> ShowFpd::HwModuleFpdHelpFpd::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpdHelpFpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fpd_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1526,6 +1510,7 @@ std::shared_ptr<Entity> ShowFpd::HwModuleFpdHelpFpd::FpdName::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpdHelpFpd::FpdName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1621,14 +1606,6 @@ std::shared_ptr<Entity> ShowFpd::Package::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "fpd-pkg-data")
     {
-        for(auto const & c : fpd_pkg_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ShowFpd::Package::FpdPkgData>();
         c->parent = this;
         fpd_pkg_data.push_back(c);
@@ -1641,9 +1618,14 @@ std::shared_ptr<Entity> ShowFpd::Package::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fpd_pkg_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1739,6 +1721,7 @@ std::shared_ptr<Entity> ShowFpd::Package::FpdPkgData::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Package::FpdPkgData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1874,14 +1857,6 @@ std::shared_ptr<Entity> ShowFpd::LocationHelp::get_child_by_name(const std::stri
 {
     if(child_yang_name == "location-name")
     {
-        for(auto const & c : location_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ShowFpd::LocationHelp::LocationName>();
         c->parent = this;
         location_name.push_back(c);
@@ -1894,9 +1869,14 @@ std::shared_ptr<Entity> ShowFpd::LocationHelp::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::LocationHelp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : location_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1972,6 +1952,7 @@ std::shared_ptr<Entity> ShowFpd::LocationHelp::LocationName::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ShowFpd::LocationHelp::LocationName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

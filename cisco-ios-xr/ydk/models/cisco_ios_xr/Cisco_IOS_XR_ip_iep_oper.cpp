@@ -81,6 +81,7 @@ std::shared_ptr<Entity> ExplicitPaths::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(identifiers != nullptr)
     {
         children["identifiers"] = identifiers;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> ExplicitPaths::Identifiers::get_child_by_name(const std:
 {
     if(child_yang_name == "identifier")
     {
-        for(auto const & c : identifier)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ExplicitPaths::Identifiers::Identifier>();
         c->parent = this;
         identifier.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> ExplicitPaths::Identifiers::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : identifier)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -299,14 +297,6 @@ std::shared_ptr<Entity> ExplicitPaths::Identifiers::Identifier::get_child_by_nam
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ExplicitPaths::Identifiers::Identifier::Address>();
         c->parent = this;
         address.push_back(c);
@@ -319,9 +309,14 @@ std::shared_ptr<Entity> ExplicitPaths::Identifiers::Identifier::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::Identifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -430,6 +425,7 @@ std::shared_ptr<Entity> ExplicitPaths::Identifiers::Identifier::Address::get_chi
 std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::Identifier::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -565,14 +561,6 @@ std::shared_ptr<Entity> ExplicitPaths::Names::get_child_by_name(const std::strin
 {
     if(child_yang_name == "name")
     {
-        for(auto const & c : name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ExplicitPaths::Names::Name>();
         c->parent = this;
         name.push_back(c);
@@ -585,9 +573,14 @@ std::shared_ptr<Entity> ExplicitPaths::Names::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -673,14 +666,6 @@ std::shared_ptr<Entity> ExplicitPaths::Names::Name::get_child_by_name(const std:
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ExplicitPaths::Names::Name::Address>();
         c->parent = this;
         address.push_back(c);
@@ -693,9 +678,14 @@ std::shared_ptr<Entity> ExplicitPaths::Names::Name::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -804,6 +794,7 @@ std::shared_ptr<Entity> ExplicitPaths::Names::Name::Address::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::Name::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ncs1k_macsec_ctrlr_names != nullptr)
     {
         children["ncs1k-macsec-ctrlr-names"] = ncs1k_macsec_ctrlr_names;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::get_child_by_nam
 {
     if(child_yang_name == "ncs1k-macsec-ctrlr-name")
     {
-        for(auto const & c : ncs1k_macsec_ctrlr_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName>();
         c->parent = this;
         ncs1k_macsec_ctrlr_name.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ncs1k_macsec_ctrlr_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlr
 std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ncs1k_status_info != nullptr)
     {
         children["ncs1k-status-info"] = ncs1k_status_info;
@@ -401,6 +400,7 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlr
 std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encrypt_sc_status != nullptr)
     {
         children["encrypt-sc-status"] = encrypt_sc_status;
@@ -541,14 +541,6 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlr
 {
     if(child_yang_name == "active-association")
     {
-        for(auto const & c : active_association)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation>();
         c->parent = this;
         active_association.push_back(c);
@@ -561,9 +553,14 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlr
 std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : active_association)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -742,6 +739,7 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlr
 std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::EncryptScStatus::ActiveAssociation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -900,14 +898,6 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlr
 {
     if(child_yang_name == "active-association")
     {
-        for(auto const & c : active_association)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation>();
         c->parent = this;
         active_association.push_back(c);
@@ -920,9 +910,14 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlr
 std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : active_association)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1101,6 +1096,7 @@ std::shared_ptr<Entity> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlr
 std::map<std::string, std::shared_ptr<Entity>> Ncs1KMacsecOper::Ncs1KMacsecCtrlrNames::Ncs1KMacsecCtrlrName::Ncs1KStatusInfo::DecryptScStatus::ActiveAssociation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

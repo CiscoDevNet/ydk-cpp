@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Fia::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Fia::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Fia::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Fia::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -363,6 +361,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_link_information != nullptr)
     {
         children["rx-link-information"] = rx_link_information;
@@ -483,6 +482,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_options != nullptr)
     {
         children["link-options"] = link_options;
@@ -556,14 +556,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_ch
 {
     if(child_yang_name == "link-option")
     {
-        for(auto const & c : link_option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption>();
         c->parent = this;
         link_option.push_back(c);
@@ -576,9 +568,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link_option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -661,6 +658,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_asic_instances != nullptr)
     {
         children["rx-asic-instances"] = rx_asic_instances;
@@ -744,14 +742,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 {
     if(child_yang_name == "rx-asic-instance")
     {
-        for(auto const & c : rx_asic_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance>();
         c->parent = this;
         rx_asic_instance.push_back(c);
@@ -764,9 +754,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rx_asic_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -849,6 +844,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_links != nullptr)
     {
         children["rx-links"] = rx_links;
@@ -932,14 +928,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 {
     if(child_yang_name == "rx-link")
     {
-        for(auto const & c : rx_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink>();
         c->parent = this;
         rx_link.push_back(c);
@@ -952,9 +940,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rx_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1037,14 +1030,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 {
     if(child_yang_name == "rx-link")
     {
-        for(auto const & c : rx_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_>();
         c->parent = this;
         rx_link.push_back(c);
@@ -1057,9 +1042,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rx_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1259,6 +1249,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(this_link != nullptr)
     {
         children["this-link"] = this_link;
@@ -1501,6 +1492,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(asic_id != nullptr)
     {
         children["asic-id"] = asic_id;
@@ -1628,6 +1620,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1770,6 +1763,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(asic_id != nullptr)
     {
         children["asic-id"] = asic_id;
@@ -1897,6 +1891,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2039,6 +2034,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(asic_id != nullptr)
     {
         children["asic-id"] = asic_id;
@@ -2166,6 +2162,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2292,14 +2289,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 {
     if(child_yang_name == "hist")
     {
-        for(auto const & c : hist)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist>();
         c->parent = this;
         hist.push_back(c);
@@ -2312,9 +2301,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hist)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2419,6 +2413,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2723,14 +2718,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::get_child_by_name(c
 {
     if(child_yang_name == "device-info")
     {
-        for(auto const & c : device_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::DriverInformation::DeviceInfo>();
         c->parent = this;
         device_info.push_back(c);
@@ -2739,14 +2726,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::get_child_by_name(c
 
     if(child_yang_name == "card-info")
     {
-        for(auto const & c : card_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::DriverInformation::CardInfo>();
         c->parent = this;
         card_info.push_back(c);
@@ -2759,14 +2738,23 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : device_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : card_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3329,6 +3317,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::DeviceInfo::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::DeviceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(asic_id != nullptr)
     {
         children["asic-id"] = asic_id;
@@ -3526,6 +3515,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId:
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3712,6 +3702,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::CardInfo::get_child
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::CardInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(oir_circular_buffer != nullptr)
     {
         children["oir-circular-buffer"] = oir_circular_buffer;
@@ -3947,14 +3938,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::CardInfo::OirCircul
 {
     if(child_yang_name == "fia-oir-info")
     {
-        for(auto const & c : fia_oir_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo>();
         c->parent = this;
         fia_oir_info.push_back(c);
@@ -3967,9 +3950,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::CardInfo::OirCircul
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fia_oir_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4092,6 +4080,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::CardInfo::OirCircul
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4237,6 +4226,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(asic_instances != nullptr)
     {
         children["asic-instances"] = asic_instances;
@@ -4310,14 +4300,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::AsicInstances::get_ch
 {
     if(child_yang_name == "asic-instance")
     {
-        for(auto const & c : asic_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance>();
         c->parent = this;
         asic_instance.push_back(c);
@@ -4330,9 +4312,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::AsicInstances::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics::AsicInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : asic_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4405,6 +4392,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicIn
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4500,6 +4488,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tx_status_option_table != nullptr)
     {
         children["tx-status-option-table"] = tx_status_option_table;
@@ -4580,6 +4569,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tx_status_option != nullptr)
     {
         children["tx-status-option"] = tx_status_option;
@@ -4660,6 +4650,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tx_asic_instances != nullptr)
     {
         children["tx-asic-instances"] = tx_asic_instances;
@@ -4733,14 +4724,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 {
     if(child_yang_name == "tx-asic-instance")
     {
-        for(auto const & c : tx_asic_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance>();
         c->parent = this;
         tx_asic_instance.push_back(c);
@@ -4753,9 +4736,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tx_asic_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4838,6 +4826,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tx_links != nullptr)
     {
         children["tx-links"] = tx_links;
@@ -4921,14 +4910,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 {
     if(child_yang_name == "tx-link")
     {
-        for(auto const & c : tx_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink>();
         c->parent = this;
         tx_link.push_back(c);
@@ -4941,9 +4922,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tx_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5022,14 +5008,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 {
     if(child_yang_name == "tx-link")
     {
-        for(auto const & c : tx_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_>();
         c->parent = this;
         tx_link.push_back(c);
@@ -5042,9 +5020,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tx_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5230,6 +5213,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(this_link != nullptr)
     {
         children["this-link"] = this_link;
@@ -5462,6 +5446,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(asic_id != nullptr)
     {
         children["asic-id"] = asic_id;
@@ -5589,6 +5574,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5731,6 +5717,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(asic_id != nullptr)
     {
         children["asic-id"] = asic_id;
@@ -5858,6 +5845,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5974,6 +5962,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6060,14 +6049,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 {
     if(child_yang_name == "hist")
     {
-        for(auto const & c : hist)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist>();
         c->parent = this;
         hist.push_back(c);
@@ -6080,9 +6061,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hist)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6187,6 +6173,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6312,6 +6299,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(diag_shell_units != nullptr)
     {
         children["diag-shell-units"] = diag_shell_units;
@@ -6385,14 +6373,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::get_child_b
 {
     if(child_yang_name == "diag-shell-unit")
     {
-        for(auto const & c : diag_shell_unit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit>();
         c->parent = this;
         diag_shell_unit.push_back(c);
@@ -6405,9 +6385,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diag_shell_unit)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6490,6 +6475,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUn
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(commands != nullptr)
     {
         children["commands"] = commands;
@@ -6573,14 +6559,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUn
 {
     if(child_yang_name == "command")
     {
-        for(auto const & c : command)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command>();
         c->parent = this;
         command.push_back(c);
@@ -6593,9 +6571,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUn
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : command)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6670,14 +6653,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUn
 {
     if(child_yang_name == "output")
     {
-        for(auto const & c : output)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output>();
         c->parent = this;
         output.push_back(c);
@@ -6690,9 +6665,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUn
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : output)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6775,6 +6755,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUn
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6870,6 +6851,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flags != nullptr)
     {
         children["flags"] = flags;
@@ -6943,14 +6925,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::get_child_by_name(c
 {
     if(child_yang_name == "flag")
     {
-        for(auto const & c : flag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag>();
         c->parent = this;
         flag.push_back(c);
@@ -6963,9 +6937,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7048,6 +7027,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slots != nullptr)
     {
         children["slots"] = slots;
@@ -7131,14 +7111,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::get_ch
 {
     if(child_yang_name == "slot")
     {
-        for(auto const & c : slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot>();
         c->parent = this;
         slot.push_back(c);
@@ -7151,9 +7123,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7414,14 +7391,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
 {
     if(child_yang_name == "device-info")
     {
-        for(auto const & c : device_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo>();
         c->parent = this;
         device_info.push_back(c);
@@ -7430,14 +7399,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
 
     if(child_yang_name == "card-info")
     {
-        for(auto const & c : card_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo>();
         c->parent = this;
         card_info.push_back(c);
@@ -7450,14 +7411,23 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : device_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : card_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8030,6 +8000,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(asic_id != nullptr)
     {
         children["asic-id"] = asic_id;
@@ -8227,6 +8198,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8413,6 +8385,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(oir_circular_buffer != nullptr)
     {
         children["oir-circular-buffer"] = oir_circular_buffer;
@@ -8648,14 +8621,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
 {
     if(child_yang_name == "fia-oir-info")
     {
-        for(auto const & c : fia_oir_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo>();
         c->parent = this;
         fia_oir_info.push_back(c);
@@ -8668,9 +8633,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fia_oir_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8793,6 +8763,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8938,6 +8909,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics_asic_instances != nullptr)
     {
         children["statistics-asic-instances"] = statistics_asic_instances;
@@ -9011,14 +8983,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 {
     if(child_yang_name == "statistics-asic-instance")
     {
-        for(auto const & c : statistics_asic_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance>();
         c->parent = this;
         statistics_asic_instance.push_back(c);
@@ -9031,9 +8995,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : statistics_asic_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9129,6 +9098,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pbc_statistics != nullptr)
     {
         children["pbc-statistics"] = pbc_statistics;
@@ -9224,6 +9194,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pbc_stats != nullptr)
     {
         children["pbc-stats"] = pbc_stats;
@@ -9325,6 +9296,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stats_info != nullptr)
     {
         children["stats-info"] = stats_info;
@@ -9452,14 +9424,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 {
     if(child_yang_name == "block-info")
     {
-        for(auto const & c : block_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo>();
         c->parent = this;
         block_info.push_back(c);
@@ -9472,9 +9436,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : block_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9563,14 +9532,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 {
     if(child_yang_name == "field-info")
     {
-        for(auto const & c : field_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo>();
         c->parent = this;
         field_info.push_back(c);
@@ -9583,9 +9544,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : field_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9682,6 +9648,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9787,6 +9754,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fmac_links != nullptr)
     {
         children["fmac-links"] = fmac_links;
@@ -9860,14 +9828,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 {
     if(child_yang_name == "fmac-link")
     {
-        for(auto const & c : fmac_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink>();
         c->parent = this;
         fmac_link.push_back(c);
@@ -9880,9 +9840,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fmac_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9957,14 +9922,6 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 {
     if(child_yang_name == "fmac-asic")
     {
-        for(auto const & c : fmac_asic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic>();
         c->parent = this;
         fmac_asic.push_back(c);
@@ -9977,9 +9934,14 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fmac_asic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10109,6 +10071,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aggr_stats != nullptr)
     {
         children["aggr-stats"] = aggr_stats;
@@ -10290,6 +10253,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_error_status != nullptr)
     {
         children["link-error-status"] = link_error_status;
@@ -10399,6 +10363,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10597,6 +10562,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10855,6 +10821,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11096,6 +11063,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_error_status != nullptr)
     {
         children["link-error-status"] = link_error_status;
@@ -11205,6 +11173,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11403,6 +11372,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11661,6 +11631,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
 std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

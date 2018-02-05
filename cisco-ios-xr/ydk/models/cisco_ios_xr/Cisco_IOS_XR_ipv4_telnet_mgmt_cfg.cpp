@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Telnet::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Telnet::Vrfs::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Telnet::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Telnet::Vrfs::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> Telnet::Vrfs::Vrf::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -366,6 +365,7 @@ std::shared_ptr<Entity> Telnet::Vrfs::Vrf::Ipv4::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::Vrf::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

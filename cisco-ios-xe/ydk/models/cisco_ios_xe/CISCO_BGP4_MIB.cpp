@@ -172,6 +172,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cbgpglobal != nullptr)
     {
         children["cbgpGlobal"] = cbgpglobal;
@@ -319,6 +320,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgpglobal::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgpglobal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -412,14 +414,6 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgproutetable::get_child_by_name(const st
 {
     if(child_yang_name == "cbgpRouteEntry")
     {
-        for(auto const & c : cbgprouteentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry>();
         c->parent = this;
         cbgprouteentry.push_back(c);
@@ -432,9 +426,14 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgproutetable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgproutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbgprouteentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -582,6 +581,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -847,14 +847,6 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeercapstable::get_child_by_name(const
 {
     if(child_yang_name == "cbgpPeerCapsEntry")
     {
-        for(auto const & c : cbgppeercapsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry>();
         c->parent = this;
         cbgppeercapsentry.push_back(c);
@@ -867,9 +859,14 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeercapstable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeercapstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbgppeercapsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -957,6 +954,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1072,14 +1070,6 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilytable::get_child_by_name
 {
     if(child_yang_name == "cbgpPeerAddrFamilyEntry")
     {
-        for(auto const & c : cbgppeeraddrfamilyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry>();
         c->parent = this;
         cbgppeeraddrfamilyentry.push_back(c);
@@ -1092,9 +1082,14 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilytable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbgppeeraddrfamilyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1182,6 +1177,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamil
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1297,14 +1293,6 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::get_child_b
 {
     if(child_yang_name == "cbgpPeerAddrFamilyPrefixEntry")
     {
-        for(auto const & c : cbgppeeraddrfamilyprefixentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry>();
         c->parent = this;
         cbgppeeraddrfamilyprefixentry.push_back(c);
@@ -1317,9 +1305,14 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbgppeeraddrfamilyprefixentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1435,6 +1428,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeradd
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1620,14 +1614,6 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Table::get_child_by_name(const st
 {
     if(child_yang_name == "cbgpPeer2Entry")
     {
-        for(auto const & c : cbgppeer2entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry>();
         c->parent = this;
         cbgppeer2entry.push_back(c);
@@ -1640,9 +1626,14 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Table::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Table::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbgppeer2entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1830,6 +1821,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2195,14 +2187,6 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Capstable::get_child_by_name(cons
 {
     if(child_yang_name == "cbgpPeer2CapsEntry")
     {
-        for(auto const & c : cbgppeer2capsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry>();
         c->parent = this;
         cbgppeer2capsentry.push_back(c);
@@ -2215,9 +2199,14 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Capstable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Capstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbgppeer2capsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2309,6 +2298,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2434,14 +2424,6 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilytable::get_child_by_nam
 {
     if(child_yang_name == "cbgpPeer2AddrFamilyEntry")
     {
-        for(auto const & c : cbgppeer2addrfamilyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry>();
         c->parent = this;
         cbgppeer2addrfamilyentry.push_back(c);
@@ -2454,9 +2436,14 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilytable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamilytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbgppeer2addrfamilyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2548,6 +2535,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfam
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2673,14 +2661,6 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::get_child_
 {
     if(child_yang_name == "cbgpPeer2AddrFamilyPrefixEntry")
     {
-        for(auto const & c : cbgppeer2addrfamilyprefixentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry>();
         c->parent = this;
         cbgppeer2addrfamilyprefixentry.push_back(c);
@@ -2693,9 +2673,14 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cbgppeer2addrfamilyprefixentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2815,6 +2800,7 @@ std::shared_ptr<Entity> CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2A
 std::map<std::string, std::shared_ptr<Entity>> CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

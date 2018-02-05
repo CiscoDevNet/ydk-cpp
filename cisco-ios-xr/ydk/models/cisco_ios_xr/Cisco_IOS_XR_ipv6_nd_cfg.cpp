@@ -73,6 +73,7 @@ std::shared_ptr<Entity> Ipv6Neighbor::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbors != nullptr)
     {
         children["neighbors"] = neighbors;
@@ -188,14 +189,6 @@ std::shared_ptr<Entity> Ipv6Neighbor::Neighbors::get_child_by_name(const std::st
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Neighbor::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -208,9 +201,14 @@ std::shared_ptr<Entity> Ipv6Neighbor::Neighbors::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Neighbor::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -302,6 +300,7 @@ std::shared_ptr<Entity> Ipv6Neighbor::Neighbors::Neighbor::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Neighbor::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -884,7 +884,7 @@ class CallHomeEventSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf notification;
         static const ydk::Enum::YLeaf warning;
         static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf major_;
         static const ydk::Enum::YLeaf critical;
         static const ydk::Enum::YLeaf fatal;
         static const ydk::Enum::YLeaf disaster;

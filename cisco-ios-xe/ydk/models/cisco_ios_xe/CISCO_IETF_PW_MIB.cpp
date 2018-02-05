@@ -146,6 +146,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cpwvcobjects != nullptr)
     {
         children["cpwVcObjects"] = cpwvcobjects;
@@ -291,6 +292,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcobjects::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -406,14 +408,6 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvctable::get_child_by_name(const std:
 {
     if(child_yang_name == "cpwVcEntry")
     {
-        for(auto const & c : cpwvcentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWMIB::Cpwvctable::Cpwvcentry>();
         c->parent = this;
         cpwvcentry.push_back(c);
@@ -426,9 +420,14 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvctable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -628,6 +627,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1023,14 +1023,6 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfcurrenttable::get_child_by_name
 {
     if(child_yang_name == "cpwVcPerfCurrentEntry")
     {
-        for(auto const & c : cpwvcperfcurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry>();
         c->parent = this;
         cpwvcperfcurrententry.push_back(c);
@@ -1043,9 +1035,14 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfcurrenttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcperfcurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1137,6 +1134,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrente
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfcurrenttable::Cpwvcperfcurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1262,14 +1260,6 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfintervaltable::get_child_by_nam
 {
     if(child_yang_name == "cpwVcPerfIntervalEntry")
     {
-        for(auto const & c : cpwvcperfintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry>();
         c->parent = this;
         cpwvcperfintervalentry.push_back(c);
@@ -1282,9 +1272,14 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfintervaltable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcperfintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1388,6 +1383,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfinterva
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperfintervaltable::Cpwvcperfintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1543,14 +1539,6 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperftotaltable::get_child_by_name(c
 {
     if(child_yang_name == "cpwVcPerfTotalEntry")
     {
-        for(auto const & c : cpwvcperftotalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry>();
         c->parent = this;
         cpwvcperftotalentry.push_back(c);
@@ -1563,9 +1551,14 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperftotaltable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperftotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcperftotalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1661,6 +1654,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcperftotaltable::Cpwvcperftotalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1796,14 +1790,6 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcidmappingtable::get_child_by_name(c
 {
     if(child_yang_name == "cpwVcIdMappingEntry")
     {
-        for(auto const & c : cpwvcidmappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry>();
         c->parent = this;
         cpwvcidmappingentry.push_back(c);
@@ -1816,9 +1802,14 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcidmappingtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcidmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcidmappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1910,6 +1901,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcidmappingtable::Cpwvcidmappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2035,14 +2027,6 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcpeermappingtable::get_child_by_name
 {
     if(child_yang_name == "cpwVcPeerMappingEntry")
     {
-        for(auto const & c : cpwvcpeermappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry>();
         c->parent = this;
         cpwvcpeermappingentry.push_back(c);
@@ -2055,9 +2039,14 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcpeermappingtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcpeermappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcpeermappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2149,6 +2138,7 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappinge
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::Cpwvcpeermappingtable::Cpwvcpeermappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -60,6 +60,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::Advertise::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -144,6 +145,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(originate != nullptr)
     {
         children["originate"] = originate;
@@ -215,6 +217,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::DefaultInformation::Originate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -297,14 +300,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 {
     if(child_yang_name == "metrics")
     {
-        for(auto const & c : metrics)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::Metric::Metrics>();
         c->parent = this;
         metrics.push_back(c);
@@ -317,9 +312,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : metrics)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -402,6 +402,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::Metric::Metrics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -496,6 +497,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::PrcInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -614,6 +616,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SetOverloadBit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(on_startup != nullptr)
     {
         children["on-startup"] = on_startup;
@@ -711,6 +714,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SetOverloadBit::OnStartup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -799,6 +803,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SetOverloadBit::OnStartup::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -914,6 +919,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SetOverloadBit::OnStartup::WaitForBgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(suppress != nullptr)
     {
         children["suppress"] = suppress;
@@ -989,6 +995,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SetOverloadBit::OnStartup::WaitForBgp::Suppress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1079,6 +1086,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SetOverloadBit::Suppress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1171,14 +1179,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 {
     if(child_yang_name == "level-1-2")
     {
-        for(auto const & c : level_1_2)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SpfInterval::Level12>();
         c->parent = this;
         level_1_2.push_back(c);
@@ -1200,9 +1200,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SpfInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : level_1_2)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(intervals != nullptr)
@@ -1288,6 +1293,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SpfInterval::Level12::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1402,6 +1408,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv4::Topology::SpfInterval::Intervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1670,14 +1677,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 
     if(child_yang_name == "summary-prefix")
     {
-        for(auto const & c : summary_prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SummaryPrefix>();
         c->parent = this;
         summary_prefix.push_back(c);
@@ -1699,6 +1698,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(advertise != nullptr)
     {
         children["advertise"] = advertise;
@@ -1754,9 +1754,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Is
         children["redistribute"] = redistribute;
     }
 
+    count = 0;
     for (auto const & c : summary_prefix)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(table_map != nullptr)
@@ -1890,6 +1894,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Advertise::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1974,6 +1979,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(originate != nullptr)
     {
         children["originate"] = originate;
@@ -2045,6 +2051,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DefaultInformation::Originate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2127,14 +2134,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 {
     if(child_yang_name == "metrics")
     {
-        for(auto const & c : metrics)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Metric::Metrics>();
         c->parent = this;
         metrics.push_back(c);
@@ -2147,9 +2146,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : metrics)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2232,6 +2236,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Metric::Metrics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2326,6 +2331,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::PrcInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2444,6 +2450,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SetOverloadBit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(on_startup != nullptr)
     {
         children["on-startup"] = on_startup;
@@ -2541,6 +2548,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SetOverloadBit::OnStartup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -2629,6 +2637,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SetOverloadBit::OnStartup::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2744,6 +2753,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SetOverloadBit::OnStartup::WaitForBgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(suppress != nullptr)
     {
         children["suppress"] = suppress;
@@ -2819,6 +2829,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SetOverloadBit::OnStartup::WaitForBgp::Suppress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2909,6 +2920,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SetOverloadBit::Suppress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3001,14 +3013,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 {
     if(child_yang_name == "level-1-2")
     {
-        for(auto const & c : level_1_2)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SpfInterval::Level12>();
         c->parent = this;
         level_1_2.push_back(c);
@@ -3030,9 +3034,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SpfInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : level_1_2)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(intervals != nullptr)
@@ -3118,6 +3127,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SpfInterval::Level12::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3232,6 +3242,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SpfInterval::Intervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3332,6 +3343,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3420,14 +3432,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 {
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DistributeList::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -3440,9 +3444,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DistributeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3524,6 +3533,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in != nullptr)
     {
         children["in"] = in;
@@ -3614,6 +3624,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -3850,6 +3861,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -4226,6 +4238,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4302,6 +4315,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4378,6 +4392,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4454,6 +4469,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4539,6 +4555,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Ipv6_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route != nullptr)
     {
         children["route"] = route;
@@ -4619,6 +4636,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Ipv6_::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -4699,6 +4717,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -4770,6 +4789,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4846,6 +4866,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::MultiTopology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4997,14 +5018,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -5049,14 +5062,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 
     if(child_yang_name == "ospf")
     {
-        for(auto const & c : ospf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf>();
         c->parent = this;
         ospf.push_back(c);
@@ -5065,14 +5070,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 
     if(child_yang_name == "rip")
     {
-        for(auto const & c : rip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Rip>();
         c->parent = this;
         rip.push_back(c);
@@ -5083,7 +5080,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_>();
+            static_ = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static>();
         }
         return static_;
     }
@@ -5094,6 +5091,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(application != nullptr)
     {
         children["application"] = application;
@@ -5109,9 +5107,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Is
         children["connected"] = connected;
     }
 
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(isis != nullptr)
@@ -5134,14 +5136,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Is
         children["nemo"] = nemo;
     }
 
+    count = 0;
     for (auto const & c : ospf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : rip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(static_ != nullptr)
@@ -5231,6 +5241,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5367,6 +5378,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5505,6 +5517,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5631,6 +5644,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5769,14 +5783,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 {
     if(child_yang_name == "isis-redistribute")
     {
-        for(auto const & c : isis_redistribute)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute>();
         c->parent = this;
         isis_redistribute.push_back(c);
@@ -5785,14 +5791,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 
     if(child_yang_name == "isis-leak")
     {
-        for(auto const & c : isis_leak)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak>();
         c->parent = this;
         isis_leak.push_back(c);
@@ -5805,14 +5803,23 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Isis_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis_redistribute)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : isis_leak)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5901,6 +5908,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6043,6 +6051,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6175,6 +6184,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6307,6 +6317,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Nd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6439,6 +6450,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Nemo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6589,6 +6601,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -6752,6 +6765,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(internal != nullptr)
     {
         children["internal"] = internal;
@@ -6845,6 +6859,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::Internal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6967,6 +6982,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7099,6 +7115,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::NssaExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7235,6 +7252,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7313,7 +7331,7 @@ bool Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Rip
     return false;
 }
 
-Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::Static_()
+Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::Static()
     :
     levels{YType::enumeration, "levels"},
     metric{YType::uint32, "metric"},
@@ -7324,11 +7342,11 @@ Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_:
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::~Static_()
+Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::has_data() const
+bool Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::has_data() const
 {
     return levels.is_set
 	|| metric.is_set
@@ -7336,7 +7354,7 @@ bool Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Sta
 	|| route_map.is_set;
 }
 
-bool Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::has_operation() const
+bool Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(levels.yfilter)
@@ -7345,14 +7363,14 @@ bool Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Sta
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7365,18 +7383,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Is
 
 }
 
-std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "levels")
     {
@@ -7404,7 +7423,7 @@ void Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Sta
     }
 }
 
-void Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "levels")
     {
@@ -7424,7 +7443,7 @@ void Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Sta
     }
 }
 
-bool Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "levels" || name == "metric" || name == "metric-type" || name == "route-map")
         return true;
@@ -7483,6 +7502,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SummaryPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7573,6 +7593,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::TableMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7673,14 +7694,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Distance::get_child
 {
     if(child_yang_name == "ip-list")
     {
-        for(auto const & c : ip_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Distance::IpList>();
         c->parent = this;
         ip_list.push_back(c);
@@ -7693,9 +7706,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Distance::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ip_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7800,14 +7818,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Distance::IpList::g
 {
     if(child_yang_name == "wildcard-bits")
     {
-        for(auto const & c : wildcard_bits)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Distance::IpList::WildcardBits>();
         c->parent = this;
         wildcard_bits.push_back(c);
@@ -7820,9 +7830,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Distance::IpList::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Distance::IpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wildcard_bits)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7905,6 +7920,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Distance::IpList::W
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Distance::IpList::WildcardBits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8000,6 +8016,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Ip::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route != nullptr)
     {
         children["route"] = route;
@@ -8080,6 +8097,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Ip::Route::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Ip::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -8160,6 +8178,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Ip::Route::Priority
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Ip::Route::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -8231,6 +8250,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Ip::Route::Priority
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Ip::Route::Priority::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8376,14 +8396,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::get_c
 {
     if(child_yang_name == "application")
     {
-        for(auto const & c : application)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Application>();
         c->parent = this;
         application.push_back(c);
@@ -8410,14 +8422,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::get_c
 
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -8480,14 +8484,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::get_c
 
     if(child_yang_name == "ospf")
     {
-        for(auto const & c : ospf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Ospf>();
         c->parent = this;
         ospf.push_back(c);
@@ -8496,14 +8492,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::get_c
 
     if(child_yang_name == "ospfv3")
     {
-        for(auto const & c : ospfv3)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Ospfv3>();
         c->parent = this;
         ospfv3.push_back(c);
@@ -8523,7 +8511,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::get_c
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Static_>();
+            static_ = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Static>();
         }
         return static_;
     }
@@ -8543,9 +8531,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : application)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(bgp != nullptr)
@@ -8558,9 +8551,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Is
         children["connected"] = connected;
     }
 
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(isis != nullptr)
@@ -8593,14 +8590,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Is
         children["odr"] = odr;
     }
 
+    count = 0;
     for (auto const & c : ospf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ospfv3)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(rip != nullptr)
@@ -8700,6 +8705,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Appli
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8857,6 +8863,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Bgp::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clns != nullptr)
     {
         children["clns"] = clns;
@@ -8995,6 +9002,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Bgp::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Bgp::Clns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9113,6 +9121,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Bgp::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Bgp::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9231,6 +9240,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Conne
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9353,6 +9363,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Eigrp
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9481,14 +9492,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Isis_
 {
     if(child_yang_name == "isis-redistribute")
     {
-        for(auto const & c : isis_redistribute)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Isis_::IsisRedistribute>();
         c->parent = this;
         isis_redistribute.push_back(c);
@@ -9497,14 +9500,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Isis_
 
     if(child_yang_name == "ip")
     {
-        for(auto const & c : ip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Isis_::Ip>();
         c->parent = this;
         ip.push_back(c);
@@ -9517,14 +9512,23 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Isis_
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Isis_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis_redistribute)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9606,6 +9610,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Isis_
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Isis_::IsisRedistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -9699,6 +9704,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Isis_
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Isis_::IsisRedistribute::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9821,6 +9827,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Isis_
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Isis_::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9963,6 +9970,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::IsoIg
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::IsoIgrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(area_tag_route_map_container != nullptr)
     {
         children["area-tag-route-map-container"] = area_tag_route_map_container;
@@ -10078,6 +10086,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::IsoIg
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::IsoIgrp::AreaTagRouteMapContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10180,6 +10189,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Lisp:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10308,6 +10318,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Maxim
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::MaximumPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10426,6 +10437,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Mobil
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10544,6 +10556,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Odr::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Odr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10684,6 +10697,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospf:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -10847,6 +10861,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospf:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(internal != nullptr)
     {
         children["internal"] = internal;
@@ -10940,6 +10955,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospf:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::Internal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11062,6 +11078,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospf:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11194,6 +11211,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospf:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospf::Match::NssaExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11344,6 +11362,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospfv
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -11507,6 +11526,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospfv
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(internal != nullptr)
     {
         children["internal"] = internal;
@@ -11600,6 +11620,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospfv
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::Internal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11722,6 +11743,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospfv
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11854,6 +11876,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Ospfv
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Ospfv3::Match::NssaExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11982,6 +12005,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Rip::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12040,7 +12064,7 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Rip::has_leaf_or_child_o
     return false;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Static_::Static_()
+Native::Router::IsisContainer::Isis::Redistribute::Static::Static()
     :
     clns(nullptr) // presence node
 	,ip(nullptr) // presence node
@@ -12049,31 +12073,31 @@ Native::Router::IsisContainer::Isis::Redistribute::Static_::Static_()
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Static_::~Static_()
+Native::Router::IsisContainer::Isis::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Static_::has_data() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Static::has_data() const
 {
     return (clns !=  nullptr && clns->has_data())
 	|| (ip !=  nullptr && ip->has_data());
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Static_::has_operation() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| (clns !=  nullptr && clns->has_operation())
 	|| (ip !=  nullptr && ip->has_operation());
 }
 
-std::string Native::Router::IsisContainer::Isis::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::IsisContainer::Isis::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12082,13 +12106,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Is
 
 }
 
-std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clns")
     {
         if(clns == nullptr)
         {
-            clns = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns>();
+            clns = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Static::Clns>();
         }
         return clns;
     }
@@ -12097,7 +12121,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Stati
     {
         if(ip == nullptr)
         {
-            ip = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip>();
+            ip = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Static::Ip>();
         }
         return ip;
     }
@@ -12105,9 +12129,10 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Stati
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clns != nullptr)
     {
         children["clns"] = clns;
@@ -12121,22 +12146,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Is
     return children;
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::IsisContainer::Isis::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::IsisContainer::Isis::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::IsisContainer::Isis::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clns" || name == "ip")
         return true;
     return false;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::Clns()
+Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::Clns()
     :
     levels{YType::enumeration, "levels"},
     metric{YType::uint32, "metric"},
@@ -12147,11 +12172,11 @@ Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::Clns()
     yang_name = "clns"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::~Clns()
+Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::~Clns()
 {
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::has_data() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::has_data() const
 {
     return levels.is_set
 	|| metric.is_set
@@ -12159,7 +12184,7 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::has_data(
 	|| route_map.is_set;
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::has_operation() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(levels.yfilter)
@@ -12168,14 +12193,14 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::has_opera
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::get_segment_path() const
+std::string Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12188,18 +12213,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Is
 
 }
 
-std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "levels")
     {
@@ -12227,7 +12253,7 @@ void Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::set_value
     }
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "levels")
     {
@@ -12247,14 +12273,14 @@ void Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::set_filte
     }
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "levels" || name == "metric" || name == "metric-type" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::Ip()
+Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::Ip()
     :
     levels{YType::enumeration, "levels"},
     metric{YType::uint32, "metric"},
@@ -12265,11 +12291,11 @@ Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::Ip()
     yang_name = "ip"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::~Ip()
+Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::~Ip()
 {
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::has_data() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::has_data() const
 {
     return levels.is_set
 	|| metric.is_set
@@ -12277,7 +12303,7 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::has_data() 
 	|| route_map.is_set;
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::has_operation() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(levels.yfilter)
@@ -12286,14 +12312,14 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::has_operati
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::get_segment_path() const
+std::string Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12306,18 +12332,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Is
 
 }
 
-std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "levels")
     {
@@ -12345,7 +12372,7 @@ void Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::set_value(c
     }
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "levels")
     {
@@ -12365,7 +12392,7 @@ void Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::set_filter(
     }
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "levels" || name == "metric" || name == "metric-type" || name == "route-map")
         return true;
@@ -12426,14 +12453,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "vrf-nm")
     {
-        for(auto const & c : vrf_nm)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm>();
         c->parent = this;
         vrf_nm.push_back(c);
@@ -12455,9 +12474,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf_nm)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(global != nullptr)
@@ -12662,7 +12686,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_>();
+            static_ = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static>();
         }
         return static_;
     }
@@ -12673,6 +12697,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(application != nullptr)
     {
         children["application"] = application;
@@ -12816,14 +12841,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "appname")
     {
-        for(auto const & c : appname)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Application::Appname>();
         c->parent = this;
         appname.push_back(c);
@@ -12836,9 +12853,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : appname)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12923,6 +12945,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Application::Appname::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13045,14 +13068,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "bp-as-num")
     {
-        for(auto const & c : bp_as_num)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum>();
         c->parent = this;
         bp_as_num.push_back(c);
@@ -13065,9 +13080,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bp_as_num)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13187,6 +13207,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clns != nullptr)
     {
         children["clns"] = clns;
@@ -13325,6 +13346,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Clns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13443,6 +13465,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13561,6 +13584,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13669,14 +13693,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "eigrp-as")
     {
-        for(auto const & c : eigrp_as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs>();
         c->parent = this;
         eigrp_as.push_back(c);
@@ -13689,9 +13705,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eigrp_as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13776,6 +13797,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13897,14 +13919,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "isis-atag")
     {
-        for(auto const & c : isis_atag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag>();
         c->parent = this;
         isis_atag.push_back(c);
@@ -13926,9 +13940,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Isis_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis_atag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(ip != nullptr)
@@ -14016,6 +14035,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -14109,6 +14129,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14227,6 +14248,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Isis_::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14338,14 +14360,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "iso-atag")
     {
-        for(auto const & c : iso_atag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::IsoAtag>();
         c->parent = this;
         iso_atag.push_back(c);
@@ -14367,9 +14381,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : iso_atag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(route_map != nullptr)
@@ -14447,6 +14466,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::IsoAtag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14533,6 +14553,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::RouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14621,6 +14642,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14739,6 +14761,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14847,14 +14870,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "os3-id")
     {
-        for(auto const & c : os3_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id>();
         c->parent = this;
         os3_id.push_back(c);
@@ -14867,9 +14882,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : os3_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14954,6 +14974,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15082,6 +15103,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15140,7 +15162,7 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Rip::has_lea
     return false;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Static_()
+Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Static()
     :
     levels{YType::enumeration, "levels"},
     metric{YType::uint32, "metric"},
@@ -15154,11 +15176,11 @@ Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Static_(
     yang_name = "static"; yang_parent_name = "vrf-nm"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::~Static_()
+Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::~Static()
 {
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::has_data() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::has_data() const
 {
     return levels.is_set
 	|| metric.is_set
@@ -15168,7 +15190,7 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::has
 	|| (ip !=  nullptr && ip->has_data());
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::has_operation() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(levels.yfilter)
@@ -15179,14 +15201,14 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::has
 	|| (ip !=  nullptr && ip->has_operation());
 }
 
-std::string Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::get_segment_path() const
+std::string Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15199,13 +15221,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Is
 
 }
 
-std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clns")
     {
         if(clns == nullptr)
         {
-            clns = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns>();
+            clns = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns>();
         }
         return clns;
     }
@@ -15214,7 +15236,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
     {
         if(ip == nullptr)
         {
-            ip = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip>();
+            ip = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip>();
         }
         return ip;
     }
@@ -15222,9 +15244,10 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clns != nullptr)
     {
         children["clns"] = clns;
@@ -15238,7 +15261,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Is
     return children;
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "levels")
     {
@@ -15266,7 +15289,7 @@ void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::set
     }
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "levels")
     {
@@ -15286,14 +15309,14 @@ void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::set
     }
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clns" || name == "ip" || name == "levels" || name == "metric" || name == "metric-type" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::Clns()
+Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::Clns()
     :
     levels{YType::enumeration, "levels"},
     metric{YType::uint32, "metric"},
@@ -15304,11 +15327,11 @@ Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::Cl
     yang_name = "clns"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::~Clns()
+Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::~Clns()
 {
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::has_data() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::has_data() const
 {
     return levels.is_set
 	|| metric.is_set
@@ -15316,7 +15339,7 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Cln
 	|| route_map.is_set;
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::has_operation() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(levels.yfilter)
@@ -15325,14 +15348,14 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Cln
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::get_segment_path() const
+std::string Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15345,18 +15368,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Is
 
 }
 
-std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "levels")
     {
@@ -15384,7 +15408,7 @@ void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Cln
     }
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "levels")
     {
@@ -15404,14 +15428,14 @@ void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Cln
     }
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "levels" || name == "metric" || name == "metric-type" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::Ip()
+Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::Ip()
     :
     levels{YType::enumeration, "levels"},
     metric{YType::uint32, "metric"},
@@ -15422,11 +15446,11 @@ Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::Ip()
     yang_name = "ip"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::~Ip()
+Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::~Ip()
 {
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::has_data() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::has_data() const
 {
     return levels.is_set
 	|| metric.is_set
@@ -15434,7 +15458,7 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip:
 	|| route_map.is_set;
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::has_operation() const
+bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(levels.yfilter)
@@ -15443,14 +15467,14 @@ bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip:
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::get_segment_path() const
+std::string Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15463,18 +15487,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::IsisContainer::Is
 
 }
 
-std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "levels")
     {
@@ -15502,7 +15527,7 @@ void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip:
     }
 }
 
-void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "levels")
     {
@@ -15522,7 +15547,7 @@ void Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip:
     }
 }
 
-bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "levels" || name == "metric" || name == "metric-type" || name == "route-map")
         return true;
@@ -15704,7 +15729,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_>();
+            static_ = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static>();
         }
         return static_;
     }
@@ -15715,6 +15740,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(application != nullptr)
     {
         children["application"] = application;
@@ -15848,14 +15874,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "appname")
     {
-        for(auto const & c : appname)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Application::Appname>();
         c->parent = this;
         appname.push_back(c);
@@ -15868,9 +15886,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : appname)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15955,6 +15978,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Application::Appname::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16077,14 +16101,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "bp-as-num")
     {
-        for(auto const & c : bp_as_num)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum>();
         c->parent = this;
         bp_as_num.push_back(c);
@@ -16097,9 +16113,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bp_as_num)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16219,6 +16240,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clns != nullptr)
     {
         children["clns"] = clns;
@@ -16357,6 +16379,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Clns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16475,6 +16498,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16593,6 +16617,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16701,14 +16726,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "eigrp-as")
     {
-        for(auto const & c : eigrp_as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs>();
         c->parent = this;
         eigrp_as.push_back(c);
@@ -16721,9 +16738,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eigrp_as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16808,6 +16830,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16929,14 +16952,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "isis-atag")
     {
-        for(auto const & c : isis_atag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag>();
         c->parent = this;
         isis_atag.push_back(c);
@@ -16958,9 +16973,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Isis_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis_atag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(ip != nullptr)
@@ -17048,6 +17068,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -17141,6 +17162,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17259,6 +17281,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Isis_::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17370,14 +17393,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "iso-atag")
     {
-        for(auto const & c : iso_atag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::IsoIgrp::IsoAtag>();
         c->parent = this;
         iso_atag.push_back(c);
@@ -17399,9 +17414,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::IsoIgrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : iso_atag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(route_map != nullptr)
@@ -17479,6 +17499,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::IsoIgrp::IsoAtag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17565,6 +17586,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::IsoIgrp::RouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17653,6 +17675,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17771,6 +17794,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17879,14 +17903,6 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 {
     if(child_yang_name == "os3-id")
     {
-        for(auto const & c : os3_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Ospfv3::Os3Id>();
         c->parent = this;
         os3_id.push_back(c);
@@ -17899,9 +17915,14 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : os3_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17986,6 +18007,7 @@ std::shared_ptr<Entity> Native::Router::IsisContainer::Isis::Redistribute::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Ospfv3::Os3Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18137,10 +18159,10 @@ const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redi
 const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Rip::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
 const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Rip::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
 
-const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::MetricType::external {0, "external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::MetricType::internal {1, "internal"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static_::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::MetricType::external {0, "external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::MetricType::internal {1, "internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::Redistribute::Static::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
 
 const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SummaryPrefix::Levels::level_1 {0, "level-1"};
 const Enum::YLeaf Native::Router::IsisContainer::Isis::AddressFamily::Ipv6::SummaryPrefix::Levels::level_1_2 {1, "level-1-2"};
@@ -18252,15 +18274,15 @@ const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Rip::Metric
 const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Rip::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
 const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Rip::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
 
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::MetricType::external {0, "external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::MetricType::internal {1, "internal"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static_::Clns::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::MetricType::external {0, "external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::MetricType::internal {1, "internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static::Clns::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
 
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::MetricType::external {0, "external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::MetricType::internal {1, "internal"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static_::Ip::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::MetricType::external {0, "external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::MetricType::internal {1, "internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Static::Ip::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
 
 const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Application::Appname::MetricType::external {0, "external"};
 const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Application::Appname::MetricType::internal {1, "internal"};
@@ -18322,20 +18344,20 @@ const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm:
 const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Rip::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
 const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Rip::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
 
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::MetricType::external {0, "external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::MetricType::internal {1, "internal"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::MetricType::external {0, "external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::MetricType::internal {1, "internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
 
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::MetricType::external {0, "external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::MetricType::internal {1, "internal"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::MetricType::external {0, "external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::MetricType::internal {1, "internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Clns::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
 
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::MetricType::external {0, "external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::MetricType::internal {1, "internal"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
-const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::MetricType::external {0, "external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::MetricType::internal {1, "internal"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::MetricType::rib_metric_as_external {2, "rib-metric-as-external"};
+const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::VrfNm::Static::Ip::MetricType::rib_metric_as_internal {3, "rib-metric-as-internal"};
 
 const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Application::Appname::MetricType::external {0, "external"};
 const Enum::YLeaf Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Application::Appname::MetricType::internal {1, "internal"};

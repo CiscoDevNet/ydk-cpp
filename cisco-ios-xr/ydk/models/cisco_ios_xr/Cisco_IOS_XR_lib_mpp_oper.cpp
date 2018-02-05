@@ -91,6 +91,7 @@ std::shared_ptr<Entity> ManagementPlaneProtection::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(outband != nullptr)
     {
         children["outband"] = outband;
@@ -221,6 +222,7 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf != nullptr)
     {
         children["vrf"] = vrf;
@@ -304,6 +306,7 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Vrf::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -389,14 +392,6 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::get_chil
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ManagementPlaneProtection::Outband::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -409,9 +404,14 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::get_chil
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -493,14 +493,6 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interfac
 {
     if(child_yang_name == "protocol")
     {
-        for(auto const & c : protocol)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol>();
         c->parent = this;
         protocol.push_back(c);
@@ -513,9 +505,14 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interfac
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -604,14 +601,6 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interfac
 {
     if(child_yang_name == "peer-address")
     {
-        for(auto const & c : peer_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress>();
         c->parent = this;
         peer_address.push_back(c);
@@ -624,9 +613,14 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interfac
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -723,6 +717,7 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Outband::Interfaces::Interfac
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -835,6 +830,7 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -915,14 +911,6 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::get_child
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ManagementPlaneProtection::Inband::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -935,9 +923,14 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::get_child
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1019,14 +1012,6 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface
 {
     if(child_yang_name == "protocol")
     {
-        for(auto const & c : protocol)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol>();
         c->parent = this;
         protocol.push_back(c);
@@ -1039,9 +1024,14 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1130,14 +1120,6 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface
 {
     if(child_yang_name == "peer-address")
     {
-        for(auto const & c : peer_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress>();
         c->parent = this;
         peer_address.push_back(c);
@@ -1150,9 +1132,14 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1249,6 +1236,7 @@ std::shared_ptr<Entity> ManagementPlaneProtection::Inband::Interfaces::Interface
 std::map<std::string, std::shared_ptr<Entity>> ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -14,7 +14,7 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Otv::Site::Default_::Otv_::Isis : public ydk::Entity
+class Native::Otv::Site::Default::Otv_::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -33,18 +33,18 @@ class Native::Otv::Site::Default_::Otv_::Isis : public ydk::Entity
         ydk::YLeaf bfd; //type: empty
         ydk::YLeaf hello_multiplier; //type: uint16
         ydk::YLeaf priority; //type: uint8
-        class Authentication; //type: Native::Otv::Site::Default_::Otv_::Isis::Authentication
-        class Hello; //type: Native::Otv::Site::Default_::Otv_::Isis::Hello
-        class HelloInterval; //type: Native::Otv::Site::Default_::Otv_::Isis::HelloInterval
+        class Authentication; //type: Native::Otv::Site::Default::Otv_::Isis::Authentication
+        class Hello; //type: Native::Otv::Site::Default::Otv_::Isis::Hello
+        class HelloInterval; //type: Native::Otv::Site::Default::Otv_::Isis::HelloInterval
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default_::Otv_::Isis::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default_::Otv_::Isis::Hello> hello;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default_::Otv_::Isis::HelloInterval> hello_interval;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default::Otv_::Isis::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default::Otv_::Isis::Hello> hello;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default::Otv_::Isis::HelloInterval> hello_interval;
         
-}; // Native::Otv::Site::Default_::Otv_::Isis
+}; // Native::Otv::Site::Default::Otv_::Isis
 
 
-class Native::Otv::Site::Default_::Otv_::Isis::Authentication : public ydk::Entity
+class Native::Otv::Site::Default::Otv_::Isis::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -65,10 +65,10 @@ class Native::Otv::Site::Default_::Otv_::Isis::Authentication : public ydk::Enti
         ydk::YLeaf send_only; //type: empty
         class Mode;
 
-}; // Native::Otv::Site::Default_::Otv_::Isis::Authentication
+}; // Native::Otv::Site::Default::Otv_::Isis::Authentication
 
 
-class Native::Otv::Site::Default_::Otv_::Isis::Hello : public ydk::Entity
+class Native::Otv::Site::Default::Otv_::Isis::Hello : public ydk::Entity
 {
     public:
         Hello();
@@ -84,14 +84,14 @@ class Native::Otv::Site::Default_::Otv_::Isis::Hello : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Padding; //type: Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding
+        class Padding; //type: Native::Otv::Site::Default::Otv_::Isis::Hello::Padding
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding> padding; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Otv::Site::Default::Otv_::Isis::Hello::Padding> padding; // presence node
         
-}; // Native::Otv::Site::Default_::Otv_::Isis::Hello
+}; // Native::Otv::Site::Default::Otv_::Isis::Hello
 
 
-class Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding : public ydk::Entity
+class Native::Otv::Site::Default::Otv_::Isis::Hello::Padding : public ydk::Entity
 {
     public:
         Padding();
@@ -109,10 +109,10 @@ class Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding : public ydk::Enti
 
         ydk::YLeaf always; //type: empty
 
-}; // Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding
+}; // Native::Otv::Site::Default::Otv_::Isis::Hello::Padding
 
 
-class Native::Otv::Site::Default_::Otv_::Isis::HelloInterval : public ydk::Entity
+class Native::Otv::Site::Default::Otv_::Isis::HelloInterval : public ydk::Entity
 {
     public:
         HelloInterval();
@@ -131,7 +131,7 @@ class Native::Otv::Site::Default_::Otv_::Isis::HelloInterval : public ydk::Entit
         ydk::YLeaf value_; //type: uint16
         ydk::YLeaf minimal; //type: empty
 
-}; // Native::Otv::Site::Default_::Otv_::Isis::HelloInterval
+}; // Native::Otv::Site::Default::Otv_::Isis::HelloInterval
 
 
 class Native::Otv::Site::Otv_ : public ydk::Entity
@@ -951,7 +951,7 @@ class Native::SnmpServer::Community : public ydk::Entity
         ydk::YLeaf ro; //type: empty
         ydk::YLeaf rw; //type: empty
         ydk::YLeaf ipv6; //type: string
-        ydk::YLeaf access_list_name; //type: one of string, uint16
+        ydk::YLeaf access_list_name; //type: one of uint16, string
 
 }; // Native::SnmpServer::Community
 
@@ -1771,7 +1771,7 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Alarms : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf alarm_type; //type: one of uint8, enumeration
+        ydk::YLeaf alarm_type; //type: one of enumeration, uint8
         class AlarmType;
 
 }; // Native::SnmpServer::Enable::EnableChoice::Traps::Alarms
@@ -3827,7 +3827,7 @@ class Native::SnmpServer::Engineid : public ydk::Entity
         
 }; // Native::SnmpServer::Engineid
 
-class Native::Otv::Site::Default_::Otv_::Isis::Authentication::Mode : public ydk::Enum
+class Native::Otv::Site::Default::Otv_::Isis::Authentication::Mode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf md5;

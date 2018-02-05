@@ -61,14 +61,6 @@ std::shared_ptr<Entity> LogicalChannels::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "channel")
     {
-        for(auto const & c : channel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LogicalChannels::Channel>();
         c->parent = this;
         channel.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> LogicalChannels::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : channel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -243,6 +240,7 @@ std::shared_ptr<Entity> LogicalChannels::Channel::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(logical_channel_assignments != nullptr)
     {
         children["logical-channel-assignments"] = logical_channel_assignments;
@@ -411,14 +409,6 @@ std::shared_ptr<Entity> LogicalChannels::Channel::LogicalChannelAssignments::get
 {
     if(child_yang_name == "logical-channel-assignment")
     {
-        for(auto const & c : logical_channel_assignment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment>();
         c->parent = this;
         logical_channel_assignment.push_back(c);
@@ -431,9 +421,14 @@ std::shared_ptr<Entity> LogicalChannels::Channel::LogicalChannelAssignments::get
 std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::LogicalChannelAssignments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : logical_channel_assignment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -522,6 +517,7 @@ std::shared_ptr<Entity> LogicalChannels::Channel::LogicalChannelAssignments::Log
 std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -656,6 +652,7 @@ std::shared_ptr<Entity> LogicalChannels::Channel::Otn::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -754,14 +751,6 @@ std::shared_ptr<Entity> OpticalChannels::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "optical-channel")
     {
-        for(auto const & c : optical_channel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OpticalChannels::OpticalChannel>();
         c->parent = this;
         optical_channel.push_back(c);
@@ -774,9 +763,14 @@ std::shared_ptr<Entity> OpticalChannels::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> OpticalChannels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : optical_channel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -885,6 +879,7 @@ std::shared_ptr<Entity> OpticalChannels::OpticalChannel::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> OpticalChannels::OpticalChannel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

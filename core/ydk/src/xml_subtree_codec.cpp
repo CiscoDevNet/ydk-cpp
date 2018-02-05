@@ -86,7 +86,7 @@ static const path::SchemaNode* find_child_by_name(const path::SchemaNode & paren
     if(s.size()==0)
     {
         YLOG_ERROR("Could not find node '{}'", name);
-        throw YCPPServiceProviderError{"Could not find node " + name};
+        throw YServiceProviderError{"Could not find node " + name};
     }
     return s[0];
 }
@@ -200,7 +200,7 @@ static string to_string(xmlDocPtr doc, xmlNodePtr root)
     else
     {
         YLOG_ERROR("Error creating the xml buffer");
-        throw YCPPServiceProviderError{"Error creating the xml buffer"};
+        throw YServiceProviderError{"Error creating the xml buffer"};
     }
     return str;
 }
@@ -214,7 +214,7 @@ std::shared_ptr<Entity> XmlSubtreeCodec::decode(const std::string & payload, std
     xmlNodePtr root = xmlDocGetRootElement(doc);
     if(entity->yang_name != to_string(root->name))
     {
-        throw YCPPServiceProviderError{"Wrong entity"};
+        throw YServiceProviderError{"Wrong entity"};
     }
     decode_xml(doc, root->children, *entity, nullptr, "");
     return entity;
@@ -303,7 +303,7 @@ static void check_payload_to_raise_exception(Entity & entity, const xmlChar * na
     {
         ostringstream os;os<<"Wrong payload! <" << current_node_name << "> not found";
         YLOG_ERROR(os.str().c_str());
-        throw YCPPServiceProviderError{os.str()};
+        throw YServiceProviderError{os.str()};
     }
 }
 

@@ -179,7 +179,7 @@ ydk::path::ValidationService::validate(const ydk::path::DataNode & dn, ydk::Vali
     int rc = lyd_validate(&lynode,ly_option, NULL);
     if(rc) {
         YLOG_ERROR("Data validation failed: {}. Path: {}", ly_errmsg(), ly_errpath());
-        throw(ydk::YCPPModelError{""});
+        throw(ydk::YModelError{""});
     }
 
 }
@@ -223,7 +223,7 @@ ydk::path::Codec::encode(const ydk::path::DataNode& dn, ydk::EncodingFormat form
     m_node = impl.m_node;
 
     if(m_node == nullptr){
-        throw(YCPPInvalidArgumentError{"No data in data node"});
+        throw(YInvalidArgumentError{"No data in data node"});
     }
     char* buffer;
 
@@ -233,7 +233,7 @@ ydk::path::Codec::encode(const ydk::path::DataNode& dn, ydk::EncodingFormat form
             std::ostringstream os;
             os << "Could not encode datanode: "<< m_node->schema->name;
             YLOG_ERROR(os.str().c_str());
-            throw(YCPPCoreError{os.str()});
+            throw(YCoreError{os.str()});
         }
         ret = buffer;
         std::free(buffer);
@@ -291,7 +291,7 @@ ydk::path::Codec::decode(RootSchemaNode & root_schema, const std::string& buffer
     if( root == nullptr || ly_errno )
     {
         YLOG_ERROR( "Parsing failed with message {}", ly_errmsg());
-        throw(YCPPCodecError{YCPPCodecError::Error::XML_INVAL});
+        throw(YCodecError{YCodecError::Error::XML_INVAL});
     }
     return perform_decode(rs_impl, root);
 }
@@ -302,7 +302,7 @@ static const struct lyd_node* create_ly_rpc_node(ydk::path::RootSchemaNodeImpl &
     if( rpc == nullptr || ly_errno )
     {
         ydk::YLOG_ERROR( "Parsing failed with message {}", ly_errmsg());
-        throw(ydk::path::YCPPCodecError{ydk::path::YCPPCodecError::Error::XML_INVAL});
+        throw(ydk::path::YCodecError{ydk::path::YCodecError::Error::XML_INVAL});
     }
     return rpc;
 }
@@ -320,7 +320,7 @@ ydk::path::Codec::decode_rpc_output(RootSchemaNode & root_schema, const std::str
     if( root == nullptr || ly_errno )
     {
         YLOG_ERROR( "Parsing failed with message {}", ly_errmsg());
-        throw(YCPPCodecError{YCPPCodecError::Error::XML_INVAL});
+        throw(YCodecError{YCodecError::Error::XML_INVAL});
     }
 
     return perform_decode(rs_impl, root);

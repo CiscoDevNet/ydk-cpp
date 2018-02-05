@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Coherent::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Coherent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Coherent::Nodes::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Coherent::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Coherent::Nodes::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -324,6 +322,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(coherent_time_stats != nullptr)
     {
         children["coherent-time-stats"] = coherent_time_stats;
@@ -499,14 +498,6 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::get_child_by_n
 
     if(child_yang_name == "port-stat")
     {
-        for(auto const & c : port_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Coherent::Nodes::Node::CoherentTimeStats::PortStat>();
         c->parent = this;
         port_stat.push_back(c);
@@ -519,6 +510,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(opts_ea_bulk_create != nullptr)
     {
         children["opts-ea-bulk-create"] = opts_ea_bulk_create;
@@ -539,9 +531,13 @@ std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTi
         children["dsp-ea-bulk-update"] = dsp_ea_bulk_update;
     }
 
+    count = 0;
     for (auto const & c : port_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -682,6 +678,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCrea
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -800,6 +797,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpda
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -918,6 +916,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreat
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1036,6 +1035,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdat
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1254,6 +1254,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(laser_on_stats != nullptr)
     {
         children["laser-on-stats"] = laser_on_stats;
@@ -1427,6 +1428,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::Lase
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1545,6 +1547,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::Lase
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1663,6 +1666,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOp
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1781,6 +1785,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::Txpw
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1899,6 +1904,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::Cdmi
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2017,6 +2023,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::Cdma
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2135,6 +2142,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::Traf
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2247,14 +2255,6 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Devicemapping::get_child_by_name(
 {
     if(child_yang_name == "dev-map")
     {
-        for(auto const & c : dev_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Coherent::Nodes::Node::Devicemapping::DevMap>();
         c->parent = this;
         dev_map.push_back(c);
@@ -2267,9 +2267,14 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Devicemapping::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Devicemapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dev_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2356,6 +2361,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Devicemapping::DevMap::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Devicemapping::DevMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2550,14 +2556,6 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::get_child_by_name
 {
     if(child_yang_name == "port-data")
     {
-        for(auto const & c : port_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Coherent::Nodes::Node::Coherenthealth::PortData>();
         c->parent = this;
         port_data.push_back(c);
@@ -2570,9 +2568,14 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : port_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3092,6 +3095,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ctp_info != nullptr)
     {
         children["ctp-info"] = ctp_info;
@@ -3686,6 +3690,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3884,14 +3889,6 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::Interfa
 {
     if(child_yang_name == "eth-data")
     {
-        for(auto const & c : eth_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData>();
         c->parent = this;
         eth_data.push_back(c);
@@ -3904,9 +3901,14 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::Interfa
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eth_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3991,6 +3993,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::Interfa
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4113,14 +4116,6 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::PortModeAllInfo::get_child_by_nam
 {
     if(child_yang_name == "portmode-entry")
     {
-        for(auto const & c : portmode_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry>();
         c->parent = this;
         portmode_entry.push_back(c);
@@ -4133,9 +4128,14 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::PortModeAllInfo::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::PortModeAllInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : portmode_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4230,6 +4230,7 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry::g
 std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

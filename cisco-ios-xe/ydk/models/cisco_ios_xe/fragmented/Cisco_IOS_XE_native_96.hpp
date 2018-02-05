@@ -2441,10 +2441,10 @@ class Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid : public ydk::Entity
 
         ydk::YLeaf mem_vcid; //type: uint32
         class Encapsulation; //type: Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Encapsulation
-        class Template_; //type: Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template_
+        class Template; //type: Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Encapsulation> encapsulation; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template_> template_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template> template_; // presence node
         
 }; // Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid
 
@@ -2470,11 +2470,11 @@ class Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Encapsulation : pub
 }; // Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Encapsulation
 
 
-class Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template_ : public ydk::Entity
+class Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2488,7 +2488,7 @@ class Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template_ : public 
 
         ydk::YLeaf template_; //type: string
 
-}; // Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template_
+}; // Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid::Template
 
 
 class Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation : public ydk::Entity
@@ -2667,18 +2667,18 @@ class Native::BridgeDomain::Otv : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::BridgeDomain::Otv::Default_
+        class Default; //type: Native::BridgeDomain::Otv::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Otv::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Otv::Default> default_;
         
 }; // Native::BridgeDomain::Otv
 
 
-class Native::BridgeDomain::Otv::Default_ : public ydk::Entity
+class Native::BridgeDomain::Otv::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2693,7 +2693,7 @@ class Native::BridgeDomain::Otv::Default_ : public ydk::Entity
 
         ydk::YLeaf age_time; //type: uint16
 
-}; // Native::BridgeDomain::Otv::Default_
+}; // Native::BridgeDomain::Otv::Default
 
 
 class Native::BridgeDomain::Parameterized : public ydk::Entity
@@ -3135,10 +3135,10 @@ class Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid : publ
 
         ydk::YLeaf mem_vcid; //type: uint32
         class Encapsulation; //type: Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Encapsulation
-        class Template_; //type: Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template_
+        class Template; //type: Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Encapsulation> encapsulation; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template_> template_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template> template_; // presence node
         
 }; // Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid
 
@@ -3164,11 +3164,11 @@ class Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Encap
 }; // Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Encapsulation
 
 
-class Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template_ : public ydk::Entity
+class Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3182,7 +3182,7 @@ class Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Templ
 
         ydk::YLeaf template_; //type: string
 
-}; // Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template_
+}; // Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid::Template
 
 
 class Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation : public ydk::Entity
@@ -3550,14 +3550,14 @@ class Native::Crypto::DynamicMap : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf sequence; //type: uint16
         ydk::YLeaf description; //type: string
-        class Default_; //type: Native::Crypto::DynamicMap::Default_
+        class Default; //type: Native::Crypto::DynamicMap::Default
         class Dialer; //type: Native::Crypto::DynamicMap::Dialer
         class Match; //type: Native::Crypto::DynamicMap::Match
         class Qos; //type: Native::Crypto::DynamicMap::Qos
         class ReverseRoute; //type: Native::Crypto::DynamicMap::ReverseRoute
         class Set; //type: Native::Crypto::DynamicMap::Set
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Dialer> dialer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Match> match;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Qos> qos;
@@ -3567,11 +3567,11 @@ class Native::Crypto::DynamicMap : public ydk::Entity
 }; // Native::Crypto::DynamicMap
 
 
-class Native::Crypto::DynamicMap::Default_ : public ydk::Entity
+class Native::Crypto::DynamicMap::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3584,22 +3584,22 @@ class Native::Crypto::DynamicMap::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf description; //type: empty
-        class Dialer; //type: Native::Crypto::DynamicMap::Default_::Dialer
-        class Match; //type: Native::Crypto::DynamicMap::Default_::Match
-        class Qos; //type: Native::Crypto::DynamicMap::Default_::Qos
-        class ReverseRoute; //type: Native::Crypto::DynamicMap::Default_::ReverseRoute
-        class Set; //type: Native::Crypto::DynamicMap::Default_::Set
+        class Dialer; //type: Native::Crypto::DynamicMap::Default::Dialer
+        class Match; //type: Native::Crypto::DynamicMap::Default::Match
+        class Qos; //type: Native::Crypto::DynamicMap::Default::Qos
+        class ReverseRoute; //type: Native::Crypto::DynamicMap::Default::ReverseRoute
+        class Set; //type: Native::Crypto::DynamicMap::Default::Set
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Dialer> dialer;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Match> match;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Qos> qos;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::ReverseRoute> reverse_route; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set> set;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Dialer> dialer;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Match> match;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Qos> qos;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::ReverseRoute> reverse_route; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set> set;
         
-}; // Native::Crypto::DynamicMap::Default_
+}; // Native::Crypto::DynamicMap::Default
 
 
-class Native::Crypto::DynamicMap::Default_::Dialer : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Dialer : public ydk::Entity
 {
     public:
         Dialer();
@@ -3617,10 +3617,10 @@ class Native::Crypto::DynamicMap::Default_::Dialer : public ydk::Entity
 
         ydk::YLeaf pre_classify; //type: empty
 
-}; // Native::Crypto::DynamicMap::Default_::Dialer
+}; // Native::Crypto::DynamicMap::Default::Dialer
 
 
-class Native::Crypto::DynamicMap::Default_::Match : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Match : public ydk::Entity
 {
     public:
         Match();
@@ -3638,10 +3638,10 @@ class Native::Crypto::DynamicMap::Default_::Match : public ydk::Entity
 
         ydk::YLeaf address; //type: empty
 
-}; // Native::Crypto::DynamicMap::Default_::Match
+}; // Native::Crypto::DynamicMap::Default::Match
 
 
-class Native::Crypto::DynamicMap::Default_::Qos : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Qos : public ydk::Entity
 {
     public:
         Qos();
@@ -3659,10 +3659,10 @@ class Native::Crypto::DynamicMap::Default_::Qos : public ydk::Entity
 
         ydk::YLeaf pre_classify; //type: empty
 
-}; // Native::Crypto::DynamicMap::Default_::Qos
+}; // Native::Crypto::DynamicMap::Default::Qos
 
 
-class Native::Crypto::DynamicMap::Default_::ReverseRoute : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::ReverseRoute : public ydk::Entity
 {
     public:
         ReverseRoute();
@@ -3679,10 +3679,10 @@ class Native::Crypto::DynamicMap::Default_::ReverseRoute : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::DynamicMap::Default_::ReverseRoute
+}; // Native::Crypto::DynamicMap::Default::ReverseRoute
 
 
-class Native::Crypto::DynamicMap::Default_::Set : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set : public ydk::Entity
 {
     public:
         Set();
@@ -3703,24 +3703,24 @@ class Native::Crypto::DynamicMap::Default_::Set : public ydk::Entity
         ydk::YLeaf ikev2_profile; //type: string
         ydk::YLeaf isakmp_profile; //type: string
         ydk::YLeaf transform_set; //type: empty
-        class Ip; //type: Native::Crypto::DynamicMap::Default_::Set::Ip
-        class Nat; //type: Native::Crypto::DynamicMap::Default_::Set::Nat
-        class PeerContainer; //type: Native::Crypto::DynamicMap::Default_::Set::PeerContainer
-        class Pfs; //type: Native::Crypto::DynamicMap::Default_::Set::Pfs
-        class ReverseRoute; //type: Native::Crypto::DynamicMap::Default_::Set::ReverseRoute
-        class SecurityAssociation; //type: Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation
+        class Ip; //type: Native::Crypto::DynamicMap::Default::Set::Ip
+        class Nat; //type: Native::Crypto::DynamicMap::Default::Set::Nat
+        class PeerContainer; //type: Native::Crypto::DynamicMap::Default::Set::PeerContainer
+        class Pfs; //type: Native::Crypto::DynamicMap::Default::Set::Pfs
+        class ReverseRoute; //type: Native::Crypto::DynamicMap::Default::Set::ReverseRoute
+        class SecurityAssociation; //type: Native::Crypto::DynamicMap::Default::Set::SecurityAssociation
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::Ip> ip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::Nat> nat;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::PeerContainer> peer_container;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::Pfs> pfs; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::ReverseRoute> reverse_route; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation> security_association;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::Nat> nat;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::PeerContainer> peer_container;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::Pfs> pfs; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::ReverseRoute> reverse_route; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::SecurityAssociation> security_association;
         
-}; // Native::Crypto::DynamicMap::Default_::Set
+}; // Native::Crypto::DynamicMap::Default::Set
 
 
-class Native::Crypto::DynamicMap::Default_::Set::Ip : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -3736,11 +3736,11 @@ class Native::Crypto::DynamicMap::Default_::Set::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of string, uint16
+        ydk::YLeaf access_group; //type: one of uint16, string
         ydk::YLeaf direction; //type: Direction
         class Direction;
 
-}; // Native::Crypto::DynamicMap::Default_::Set::Ip
+}; // Native::Crypto::DynamicMap::Default::Set::Ip
 
 class Native::Monitor::Session::Source::Interface::Direction : public ydk::Enum
 {
@@ -3883,7 +3883,7 @@ class Native::AlarmContact::Trigger : public ydk::Enum
 
 };
 
-class Native::Crypto::DynamicMap::Default_::Set::Ip::Direction : public ydk::Enum
+class Native::Crypto::DynamicMap::Default::Set::Ip::Direction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf in;

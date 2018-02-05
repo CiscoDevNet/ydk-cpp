@@ -13,7 +13,7 @@ namespace Cisco_IOS_XR_shellutil_oper {
 
 SystemTime::SystemTime()
     :
-    clock_(std::make_shared<SystemTime::Clock_>())
+    clock_(std::make_shared<SystemTime::Clock>())
 	,uptime(std::make_shared<SystemTime::Uptime>())
 {
     clock_->parent = this;
@@ -61,7 +61,7 @@ std::shared_ptr<Entity> SystemTime::get_child_by_name(const std::string & child_
     {
         if(clock_ == nullptr)
         {
-            clock_ = std::make_shared<SystemTime::Clock_>();
+            clock_ = std::make_shared<SystemTime::Clock>();
         }
         return clock_;
     }
@@ -81,6 +81,7 @@ std::shared_ptr<Entity> SystemTime::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> SystemTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clock_ != nullptr)
     {
         children["clock"] = clock_;
@@ -134,7 +135,7 @@ bool SystemTime::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-SystemTime::Clock_::Clock_()
+SystemTime::Clock::Clock()
     :
     year{YType::uint16, "year"},
     month{YType::uint8, "month"},
@@ -151,11 +152,11 @@ SystemTime::Clock_::Clock_()
     yang_name = "clock"; yang_parent_name = "system-time"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-SystemTime::Clock_::~Clock_()
+SystemTime::Clock::~Clock()
 {
 }
 
-bool SystemTime::Clock_::has_data() const
+bool SystemTime::Clock::has_data() const
 {
     return year.is_set
 	|| month.is_set
@@ -169,7 +170,7 @@ bool SystemTime::Clock_::has_data() const
 	|| time_source.is_set;
 }
 
-bool SystemTime::Clock_::has_operation() const
+bool SystemTime::Clock::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(year.yfilter)
@@ -184,21 +185,21 @@ bool SystemTime::Clock_::has_operation() const
 	|| ydk::is_set(time_source.yfilter);
 }
 
-std::string SystemTime::Clock_::get_absolute_path() const
+std::string SystemTime::Clock::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-shellutil-oper:system-time/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SystemTime::Clock_::get_segment_path() const
+std::string SystemTime::Clock::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SystemTime::Clock_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SystemTime::Clock::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -217,18 +218,19 @@ std::vector<std::pair<std::string, LeafData> > SystemTime::Clock_::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> SystemTime::Clock_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SystemTime::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemTime::Clock_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SystemTime::Clock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void SystemTime::Clock_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SystemTime::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "year")
     {
@@ -292,7 +294,7 @@ void SystemTime::Clock_::set_value(const std::string & value_path, const std::st
     }
 }
 
-void SystemTime::Clock_::set_filter(const std::string & value_path, YFilter yfilter)
+void SystemTime::Clock::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "year")
     {
@@ -336,7 +338,7 @@ void SystemTime::Clock_::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool SystemTime::Clock_::has_leaf_or_child_of_name(const std::string & name) const
+bool SystemTime::Clock::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "year" || name == "month" || name == "day" || name == "hour" || name == "minute" || name == "second" || name == "millisecond" || name == "wday" || name == "time-zone" || name == "time-source")
         return true;
@@ -402,6 +404,7 @@ std::shared_ptr<Entity> SystemTime::Uptime::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> SystemTime::Uptime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

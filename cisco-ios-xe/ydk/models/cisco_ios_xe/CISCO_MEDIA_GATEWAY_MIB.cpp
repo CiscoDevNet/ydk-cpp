@@ -159,6 +159,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cmediagwtable != nullptr)
     {
         children["cMediaGwTable"] = cmediagwtable;
@@ -299,14 +300,6 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwtable::get_child_by_name(c
 {
     if(child_yang_name == "cMediaGwEntry")
     {
-        for(auto const & c : cmediagwentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry>();
         c->parent = this;
         cmediagwentry.push_back(c);
@@ -319,9 +312,14 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmediagwentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -433,6 +431,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -608,14 +607,6 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::get_child
 {
     if(child_yang_name == "cmgwSignalProtocolEntry")
     {
-        for(auto const & c : cmgwsignalprotocolentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry>();
         c->parent = this;
         cmgwsignalprotocolentry.push_back(c);
@@ -628,9 +619,14 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmgwsignalprotocolentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -734,6 +730,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsigna
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -889,14 +886,6 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::get_child_b
 {
     if(child_yang_name == "cMediaGwIpConfigEntry")
     {
-        for(auto const & c : cmediagwipconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry>();
         c->parent = this;
         cmediagwipconfigentry.push_back(c);
@@ -909,9 +898,14 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmediagwipconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1027,6 +1021,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipc
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1212,14 +1207,6 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::get
 {
     if(child_yang_name == "cMediaGwDomainNameConfigEntry")
     {
-        for(auto const & c : cmediagwdomainnameconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry>();
         c->parent = this;
         cmediagwdomainnameconfigentry.push_back(c);
@@ -1232,9 +1219,14 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmediagwdomainnameconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1326,6 +1318,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cme
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1451,14 +1444,6 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::get_chil
 {
     if(child_yang_name == "cMediaGwDnsIpConfigEntry")
     {
-        for(auto const & c : cmediagwdnsipconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry>();
         c->parent = this;
         cmediagwdnsipconfigentry.push_back(c);
@@ -1471,9 +1456,14 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmediagwdnsipconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1569,6 +1559,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagw
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1704,14 +1695,6 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwliftable::get_child_by_name(co
 {
     if(child_yang_name == "cmgwLifEntry")
     {
-        for(auto const & c : cmgwlifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry>();
         c->parent = this;
         cmgwlifentry.push_back(c);
@@ -1724,9 +1707,14 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwliftable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwliftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmgwlifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1814,6 +1802,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1929,14 +1918,6 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::ge
 {
     if(child_yang_name == "cMediaGwCallControlConfigEntry")
     {
-        for(auto const & c : cmediagwcallcontrolconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry>();
         c->parent = this;
         cmediagwcallcontrolconfigentry.push_back(c);
@@ -1949,9 +1930,14 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmediagwcallcontrolconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2099,6 +2085,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cm
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2364,14 +2351,6 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::get_child_b
 {
     if(child_yang_name == "cMediaGwRscStatsEntry")
     {
-        for(auto const & c : cmediagwrscstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry>();
         c->parent = this;
         cmediagwrscstatsentry.push_back(c);
@@ -2384,9 +2363,14 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmediagwrscstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2482,6 +2466,7 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrsc
 std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

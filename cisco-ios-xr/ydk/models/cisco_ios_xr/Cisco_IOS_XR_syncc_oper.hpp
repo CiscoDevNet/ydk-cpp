@@ -81,11 +81,11 @@ class TimingController::Nodes::Node : public ydk::Entity
 
         ydk::YLeaf node_name; //type: string
         class State; //type: TimingController::Nodes::Node::State
-        class Clock_; //type: TimingController::Nodes::Node::Clock_
+        class Clock; //type: TimingController::Nodes::Node::Clock
         class TimingSource; //type: TimingController::Nodes::Node::TimingSource
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::State> state;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::Clock_> clock_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::Clock> clock_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::TimingSource> timing_source;
         
 }; // TimingController::Nodes::Node
@@ -151,11 +151,11 @@ class TimingController::Nodes::Node::State::SynccInstance : public ydk::Entity
 }; // TimingController::Nodes::Node::State::SynccInstance
 
 
-class TimingController::Nodes::Node::Clock_ : public ydk::Entity
+class TimingController::Nodes::Node::Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -167,14 +167,14 @@ class TimingController::Nodes::Node::Clock_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SynccInstance; //type: TimingController::Nodes::Node::Clock_::SynccInstance
+        class SynccInstance; //type: TimingController::Nodes::Node::Clock::SynccInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::Clock_::SynccInstance> > syncc_instance;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::Clock::SynccInstance> > syncc_instance;
         
-}; // TimingController::Nodes::Node::Clock_
+}; // TimingController::Nodes::Node::Clock
 
 
-class TimingController::Nodes::Node::Clock_::SynccInstance : public ydk::Entity
+class TimingController::Nodes::Node::Clock::SynccInstance : public ydk::Entity
 {
     public:
         SynccInstance();
@@ -190,18 +190,18 @@ class TimingController::Nodes::Node::Clock_::SynccInstance : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Clock__; //type: TimingController::Nodes::Node::Clock_::SynccInstance::Clock__
+        class Clock_; //type: TimingController::Nodes::Node::Clock::SynccInstance::Clock_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::Clock_::SynccInstance::Clock__> > clock_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_syncc_oper::TimingController::Nodes::Node::Clock::SynccInstance::Clock_> > clock_;
         
-}; // TimingController::Nodes::Node::Clock_::SynccInstance
+}; // TimingController::Nodes::Node::Clock::SynccInstance
 
 
-class TimingController::Nodes::Node::Clock_::SynccInstance::Clock__ : public ydk::Entity
+class TimingController::Nodes::Node::Clock::SynccInstance::Clock_ : public ydk::Entity
 {
     public:
-        Clock__();
-        ~Clock__();
+        Clock_();
+        ~Clock_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -262,7 +262,7 @@ class TimingController::Nodes::Node::Clock_::SynccInstance::Clock__ : public ydk
         ydk::YLeaf interface_state_port2; //type: InterfaceState
         ydk::YLeaf interface_state_port3; //type: InterfaceState
 
-}; // TimingController::Nodes::Node::Clock_::SynccInstance::Clock__
+}; // TimingController::Nodes::Node::Clock::SynccInstance::Clock_
 
 
 class TimingController::Nodes::Node::TimingSource : public ydk::Entity

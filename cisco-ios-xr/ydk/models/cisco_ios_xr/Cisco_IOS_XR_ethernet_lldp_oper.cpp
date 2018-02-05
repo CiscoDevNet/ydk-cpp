@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Lldp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Lldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_lldp != nullptr)
     {
         children["global-lldp"] = global_lldp;
@@ -198,6 +199,7 @@ std::shared_ptr<Entity> Lldp::GlobalLldp::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Lldp::GlobalLldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lldp_info != nullptr)
     {
         children["lldp-info"] = lldp_info;
@@ -296,6 +298,7 @@ std::shared_ptr<Entity> Lldp::GlobalLldp::LldpInfo::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Lldp::GlobalLldp::LldpInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -431,14 +434,6 @@ std::shared_ptr<Entity> Lldp::Nodes::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -451,9 +446,14 @@ std::shared_ptr<Entity> Lldp::Nodes::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -569,6 +569,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbors != nullptr)
     {
         children["neighbors"] = neighbors;
@@ -695,6 +696,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(devices != nullptr)
     {
         children["devices"] = devices;
@@ -778,14 +780,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::get_child_by_name
 {
     if(child_yang_name == "device")
     {
-        for(auto const & c : device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device>();
         c->parent = this;
         device.push_back(c);
@@ -798,9 +792,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -879,14 +878,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::get_child
 {
     if(child_yang_name == "lldp-neighbor")
     {
-        for(auto const & c : lldp_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor>();
         c->parent = this;
         lldp_neighbor.push_back(c);
@@ -899,9 +890,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::get_child
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1049,6 +1045,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -1269,6 +1266,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network_addresses != nullptr)
     {
         children["network-addresses"] = network_addresses;
@@ -1452,14 +1450,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 {
     if(child_yang_name == "lldp-addr-entry")
     {
-        for(auto const & c : lldp_addr_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry>();
         c->parent = this;
         lldp_addr_entry.push_back(c);
@@ -1472,9 +1462,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_addr_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1561,6 +1556,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1660,6 +1656,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1811,6 +1808,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unknown_tlv_list != nullptr)
     {
         children["unknown-tlv-list"] = unknown_tlv_list;
@@ -1969,14 +1967,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 {
     if(child_yang_name == "lldp-unknown-tlv-entry")
     {
-        for(auto const & c : lldp_unknown_tlv_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry>();
         c->parent = this;
         lldp_unknown_tlv_entry.push_back(c);
@@ -1989,9 +1979,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_unknown_tlv_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2064,6 +2059,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2152,14 +2148,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 {
     if(child_yang_name == "lldp-org-def-tlv-entry")
     {
-        for(auto const & c : lldp_org_def_tlv_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry>();
         c->parent = this;
         lldp_org_def_tlv_entry.push_back(c);
@@ -2172,9 +2160,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_org_def_tlv_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2255,6 +2248,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2363,14 +2357,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::get_child_by_name
 {
     if(child_yang_name == "detail")
     {
-        for(auto const & c : detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail>();
         c->parent = this;
         detail.push_back(c);
@@ -2383,9 +2369,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2464,14 +2455,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::get_child
 {
     if(child_yang_name == "lldp-neighbor")
     {
-        for(auto const & c : lldp_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor>();
         c->parent = this;
         lldp_neighbor.push_back(c);
@@ -2484,9 +2467,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::get_child
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2634,6 +2622,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -2854,6 +2843,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network_addresses != nullptr)
     {
         children["network-addresses"] = network_addresses;
@@ -3037,14 +3027,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 {
     if(child_yang_name == "lldp-addr-entry")
     {
-        for(auto const & c : lldp_addr_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry>();
         c->parent = this;
         lldp_addr_entry.push_back(c);
@@ -3057,9 +3039,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_addr_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3146,6 +3133,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -3245,6 +3233,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3396,6 +3385,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unknown_tlv_list != nullptr)
     {
         children["unknown-tlv-list"] = unknown_tlv_list;
@@ -3554,14 +3544,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 {
     if(child_yang_name == "lldp-unknown-tlv-entry")
     {
-        for(auto const & c : lldp_unknown_tlv_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry>();
         c->parent = this;
         lldp_unknown_tlv_entry.push_back(c);
@@ -3574,9 +3556,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_unknown_tlv_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3649,6 +3636,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3737,14 +3725,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 {
     if(child_yang_name == "lldp-org-def-tlv-entry")
     {
-        for(auto const & c : lldp_org_def_tlv_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry>();
         c->parent = this;
         lldp_org_def_tlv_entry.push_back(c);
@@ -3757,9 +3737,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_org_def_tlv_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3840,6 +3825,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3948,14 +3934,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::get_child_by_na
 {
     if(child_yang_name == "summary")
     {
-        for(auto const & c : summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary>();
         c->parent = this;
         summary.push_back(c);
@@ -3968,9 +3946,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4049,14 +4032,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::get_ch
 {
     if(child_yang_name == "lldp-neighbor")
     {
-        for(auto const & c : lldp_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor>();
         c->parent = this;
         lldp_neighbor.push_back(c);
@@ -4069,9 +4044,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4219,6 +4199,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -4439,6 +4420,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network_addresses != nullptr)
     {
         children["network-addresses"] = network_addresses;
@@ -4622,14 +4604,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 {
     if(child_yang_name == "lldp-addr-entry")
     {
-        for(auto const & c : lldp_addr_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry>();
         c->parent = this;
         lldp_addr_entry.push_back(c);
@@ -4642,9 +4616,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_addr_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4731,6 +4710,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -4830,6 +4810,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4981,6 +4962,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unknown_tlv_list != nullptr)
     {
         children["unknown-tlv-list"] = unknown_tlv_list;
@@ -5139,14 +5121,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 {
     if(child_yang_name == "lldp-unknown-tlv-entry")
     {
-        for(auto const & c : lldp_unknown_tlv_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry>();
         c->parent = this;
         lldp_unknown_tlv_entry.push_back(c);
@@ -5159,9 +5133,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_unknown_tlv_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5234,6 +5213,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5322,14 +5302,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 {
     if(child_yang_name == "lldp-org-def-tlv-entry")
     {
-        for(auto const & c : lldp_org_def_tlv_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry>();
         c->parent = this;
         lldp_org_def_tlv_entry.push_back(c);
@@ -5342,9 +5314,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_org_def_tlv_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5425,6 +5402,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5533,14 +5511,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Interfaces::get_child_by_name(const s
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -5553,9 +5523,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Interfaces::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5674,6 +5649,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Interfaces::Interface::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_network_addresses != nullptr)
     {
         children["local-network-addresses"] = local_network_addresses;
@@ -5847,14 +5823,6 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAd
 {
     if(child_yang_name == "lldp-addr-entry")
     {
-        for(auto const & c : lldp_addr_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry>();
         c->parent = this;
         lldp_addr_entry.push_back(c);
@@ -5867,9 +5835,14 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAd
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_addr_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5956,6 +5929,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAd
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -6055,6 +6029,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAd
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6191,6 +6166,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Statistics::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

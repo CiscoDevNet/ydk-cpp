@@ -61,14 +61,6 @@ std::shared_ptr<Entity> IpSlaStats::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "sla-oper-entry")
     {
-        for(auto const & c : sla_oper_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpSlaStats::SlaOperEntry>();
         c->parent = this;
         sla_oper_entry.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> IpSlaStats::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sla_oper_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -244,6 +241,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rtt_info != nullptr)
     {
         children["rtt-info"] = rtt_info;
@@ -407,6 +405,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::RttInfo::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::RttInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(latest_rtt != nullptr)
     {
         children["latest-rtt"] = latest_rtt;
@@ -491,6 +490,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::get_child_
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -591,6 +591,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::get_child
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -689,6 +690,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::MeasureStats::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::MeasureStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -882,6 +884,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rtt != nullptr)
     {
         children["rtt"] = rtt;
@@ -997,6 +1000,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Rtt::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Rtt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sla_time_values != nullptr)
     {
         children["sla-time-values"] = sla_time_values;
@@ -1090,6 +1094,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::get
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1223,6 +1228,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_chil
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sd != nullptr)
     {
         children["sd"] = sd;
@@ -1321,6 +1327,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::get_
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1439,6 +1446,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::get_
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1576,6 +1584,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sd != nullptr)
     {
         children["sd"] = sd;
@@ -1684,6 +1693,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1802,6 +1812,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1912,6 +1923,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OverThreshold::get_chil
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::OverThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2049,6 +2061,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sd_loss != nullptr)
     {
         children["sd-loss"] = sd_loss;
@@ -2211,6 +2224,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::get
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2343,6 +2357,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::get
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2507,6 +2522,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::get_chi
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2707,6 +2723,7 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::VoiceScore::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::VoiceScore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

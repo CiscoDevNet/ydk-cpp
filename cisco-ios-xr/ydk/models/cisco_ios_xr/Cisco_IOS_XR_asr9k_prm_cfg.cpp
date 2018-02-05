@@ -68,6 +68,7 @@ std::shared_ptr<Entity> HardwareModuleQosMode::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleQosMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> HardwareModuleQosMode::Nodes::get_child_by_name(const st
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleQosMode::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> HardwareModuleQosMode::Nodes::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleQosMode::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -279,6 +277,7 @@ std::shared_ptr<Entity> HardwareModuleQosMode::Nodes::Node::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleQosMode::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -384,6 +383,7 @@ std::shared_ptr<Entity> HardwareModuleTcpMssAdjust::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -489,14 +489,6 @@ std::shared_ptr<Entity> HardwareModuleTcpMssAdjust::Nodes::get_child_by_name(con
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleTcpMssAdjust::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -509,9 +501,14 @@ std::shared_ptr<Entity> HardwareModuleTcpMssAdjust::Nodes::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -601,6 +598,7 @@ std::shared_ptr<Entity> HardwareModuleTcpMssAdjust::Nodes::Node::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nps != nullptr)
     {
         children["nps"] = nps;
@@ -684,14 +682,6 @@ std::shared_ptr<Entity> HardwareModuleTcpMssAdjust::Nodes::Node::Nps::get_child_
 {
     if(child_yang_name == "np")
     {
-        for(auto const & c : np)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np>();
         c->parent = this;
         np.push_back(c);
@@ -704,9 +694,14 @@ std::shared_ptr<Entity> HardwareModuleTcpMssAdjust::Nodes::Node::Nps::get_child_
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes::Node::Nps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : np)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -779,6 +774,7 @@ std::shared_ptr<Entity> HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::get_ch
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -874,6 +870,7 @@ std::shared_ptr<Entity> HardwareModuleLoadBalance::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleLoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle != nullptr)
     {
         children["bundle"] = bundle;
@@ -986,6 +983,7 @@ std::shared_ptr<Entity> HardwareModuleLoadBalance::Bundle::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleLoadBalance::Bundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(l2_service != nullptr)
     {
         children["l2-service"] = l2_service;
@@ -1064,6 +1062,7 @@ std::shared_ptr<Entity> HardwareModuleLoadBalance::Bundle::L2Service::get_child_
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleLoadBalance::Bundle::L2Service::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1154,6 +1153,7 @@ std::shared_ptr<Entity> HardwareModuleTcam::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -1269,14 +1269,6 @@ std::shared_ptr<Entity> HardwareModuleTcam::Nodes::get_child_by_name(const std::
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleTcam::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -1289,9 +1281,14 @@ std::shared_ptr<Entity> HardwareModuleTcam::Nodes::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcam::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1371,6 +1368,7 @@ std::shared_ptr<Entity> HardwareModuleTcam::Nodes::Node::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcam::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1479,6 +1477,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_all != nullptr)
     {
         children["node-all"] = node_all;
@@ -1664,6 +1663,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan_priority_mask != nullptr)
     {
         children["vlan-priority-mask"] = vlan_priority_mask;
@@ -1815,6 +1815,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::VlanPriorityMask::get_child_
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::VlanPriorityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1972,6 +1973,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::IpPrecedence::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::IpPrecedence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2069,6 +2071,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::VlanCos::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::VlanCos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2190,6 +2193,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::IpPriorityMask::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::IpPriorityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2371,6 +2375,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::MplsPriorityMask::get_child_
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::MplsPriorityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2528,6 +2533,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::MplsExp::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::MplsExp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2623,14 +2629,6 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::get_child_by_name(const std::s
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleEfd::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -2643,9 +2641,14 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2802,6 +2805,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan_priority_mask != nullptr)
     {
         children["vlan-priority-mask"] = vlan_priority_mask;
@@ -2956,6 +2960,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::VlanPriorityMask::get_ch
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::VlanPriorityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3106,6 +3111,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::IpPrecedence::get_child_
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::IpPrecedence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3196,6 +3202,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::VlanCos::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::VlanCos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3310,6 +3317,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::IpPriorityMask::get_chil
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::IpPriorityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3484,6 +3492,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::MplsPriorityMask::get_ch
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::MplsPriorityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3634,6 +3643,7 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::MplsExp::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::MplsExp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

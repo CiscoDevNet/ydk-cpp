@@ -82,6 +82,7 @@ std::shared_ptr<Entity> Ipv6Rib::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rib_table_ids != nullptr)
     {
         children["rib-table-ids"] = rib_table_ids;
@@ -192,14 +193,6 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::get_child_by_name(const std::strin
 {
     if(child_yang_name == "rib-table-id")
     {
-        for(auto const & c : rib_table_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::RibTableIds::RibTableId>();
         c->parent = this;
         rib_table_id.push_back(c);
@@ -212,9 +205,14 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rib_table_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -330,6 +328,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -477,6 +476,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::Information::get_child
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -695,14 +695,6 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::get_chi
 {
     if(child_yang_name == "summary-proto")
     {
-        for(auto const & c : summary_proto)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto>();
         c->parent = this;
         summary_proto.push_back(c);
@@ -715,9 +707,14 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : summary_proto)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1029,6 +1026,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(proto_route_count != nullptr)
     {
         children["proto-route-count"] = proto_route_count;
@@ -1227,6 +1225,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1345,6 +1344,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1463,6 +1463,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1581,6 +1582,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1699,6 +1701,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1817,6 +1820,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1935,6 +1939,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2053,6 +2058,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2171,6 +2177,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2289,6 +2296,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2407,6 +2415,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2525,6 +2534,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2643,6 +2653,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2761,6 +2772,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2879,6 +2891,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2997,6 +3010,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3115,6 +3129,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3233,6 +3248,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::Summary
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3341,14 +3357,6 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::get_
 {
     if(child_yang_name == "rib-table-itf-hndl")
     {
-        for(auto const & c : rib_table_itf_hndl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl>();
         c->parent = this;
         rib_table_itf_hndl.push_back(c);
@@ -3361,9 +3369,14 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::get_
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rib_table_itf_hndl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3438,14 +3451,6 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 {
     if(child_yang_name == "itf-route")
     {
-        for(auto const & c : itf_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute>();
         c->parent = this;
         itf_route.push_back(c);
@@ -3458,9 +3463,14 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : itf_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3681,6 +3691,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -4084,14 +4095,6 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -4104,9 +4107,14 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4331,14 +4339,6 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -4347,14 +4347,6 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -4367,14 +4359,23 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4803,6 +4804,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4879,6 +4881,7 @@ std::shared_ptr<Entity> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibT
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4964,14 +4967,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -4984,9 +4979,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5076,6 +5076,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(afs != nullptr)
     {
         children["afs"] = afs;
@@ -5159,14 +5160,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::get_child_by_name(const std::st
 {
     if(child_yang_name == "af")
     {
-        for(auto const & c : af)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af>();
         c->parent = this;
         af.push_back(c);
@@ -5179,9 +5172,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : af)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5264,6 +5262,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(safs != nullptr)
     {
         children["safs"] = safs;
@@ -5347,14 +5346,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::get_child_by_name(con
 {
     if(child_yang_name == "saf")
     {
-        for(auto const & c : saf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf>();
         c->parent = this;
         saf.push_back(c);
@@ -5367,9 +5358,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : saf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5452,6 +5448,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip_rib_route_table_names != nullptr)
     {
         children["ip-rib-route-table-names"] = ip_rib_route_table_names;
@@ -5535,14 +5532,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ip-rib-route-table-name")
     {
-        for(auto const & c : ip_rib_route_table_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName>();
         c->parent = this;
         ip_rib_route_table_name.push_back(c);
@@ -5555,9 +5544,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ip_rib_route_table_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5718,6 +5712,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_kw != nullptr)
     {
         children["destination-kw"] = destination_kw;
@@ -5877,6 +5872,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dest_q_routes != nullptr)
     {
         children["dest-q-routes"] = dest_q_routes;
@@ -5965,14 +5961,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "dest-q-route")
     {
-        for(auto const & c : dest_q_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute>();
         c->parent = this;
         dest_q_route.push_back(c);
@@ -5985,9 +5973,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dest_q_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6202,6 +6195,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -6615,14 +6609,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -6635,9 +6621,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6862,14 +6853,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -6878,14 +6861,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -6898,14 +6873,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7334,6 +7318,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7410,6 +7395,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7488,14 +7474,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "dest-backup-route")
     {
-        for(auto const & c : dest_backup_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute>();
         c->parent = this;
         dest_backup_route.push_back(c);
@@ -7508,9 +7486,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dest_backup_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7725,6 +7708,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -8138,14 +8122,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -8158,9 +8134,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8385,14 +8366,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -8401,14 +8374,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -8421,14 +8386,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8857,6 +8831,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8933,6 +8908,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9011,14 +8987,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "dest-best-route")
     {
-        for(auto const & c : dest_best_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute>();
         c->parent = this;
         dest_best_route.push_back(c);
@@ -9031,9 +8999,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dest_best_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9244,6 +9217,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -9647,14 +9621,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -9667,9 +9633,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9894,14 +9865,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -9910,14 +9873,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -9930,14 +9885,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10366,6 +10330,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10442,6 +10407,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBestRoutes::DestBestRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10520,14 +10486,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "dest-next-hop-route")
     {
-        for(auto const & c : dest_next_hop_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute>();
         c->parent = this;
         dest_next_hop_route.push_back(c);
@@ -10540,9 +10498,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dest_next_hop_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10753,6 +10716,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -11156,14 +11120,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -11176,9 +11132,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11403,14 +11364,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -11419,14 +11372,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -11439,14 +11384,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11875,6 +11829,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11951,6 +11906,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestNextHopRoutes::DestNextHopRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12029,14 +11985,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "advert")
     {
-        for(auto const & c : advert)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert>();
         c->parent = this;
         advert.push_back(c);
@@ -12049,9 +11997,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : advert)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12130,14 +12083,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-advert")
     {
-        for(auto const & c : ipv6_rib_edm_advert)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv6RibEdmAdvert>();
         c->parent = this;
         ipv6_rib_edm_advert.push_back(c);
@@ -12150,9 +12095,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_advert)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12269,6 +12219,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv6RibEdmAdvert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12417,14 +12368,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "deleted-route")
     {
-        for(auto const & c : deleted_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute>();
         c->parent = this;
         deleted_route.push_back(c);
@@ -12437,9 +12380,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : deleted_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12654,6 +12602,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -13067,14 +13016,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -13087,9 +13028,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13314,14 +13260,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -13330,14 +13268,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -13350,14 +13280,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13786,6 +13725,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13862,6 +13802,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DeletedRoutes::DeletedRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13897,7 +13838,7 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
 	,mobile(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile>())
 	,eigrp(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp>())
 	,rpl(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl>())
-	,static_(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_>())
+	,static_(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static>())
 	,te_client(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient>())
 	,subscriber(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber>())
 	,ospf(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf>())
@@ -14021,7 +13962,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_>();
+            static_ = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static>();
         }
         return static_;
     }
@@ -14077,6 +14018,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local != nullptr)
     {
         children["local"] = local;
@@ -14220,6 +14162,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lspv != nullptr)
     {
         children["lspv"] = lspv;
@@ -14318,6 +14261,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -14434,6 +14378,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14612,14 +14557,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "protocol-route")
     {
-        for(auto const & c : protocol_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
         protocol_route.push_back(c);
@@ -14632,9 +14569,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14849,6 +14791,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -15262,14 +15205,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -15282,9 +15217,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15509,14 +15449,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -15525,14 +15457,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -15545,14 +15469,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15981,6 +15914,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16057,6 +15991,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16155,6 +16090,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -16271,6 +16207,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16449,14 +16386,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "protocol-route")
     {
-        for(auto const & c : protocol_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
         protocol_route.push_back(c);
@@ -16469,9 +16398,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16686,6 +16620,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -17099,14 +17034,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -17119,9 +17046,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17346,14 +17278,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -17362,14 +17286,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -17382,14 +17298,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17818,6 +17743,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17894,6 +17820,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17972,14 +17899,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "as")
     {
-        for(auto const & c : as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As>();
         c->parent = this;
         as.push_back(c);
@@ -17992,9 +17911,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18090,6 +18014,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -18216,6 +18141,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18394,14 +18320,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "protocol-route")
     {
-        for(auto const & c : protocol_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
         protocol_route.push_back(c);
@@ -18414,9 +18332,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18631,6 +18554,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -19044,14 +18968,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -19064,9 +18980,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19291,14 +19212,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -19307,14 +19220,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -19327,14 +19232,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19763,6 +19677,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19839,6 +19754,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19924,6 +19840,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(non_as != nullptr)
     {
         children["non-as"] = non_as;
@@ -20017,6 +19934,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -20133,6 +20051,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20311,14 +20230,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "protocol-route")
     {
-        for(auto const & c : protocol_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
         protocol_route.push_back(c);
@@ -20331,9 +20242,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20548,6 +20464,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -20961,14 +20878,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -20981,9 +20890,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21208,14 +21122,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -21224,14 +21130,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -21244,14 +21142,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21680,6 +21587,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21756,6 +21664,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21834,14 +21743,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "as")
     {
-        for(auto const & c : as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As>();
         c->parent = this;
         as.push_back(c);
@@ -21854,9 +21755,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21952,6 +21858,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -22078,6 +21985,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22256,14 +22164,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "protocol-route")
     {
-        for(auto const & c : protocol_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
         protocol_route.push_back(c);
@@ -22276,9 +22176,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22493,6 +22398,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -22906,14 +22812,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -22926,9 +22824,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -23153,14 +23056,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -23169,14 +23064,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -23189,14 +23076,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -23625,6 +23521,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23701,6 +23598,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23779,14 +23677,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "as")
     {
-        for(auto const & c : as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As>();
         c->parent = this;
         as.push_back(c);
@@ -23799,9 +23689,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -23897,6 +23792,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -24023,6 +23919,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -24201,14 +24098,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "protocol-route")
     {
-        for(auto const & c : protocol_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
         protocol_route.push_back(c);
@@ -24221,9 +24110,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -24438,6 +24332,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -24851,14 +24746,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -24871,9 +24758,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -25098,14 +24990,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -25114,14 +24998,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -25134,14 +25010,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -25570,6 +25455,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -25646,6 +25532,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -25674,38 +25561,38 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     return false;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::Static_()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::Static()
     :
-    non_as(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs>())
+    non_as(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs>())
 {
     non_as->parent = this;
 
     yang_name = "static"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::~Static_()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::~Static()
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::has_data() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::has_data() const
 {
     return (non_as !=  nullptr && non_as->has_data());
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::has_operation() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| (non_as !=  nullptr && non_as->has_operation());
 }
 
-std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::get_segment_path() const
+std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -25714,13 +25601,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
 
 }
 
-std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "non-as")
     {
         if(non_as == nullptr)
         {
-            non_as = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs>();
+            non_as = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs>();
         }
         return non_as;
     }
@@ -25728,9 +25615,10 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(non_as != nullptr)
     {
         children["non-as"] = non_as;
@@ -25739,25 +25627,25 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     return children;
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "non-as")
         return true;
     return false;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::NonAs()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::NonAs()
     :
-    information(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information>())
-	,protocol_routes(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes>())
+    information(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information>())
+	,protocol_routes(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes>())
 {
     information->parent = this;
     protocol_routes->parent = this;
@@ -25765,31 +25653,31 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     yang_name = "non-as"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::~NonAs()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::~NonAs()
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::has_data() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::has_data() const
 {
     return (information !=  nullptr && information->has_data())
 	|| (protocol_routes !=  nullptr && protocol_routes->has_data());
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::has_operation() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::has_operation() const
 {
     return is_set(yfilter)
 	|| (information !=  nullptr && information->has_operation())
 	|| (protocol_routes !=  nullptr && protocol_routes->has_operation());
 }
 
-std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::get_segment_path() const
+std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "non-as";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -25798,13 +25686,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
 
 }
 
-std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "information")
     {
         if(information == nullptr)
         {
-            information = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information>();
+            information = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information>();
         }
         return information;
     }
@@ -25813,7 +25701,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
     {
         if(protocol_routes == nullptr)
         {
-            protocol_routes = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes>();
+            protocol_routes = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes>();
         }
         return protocol_routes;
     }
@@ -25821,9 +25709,10 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -25837,22 +25726,22 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     return children;
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "information" || name == "protocol-routes")
         return true;
     return false;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::Information()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::Information()
     :
     protocol_names{YType::str, "protocol-names"},
     instance{YType::str, "instance"},
@@ -25870,11 +25759,11 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     yang_name = "information"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::~Information()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::~Information()
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::has_data() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::has_data() const
 {
     return protocol_names.is_set
 	|| instance.is_set
@@ -25889,7 +25778,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| backup_routes_count.is_set;
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::has_operation() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protocol_names.yfilter)
@@ -25905,14 +25794,14 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(backup_routes_count.yfilter);
 }
 
-std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::get_segment_path() const
+std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -25932,18 +25821,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
 
 }
 
-std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol-names")
     {
@@ -26013,7 +25903,7 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol-names")
     {
@@ -26061,24 +25951,24 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::Information::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::Information::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol-names" || name == "instance" || name == "version" || name == "redistribution-client-count" || name == "protocol-clients-count" || name == "routes-counts" || name == "active-routes-count" || name == "deleted-routes-count" || name == "paths-count" || name == "protocol-route-memory" || name == "backup-routes-count")
         return true;
     return false;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoutes()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoutes()
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::~ProtocolRoutes()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::~ProtocolRoutes()
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::has_data() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::has_data() const
 {
     for (std::size_t index=0; index<protocol_route.size(); index++)
     {
@@ -26088,7 +25978,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     return false;
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::has_operation() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::has_operation() const
 {
     for (std::size_t index=0; index<protocol_route.size(); index++)
     {
@@ -26098,14 +25988,14 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     return is_set(yfilter);
 }
 
-std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::get_segment_path() const
+std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-routes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -26114,19 +26004,11 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
 
 }
 
-std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol-route")
     {
-        for(auto const & c : protocol_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute>();
+        auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
         protocol_route.push_back(c);
         return c;
@@ -26135,33 +26017,38 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol-route")
         return true;
     return false;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::ProtocolRoute()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::ProtocolRoute()
     :
     address{YType::str, "address"},
     prefix_length{YType::uint8, "prefix-length"},
@@ -26198,18 +26085,18 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     tbl_version{YType::uint64, "tbl-version"},
     route_modify_time{YType::uint64, "route-modify-time"}
     	,
-    route_path(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath>())
+    route_path(std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath>())
 {
     route_path->parent = this;
 
     yang_name = "protocol-route"; yang_parent_name = "protocol-routes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::~ProtocolRoute()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::~ProtocolRoute()
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::has_data() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::has_data() const
 {
     return address.is_set
 	|| prefix_length.is_set
@@ -26248,7 +26135,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| (route_path !=  nullptr && route_path->has_data());
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::has_operation() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
@@ -26288,14 +26175,14 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| (route_path !=  nullptr && route_path->has_operation());
 }
 
-std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
+std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -26338,13 +26225,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
 
 }
 
-std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-path")
     {
         if(route_path == nullptr)
         {
-            route_path = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath>();
+            route_path = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath>();
         }
         return route_path;
     }
@@ -26352,9 +26239,10 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -26363,7 +26251,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
     return children;
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -26571,7 +26459,7 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -26711,24 +26599,24 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-path" || name == "address" || name == "prefix-length" || name == "prefix" || name == "prefix-length-xr" || name == "route-version" || name == "protocol-id" || name == "protocol-name" || name == "instance" || name == "client-id" || name == "route-type" || name == "priority" || name == "svd-type" || name == "flags" || name == "extended-flags" || name == "tag" || name == "distance" || name == "diversion-distance" || name == "metric" || name == "paths-count" || name == "attribute-identity" || name == "traffic-index" || name == "route-precedence" || name == "qos-group" || name == "flow-tag" || name == "fwd-class" || name == "pic-count" || name == "active" || name == "diversion" || name == "diversion-proto-name" || name == "route-age" || name == "route-label" || name == "version" || name == "tbl-version" || name == "route-modify-time")
         return true;
     return false;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::RoutePath()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::RoutePath()
 {
 
     yang_name = "route-path"; yang_parent_name = "protocol-route"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::~RoutePath()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::~RoutePath()
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::has_data() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::has_data() const
 {
     for (std::size_t index=0; index<ipv6_rib_edm_path.size(); index++)
     {
@@ -26738,7 +26626,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     return false;
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::has_operation() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::has_operation() const
 {
     for (std::size_t index=0; index<ipv6_rib_edm_path.size(); index++)
     {
@@ -26748,14 +26636,14 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     return is_set(yfilter);
 }
 
-std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_segment_path() const
+std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -26764,19 +26652,11 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
 
 }
 
-std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath>();
+        auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
         return c;
@@ -26785,33 +26665,38 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6-rib-edm-path")
         return true;
     return false;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Ipv6RibEdmPath()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Ipv6RibEdmPath()
     :
     address{YType::str, "address"},
     information_source{YType::str, "information-source"},
@@ -26854,11 +26739,11 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     yang_name = "ipv6-rib-edm-path"; yang_parent_name = "route-path"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::~Ipv6RibEdmPath()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::~Ipv6RibEdmPath()
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_data() const
 {
     for (std::size_t index=0; index<remote_backup_addr.size(); index++)
     {
@@ -26908,7 +26793,7 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| mpls_feid.is_set;
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_operation() const
 {
     for (std::size_t index=0; index<remote_backup_addr.size(); index++)
     {
@@ -26959,14 +26844,14 @@ bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
 	|| ydk::is_set(mpls_feid.yfilter);
 }
 
-std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
+std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-rib-edm-path";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -27011,19 +26896,11 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
 
 }
 
-std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
+        auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
         return c;
@@ -27031,15 +26908,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
+        auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
         return c;
@@ -27048,23 +26917,32 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -27284,7 +27162,7 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -27432,14 +27310,14 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "remote-backup-addr" || name == "labelstk" || name == "address" || name == "information-source" || name == "v6-nexthop" || name == "v6-information-source" || name == "interface-name" || name == "metric" || name == "load-metric" || name == "flags64" || name == "flags" || name == "private-flags" || name == "looped" || name == "next-hop-table-id" || name == "next-hop-vrf-name" || name == "next-hop-table-name" || name == "next-hop-afi" || name == "next-hop-safi" || name == "route-label" || name == "tunnel-id" || name == "pathid" || name == "backup-pathid" || name == "ref-cnt-of-backup" || name == "number-of-extended-communities" || name == "mvpn-present" || name == "path-rt-present" || name == "vrf-import-rt-present" || name == "source-asrt-present" || name == "source-rd-present" || name == "segmented-nexthop-present" || name == "next-hop-id" || name == "next-hop-id-refcount" || name == "ospf-area-id" || name == "has-labelstk" || name == "num-labels" || name == "binding-label" || name == "nhid-feid" || name == "mpls-feid")
         return true;
     return false;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::RemoteBackupAddr()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::RemoteBackupAddr()
     :
     entry{YType::str, "entry"}
 {
@@ -27447,29 +27325,29 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     yang_name = "remote-backup-addr"; yang_parent_name = "ipv6-rib-edm-path"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::~RemoteBackupAddr()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::~RemoteBackupAddr()
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::has_data() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::has_data() const
 {
     return entry.is_set;
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::has_operation() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_segment_path() const
+std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -27479,18 +27357,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
 
 }
 
-std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -27500,7 +27379,7 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -27508,14 +27387,14 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::Labelstk()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::Labelstk()
     :
     entry{YType::uint32, "entry"}
 {
@@ -27523,29 +27402,29 @@ Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNam
     yang_name = "labelstk"; yang_parent_name = "ipv6-rib-edm-path"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::~Labelstk()
+Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::~Labelstk()
 {
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::has_data() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::has_data() const
 {
     return entry.is_set;
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::has_operation() const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_segment_path() const
+std::string Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -27555,18 +27434,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs
 
 }
 
-std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -27576,7 +27456,7 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -27584,7 +27464,7 @@ void Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTab
     }
 }
 
-bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static_::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
@@ -27648,6 +27528,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(non_as != nullptr)
     {
         children["non-as"] = non_as;
@@ -27741,6 +27622,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -27857,6 +27739,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -28035,14 +27918,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "protocol-route")
     {
-        for(auto const & c : protocol_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
         protocol_route.push_back(c);
@@ -28055,9 +27930,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -28272,6 +28152,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;
@@ -28685,14 +28566,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "ipv6-rib-edm-path")
     {
-        for(auto const & c : ipv6_rib_edm_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath>();
         c->parent = this;
         ipv6_rib_edm_path.push_back(c);
@@ -28705,9 +28578,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_rib_edm_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -28932,14 +28810,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "remote-backup-addr")
     {
-        for(auto const & c : remote_backup_addr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr>();
         c->parent = this;
         remote_backup_addr.push_back(c);
@@ -28948,14 +28818,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 
     if(child_yang_name == "labelstk")
     {
-        for(auto const & c : labelstk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk>();
         c->parent = this;
         labelstk.push_back(c);
@@ -28968,14 +28830,23 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_backup_addr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : labelstk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -29404,6 +29275,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::RemoteBackupAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -29480,6 +29352,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv6RibEdmPath::Labelstk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -29565,6 +29438,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(non_as != nullptr)
     {
         children["non-as"] = non_as;
@@ -29658,6 +29532,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -29774,6 +29649,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -29952,14 +29828,6 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 {
     if(child_yang_name == "protocol-route")
     {
-        for(auto const & c : protocol_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute>();
         c->parent = this;
         protocol_route.push_back(c);
@@ -29972,9 +29840,14 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -30189,6 +30062,7 @@ std::shared_ptr<Entity> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableN
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_path != nullptr)
     {
         children["route-path"] = route_path;

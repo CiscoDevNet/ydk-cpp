@@ -68,6 +68,7 @@ std::shared_ptr<Entity> IpSubscriber::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::get_child_by_name(const std::string
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpSubscriber::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -311,6 +309,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -430,14 +429,6 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(co
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpSubscriber::Nodes::Node::Summary::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -450,6 +441,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_interface_summary != nullptr)
     {
         children["access-interface-summary"] = access_interface_summary;
@@ -460,9 +452,13 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
         children["interface-counts"] = interface_counts;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -558,6 +554,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(initiators != nullptr)
     {
         children["initiators"] = initiators;
@@ -666,6 +663,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -746,6 +744,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -836,6 +835,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -944,6 +944,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -1024,6 +1025,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1114,6 +1116,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1222,6 +1225,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(initiators != nullptr)
     {
         children["initiators"] = initiators;
@@ -1320,6 +1324,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ini
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -1452,6 +1457,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ini
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1724,6 +1730,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ini
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1962,6 +1969,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -2094,6 +2102,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2366,6 +2375,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2594,6 +2604,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::Vrf::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2702,14 +2713,6 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::get_child_by_name
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -2722,9 +2725,14 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2896,6 +2904,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::get_ch
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf != nullptr)
     {
         children["vrf"] = vrf;
@@ -3176,6 +3185,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::g
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3266,6 +3276,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vr
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3354,14 +3365,6 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_b
 {
     if(child_yang_name == "access-interface")
     {
-        for(auto const & c : access_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface>();
         c->parent = this;
         access_interface.push_back(c);
@@ -3374,9 +3377,14 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3509,6 +3517,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(initiators != nullptr)
     {
         children["initiators"] = initiators;
@@ -3682,6 +3691,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -3794,6 +3804,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3996,6 +4007,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4184,6 +4196,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -4296,6 +4309,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4498,6 +4512,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4686,6 +4701,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unclassified_source != nullptr)
     {
         children["unclassified-source"] = unclassified_source;
@@ -4762,6 +4778,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4838,6 +4855,7 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
 std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

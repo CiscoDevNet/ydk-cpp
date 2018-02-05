@@ -106,6 +106,7 @@ std::shared_ptr<Entity> Grpc::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Grpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_layer != nullptr)
     {
         children["service-layer"] = service_layer;
@@ -274,6 +275,7 @@ std::shared_ptr<Entity> Grpc::ServiceLayer::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Grpc::ServiceLayer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -361,6 +363,7 @@ std::shared_ptr<Entity> Grpc::Tls::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Grpc::Tls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

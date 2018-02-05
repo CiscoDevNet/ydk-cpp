@@ -91,6 +91,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::Summary::ReservationStatist
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -236,14 +237,6 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::get_child_b
 {
     if(child_yang_name == "statstics-link")
     {
-        for(auto const & c : statstics_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink>();
         c->parent = this;
         statstics_link.push_back(c);
@@ -256,9 +249,14 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : statstics_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -447,6 +445,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(incoming_path_statistics != nullptr)
     {
         children["incoming-path-statistics"] = incoming_path_statistics;
@@ -607,6 +606,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -767,6 +767,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -927,6 +928,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1087,6 +1089,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1247,6 +1250,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1407,6 +1411,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1567,6 +1572,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1727,6 +1733,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1892,6 +1899,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -1983,6 +1991,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::Global::get_child_
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2088,14 +2097,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 {
     if(child_yang_name == "bandwidth-allocation-link")
     {
-        for(auto const & c : bandwidth_allocation_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink>();
         c->parent = this;
         bandwidth_allocation_link.push_back(c);
@@ -2108,9 +2109,14 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bandwidth_allocation_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2270,14 +2276,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 
     if(child_yang_name == "flooding-up-threshold")
     {
-        for(auto const & c : flooding_up_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold>();
         c->parent = this;
         flooding_up_threshold.push_back(c);
@@ -2286,14 +2284,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 
     if(child_yang_name == "flooding-down-threshold")
     {
-        for(auto const & c : flooding_down_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold>();
         c->parent = this;
         flooding_down_threshold.push_back(c);
@@ -2306,6 +2296,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_common != nullptr)
     {
         children["link-common"] = link_common;
@@ -2321,14 +2312,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
         children["downstream-bandwidth"] = downstream_bandwidth;
     }
 
+    count = 0;
     for (auto const & c : flooding_up_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : flooding_down_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2609,14 +2608,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 
     if(child_yang_name == "shared-risk-link-group")
     {
-        for(auto const & c : shared_risk_link_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup>();
         c->parent = this;
         shared_risk_link_group.push_back(c);
@@ -2625,14 +2616,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 
     if(child_yang_name == "interface-switching-capability-descriptor")
     {
-        for(auto const & c : interface_switching_capability_descriptor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor>();
         c->parent = this;
         interface_switching_capability_descriptor.push_back(c);
@@ -2641,14 +2624,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 
     if(child_yang_name == "flooded-areas")
     {
-        for(auto const & c : flooded_areas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas>();
         c->parent = this;
         flooded_areas.push_back(c);
@@ -2661,24 +2636,37 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_flags != nullptr)
     {
         children["link-flags"] = link_flags;
     }
 
+    count = 0;
     for (auto const & c : shared_risk_link_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : interface_switching_capability_descriptor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : flooded_areas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2995,6 +2983,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3095,6 +3084,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3189,6 +3179,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3285,6 +3276,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3385,14 +3377,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 {
     if(child_yang_name == "bandwidth-pool0")
     {
-        for(auto const & c : bandwidth_pool0)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0>();
         c->parent = this;
         bandwidth_pool0.push_back(c);
@@ -3401,14 +3385,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 
     if(child_yang_name == "bandwidth-pool1")
     {
-        for(auto const & c : bandwidth_pool1)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1>();
         c->parent = this;
         bandwidth_pool1.push_back(c);
@@ -3421,14 +3397,23 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bandwidth_pool0)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : bandwidth_pool1)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3543,6 +3528,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3675,6 +3661,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3815,14 +3802,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 {
     if(child_yang_name == "bandwidth-pool0")
     {
-        for(auto const & c : bandwidth_pool0)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0>();
         c->parent = this;
         bandwidth_pool0.push_back(c);
@@ -3831,14 +3810,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 
     if(child_yang_name == "bandwidth-pool1")
     {
-        for(auto const & c : bandwidth_pool1)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1>();
         c->parent = this;
         bandwidth_pool1.push_back(c);
@@ -3851,14 +3822,23 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bandwidth_pool0)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : bandwidth_pool1)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3973,6 +3953,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4105,6 +4086,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4221,6 +4203,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4297,6 +4280,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4402,6 +4386,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Gmpls::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Gmpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nni != nullptr)
     {
         children["nni"] = nni;
@@ -4481,6 +4466,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Gmpls::Nni::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Gmpls::Nni::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4548,6 +4534,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Gmpls::Uni::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Gmpls::Uni::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4621,14 +4608,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BfdNeighbors::get_child_by_name(const s
 {
     if(child_yang_name == "bfd-neighbor")
     {
-        for(auto const & c : bfd_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BfdNeighbors::BfdNeighbor>();
         c->parent = this;
         bfd_neighbor.push_back(c);
@@ -4641,9 +4620,14 @@ std::shared_ptr<Entity> MplsLcacStandby::BfdNeighbors::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BfdNeighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bfd_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4725,14 +4709,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BfdNeighbors::BfdNeighbor::get_child_by
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -4745,9 +4721,14 @@ std::shared_ptr<Entity> MplsLcacStandby::BfdNeighbors::BfdNeighbor::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BfdNeighbors::BfdNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4830,6 +4811,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4932,6 +4914,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth_account_links != nullptr)
     {
         children["bandwidth-account-links"] = bandwidth_account_links;
@@ -5012,14 +4995,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 {
     if(child_yang_name == "bandwidth-account-link")
     {
-        for(auto const & c : bandwidth_account_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink>();
         c->parent = this;
         bandwidth_account_link.push_back(c);
@@ -5032,9 +5007,14 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bandwidth_account_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5154,6 +5134,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(common_info != nullptr)
     {
         children["common-info"] = common_info;
@@ -5318,6 +5299,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_te_bandwidth_utilization != nullptr)
     {
         children["rsvp-te-bandwidth-utilization"] = rsvp_te_bandwidth_utilization;
@@ -5510,6 +5492,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5634,6 +5617,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::SrBandwidthUtilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5742,14 +5726,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 {
     if(child_yang_name == "rsvp-te-active-interval-sample")
     {
-        for(auto const & c : rsvp_te_active_interval_sample)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTeActiveIntervalSample>();
         c->parent = this;
         rsvp_te_active_interval_sample.push_back(c);
@@ -5758,14 +5734,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 
     if(child_yang_name == "rsvp-te-previous-interval-sample")
     {
-        for(auto const & c : rsvp_te_previous_interval_sample)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTePreviousIntervalSample>();
         c->parent = this;
         rsvp_te_previous_interval_sample.push_back(c);
@@ -5778,14 +5746,23 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsvp_te_active_interval_sample)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : rsvp_te_previous_interval_sample)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5878,6 +5855,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTeActiveIntervalSample::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6038,6 +6016,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTePreviousIntervalSample::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6186,14 +6165,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 {
     if(child_yang_name == "sr-active-interval-sample")
     {
-        for(auto const & c : sr_active_interval_sample)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrActiveIntervalSample>();
         c->parent = this;
         sr_active_interval_sample.push_back(c);
@@ -6202,14 +6173,6 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 
     if(child_yang_name == "sr-previous-interval-sample")
     {
-        for(auto const & c : sr_previous_interval_sample)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrPreviousIntervalSample>();
         c->parent = this;
         sr_previous_interval_sample.push_back(c);
@@ -6222,14 +6185,23 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sr_active_interval_sample)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : sr_previous_interval_sample)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6306,6 +6278,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrActiveIntervalSample::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6410,6 +6383,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrPreviousIntervalSample::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6545,14 +6519,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkSummary::get_child_by_name(const st
 
     if(child_yang_name == "areas-summary")
     {
-        for(auto const & c : areas_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkSummary::AreasSummary>();
         c->parent = this;
         areas_summary.push_back(c);
@@ -6565,14 +6531,19 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkSummary::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth_account_summary != nullptr)
     {
         children["bandwidth-account-summary"] = bandwidth_account_summary;
     }
 
+    count = 0;
     for (auto const & c : areas_summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6704,6 +6675,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkSummary::BandwidthAccountSummary::g
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkSummary::BandwidthAccountSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6859,6 +6831,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkSummary::AreasSummary::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkSummary::AreasSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7044,6 +7017,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -7135,6 +7109,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Global::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7240,14 +7215,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::get_child_by_na
 {
     if(child_yang_name == "link")
     {
-        for(auto const & c : link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link>();
         c->parent = this;
         link.push_back(c);
@@ -7260,9 +7227,14 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7472,14 +7444,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
 
     if(child_yang_name == "link-extended-attribute")
     {
-        for(auto const & c : link_extended_attribute)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkExtendedAttribute>();
         c->parent = this;
         link_extended_attribute.push_back(c);
@@ -7488,14 +7452,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
 
     if(child_yang_name == "link-forwad-ref-value")
     {
-        for(auto const & c : link_forwad_ref_value)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkForwadRefValue>();
         c->parent = this;
         link_forwad_ref_value.push_back(c);
@@ -7504,14 +7460,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
 
     if(child_yang_name == "affinity-map")
     {
-        for(auto const & c : affinity_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::AffinityMap>();
         c->parent = this;
         affinity_map.push_back(c);
@@ -7520,14 +7468,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
 
     if(child_yang_name == "areas")
     {
-        for(auto const & c : areas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::Areas>();
         c->parent = this;
         areas.push_back(c);
@@ -7536,14 +7476,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
 
     if(child_yang_name == "lockout")
     {
-        for(auto const & c : lockout)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::Lockout>();
         c->parent = this;
         lockout.push_back(c);
@@ -7556,6 +7488,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_common != nullptr)
     {
         children["link-common"] = link_common;
@@ -7571,29 +7504,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
         children["hw-oor"] = hw_oor;
     }
 
+    count = 0;
     for (auto const & c : link_extended_attribute)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : link_forwad_ref_value)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : affinity_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : areas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : lockout)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7924,14 +7877,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
 
     if(child_yang_name == "shared-risk-link-group")
     {
-        for(auto const & c : shared_risk_link_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::SharedRiskLinkGroup>();
         c->parent = this;
         shared_risk_link_group.push_back(c);
@@ -7940,14 +7885,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
 
     if(child_yang_name == "interface-switching-capability-descriptor")
     {
-        for(auto const & c : interface_switching_capability_descriptor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::InterfaceSwitchingCapabilityDescriptor>();
         c->parent = this;
         interface_switching_capability_descriptor.push_back(c);
@@ -7956,14 +7893,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
 
     if(child_yang_name == "flooded-areas")
     {
-        for(auto const & c : flooded_areas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas>();
         c->parent = this;
         flooded_areas.push_back(c);
@@ -7976,24 +7905,37 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_flags != nullptr)
     {
         children["link-flags"] = link_flags;
     }
 
+    count = 0;
     for (auto const & c : shared_risk_link_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : interface_switching_capability_descriptor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : flooded_areas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8310,6 +8252,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::LinkFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8410,6 +8353,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::SharedRiskLinkGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8504,6 +8448,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::InterfaceSwitchingCapabilityDescriptor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8600,6 +8545,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8711,6 +8657,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth_account_common_info != nullptr)
     {
         children["bandwidth-account-common-info"] = bandwidth_account_common_info;
@@ -8875,6 +8822,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_te_bandwidth_utilization != nullptr)
     {
         children["rsvp-te-bandwidth-utilization"] = rsvp_te_bandwidth_utilization;
@@ -9117,6 +9065,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::RsvpTeBandwidthUtilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9241,6 +9190,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::SrBandwidthUtilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9349,14 +9299,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 {
     if(child_yang_name == "rsvp-te-active-interval-sample")
     {
-        for(auto const & c : rsvp_te_active_interval_sample)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTeActiveIntervalSample>();
         c->parent = this;
         rsvp_te_active_interval_sample.push_back(c);
@@ -9365,14 +9307,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 
     if(child_yang_name == "rsvp-te-previous-interval-sample")
     {
-        for(auto const & c : rsvp_te_previous_interval_sample)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTePreviousIntervalSample>();
         c->parent = this;
         rsvp_te_previous_interval_sample.push_back(c);
@@ -9385,14 +9319,23 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsvp_te_active_interval_sample)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : rsvp_te_previous_interval_sample)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9473,6 +9416,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTeActiveIntervalSample::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9591,6 +9535,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTePreviousIntervalSample::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9709,14 +9654,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 {
     if(child_yang_name == "sr-active-interval-sample")
     {
-        for(auto const & c : sr_active_interval_sample)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrActiveIntervalSample>();
         c->parent = this;
         sr_active_interval_sample.push_back(c);
@@ -9725,14 +9662,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 
     if(child_yang_name == "sr-previous-interval-sample")
     {
-        for(auto const & c : sr_previous_interval_sample)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrPreviousIntervalSample>();
         c->parent = this;
         sr_previous_interval_sample.push_back(c);
@@ -9745,14 +9674,23 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sr_active_interval_sample)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : sr_previous_interval_sample)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9825,6 +9763,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrActiveIntervalSample::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9915,6 +9854,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrPreviousIntervalSample::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10015,14 +9955,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::HwOor::ge
 {
     if(child_yang_name == "hw-o-or-link-statistic")
     {
-        for(auto const & c : hw_o_or_link_statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic>();
         c->parent = this;
         hw_o_or_link_statistic.push_back(c);
@@ -10035,9 +9967,14 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::HwOor::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::HwOor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hw_o_or_link_statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10160,6 +10097,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::HwOor::Hw
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10296,6 +10234,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkExten
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::LinkExtendedAttribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10372,6 +10311,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkForwa
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::LinkForwadRefValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10466,14 +10406,6 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::AffinityM
 {
     if(child_yang_name == "affinity-extended-value")
     {
-        for(auto const & c : affinity_extended_value)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityExtendedValue>();
         c->parent = this;
         affinity_extended_value.push_back(c);
@@ -10486,9 +10418,14 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::AffinityM
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : affinity_extended_value)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10597,6 +10534,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::AffinityM
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityExtendedValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10689,6 +10627,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Areas::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::Areas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10813,6 +10752,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Lockout::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation::Links::Link::Lockout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10951,6 +10891,7 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::AdmissionControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -11055,6 +10996,7 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::Global::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::AdmissionControl::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11180,14 +11122,6 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::AdmittedTunnels::get_
 {
     if(child_yang_name == "admitted-tunnel")
     {
-        for(auto const & c : admitted_tunnel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel>();
         c->parent = this;
         admitted_tunnel.push_back(c);
@@ -11200,9 +11134,14 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::AdmittedTunnels::get_
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::AdmissionControl::AdmittedTunnels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : admitted_tunnel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11358,6 +11297,7 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::AdmittedTunnels::Admi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11643,14 +11583,6 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::LinkInterfaces::get_c
 {
     if(child_yang_name == "link-interface")
     {
-        for(auto const & c : link_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface>();
         c->parent = this;
         link_interface.push_back(c);
@@ -11663,9 +11595,14 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::LinkInterfaces::get_c
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::AdmissionControl::LinkInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : link_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11761,6 +11698,7 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkI
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11902,6 +11840,7 @@ std::shared_ptr<Entity> MplsLcacStandby::SoftPreemptionGlobalInfo::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::SoftPreemptionGlobalInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12007,14 +11946,6 @@ std::shared_ptr<Entity> MplsLcacStandby::SoftPreemptions::get_child_by_name(cons
 {
     if(child_yang_name == "soft-preemption")
     {
-        for(auto const & c : soft_preemption)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::SoftPreemptions::SoftPreemption>();
         c->parent = this;
         soft_preemption.push_back(c);
@@ -12027,9 +11958,14 @@ std::shared_ptr<Entity> MplsLcacStandby::SoftPreemptions::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::SoftPreemptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : soft_preemption)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12147,14 +12083,6 @@ std::shared_ptr<Entity> MplsLcacStandby::SoftPreemptions::SoftPreemption::get_ch
 {
     if(child_yang_name == "current-soft-preemption-lsp")
     {
-        for(auto const & c : current_soft_preemption_lsp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp>();
         c->parent = this;
         current_soft_preemption_lsp.push_back(c);
@@ -12167,9 +12095,14 @@ std::shared_ptr<Entity> MplsLcacStandby::SoftPreemptions::SoftPreemption::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::SoftPreemptions::SoftPreemption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : current_soft_preemption_lsp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12382,6 +12315,7 @@ std::shared_ptr<Entity> MplsLcacStandby::SoftPreemptions::SoftPreemption::Curren
 std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12733,6 +12667,7 @@ std::shared_ptr<Entity> MplsLcac::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbors != nullptr)
     {
         children["neighbors"] = neighbors;
@@ -12898,14 +12833,6 @@ std::shared_ptr<Entity> MplsLcac::Neighbors::get_child_by_name(const std::string
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -12918,9 +12845,14 @@ std::shared_ptr<Entity> MplsLcac::Neighbors::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13002,14 +12934,6 @@ std::shared_ptr<Entity> MplsLcac::Neighbors::Neighbor::get_child_by_name(const s
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Neighbors::Neighbor::Neighbor_>();
         c->parent = this;
         neighbor.push_back(c);
@@ -13022,9 +12946,14 @@ std::shared_ptr<Entity> MplsLcac::Neighbors::Neighbor::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13115,6 +13044,7 @@ std::shared_ptr<Entity> MplsLcac::Neighbors::Neighbor::Neighbor_::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Neighbors::Neighbor::Neighbor_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13230,14 +13160,6 @@ std::shared_ptr<Entity> MplsLcac::PreemptionEvents::get_child_by_name(const std:
 {
     if(child_yang_name == "preemption-event")
     {
-        for(auto const & c : preemption_event)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::PreemptionEvents::PreemptionEvent>();
         c->parent = this;
         preemption_event.push_back(c);
@@ -13250,9 +13172,14 @@ std::shared_ptr<Entity> MplsLcac::PreemptionEvents::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::PreemptionEvents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : preemption_event)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13462,14 +13389,6 @@ std::shared_ptr<Entity> MplsLcac::PreemptionEvents::PreemptionEvent::get_child_b
 {
     if(child_yang_name == "lsp")
     {
-        for(auto const & c : lsp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::PreemptionEvents::PreemptionEvent::Lsp>();
         c->parent = this;
         lsp.push_back(c);
@@ -13482,9 +13401,14 @@ std::shared_ptr<Entity> MplsLcac::PreemptionEvents::PreemptionEvent::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::PreemptionEvents::PreemptionEvent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lsp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13927,6 +13851,7 @@ std::shared_ptr<Entity> MplsLcac::PreemptionEvents::PreemptionEvent::Lsp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::PreemptionEvents::PreemptionEvent::Lsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14142,14 +14067,6 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::get_child_by_name(const std::s
 {
     if(child_yang_name == "advertized-areas")
     {
-        for(auto const & c : advertized_areas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas>();
         c->parent = this;
         advertized_areas.push_back(c);
@@ -14162,9 +14079,14 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : advertized_areas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14308,14 +14230,6 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::get_child_by_
 {
     if(child_yang_name == "flooded-link")
     {
-        for(auto const & c : flooded_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink>();
         c->parent = this;
         flooded_link.push_back(c);
@@ -14328,9 +14242,14 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flooded_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14588,14 +14507,6 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 
     if(child_yang_name == "extended-affinity-attribute-flag")
     {
-        for(auto const & c : extended_affinity_attribute_flag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttributeFlag>();
         c->parent = this;
         extended_affinity_attribute_flag.push_back(c);
@@ -14604,14 +14515,6 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 
     if(child_yang_name == "shared-risk-link-group")
     {
-        for(auto const & c : shared_risk_link_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup>();
         c->parent = this;
         shared_risk_link_group.push_back(c);
@@ -14620,14 +14523,6 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 
     if(child_yang_name == "receiving-reservable-bandwidth")
     {
-        for(auto const & c : receiving_reservable_bandwidth)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandwidth>();
         c->parent = this;
         receiving_reservable_bandwidth.push_back(c);
@@ -14636,14 +14531,6 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 
     if(child_yang_name == "transmitting-reservable-bandwidth")
     {
-        for(auto const & c : transmitting_reservable_bandwidth)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth>();
         c->parent = this;
         transmitting_reservable_bandwidth.push_back(c);
@@ -14656,29 +14543,46 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_link_capabilities != nullptr)
     {
         children["odu-link-capabilities"] = odu_link_capabilities;
     }
 
+    count = 0;
     for (auto const & c : extended_affinity_attribute_flag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : shared_risk_link_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : receiving_reservable_bandwidth)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : transmitting_reservable_bandwidth)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15006,14 +14910,6 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 {
     if(child_yang_name == "max-lsp-bandwidth")
     {
-        for(auto const & c : max_lsp_bandwidth)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::MaxLspBandwidth>();
         c->parent = this;
         max_lsp_bandwidth.push_back(c);
@@ -15022,14 +14918,6 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 
     if(child_yang_name == "odu-capability")
     {
-        for(auto const & c : odu_capability)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability>();
         c->parent = this;
         odu_capability.push_back(c);
@@ -15042,14 +14930,23 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : max_lsp_bandwidth)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : odu_capability)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15125,6 +15022,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::MaxLspBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15262,6 +15160,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth_info != nullptr)
     {
         children["bandwidth-info"] = bandwidth_info;
@@ -15477,6 +15376,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fixed != nullptr)
     {
         children["fixed"] = fixed;
@@ -15574,6 +15474,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15675,6 +15576,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15778,6 +15680,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttributeFlag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15865,6 +15768,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15966,6 +15870,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16077,6 +15982,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16202,6 +16108,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -16338,6 +16245,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::Summary::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path_statistics != nullptr)
     {
         children["path-statistics"] = path_statistics;
@@ -16465,6 +16373,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::Summary::PathStatistics::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::Summary::PathStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16632,6 +16541,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::Summary::ReservationStatistics::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::Summary::ReservationStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16799,6 +16709,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::Summary::PathStatistics32Bit::get_
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::Summary::PathStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16966,6 +16877,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::Summary::ReservationStatistics32Bi
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::Summary::ReservationStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17111,14 +17023,6 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::get_child_by_name(
 {
     if(child_yang_name == "statstics-link")
     {
-        for(auto const & c : statstics_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink>();
         c->parent = this;
         statstics_link.push_back(c);
@@ -17131,9 +17035,14 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : statstics_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17322,6 +17231,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::get
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(incoming_path_statistics != nullptr)
     {
         children["incoming-path-statistics"] = incoming_path_statistics;
@@ -17482,6 +17392,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::Inc
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17642,6 +17553,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::Inc
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17802,6 +17714,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::Out
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17962,6 +17875,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::Out
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18122,6 +18036,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::Inc
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18282,6 +18197,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::Inc
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18442,6 +18358,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::Out
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18602,6 +18519,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::Out
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18767,6 +18685,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -18858,6 +18777,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::Global::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18963,14 +18883,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 {
     if(child_yang_name == "bandwidth-allocation-link")
     {
-        for(auto const & c : bandwidth_allocation_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink>();
         c->parent = this;
         bandwidth_allocation_link.push_back(c);
@@ -18983,9 +18895,14 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bandwidth_allocation_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19145,14 +19062,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 
     if(child_yang_name == "flooding-up-threshold")
     {
-        for(auto const & c : flooding_up_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold>();
         c->parent = this;
         flooding_up_threshold.push_back(c);
@@ -19161,14 +19070,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 
     if(child_yang_name == "flooding-down-threshold")
     {
-        for(auto const & c : flooding_down_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold>();
         c->parent = this;
         flooding_down_threshold.push_back(c);
@@ -19181,6 +19082,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_common != nullptr)
     {
         children["link-common"] = link_common;
@@ -19196,14 +19098,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
         children["downstream-bandwidth"] = downstream_bandwidth;
     }
 
+    count = 0;
     for (auto const & c : flooding_up_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : flooding_down_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19484,14 +19394,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 
     if(child_yang_name == "shared-risk-link-group")
     {
-        for(auto const & c : shared_risk_link_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup>();
         c->parent = this;
         shared_risk_link_group.push_back(c);
@@ -19500,14 +19402,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 
     if(child_yang_name == "interface-switching-capability-descriptor")
     {
-        for(auto const & c : interface_switching_capability_descriptor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor>();
         c->parent = this;
         interface_switching_capability_descriptor.push_back(c);
@@ -19516,14 +19410,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 
     if(child_yang_name == "flooded-areas")
     {
-        for(auto const & c : flooded_areas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas>();
         c->parent = this;
         flooded_areas.push_back(c);
@@ -19536,24 +19422,37 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_flags != nullptr)
     {
         children["link-flags"] = link_flags;
     }
 
+    count = 0;
     for (auto const & c : shared_risk_link_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : interface_switching_capability_descriptor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : flooded_areas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19870,6 +19769,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19970,6 +19870,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20064,6 +19965,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20160,6 +20062,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20260,14 +20163,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 {
     if(child_yang_name == "bandwidth-pool0")
     {
-        for(auto const & c : bandwidth_pool0)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0>();
         c->parent = this;
         bandwidth_pool0.push_back(c);
@@ -20276,14 +20171,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 
     if(child_yang_name == "bandwidth-pool1")
     {
-        for(auto const & c : bandwidth_pool1)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1>();
         c->parent = this;
         bandwidth_pool1.push_back(c);
@@ -20296,14 +20183,23 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bandwidth_pool0)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : bandwidth_pool1)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20418,6 +20314,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20550,6 +20447,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20690,14 +20588,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 {
     if(child_yang_name == "bandwidth-pool0")
     {
-        for(auto const & c : bandwidth_pool0)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0>();
         c->parent = this;
         bandwidth_pool0.push_back(c);
@@ -20706,14 +20596,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 
     if(child_yang_name == "bandwidth-pool1")
     {
-        for(auto const & c : bandwidth_pool1)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1>();
         c->parent = this;
         bandwidth_pool1.push_back(c);
@@ -20726,14 +20608,23 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bandwidth_pool0)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : bandwidth_pool1)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20848,6 +20739,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20980,6 +20872,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21096,6 +20989,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21172,6 +21066,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21277,6 +21172,7 @@ std::shared_ptr<Entity> MplsLcac::Gmpls::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Gmpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nni != nullptr)
     {
         children["nni"] = nni;
@@ -21356,6 +21252,7 @@ std::shared_ptr<Entity> MplsLcac::Gmpls::Nni::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Gmpls::Nni::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21423,6 +21320,7 @@ std::shared_ptr<Entity> MplsLcac::Gmpls::Uni::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Gmpls::Uni::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21496,14 +21394,6 @@ std::shared_ptr<Entity> MplsLcac::BfdNeighbors::get_child_by_name(const std::str
 {
     if(child_yang_name == "bfd-neighbor")
     {
-        for(auto const & c : bfd_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BfdNeighbors::BfdNeighbor>();
         c->parent = this;
         bfd_neighbor.push_back(c);
@@ -21516,9 +21406,14 @@ std::shared_ptr<Entity> MplsLcac::BfdNeighbors::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BfdNeighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bfd_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21600,14 +21495,6 @@ std::shared_ptr<Entity> MplsLcac::BfdNeighbors::BfdNeighbor::get_child_by_name(c
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -21620,9 +21507,14 @@ std::shared_ptr<Entity> MplsLcac::BfdNeighbors::BfdNeighbor::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BfdNeighbors::BfdNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21705,6 +21597,7 @@ std::shared_ptr<Entity> MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21807,6 +21700,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAccount::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth_account_links != nullptr)
     {
         children["bandwidth-account-links"] = bandwidth_account_links;
@@ -21887,14 +21781,6 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAccount::BandwidthAccountLinks::get_c
 {
     if(child_yang_name == "bandwidth-account-link")
     {
-        for(auto const & c : bandwidth_account_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink>();
         c->parent = this;
         bandwidth_account_link.push_back(c);
@@ -21907,9 +21793,14 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAccount::BandwidthAccountLinks::get_c
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::BandwidthAccountLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bandwidth_account_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22029,6 +21920,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAccount::BandwidthAccountLinks::Bandw
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(common_info != nullptr)
     {
         children["common-info"] = common_info;
@@ -22193,6 +22085,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAccount::BandwidthAccountLinks::Bandw
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_te_bandwidth_utilization != nullptr)
     {
         children["rsvp-te-bandwidth-utilization"] = rsvp_te_bandwidth_utilization;
@@ -22385,6 +22278,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAccount::BandwidthAccountLinks::Bandw
 std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

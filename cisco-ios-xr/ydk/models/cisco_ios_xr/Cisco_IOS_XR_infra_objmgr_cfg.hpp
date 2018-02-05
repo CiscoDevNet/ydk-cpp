@@ -134,18 +134,18 @@ class ObjectGroup::Port::UdfObjects::UdfObject::Operators : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Operator_; //type: ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator_
+        class Operator; //type: ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator_> > operator_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_cfg::ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator> > operator_;
         
 }; // ObjectGroup::Port::UdfObjects::UdfObject::Operators
 
 
-class ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator_ : public ydk::Entity
+class ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator : public ydk::Entity
 {
     public:
-        Operator_();
-        ~Operator_();
+        Operator();
+        ~Operator();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -160,7 +160,7 @@ class ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator_ : public yd
         ydk::YLeaf operator_type; //type: PortOperator
         ydk::YLeaf port; //type: one of enumeration, uint32
 
-}; // ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator_
+}; // ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator
 
 
 class ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups : public ydk::Entity

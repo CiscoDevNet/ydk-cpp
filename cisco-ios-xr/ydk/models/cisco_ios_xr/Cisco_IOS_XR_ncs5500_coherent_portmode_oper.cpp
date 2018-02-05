@@ -61,14 +61,6 @@ std::shared_ptr<Entity> ControllerPortMode::get_child_by_name(const std::string 
 {
     if(child_yang_name == "optics-name")
     {
-        for(auto const & c : optics_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ControllerPortMode::OpticsName>();
         c->parent = this;
         optics_name.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> ControllerPortMode::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> ControllerPortMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : optics_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -198,6 +195,7 @@ std::shared_ptr<Entity> ControllerPortMode::OpticsName::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ControllerPortMode::OpticsName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_mode_info != nullptr)
     {
         children["port-mode-info"] = port_mode_info;
@@ -295,6 +293,7 @@ std::shared_ptr<Entity> ControllerPortMode::OpticsName::PortModeInfo::get_child_
 std::map<std::string, std::shared_ptr<Entity>> ControllerPortMode::OpticsName::PortModeInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

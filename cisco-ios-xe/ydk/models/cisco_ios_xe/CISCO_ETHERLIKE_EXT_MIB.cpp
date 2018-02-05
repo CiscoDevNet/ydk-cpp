@@ -81,6 +81,7 @@ std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ceedot3pauseexttable != nullptr)
     {
         children["ceeDot3PauseExtTable"] = ceedot3pauseexttable;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::get_child_by
 {
     if(child_yang_name == "ceeDot3PauseExtEntry")
     {
-        for(auto const & c : ceedot3pauseextentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry>();
         c->parent = this;
         ceedot3pauseextentry.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceedot3pauseextentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -297,6 +295,7 @@ std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pause
 std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -398,14 +397,6 @@ std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::get_child_by
 {
     if(child_yang_name == "ceeSubInterfaceEntry")
     {
-        for(auto const & c : ceesubinterfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry>();
         c->parent = this;
         ceesubinterfaceentry.push_back(c);
@@ -418,9 +409,14 @@ std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceesubinterfaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -500,6 +496,7 @@ std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterf
 std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

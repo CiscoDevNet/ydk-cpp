@@ -124,6 +124,7 @@ std::shared_ptr<Entity> IpTcp::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> IpTcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(directory != nullptr)
     {
         children["directory"] = directory;
@@ -325,6 +326,7 @@ std::shared_ptr<Entity> IpTcp::Directory::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> IpTcp::Directory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -432,6 +434,7 @@ std::shared_ptr<Entity> IpTcp::Throttle::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> IpTcp::Throttle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -529,6 +532,7 @@ std::shared_ptr<Entity> IpTcp::NumThread::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> IpTcp::NumThread::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -637,6 +641,7 @@ std::shared_ptr<Entity> Ip::get_child_by_name(const std::string & child_yang_nam
 std::map<std::string, std::shared_ptr<Entity>> Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cinetd != nullptr)
     {
         children["cinetd"] = cinetd;
@@ -759,6 +764,7 @@ std::shared_ptr<Entity> Ip::Cinetd::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(services != nullptr)
     {
         children["services"] = services;
@@ -882,6 +888,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -979,6 +986,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(small_servers != nullptr)
     {
         children["small-servers"] = small_servers;
@@ -1077,6 +1085,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tcp_small_servers != nullptr)
     {
         children["tcp-small-servers"] = tcp_small_servers;
@@ -1164,6 +1173,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServer
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1261,6 +1271,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServer
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1356,14 +1367,6 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::get_child_by_name(const std:
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -1376,9 +1379,14 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1481,6 +1489,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
@@ -1589,6 +1598,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(telnet != nullptr)
     {
         children["telnet"] = telnet;
@@ -1673,6 +1683,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_child
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tcp != nullptr)
     {
         children["tcp"] = tcp;
@@ -1748,6 +1759,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1842,6 +1854,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(udp != nullptr)
     {
         children["udp"] = udp;
@@ -1925,6 +1938,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2053,6 +2067,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(telnet != nullptr)
     {
         children["telnet"] = telnet;
@@ -2137,6 +2152,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_child
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tcp != nullptr)
     {
         children["tcp"] = tcp;
@@ -2212,6 +2228,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2306,6 +2323,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(udp != nullptr)
     {
         children["udp"] = udp;
@@ -2389,6 +2407,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2511,6 +2530,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(small_servers != nullptr)
     {
         children["small-servers"] = small_servers;
@@ -2597,6 +2617,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tcp_small_servers != nullptr)
     {
         children["tcp-small-servers"] = tcp_small_servers;
@@ -2679,6 +2700,7 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServer
 std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2781,6 +2803,7 @@ std::shared_ptr<Entity> Ip::ForwardProtocol::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(udp != nullptr)
     {
         children["udp"] = udp;
@@ -2873,6 +2896,7 @@ std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ports != nullptr)
     {
         children["ports"] = ports;
@@ -2963,14 +2987,6 @@ std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::Ports::get_child_by_name(const
 {
     if(child_yang_name == "port")
     {
-        for(auto const & c : port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ip::ForwardProtocol::Udp::Ports::Port>();
         c->parent = this;
         port.push_back(c);
@@ -2983,9 +2999,14 @@ std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::Ports::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::Ports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : port)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3065,6 +3086,7 @@ std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::Ports::Port::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::Ports::Port::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

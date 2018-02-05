@@ -934,18 +934,18 @@ class Native::Ip::Sla::Entry::PathJitter : public ydk::Entity
         ydk::YLeaf verify_data; //type: empty
         ydk::YLeaf vrf; //type: string
         ydk::YLeafList lsr_path; //type: list of  string
-        class Default_; //type: Native::Ip::Sla::Entry::PathJitter::Default_
+        class Default; //type: Native::Ip::Sla::Entry::PathJitter::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Sla::Entry::PathJitter::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Sla::Entry::PathJitter::Default> default_;
         
 }; // Native::Ip::Sla::Entry::PathJitter
 
 
-class Native::Ip::Sla::Entry::PathJitter::Default_ : public ydk::Entity
+class Native::Ip::Sla::Entry::PathJitter::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -968,7 +968,7 @@ class Native::Ip::Sla::Entry::PathJitter::Default_ : public ydk::Entity
         ydk::YLeaf verify_data; //type: empty
         ydk::YLeaf vrf; //type: empty
 
-}; // Native::Ip::Sla::Entry::PathJitter::Default_
+}; // Native::Ip::Sla::Entry::PathJitter::Default
 
 
 class Native::Ip::Sla::Entry::UdpEcho : public ydk::Entity
@@ -1433,7 +1433,7 @@ class Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf seconds; //type: uint32
-        ydk::YLeaf life; //type: one of uint32, enumeration
+        ydk::YLeaf life; //type: one of enumeration, uint32
         class Frequency; //type: Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod::Frequency
         class StartTime; //type: Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod::StartTime
 
@@ -1506,7 +1506,7 @@ class Native::Ip::Sla::Schedule : public ydk::Entity
 
         ydk::YLeaf entry_number; //type: uint32
         ydk::YLeaf ageout; //type: uint32
-        ydk::YLeaf life; //type: one of uint32, enumeration
+        ydk::YLeaf life; //type: one of enumeration, uint32
         ydk::YLeaf recurring; //type: empty
         class StartTime; //type: Native::Ip::Sla::Schedule::StartTime
 
@@ -1806,9 +1806,9 @@ class Native::Ip::Wccp::WccpList : public ydk::Entity
 
         ydk::YLeaf id; //type: uint8
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_list; //type: one of string, uint16
+        ydk::YLeaf group_list; //type: one of uint16, string
         ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf redirect_list; //type: one of string, uint16
+        ydk::YLeaf redirect_list; //type: one of uint16, string
         ydk::YLeaf snmp_disabled; //type: empty
         class Password; //type: Native::Ip::Wccp::WccpList::Password
 
@@ -1859,9 +1859,9 @@ class Native::Ip::Wccp::WebCache : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_list; //type: one of string, uint16
+        ydk::YLeaf group_list; //type: one of uint16, string
         ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf redirect_list; //type: one of string, uint16
+        ydk::YLeaf redirect_list; //type: one of uint16, string
         ydk::YLeaf snmp_disabled; //type: empty
         class Password; //type: Native::Ip::Wccp::WebCache::Password
 
@@ -2011,9 +2011,9 @@ class Native::Ip::Wccp::Vrf::WccpList : public ydk::Entity
 
         ydk::YLeaf id; //type: uint8
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_list; //type: one of string, uint16
+        ydk::YLeaf group_list; //type: one of uint16, string
         ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf redirect_list; //type: one of string, uint16
+        ydk::YLeaf redirect_list; //type: one of uint16, string
         ydk::YLeaf snmp_disabled; //type: empty
         class Password; //type: Native::Ip::Wccp::Vrf::WccpList::Password
 
@@ -2063,9 +2063,9 @@ class Native::Ip::Wccp::Vrf::WebCache : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_list; //type: one of string, uint16
+        ydk::YLeaf group_list; //type: one of uint16, string
         ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf redirect_list; //type: one of string, uint16
+        ydk::YLeaf redirect_list; //type: one of uint16, string
         ydk::YLeaf snmp_disabled; //type: empty
         class Password; //type: Native::Ip::Wccp::Vrf::WebCache::Password
 
@@ -2189,10 +2189,10 @@ class Native::Macro : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class Global; //type: Native::Macro::Global
-        class Auto_; //type: Native::Macro::Auto_
+        class Auto; //type: Native::Macro::Auto
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Macro::Global> global;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Macro::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Macro::Auto> auto_;
         
 }; // Native::Macro
 
@@ -2219,11 +2219,11 @@ class Native::Macro::Global : public ydk::Entity
 }; // Native::Macro::Global
 
 
-class Native::Macro::Auto_ : public ydk::Entity
+class Native::Macro::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2237,7 +2237,7 @@ class Native::Macro::Auto_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
 
-}; // Native::Macro::Auto_
+}; // Native::Macro::Auto
 
 
 class Native::Ipv6 : public ydk::Entity
@@ -2769,8 +2769,8 @@ class Native::Ipv6::Dhcp::Pool::Address::Prefix::Lifetime : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf valid_lifetime; //type: one of uint32, enumeration
-        ydk::YLeaf preferred_lifetime; //type: one of uint32, enumeration
+        ydk::YLeaf valid_lifetime; //type: one of enumeration, uint32
+        ydk::YLeaf preferred_lifetime; //type: one of enumeration, uint32
         class ValidLifetime;
         class PreferredLifetime;
 
@@ -2846,10 +2846,10 @@ class Native::Ipv6::AccessList::NamedAcl : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         class AccessListSeqRule; //type: Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule
-        class Default_; //type: Native::Ipv6::AccessList::NamedAcl::Default_
+        class Default; //type: Native::Ipv6::AccessList::NamedAcl::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule> > access_list_seq_rule;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedAcl::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedAcl::Default> default_;
         
 }; // Native::Ipv6::AccessList::NamedAcl
 
@@ -2896,7 +2896,7 @@ class Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
         ydk::YLeaf source_host; //type: one of string, union
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_wildcard_bits; //type: string
@@ -2921,14 +2921,14 @@ class Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule : public yd
         ydk::YLeaf dst_range2; //type: one of uint16, enumeration
         ydk::YLeaf auth; //type: empty
         ydk::YLeaf dest_option; //type: empty
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf flow_label; //type: uint32
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf hbh; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
         ydk::YLeaf mobility; //type: empty
-        ydk::YLeaf mobility_type; //type: one of uint8, enumeration
+        ydk::YLeaf mobility_type; //type: one of enumeration, uint8
         ydk::YLeaf routing; //type: empty
         ydk::YLeaf routing_type; //type: uint8
         ydk::YLeaf time_range; //type: string
@@ -2949,11 +2949,11 @@ class Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule : public yd
 }; // Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule
 
 
-class Native::Ipv6::AccessList::NamedAcl::Default_ : public ydk::Entity
+class Native::Ipv6::AccessList::NamedAcl::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2965,14 +2965,14 @@ class Native::Ipv6::AccessList::NamedAcl::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class AccessListSeqRule; //type: Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule
+        class AccessListSeqRule; //type: Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule> > access_list_seq_rule;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule> > access_list_seq_rule;
         
-}; // Native::Ipv6::AccessList::NamedAcl::Default_
+}; // Native::Ipv6::AccessList::NamedAcl::Default
 
 
-class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule : public ydk::Entity
+class Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule : public ydk::Entity
 {
     public:
         AccessListSeqRule();
@@ -2990,14 +2990,14 @@ class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule : public y
 
         ydk::YLeaf sequence; //type: uint64
         ydk::YLeaf remark; //type: string
-        class AceRule; //type: Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule
+        class AceRule; //type: Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule> ace_rule;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule> ace_rule;
         
-}; // Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule
+}; // Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule
 
 
-class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule : public ydk::Entity
+class Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule : public ydk::Entity
 {
     public:
         AceRule();
@@ -3014,7 +3014,7 @@ class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
         ydk::YLeaf source_host; //type: one of string, union
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_wildcard_bits; //type: string
@@ -3039,14 +3039,14 @@ class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule :
         ydk::YLeaf dst_range2; //type: one of uint16, enumeration
         ydk::YLeaf auth; //type: empty
         ydk::YLeaf dest_option; //type: empty
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf flow_label; //type: uint32
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf hbh; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
         ydk::YLeaf mobility; //type: empty
-        ydk::YLeaf mobility_type; //type: one of uint8, enumeration
+        ydk::YLeaf mobility_type; //type: one of enumeration, uint8
         ydk::YLeaf routing; //type: empty
         ydk::YLeaf routing_type; //type: uint8
         ydk::YLeaf time_range; //type: string
@@ -3064,7 +3064,7 @@ class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule :
         class Protocol;
         class NamedMsgType;
 
-}; // Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule
+}; // Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule
 
 
 class Native::Ipv6::AccessList::NamedRbAcl : public ydk::Entity
@@ -3087,10 +3087,10 @@ class Native::Ipv6::AccessList::NamedRbAcl : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf role_based; //type: empty
         class AccessListSeqRule; //type: Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule
-        class Default_; //type: Native::Ipv6::AccessList::NamedRbAcl::Default_
+        class Default; //type: Native::Ipv6::AccessList::NamedRbAcl::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule> > access_list_seq_rule;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedRbAcl::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedRbAcl::Default> default_;
         
 }; // Native::Ipv6::AccessList::NamedRbAcl
 
@@ -3137,7 +3137,7 @@ class Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
         ydk::YLeaf source_host; //type: one of string, union
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_wildcard_bits; //type: string
@@ -3162,14 +3162,14 @@ class Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule : public 
         ydk::YLeaf dst_range2; //type: one of uint16, enumeration
         ydk::YLeaf auth; //type: empty
         ydk::YLeaf dest_option; //type: empty
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf flow_label; //type: uint32
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf hbh; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
         ydk::YLeaf mobility; //type: empty
-        ydk::YLeaf mobility_type; //type: one of uint8, enumeration
+        ydk::YLeaf mobility_type; //type: one of enumeration, uint8
         ydk::YLeaf routing; //type: empty
         ydk::YLeaf routing_type; //type: uint8
         ydk::YLeaf time_range; //type: string
@@ -3190,11 +3190,11 @@ class Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule : public 
 }; // Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule
 
 
-class Native::Ipv6::AccessList::NamedRbAcl::Default_ : public ydk::Entity
+class Native::Ipv6::AccessList::NamedRbAcl::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3206,14 +3206,14 @@ class Native::Ipv6::AccessList::NamedRbAcl::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class AccessListSeqRule; //type: Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule
+        class AccessListSeqRule; //type: Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule> > access_list_seq_rule;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule> > access_list_seq_rule;
         
-}; // Native::Ipv6::AccessList::NamedRbAcl::Default_
+}; // Native::Ipv6::AccessList::NamedRbAcl::Default
 
 
-class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule : public ydk::Entity
+class Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule : public ydk::Entity
 {
     public:
         AccessListSeqRule();
@@ -3231,14 +3231,14 @@ class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule : public
 
         ydk::YLeaf sequence; //type: uint64
         ydk::YLeaf remark; //type: string
-        class AceRule; //type: Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule
+        class AceRule; //type: Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule> ace_rule;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule> ace_rule;
         
-}; // Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule
+}; // Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule
 
 
-class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule : public ydk::Entity
+class Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule : public ydk::Entity
 {
     public:
         AceRule();
@@ -3255,7 +3255,7 @@ class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
         ydk::YLeaf source_host; //type: one of string, union
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf source_wildcard_bits; //type: string
@@ -3280,14 +3280,14 @@ class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule
         ydk::YLeaf dst_range2; //type: one of uint16, enumeration
         ydk::YLeaf auth; //type: empty
         ydk::YLeaf dest_option; //type: empty
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf flow_label; //type: uint32
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf hbh; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
         ydk::YLeaf mobility; //type: empty
-        ydk::YLeaf mobility_type; //type: one of uint8, enumeration
+        ydk::YLeaf mobility_type; //type: one of enumeration, uint8
         ydk::YLeaf routing; //type: empty
         ydk::YLeaf routing_type; //type: uint8
         ydk::YLeaf time_range; //type: string
@@ -3305,7 +3305,7 @@ class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule
         class Protocol;
         class NamedMsgType;
 
-}; // Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule
+}; // Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule
 
 
 class Native::Ipv6::AccessList::LogUpdate : public ydk::Entity
@@ -4228,7 +4228,7 @@ class Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule::NamedMsgTy
 
 };
 
-class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Action : public ydk::Enum
+class Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Action : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf deny;
@@ -4236,7 +4236,7 @@ class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::
 
 };
 
-class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol : public ydk::Enum
+class Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ahp;
@@ -4251,7 +4251,7 @@ class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::
 
 };
 
-class Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType : public ydk::Enum
+class Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf beyond_scope;
@@ -4354,7 +4354,7 @@ class Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule::NamedMsg
 
 };
 
-class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Action : public ydk::Enum
+class Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Action : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf deny;
@@ -4362,7 +4362,7 @@ class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule
 
 };
 
-class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol : public ydk::Enum
+class Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ahp;
@@ -4377,7 +4377,7 @@ class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule
 
 };
 
-class Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType : public ydk::Enum
+class Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf beyond_scope;

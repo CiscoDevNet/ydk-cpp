@@ -33,12 +33,12 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec : public ydk::Entity
 
         ydk::YLeaf sequence; //type: uint16
         ydk::YLeaf profile; //type: string
-        class Default_; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_
+        class Default; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default
         class Match; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Match
         class Replay; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Replay
         class Tag; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Tag
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Match> match;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Replay> replay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Tag> tag;
@@ -46,11 +46,11 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec : public ydk::Entity
 }; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_ : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -63,18 +63,18 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_ : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf profile; //type: empty
-        class Match; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match
-        class Replay; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Replay
-        class Tag; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Tag
+        class Match; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Match
+        class Replay; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Replay
+        class Tag; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Tag
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match> match;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Replay> replay; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Tag> tag; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Match> match;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Replay> replay; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Tag> tag; // presence node
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_
+}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Match : public ydk::Entity
 {
     public:
         Match();
@@ -90,14 +90,14 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match::Address
+        class Address; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Match::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match::Address> address; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Match::Address> address; // presence node
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match
+}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Match
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match::Address : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Match::Address : public ydk::Entity
 {
     public:
         Address();
@@ -114,10 +114,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match::Add
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Match::Address
+}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Match::Address
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Replay : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Replay : public ydk::Entity
 {
     public:
         Replay();
@@ -134,10 +134,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Replay : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Replay
+}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Replay
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Tag : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Tag : public ydk::Entity
 {
     public:
         Tag();
@@ -154,7 +154,7 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Tag : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default_::Tag
+}; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Default::Tag
 
 
 class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Match : public ydk::Entity
@@ -196,7 +196,7 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Match::Address : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of string, uint16
+        ydk::YLeaf ipv4; //type: one of uint16, string
         ydk::YLeaf ipv6; //type: string
 
 }; // Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Match::Address
@@ -335,11 +335,11 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::PairWiseKeying : public ydk
 }; // Native::Crypto::Gkm::Group::Server::Local::Sa::PairWiseKeying
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_ : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -353,28 +353,28 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_ : public ydk::Entity
 
         ydk::YLeaf gdoi; //type: empty
         ydk::YLeaf gikev2; //type: empty
-        class Address; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Address
-        class Authorization; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization
-        class Group_; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Group_
-        class Identifier; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Identifier
-        class Redundancy; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Redundancy
-        class Registration; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Registration
-        class Rekey; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey
-        class Sa; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Sa
+        class Address; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Address
+        class Authorization; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Authorization
+        class Group_; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Group_
+        class Identifier; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Identifier
+        class Redundancy; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Redundancy
+        class Registration; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Registration
+        class Rekey; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Rekey
+        class Sa; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Sa
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Address> address; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization> authorization;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Group_> group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Identifier> identifier; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Redundancy> redundancy; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Registration> registration;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey> rekey;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Sa> sa;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Address> address; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Authorization> authorization;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Group_> group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Identifier> identifier; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Redundancy> redundancy; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Registration> registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Rekey> rekey;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Sa> sa;
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_
+}; // Native::Crypto::Gkm::Group::Server::Local::Default
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Address : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Address : public ydk::Entity
 {
     public:
         Address();
@@ -391,10 +391,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Address : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Address
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Address
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Authorization : public ydk::Entity
 {
     public:
         Authorization();
@@ -411,14 +411,14 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf identity; //type: empty
-        class Address; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization::Address
+        class Address; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Authorization::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Authorization::Address> address;
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Authorization
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization::Address : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Authorization::Address : public ydk::Entity
 {
     public:
         Address();
@@ -436,10 +436,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization::Addres
 
         ydk::YLeaf ipv4; //type: empty
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Authorization::Address
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Authorization::Address
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Group_ : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Group_ : public ydk::Entity
 {
     public:
         Group_();
@@ -455,14 +455,14 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Group_ : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Size; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Group_::Size
+        class Size; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Group_::Size
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Group_::Size> size; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Group_::Size> size; // presence node
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Group_
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Group_
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Group_::Size : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Group_::Size : public ydk::Entity
 {
     public:
         Size();
@@ -479,10 +479,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Group_::Size : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Group_::Size
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Group_::Size
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Identifier : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Identifier : public ydk::Entity
 {
     public:
         Identifier();
@@ -499,10 +499,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Identifier : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Identifier
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Identifier
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Redundancy : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Redundancy : public ydk::Entity
 {
     public:
         Redundancy();
@@ -519,10 +519,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Redundancy : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Redundancy
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Redundancy
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Registration : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Registration : public ydk::Entity
 {
     public:
         Registration();
@@ -539,14 +539,14 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Registration : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface; //type: string
-        class Periodic; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodic
+        class Periodic; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Registration::Periodic
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodic> periodic;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Registration::Periodic> periodic;
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Registration
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Registration
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodic : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Registration::Periodic : public ydk::Entity
 {
     public:
         Periodic();
@@ -562,14 +562,14 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Crl; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodic::Crl
+        class Crl; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Registration::Periodic::Crl
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodic::Crl> crl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Registration::Periodic::Crl> crl;
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodic
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Registration::Periodic
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodic::Crl : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Registration::Periodic::Crl : public ydk::Entity
 {
     public:
         Crl();
@@ -587,10 +587,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodi
 
         ydk::YLeaf trustpoint; //type: empty
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Registration::Periodic::Crl
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Registration::Periodic::Crl
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Rekey : public ydk::Entity
 {
     public:
         Rekey();
@@ -607,26 +607,26 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf acknowledgement; //type: empty
-        class Address; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Address
-        class Algorithm; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Algorithm
-        class Authentication; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Authentication
-        class Lifetime; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Lifetime
-        class Retransmit; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Retransmit
-        class SigHash; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::SigHash
-        class Transport; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Transport
+        class Address; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Address
+        class Algorithm; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Algorithm
+        class Authentication; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Authentication
+        class Lifetime; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Lifetime
+        class Retransmit; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Retransmit
+        class SigHash; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::SigHash
+        class Transport; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Transport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Address> address; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Algorithm> algorithm; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Authentication> authentication; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Lifetime> lifetime;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Retransmit> retransmit; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::SigHash> sig_hash;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Transport> transport;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Address> address; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Algorithm> algorithm; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Authentication> authentication; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Lifetime> lifetime;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Retransmit> retransmit; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::SigHash> sig_hash;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Transport> transport;
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Rekey
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Address : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Address : public ydk::Entity
 {
     public:
         Address();
@@ -643,10 +643,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Address : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Address
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Address
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Algorithm : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Algorithm : public ydk::Entity
 {
     public:
         Algorithm();
@@ -663,10 +663,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Algorithm : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Algorithm
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Algorithm
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Authentication : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -683,10 +683,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Authentication
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Authentication
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Authentication
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Lifetime : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Lifetime : public ydk::Entity
 {
     public:
         Lifetime();
@@ -705,10 +705,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Lifetime : pub
         ydk::YLeaf days; //type: empty
         ydk::YLeaf seconds; //type: empty
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Lifetime
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Lifetime
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Retransmit : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Retransmit : public ydk::Entity
 {
     public:
         Retransmit();
@@ -725,10 +725,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Retransmit : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Retransmit
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Retransmit
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::SigHash : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::SigHash : public ydk::Entity
 {
     public:
         SigHash();
@@ -746,10 +746,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::SigHash : publ
 
         ydk::YLeaf algorithm; //type: empty
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::SigHash
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::SigHash
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Transport : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Transport : public ydk::Entity
 {
     public:
         Transport();
@@ -767,10 +767,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Transport : pu
 
         ydk::YLeaf unicast; //type: empty
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Rekey::Transport
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Rekey::Transport
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Sa : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Sa : public ydk::Entity
 {
     public:
         Sa();
@@ -787,18 +787,18 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Sa : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf receive_only; //type: empty
-        class D3P; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::D3P
-        class Ipsec; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::Ipsec
-        class PairWiseKeying; //type: Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::PairWiseKeying
+        class D3P; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3P
+        class Ipsec; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Sa::Ipsec
+        class PairWiseKeying; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Sa::PairWiseKeying
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::D3P> d3p; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::Ipsec> > ipsec;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::PairWiseKeying> pair_wise_keying; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3P> d3p; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Sa::Ipsec> > ipsec;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Sa::PairWiseKeying> pair_wise_keying; // presence node
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Sa
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Sa
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::D3P : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3P : public ydk::Entity
 {
     public:
         D3P();
@@ -815,10 +815,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::D3P : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::D3P
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3P
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::Ipsec : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Sa::Ipsec : public ydk::Entity
 {
     public:
         Ipsec();
@@ -836,10 +836,10 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::Ipsec : public yd
 
         ydk::YLeaf sequence; //type: uint16
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::Ipsec
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Sa::Ipsec
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::PairWiseKeying : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Sa::PairWiseKeying : public ydk::Entity
 {
     public:
         PairWiseKeying();
@@ -856,14 +856,14 @@ class Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::PairWiseKeying : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default_::Sa::PairWiseKeying
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Sa::PairWiseKeying
 
 
-class Native::Crypto::Gkm::Group::Default_ : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -876,18 +876,18 @@ class Native::Crypto::Gkm::Group::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf passive; //type: empty
-        class Client; //type: Native::Crypto::Gkm::Group::Default_::Client
-        class Identity; //type: Native::Crypto::Gkm::Group::Default_::Identity
-        class Server; //type: Native::Crypto::Gkm::Group::Default_::Server
+        class Client; //type: Native::Crypto::Gkm::Group::Default::Client
+        class Identity; //type: Native::Crypto::Gkm::Group::Default::Identity
+        class Server; //type: Native::Crypto::Gkm::Group::Default::Server
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Client> client;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Identity> identity; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Server> server;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Client> client;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Identity> identity; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Server> server;
         
-}; // Native::Crypto::Gkm::Group::Default_
+}; // Native::Crypto::Gkm::Group::Default
 
 
-class Native::Crypto::Gkm::Group::Default_::Client : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Client : public ydk::Entity
 {
     public:
         Client();
@@ -906,23 +906,23 @@ class Native::Crypto::Gkm::Group::Default_::Client : public ydk::Entity
         ydk::YLeaf bypass_policy; //type: empty
         ydk::YLeaf transform_sets; //type: empty
         ydk::YLeaf transport_encrypt_key; //type: TransportEncryptKey
-        class Protocol; //type: Native::Crypto::Gkm::Group::Default_::Client::Protocol
-        class RecoveryCheck; //type: Native::Crypto::Gkm::Group::Default_::Client::RecoveryCheck
-        class Registration; //type: Native::Crypto::Gkm::Group::Default_::Client::Registration
-        class Rekey; //type: Native::Crypto::Gkm::Group::Default_::Client::Rekey
-        class Status; //type: Native::Crypto::Gkm::Group::Default_::Client::Status
+        class Protocol; //type: Native::Crypto::Gkm::Group::Default::Client::Protocol
+        class RecoveryCheck; //type: Native::Crypto::Gkm::Group::Default::Client::RecoveryCheck
+        class Registration; //type: Native::Crypto::Gkm::Group::Default::Client::Registration
+        class Rekey; //type: Native::Crypto::Gkm::Group::Default::Client::Rekey
+        class Status; //type: Native::Crypto::Gkm::Group::Default::Client::Status
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Client::Protocol> protocol; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Client::RecoveryCheck> recovery_check; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Client::Registration> registration;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Client::Rekey> rekey;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Client::Status> status;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Client::Protocol> protocol; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Client::RecoveryCheck> recovery_check; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Client::Registration> registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Client::Rekey> rekey;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Client::Status> status;
                 class TransportEncryptKey;
 
-}; // Native::Crypto::Gkm::Group::Default_::Client
+}; // Native::Crypto::Gkm::Group::Default::Client
 
 
-class Native::Crypto::Gkm::Group::Default_::Client::Protocol : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Client::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -939,10 +939,10 @@ class Native::Crypto::Gkm::Group::Default_::Client::Protocol : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Default_::Client::Protocol
+}; // Native::Crypto::Gkm::Group::Default::Client::Protocol
 
 
-class Native::Crypto::Gkm::Group::Default_::Client::RecoveryCheck : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Client::RecoveryCheck : public ydk::Entity
 {
     public:
         RecoveryCheck();
@@ -959,10 +959,10 @@ class Native::Crypto::Gkm::Group::Default_::Client::RecoveryCheck : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Default_::Client::RecoveryCheck
+}; // Native::Crypto::Gkm::Group::Default::Client::RecoveryCheck
 
 
-class Native::Crypto::Gkm::Group::Default_::Client::Registration : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Client::Registration : public ydk::Entity
 {
     public:
         Registration();
@@ -980,10 +980,10 @@ class Native::Crypto::Gkm::Group::Default_::Client::Registration : public ydk::E
 
         ydk::YLeaf interface; //type: empty
 
-}; // Native::Crypto::Gkm::Group::Default_::Client::Registration
+}; // Native::Crypto::Gkm::Group::Default::Client::Registration
 
 
-class Native::Crypto::Gkm::Group::Default_::Client::Rekey : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Client::Rekey : public ydk::Entity
 {
     public:
         Rekey();
@@ -999,16 +999,16 @@ class Native::Crypto::Gkm::Group::Default_::Client::Rekey : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Encryption; //type: Native::Crypto::Gkm::Group::Default_::Client::Rekey::Encryption
-        class Hash; //type: Native::Crypto::Gkm::Group::Default_::Client::Rekey::Hash
+        class Encryption; //type: Native::Crypto::Gkm::Group::Default::Client::Rekey::Encryption
+        class Hash; //type: Native::Crypto::Gkm::Group::Default::Client::Rekey::Hash
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Client::Rekey::Encryption> encryption; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Client::Rekey::Hash> hash; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Client::Rekey::Encryption> encryption; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Client::Rekey::Hash> hash; // presence node
         
-}; // Native::Crypto::Gkm::Group::Default_::Client::Rekey
+}; // Native::Crypto::Gkm::Group::Default::Client::Rekey
 
 
-class Native::Crypto::Gkm::Group::Default_::Client::Rekey::Encryption : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Client::Rekey::Encryption : public ydk::Entity
 {
     public:
         Encryption();
@@ -1025,10 +1025,10 @@ class Native::Crypto::Gkm::Group::Default_::Client::Rekey::Encryption : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Default_::Client::Rekey::Encryption
+}; // Native::Crypto::Gkm::Group::Default::Client::Rekey::Encryption
 
 
-class Native::Crypto::Gkm::Group::Default_::Client::Rekey::Hash : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Client::Rekey::Hash : public ydk::Entity
 {
     public:
         Hash();
@@ -1045,10 +1045,10 @@ class Native::Crypto::Gkm::Group::Default_::Client::Rekey::Hash : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Default_::Client::Rekey::Hash
+}; // Native::Crypto::Gkm::Group::Default::Client::Rekey::Hash
 
 
-class Native::Crypto::Gkm::Group::Default_::Client::Status : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Client::Status : public ydk::Entity
 {
     public:
         Status();
@@ -1064,14 +1064,14 @@ class Native::Crypto::Gkm::Group::Default_::Client::Status : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ActiveSa; //type: Native::Crypto::Gkm::Group::Default_::Client::Status::ActiveSa
+        class ActiveSa; //type: Native::Crypto::Gkm::Group::Default::Client::Status::ActiveSa
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Client::Status::ActiveSa> active_sa; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Client::Status::ActiveSa> active_sa; // presence node
         
-}; // Native::Crypto::Gkm::Group::Default_::Client::Status
+}; // Native::Crypto::Gkm::Group::Default::Client::Status
 
 
-class Native::Crypto::Gkm::Group::Default_::Client::Status::ActiveSa : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Client::Status::ActiveSa : public ydk::Entity
 {
     public:
         ActiveSa();
@@ -1088,10 +1088,10 @@ class Native::Crypto::Gkm::Group::Default_::Client::Status::ActiveSa : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Default_::Client::Status::ActiveSa
+}; // Native::Crypto::Gkm::Group::Default::Client::Status::ActiveSa
 
 
-class Native::Crypto::Gkm::Group::Default_::Identity : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Identity : public ydk::Entity
 {
     public:
         Identity();
@@ -1108,10 +1108,10 @@ class Native::Crypto::Gkm::Group::Default_::Identity : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Default_::Identity
+}; // Native::Crypto::Gkm::Group::Default::Identity
 
 
-class Native::Crypto::Gkm::Group::Default_::Server : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Server : public ydk::Entity
 {
     public:
         Server();
@@ -1128,16 +1128,16 @@ class Native::Crypto::Gkm::Group::Default_::Server : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf local; //type: empty
-        class Address; //type: Native::Crypto::Gkm::Group::Default_::Server::Address
-        class Hostname; //type: Native::Crypto::Gkm::Group::Default_::Server::Hostname
+        class Address; //type: Native::Crypto::Gkm::Group::Default::Server::Address
+        class Hostname; //type: Native::Crypto::Gkm::Group::Default::Server::Hostname
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Server::Address> address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default_::Server::Hostname> hostname;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Server::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Default::Server::Hostname> hostname;
         
-}; // Native::Crypto::Gkm::Group::Default_::Server
+}; // Native::Crypto::Gkm::Group::Default::Server
 
 
-class Native::Crypto::Gkm::Group::Default_::Server::Address : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Server::Address : public ydk::Entity
 {
     public:
         Address();
@@ -1155,10 +1155,10 @@ class Native::Crypto::Gkm::Group::Default_::Server::Address : public ydk::Entity
 
         ydk::YLeaf ipv4; //type: string
 
-}; // Native::Crypto::Gkm::Group::Default_::Server::Address
+}; // Native::Crypto::Gkm::Group::Default::Server::Address
 
 
-class Native::Crypto::Gkm::Group::Default_::Server::Hostname : public ydk::Entity
+class Native::Crypto::Gkm::Group::Default::Server::Hostname : public ydk::Entity
 {
     public:
         Hostname();
@@ -1176,7 +1176,7 @@ class Native::Crypto::Gkm::Group::Default_::Server::Hostname : public ydk::Entit
 
         ydk::YLeaf ipv4; //type: string
 
-}; // Native::Crypto::Gkm::Group::Default_::Server::Hostname
+}; // Native::Crypto::Gkm::Group::Default::Server::Hostname
 
 
 class Native::Crypto::Identity : public ydk::Entity
@@ -1200,18 +1200,18 @@ class Native::Crypto::Identity : public ydk::Entity
         ydk::YLeaf description; //type: string
         ydk::YLeaf dn; //type: string
         ydk::YLeaf fqdn; //type: string
-        class Default_; //type: Native::Crypto::Identity::Default_
+        class Default; //type: Native::Crypto::Identity::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Identity::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Identity::Default> default_;
         
 }; // Native::Crypto::Identity
 
 
-class Native::Crypto::Identity::Default_ : public ydk::Entity
+class Native::Crypto::Identity::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1227,7 +1227,7 @@ class Native::Crypto::Identity::Default_ : public ydk::Entity
         ydk::YLeaf dn; //type: string
         ydk::YLeaf fqdn; //type: string
 
-}; // Native::Crypto::Identity::Default_
+}; // Native::Crypto::Identity::Default
 
 
 class Native::Crypto::Ipsec : public ydk::Entity
@@ -1310,12 +1310,12 @@ class Native::Crypto::Ipsec::Profile : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf description; //type: string
         ydk::YLeaf responder_only; //type: empty
-        class Default_; //type: Native::Crypto::Ipsec::Profile::Default_
+        class Default; //type: Native::Crypto::Ipsec::Profile::Default
         class Dialer; //type: Native::Crypto::Ipsec::Profile::Dialer
         class Redundancy; //type: Native::Crypto::Ipsec::Profile::Redundancy
         class Set; //type: Native::Crypto::Ipsec::Profile::Set
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Dialer> dialer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Redundancy> redundancy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Set> set;
@@ -1323,11 +1323,11 @@ class Native::Crypto::Ipsec::Profile : public ydk::Entity
 }; // Native::Crypto::Ipsec::Profile
 
 
-class Native::Crypto::Ipsec::Profile::Default_ : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1342,16 +1342,16 @@ class Native::Crypto::Ipsec::Profile::Default_ : public ydk::Entity
         ydk::YLeaf description; //type: empty
         ydk::YLeaf redundancy; //type: empty
         ydk::YLeaf responder_only; //type: empty
-        class Dialer; //type: Native::Crypto::Ipsec::Profile::Default_::Dialer
-        class Set; //type: Native::Crypto::Ipsec::Profile::Default_::Set
+        class Dialer; //type: Native::Crypto::Ipsec::Profile::Default::Dialer
+        class Set; //type: Native::Crypto::Ipsec::Profile::Default::Set
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Dialer> dialer;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Set> set;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Dialer> dialer;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Set> set;
         
-}; // Native::Crypto::Ipsec::Profile::Default_
+}; // Native::Crypto::Ipsec::Profile::Default
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Dialer : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Dialer : public ydk::Entity
 {
     public:
         Dialer();
@@ -1369,10 +1369,10 @@ class Native::Crypto::Ipsec::Profile::Default_::Dialer : public ydk::Entity
 
         ydk::YLeaf pre_classify; //type: empty
 
-}; // Native::Crypto::Ipsec::Profile::Default_::Dialer
+}; // Native::Crypto::Ipsec::Profile::Default::Dialer
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Set : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1394,20 +1394,20 @@ class Native::Crypto::Ipsec::Profile::Default_::Set : public ydk::Entity
         ydk::YLeaf isakmp_profile; //type: empty
         ydk::YLeaf mixed_mode; //type: empty
         ydk::YLeaf transform_set; //type: empty
-        class Pfs; //type: Native::Crypto::Ipsec::Profile::Default_::Set::Pfs
-        class ReverseRoute; //type: Native::Crypto::Ipsec::Profile::Default_::Set::ReverseRoute
-        class SecurityAssociation; //type: Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation
-        class SecurityPolicy; //type: Native::Crypto::Ipsec::Profile::Default_::Set::SecurityPolicy
+        class Pfs; //type: Native::Crypto::Ipsec::Profile::Default::Set::Pfs
+        class ReverseRoute; //type: Native::Crypto::Ipsec::Profile::Default::Set::ReverseRoute
+        class SecurityAssociation; //type: Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation
+        class SecurityPolicy; //type: Native::Crypto::Ipsec::Profile::Default::Set::SecurityPolicy
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Set::Pfs> pfs; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Set::ReverseRoute> reverse_route; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation> security_association;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Set::SecurityPolicy> security_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Set::Pfs> pfs; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Set::ReverseRoute> reverse_route; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation> security_association;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Set::SecurityPolicy> security_policy;
         
-}; // Native::Crypto::Ipsec::Profile::Default_::Set
+}; // Native::Crypto::Ipsec::Profile::Default::Set
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Set::Pfs : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Set::Pfs : public ydk::Entity
 {
     public:
         Pfs();
@@ -1424,10 +1424,10 @@ class Native::Crypto::Ipsec::Profile::Default_::Set::Pfs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Ipsec::Profile::Default_::Set::Pfs
+}; // Native::Crypto::Ipsec::Profile::Default::Set::Pfs
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Set::ReverseRoute : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Set::ReverseRoute : public ydk::Entity
 {
     public:
         ReverseRoute();
@@ -1444,10 +1444,10 @@ class Native::Crypto::Ipsec::Profile::Default_::Set::ReverseRoute : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Ipsec::Profile::Default_::Set::ReverseRoute
+}; // Native::Crypto::Ipsec::Profile::Default::Set::ReverseRoute
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation : public ydk::Entity
 {
     public:
         SecurityAssociation();
@@ -1466,21 +1466,21 @@ class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation : publi
         ydk::YLeaf dfbit; //type: empty
         ydk::YLeaf ecn; //type: empty
         ydk::YLeaf level; //type: Level
-        class Dummy; //type: Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Dummy
-        class IdleTimeContainer; //type: Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::IdleTimeContainer
-        class Lifetime; //type: Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Lifetime
-        class Replay; //type: Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Replay
+        class Dummy; //type: Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Dummy
+        class IdleTimeContainer; //type: Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::IdleTimeContainer
+        class Lifetime; //type: Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Lifetime
+        class Replay; //type: Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Replay
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Dummy> dummy; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::IdleTimeContainer> idle_time_container;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Lifetime> lifetime;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Replay> replay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Dummy> dummy; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::IdleTimeContainer> idle_time_container;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Lifetime> lifetime;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Replay> replay;
                 class Level;
 
-}; // Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation
+}; // Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Dummy : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Dummy : public ydk::Entity
 {
     public:
         Dummy();
@@ -1497,10 +1497,10 @@ class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Dummy 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Dummy
+}; // Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Dummy
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::IdleTimeContainer : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::IdleTimeContainer : public ydk::Entity
 {
     public:
         IdleTimeContainer();
@@ -1519,10 +1519,10 @@ class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::IdleTi
         ydk::YLeaf idle_time; //type: empty
         ydk::YLeaf default_; //type: empty
 
-}; // Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::IdleTimeContainer
+}; // Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::IdleTimeContainer
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Lifetime : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Lifetime : public ydk::Entity
 {
     public:
         Lifetime();
@@ -1542,10 +1542,10 @@ class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Lifeti
         ydk::YLeaf kilobytes; //type: empty
         ydk::YLeaf seconds; //type: empty
 
-}; // Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Lifetime
+}; // Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Lifetime
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Replay : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Replay : public ydk::Entity
 {
     public:
         Replay();
@@ -1564,10 +1564,10 @@ class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Replay
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf window_size; //type: empty
 
-}; // Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Replay
+}; // Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Replay
 
 
-class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityPolicy : public ydk::Entity
+class Native::Crypto::Ipsec::Profile::Default::Set::SecurityPolicy : public ydk::Entity
 {
     public:
         SecurityPolicy();
@@ -1585,7 +1585,7 @@ class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityPolicy : public ydk
 
         ydk::YLeaf limit; //type: uint32
 
-}; // Native::Crypto::Ipsec::Profile::Default_::Set::SecurityPolicy
+}; // Native::Crypto::Ipsec::Profile::Default::Set::SecurityPolicy
 
 
 class Native::Crypto::Ipsec::Profile::Dialer : public ydk::Entity
@@ -2008,10 +2008,10 @@ class Native::Crypto::Ipsec::TransformSet : public ydk::Entity
         ydk::YLeaf esp; //type: Esp
         ydk::YLeaf key_bit; //type: KeyBit
         ydk::YLeaf esp_hmac; //type: EspHmac
-        class Default_; //type: Native::Crypto::Ipsec::TransformSet::Default_
+        class Default; //type: Native::Crypto::Ipsec::TransformSet::Default
         class Mode; //type: Native::Crypto::Ipsec::TransformSet::Mode
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::TransformSet::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::TransformSet::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::TransformSet::Mode> mode;
                 class AhHmac;
         class Esp;
@@ -2021,11 +2021,11 @@ class Native::Crypto::Ipsec::TransformSet : public ydk::Entity
 }; // Native::Crypto::Ipsec::TransformSet
 
 
-class Native::Crypto::Ipsec::TransformSet::Default_ : public ydk::Entity
+class Native::Crypto::Ipsec::TransformSet::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2039,7 +2039,7 @@ class Native::Crypto::Ipsec::TransformSet::Default_ : public ydk::Entity
 
         ydk::YLeaf mode; //type: empty
 
-}; // Native::Crypto::Ipsec::TransformSet::Default_
+}; // Native::Crypto::Ipsec::TransformSet::Default
 
 
 class Native::Crypto::Ipsec::TransformSet::Mode : public ydk::Entity
@@ -2111,7 +2111,7 @@ class Native::Crypto::Isakmp : public ydk::Entity
         ydk::YLeaf identity; //type: Identity
         ydk::YLeaf invalid_spi_recovery; //type: empty
         class Client; //type: Native::Crypto::Isakmp::Client
-        class Default_; //type: Native::Crypto::Isakmp::Default_
+        class Default; //type: Native::Crypto::Isakmp::Default
         class Keepalive; //type: Native::Crypto::Isakmp::Keepalive
         class Key; //type: Native::Crypto::Isakmp::Key
         class Nat; //type: Native::Crypto::Isakmp::Nat
@@ -2121,7 +2121,7 @@ class Native::Crypto::Isakmp : public ydk::Entity
         class Xauth; //type: Native::Crypto::Isakmp::Xauth
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Client> client;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Keepalive> keepalive;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Key> key;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Nat> nat;
@@ -2229,7 +2229,7 @@ class Native::Crypto::Isakmp::Client::Configuration::Group : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf access_restrict; //type: string
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf backup_gateway; //type: string
         ydk::YLeaf browser_proxy; //type: string
         ydk::YLeaf domain; //type: string
@@ -2582,17 +2582,17 @@ class Native::Crypto::Isakmp::Client::Firewall::Policy::CentralPolicyPush::Acces
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         class Direction;
 
 }; // Native::Crypto::Isakmp::Client::Firewall::Policy::CentralPolicyPush::AccessList
 
 
-class Native::Crypto::Isakmp::Default_ : public ydk::Entity
+class Native::Crypto::Isakmp::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2607,7 +2607,7 @@ class Native::Crypto::Isakmp::Default_ : public ydk::Entity
 
         ydk::YLeaf policy; //type: empty
 
-}; // Native::Crypto::Isakmp::Default_
+}; // Native::Crypto::Isakmp::Default
 
 
 class Native::Crypto::Isakmp::Keepalive : public ydk::Entity
@@ -3297,10 +3297,10 @@ class Native::Crypto::Isakmp::Policy : public ydk::Entity
         ydk::YLeaf group; //type: Group
         ydk::YLeaf hash; //type: Hash
         ydk::YLeaf lifetime; //type: uint32
-        class Default_; //type: Native::Crypto::Isakmp::Policy::Default_
+        class Default; //type: Native::Crypto::Isakmp::Policy::Default
         class Encryption; //type: Native::Crypto::Isakmp::Policy::Encryption
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Policy::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Policy::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Policy::Encryption> encryption;
                 class Authentication;
         class Group;
@@ -3309,11 +3309,11 @@ class Native::Crypto::Isakmp::Policy : public ydk::Entity
 }; // Native::Crypto::Isakmp::Policy
 
 
-class Native::Crypto::Isakmp::Policy::Default_ : public ydk::Entity
+class Native::Crypto::Isakmp::Policy::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3329,17 +3329,17 @@ class Native::Crypto::Isakmp::Policy::Default_ : public ydk::Entity
         ydk::YLeaf group; //type: Group
         ydk::YLeaf hash; //type: Hash
         ydk::YLeaf lifetime; //type: empty
-        class Encryption; //type: Native::Crypto::Isakmp::Policy::Default_::Encryption
+        class Encryption; //type: Native::Crypto::Isakmp::Policy::Default::Encryption
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Policy::Default_::Encryption> encryption;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Policy::Default::Encryption> encryption;
                 class Authentication;
         class Group;
         class Hash;
 
-}; // Native::Crypto::Isakmp::Policy::Default_
+}; // Native::Crypto::Isakmp::Policy::Default
 
 
-class Native::Crypto::Isakmp::Policy::Default_::Encryption : public ydk::Entity
+class Native::Crypto::Isakmp::Policy::Default::Encryption : public ydk::Entity
 {
     public:
         Encryption();
@@ -3357,14 +3357,14 @@ class Native::Crypto::Isakmp::Policy::Default_::Encryption : public ydk::Entity
 
         ydk::YLeaf a3des; //type: empty
         ydk::YLeaf des; //type: empty
-        class Aes; //type: Native::Crypto::Isakmp::Policy::Default_::Encryption::Aes
+        class Aes; //type: Native::Crypto::Isakmp::Policy::Default::Encryption::Aes
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Policy::Default_::Encryption::Aes> aes; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Policy::Default::Encryption::Aes> aes; // presence node
         
-}; // Native::Crypto::Isakmp::Policy::Default_::Encryption
+}; // Native::Crypto::Isakmp::Policy::Default::Encryption
 
 
-class Native::Crypto::Isakmp::Policy::Default_::Encryption::Aes : public ydk::Entity
+class Native::Crypto::Isakmp::Policy::Default::Encryption::Aes : public ydk::Entity
 {
     public:
         Aes();
@@ -3383,7 +3383,7 @@ class Native::Crypto::Isakmp::Policy::Default_::Encryption::Aes : public ydk::En
         ydk::YLeaf key; //type: Key
         class Key;
 
-}; // Native::Crypto::Isakmp::Policy::Default_::Encryption::Aes
+}; // Native::Crypto::Isakmp::Policy::Default::Encryption::Aes
 
 
 class Native::Crypto::Isakmp::Policy::Encryption : public ydk::Entity
@@ -3458,7 +3458,7 @@ class Native::Crypto::Isakmp::Profile : public ydk::Entity
         ydk::YLeaf qos_group; //type: uint16
         ydk::YLeaf virtual_template; //type: uint16
         ydk::YLeaf vrf; //type: string
-        class Default_; //type: Native::Crypto::Isakmp::Profile::Default_
+        class Default; //type: Native::Crypto::Isakmp::Profile::Default
         class Ca; //type: Native::Crypto::Isakmp::Profile::Ca
         class Client; //type: Native::Crypto::Isakmp::Profile::Client
         class Initiate; //type: Native::Crypto::Isakmp::Profile::Initiate
@@ -3467,7 +3467,7 @@ class Native::Crypto::Isakmp::Profile : public ydk::Entity
         class Match; //type: Native::Crypto::Isakmp::Profile::Match
         class SelfIdentity; //type: Native::Crypto::Isakmp::Profile::SelfIdentity
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Ca> ca;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Client> client;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Initiate> initiate;
@@ -3480,11 +3480,11 @@ class Native::Crypto::Isakmp::Profile : public ydk::Entity
 }; // Native::Crypto::Isakmp::Profile
 
 
-class Native::Crypto::Isakmp::Profile::Default_ : public ydk::Entity
+class Native::Crypto::Isakmp::Profile::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3503,27 +3503,27 @@ class Native::Crypto::Isakmp::Profile::Default_ : public ydk::Entity
         ydk::YLeaf qos_group; //type: empty
         ydk::YLeaf virtual_template; //type: empty
         ydk::YLeaf vrf; //type: empty
-        class Ca; //type: Native::Crypto::Isakmp::Profile::Default_::Ca
-        class Client; //type: Native::Crypto::Isakmp::Profile::Default_::Client
-        class Initiate; //type: Native::Crypto::Isakmp::Profile::Default_::Initiate
-        class Isakmp_; //type: Native::Crypto::Isakmp::Profile::Default_::Isakmp_
-        class Keepalive; //type: Native::Crypto::Isakmp::Profile::Default_::Keepalive
-        class Match; //type: Native::Crypto::Isakmp::Profile::Default_::Match
-        class SelfIdentity; //type: Native::Crypto::Isakmp::Profile::Default_::SelfIdentity
+        class Ca; //type: Native::Crypto::Isakmp::Profile::Default::Ca
+        class Client; //type: Native::Crypto::Isakmp::Profile::Default::Client
+        class Initiate; //type: Native::Crypto::Isakmp::Profile::Default::Initiate
+        class Isakmp_; //type: Native::Crypto::Isakmp::Profile::Default::Isakmp_
+        class Keepalive; //type: Native::Crypto::Isakmp::Profile::Default::Keepalive
+        class Match; //type: Native::Crypto::Isakmp::Profile::Default::Match
+        class SelfIdentity; //type: Native::Crypto::Isakmp::Profile::Default::SelfIdentity
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Ca> ca;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Client> client;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Initiate> initiate;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Isakmp_> isakmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Keepalive> keepalive; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Match> match;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::SelfIdentity> self_identity; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Ca> ca;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Client> client;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Initiate> initiate;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Isakmp_> isakmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Keepalive> keepalive; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Match> match;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::SelfIdentity> self_identity; // presence node
                 class Keyring;
 
-}; // Native::Crypto::Isakmp::Profile::Default_
+}; // Native::Crypto::Isakmp::Profile::Default
 
 
-class Native::Crypto::Isakmp::Profile::Default_::Ca : public ydk::Entity
+class Native::Crypto::Isakmp::Profile::Default::Ca : public ydk::Entity
 {
     public:
         Ca();
@@ -3541,10 +3541,10 @@ class Native::Crypto::Isakmp::Profile::Default_::Ca : public ydk::Entity
 
         ydk::YLeaf trust_point; //type: string
 
-}; // Native::Crypto::Isakmp::Profile::Default_::Ca
+}; // Native::Crypto::Isakmp::Profile::Default::Ca
 
 
-class Native::Crypto::Isakmp::Profile::Default_::Client : public ydk::Entity
+class Native::Crypto::Isakmp::Profile::Default::Client : public ydk::Entity
 {
     public:
         Client();
@@ -3560,18 +3560,18 @@ class Native::Crypto::Isakmp::Profile::Default_::Client : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Authentication; //type: Native::Crypto::Isakmp::Profile::Default_::Client::Authentication
-        class Configuration; //type: Native::Crypto::Isakmp::Profile::Default_::Client::Configuration
-        class Pki; //type: Native::Crypto::Isakmp::Profile::Default_::Client::Pki
+        class Authentication; //type: Native::Crypto::Isakmp::Profile::Default::Client::Authentication
+        class Configuration; //type: Native::Crypto::Isakmp::Profile::Default::Client::Configuration
+        class Pki; //type: Native::Crypto::Isakmp::Profile::Default::Client::Pki
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Client::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Client::Configuration> configuration;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Client::Pki> pki;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Client::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Client::Configuration> configuration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Client::Pki> pki;
         
-}; // Native::Crypto::Isakmp::Profile::Default_::Client
+}; // Native::Crypto::Isakmp::Profile::Default::Client
 
 
-class Native::Crypto::Isakmp::Profile::Default_::Client::Authentication : public ydk::Entity
+class Native::Crypto::Isakmp::Profile::Default::Client::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -3589,10 +3589,10 @@ class Native::Crypto::Isakmp::Profile::Default_::Client::Authentication : public
 
         ydk::YLeaf list; //type: empty
 
-}; // Native::Crypto::Isakmp::Profile::Default_::Client::Authentication
+}; // Native::Crypto::Isakmp::Profile::Default::Client::Authentication
 
 
-class Native::Crypto::Isakmp::Profile::Default_::Client::Configuration : public ydk::Entity
+class Native::Crypto::Isakmp::Profile::Default::Client::Configuration : public ydk::Entity
 {
     public:
         Configuration();
@@ -3612,10 +3612,10 @@ class Native::Crypto::Isakmp::Profile::Default_::Client::Configuration : public 
         ydk::YLeaf group; //type: string
         class Address;
 
-}; // Native::Crypto::Isakmp::Profile::Default_::Client::Configuration
+}; // Native::Crypto::Isakmp::Profile::Default::Client::Configuration
 
 
-class Native::Crypto::Isakmp::Profile::Default_::Client::Pki : public ydk::Entity
+class Native::Crypto::Isakmp::Profile::Default::Client::Pki : public ydk::Entity
 {
     public:
         Pki();
@@ -3631,14 +3631,14 @@ class Native::Crypto::Isakmp::Profile::Default_::Client::Pki : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Authorization; //type: Native::Crypto::Isakmp::Profile::Default_::Client::Pki::Authorization
+        class Authorization; //type: Native::Crypto::Isakmp::Profile::Default::Client::Pki::Authorization
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Client::Pki::Authorization> authorization; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Client::Pki::Authorization> authorization; // presence node
         
-}; // Native::Crypto::Isakmp::Profile::Default_::Client::Pki
+}; // Native::Crypto::Isakmp::Profile::Default::Client::Pki
 
 
-class Native::Crypto::Isakmp::Profile::Default_::Client::Pki::Authorization : public ydk::Entity
+class Native::Crypto::Isakmp::Profile::Default::Client::Pki::Authorization : public ydk::Entity
 {
     public:
         Authorization();
@@ -3655,10 +3655,10 @@ class Native::Crypto::Isakmp::Profile::Default_::Client::Pki::Authorization : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Isakmp::Profile::Default_::Client::Pki::Authorization
+}; // Native::Crypto::Isakmp::Profile::Default::Client::Pki::Authorization
 
 
-class Native::Crypto::Isakmp::Profile::Default_::Initiate : public ydk::Entity
+class Native::Crypto::Isakmp::Profile::Default::Initiate : public ydk::Entity
 {
     public:
         Initiate();
@@ -3674,14 +3674,14 @@ class Native::Crypto::Isakmp::Profile::Default_::Initiate : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Mode; //type: Native::Crypto::Isakmp::Profile::Default_::Initiate::Mode
+        class Mode; //type: Native::Crypto::Isakmp::Profile::Default::Initiate::Mode
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default_::Initiate::Mode> mode; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile::Default::Initiate::Mode> mode; // presence node
         
-}; // Native::Crypto::Isakmp::Profile::Default_::Initiate
+}; // Native::Crypto::Isakmp::Profile::Default::Initiate
 
 
-class Native::Crypto::Isakmp::Profile::Default_::Initiate::Mode : public ydk::Entity
+class Native::Crypto::Isakmp::Profile::Default::Initiate::Mode : public ydk::Entity
 {
     public:
         Mode();
@@ -3698,7 +3698,7 @@ class Native::Crypto::Isakmp::Profile::Default_::Initiate::Mode : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Isakmp::Profile::Default_::Initiate::Mode
+}; // Native::Crypto::Isakmp::Profile::Default::Initiate::Mode
 
 class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Replay::Counter::WindowSize : public ydk::Enum
 {
@@ -3711,7 +3711,7 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec::Replay::Counter::Win
 
 };
 
-class Native::Crypto::Gkm::Group::Default_::Client::TransportEncryptKey : public ydk::Enum
+class Native::Crypto::Gkm::Group::Default::Client::TransportEncryptKey : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf group_key;
@@ -3753,7 +3753,7 @@ class Native::Crypto::Ipsec::NatTransparency : public ydk::Enum
 
 };
 
-class Native::Crypto::Ipsec::Profile::Default_::Set::SecurityAssociation::Level : public ydk::Enum
+class Native::Crypto::Ipsec::Profile::Default::Set::SecurityAssociation::Level : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf per_host;
@@ -4045,7 +4045,7 @@ class Native::Crypto::Isakmp::Policy::Hash : public ydk::Enum
 
 };
 
-class Native::Crypto::Isakmp::Policy::Default_::Authentication : public ydk::Enum
+class Native::Crypto::Isakmp::Policy::Default::Authentication : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pre_share;
@@ -4054,7 +4054,7 @@ class Native::Crypto::Isakmp::Policy::Default_::Authentication : public ydk::Enu
 
 };
 
-class Native::Crypto::Isakmp::Policy::Default_::Group : public ydk::Enum
+class Native::Crypto::Isakmp::Policy::Default::Group : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_1;
@@ -4070,7 +4070,7 @@ class Native::Crypto::Isakmp::Policy::Default_::Group : public ydk::Enum
 
 };
 
-class Native::Crypto::Isakmp::Policy::Default_::Hash : public ydk::Enum
+class Native::Crypto::Isakmp::Policy::Default::Hash : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf md5;
@@ -4081,7 +4081,7 @@ class Native::Crypto::Isakmp::Policy::Default_::Hash : public ydk::Enum
 
 };
 
-class Native::Crypto::Isakmp::Policy::Default_::Encryption::Aes::Key : public ydk::Enum
+class Native::Crypto::Isakmp::Policy::Default::Encryption::Aes::Key : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_128;
@@ -4106,14 +4106,14 @@ class Native::Crypto::Isakmp::Profile::Keyring : public ydk::Enum
 
 };
 
-class Native::Crypto::Isakmp::Profile::Default_::Keyring : public ydk::Enum
+class Native::Crypto::Isakmp::Profile::Default::Keyring : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;
 
 };
 
-class Native::Crypto::Isakmp::Profile::Default_::Client::Configuration::Address : public ydk::Enum
+class Native::Crypto::Isakmp::Profile::Default::Client::Configuration::Address : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf initiate;

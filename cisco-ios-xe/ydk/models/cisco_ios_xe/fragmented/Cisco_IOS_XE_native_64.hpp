@@ -226,20 +226,20 @@ class Native::Interface::PortChannel::Ip::Rsvp::Bandwidth : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf percent; //type: uint16
-        class Value_; //type: Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Value_
+        class Value; //type: Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Value
         class Mam; //type: Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Mam
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Value_> value_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Value> value_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Mam> mam;
         
 }; // Native::Interface::PortChannel::Ip::Rsvp::Bandwidth
 
 
-class Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Value_ : public ydk::Entity
+class Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -254,7 +254,7 @@ class Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Value_ : public ydk::
         ydk::YLeaf value_; //type: uint32
         ydk::YLeaf sub_pool; //type: uint32
 
-}; // Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Value_
+}; // Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Value
 
 
 class Native::Interface::PortChannel::Ip::Rsvp::Bandwidth::Mam : public ydk::Entity
@@ -3488,18 +3488,18 @@ class Native::Interface::PortChannel::Peer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Default_; //type: Native::Interface::PortChannel::Peer::Default_
+        class Default; //type: Native::Interface::PortChannel::Peer::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default> default_;
         
 }; // Native::Interface::PortChannel::Peer
 
 
-class Native::Interface::PortChannel::Peer::Default_ : public ydk::Entity
+class Native::Interface::PortChannel::Peer::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3511,14 +3511,14 @@ class Native::Interface::PortChannel::Peer::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Interface::PortChannel::Peer::Default_::Ip
+        class Ip; //type: Native::Interface::PortChannel::Peer::Default::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default_::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default::Ip> ip;
         
-}; // Native::Interface::PortChannel::Peer::Default_
+}; // Native::Interface::PortChannel::Peer::Default
 
 
-class Native::Interface::PortChannel::Peer::Default_::Ip : public ydk::Entity
+class Native::Interface::PortChannel::Peer::Default::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -3534,14 +3534,14 @@ class Native::Interface::PortChannel::Peer::Default_::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Interface::PortChannel::Peer::Default_::Ip::Address
+        class Address; //type: Native::Interface::PortChannel::Peer::Default::Ip::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default_::Ip::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default::Ip::Address> address;
         
-}; // Native::Interface::PortChannel::Peer::Default_::Ip
+}; // Native::Interface::PortChannel::Peer::Default::Ip
 
 
-class Native::Interface::PortChannel::Peer::Default_::Ip::Address : public ydk::Entity
+class Native::Interface::PortChannel::Peer::Default::Ip::Address : public ydk::Entity
 {
     public:
         Address();
@@ -3558,16 +3558,16 @@ class Native::Interface::PortChannel::Peer::Default_::Ip::Address : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dhcp; //type: empty
-        class DhcpPool; //type: Native::Interface::PortChannel::Peer::Default_::Ip::Address::DhcpPool
-        class Pool; //type: Native::Interface::PortChannel::Peer::Default_::Ip::Address::Pool
+        class DhcpPool; //type: Native::Interface::PortChannel::Peer::Default::Ip::Address::DhcpPool
+        class Pool; //type: Native::Interface::PortChannel::Peer::Default::Ip::Address::Pool
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default_::Ip::Address::DhcpPool> dhcp_pool; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default_::Ip::Address::Pool> pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default::Ip::Address::DhcpPool> dhcp_pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Peer::Default::Ip::Address::Pool> pool; // presence node
         
-}; // Native::Interface::PortChannel::Peer::Default_::Ip::Address
+}; // Native::Interface::PortChannel::Peer::Default::Ip::Address
 
 
-class Native::Interface::PortChannel::Peer::Default_::Ip::Address::DhcpPool : public ydk::Entity
+class Native::Interface::PortChannel::Peer::Default::Ip::Address::DhcpPool : public ydk::Entity
 {
     public:
         DhcpPool();
@@ -3585,7 +3585,7 @@ class Native::Interface::PortChannel::Peer::Default_::Ip::Address::DhcpPool : pu
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::PortChannel::Peer::Default_::Ip::Address::DhcpPool
+}; // Native::Interface::PortChannel::Peer::Default::Ip::Address::DhcpPool
 
 class Native::Interface::PortChannel::Ip::Rsvp::Authentication::Type : public ydk::Enum
 {

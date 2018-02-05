@@ -81,6 +81,7 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atmcurrentstatuschangepvcltable != nullptr)
     {
         children["atmCurrentStatusChangePVclTable"] = atmcurrentstatuschangepvcltable;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvclt
 {
     if(child_yang_name == "atmCurrentStatusChangePVclEntry")
     {
-        for(auto const & c : atmcurrentstatuschangepvclentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry>();
         c->parent = this;
         atmcurrentstatuschangepvclentry.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvclt
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : atmcurrentstatuschangepvclentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -309,6 +307,7 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvclt
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::Atmcurrentstatuschangepvcltable::Atmcurrentstatuschangepvclentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -444,14 +443,6 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetab
 {
     if(child_yang_name == "atmStatusChangePVclRangeEntry")
     {
-        for(auto const & c : atmstatuschangepvclrangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry>();
         c->parent = this;
         atmstatuschangepvclrangeentry.push_back(c);
@@ -464,9 +455,14 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetab
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : atmstatuschangepvclrangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -566,6 +562,7 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetab
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIBEXTN::Atmstatuschangepvclrangetable::Atmstatuschangepvclrangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

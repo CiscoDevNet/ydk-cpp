@@ -55,6 +55,7 @@ std::shared_ptr<Entity> SnmpColdStart::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> SnmpColdStart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -140,6 +141,7 @@ std::shared_ptr<Entity> SnmpWarmStart::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> SnmpWarmStart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -238,6 +240,7 @@ std::shared_ptr<Entity> InterfaceLinkUp::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkUp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -341,6 +344,7 @@ std::shared_ptr<Entity> InterfaceLinkUp::Input::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkUp::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -426,6 +430,7 @@ std::shared_ptr<Entity> InterfaceLinkDown::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -529,6 +534,7 @@ std::shared_ptr<Entity> InterfaceLinkDown::Input::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkDown::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -614,6 +620,7 @@ std::shared_ptr<Entity> SonetSectionStatus::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> SonetSectionStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -717,6 +724,7 @@ std::shared_ptr<Entity> SonetSectionStatus::Input::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> SonetSectionStatus::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -802,6 +810,7 @@ std::shared_ptr<Entity> SonetLineStatus::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> SonetLineStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -905,6 +914,7 @@ std::shared_ptr<Entity> SonetLineStatus::Input::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> SonetLineStatus::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -990,6 +1000,7 @@ std::shared_ptr<Entity> SonetPathStatus::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> SonetPathStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1093,6 +1104,7 @@ std::shared_ptr<Entity> SonetPathStatus::Input::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> SonetPathStatus::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1165,6 +1177,7 @@ std::shared_ptr<Entity> InfraSyslogMessageGenerated::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> InfraSyslogMessageGenerated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1250,6 +1263,7 @@ std::shared_ptr<Entity> InfraFlashDeviceInserted::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> InfraFlashDeviceInserted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1335,6 +1349,7 @@ std::shared_ptr<Entity> InfraFlashDeviceRemoved::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> InfraFlashDeviceRemoved::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1420,6 +1435,7 @@ std::shared_ptr<Entity> InfraRedundancyProgression::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> InfraRedundancyProgression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1505,6 +1521,7 @@ std::shared_ptr<Entity> InfraRedundancySwitch::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> InfraRedundancySwitch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1590,6 +1607,7 @@ std::shared_ptr<Entity> InfraBridgeNewRoot::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> InfraBridgeNewRoot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1675,6 +1693,7 @@ std::shared_ptr<Entity> InfraBridgeTopologyChange::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> InfraBridgeTopologyChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1760,6 +1779,7 @@ std::shared_ptr<Entity> InfraConfigEvent::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> InfraConfigEvent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1858,6 +1878,7 @@ std::shared_ptr<Entity> EntitySensorThresholdNotification::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> EntitySensorThresholdNotification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1961,6 +1982,7 @@ std::shared_ptr<Entity> EntitySensorThresholdNotification::Input::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> EntitySensorThresholdNotification::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2046,6 +2068,7 @@ std::shared_ptr<Entity> EntityFruPowerStatusChangeFailed::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> EntityFruPowerStatusChangeFailed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2149,6 +2172,7 @@ std::shared_ptr<Entity> EntityFruPowerStatusChangeFailed::Input::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> EntityFruPowerStatusChangeFailed::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2234,6 +2258,7 @@ std::shared_ptr<Entity> EntityFruModuleStatusChangeUp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeUp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2337,6 +2362,7 @@ std::shared_ptr<Entity> EntityFruModuleStatusChangeUp::Input::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeUp::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2422,6 +2448,7 @@ std::shared_ptr<Entity> EntityFruModuleStatusChangeDown::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2525,6 +2552,7 @@ std::shared_ptr<Entity> EntityFruModuleStatusChangeDown::Input::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeDown::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2610,6 +2638,7 @@ std::shared_ptr<Entity> EntityFruFanTrayOperStatusUp::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayOperStatusUp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2713,6 +2742,7 @@ std::shared_ptr<Entity> EntityFruFanTrayOperStatusUp::Input::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayOperStatusUp::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2798,6 +2828,7 @@ std::shared_ptr<Entity> EntityFruFanTrayInserted::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayInserted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2901,6 +2932,7 @@ std::shared_ptr<Entity> EntityFruFanTrayInserted::Input::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayInserted::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2986,6 +3018,7 @@ std::shared_ptr<Entity> EntityFruFanTrayRemoved::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayRemoved::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3089,6 +3122,7 @@ std::shared_ptr<Entity> EntityFruFanTrayRemoved::Input::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayRemoved::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3174,6 +3208,7 @@ std::shared_ptr<Entity> PlatformHfrBundleDownedLink::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleDownedLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3277,6 +3312,7 @@ std::shared_ptr<Entity> PlatformHfrBundleDownedLink::Input::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleDownedLink::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3362,6 +3398,7 @@ std::shared_ptr<Entity> PlatformHfrBundleState::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3465,6 +3502,7 @@ std::shared_ptr<Entity> PlatformHfrBundleState::Input::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleState::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3550,6 +3588,7 @@ std::shared_ptr<Entity> PlatformHfrPlaneState::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> PlatformHfrPlaneState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3653,6 +3692,7 @@ std::shared_ptr<Entity> PlatformHfrPlaneState::Input::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> PlatformHfrPlaneState::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3725,6 +3765,7 @@ std::shared_ptr<Entity> RoutingBgpEstablished::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablished::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3823,6 +3864,7 @@ std::shared_ptr<Entity> RoutingBgpEstablishedRemotePeer::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablishedRemotePeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3926,6 +3968,7 @@ std::shared_ptr<Entity> RoutingBgpEstablishedRemotePeer::Input::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablishedRemotePeer::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3998,6 +4041,7 @@ std::shared_ptr<Entity> RoutingBgpStateChange::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4096,6 +4140,7 @@ std::shared_ptr<Entity> RoutingBgpStateChangeRemotePeer::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChangeRemotePeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -4199,6 +4244,7 @@ std::shared_ptr<Entity> RoutingBgpStateChangeRemotePeer::Input::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChangeRemotePeer::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4271,6 +4317,7 @@ std::shared_ptr<Entity> RoutingOspfNeighborStateChange::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4369,6 +4416,7 @@ std::shared_ptr<Entity> RoutingOspfNeighborStateChangeAddress::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChangeAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -4476,6 +4524,7 @@ std::shared_ptr<Entity> RoutingOspfNeighborStateChangeAddress::Input::get_child_
 std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChangeAddress::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4558,6 +4607,7 @@ std::shared_ptr<Entity> RoutingMplsLdpSessionDown::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4656,6 +4706,7 @@ std::shared_ptr<Entity> RoutingMplsLdpSessionDownEntityId::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDownEntityId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -4767,6 +4818,7 @@ std::shared_ptr<Entity> RoutingMplsLdpSessionDownEntityId::Input::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDownEntityId::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4859,6 +4911,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelReRouted::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRouted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4957,6 +5010,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelReRoutedIndex::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRoutedIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5072,6 +5126,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelReRoutedIndex::Input::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRoutedIndex::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5174,6 +5229,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelReOptimized::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimized::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5272,6 +5328,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedIndex::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimizedIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5387,6 +5444,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedIndex::Input::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimizedIndex::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5489,6 +5547,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelDown::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5587,6 +5646,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelDownIndex::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDownIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5702,6 +5762,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelDownIndex::Input::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDownIndex::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5804,6 +5865,7 @@ std::shared_ptr<Entity> All::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> PlatformPtp::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(platform_ptp_servo != nullptr)
     {
         children["platform-ptp-servo"] = platform_ptp_servo;
@@ -357,6 +358,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_set_time != nullptr)
     {
         children["last-set-time"] = last_set_time;
@@ -659,6 +661,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::LastSetTime::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::LastSetTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -756,6 +759,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::LastReceivedT1::get_child
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::LastReceivedT1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -853,6 +857,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::LastReceivedT2::get_child
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::LastReceivedT2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -950,6 +955,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::LastReceivedT3::get_child
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::LastReceivedT3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1047,6 +1053,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::LastReceivedT4::get_child
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::LastReceivedT4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1144,6 +1151,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::PreReceivedT1::get_child_
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::PreReceivedT1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1241,6 +1249,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::PreReceivedT2::get_child_
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::PreReceivedT2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1338,6 +1347,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::PreReceivedT3::get_child_
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::PreReceivedT3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1435,6 +1445,7 @@ std::shared_ptr<Entity> PlatformPtp::PlatformPtpServo::PreReceivedT4::get_child_
 std::map<std::string, std::shared_ptr<Entity>> PlatformPtp::PlatformPtpServo::PreReceivedT4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

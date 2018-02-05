@@ -159,6 +159,7 @@ std::shared_ptr<Entity> BRIDGEMIB::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1dbase != nullptr)
     {
         children["dot1dBase"] = dot1dbase;
@@ -305,6 +306,7 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dbase::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dbase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -460,6 +462,7 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstp::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -677,6 +680,7 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtp::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -772,14 +776,6 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dbaseporttable::get_child_by_name(const s
 {
     if(child_yang_name == "dot1dBasePortEntry")
     {
-        for(auto const & c : dot1dbaseportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry>();
         c->parent = this;
         dot1dbaseportentry.push_back(c);
@@ -792,9 +788,14 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dbaseporttable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dbaseporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1dbaseportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -954,6 +955,7 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1247,14 +1249,6 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstpporttable::get_child_by_name(const st
 {
     if(child_yang_name == "dot1dStpPortEntry")
     {
-        for(auto const & c : dot1dstpportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry>();
         c->parent = this;
         dot1dstpportentry.push_back(c);
@@ -1267,9 +1261,14 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstpporttable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstpporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1dstpportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1389,6 +1388,7 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1584,14 +1584,6 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpfdbtable::get_child_by_name(const std:
 {
     if(child_yang_name == "dot1dTpFdbEntry")
     {
-        for(auto const & c : dot1dtpfdbentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry>();
         c->parent = this;
         dot1dtpfdbentry.push_back(c);
@@ -1604,9 +1596,14 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpfdbtable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpfdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1dtpfdbentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1690,6 +1687,7 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1795,14 +1793,6 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpporttable::get_child_by_name(const std
 {
     if(child_yang_name == "dot1dTpPortEntry")
     {
-        for(auto const & c : dot1dtpportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry>();
         c->parent = this;
         dot1dtpportentry.push_back(c);
@@ -1815,9 +1805,14 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpporttable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1dtpportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1909,6 +1904,7 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2034,14 +2030,6 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstatictable::get_child_by_name(const std
 {
     if(child_yang_name == "dot1dStaticEntry")
     {
-        for(auto const & c : dot1dstaticentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry>();
         c->parent = this;
         dot1dstaticentry.push_back(c);
@@ -2054,9 +2042,14 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstatictable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstatictable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot1dstaticentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2144,6 +2137,7 @@ std::shared_ptr<Entity> BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

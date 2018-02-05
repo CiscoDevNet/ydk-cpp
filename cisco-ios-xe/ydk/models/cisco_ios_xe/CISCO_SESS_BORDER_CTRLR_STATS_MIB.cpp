@@ -133,6 +133,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(csbradiusstatstable != nullptr)
     {
         children["csbRadiusStatsTable"] = csbradiusstatstable;
@@ -263,14 +264,6 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::get_c
 {
     if(child_yang_name == "csbRadiusStatsEntry")
     {
-        for(auto const & c : csbradiusstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry>();
         c->parent = this;
         csbradiusstatsentry.push_back(c);
@@ -283,9 +276,14 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csbradiusstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -437,6 +435,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbra
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbradiusstatstable::Csbradiusstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -712,14 +711,6 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::
 {
     if(child_yang_name == "csbRfBillRealmStatsEntry")
     {
-        for(auto const & c : csbrfbillrealmstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry>();
         c->parent = this;
         csbrfbillrealmstatsentry.push_back(c);
@@ -732,9 +723,14 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csbrfbillrealmstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -870,6 +866,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbrfbillrealmstatstable::Csbrfbillrealmstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1105,14 +1102,6 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstabl
 {
     if(child_yang_name == "csbSIPMthdCurrentStatsEntry")
     {
-        for(auto const & c : csbsipmthdcurrentstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable::Csbsipmthdcurrentstatsentry>();
         c->parent = this;
         csbsipmthdcurrentstatsentry.push_back(c);
@@ -1125,9 +1114,14 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstabl
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csbsipmthdcurrentstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1279,6 +1273,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstabl
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdcurrentstatstable::Csbsipmthdcurrentstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1554,14 +1549,6 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstabl
 {
     if(child_yang_name == "csbSIPMthdHistoryStatsEntry")
     {
-        for(auto const & c : csbsipmthdhistorystatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable::Csbsipmthdhistorystatsentry>();
         c->parent = this;
         csbsipmthdhistorystatsentry.push_back(c);
@@ -1574,9 +1561,14 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstabl
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csbsipmthdhistorystatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1728,6 +1720,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstabl
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdhistorystatstable::Csbsipmthdhistorystatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2003,14 +1996,6 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatsta
 {
     if(child_yang_name == "csbSIPMthdRCCurrentStatsEntry")
     {
-        for(auto const & c : csbsipmthdrccurrentstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable::Csbsipmthdrccurrentstatsentry>();
         c->parent = this;
         csbsipmthdrccurrentstatsentry.push_back(c);
@@ -2023,9 +2008,14 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatsta
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csbsipmthdrccurrentstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2133,6 +2123,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatsta
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrccurrentstatstable::Csbsipmthdrccurrentstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2298,14 +2289,6 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatsta
 {
     if(child_yang_name == "csbSIPMthdRCHistoryStatsEntry")
     {
-        for(auto const & c : csbsipmthdrchistorystatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry>();
         c->parent = this;
         csbsipmthdrchistorystatsentry.push_back(c);
@@ -2318,9 +2301,14 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatsta
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csbsipmthdrchistorystatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2428,6 +2416,7 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatsta
 std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::Csbsipmthdrchistorystatstable::Csbsipmthdrchistorystatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

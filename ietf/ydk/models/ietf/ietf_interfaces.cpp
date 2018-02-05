@@ -71,14 +71,6 @@ std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -91,9 +83,14 @@ std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -223,14 +220,6 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
 {
     if(child_yang_name == "ietf-diffserv-target:diffserv-target-entry")
     {
-        for(auto const & c : diffserv_target_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::DiffservTargetEntry>();
         c->parent = this;
         diffserv_target_entry.push_back(c);
@@ -261,9 +250,14 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffserv_target_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(ipv4 != nullptr)
@@ -396,6 +390,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservTargetEntry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservTargetEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -506,14 +501,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv4::get_child_by_name(const std
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Ipv4::Address>();
         c->parent = this;
         address.push_back(c);
@@ -522,14 +509,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv4::get_child_by_name(const std
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Ipv4::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -542,14 +521,23 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv4::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -656,6 +644,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv4::Address::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv4::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -756,6 +745,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv4::Neighbor::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv4::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -879,14 +869,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::get_child_by_name(const std
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Ipv6::Address>();
         c->parent = this;
         address.push_back(c);
@@ -895,14 +877,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::get_child_by_name(const std
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Ipv6::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -933,14 +907,23 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(autoconf != nullptr)
@@ -1063,6 +1046,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Address::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1153,6 +1137,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Neighbor::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1251,6 +1236,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Autoconf::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Autoconf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1407,6 +1393,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::g
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_list != nullptr)
     {
         children["prefix-list"] = prefix_list;
@@ -1580,14 +1567,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::P
 {
     if(child_yang_name == "prefix")
     {
-        for(auto const & c : prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix>();
         c->parent = this;
         prefix.push_back(c);
@@ -1600,9 +1579,14 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::P
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1691,6 +1675,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::P
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1819,14 +1804,6 @@ std::shared_ptr<Entity> InterfacesState::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfacesState::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -1839,9 +1816,14 @@ std::shared_ptr<Entity> InterfacesState::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2028,14 +2010,6 @@ std::shared_ptr<Entity> InterfacesState::Interface::get_child_by_name(const std:
 
     if(child_yang_name == "ietf-diffserv-target:diffserv-target-entry")
     {
-        for(auto const & c : diffserv_target_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfacesState::Interface::DiffservTargetEntry>();
         c->parent = this;
         diffserv_target_entry.push_back(c);
@@ -2066,14 +2040,19 @@ std::shared_ptr<Entity> InterfacesState::Interface::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
     }
 
+    count = 0;
     for (auto const & c : diffserv_target_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(ipv4 != nullptr)
@@ -2318,6 +2297,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::Statistics::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2554,14 +2534,6 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::get_chi
 {
     if(child_yang_name == "diffserv-target-classifier-statistics")
     {
-        for(auto const & c : diffserv_target_classifier_statistics)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics>();
         c->parent = this;
         diffserv_target_classifier_statistics.push_back(c);
@@ -2574,9 +2546,14 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::DiffservTargetEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffserv_target_classifier_statistics)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2693,14 +2670,6 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::Diffser
 
     if(child_yang_name == "meter-statistics")
     {
-        for(auto const & c : meter_statistics)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics>();
         c->parent = this;
         meter_statistics.push_back(c);
@@ -2722,14 +2691,19 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::Diffser
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(classifier_entry_statistics != nullptr)
     {
         children["classifier-entry-statistics"] = classifier_entry_statistics;
     }
 
+    count = 0;
     for (auto const & c : meter_statistics)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(queuing_statistics != nullptr)
@@ -2831,6 +2805,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::Diffser
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2943,6 +2918,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::Diffser
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3093,6 +3069,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::Diffser
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(wred_stats != nullptr)
     {
         children["wred-stats"] = wred_stats;
@@ -3228,6 +3205,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::DiffservTargetEntry::Diffser
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3334,14 +3312,6 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::get_child_by_name(cons
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfacesState::Interface::Ipv4::Address>();
         c->parent = this;
         address.push_back(c);
@@ -3350,14 +3320,6 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::get_child_by_name(cons
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfacesState::Interface::Ipv4::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -3370,14 +3332,23 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3478,6 +3449,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::Address::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv4::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3592,6 +3564,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv4::Neighbor::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv4::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3708,14 +3681,6 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::get_child_by_name(cons
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfacesState::Interface::Ipv6::Address>();
         c->parent = this;
         address.push_back(c);
@@ -3724,14 +3689,6 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::get_child_by_name(cons
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfacesState::Interface::Ipv6::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -3744,14 +3701,23 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3852,6 +3818,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::Address::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv6::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3974,6 +3941,7 @@ std::shared_ptr<Entity> InterfacesState::Interface::Ipv6::Neighbor::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> InterfacesState::Interface::Ipv6::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

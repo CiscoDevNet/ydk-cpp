@@ -1266,7 +1266,7 @@ class Native::Router::Ospfv3::QueueDepth::Hello : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospfv3::QueueDepth::Hello
@@ -1288,7 +1288,7 @@ class Native::Router::Ospfv3::QueueDepth::Update : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospfv3::QueueDepth::Update
@@ -3082,7 +3082,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Hello : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Hello
@@ -3104,7 +3104,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Update :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::QueueDepth::Update
@@ -3534,7 +3534,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute : publi
         class Ospf; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Ospf
         class Ospfv3_; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Ospfv3_
         class Rip; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Rip
-        class Static_; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Static_
+        class Static; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Static
         class MaximumPrefix; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::MaximumPrefix
         class Vrf; //type: Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Vrf
 
@@ -3550,7 +3550,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute : publi
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Ospf> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Ospfv3_> > ospfv3;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Rip> > rip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::MaximumPrefix> maximum_prefix;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv4::Unicast::Redistribute::Vrf> vrf;
         

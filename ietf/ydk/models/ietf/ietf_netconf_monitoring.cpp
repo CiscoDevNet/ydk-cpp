@@ -140,6 +140,7 @@ std::shared_ptr<Entity> NetconfState::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(capabilities != nullptr)
     {
         children["capabilities"] = capabilities;
@@ -274,6 +275,7 @@ std::shared_ptr<Entity> NetconfState::Capabilities::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Capabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -357,14 +359,6 @@ std::shared_ptr<Entity> NetconfState::Datastores::get_child_by_name(const std::s
 {
     if(child_yang_name == "datastore")
     {
-        for(auto const & c : datastore)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetconfState::Datastores::Datastore>();
         c->parent = this;
         datastore.push_back(c);
@@ -377,9 +371,14 @@ std::shared_ptr<Entity> NetconfState::Datastores::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : datastore)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -468,6 +467,7 @@ std::shared_ptr<Entity> NetconfState::Datastores::Datastore::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(locks != nullptr)
     {
         children["locks"] = locks;
@@ -564,14 +564,6 @@ std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::get_child_by
 
     if(child_yang_name == "partial-lock")
     {
-        for(auto const & c : partial_lock)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetconfState::Datastores::Datastore::Locks::PartialLock>();
         c->parent = this;
         partial_lock.push_back(c);
@@ -584,14 +576,19 @@ std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::Locks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_lock != nullptr)
     {
         children["global-lock"] = global_lock;
     }
 
+    count = 0;
     for (auto const & c : partial_lock)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -664,6 +661,7 @@ std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::GlobalLock::
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::Locks::GlobalLock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -786,6 +784,7 @@ std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::PartialLock:
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::Locks::PartialLock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -907,14 +906,6 @@ std::shared_ptr<Entity> NetconfState::Schemas::get_child_by_name(const std::stri
 {
     if(child_yang_name == "schema")
     {
-        for(auto const & c : schema)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetconfState::Schemas::Schema>();
         c->parent = this;
         schema.push_back(c);
@@ -927,9 +918,14 @@ std::shared_ptr<Entity> NetconfState::Schemas::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Schemas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : schema)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1031,6 +1027,7 @@ std::shared_ptr<Entity> NetconfState::Schemas::Schema::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Schemas::Schema::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1154,14 +1151,6 @@ std::shared_ptr<Entity> NetconfState::Sessions::get_child_by_name(const std::str
 {
     if(child_yang_name == "session")
     {
-        for(auto const & c : session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetconfState::Sessions::Session>();
         c->parent = this;
         session.push_back(c);
@@ -1174,9 +1163,14 @@ std::shared_ptr<Entity> NetconfState::Sessions::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1284,6 +1278,7 @@ std::shared_ptr<Entity> NetconfState::Sessions::Session::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Sessions::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1475,6 +1470,7 @@ std::shared_ptr<Entity> NetconfState::Statistics::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> NetconfState::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1643,6 +1639,7 @@ std::shared_ptr<Entity> GetSchema::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> GetSchema::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1759,6 +1756,7 @@ std::shared_ptr<Entity> GetSchema::Input::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> GetSchema::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1862,6 +1860,7 @@ std::shared_ptr<Entity> GetSchema::Output::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> GetSchema::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

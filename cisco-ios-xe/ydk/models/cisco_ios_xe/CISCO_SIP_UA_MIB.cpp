@@ -361,6 +361,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(csipcfgbase != nullptr)
     {
         children["cSipCfgBase"] = csipcfgbase;
@@ -621,6 +622,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgbase::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgbase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -886,6 +888,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgtimer::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgtimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1143,6 +1146,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgretry::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgretry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1348,6 +1352,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgpeer::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgpeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1461,6 +1466,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgaaa::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgaaa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1556,6 +1562,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgvoiceservicevoip::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgvoiceservicevoip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1705,6 +1712,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsinfo::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsinfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1890,6 +1898,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatssuccess::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatssuccess::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2031,6 +2040,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsredirect::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsredirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2404,6 +2414,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatserrclient::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatserrclient::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3089,6 +3100,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatserrserver::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatserrserver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3330,6 +3342,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsglobalfail::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsglobalfail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3583,6 +3596,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatstraffic::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatstraffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3960,6 +3974,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsretry::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsretry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4153,6 +4168,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsmisc::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsmisc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4268,6 +4284,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatsconnection::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatsconnection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4433,14 +4450,6 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgearlymediatable::get_child_by_name
 {
     if(child_yang_name == "cSipCfgEarlyMediaEntry")
     {
-        for(auto const & c : csipcfgearlymediaentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry>();
         c->parent = this;
         csipcfgearlymediaentry.push_back(c);
@@ -4453,9 +4462,14 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgearlymediatable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgearlymediatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csipcfgearlymediaentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4535,6 +4549,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymedia
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgearlymediatable::Csipcfgearlymediaentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4630,14 +4645,6 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::get_child_by_
 {
     if(child_yang_name == "cSipCfgBindSourceAddrEntry")
     {
-        for(auto const & c : csipcfgbindsourceaddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry>();
         c->parent = this;
         csipcfgbindsourceaddrentry.push_back(c);
@@ -4650,9 +4657,14 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csipcfgbindsourceaddrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4732,6 +4744,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindso
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgbindsourceaddrtable::Csipcfgbindsourceaddrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4827,14 +4840,6 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgpeertable::get_child_by_name(const
 {
     if(child_yang_name == "cSipCfgPeerEntry")
     {
-        for(auto const & c : csipcfgpeerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry>();
         c->parent = this;
         csipcfgpeerentry.push_back(c);
@@ -4847,9 +4852,14 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgpeertable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgpeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csipcfgpeerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4945,6 +4955,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgpeertable::Csipcfgpeerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5080,14 +5091,6 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgstatuscausetable::get_child_by_nam
 {
     if(child_yang_name == "cSipCfgStatusCauseEntry")
     {
-        for(auto const & c : csipcfgstatuscauseentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry>();
         c->parent = this;
         csipcfgstatuscauseentry.push_back(c);
@@ -5100,9 +5103,14 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgstatuscausetable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgstatuscausetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csipcfgstatuscauseentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5186,6 +5194,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscau
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgstatuscausetable::Csipcfgstatuscauseentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5291,14 +5300,6 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgcausestatustable::get_child_by_nam
 {
     if(child_yang_name == "cSipCfgCauseStatusEntry")
     {
-        for(auto const & c : csipcfgcausestatusentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry>();
         c->parent = this;
         csipcfgcausestatusentry.push_back(c);
@@ -5311,9 +5312,14 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgcausestatustable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgcausestatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csipcfgcausestatusentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5397,6 +5403,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestat
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipcfgcausestatustable::Csipcfgcausestatusentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5502,14 +5509,6 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatssuccessoktable::get_child_by_nam
 {
     if(child_yang_name == "cSipStatsSuccessOkEntry")
     {
-        for(auto const & c : csipstatssuccessokentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry>();
         c->parent = this;
         csipstatssuccessokentry.push_back(c);
@@ -5522,9 +5521,14 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatssuccessoktable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatssuccessoktable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csipstatssuccessokentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5608,6 +5612,7 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccess
 std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::Csipstatssuccessoktable::Csipstatssuccessokentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

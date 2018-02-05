@@ -225,6 +225,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor::Ipv4::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -601,6 +602,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor::Ipv4::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -677,6 +679,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor::Ipv4::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -753,6 +756,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor::Ipv4::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -829,6 +833,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Neighbor::Ipv4::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -909,6 +914,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Network:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1007,14 +1013,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::OffsetLi
 {
     if(child_yang_name == "nsr-list")
     {
-        for(auto const & c : nsr_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::OffsetList::NsrList>();
         c->parent = this;
         nsr_list.push_back(c);
@@ -1023,14 +1021,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::OffsetLi
 
     if(child_yang_name == "ol-acl")
     {
-        for(auto const & c : ol_acl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::OffsetList::OlAcl>();
         c->parent = this;
         ol_acl.push_back(c);
@@ -1043,14 +1033,23 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::OffsetLi
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::OffsetList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nsr_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ol_acl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1127,6 +1126,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::OffsetLi
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::OffsetList::NsrList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1231,6 +1231,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::OffsetLi
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::OffsetList::OlAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1363,14 +1364,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 {
     if(child_yang_name == "bgp")
     {
-        for(auto const & c : bgp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Bgp>();
         c->parent = this;
         bgp.push_back(c);
@@ -1435,7 +1428,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_>();
+            static_ = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static>();
         }
         return static_;
     }
@@ -1455,9 +1448,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(connected != nullptr)
@@ -1608,6 +1606,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -1725,6 +1724,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Bgp::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1845,6 +1845,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1951,6 +1952,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2081,6 +2083,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2171,6 +2174,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2261,6 +2265,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Odr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2351,6 +2356,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2389,7 +2395,7 @@ bool Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Rip::has_leaf
     return false;
 }
 
-Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::Static_()
+Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::Static()
     :
     metric{YType::empty, "metric"},
     route_map{YType::empty, "route-map"}
@@ -2398,31 +2404,31 @@ Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::Static_()
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::~Static_()
+Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::has_data() const
+bool Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::has_data() const
 {
     return metric.is_set
 	|| route_map.is_set;
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::has_operation() const
+bool Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric.yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2433,18 +2439,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFam
 
 }
 
-std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric")
     {
@@ -2460,7 +2467,7 @@ void Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::set_
     }
 }
 
-void Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric")
     {
@@ -2472,7 +2479,7 @@ void Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::set_
     }
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
@@ -2531,6 +2538,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Redistri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2623,14 +2631,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::SummaryM
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::SummaryMetric::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -2643,9 +2643,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::SummaryM
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::SummaryMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2728,6 +2733,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::SummaryM
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::SummaryMetric::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2849,6 +2855,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Timers::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active_time != nullptr)
     {
         children["active-time"] = active_time;
@@ -2934,6 +2941,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Timers::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Timers::ActiveTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3020,6 +3028,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Timers::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Timers::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3100,6 +3109,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Timers::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Timers::Nsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3200,6 +3210,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::TrafficS
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::TrafficShare::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(min != nullptr)
     {
         children["min"] = min;
@@ -3281,6 +3292,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::TrafficS
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::TrafficShare::Min::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3365,6 +3377,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(base != nullptr)
     {
         children["base"] = base;
@@ -3477,14 +3490,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 
     if(child_yang_name == "summary-metric")
     {
-        for(auto const & c : summary_metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::SummaryMetric>();
         c->parent = this;
         summary_metric.push_back(c);
@@ -3497,6 +3502,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(distance != nullptr)
     {
         children["distance"] = distance;
@@ -3512,9 +3518,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFam
         children["redistribute"] = redistribute;
     }
 
+    count = 0;
     for (auto const & c : summary_metric)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3592,6 +3602,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eigrp != nullptr)
     {
         children["eigrp"] = eigrp;
@@ -3665,14 +3676,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 {
     if(child_yang_name == "distance-list")
     {
-        for(auto const & c : distance_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Distance::Eigrp_::DistanceList>();
         c->parent = this;
         distance_list.push_back(c);
@@ -3685,9 +3688,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Distance::Eigrp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : distance_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3760,6 +3768,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Distance::Eigrp_::DistanceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3858,14 +3867,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 {
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::DistributeList::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -3874,14 +3875,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 
     if(child_yang_name == "route-map")
     {
-        for(auto const & c : route_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::DistributeList::RouteMap>();
         c->parent = this;
         route_map.push_back(c);
@@ -3894,14 +3887,23 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::DistributeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : route_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3982,6 +3984,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::DistributeList::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4096,6 +4099,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::DistributeList::RouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4220,7 +4224,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_>();
+            static_ = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static>();
         }
         return static_;
     }
@@ -4231,6 +4235,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eigrp != nullptr)
     {
         children["eigrp"] = eigrp;
@@ -4324,14 +4329,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 {
     if(child_yang_name == "as-list")
     {
-        for(auto const & c : as_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Eigrp_::AsList>();
         c->parent = this;
         as_list.push_back(c);
@@ -4344,9 +4341,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Eigrp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : as_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4415,6 +4417,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Eigrp_::AsList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4493,14 +4496,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 {
     if(child_yang_name == "pid-list")
     {
-        for(auto const & c : pid_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Ospf::PidList>();
         c->parent = this;
         pid_list.push_back(c);
@@ -4513,9 +4508,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pid_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4584,6 +4584,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Ospf::PidList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4612,34 +4613,34 @@ bool Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribut
     return false;
 }
 
-Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::Static_()
+Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::Static()
 {
 
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::~Static_()
+Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::has_data() const
+bool Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::has_data() const
 {
     return false;
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::has_operation() const
+bool Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4648,26 +4649,27 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFam
 
 }
 
-std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
@@ -4738,6 +4740,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::SummaryMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -4845,6 +4848,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpList::Topology
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::SummaryMetric::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5066,14 +5070,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::get_c
 {
     if(child_yang_name == "af-interface")
     {
-        for(auto const & c : af_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInterface>();
         c->parent = this;
         af_interface.push_back(c);
@@ -5163,14 +5159,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::get_c
 
     if(child_yang_name == "network")
     {
-        for(auto const & c : network)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Network>();
         c->parent = this;
         network.push_back(c);
@@ -5237,9 +5225,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : af_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(set_as_in_submode != nullptr)
@@ -5287,9 +5280,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFam
         children["neighbor"] = neighbor;
     }
 
+    count = 0;
     for (auto const & c : network)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(offset_list != nullptr)
@@ -5528,6 +5525,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInt
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stub_site != nullptr)
     {
         children["stub-site"] = stub_site;
@@ -5669,6 +5667,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInt
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInterface::StubSite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5759,6 +5758,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInt
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInterface::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode != nullptr)
     {
         children["mode"] = mode;
@@ -5854,6 +5854,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInt
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInterface::Authentication::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hmac_sha_256 != nullptr)
     {
         children["hmac-sha-256"] = hmac_sha_256;
@@ -5939,6 +5940,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInt
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInterface::Authentication::Mode::HmacSha256::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6029,6 +6031,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInt
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::AfInterface::SummaryAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6115,6 +6118,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::SetAs
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::SetAsInSubmode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6205,6 +6209,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -6451,6 +6456,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -6827,6 +6833,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6903,6 +6910,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6979,6 +6987,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7055,6 +7064,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Bfd::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7151,6 +7161,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Defau
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in != nullptr)
     {
         children["in"] = in;
@@ -7231,6 +7242,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Defau
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DefaultInformation::In::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7321,6 +7333,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Defau
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DefaultInformation::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7409,14 +7422,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Defau
 {
     if(child_yang_name == "dm-rdr")
     {
-        for(auto const & c : dm_rdr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::DefaultMetric::DmRdr>();
         c->parent = this;
         dm_rdr.push_back(c);
@@ -7429,9 +7434,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Defau
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DefaultMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dm_rdr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7506,14 +7516,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Defau
 {
     if(child_yang_name == "dm-rdr0")
     {
-        for(auto const & c : dm_rdr0)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::DefaultMetric::DmRdr::DmRdr0>();
         c->parent = this;
         dm_rdr0.push_back(c);
@@ -7526,9 +7528,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Defau
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DefaultMetric::DmRdr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dm_rdr0)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7611,6 +7618,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Defau
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DefaultMetric::DmRdr::DmRdr0::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7703,14 +7711,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Dista
 {
     if(child_yang_name == "rad-dis")
     {
-        for(auto const & c : rad_dis)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distance::RadDis>();
         c->parent = this;
         rad_dis.push_back(c);
@@ -7732,9 +7732,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Dista
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rad_dis)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(eigrp != nullptr)
@@ -7814,14 +7819,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Dista
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distance::RadDis::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -7834,9 +7831,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Dista
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distance::RadDis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7919,6 +7921,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Dista
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distance::RadDis::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8007,14 +8010,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Dista
 {
     if(child_yang_name == "di-rt")
     {
-        for(auto const & c : di_rt)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distance::Eigrp_::DiRt>();
         c->parent = this;
         di_rt.push_back(c);
@@ -8027,9 +8022,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Dista
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distance::Eigrp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : di_rt)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8102,6 +8102,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Dista
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distance::Eigrp_::DiRt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8202,14 +8203,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 {
     if(child_yang_name == "eig-filt")
     {
-        for(auto const & c : eig_filt)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt>();
         c->parent = this;
         eig_filt.push_back(c);
@@ -8249,9 +8242,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eig_filt)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(gateway != nullptr)
@@ -8360,6 +8358,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in != nullptr)
     {
         children["in"] = in;
@@ -8457,6 +8456,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt::In::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8542,6 +8542,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8618,14 +8619,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 {
     if(child_yang_name == "gw-list")
     {
-        for(auto const & c : gw_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::Gateway::GwList>();
         c->parent = this;
         gw_list.push_back(c);
@@ -8638,9 +8631,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::Gateway::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : gw_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8717,6 +8715,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::Gateway::GwList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8815,14 +8814,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 {
     if(child_yang_name == "pl-name")
     {
-        for(auto const & c : pl_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::Prefix::PlName>();
         c->parent = this;
         pl_name.push_back(c);
@@ -8835,9 +8826,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pl_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8918,6 +8914,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::Prefix::PlName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9026,14 +9023,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 {
     if(child_yang_name == "rmap-name")
     {
-        for(auto const & c : rmap_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::RouteMap::RmapName>();
         c->parent = this;
         rmap_name.push_back(c);
@@ -9046,9 +9035,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::RouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rmap_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9125,6 +9119,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Distr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::RouteMap::RmapName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9238,6 +9233,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Eigrp
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Eigrp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stub != nullptr)
     {
         children["stub"] = stub;
@@ -9349,6 +9345,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Eigrp
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Eigrp_::Stub::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9479,6 +9476,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Metri
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9567,14 +9565,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neigh
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neighbor::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -9587,9 +9577,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neigh
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9672,6 +9667,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neigh
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neighbor::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -9918,6 +9914,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neigh
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neighbor::Ipv4::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -10294,6 +10291,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neigh
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neighbor::Ipv4::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10370,6 +10368,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neigh
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neighbor::Ipv4::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10446,6 +10445,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neigh
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neighbor::Ipv4::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10522,6 +10522,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neigh
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Neighbor::Ipv4::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10602,6 +10603,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Netwo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10700,14 +10702,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Offse
 {
     if(child_yang_name == "nsr-list")
     {
-        for(auto const & c : nsr_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::OffsetList::NsrList>();
         c->parent = this;
         nsr_list.push_back(c);
@@ -10716,14 +10710,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Offse
 
     if(child_yang_name == "ol-acl")
     {
-        for(auto const & c : ol_acl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::OffsetList::OlAcl>();
         c->parent = this;
         ol_acl.push_back(c);
@@ -10736,14 +10722,23 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Offse
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::OffsetList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nsr_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ol_acl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10820,6 +10815,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Offse
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::OffsetList::NsrList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10924,6 +10920,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Offse
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::OffsetList::OlAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11056,14 +11053,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 {
     if(child_yang_name == "bgp")
     {
-        for(auto const & c : bgp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Bgp>();
         c->parent = this;
         bgp.push_back(c);
@@ -11128,7 +11117,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_>();
+            static_ = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static>();
         }
         return static_;
     }
@@ -11148,9 +11137,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(connected != nullptr)
@@ -11301,6 +11295,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -11418,6 +11413,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Bgp::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11538,6 +11534,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11644,6 +11641,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11774,6 +11772,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11864,6 +11863,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11954,6 +11954,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Odr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12044,6 +12045,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12082,7 +12084,7 @@ bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Rip::has_l
     return false;
 }
 
-Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::Static_()
+Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::Static()
     :
     metric{YType::empty, "metric"},
     route_map{YType::empty, "route-map"}
@@ -12091,31 +12093,31 @@ Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::Static
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::~Static_()
+Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::has_data() const
+bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::has_data() const
 {
     return metric.is_set
 	|| route_map.is_set;
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::has_operation() const
+bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric.yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12126,18 +12128,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFam
 
 }
 
-std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric")
     {
@@ -12153,7 +12156,7 @@ void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::s
     }
 }
 
-void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric")
     {
@@ -12165,7 +12168,7 @@ void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::s
     }
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
@@ -12224,6 +12227,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redis
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12316,14 +12320,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Summa
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::SummaryMetric::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -12336,9 +12332,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Summa
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::SummaryMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12421,6 +12422,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Summa
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::SummaryMetric::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12542,6 +12544,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Timer
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active_time != nullptr)
     {
         children["active-time"] = active_time;
@@ -12627,6 +12630,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Timer
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Timers::ActiveTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12713,6 +12717,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Timer
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Timers::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12793,6 +12798,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Timer
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Timers::Nsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12893,6 +12899,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Traff
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::TrafficShare::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(min != nullptr)
     {
         children["min"] = min;
@@ -12974,6 +12981,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Traff
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::TrafficShare::Min::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13058,6 +13066,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(base != nullptr)
     {
         children["base"] = base;
@@ -13170,14 +13179,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 
     if(child_yang_name == "summary-metric")
     {
-        for(auto const & c : summary_metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::SummaryMetric>();
         c->parent = this;
         summary_metric.push_back(c);
@@ -13190,6 +13191,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(distance != nullptr)
     {
         children["distance"] = distance;
@@ -13205,9 +13207,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFam
         children["redistribute"] = redistribute;
     }
 
+    count = 0;
     for (auto const & c : summary_metric)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13285,6 +13291,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eigrp != nullptr)
     {
         children["eigrp"] = eigrp;
@@ -13358,14 +13365,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 {
     if(child_yang_name == "distance-list")
     {
-        for(auto const & c : distance_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Distance::Eigrp_::DistanceList>();
         c->parent = this;
         distance_list.push_back(c);
@@ -13378,9 +13377,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Distance::Eigrp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : distance_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13453,6 +13457,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Distance::Eigrp_::DistanceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13551,14 +13556,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 {
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::DistributeList::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -13567,14 +13564,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 
     if(child_yang_name == "route-map")
     {
-        for(auto const & c : route_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::DistributeList::RouteMap>();
         c->parent = this;
         route_map.push_back(c);
@@ -13587,14 +13576,23 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::DistributeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : route_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13675,6 +13673,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::DistributeList::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13789,6 +13788,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::DistributeList::RouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13913,7 +13913,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_>();
+            static_ = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static>();
         }
         return static_;
     }
@@ -13924,6 +13924,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eigrp != nullptr)
     {
         children["eigrp"] = eigrp;
@@ -14017,14 +14018,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 {
     if(child_yang_name == "as-list")
     {
-        for(auto const & c : as_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Eigrp_::AsList>();
         c->parent = this;
         as_list.push_back(c);
@@ -14037,9 +14030,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Eigrp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : as_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14108,6 +14106,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Eigrp_::AsList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14186,14 +14185,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 {
     if(child_yang_name == "pid-list")
     {
-        for(auto const & c : pid_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Ospf::PidList>();
         c->parent = this;
         pid_list.push_back(c);
@@ -14206,9 +14197,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pid_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14277,6 +14273,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Ospf::PidList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14305,34 +14302,34 @@ bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistri
     return false;
 }
 
-Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::Static_()
+Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::Static()
 {
 
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::~Static_()
+Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::has_data() const
+bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::has_data() const
 {
     return false;
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::has_operation() const
+bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14341,26 +14338,27 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Eigrp::AddressFam
 
 }
 
-std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
@@ -14431,6 +14429,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::SummaryMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -14538,6 +14537,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topol
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::SummaryMetric::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14714,6 +14714,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AfInterface::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AfInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stub_site != nullptr)
     {
         children["stub-site"] = stub_site;
@@ -14855,6 +14856,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AfInterface::StubSite::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AfInterface::StubSite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14945,6 +14947,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AfInterface::Authentication::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AfInterface::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode != nullptr)
     {
         children["mode"] = mode;
@@ -15040,6 +15043,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AfInterface::Authentication::Mode
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AfInterface::Authentication::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hmac_sha_256 != nullptr)
     {
         children["hmac-sha-256"] = hmac_sha_256;
@@ -15125,6 +15129,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AfInterface::Authentication::Mode
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AfInterface::Authentication::Mode::HmacSha256::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15215,6 +15220,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::AfInterface::SummaryAddress::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::AfInterface::SummaryAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15301,6 +15307,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::SetAsInSubmode::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::SetAsInSubmode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15391,6 +15398,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Bfd::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -15637,6 +15645,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Bfd::Interface::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::Bfd::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -16013,6 +16022,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Bfd::Interface::ATMSubinterface::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::Bfd::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16089,6 +16099,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Bfd::Interface::ATMACRsubinterfac
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::Bfd::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16165,6 +16176,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Bfd::Interface::LISPSubinterface:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::Bfd::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16241,6 +16253,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Bfd::Interface::PortChannelSubint
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::Bfd::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16337,6 +16350,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::DefaultInformation::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in != nullptr)
     {
         children["in"] = in;
@@ -16417,6 +16431,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::DefaultInformation::In::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::DefaultInformation::In::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16507,6 +16522,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::DefaultInformation::Out::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::DefaultInformation::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16595,14 +16611,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::DefaultMetric::get_child_by_name(
 {
     if(child_yang_name == "dm-rdr")
     {
-        for(auto const & c : dm_rdr)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::DefaultMetric::DmRdr>();
         c->parent = this;
         dm_rdr.push_back(c);
@@ -16615,9 +16623,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::DefaultMetric::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::DefaultMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dm_rdr)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16692,14 +16705,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::DefaultMetric::DmRdr::get_child_b
 {
     if(child_yang_name == "dm-rdr0")
     {
-        for(auto const & c : dm_rdr0)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::DefaultMetric::DmRdr::DmRdr0>();
         c->parent = this;
         dm_rdr0.push_back(c);
@@ -16712,9 +16717,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::DefaultMetric::DmRdr::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::DefaultMetric::DmRdr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dm_rdr0)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16797,6 +16807,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::DefaultMetric::DmRdr::DmRdr0::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::DefaultMetric::DmRdr::DmRdr0::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16889,14 +16900,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Distance::get_child_by_name(const
 {
     if(child_yang_name == "rad-dis")
     {
-        for(auto const & c : rad_dis)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::Distance::RadDis>();
         c->parent = this;
         rad_dis.push_back(c);
@@ -16918,9 +16921,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Distance::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rad_dis)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(eigrp != nullptr)
@@ -17000,14 +17008,6 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Distance::RadDis::get_child_by_na
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Eigrp::Distance::RadDis::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -17020,9 +17020,14 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Distance::RadDis::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::Distance::RadDis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17105,6 +17110,7 @@ std::shared_ptr<Entity> Native::Router::Eigrp::Distance::RadDis::Ipv4::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Eigrp::Distance::RadDis::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

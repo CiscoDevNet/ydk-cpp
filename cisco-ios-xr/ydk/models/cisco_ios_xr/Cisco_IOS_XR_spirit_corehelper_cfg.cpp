@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Exception::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Exception::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(file != nullptr)
     {
         children["file"] = file;
@@ -179,6 +180,7 @@ std::shared_ptr<Entity> Exception::File::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Exception::File::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

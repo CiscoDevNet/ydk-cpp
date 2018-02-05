@@ -16,7 +16,7 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::PortChannel::Peer::Default_::Ip::Address::Pool : public ydk::Entity
+class Native::Interface::PortChannel::Peer::Default::Ip::Address::Pool : public ydk::Entity
 {
     public:
         Pool();
@@ -34,7 +34,7 @@ class Native::Interface::PortChannel::Peer::Default_::Ip::Address::Pool : public
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::PortChannel::Peer::Default_::Ip::Address::Pool
+}; // Native::Interface::PortChannel::Peer::Default::Ip::Address::Pool
 
 
 class Native::Interface::PortChannel::PmPath : public ydk::Entity
@@ -1360,9 +1360,9 @@ class Native::Interface::PortChannel::Service::Instance::Encapsulation::Dot1Ad :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList dot1q; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::PortChannel::Service::Instance::Encapsulation::Dot1Ad::Cos2
 
@@ -1413,9 +1413,9 @@ class Native::Interface::PortChannel::Service::Instance::Encapsulation::Dot1Q : 
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList second_dot1q; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::PortChannel::Service::Instance::Encapsulation::Dot1Q::Cos2
 
@@ -1558,7 +1558,7 @@ class Native::Interface::PortChannel::Service::Instance::Ip::Acl : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of string, uint16
+        ydk::YLeaf access_group; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
         ydk::YLeaf out; //type: empty
 
@@ -3259,18 +3259,18 @@ class Native::Interface::PortChannel::Cts::Manual::Policy : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Static_; //type: Native::Interface::PortChannel::Cts::Manual::Policy::Static_
+        class Static; //type: Native::Interface::PortChannel::Cts::Manual::Policy::Static
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Policy::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts::Manual::Policy::Static> static_;
         
 }; // Native::Interface::PortChannel::Cts::Manual::Policy
 
 
-class Native::Interface::PortChannel::Cts::Manual::Policy::Static_ : public ydk::Entity
+class Native::Interface::PortChannel::Cts::Manual::Policy::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3285,7 +3285,7 @@ class Native::Interface::PortChannel::Cts::Manual::Policy::Static_ : public ydk:
         ydk::YLeaf sgt; //type: uint16
         ydk::YLeaf trusted; //type: empty
 
-}; // Native::Interface::PortChannel::Cts::Manual::Policy::Static_
+}; // Native::Interface::PortChannel::Cts::Manual::Policy::Static
 
 
 class Native::Interface::PortChannel::Cts::Manual::Sap : public ydk::Entity

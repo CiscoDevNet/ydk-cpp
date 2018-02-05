@@ -86,6 +86,7 @@ std::shared_ptr<Entity> TrafficCollector::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(external_interfaces != nullptr)
     {
         children["external-interfaces"] = external_interfaces;
@@ -206,14 +207,6 @@ std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(
 {
     if(child_yang_name == "external-interface")
     {
-        for(auto const & c : external_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TrafficCollector::ExternalInterfaces::ExternalInterface>();
         c->parent = this;
         external_interface.push_back(c);
@@ -226,9 +219,14 @@ std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : external_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -308,6 +306,7 @@ std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::ExternalInterface:
 std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfaces::ExternalInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -413,6 +412,7 @@ std::shared_ptr<Entity> TrafficCollector::Statistics::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -12,11 +12,11 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::All()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::All()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -25,18 +25,18 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::All()
     yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::~All()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::~All()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -44,14 +44,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::has_
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -60,13 +60,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily>();
         }
         return daily;
     }
@@ -75,7 +75,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On>();
         }
         return on;
     }
@@ -84,7 +84,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly>();
         }
         return weekly;
     }
@@ -92,9 +92,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -113,22 +114,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -136,29 +137,29 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::Da
     yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -168,18 +169,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -189,7 +191,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Dail
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -197,14 +199,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Dail
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::On()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -215,11 +217,11 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::On()
     yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -227,7 +229,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -236,14 +238,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -256,18 +258,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -295,7 +298,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -315,14 +318,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -331,31 +334,31 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::W
     yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -366,18 +369,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -393,7 +397,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Week
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -405,19 +409,19 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Week
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::PerPort()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::PerPort()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly>())
-	,port(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly>())
+	,port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port>())
 {
     daily->parent = this;
     on->parent = this;
@@ -427,11 +431,11 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::PerPort()
     yang_name = "per-port"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::~PerPort()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::~PerPort()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
@@ -439,7 +443,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::has_data() const
 	|| (port !=  nullptr && port->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -448,14 +452,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::has_operation() const
 	|| (port !=  nullptr && port->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "per-port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -464,13 +468,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily>();
         }
         return daily;
     }
@@ -479,7 +483,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::ge
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::On>();
         }
         return on;
     }
@@ -488,7 +492,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::ge
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly>();
         }
         return weekly;
     }
@@ -497,7 +501,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::ge
     {
         if(port == nullptr)
         {
-            port = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port>();
+            port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port>();
         }
         return port;
     }
@@ -505,9 +509,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -531,22 +536,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "port")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -554,29 +559,29 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "per-port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -586,18 +591,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -607,7 +613,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::set_value(cons
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -615,14 +621,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::set_filter(con
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::On()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -633,11 +639,11 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::On()
     yang_name = "on"; yang_parent_name = "per-port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -645,7 +651,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::has_data() const
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -654,14 +660,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::has_operation() c
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -674,18 +680,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -713,7 +720,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::set_value(const s
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -733,14 +740,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::set_filter(const 
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -749,31 +756,31 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::Weekly()
     yang_name = "weekly"; yang_parent_name = "per-port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -784,18 +791,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -811,7 +819,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::set_value(con
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -823,27 +831,27 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::set_filter(co
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::Port()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::Port()
     :
-    all(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All>())
+    all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All>())
 {
     all->parent = this;
 
     yang_name = "port"; yang_parent_name = "per-port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::~Port()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::~Port()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::has_data() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -858,7 +866,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::has_data() cons
     return (all !=  nullptr && all->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::has_operation() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -874,14 +882,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::has_operation()
 	|| (all !=  nullptr && all->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -890,19 +898,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-port-number")
     {
-        for(auto const & c : interface_port_number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber>();
         c->parent = this;
         interface_port_number.push_back(c);
         return c;
@@ -910,15 +910,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
 
     if(child_yang_name == "port-number-list")
     {
-        for(auto const & c : port_number_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList>();
         c->parent = this;
         port_number_list.push_back(c);
         return c;
@@ -928,7 +920,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     {
         if(all == nullptr)
         {
-            all = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All>();
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All>();
         }
         return all;
     }
@@ -936,17 +928,26 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_port_number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : port_number_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all != nullptr)
@@ -957,28 +958,28 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-port-number" || name == "port-number-list" || name == "all")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::InterfacePortNumber()
     :
     number{YType::uint8, "number"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -987,11 +988,11 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber:
     yang_name = "interface-port-number"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::~InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::~InterfacePortNumber()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::has_data() const
 {
     return number.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -999,7 +1000,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -1008,14 +1009,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-port-number" <<"[number='" <<number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1025,13 +1026,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily>();
         }
         return daily;
     }
@@ -1040,7 +1041,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On>();
         }
         return on;
     }
@@ -1049,7 +1050,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly>();
         }
         return weekly;
     }
@@ -1057,9 +1058,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -1078,7 +1080,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -1088,7 +1090,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -1096,14 +1098,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -1111,29 +1113,29 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber:
     yang_name = "daily"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1143,18 +1145,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -1164,7 +1167,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -1172,14 +1175,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::On()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -1190,11 +1193,11 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber:
     yang_name = "on"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -1202,7 +1205,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -1211,14 +1214,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1231,18 +1234,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -1270,7 +1274,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -1290,14 +1294,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -1306,31 +1310,31 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber:
     yang_name = "weekly"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1341,18 +1345,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -1368,7 +1373,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -1380,20 +1385,20 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNu
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::PortNumberList()
     :
     number_list{YType::str, "number-list"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -1402,11 +1407,11 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Port
     yang_name = "port-number-list"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::~PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::~PortNumberList()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::has_data() const
 {
     return number_list.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -1414,7 +1419,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number_list.yfilter)
@@ -1423,14 +1428,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port-number-list" <<"[number-list='" <<number_list <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1440,13 +1445,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily>();
         }
         return daily;
     }
@@ -1455,7 +1460,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On>();
         }
         return on;
     }
@@ -1464,7 +1469,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly>();
         }
         return weekly;
     }
@@ -1472,9 +1477,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -1493,7 +1499,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number-list")
     {
@@ -1503,7 +1509,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number-list")
     {
@@ -1511,14 +1517,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number-list")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -1526,29 +1532,29 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Dail
     yang_name = "daily"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1558,18 +1564,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -1579,7 +1586,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -1587,14 +1594,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::On()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -1605,11 +1612,11 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::
     yang_name = "on"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -1617,7 +1624,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -1626,14 +1633,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1646,18 +1653,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -1685,7 +1693,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -1705,14 +1713,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -1721,31 +1729,31 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Week
     yang_name = "weekly"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1756,18 +1764,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -1783,7 +1792,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -1795,18 +1804,18 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::All()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::All()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -1815,18 +1824,18 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::All()
     yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::~All()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::~All()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -1834,14 +1843,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::has_operat
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1850,13 +1859,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily>();
         }
         return daily;
     }
@@ -1865,7 +1874,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On>();
         }
         return on;
     }
@@ -1874,7 +1883,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly>();
         }
         return weekly;
     }
@@ -1882,9 +1891,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Po
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -1903,22 +1913,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -1926,29 +1936,29 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1958,18 +1968,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -1979,7 +1990,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::set
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -1987,14 +1998,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::set
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::On()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -2005,11 +2016,11 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::On()
     yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -2017,7 +2028,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::has_da
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -2026,14 +2037,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::has_op
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2046,18 +2057,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -2085,7 +2097,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::set_va
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -2105,14 +2117,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::set_fi
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -2121,31 +2133,31 @@ Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::Weekly(
     yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2156,18 +2168,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -2183,7 +2196,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::se
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -2195,7 +2208,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::se
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::PerPort::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
@@ -2266,6 +2279,7 @@ std::shared_ptr<Entity> Native::FabricGroup::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fabric != nullptr)
     {
         children["fabric"] = fabric;
@@ -2341,7 +2355,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::get_child_by_name(const std
     {
         if(auto_ == nullptr)
         {
-            auto_ = std::make_shared<Native::FabricGroup::Fabric::Auto_>();
+            auto_ = std::make_shared<Native::FabricGroup::Fabric::Auto>();
         }
         return auto_;
     }
@@ -2352,6 +2366,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_ != nullptr)
     {
         children["auto"] = auto_;
@@ -2375,45 +2390,45 @@ bool Native::FabricGroup::Fabric::has_leaf_or_child_of_name(const std::string & 
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::Auto_()
+Native::FabricGroup::Fabric::Auto::Auto()
     :
-    config_fabric_auto(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto>())
+    config_fabric_auto(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto>())
 {
     config_fabric_auto->parent = this;
 
     yang_name = "auto"; yang_parent_name = "fabric"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::~Auto_()
+Native::FabricGroup::Fabric::Auto::~Auto()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::has_data() const
+bool Native::FabricGroup::Fabric::Auto::has_data() const
 {
     return (config_fabric_auto !=  nullptr && config_fabric_auto->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::has_operation() const
 {
     return is_set(yfilter)
 	|| (config_fabric_auto !=  nullptr && config_fabric_auto->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auto";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2422,13 +2437,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config-fabric-auto")
     {
         if(config_fabric_auto == nullptr)
         {
-            config_fabric_auto = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto>();
+            config_fabric_auto = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto>();
         }
         return config_fabric_auto;
     }
@@ -2436,9 +2451,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config_fabric_auto != nullptr)
     {
         children["config-fabric-auto"] = config_fabric_auto;
@@ -2447,60 +2463,60 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "config-fabric-auto")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::ConfigFabricAuto()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::ConfigFabricAuto()
     :
-    domain(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain>())
+    domain(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain>())
 {
     domain->parent = this;
 
     yang_name = "config-fabric-auto"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::~ConfigFabricAuto()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::~ConfigFabricAuto()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::has_data() const
 {
     return (domain !=  nullptr && domain->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::has_operation() const
 {
     return is_set(yfilter)
 	|| (domain !=  nullptr && domain->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config-fabric-auto";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2509,13 +2525,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "domain")
     {
         if(domain == nullptr)
         {
-            domain = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain>();
+            domain = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain>();
         }
         return domain;
     }
@@ -2523,9 +2539,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(domain != nullptr)
     {
         children["domain"] = domain;
@@ -2534,22 +2551,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "domain")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::Domain()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::Domain()
     :
     iwan_fabric(nullptr) // presence node
 {
@@ -2557,36 +2574,36 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::Domain()
     yang_name = "domain"; yang_parent_name = "config-fabric-auto"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::~Domain()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::~Domain()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::has_data() const
 {
     return (iwan_fabric !=  nullptr && iwan_fabric->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::has_operation() const
 {
     return is_set(yfilter)
 	|| (iwan_fabric !=  nullptr && iwan_fabric->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "domain";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2595,13 +2612,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "iwan-fabric")
     {
         if(iwan_fabric == nullptr)
         {
-            iwan_fabric = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric>();
+            iwan_fabric = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric>();
         }
         return iwan_fabric;
     }
@@ -2609,9 +2626,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iwan_fabric != nullptr)
     {
         children["iwan-fabric"] = iwan_fabric;
@@ -2620,60 +2638,60 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "iwan-fabric")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::IwanFabric()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::IwanFabric()
     :
-    config_fabric_iwan(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan>())
+    config_fabric_iwan(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan>())
 {
     config_fabric_iwan->parent = this;
 
     yang_name = "iwan-fabric"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::~IwanFabric()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::~IwanFabric()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::has_data() const
 {
     return (config_fabric_iwan !=  nullptr && config_fabric_iwan->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::has_operation() const
 {
     return is_set(yfilter)
 	|| (config_fabric_iwan !=  nullptr && config_fabric_iwan->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "iwan-fabric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2682,13 +2700,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config-fabric-iwan")
     {
         if(config_fabric_iwan == nullptr)
         {
-            config_fabric_iwan = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan>();
+            config_fabric_iwan = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan>();
         }
         return config_fabric_iwan;
     }
@@ -2696,9 +2714,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config_fabric_iwan != nullptr)
     {
         children["config-fabric-iwan"] = config_fabric_iwan;
@@ -2707,33 +2726,33 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "config-fabric-iwan")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ConfigFabricIwan()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ConfigFabricIwan()
     :
     fabric_device_id{YType::uint16, "fabric-device-id"},
     shutdown{YType::empty, "shutdown"}
     	,
-    border(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border>())
-	,control_plane(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane>())
-	,device_role(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole>())
-	,region(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region>())
-	,site(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site>())
-	,tenant(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant>())
-	,virtual_network(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork>())
+    border(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border>())
+	,control_plane(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane>())
+	,device_role(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole>())
+	,region(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region>())
+	,site(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site>())
+	,tenant(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant>())
+	,virtual_network(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork>())
 {
     border->parent = this;
     control_plane->parent = this;
@@ -2746,11 +2765,11 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "config-fabric-iwan"; yang_parent_name = "iwan-fabric"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::~ConfigFabricIwan()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::~ConfigFabricIwan()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::has_data() const
 {
     return fabric_device_id.is_set
 	|| shutdown.is_set
@@ -2763,7 +2782,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
 	|| (virtual_network !=  nullptr && virtual_network->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fabric_device_id.yfilter)
@@ -2777,21 +2796,21 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
 	|| (virtual_network !=  nullptr && virtual_network->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config-fabric-iwan";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2802,13 +2821,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "border")
     {
         if(border == nullptr)
         {
-            border = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border>();
+            border = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border>();
         }
         return border;
     }
@@ -2817,7 +2836,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(control_plane == nullptr)
         {
-            control_plane = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane>();
+            control_plane = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane>();
         }
         return control_plane;
     }
@@ -2826,7 +2845,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(device_role == nullptr)
         {
-            device_role = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole>();
+            device_role = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole>();
         }
         return device_role;
     }
@@ -2835,7 +2854,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(region == nullptr)
         {
-            region = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region>();
+            region = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region>();
         }
         return region;
     }
@@ -2844,7 +2863,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(site == nullptr)
         {
-            site = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site>();
+            site = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site>();
         }
         return site;
     }
@@ -2853,7 +2872,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(tenant == nullptr)
         {
-            tenant = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant>();
+            tenant = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant>();
         }
         return tenant;
     }
@@ -2862,7 +2881,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(virtual_network == nullptr)
         {
-            virtual_network = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork>();
+            virtual_network = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork>();
         }
         return virtual_network;
     }
@@ -2870,9 +2889,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(border != nullptr)
     {
         children["border"] = border;
@@ -2911,7 +2931,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fabric-device-id")
     {
@@ -2927,7 +2947,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fabric-device-id")
     {
@@ -2939,14 +2959,14 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "border" || name == "control-plane" || name == "device-role" || name == "region" || name == "site" || name == "tenant" || name == "virtual-network" || name == "fabric-device-id" || name == "shutdown")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::Border()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::Border()
     :
     self{YType::empty, "self"}
 {
@@ -2954,36 +2974,36 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "border"; yang_parent_name = "config-fabric-iwan"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::~Border()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::~Border()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::has_data() const
 {
     return self.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(self.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "border";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2993,18 +3013,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "self")
     {
@@ -3014,7 +3035,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "self")
     {
@@ -3022,17 +3043,17 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Border::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "self")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::ControlPlane()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::ControlPlane()
     :
-    destination_address(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress>())
-	,source_address(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress>())
+    destination_address(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress>())
+	,source_address(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress>())
 {
     destination_address->parent = this;
     source_address->parent = this;
@@ -3040,38 +3061,38 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "control-plane"; yang_parent_name = "config-fabric-iwan"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::~ControlPlane()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::~ControlPlane()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::has_data() const
 {
     return (destination_address !=  nullptr && destination_address->has_data())
 	|| (source_address !=  nullptr && source_address->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::has_operation() const
 {
     return is_set(yfilter)
 	|| (destination_address !=  nullptr && destination_address->has_operation())
 	|| (source_address !=  nullptr && source_address->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "control-plane";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3080,13 +3101,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination-address")
     {
         if(destination_address == nullptr)
         {
-            destination_address = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress>();
+            destination_address = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress>();
         }
         return destination_address;
     }
@@ -3095,7 +3116,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(source_address == nullptr)
         {
-            source_address = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress>();
+            source_address = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress>();
         }
         return source_address;
     }
@@ -3103,9 +3124,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_address != nullptr)
     {
         children["destination-address"] = destination_address;
@@ -3119,32 +3141,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "destination-address" || name == "source-address")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::DestinationAddress()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::DestinationAddress()
 {
 
     yang_name = "destination-address"; yang_parent_name = "control-plane"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::~DestinationAddress()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::~DestinationAddress()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::has_data() const
 {
     for (std::size_t index=0; index<ipv4.size(); index++)
     {
@@ -3154,7 +3176,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::has_operation() const
 {
     for (std::size_t index=0; index<ipv4.size(); index++)
     {
@@ -3164,21 +3186,21 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/control-plane/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "destination-address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3187,19 +3209,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
         return c;
@@ -3208,75 +3222,80 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::Ipv4()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::Ipv4()
     :
     ipv4{YType::str, "ipv4"}
     	,
-    auth_key(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey>())
+    auth_key(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey>())
 {
     auth_key->parent = this;
 
     yang_name = "ipv4"; yang_parent_name = "destination-address"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::~Ipv4()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::~Ipv4()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::has_data() const
 {
     return ipv4.is_set
 	|| (auth_key !=  nullptr && auth_key->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv4.yfilter)
 	|| (auth_key !=  nullptr && auth_key->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/control-plane/destination-address/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3286,13 +3305,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auth-key")
     {
         if(auth_key == nullptr)
         {
-            auth_key = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey>();
+            auth_key = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey>();
         }
         return auth_key;
     }
@@ -3300,9 +3319,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auth_key != nullptr)
     {
         children["auth-key"] = auth_key;
@@ -3311,7 +3331,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4")
     {
@@ -3321,7 +3341,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv4")
     {
@@ -3329,24 +3349,24 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "auth-key" || name == "ipv4")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::AuthKey()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::AuthKey()
 {
 
     yang_name = "auth-key"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::~AuthKey()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::~AuthKey()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::has_data() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -3356,7 +3376,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::has_operation() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -3366,14 +3386,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auth-key";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3382,19 +3402,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range>();
         c->parent = this;
         range.push_back(c);
         return c;
@@ -3403,33 +3415,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::Range()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::Range()
     :
     range{YType::uint16, "range"},
     word{YType::str, "word"}
@@ -3438,31 +3455,31 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "range"; yang_parent_name = "auth-key"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::~Range()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::~Range()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::has_data() const
 {
     return range.is_set
 	|| word.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(range.yfilter)
 	|| ydk::is_set(word.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range" <<"[range='" <<range <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3473,18 +3490,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "range")
     {
@@ -3500,7 +3518,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "range")
     {
@@ -3512,14 +3530,14 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::DestinationAddress::Ipv4::AuthKey::Range::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range" || name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::SourceAddress()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::SourceAddress()
     :
     interface{YType::str, "interface"}
 {
@@ -3527,36 +3545,36 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "source-address"; yang_parent_name = "control-plane"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::~SourceAddress()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::~SourceAddress()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::has_data() const
 {
     return interface.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/control-plane/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source-address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3566,18 +3584,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
@@ -3587,7 +3606,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface")
     {
@@ -3595,14 +3614,14 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::ControlPlane::SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::DeviceRole()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::DeviceRole()
     :
     border{YType::empty, "border"},
     edge{YType::empty, "edge"},
@@ -3613,11 +3632,11 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "device-role"; yang_parent_name = "config-fabric-iwan"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::~DeviceRole()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::~DeviceRole()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::has_data() const
 {
     return border.is_set
 	|| edge.is_set
@@ -3625,7 +3644,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
 	|| transit_router.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(border.yfilter)
@@ -3634,21 +3653,21 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
 	|| ydk::is_set(transit_router.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "device-role";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3661,18 +3680,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "border")
     {
@@ -3700,7 +3720,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "border")
     {
@@ -3720,52 +3740,52 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::DeviceRole::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "border" || name == "edge" || name == "nat-traversal-router" || name == "transit-router")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Region()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Region()
     :
-    id(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id>())
+    id(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id>())
 {
     id->parent = this;
 
     yang_name = "region"; yang_parent_name = "config-fabric-iwan"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::~Region()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::~Region()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::has_data() const
 {
     return (id !=  nullptr && id->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::has_operation() const
 {
     return is_set(yfilter)
 	|| (id !=  nullptr && id->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "region";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3774,13 +3794,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
         if(id == nullptr)
         {
-            id = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id>();
+            id = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id>();
         }
         return id;
     }
@@ -3788,9 +3808,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -3799,32 +3820,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Id()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Id()
 {
 
     yang_name = "id"; yang_parent_name = "region"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::~Id()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::~Id()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::has_data() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -3834,7 +3855,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::has_operation() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -3844,21 +3865,21 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/region/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3867,19 +3888,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range>();
         c->parent = this;
         range.push_back(c);
         return c;
@@ -3888,33 +3901,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::Range()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::Range()
     :
     range{YType::uint16, "range"},
     name{YType::str, "name"}
@@ -3923,38 +3941,38 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "range"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::~Range()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::~Range()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::has_data() const
 {
     return range.is_set
 	|| name.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(range.yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/region/id/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range" <<"[range='" <<range <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3965,18 +3983,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "range")
     {
@@ -3992,7 +4011,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "range")
     {
@@ -4004,52 +4023,52 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Region::Id::Range::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range" || name == "name")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Site()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Site()
     :
-    id(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id>())
+    id(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id>())
 {
     id->parent = this;
 
     yang_name = "site"; yang_parent_name = "config-fabric-iwan"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::~Site()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::~Site()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::has_data() const
 {
     return (id !=  nullptr && id->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::has_operation() const
 {
     return is_set(yfilter)
 	|| (id !=  nullptr && id->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "site";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4058,13 +4077,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
         if(id == nullptr)
         {
-            id = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id>();
+            id = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id>();
         }
         return id;
     }
@@ -4072,9 +4091,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -4083,32 +4103,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Id()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Id()
 {
 
     yang_name = "id"; yang_parent_name = "site"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::~Id()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::~Id()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::has_data() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -4118,7 +4138,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::has_operation() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -4128,21 +4148,21 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/site/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4151,19 +4171,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range>();
         c->parent = this;
         range.push_back(c);
         return c;
@@ -4172,33 +4184,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::Range()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::Range()
     :
     range{YType::uint16, "range"},
     name{YType::str, "name"}
@@ -4207,38 +4224,38 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "range"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::~Range()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::~Range()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::has_data() const
 {
     return range.is_set
 	|| name.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(range.yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/site/id/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range" <<"[range='" <<range <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4249,18 +4266,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "range")
     {
@@ -4276,7 +4294,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "range")
     {
@@ -4288,52 +4306,52 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Site::Id::Range::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range" || name == "name")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Tenant()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Tenant()
     :
-    id(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id>())
+    id(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id>())
 {
     id->parent = this;
 
     yang_name = "tenant"; yang_parent_name = "config-fabric-iwan"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::~Tenant()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::~Tenant()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::has_data() const
 {
     return (id !=  nullptr && id->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::has_operation() const
 {
     return is_set(yfilter)
 	|| (id !=  nullptr && id->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tenant";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4342,13 +4360,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
         if(id == nullptr)
         {
-            id = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id>();
+            id = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id>();
         }
         return id;
     }
@@ -4356,9 +4374,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -4367,32 +4386,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Id()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Id()
 {
 
     yang_name = "id"; yang_parent_name = "tenant"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::~Id()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::~Id()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::has_data() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -4402,7 +4421,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::has_operation() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -4412,21 +4431,21 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/tenant/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4435,19 +4454,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range>();
         c->parent = this;
         range.push_back(c);
         return c;
@@ -4456,33 +4467,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::Range()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::Range()
     :
     range{YType::uint32, "range"},
     name{YType::str, "name"}
@@ -4491,38 +4507,38 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "range"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::~Range()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::~Range()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::has_data() const
 {
     return range.is_set
 	|| name.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(range.yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/tenant/id/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range" <<"[range='" <<range <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4533,18 +4549,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "range")
     {
@@ -4560,7 +4577,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "range")
     {
@@ -4572,52 +4589,52 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::Tenant::Id::Range::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range" || name == "name")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::VirtualNetwork()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::VirtualNetwork()
     :
-    name(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name>())
+    name(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name>())
 {
     name->parent = this;
 
     yang_name = "virtual-network"; yang_parent_name = "config-fabric-iwan"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::~VirtualNetwork()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::~VirtualNetwork()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::has_data() const
 {
     return (name !=  nullptr && name->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::has_operation() const
 {
     return is_set(yfilter)
 	|| (name !=  nullptr && name->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "virtual-network";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4626,13 +4643,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "name")
     {
         if(name == nullptr)
         {
-            name = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name>();
+            name = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name>();
         }
         return name;
     }
@@ -4640,9 +4657,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(name != nullptr)
     {
         children["name"] = name;
@@ -4651,32 +4669,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Name()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Name()
 {
 
     yang_name = "name"; yang_parent_name = "virtual-network"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::~Name()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::~Name()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::has_data() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -4686,7 +4704,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::has_operation() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -4696,21 +4714,21 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/virtual-network/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "name";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4719,19 +4737,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "word")
     {
-        for(auto const & c : word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word>();
         c->parent = this;
         word.push_back(c);
         return c;
@@ -4740,33 +4750,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Word()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Word()
     :
     word{YType::str, "word"}
 {
@@ -4774,11 +4789,11 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "word"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::~Word()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::~Word()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::has_data() const
 {
     for (std::size_t index=0; index<id.size(); index++)
     {
@@ -4788,7 +4803,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return word.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::has_operation() const
 {
     for (std::size_t index=0; index<id.size(); index++)
     {
@@ -4799,21 +4814,21 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
 	|| ydk::is_set(word.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_absolute_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-iwanfabric:fabric-group/fabric/auto/config-fabric-auto/domain/iwan-fabric/config-fabric-iwan/virtual-network/name/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "word" <<"[word='" <<word <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4823,19 +4838,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
-        for(auto const & c : id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id>();
         c->parent = this;
         id.push_back(c);
         return c;
@@ -4844,18 +4851,23 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "word")
     {
@@ -4865,7 +4877,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "word")
     {
@@ -4873,49 +4885,49 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::Id()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::Id()
     :
     range{YType::uint32, "range"}
     	,
-    config_fabric_iwan_virtual_network(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork>())
+    config_fabric_iwan_virtual_network(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork>())
 {
     config_fabric_iwan_virtual_network->parent = this;
 
     yang_name = "id"; yang_parent_name = "word"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::~Id()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::~Id()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::has_data() const
 {
     return range.is_set
 	|| (config_fabric_iwan_virtual_network !=  nullptr && config_fabric_iwan_virtual_network->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(range.yfilter)
 	|| (config_fabric_iwan_virtual_network !=  nullptr && config_fabric_iwan_virtual_network->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "id" <<"[range='" <<range <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4925,13 +4937,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config-fabric-iwan-virtual-network")
     {
         if(config_fabric_iwan_virtual_network == nullptr)
         {
-            config_fabric_iwan_virtual_network = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork>();
+            config_fabric_iwan_virtual_network = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork>();
         }
         return config_fabric_iwan_virtual_network;
     }
@@ -4939,9 +4951,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config_fabric_iwan_virtual_network != nullptr)
     {
         children["config-fabric-iwan-virtual-network"] = config_fabric_iwan_virtual_network;
@@ -4950,7 +4963,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "range")
     {
@@ -4960,7 +4973,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "range")
     {
@@ -4968,17 +4981,17 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "config-fabric-iwan-virtual-network" || name == "range")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::ConfigFabricIwanVirtualNetwork()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::ConfigFabricIwanVirtualNetwork()
     :
-    enterprise_prefix(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix>())
-	,prefix_group(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup>())
+    enterprise_prefix(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix>())
+	,prefix_group(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup>())
 {
     enterprise_prefix->parent = this;
     prefix_group->parent = this;
@@ -4986,31 +4999,31 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "config-fabric-iwan-virtual-network"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::~ConfigFabricIwanVirtualNetwork()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::~ConfigFabricIwanVirtualNetwork()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::has_data() const
 {
     return (enterprise_prefix !=  nullptr && enterprise_prefix->has_data())
 	|| (prefix_group !=  nullptr && prefix_group->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::has_operation() const
 {
     return is_set(yfilter)
 	|| (enterprise_prefix !=  nullptr && enterprise_prefix->has_operation())
 	|| (prefix_group !=  nullptr && prefix_group->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config-fabric-iwan-virtual-network";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5019,13 +5032,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "enterprise-prefix")
     {
         if(enterprise_prefix == nullptr)
         {
-            enterprise_prefix = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix>();
+            enterprise_prefix = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix>();
         }
         return enterprise_prefix;
     }
@@ -5034,7 +5047,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(prefix_group == nullptr)
         {
-            prefix_group = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup>();
+            prefix_group = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup>();
         }
         return prefix_group;
     }
@@ -5042,9 +5055,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enterprise_prefix != nullptr)
     {
         children["enterprise-prefix"] = enterprise_prefix;
@@ -5058,25 +5072,25 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enterprise-prefix" || name == "prefix-group")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::EnterprisePrefix()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::EnterprisePrefix()
     :
-    ipv4(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4>())
-	,ipv6(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6>())
+    ipv4(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4>())
+	,ipv6(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
@@ -5084,31 +5098,31 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "enterprise-prefix"; yang_parent_name = "config-fabric-iwan-virtual-network"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::~EnterprisePrefix()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::~EnterprisePrefix()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::has_data() const
 {
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::has_operation() const
 {
     return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "enterprise-prefix";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5117,13 +5131,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
         if(ipv4 == nullptr)
         {
-            ipv4 = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4>();
+            ipv4 = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4>();
         }
         return ipv4;
     }
@@ -5132,7 +5146,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(ipv6 == nullptr)
         {
-            ipv6 = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6>();
+            ipv6 = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6>();
         }
         return ipv6;
     }
@@ -5140,9 +5154,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -5156,22 +5171,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::Ipv4()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::Ipv4()
     :
     prefix_list{YType::str, "prefix-list"}
 {
@@ -5179,29 +5194,29 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "ipv4"; yang_parent_name = "enterprise-prefix"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::~Ipv4()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::~Ipv4()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::has_data() const
 {
     return prefix_list.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix_list.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5211,18 +5226,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix-list")
     {
@@ -5232,7 +5248,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix-list")
     {
@@ -5240,14 +5256,14 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix-list")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::Ipv6()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::Ipv6()
     :
     prefix_list{YType::str, "prefix-list"}
 {
@@ -5255,29 +5271,29 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "ipv6"; yang_parent_name = "enterprise-prefix"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::~Ipv6()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::~Ipv6()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::has_data() const
 {
     return prefix_list.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix_list.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5287,18 +5303,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix-list")
     {
@@ -5308,7 +5325,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix-list")
     {
@@ -5316,24 +5333,24 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::EnterprisePrefix::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix-list")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::PrefixGroup()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::PrefixGroup()
 {
 
     yang_name = "prefix-group"; yang_parent_name = "config-fabric-iwan-virtual-network"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::~PrefixGroup()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::~PrefixGroup()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::has_data() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -5343,7 +5360,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::has_operation() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -5353,14 +5370,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-group";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5369,19 +5386,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "word")
     {
-        for(auto const & c : word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_>();
         c->parent = this;
         word.push_back(c);
         return c;
@@ -5390,33 +5399,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Word_()
     :
     word{YType::str, "word"}
 {
@@ -5424,11 +5438,11 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "word"; yang_parent_name = "prefix-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::~Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::~Word_()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::has_data() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -5438,7 +5452,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return word.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::has_operation() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -5449,14 +5463,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
 	|| ydk::is_set(word.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "word" <<"[word='" <<word <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5466,19 +5480,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf>();
         c->parent = this;
         vrf.push_back(c);
         return c;
@@ -5487,18 +5493,23 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "word")
     {
@@ -5508,7 +5519,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "word")
     {
@@ -5516,49 +5527,49 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf" || name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::Vrf()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::Vrf()
     :
     word{YType::str, "word"}
     	,
-    config_fabric_iwan_virtual_network_prefix_group(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup>())
+    config_fabric_iwan_virtual_network_prefix_group(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup>())
 {
     config_fabric_iwan_virtual_network_prefix_group->parent = this;
 
     yang_name = "vrf"; yang_parent_name = "word"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::~Vrf()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::~Vrf()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::has_data() const
 {
     return word.is_set
 	|| (config_fabric_iwan_virtual_network_prefix_group !=  nullptr && config_fabric_iwan_virtual_network_prefix_group->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(word.yfilter)
 	|| (config_fabric_iwan_virtual_network_prefix_group !=  nullptr && config_fabric_iwan_virtual_network_prefix_group->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[word='" <<word <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5568,13 +5579,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config-fabric-iwan-virtual-network-prefix-group")
     {
         if(config_fabric_iwan_virtual_network_prefix_group == nullptr)
         {
-            config_fabric_iwan_virtual_network_prefix_group = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup>();
+            config_fabric_iwan_virtual_network_prefix_group = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup>();
         }
         return config_fabric_iwan_virtual_network_prefix_group;
     }
@@ -5582,9 +5593,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config_fabric_iwan_virtual_network_prefix_group != nullptr)
     {
         children["config-fabric-iwan-virtual-network-prefix-group"] = config_fabric_iwan_virtual_network_prefix_group;
@@ -5593,7 +5605,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "word")
     {
@@ -5603,7 +5615,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "word")
     {
@@ -5611,45 +5623,45 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "config-fabric-iwan-virtual-network-prefix-group" || name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::ConfigFabricIwanVirtualNetworkPrefixGroup()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::ConfigFabricIwanVirtualNetworkPrefixGroup()
     :
-    prefix(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix>())
+    prefix(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix>())
 {
     prefix->parent = this;
 
     yang_name = "config-fabric-iwan-virtual-network-prefix-group"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::~ConfigFabricIwanVirtualNetworkPrefixGroup()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::~ConfigFabricIwanVirtualNetworkPrefixGroup()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::has_data() const
 {
     return (prefix !=  nullptr && prefix->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::has_operation() const
 {
     return is_set(yfilter)
 	|| (prefix !=  nullptr && prefix->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config-fabric-iwan-virtual-network-prefix-group";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5658,13 +5670,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
         if(prefix == nullptr)
         {
-            prefix = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix>();
+            prefix = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix>();
         }
         return prefix;
     }
@@ -5672,9 +5684,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix != nullptr)
     {
         children["prefix"] = prefix;
@@ -5683,26 +5696,26 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Prefix()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Prefix()
     :
-    import(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import>())
-	,ipv4(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4>())
-	,ipv6(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6>())
+    import(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import>())
+	,ipv4(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4>())
+	,ipv6(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6>())
 {
     import->parent = this;
     ipv4->parent = this;
@@ -5711,18 +5724,18 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "prefix"; yang_parent_name = "config-fabric-iwan-virtual-network-prefix-group"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::~Prefix()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::~Prefix()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::has_data() const
 {
     return (import !=  nullptr && import->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::has_operation() const
 {
     return is_set(yfilter)
 	|| (import !=  nullptr && import->has_operation())
@@ -5730,14 +5743,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5746,13 +5759,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "import")
     {
         if(import == nullptr)
         {
-            import = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import>();
+            import = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import>();
         }
         return import;
     }
@@ -5761,7 +5774,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(ipv4 == nullptr)
         {
-            ipv4 = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4>();
+            ipv4 = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4>();
         }
         return ipv4;
     }
@@ -5770,7 +5783,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(ipv6 == nullptr)
         {
-            ipv6 = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6>();
+            ipv6 = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6>();
         }
         return ipv6;
     }
@@ -5778,9 +5791,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(import != nullptr)
     {
         children["import"] = import;
@@ -5799,30 +5813,30 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "import" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Import()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Import()
     :
-    bgp(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp>())
-	,eigrp(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp>())
-	,isis(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis>())
-	,lan_fabric(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric>())
-	,ospf(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf>())
-	,rip(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip>())
-	,wan_fabric(std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric>())
+    bgp(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp>())
+	,eigrp(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp>())
+	,isis(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis>())
+	,lan_fabric(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric>())
+	,ospf(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf>())
+	,rip(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip>())
+	,wan_fabric(std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric>())
 {
     bgp->parent = this;
     eigrp->parent = this;
@@ -5835,11 +5849,11 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "import"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::~Import()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::~Import()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::has_data() const
 {
     return (bgp !=  nullptr && bgp->has_data())
 	|| (eigrp !=  nullptr && eigrp->has_data())
@@ -5850,7 +5864,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
 	|| (wan_fabric !=  nullptr && wan_fabric->has_data());
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::has_operation() const
 {
     return is_set(yfilter)
 	|| (bgp !=  nullptr && bgp->has_operation())
@@ -5862,14 +5876,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
 	|| (wan_fabric !=  nullptr && wan_fabric->has_operation());
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "import";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5878,13 +5892,13 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
         if(bgp == nullptr)
         {
-            bgp = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp>();
+            bgp = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp>();
         }
         return bgp;
     }
@@ -5893,7 +5907,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(eigrp == nullptr)
         {
-            eigrp = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp>();
+            eigrp = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp>();
         }
         return eigrp;
     }
@@ -5902,7 +5916,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(isis == nullptr)
         {
-            isis = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis>();
+            isis = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis>();
         }
         return isis;
     }
@@ -5911,7 +5925,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(lan_fabric == nullptr)
         {
-            lan_fabric = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric>();
+            lan_fabric = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric>();
         }
         return lan_fabric;
     }
@@ -5920,7 +5934,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(ospf == nullptr)
         {
-            ospf = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf>();
+            ospf = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf>();
         }
         return ospf;
     }
@@ -5929,7 +5943,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(rip == nullptr)
         {
-            rip = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip>();
+            rip = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip>();
         }
         return rip;
     }
@@ -5938,7 +5952,7 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     {
         if(wan_fabric == nullptr)
         {
-            wan_fabric = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric>();
+            wan_fabric = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric>();
         }
         return wan_fabric;
     }
@@ -5946,9 +5960,10 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp != nullptr)
     {
         children["bgp"] = bgp;
@@ -5987,32 +6002,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp" || name == "eigrp" || name == "isis" || name == "lan-fabric" || name == "ospf" || name == "rip" || name == "wan-fabric")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Bgp()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Bgp()
 {
 
     yang_name = "bgp"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::~Bgp()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::~Bgp()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::has_data() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6022,7 +6037,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::has_operation() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6032,14 +6047,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6048,19 +6063,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "word")
     {
-        for(auto const & c : word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_>();
         c->parent = this;
         word.push_back(c);
         return c;
@@ -6069,33 +6076,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::Word_()
     :
     word{YType::str, "word"},
     route_map{YType::str, "route-map"}
@@ -6104,31 +6116,31 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "word"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::~Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::~Word_()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::has_data() const
 {
     return word.is_set
 	|| route_map.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(word.yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "word" <<"[word='" <<word <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6139,18 +6151,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "word")
     {
@@ -6166,7 +6179,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "word")
     {
@@ -6178,24 +6191,24 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Bgp::Word_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word" || name == "route-map")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Eigrp()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Eigrp()
 {
 
     yang_name = "eigrp"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::~Eigrp()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::~Eigrp()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::has_data() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6205,7 +6218,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::has_operation() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6215,14 +6228,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "eigrp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6231,19 +6244,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "word")
     {
-        for(auto const & c : word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_>();
         c->parent = this;
         word.push_back(c);
         return c;
@@ -6252,33 +6257,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::Word_()
     :
     word{YType::str, "word"},
     route_map{YType::str, "route-map"}
@@ -6287,31 +6297,31 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "word"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::~Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::~Word_()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::has_data() const
 {
     return word.is_set
 	|| route_map.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(word.yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "word" <<"[word='" <<word <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6322,18 +6332,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "word")
     {
@@ -6349,7 +6360,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "word")
     {
@@ -6361,24 +6372,24 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Eigrp::Word_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word" || name == "route-map")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Isis()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Isis()
 {
 
     yang_name = "isis"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::~Isis()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::~Isis()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::has_data() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6388,7 +6399,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::has_operation() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6398,14 +6409,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "isis";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6414,19 +6425,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "word")
     {
-        for(auto const & c : word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_>();
         c->parent = this;
         word.push_back(c);
         return c;
@@ -6435,33 +6438,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::Word_()
     :
     word{YType::str, "word"},
     route_map{YType::str, "route-map"}
@@ -6470,31 +6478,31 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "word"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::~Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::~Word_()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::has_data() const
 {
     return word.is_set
 	|| route_map.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(word.yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "word" <<"[word='" <<word <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6505,18 +6513,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "word")
     {
@@ -6532,7 +6541,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "word")
     {
@@ -6544,14 +6553,14 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Isis::Word_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word" || name == "route-map")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::LanFabric()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::LanFabric()
     :
     route_map{YType::str, "route-map"}
 {
@@ -6559,29 +6568,29 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "lan-fabric"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::~LanFabric()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::~LanFabric()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lan-fabric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6591,18 +6600,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -6612,7 +6622,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -6620,24 +6630,24 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::LanFabric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Ospf()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Ospf()
 {
 
     yang_name = "ospf"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::~Ospf()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::~Ospf()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::has_data() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6647,7 +6657,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::has_operation() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6657,14 +6667,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospf";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6673,19 +6683,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "word")
     {
-        for(auto const & c : word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_>();
         c->parent = this;
         word.push_back(c);
         return c;
@@ -6694,33 +6696,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::Word_()
     :
     word{YType::str, "word"},
     route_map{YType::str, "route-map"}
@@ -6729,31 +6736,31 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "word"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::~Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::~Word_()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::has_data() const
 {
     return word.is_set
 	|| route_map.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(word.yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "word" <<"[word='" <<word <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6764,18 +6771,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "word")
     {
@@ -6791,7 +6799,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "word")
     {
@@ -6803,24 +6811,24 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Ospf::Word_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word" || name == "route-map")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Rip()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Rip()
 {
 
     yang_name = "rip"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::~Rip()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::~Rip()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::has_data() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6830,7 +6838,7 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return false;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::has_operation() const
 {
     for (std::size_t index=0; index<word.size(); index++)
     {
@@ -6840,14 +6848,14 @@ bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     return is_set(yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6856,19 +6864,11 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "word")
     {
-        for(auto const & c : word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_>();
+        auto c = std::make_shared<Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_>();
         c->parent = this;
         word.push_back(c);
         return c;
@@ -6877,33 +6877,38 @@ std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Do
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::Word_()
     :
     word{YType::str, "word"},
     route_map{YType::str, "route-map"}
@@ -6912,31 +6917,31 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "word"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::~Word_()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::~Word_()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::has_data() const
 {
     return word.is_set
 	|| route_map.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(word.yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "word" <<"[word='" <<word <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6947,18 +6952,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "word")
     {
@@ -6974,7 +6980,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "word")
     {
@@ -6986,14 +6992,14 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::Rip::Word_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "word" || name == "route-map")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::WanFabric()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::WanFabric()
     :
     route_map{YType::str, "route-map"}
 {
@@ -7001,29 +7007,29 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "wan-fabric"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::~WanFabric()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::~WanFabric()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::has_data() const
 {
     return route_map.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "wan-fabric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7033,18 +7039,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -7054,7 +7061,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -7062,14 +7069,14 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Import::WanFabric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::Ipv4()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::Ipv4()
     :
     prefix_list{YType::str, "prefix-list"}
 {
@@ -7077,29 +7084,29 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "ipv4"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::~Ipv4()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::~Ipv4()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::has_data() const
 {
     return prefix_list.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix_list.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7109,18 +7116,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix-list")
     {
@@ -7130,7 +7138,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix-list")
     {
@@ -7138,14 +7146,14 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix-list")
         return true;
     return false;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::Ipv6()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::Ipv6()
     :
     prefix_list{YType::str, "prefix-list"}
 {
@@ -7153,29 +7161,29 @@ Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::Config
     yang_name = "ipv6"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::~Ipv6()
+Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::~Ipv6()
 {
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::has_data() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::has_data() const
 {
     return prefix_list.is_set;
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::has_operation() const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix_list.yfilter);
 }
 
-std::string Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::get_segment_path() const
+std::string Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7185,18 +7193,19 @@ std::vector<std::pair<std::string, LeafData> > Native::FabricGroup::Fabric::Auto
 
 }
 
-std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix-list")
     {
@@ -7206,7 +7215,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix-list")
     {
@@ -7214,7 +7223,7 @@ void Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::C
     }
 }
 
-bool Native::FabricGroup::Fabric::Auto_::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::FabricGroup::Fabric::Auto::ConfigFabricAuto::Domain::IwanFabric::ConfigFabricIwan::VirtualNetwork::Name::Word::Id::ConfigFabricIwanVirtualNetwork::PrefixGroup::Word_::Vrf::ConfigFabricIwanVirtualNetworkPrefixGroup::Prefix::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix-list")
         return true;
@@ -7276,6 +7285,7 @@ std::shared_ptr<Entity> Native::Lldp::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Lldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7368,6 +7378,7 @@ std::shared_ptr<Entity> Native::Nat66::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Nat66::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix != nullptr)
     {
         children["prefix"] = prefix;
@@ -7448,14 +7459,6 @@ std::shared_ptr<Entity> Native::Nat66::Prefix::get_child_by_name(const std::stri
 {
     if(child_yang_name == "inside")
     {
-        for(auto const & c : inside)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Nat66::Prefix::Inside>();
         c->parent = this;
         inside.push_back(c);
@@ -7468,9 +7471,14 @@ std::shared_ptr<Entity> Native::Nat66::Prefix::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Nat66::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inside)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7550,6 +7558,7 @@ std::shared_ptr<Entity> Native::Nat66::Prefix::Inside::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Nat66::Prefix::Inside::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7652,6 +7661,7 @@ std::shared_ptr<Entity> Native::PmAgent::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config_pm_agent != nullptr)
     {
         children["config-pm-agent"] = config_pm_agent;
@@ -7766,14 +7776,6 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::get_child_by_name(const 
 
     if(child_yang_name == "instance-id")
     {
-        for(auto const & c : instance_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::PmAgent::ConfigPmAgent::InstanceId>();
         c->parent = this;
         instance_id.push_back(c);
@@ -7822,14 +7824,19 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(device != nullptr)
     {
         children["device"] = device;
     }
 
+    count = 0;
     for (auto const & c : instance_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(region != nullptr)
@@ -7957,6 +7964,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -8042,14 +8050,6 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Id::get_child_by
 {
     if(child_yang_name == "device_range")
     {
-        for(auto const & c : device_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::PmAgent::ConfigPmAgent::Device::Id::DeviceRange>();
         c->parent = this;
         device_range.push_back(c);
@@ -8062,9 +8062,14 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Id::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : device_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8144,6 +8149,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Id::DeviceRange:
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::Id::DeviceRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8274,6 +8280,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Type::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ntr != nullptr)
     {
         children["ntr"] = ntr;
@@ -8392,6 +8399,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rtr != nullptr)
     {
         children["rtr"] = rtr;
@@ -8475,6 +8483,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Rtr::
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Rtr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8558,6 +8567,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Xtr::
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::Type::Ntr::Xtr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8654,6 +8664,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Type::Rtr::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::Type::Rtr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(xtr != nullptr)
     {
         children["xtr"] = xtr;
@@ -8742,6 +8753,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Type::Rtr::Xtr::
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::Type::Rtr::Xtr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8829,6 +8841,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Device::Type::Xtr::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Device::Type::Xtr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8936,6 +8949,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::InstanceId::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::InstanceId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config_pm_agent_instance != nullptr)
     {
         children["config-pm-agent-instance"] = config_pm_agent_instance;
@@ -9026,6 +9040,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgen
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enterprise_prefix != nullptr)
     {
         children["enterprise-prefix"] = enterprise_prefix;
@@ -9119,6 +9134,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgen
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -9195,6 +9211,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgen
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9271,6 +9288,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgen
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::InstanceId::ConfigPmAgentInstance::EnterprisePrefix::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9363,6 +9381,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Region::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Region::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -9443,14 +9462,6 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Region::Id::get_child_by
 {
     if(child_yang_name == "region_id_range")
     {
-        for(auto const & c : region_id_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::PmAgent::ConfigPmAgent::Region::Id::RegionIdRange>();
         c->parent = this;
         region_id_range.push_back(c);
@@ -9463,9 +9474,14 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Region::Id::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Region::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : region_id_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9545,6 +9561,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Region::Id::RegionIdRang
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Region::Id::RegionIdRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9647,6 +9664,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Site::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Site::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -9727,14 +9745,6 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Site::Id::get_child_by_n
 {
     if(child_yang_name == "site_id_range")
     {
-        for(auto const & c : site_id_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::PmAgent::ConfigPmAgent::Site::Id::SiteIdRange>();
         c->parent = this;
         site_id_range.push_back(c);
@@ -9747,9 +9757,14 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Site::Id::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Site::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : site_id_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9829,6 +9844,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Site::Id::SiteIdRange::g
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Site::Id::SiteIdRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9931,6 +9947,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Tenant::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Tenant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -10011,14 +10028,6 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Tenant::Id::get_child_by
 {
     if(child_yang_name == "tenant_id_range")
     {
-        for(auto const & c : tenant_id_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::PmAgent::ConfigPmAgent::Tenant::Id::TenantIdRange>();
         c->parent = this;
         tenant_id_range.push_back(c);
@@ -10031,9 +10040,14 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Tenant::Id::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Tenant::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tenant_id_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10113,6 +10127,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Tenant::Id::TenantIdRang
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Tenant::Id::TenantIdRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10228,6 +10243,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Pmcs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -10313,14 +10329,6 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::get_child_by
 {
     if(child_yang_name == "pmcs_ipv4")
     {
-        for(auto const & c : pmcs_ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4>();
         c->parent = this;
         pmcs_ipv4.push_back(c);
@@ -10333,9 +10341,14 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pmcs_ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10429,6 +10442,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
@@ -10522,14 +10536,6 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ip
 {
     if(child_yang_name == "pmcs_ipv6")
     {
-        for(auto const & c : pmcs_ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6::PmcsIpv6>();
         c->parent = this;
         pmcs_ipv6.push_back(c);
@@ -10542,9 +10548,14 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pmcs_ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10617,6 +10628,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv4::PmcsIpv4::Ipv6::PmcsIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10712,14 +10724,6 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::get_child_by
 {
     if(child_yang_name == "ipv6")
     {
-        for(auto const & c : ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::Ipv6_>();
         c->parent = this;
         ipv6.push_back(c);
@@ -10732,9 +10736,14 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10818,6 +10827,7 @@ std::shared_ptr<Entity> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::Ipv6_::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::PmAgent::ConfigPmAgent::Pmcs::Ipv6::Ipv6_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10931,7 +10941,7 @@ std::shared_ptr<Entity> Native::Power::get_child_by_name(const std::string & chi
     {
         if(inline_ == nullptr)
         {
-            inline_ = std::make_shared<Native::Power::Inline_>();
+            inline_ = std::make_shared<Native::Power::Inline>();
         }
         return inline_;
     }
@@ -10942,6 +10952,7 @@ std::shared_ptr<Entity> Native::Power::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Power::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inline_ != nullptr)
     {
         children["inline"] = inline_;
@@ -10995,10 +11006,10 @@ bool Native::Power::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Native::Power::Inline_::Inline_()
+Native::Power::Inline::Inline()
     :
-    consumption(std::make_shared<Native::Power::Inline_::Consumption>())
-	,logging(std::make_shared<Native::Power::Inline_::Logging>())
+    consumption(std::make_shared<Native::Power::Inline::Consumption>())
+	,logging(std::make_shared<Native::Power::Inline::Logging>())
 {
     consumption->parent = this;
     logging->parent = this;
@@ -11006,38 +11017,38 @@ Native::Power::Inline_::Inline_()
     yang_name = "inline"; yang_parent_name = "power"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Power::Inline_::~Inline_()
+Native::Power::Inline::~Inline()
 {
 }
 
-bool Native::Power::Inline_::has_data() const
+bool Native::Power::Inline::has_data() const
 {
     return (consumption !=  nullptr && consumption->has_data())
 	|| (logging !=  nullptr && logging->has_data());
 }
 
-bool Native::Power::Inline_::has_operation() const
+bool Native::Power::Inline::has_operation() const
 {
     return is_set(yfilter)
 	|| (consumption !=  nullptr && consumption->has_operation())
 	|| (logging !=  nullptr && logging->has_operation());
 }
 
-std::string Native::Power::Inline_::get_absolute_path() const
+std::string Native::Power::Inline::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-power:power/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Power::Inline_::get_segment_path() const
+std::string Native::Power::Inline::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inline";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Power::Inline_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Power::Inline::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11046,13 +11057,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Power::Inline_::get_name_
 
 }
 
-std::shared_ptr<Entity> Native::Power::Inline_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Power::Inline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "consumption")
     {
         if(consumption == nullptr)
         {
-            consumption = std::make_shared<Native::Power::Inline_::Consumption>();
+            consumption = std::make_shared<Native::Power::Inline::Consumption>();
         }
         return consumption;
     }
@@ -11061,7 +11072,7 @@ std::shared_ptr<Entity> Native::Power::Inline_::get_child_by_name(const std::str
     {
         if(logging == nullptr)
         {
-            logging = std::make_shared<Native::Power::Inline_::Logging>();
+            logging = std::make_shared<Native::Power::Inline::Logging>();
         }
         return logging;
     }
@@ -11069,9 +11080,10 @@ std::shared_ptr<Entity> Native::Power::Inline_::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Power::Inline_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Power::Inline::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(consumption != nullptr)
     {
         children["consumption"] = consumption;
@@ -11085,22 +11097,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Power::Inline_::get_child
     return children;
 }
 
-void Native::Power::Inline_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Power::Inline::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Power::Inline_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Power::Inline::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Power::Inline_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Power::Inline::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "consumption" || name == "logging")
         return true;
     return false;
 }
 
-Native::Power::Inline_::Consumption::Consumption()
+Native::Power::Inline::Consumption::Consumption()
     :
     default_{YType::uint16, "default"}
 {
@@ -11108,36 +11120,36 @@ Native::Power::Inline_::Consumption::Consumption()
     yang_name = "consumption"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Power::Inline_::Consumption::~Consumption()
+Native::Power::Inline::Consumption::~Consumption()
 {
 }
 
-bool Native::Power::Inline_::Consumption::has_data() const
+bool Native::Power::Inline::Consumption::has_data() const
 {
     return default_.is_set;
 }
 
-bool Native::Power::Inline_::Consumption::has_operation() const
+bool Native::Power::Inline::Consumption::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_.yfilter);
 }
 
-std::string Native::Power::Inline_::Consumption::get_absolute_path() const
+std::string Native::Power::Inline::Consumption::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-power:power/inline/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Power::Inline_::Consumption::get_segment_path() const
+std::string Native::Power::Inline::Consumption::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "consumption";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Power::Inline_::Consumption::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Power::Inline::Consumption::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11147,18 +11159,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Power::Inline_::Consumpti
 
 }
 
-std::shared_ptr<Entity> Native::Power::Inline_::Consumption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Power::Inline::Consumption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Power::Inline_::Consumption::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Power::Inline::Consumption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Power::Inline_::Consumption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Power::Inline::Consumption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
@@ -11168,7 +11181,7 @@ void Native::Power::Inline_::Consumption::set_value(const std::string & value_pa
     }
 }
 
-void Native::Power::Inline_::Consumption::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Power::Inline::Consumption::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default")
     {
@@ -11176,14 +11189,14 @@ void Native::Power::Inline_::Consumption::set_filter(const std::string & value_p
     }
 }
 
-bool Native::Power::Inline_::Consumption::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Power::Inline::Consumption::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "default")
         return true;
     return false;
 }
 
-Native::Power::Inline_::Logging::Logging()
+Native::Power::Inline::Logging::Logging()
     :
     global{YType::empty, "global"}
 {
@@ -11191,36 +11204,36 @@ Native::Power::Inline_::Logging::Logging()
     yang_name = "logging"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Power::Inline_::Logging::~Logging()
+Native::Power::Inline::Logging::~Logging()
 {
 }
 
-bool Native::Power::Inline_::Logging::has_data() const
+bool Native::Power::Inline::Logging::has_data() const
 {
     return global.is_set;
 }
 
-bool Native::Power::Inline_::Logging::has_operation() const
+bool Native::Power::Inline::Logging::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(global.yfilter);
 }
 
-std::string Native::Power::Inline_::Logging::get_absolute_path() const
+std::string Native::Power::Inline::Logging::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-power:power/inline/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Power::Inline_::Logging::get_segment_path() const
+std::string Native::Power::Inline::Logging::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "logging";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Power::Inline_::Logging::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Power::Inline::Logging::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11230,18 +11243,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Power::Inline_::Logging::
 
 }
 
-std::shared_ptr<Entity> Native::Power::Inline_::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Power::Inline::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Power::Inline_::Logging::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Power::Inline::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Power::Inline_::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Power::Inline::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "global")
     {
@@ -11251,7 +11265,7 @@ void Native::Power::Inline_::Logging::set_value(const std::string & value_path, 
     }
 }
 
-void Native::Power::Inline_::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Power::Inline::Logging::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "global")
     {
@@ -11259,7 +11273,7 @@ void Native::Power::Inline_::Logging::set_filter(const std::string & value_path,
     }
 }
 
-bool Native::Power::Inline_::Logging::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Power::Inline::Logging::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "global")
         return true;
@@ -11321,6 +11335,7 @@ std::shared_ptr<Entity> Native::NamedOrderingRouteMap::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::NamedOrderingRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11426,6 +11441,7 @@ std::shared_ptr<Entity> Native::AccessSession::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -11518,6 +11534,7 @@ std::shared_ptr<Entity> Native::AccessSession::Attributes::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(filter_list != nullptr)
     {
         children["filter-list"] = filter_list;
@@ -11598,14 +11615,6 @@ std::shared_ptr<Entity> Native::AccessSession::Attributes::FilterList::get_child
 {
     if(child_yang_name == "list")
     {
-        for(auto const & c : list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::AccessSession::Attributes::FilterList::List>();
         c->parent = this;
         list.push_back(c);
@@ -11618,9 +11627,14 @@ std::shared_ptr<Entity> Native::AccessSession::Attributes::FilterList::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::Attributes::FilterList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11708,6 +11722,7 @@ std::shared_ptr<Entity> Native::AccessSession::Attributes::FilterList::List::get
 std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::Attributes::FilterList::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11821,6 +11836,7 @@ std::shared_ptr<Entity> Native::AccessSession::MacMove::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::MacMove::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11939,6 +11955,7 @@ std::shared_ptr<Entity> Native::Authentication::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(command != nullptr)
     {
         children["command"] = command;
@@ -12049,6 +12066,7 @@ std::shared_ptr<Entity> Native::Authentication::Command::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Command::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bounce_port != nullptr)
     {
         children["bounce-port"] = bounce_port;
@@ -12132,6 +12150,7 @@ std::shared_ptr<Entity> Native::Authentication::Command::BouncePort::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Command::BouncePort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12215,6 +12234,7 @@ std::shared_ptr<Entity> Native::Authentication::Command::DisablePort::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Command::DisablePort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12307,6 +12327,7 @@ std::shared_ptr<Entity> Native::Authentication::Critical::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Critical::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(recovery != nullptr)
     {
         children["recovery"] = recovery;
@@ -12385,6 +12406,7 @@ std::shared_ptr<Entity> Native::Authentication::Critical::Recovery::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Critical::Recovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12468,6 +12490,7 @@ std::shared_ptr<Entity> Native::Authentication::MacMove::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::MacMove::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12553,14 +12576,6 @@ std::shared_ptr<Entity> Native::ServiceList::get_child_by_name(const std::string
 {
     if(child_yang_name == "mdns-sd")
     {
-        for(auto const & c : mdns_sd)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::ServiceList::MdnsSd>();
         c->parent = this;
         mdns_sd.push_back(c);
@@ -12573,9 +12588,14 @@ std::shared_ptr<Entity> Native::ServiceList::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mdns_sd)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12672,14 +12692,6 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::get_child_by_name(const std
 {
     if(child_yang_name == "deny")
     {
-        for(auto const & c : deny)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::ServiceList::MdnsSd::Deny>();
         c->parent = this;
         deny.push_back(c);
@@ -12688,14 +12700,6 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::get_child_by_name(const std
 
     if(child_yang_name == "permit")
     {
-        for(auto const & c : permit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::ServiceList::MdnsSd::Permit>();
         c->parent = this;
         permit.push_back(c);
@@ -12717,14 +12721,23 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : deny)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : permit)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(query != nullptr)
@@ -12822,6 +12835,7 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::Deny::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::Deny::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -12936,6 +12950,7 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::Deny::Match::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::Deny::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(location != nullptr)
     {
         children["location"] = location;
@@ -13042,6 +13057,7 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::Deny::Match::Location::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::Deny::Match::Location::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13126,6 +13142,7 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::Deny::Match::MessageType::g
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::Deny::Match::MessageType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13236,6 +13253,7 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::Permit::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::Permit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -13350,6 +13368,7 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::Permit::Match::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::Permit::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(location != nullptr)
     {
         children["location"] = location;
@@ -13456,6 +13475,7 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::Permit::Match::Location::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::Permit::Match::Location::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13540,6 +13560,7 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::Permit::Match::MessageType:
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::Permit::Match::MessageType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13636,6 +13657,7 @@ std::shared_ptr<Entity> Native::ServiceList::MdnsSd::Query::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceList::MdnsSd::Query::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13732,6 +13754,7 @@ std::shared_ptr<Entity> Native::ServiceRouting::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceRouting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mdns_sd != nullptr)
     {
         children["mdns-sd"] = mdns_sd;
@@ -13822,14 +13845,6 @@ std::shared_ptr<Entity> Native::ServiceRouting::MdnsSd::get_child_by_name(const 
 {
     if(child_yang_name == "service-policy")
     {
-        for(auto const & c : service_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::ServiceRouting::MdnsSd::ServicePolicy>();
         c->parent = this;
         service_policy.push_back(c);
@@ -13842,9 +13857,14 @@ std::shared_ptr<Entity> Native::ServiceRouting::MdnsSd::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceRouting::MdnsSd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13924,6 +13944,7 @@ std::shared_ptr<Entity> Native::ServiceRouting::MdnsSd::ServicePolicy::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceRouting::MdnsSd::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14043,6 +14064,7 @@ std::shared_ptr<Entity> Native::Utd::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Native::Utd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -14145,6 +14167,7 @@ std::shared_ptr<Entity> Native::Utd::Redirect::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Utd::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -14227,6 +14250,7 @@ std::shared_ptr<Entity> Native::Utd::Redirect::Interface::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Utd::Redirect::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14334,6 +14358,7 @@ std::shared_ptr<Entity> Native::Utd::Engine::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Utd::Engine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fail != nullptr)
     {
         children["fail"] = fail;
@@ -14422,6 +14447,7 @@ std::shared_ptr<Entity> Native::Utd::Engine::Fail::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Utd::Engine::Fail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14514,6 +14540,7 @@ std::shared_ptr<Entity> Native::UtdSt::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(utd != nullptr)
     {
         children["utd"] = utd;
@@ -14627,6 +14654,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(web_filter != nullptr)
     {
         children["web-filter"] = web_filter;
@@ -14747,14 +14775,6 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::get_child_by_name(const s
 
     if(child_yang_name == "sourcedb")
     {
-        for(auto const & c : sourcedb)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Sourcedb>();
         c->parent = this;
         sourcedb.push_back(c);
@@ -14776,6 +14796,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(block != nullptr)
     {
         children["block"] = block;
@@ -14786,9 +14807,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::ge
         children["domain"] = domain;
     }
 
+    count = 0;
     for (auto const & c : sourcedb)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(url != nullptr)
@@ -14891,6 +14916,7 @@ std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_server != nullptr)
     {
         children["local-server"] = local_server;

@@ -879,7 +879,7 @@ class Native::Line::Aux::AccessClass::AcccessList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf access_list; //type: one of string, uint16
+        ydk::YLeaf access_list; //type: one of uint16, string
         ydk::YLeaf vrf_also; //type: empty
         class Direction;
 
@@ -1062,7 +1062,7 @@ class Native::Line::Aux::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of string, uint8, enumeration
+        ydk::YLeaf char_; //type: one of string, enumeration, uint8
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -1934,7 +1934,7 @@ class Native::Line::Console::AccessClass::AcccessList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf access_list; //type: one of string, uint16
+        ydk::YLeaf access_list; //type: one of uint16, string
         ydk::YLeaf vrf_also; //type: empty
         class Direction;
 
@@ -2117,7 +2117,7 @@ class Native::Line::Console::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of string, uint8, enumeration
+        ydk::YLeaf char_; //type: one of string, enumeration, uint8
         ydk::YLeaf soft; //type: empty
         class Char_;
 
@@ -2989,7 +2989,7 @@ class Native::Line::Vty::AccessClass::AcccessList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf access_list; //type: one of string, uint16
+        ydk::YLeaf access_list; //type: one of uint16, string
         ydk::YLeaf vrf_also; //type: empty
         class Direction;
 
@@ -3172,7 +3172,7 @@ class Native::Line::Vty::EscapeCharacter : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf char_; //type: one of string, uint8, enumeration
+        ydk::YLeaf char_; //type: one of string, enumeration, uint8
         ydk::YLeaf soft; //type: empty
         class Char_;
 

@@ -117,6 +117,7 @@ std::shared_ptr<Entity> LocalRoutes::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -231,6 +232,7 @@ std::shared_ptr<Entity> LocalRoutes::Config::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -298,6 +300,7 @@ std::shared_ptr<Entity> LocalRoutes::State::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -371,15 +374,7 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::get_child_by_name(const std::
 {
     if(child_yang_name == "static")
     {
-        for(auto const & c : static_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<LocalRoutes::StaticRoutes::Static_>();
+        auto c = std::make_shared<LocalRoutes::StaticRoutes::Static>();
         c->parent = this;
         static_.push_back(c);
         return c;
@@ -391,9 +386,14 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : static_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -414,13 +414,13 @@ bool LocalRoutes::StaticRoutes::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::Static_()
+LocalRoutes::StaticRoutes::Static::Static()
     :
     prefix{YType::str, "prefix"}
     	,
-    config(std::make_shared<LocalRoutes::StaticRoutes::Static_::Config>())
-	,state(std::make_shared<LocalRoutes::StaticRoutes::Static_::State>())
-	,next_hops(std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops>())
+    config(std::make_shared<LocalRoutes::StaticRoutes::Static::Config>())
+	,state(std::make_shared<LocalRoutes::StaticRoutes::Static::State>())
+	,next_hops(std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops>())
 {
     config->parent = this;
     state->parent = this;
@@ -429,11 +429,11 @@ LocalRoutes::StaticRoutes::Static_::Static_()
     yang_name = "static"; yang_parent_name = "static-routes"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-LocalRoutes::StaticRoutes::Static_::~Static_()
+LocalRoutes::StaticRoutes::Static::~Static()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::has_data() const
+bool LocalRoutes::StaticRoutes::Static::has_data() const
 {
     return prefix.is_set
 	|| (config !=  nullptr && config->has_data())
@@ -441,7 +441,7 @@ bool LocalRoutes::StaticRoutes::Static_::has_data() const
 	|| (next_hops !=  nullptr && next_hops->has_data());
 }
 
-bool LocalRoutes::StaticRoutes::Static_::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix.yfilter)
@@ -450,21 +450,21 @@ bool LocalRoutes::StaticRoutes::Static_::has_operation() const
 	|| (next_hops !=  nullptr && next_hops->has_operation());
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::get_absolute_path() const
+std::string LocalRoutes::StaticRoutes::Static::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "openconfig-local-routing:local-routes/static-routes/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static" <<"[prefix='" <<prefix <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -474,13 +474,13 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
         if(config == nullptr)
         {
-            config = std::make_shared<LocalRoutes::StaticRoutes::Static_::Config>();
+            config = std::make_shared<LocalRoutes::StaticRoutes::Static::Config>();
         }
         return config;
     }
@@ -489,7 +489,7 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::get_child_by_name(co
     {
         if(state == nullptr)
         {
-            state = std::make_shared<LocalRoutes::StaticRoutes::Static_::State>();
+            state = std::make_shared<LocalRoutes::StaticRoutes::Static::State>();
         }
         return state;
     }
@@ -498,7 +498,7 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::get_child_by_name(co
     {
         if(next_hops == nullptr)
         {
-            next_hops = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops>();
+            next_hops = std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops>();
         }
         return next_hops;
     }
@@ -506,9 +506,10 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -527,7 +528,7 @@ std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
@@ -537,7 +538,7 @@ void LocalRoutes::StaticRoutes::Static_::set_value(const std::string & value_pat
     }
 }
 
-void LocalRoutes::StaticRoutes::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix")
     {
@@ -545,14 +546,14 @@ void LocalRoutes::StaticRoutes::Static_::set_filter(const std::string & value_pa
     }
 }
 
-bool LocalRoutes::StaticRoutes::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "config" || name == "state" || name == "next-hops" || name == "prefix")
         return true;
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::Config::Config()
+LocalRoutes::StaticRoutes::Static::Config::Config()
     :
     prefix{YType::str, "prefix"},
     set_tag{YType::str, "set-tag"}
@@ -561,31 +562,31 @@ LocalRoutes::StaticRoutes::Static_::Config::Config()
     yang_name = "config"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-LocalRoutes::StaticRoutes::Static_::Config::~Config()
+LocalRoutes::StaticRoutes::Static::Config::~Config()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::Config::has_data() const
+bool LocalRoutes::StaticRoutes::Static::Config::has_data() const
 {
     return prefix.is_set
 	|| set_tag.is_set;
 }
 
-bool LocalRoutes::StaticRoutes::Static_::Config::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::Config::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix.yfilter)
 	|| ydk::is_set(set_tag.yfilter);
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::Config::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::Config::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::Config::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::Config::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -596,18 +597,19 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::Config::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
@@ -623,7 +625,7 @@ void LocalRoutes::StaticRoutes::Static_::Config::set_value(const std::string & v
     }
 }
 
-void LocalRoutes::StaticRoutes::Static_::Config::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix")
     {
@@ -635,14 +637,14 @@ void LocalRoutes::StaticRoutes::Static_::Config::set_filter(const std::string & 
     }
 }
 
-bool LocalRoutes::StaticRoutes::Static_::Config::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix" || name == "set-tag")
         return true;
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::State::State()
+LocalRoutes::StaticRoutes::Static::State::State()
     :
     prefix{YType::str, "prefix"},
     set_tag{YType::str, "set-tag"}
@@ -651,31 +653,31 @@ LocalRoutes::StaticRoutes::Static_::State::State()
     yang_name = "state"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-LocalRoutes::StaticRoutes::Static_::State::~State()
+LocalRoutes::StaticRoutes::Static::State::~State()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::State::has_data() const
+bool LocalRoutes::StaticRoutes::Static::State::has_data() const
 {
     return prefix.is_set
 	|| set_tag.is_set;
 }
 
-bool LocalRoutes::StaticRoutes::Static_::State::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix.yfilter)
 	|| ydk::is_set(set_tag.yfilter);
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::State::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -686,18 +688,19 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::State::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
@@ -713,7 +716,7 @@ void LocalRoutes::StaticRoutes::Static_::State::set_value(const std::string & va
     }
 }
 
-void LocalRoutes::StaticRoutes::Static_::State::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix")
     {
@@ -725,24 +728,24 @@ void LocalRoutes::StaticRoutes::Static_::State::set_filter(const std::string & v
     }
 }
 
-bool LocalRoutes::StaticRoutes::Static_::State::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix" || name == "set-tag")
         return true;
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHops()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHops()
 {
 
     yang_name = "next-hops"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::~NextHops()
+LocalRoutes::StaticRoutes::Static::NextHops::~NextHops()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::has_data() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::has_data() const
 {
     for (std::size_t index=0; index<next_hop.size(); index++)
     {
@@ -752,7 +755,7 @@ bool LocalRoutes::StaticRoutes::Static_::NextHops::has_data() const
     return false;
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::has_operation() const
 {
     for (std::size_t index=0; index<next_hop.size(); index++)
     {
@@ -762,14 +765,14 @@ bool LocalRoutes::StaticRoutes::Static_::NextHops::has_operation() const
     return is_set(yfilter);
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::NextHops::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::NextHops::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hops";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::NextHops::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::NextHops::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -778,19 +781,11 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        for(auto const & c : next_hop)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop>();
+        auto c = std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop>();
         c->parent = this;
         next_hop.push_back(c);
         return c;
@@ -799,39 +794,44 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::NextHops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : next_hop)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::NextHops::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::NextHops::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop")
         return true;
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::NextHop()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::NextHop()
     :
     index_{YType::str, "index"}
     	,
-    config(std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config>())
-	,state(std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State>())
-	,interface_ref(std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef>())
+    config(std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config>())
+	,state(std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State>())
+	,interface_ref(std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef>())
 {
     config->parent = this;
     state->parent = this;
@@ -840,11 +840,11 @@ LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::NextHop()
     yang_name = "next-hop"; yang_parent_name = "next-hops"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::~NextHop()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::~NextHop()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::has_data() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::has_data() const
 {
     return index_.is_set
 	|| (config !=  nullptr && config->has_data())
@@ -852,7 +852,7 @@ bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::has_data() const
 	|| (interface_ref !=  nullptr && interface_ref->has_data());
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_.yfilter)
@@ -861,14 +861,14 @@ bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::has_operation() cons
 	|| (interface_ref !=  nullptr && interface_ref->has_operation());
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::NextHops::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop" <<"[index='" <<index_ <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::NextHops::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -878,13 +878,13 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
         if(config == nullptr)
         {
-            config = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config>();
+            config = std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config>();
         }
         return config;
     }
@@ -893,7 +893,7 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::g
     {
         if(state == nullptr)
         {
-            state = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State>();
+            state = std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State>();
         }
         return state;
     }
@@ -902,7 +902,7 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::g
     {
         if(interface_ref == nullptr)
         {
-            interface_ref = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef>();
+            interface_ref = std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef>();
         }
         return interface_ref;
     }
@@ -910,9 +910,10 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -931,7 +932,7 @@ std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
@@ -941,7 +942,7 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::set_value(const std:
     }
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "index")
     {
@@ -949,14 +950,14 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::set_filter(const std
     }
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "config" || name == "state" || name == "interface-ref" || name == "index")
         return true;
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::Config()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::Config()
     :
     index_{YType::str, "index"},
     next_hop{YType::str, "next-hop"},
@@ -967,11 +968,11 @@ LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::Config()
     yang_name = "config"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::~Config()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::~Config()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::has_data() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::has_data() const
 {
     return index_.is_set
 	|| next_hop.is_set
@@ -979,7 +980,7 @@ bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::has_data() c
 	|| recurse.is_set;
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_.yfilter)
@@ -988,14 +989,14 @@ bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::has_operatio
 	|| ydk::is_set(recurse.yfilter);
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1008,18 +1009,19 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
@@ -1047,7 +1049,7 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::set_value(co
     }
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "index")
     {
@@ -1067,14 +1069,14 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::set_filter(c
     }
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "index" || name == "next-hop" || name == "metric" || name == "recurse")
         return true;
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::State()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::State()
     :
     index_{YType::str, "index"},
     next_hop{YType::str, "next-hop"},
@@ -1085,11 +1087,11 @@ LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::State()
     yang_name = "state"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::~State()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::~State()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::has_data() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::has_data() const
 {
     return index_.is_set
 	|| next_hop.is_set
@@ -1097,7 +1099,7 @@ bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::has_data() co
 	|| recurse.is_set;
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_.yfilter)
@@ -1106,14 +1108,14 @@ bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::has_operation
 	|| ydk::is_set(recurse.yfilter);
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1126,18 +1128,19 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
@@ -1165,7 +1168,7 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::set_value(con
     }
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "index")
     {
@@ -1185,17 +1188,17 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::set_filter(co
     }
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "index" || name == "next-hop" || name == "metric" || name == "recurse")
         return true;
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::InterfaceRef()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::InterfaceRef()
     :
-    config(std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config>())
-	,state(std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State>())
+    config(std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config>())
+	,state(std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State>())
 {
     config->parent = this;
     state->parent = this;
@@ -1203,31 +1206,31 @@ LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::InterfaceRe
     yang_name = "interface-ref"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::~InterfaceRef()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::~InterfaceRef()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::has_data() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::has_data() const
 {
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::has_operation() const
 {
     return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-ref";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1236,13 +1239,13 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
         if(config == nullptr)
         {
-            config = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config>();
+            config = std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config>();
         }
         return config;
     }
@@ -1251,7 +1254,7 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::I
     {
         if(state == nullptr)
         {
-            state = std::make_shared<LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State>();
+            state = std::make_shared<LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State>();
         }
         return state;
     }
@@ -1259,9 +1262,10 @@ std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1275,22 +1279,22 @@ std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "config" || name == "state")
         return true;
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::Config()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::Config()
     :
     interface{YType::str, "interface"},
     subinterface{YType::str, "subinterface"}
@@ -1299,31 +1303,31 @@ LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::Con
     yang_name = "config"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::~Config()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::~Config()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::has_data() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::has_data() const
 {
     return interface.is_set
 	|| subinterface.is_set;
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface.yfilter)
 	|| ydk::is_set(subinterface.yfilter);
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1334,18 +1338,19 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
@@ -1361,7 +1366,7 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config
     }
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface")
     {
@@ -1373,14 +1378,14 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config
     }
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "subinterface")
         return true;
     return false;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::State()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::State()
     :
     interface{YType::str, "interface"},
     subinterface{YType::str, "subinterface"}
@@ -1389,31 +1394,31 @@ LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::Stat
     yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::~State()
+LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::~State()
 {
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::has_data() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::has_data() const
 {
     return interface.is_set
 	|| subinterface.is_set;
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::has_operation() const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface.yfilter)
 	|| ydk::is_set(subinterface.yfilter);
 }
 
-std::string LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::get_segment_path() const
+std::string LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1424,18 +1429,19 @@ std::vector<std::pair<std::string, LeafData> > LocalRoutes::StaticRoutes::Static
 
 }
 
-std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
@@ -1451,7 +1457,7 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State:
     }
 }
 
-void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::set_filter(const std::string & value_path, YFilter yfilter)
+void LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface")
     {
@@ -1463,7 +1469,7 @@ void LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State:
     }
 }
 
-bool LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
+bool LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "subinterface")
         return true;
@@ -1527,14 +1533,6 @@ std::shared_ptr<Entity> LocalRoutes::LocalAggregates::get_child_by_name(const st
 {
     if(child_yang_name == "aggregate")
     {
-        for(auto const & c : aggregate)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LocalRoutes::LocalAggregates::Aggregate>();
         c->parent = this;
         aggregate.push_back(c);
@@ -1547,9 +1545,14 @@ std::shared_ptr<Entity> LocalRoutes::LocalAggregates::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::LocalAggregates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : aggregate)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1652,6 +1655,7 @@ std::shared_ptr<Entity> LocalRoutes::LocalAggregates::Aggregate::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::LocalAggregates::Aggregate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1746,6 +1750,7 @@ std::shared_ptr<Entity> LocalRoutes::LocalAggregates::Aggregate::Config::get_chi
 std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::LocalAggregates::Aggregate::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1850,6 +1855,7 @@ std::shared_ptr<Entity> LocalRoutes::LocalAggregates::Aggregate::State::get_chil
 std::map<std::string, std::shared_ptr<Entity>> LocalRoutes::LocalAggregates::Aggregate::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

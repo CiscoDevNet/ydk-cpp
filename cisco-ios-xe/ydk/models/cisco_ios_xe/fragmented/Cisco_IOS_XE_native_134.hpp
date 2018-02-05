@@ -572,11 +572,11 @@ class Native::Router::Isis::Redistribute::Rip : public ydk::Entity
 }; // Native::Router::Isis::Redistribute::Rip
 
 
-class Native::Router::Isis::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Isis::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -589,16 +589,16 @@ class Native::Router::Isis::Redistribute::Static_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clns; //type: Native::Router::Isis::Redistribute::Static_::Clns
-        class Ip; //type: Native::Router::Isis::Redistribute::Static_::Ip
+        class Clns; //type: Native::Router::Isis::Redistribute::Static::Clns
+        class Ip; //type: Native::Router::Isis::Redistribute::Static::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Static_::Clns> clns; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Static_::Ip> ip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Static::Clns> clns; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Static::Ip> ip; // presence node
         
-}; // Native::Router::Isis::Redistribute::Static_
+}; // Native::Router::Isis::Redistribute::Static
 
 
-class Native::Router::Isis::Redistribute::Static_::Clns : public ydk::Entity
+class Native::Router::Isis::Redistribute::Static::Clns : public ydk::Entity
 {
     public:
         Clns();
@@ -621,10 +621,10 @@ class Native::Router::Isis::Redistribute::Static_::Clns : public ydk::Entity
         ydk::YLeaf route_map; //type: string
         class MetricType;
 
-}; // Native::Router::Isis::Redistribute::Static_::Clns
+}; // Native::Router::Isis::Redistribute::Static::Clns
 
 
-class Native::Router::Isis::Redistribute::Static_::Ip : public ydk::Entity
+class Native::Router::Isis::Redistribute::Static::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -647,7 +647,7 @@ class Native::Router::Isis::Redistribute::Static_::Ip : public ydk::Entity
         ydk::YLeaf route_map; //type: string
         class MetricType;
 
-}; // Native::Router::Isis::Redistribute::Static_::Ip
+}; // Native::Router::Isis::Redistribute::Static::Ip
 
 
 class Native::Router::Isis::Redistribute::Vrf : public ydk::Entity
@@ -705,7 +705,7 @@ class Native::Router::Isis::Redistribute::Vrf::VrfNm : public ydk::Entity
         class Mobile; //type: Native::Router::Isis::Redistribute::Vrf::VrfNm::Mobile
         class Ospfv3; //type: Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3
         class Rip; //type: Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip
-        class Static_; //type: Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_
+        class Static; //type: Native::Router::Isis::Redistribute::Vrf::VrfNm::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Application> application;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp> bgp;
@@ -717,7 +717,7 @@ class Native::Router::Isis::Redistribute::Vrf::VrfNm : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3> ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Static> static_; // presence node
         
 }; // Native::Router::Isis::Redistribute::Vrf::VrfNm
 
@@ -1241,11 +1241,11 @@ class Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip : public ydk::Entity
 }; // Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip
 
 
-class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_ : public ydk::Entity
+class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1261,17 +1261,17 @@ class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_ : public ydk::Enti
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf metric_type; //type: MetricType
         ydk::YLeaf route_map; //type: string
-        class Clns; //type: Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Clns
-        class Ip; //type: Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Ip
+        class Clns; //type: Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns
+        class Ip; //type: Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Clns> clns; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Ip> ip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns> clns; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip> ip; // presence node
                 class MetricType;
 
-}; // Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_
+}; // Native::Router::Isis::Redistribute::Vrf::VrfNm::Static
 
 
-class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Clns : public ydk::Entity
+class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns : public ydk::Entity
 {
     public:
         Clns();
@@ -1293,10 +1293,10 @@ class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Clns : public ydk
         ydk::YLeaf route_map; //type: string
         class MetricType;
 
-}; // Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Clns
+}; // Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns
 
 
-class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Ip : public ydk::Entity
+class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -1318,7 +1318,7 @@ class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Ip : public ydk::
         ydk::YLeaf route_map; //type: string
         class MetricType;
 
-}; // Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Ip
+}; // Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip
 
 
 class Native::Router::Isis::Redistribute::Vrf::Global : public ydk::Entity
@@ -1349,7 +1349,7 @@ class Native::Router::Isis::Redistribute::Vrf::Global : public ydk::Entity
         class Mobile; //type: Native::Router::Isis::Redistribute::Vrf::Global::Mobile
         class Ospfv3; //type: Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3
         class Rip; //type: Native::Router::Isis::Redistribute::Vrf::Global::Rip
-        class Static_; //type: Native::Router::Isis::Redistribute::Vrf::Global::Static_
+        class Static; //type: Native::Router::Isis::Redistribute::Vrf::Global::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Application> application;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Bgp> bgp;
@@ -1361,7 +1361,7 @@ class Native::Router::Isis::Redistribute::Vrf::Global : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3> ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Static> static_; // presence node
         
 }; // Native::Router::Isis::Redistribute::Vrf::Global
 
@@ -1903,11 +1903,11 @@ class Native::Router::Isis::Redistribute::Vrf::Global::Rip : public ydk::Entity
 }; // Native::Router::Isis::Redistribute::Vrf::Global::Rip
 
 
-class Native::Router::Isis::Redistribute::Vrf::Global::Static_ : public ydk::Entity
+class Native::Router::Isis::Redistribute::Vrf::Global::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1924,17 +1924,17 @@ class Native::Router::Isis::Redistribute::Vrf::Global::Static_ : public ydk::Ent
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf metric_type; //type: MetricType
         ydk::YLeaf route_map; //type: string
-        class Clns; //type: Native::Router::Isis::Redistribute::Vrf::Global::Static_::Clns
-        class Ip; //type: Native::Router::Isis::Redistribute::Vrf::Global::Static_::Ip
+        class Clns; //type: Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns
+        class Ip; //type: Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Static_::Clns> clns; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Static_::Ip> ip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns> clns; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip> ip; // presence node
                 class MetricType;
 
-}; // Native::Router::Isis::Redistribute::Vrf::Global::Static_
+}; // Native::Router::Isis::Redistribute::Vrf::Global::Static
 
 
-class Native::Router::Isis::Redistribute::Vrf::Global::Static_::Clns : public ydk::Entity
+class Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns : public ydk::Entity
 {
     public:
         Clns();
@@ -1957,10 +1957,10 @@ class Native::Router::Isis::Redistribute::Vrf::Global::Static_::Clns : public yd
         ydk::YLeaf route_map; //type: string
         class MetricType;
 
-}; // Native::Router::Isis::Redistribute::Vrf::Global::Static_::Clns
+}; // Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns
 
 
-class Native::Router::Isis::Redistribute::Vrf::Global::Static_::Ip : public ydk::Entity
+class Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -1983,7 +1983,7 @@ class Native::Router::Isis::Redistribute::Vrf::Global::Static_::Ip : public ydk:
         ydk::YLeaf route_map; //type: string
         class MetricType;
 
-}; // Native::Router::Isis::Redistribute::Vrf::Global::Static_::Ip
+}; // Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip
 
 
 class Native::Router::Isis::SetAttachedBit : public ydk::Entity
@@ -3959,7 +3959,7 @@ class Native::Router::Isis::Redistribute::Rip::MetricType : public ydk::Enum
 
 };
 
-class Native::Router::Isis::Redistribute::Static_::Clns::MetricType : public ydk::Enum
+class Native::Router::Isis::Redistribute::Static::Clns::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;
@@ -3969,7 +3969,7 @@ class Native::Router::Isis::Redistribute::Static_::Clns::MetricType : public ydk
 
 };
 
-class Native::Router::Isis::Redistribute::Static_::Ip::MetricType : public ydk::Enum
+class Native::Router::Isis::Redistribute::Static::Ip::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;
@@ -4099,7 +4099,7 @@ class Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip::MetricType : public y
 
 };
 
-class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::MetricType : public ydk::Enum
+class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;
@@ -4109,7 +4109,7 @@ class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::MetricType : publ
 
 };
 
-class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::MetricType : public ydk::Enum
+class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;
@@ -4119,7 +4119,7 @@ class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Clns::MetricType 
 
 };
 
-class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static_::Ip::MetricType : public ydk::Enum
+class Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;
@@ -4249,7 +4249,7 @@ class Native::Router::Isis::Redistribute::Vrf::Global::Rip::MetricType : public 
 
 };
 
-class Native::Router::Isis::Redistribute::Vrf::Global::Static_::MetricType : public ydk::Enum
+class Native::Router::Isis::Redistribute::Vrf::Global::Static::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;
@@ -4259,7 +4259,7 @@ class Native::Router::Isis::Redistribute::Vrf::Global::Static_::MetricType : pub
 
 };
 
-class Native::Router::Isis::Redistribute::Vrf::Global::Static_::Clns::MetricType : public ydk::Enum
+class Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;
@@ -4269,7 +4269,7 @@ class Native::Router::Isis::Redistribute::Vrf::Global::Static_::Clns::MetricType
 
 };
 
-class Native::Router::Isis::Redistribute::Vrf::Global::Static_::Ip::MetricType : public ydk::Enum
+class Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;

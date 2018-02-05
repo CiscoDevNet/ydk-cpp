@@ -91,14 +91,14 @@ class OSPF3 : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, v
 
 }; // OSPF3
 
-class STATIC_ : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
+class STATIC : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {
     public:
-        STATIC_();
-        ~STATIC_();
+        STATIC();
+        ~STATIC();
 
 
-}; // STATIC_
+}; // STATIC
 
 class DIRECTLYCONNECTED : public openconfig::openconfig_policy_types::INSTALLPROTOCOLTYPE, virtual ydk::Identity
 {

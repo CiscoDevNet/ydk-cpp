@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Exception::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Exception::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enter != nullptr)
     {
         children["enter"] = enter;
@@ -344,6 +345,7 @@ std::shared_ptr<Entity> Exception::Enter::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(display_config1 != nullptr)
     {
         children["display-config1"] = display_config1;
@@ -547,6 +549,7 @@ std::shared_ptr<Entity> Exception::Enter::DisplayConfig1::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::DisplayConfig1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -700,6 +703,7 @@ std::shared_ptr<Entity> Exception::Enter::DisplayConfig2::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::DisplayConfig2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -853,6 +857,7 @@ std::shared_ptr<Entity> Exception::Enter::DisplayConfig3::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::DisplayConfig3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1010,6 +1015,7 @@ std::shared_ptr<Entity> Exception::Enter::DisplayFallBackConfig1::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::DisplayFallBackConfig1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1177,6 +1183,7 @@ std::shared_ptr<Entity> Exception::Enter::DisplayFallBackConfig2::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::DisplayFallBackConfig2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1344,6 +1351,7 @@ std::shared_ptr<Entity> Exception::Enter::DisplayFallBackConfig3::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::DisplayFallBackConfig3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1499,6 +1507,7 @@ std::shared_ptr<Entity> Exception::Enter::KernelConfig::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::KernelConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1632,6 +1641,7 @@ std::shared_ptr<Entity> Exception::Enter::KernelRouteConfig::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::KernelRouteConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1765,6 +1775,7 @@ std::shared_ptr<Entity> Exception::Enter::CoreSize::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::CoreSize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1848,6 +1859,7 @@ std::shared_ptr<Entity> Exception::Enter::MemoryThreshold::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::MemoryThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1931,6 +1943,7 @@ std::shared_ptr<Entity> Exception::Enter::ProcSize::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::ProcSize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2014,6 +2027,7 @@ std::shared_ptr<Entity> Exception::Enter::Qsize::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Exception::Enter::Qsize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -226,18 +226,18 @@ class PerfMgmt::Statistics::GenericCounterInterface::Templates : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::GenericCounterInterface::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::GenericCounterInterface::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::GenericCounterInterface::Templates
 
 
-class PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::GenericCounterInterface::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -257,7 +257,7 @@ class PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_ : publ
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_
+}; // PerfMgmt::Statistics::GenericCounterInterface::Templates::Template
 
 
 class PerfMgmt::Statistics::ProcessNode : public ydk::Entity
@@ -301,18 +301,18 @@ class PerfMgmt::Statistics::ProcessNode::Templates : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::ProcessNode::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::ProcessNode::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::ProcessNode::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::ProcessNode::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::ProcessNode::Templates
 
 
-class PerfMgmt::Statistics::ProcessNode::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::ProcessNode::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -332,7 +332,7 @@ class PerfMgmt::Statistics::ProcessNode::Templates::Template_ : public ydk::Enti
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::ProcessNode::Templates::Template_
+}; // PerfMgmt::Statistics::ProcessNode::Templates::Template
 
 
 class PerfMgmt::Statistics::BasicCounterInterface : public ydk::Entity
@@ -376,18 +376,18 @@ class PerfMgmt::Statistics::BasicCounterInterface::Templates : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::BasicCounterInterface::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::BasicCounterInterface::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::BasicCounterInterface::Templates
 
 
-class PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::BasicCounterInterface::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -407,7 +407,7 @@ class PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_ : public
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_
+}; // PerfMgmt::Statistics::BasicCounterInterface::Templates::Template
 
 
 class PerfMgmt::Statistics::Ospfv3Protocol : public ydk::Entity
@@ -451,18 +451,18 @@ class PerfMgmt::Statistics::Ospfv3Protocol::Templates : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::Ospfv3Protocol::Templates
 
 
-class PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -482,7 +482,7 @@ class PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_ : public ydk::E
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_
+}; // PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template
 
 
 class PerfMgmt::Statistics::CpuNode : public ydk::Entity
@@ -526,18 +526,18 @@ class PerfMgmt::Statistics::CpuNode::Templates : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::CpuNode::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::CpuNode::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::CpuNode::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::CpuNode::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::CpuNode::Templates
 
 
-class PerfMgmt::Statistics::CpuNode::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::CpuNode::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -557,7 +557,7 @@ class PerfMgmt::Statistics::CpuNode::Templates::Template_ : public ydk::Entity
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::CpuNode::Templates::Template_
+}; // PerfMgmt::Statistics::CpuNode::Templates::Template
 
 
 class PerfMgmt::Statistics::DataRateInterface : public ydk::Entity
@@ -601,18 +601,18 @@ class PerfMgmt::Statistics::DataRateInterface::Templates : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::DataRateInterface::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::DataRateInterface::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::DataRateInterface::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::DataRateInterface::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::DataRateInterface::Templates
 
 
-class PerfMgmt::Statistics::DataRateInterface::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::DataRateInterface::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -632,7 +632,7 @@ class PerfMgmt::Statistics::DataRateInterface::Templates::Template_ : public ydk
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::DataRateInterface::Templates::Template_
+}; // PerfMgmt::Statistics::DataRateInterface::Templates::Template
 
 
 class PerfMgmt::Statistics::MemoryNode : public ydk::Entity
@@ -676,18 +676,18 @@ class PerfMgmt::Statistics::MemoryNode::Templates : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::MemoryNode::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::MemoryNode::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::MemoryNode::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::MemoryNode::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::MemoryNode::Templates
 
 
-class PerfMgmt::Statistics::MemoryNode::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::MemoryNode::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -707,7 +707,7 @@ class PerfMgmt::Statistics::MemoryNode::Templates::Template_ : public ydk::Entit
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::MemoryNode::Templates::Template_
+}; // PerfMgmt::Statistics::MemoryNode::Templates::Template
 
 
 class PerfMgmt::Statistics::LdpMpls : public ydk::Entity
@@ -751,18 +751,18 @@ class PerfMgmt::Statistics::LdpMpls::Templates : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::LdpMpls::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::LdpMpls::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::LdpMpls::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::LdpMpls::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::LdpMpls::Templates
 
 
-class PerfMgmt::Statistics::LdpMpls::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::LdpMpls::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -782,7 +782,7 @@ class PerfMgmt::Statistics::LdpMpls::Templates::Template_ : public ydk::Entity
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::LdpMpls::Templates::Template_
+}; // PerfMgmt::Statistics::LdpMpls::Templates::Template
 
 
 class PerfMgmt::Statistics::Bgp : public ydk::Entity
@@ -826,18 +826,18 @@ class PerfMgmt::Statistics::Bgp::Templates : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::Bgp::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::Bgp::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::Bgp::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::Bgp::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::Bgp::Templates
 
 
-class PerfMgmt::Statistics::Bgp::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::Bgp::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -857,7 +857,7 @@ class PerfMgmt::Statistics::Bgp::Templates::Template_ : public ydk::Entity
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::Bgp::Templates::Template_
+}; // PerfMgmt::Statistics::Bgp::Templates::Template
 
 
 class PerfMgmt::Statistics::Ospfv2Protocol : public ydk::Entity
@@ -901,18 +901,18 @@ class PerfMgmt::Statistics::Ospfv2Protocol::Templates : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_
+        class Template; //type: PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template> > template_;
         
 }; // PerfMgmt::Statistics::Ospfv2Protocol::Templates
 
 
-class PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_ : public ydk::Entity
+class PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -932,7 +932,7 @@ class PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_ : public ydk::E
         ydk::YLeaf sample_interval; //type: uint32
         ydk::YLeaf sample_size; //type: uint32
 
-}; // PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_
+}; // PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template
 
 
 class PerfMgmt::Enable : public ydk::Entity

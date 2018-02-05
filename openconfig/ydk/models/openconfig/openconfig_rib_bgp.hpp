@@ -216,7 +216,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes 
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator> aggregator;
@@ -452,7 +452,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator> aggregator;
@@ -635,7 +635,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost:
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator> aggregator;
@@ -818,7 +818,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre:
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator> aggregator;
@@ -1001,7 +1001,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator> aggregator;
@@ -1209,7 +1209,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes 
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator> aggregator;
@@ -1445,7 +1445,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator> aggregator;
@@ -1628,7 +1628,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost:
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator> aggregator;
@@ -1811,7 +1811,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre:
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator> aggregator;
@@ -1994,7 +1994,7 @@ class BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost
         ydk::YLeaf med; //type: uint32
         ydk::YLeaf local_pref; //type: uint32
         ydk::YLeaf atomic_aggr; //type: boolean
-        ydk::YLeafList community; //type: list of  one of uint32, string
+        ydk::YLeafList community; //type: list of  one of string, uint32
         class Aggregator; //type: BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator
 
         std::shared_ptr<openconfig::openconfig_rib_bgp::BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator> aggregator;

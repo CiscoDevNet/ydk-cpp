@@ -133,6 +133,7 @@ std::shared_ptr<Entity> CISCOTAP2MIB::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ctap2mediationgroup != nullptr)
     {
         children["cTap2MediationGroup"] = ctap2mediationgroup;
@@ -265,6 +266,7 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Mediationgroup::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Mediationgroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -360,6 +362,7 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debuggroup::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debuggroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -455,14 +458,6 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Mediationtable::get_child_by_name(con
 {
     if(child_yang_name == "cTap2MediationEntry")
     {
-        for(auto const & c : ctap2mediationentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry>();
         c->parent = this;
         ctap2mediationentry.push_back(c);
@@ -475,9 +470,14 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Mediationtable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Mediationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ctap2mediationentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -605,6 +605,7 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -820,14 +821,6 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Streamtable::get_child_by_name(const 
 {
     if(child_yang_name == "cTap2StreamEntry")
     {
-        for(auto const & c : ctap2streamentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry>();
         c->parent = this;
         ctap2streamentry.push_back(c);
@@ -840,9 +833,14 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Streamtable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Streamtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ctap2streamentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -950,6 +948,7 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1115,14 +1114,6 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugtable::get_child_by_name(const s
 {
     if(child_yang_name == "cTap2DebugEntry")
     {
-        for(auto const & c : ctap2debugentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry>();
         c->parent = this;
         ctap2debugentry.push_back(c);
@@ -1135,9 +1126,14 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debugtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ctap2debugentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1229,6 +1225,7 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debugtable::Ctap2Debugentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1354,14 +1351,6 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugusertable::get_child_by_name(con
 {
     if(child_yang_name == "cTap2DebugUserEntry")
     {
-        for(auto const & c : ctap2debuguserentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry>();
         c->parent = this;
         ctap2debuguserentry.push_back(c);
@@ -1374,9 +1363,14 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugusertable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debugusertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ctap2debuguserentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1468,6 +1462,7 @@ std::shared_ptr<Entity> CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::
 std::map<std::string, std::shared_ptr<Entity>> CISCOTAP2MIB::Ctap2Debugusertable::Ctap2Debuguserentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

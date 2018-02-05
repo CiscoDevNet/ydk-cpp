@@ -94,6 +94,7 @@ std::shared_ptr<Entity> Tty::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Tty::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(console_nodes != nullptr)
     {
         children["console-nodes"] = console_nodes;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::get_child_by_name(const std::string &
 {
     if(child_yang_name == "console-node")
     {
-        for(auto const & c : console_node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tty::ConsoleNodes::ConsoleNode>();
         c->parent = this;
         console_node.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : console_node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -321,6 +319,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(console_line != nullptr)
     {
         children["console-line"] = console_line;
@@ -437,6 +436,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(console_statistics != nullptr)
     {
         children["console-statistics"] = console_statistics;
@@ -566,6 +566,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStat
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rs232 != nullptr)
     {
         children["rs232"] = rs232;
@@ -684,6 +685,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStat
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -880,6 +882,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStat
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1056,6 +1059,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStat
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1132,6 +1136,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStat
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1162,7 +1167,7 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::has_le
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::State()
     :
-    template_(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_>())
+    template_(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template>())
 	,general(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General>())
 {
     template_->parent = this;
@@ -1210,7 +1215,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::get_
     {
         if(template_ == nullptr)
         {
-            template_ = std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_>();
+            template_ = std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template>();
         }
         return template_;
     }
@@ -1230,6 +1235,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::get_
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(template_ != nullptr)
     {
         children["template"] = template_;
@@ -1258,7 +1264,7 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::has_leaf_or_child_of_na
     return false;
 }
 
-Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::Template_()
+Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::Template()
     :
     name{YType::str, "name"}
 {
@@ -1266,29 +1272,29 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::Template_()
     yang_name = "template"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::~Template_()
+Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::~Template()
 {
 }
 
-bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::has_data() const
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::has_data() const
 {
     return name.is_set;
 }
 
-bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::has_operation() const
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::get_segment_path() const
+std::string Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "template";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1298,18 +1304,19 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -1319,7 +1326,7 @@ void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::set_value(co
     }
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -1327,7 +1334,7 @@ void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::set_filter(c
     }
 }
 
-bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::has_leaf_or_child_of_name(const std::string & name) const
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
@@ -1386,6 +1393,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Gene
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1481,6 +1489,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configurati
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connection_configuration != nullptr)
     {
         children["connection-configuration"] = connection_configuration;
@@ -1570,6 +1579,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configurati
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transport_input != nullptr)
     {
         children["transport-input"] = transport_input;
@@ -1673,6 +1683,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configurati
 std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1788,14 +1799,6 @@ std::shared_ptr<Entity> Tty::VtyLines::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "vty-line")
     {
-        for(auto const & c : vty_line)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tty::VtyLines::VtyLine>();
         c->parent = this;
         vty_line.push_back(c);
@@ -1808,9 +1811,14 @@ std::shared_ptr<Entity> Tty::VtyLines::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vty_line)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1939,6 +1947,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vty_statistics != nullptr)
     {
         children["vty-statistics"] = vty_statistics;
@@ -2083,6 +2092,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connection != nullptr)
     {
         children["connection"] = connection;
@@ -2177,6 +2187,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::Connection::get_c
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2313,6 +2324,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2489,6 +2501,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::Exec::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2565,6 +2578,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::Aaa::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::Aaa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2595,7 +2609,7 @@ bool Tty::VtyLines::VtyLine::VtyStatistics::Aaa::has_leaf_or_child_of_name(const
 
 Tty::VtyLines::VtyLine::State::State()
     :
-    template_(std::make_shared<Tty::VtyLines::VtyLine::State::Template_>())
+    template_(std::make_shared<Tty::VtyLines::VtyLine::State::Template>())
 	,general(std::make_shared<Tty::VtyLines::VtyLine::State::General>())
 {
     template_->parent = this;
@@ -2643,7 +2657,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::State::get_child_by_name(const s
     {
         if(template_ == nullptr)
         {
-            template_ = std::make_shared<Tty::VtyLines::VtyLine::State::Template_>();
+            template_ = std::make_shared<Tty::VtyLines::VtyLine::State::Template>();
         }
         return template_;
     }
@@ -2663,6 +2677,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::State::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(template_ != nullptr)
     {
         children["template"] = template_;
@@ -2691,7 +2706,7 @@ bool Tty::VtyLines::VtyLine::State::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-Tty::VtyLines::VtyLine::State::Template_::Template_()
+Tty::VtyLines::VtyLine::State::Template::Template()
     :
     name{YType::str, "name"}
 {
@@ -2699,29 +2714,29 @@ Tty::VtyLines::VtyLine::State::Template_::Template_()
     yang_name = "template"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Tty::VtyLines::VtyLine::State::Template_::~Template_()
+Tty::VtyLines::VtyLine::State::Template::~Template()
 {
 }
 
-bool Tty::VtyLines::VtyLine::State::Template_::has_data() const
+bool Tty::VtyLines::VtyLine::State::Template::has_data() const
 {
     return name.is_set;
 }
 
-bool Tty::VtyLines::VtyLine::State::Template_::has_operation() const
+bool Tty::VtyLines::VtyLine::State::Template::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Tty::VtyLines::VtyLine::State::Template_::get_segment_path() const
+std::string Tty::VtyLines::VtyLine::State::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "template";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::State::Template_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::State::Template::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2731,18 +2746,19 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::State::Te
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::State::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Tty::VtyLines::VtyLine::State::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::Template_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::Template::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Tty::VtyLines::VtyLine::State::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Tty::VtyLines::VtyLine::State::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -2752,7 +2768,7 @@ void Tty::VtyLines::VtyLine::State::Template_::set_value(const std::string & val
     }
 }
 
-void Tty::VtyLines::VtyLine::State::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+void Tty::VtyLines::VtyLine::State::Template::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -2760,7 +2776,7 @@ void Tty::VtyLines::VtyLine::State::Template_::set_filter(const std::string & va
     }
 }
 
-bool Tty::VtyLines::VtyLine::State::Template_::has_leaf_or_child_of_name(const std::string & name) const
+bool Tty::VtyLines::VtyLine::State::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
@@ -2819,6 +2835,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::State::General::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::General::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2914,6 +2931,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Configuration::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connection_configuration != nullptr)
     {
         children["connection-configuration"] = connection_configuration;
@@ -3003,6 +3021,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Configuration::ConnectionConfigu
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transport_input != nullptr)
     {
         children["transport-input"] = transport_input;
@@ -3106,6 +3125,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Configuration::ConnectionConfigu
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3214,14 +3234,6 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Sessions::get_child_by_name(cons
 {
     if(child_yang_name == "outgoing-connection")
     {
-        for(auto const & c : outgoing_connection)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tty::VtyLines::VtyLine::Sessions::OutgoingConnection>();
         c->parent = this;
         outgoing_connection.push_back(c);
@@ -3234,9 +3246,14 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Sessions::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : outgoing_connection)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3335,6 +3352,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::ge
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(host_address != nullptr)
     {
         children["host-address"] = host_address;
@@ -3464,6 +3482,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::Ho
 std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3569,14 +3588,6 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::get_child_by_name(const std::string
 {
     if(child_yang_name == "auxiliary-node")
     {
-        for(auto const & c : auxiliary_node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode>();
         c->parent = this;
         auxiliary_node.push_back(c);
@@ -3589,9 +3600,14 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : auxiliary_node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3681,6 +3697,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auxiliary_line != nullptr)
     {
         children["auxiliary-line"] = auxiliary_line;
@@ -3797,6 +3814,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::get_c
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auxiliary_statistics != nullptr)
     {
         children["auxiliary-statistics"] = auxiliary_statistics;
@@ -3926,6 +3944,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Auxil
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rs232 != nullptr)
     {
         children["rs232"] = rs232;
@@ -4044,6 +4063,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Auxil
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4240,6 +4260,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Auxil
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4416,6 +4437,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Auxil
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4492,6 +4514,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Auxil
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4522,7 +4545,7 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::State()
     :
-    template_(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_>())
+    template_(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template>())
 	,general(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General>())
 {
     template_->parent = this;
@@ -4570,7 +4593,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State
     {
         if(template_ == nullptr)
         {
-            template_ = std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_>();
+            template_ = std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template>();
         }
         return template_;
     }
@@ -4590,6 +4613,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(template_ != nullptr)
     {
         children["template"] = template_;
@@ -4618,7 +4642,7 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::has_leaf_or_child
     return false;
 }
 
-Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::Template_()
+Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::Template()
     :
     name{YType::str, "name"}
 {
@@ -4626,29 +4650,29 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::Template_()
     yang_name = "template"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::~Template_()
+Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::~Template()
 {
 }
 
-bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::has_data() const
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::has_data() const
 {
     return name.is_set;
 }
 
-bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::has_operation() const
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::get_segment_path() const
+std::string Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "template";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4658,18 +4682,19 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -4679,7 +4704,7 @@ void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::set_va
     }
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -4687,7 +4712,7 @@ void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::set_fi
     }
 }
 
-bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::has_leaf_or_child_of_name(const std::string & name) const
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
@@ -4746,6 +4771,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4841,6 +4867,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Confi
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connection_configuration != nullptr)
     {
         children["connection-configuration"] = connection_configuration;
@@ -4930,6 +4957,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Confi
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transport_input != nullptr)
     {
         children["transport-input"] = transport_input;
@@ -5033,6 +5061,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Confi
 std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

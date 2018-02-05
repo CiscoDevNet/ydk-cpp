@@ -2925,11 +2925,11 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric : public ydk
 
         class Bgp; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Bgp
         class Eigrp; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp
-        class Static_; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static_
+        class Static; //type: Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Bgp> bgp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp> eigrp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static> static_;
         
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric
 
@@ -2978,11 +2978,11 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp : pub
 }; // Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Eigrp
 
 
-class Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static_ : public ydk::Entity
+class Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2997,7 +2997,7 @@ class Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static_ : p
 
         ydk::YLeaf tag; //type: uint16
 
-}; // Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static_
+}; // Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Metric::Static
 
 
 class Native::Pfr::Master::IcmpModeConfigPfrMc::Mode::Route::Protocol : public ydk::Entity

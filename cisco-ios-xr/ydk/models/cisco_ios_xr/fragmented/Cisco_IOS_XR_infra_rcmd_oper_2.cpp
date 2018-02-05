@@ -95,6 +95,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteN
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -273,6 +274,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::g
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -395,6 +397,7 @@ std::shared_ptr<Entity> Rcmd::Intf::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events != nullptr)
     {
         children["events"] = events;
@@ -475,14 +478,6 @@ std::shared_ptr<Entity> Rcmd::Intf::Events::get_child_by_name(const std::string 
 {
     if(child_yang_name == "event")
     {
-        for(auto const & c : event)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Intf::Events::Event>();
         c->parent = this;
         event.push_back(c);
@@ -495,9 +490,14 @@ std::shared_ptr<Entity> Rcmd::Intf::Events::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : event)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -597,6 +597,7 @@ std::shared_ptr<Entity> Rcmd::Intf::Events::Event::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -775,6 +776,7 @@ std::shared_ptr<Entity> Rcmd::Process::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -865,14 +867,6 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::get_child_by_name(const std::string
 {
     if(child_yang_name == "process")
     {
-        for(auto const & c : process)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Process::Isis::Process_>();
         c->parent = this;
         process.push_back(c);
@@ -885,9 +879,14 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -973,14 +972,6 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::get_child_by_name(const s
 {
     if(child_yang_name == "instance-name")
     {
-        for(auto const & c : instance_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName>();
         c->parent = this;
         instance_name.push_back(c);
@@ -993,9 +984,14 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1133,14 +1129,6 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::get_child_b
 {
     if(child_yang_name == "instance")
     {
-        for(auto const & c : instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName::Instance>();
         c->parent = this;
         instance.push_back(c);
@@ -1153,9 +1141,14 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::InstanceName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1379,6 +1372,7 @@ std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::Instance::g
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::InstanceName::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1584,14 +1578,6 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::get_child_by_name(const std::string
 {
     if(child_yang_name == "process")
     {
-        for(auto const & c : process)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Process::Ospf::Process_>();
         c->parent = this;
         process.push_back(c);
@@ -1604,9 +1590,14 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1692,14 +1683,6 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::get_child_by_name(const s
 {
     if(child_yang_name == "instance-name")
     {
-        for(auto const & c : instance_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName>();
         c->parent = this;
         instance_name.push_back(c);
@@ -1712,9 +1695,14 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1852,14 +1840,6 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::InstanceName::get_child_b
 {
     if(child_yang_name == "instance")
     {
-        for(auto const & c : instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName::Instance>();
         c->parent = this;
         instance.push_back(c);
@@ -1872,9 +1852,14 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::InstanceName::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::InstanceName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2098,6 +2083,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::InstanceName::Instance::g
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2303,14 +2289,6 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::get_child_by_name(const std::string 
 {
     if(child_yang_name == "process")
     {
-        for(auto const & c : process)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Process::Ldp::Process_>();
         c->parent = this;
         process.push_back(c);
@@ -2323,9 +2301,14 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2411,14 +2394,6 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const st
 {
     if(child_yang_name == "instance-name")
     {
-        for(auto const & c : instance_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName>();
         c->parent = this;
         instance_name.push_back(c);
@@ -2431,9 +2406,14 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2571,14 +2551,6 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by
 {
     if(child_yang_name == "instance")
     {
-        for(auto const & c : instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName::Instance>();
         c->parent = this;
         instance.push_back(c);
@@ -2591,9 +2563,14 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2817,6 +2794,7 @@ std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::Instance::ge
 std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

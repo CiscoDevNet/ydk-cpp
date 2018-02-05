@@ -133,6 +133,7 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ciscoentityqfp != nullptr)
     {
         children["ciscoEntityQfp"] = ciscoentityqfp;
@@ -273,6 +274,7 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ciscoentityqfp::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ciscoentityqfp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -390,6 +392,7 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ciscoentityqfpnotif::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ciscoentityqfpnotif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -485,14 +488,6 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfpsystemtable::get_child_by_name(c
 {
     if(child_yang_name == "ceqfpSystemEntry")
     {
-        for(auto const & c : ceqfpsystementry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry>();
         c->parent = this;
         ceqfpsystementry.push_back(c);
@@ -505,9 +500,14 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfpsystemtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ceqfpsystemtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceqfpsystementry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -599,6 +599,7 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry::g
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -724,14 +725,6 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfputilizationtable::get_child_by_n
 {
     if(child_yang_name == "ceqfpUtilizationEntry")
     {
-        for(auto const & c : ceqfputilizationentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYQFPMIB::Ceqfputilizationtable::Ceqfputilizationentry>();
         c->parent = this;
         ceqfputilizationentry.push_back(c);
@@ -744,9 +737,14 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfputilizationtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ceqfputilizationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceqfputilizationentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -878,6 +876,7 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfputilizationtable::Ceqfputilizati
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ceqfputilizationtable::Ceqfputilizationentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1103,14 +1102,6 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::get_child_b
 {
     if(child_yang_name == "ceqfpMemoryResourceEntry")
     {
-        for(auto const & c : ceqfpmemoryresourceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry>();
         c->parent = this;
         ceqfpmemoryresourceentry.push_back(c);
@@ -1123,9 +1114,14 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceqfpmemoryresourceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1261,6 +1257,7 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::Ceqfpmemory
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1496,14 +1493,6 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfpthroughputtable::get_child_by_na
 {
     if(child_yang_name == "ceqfpThroughputEntry")
     {
-        for(auto const & c : ceqfpthroughputentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYQFPMIB::Ceqfpthroughputtable::Ceqfpthroughputentry>();
         c->parent = this;
         ceqfpthroughputentry.push_back(c);
@@ -1516,9 +1505,14 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfpthroughputtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ceqfpthroughputtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceqfpthroughputentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1614,6 +1608,7 @@ std::shared_ptr<Entity> CISCOENTITYQFPMIB::Ceqfpthroughputtable::Ceqfpthroughput
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYQFPMIB::Ceqfpthroughputtable::Ceqfpthroughputentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

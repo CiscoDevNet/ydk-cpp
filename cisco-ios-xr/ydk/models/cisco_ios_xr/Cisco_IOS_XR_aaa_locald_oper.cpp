@@ -198,6 +198,7 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all_tasks != nullptr)
     {
         children["all-tasks"] = all_tasks;
@@ -362,6 +363,7 @@ std::shared_ptr<Entity> Aaa::AllTasks::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Aaa::AllTasks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -475,6 +477,7 @@ std::shared_ptr<Entity> Aaa::CurrentuserDetail::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Aaa::CurrentuserDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -616,6 +619,7 @@ std::shared_ptr<Entity> Aaa::TaskMap::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Aaa::TaskMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -727,14 +731,6 @@ std::shared_ptr<Entity> Aaa::Taskgroups::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "taskgroup")
     {
-        for(auto const & c : taskgroup)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Taskgroups::Taskgroup>();
         c->parent = this;
         taskgroup.push_back(c);
@@ -747,9 +743,14 @@ std::shared_ptr<Entity> Aaa::Taskgroups::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : taskgroup)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -856,6 +857,7 @@ std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(included_task_ids != nullptr)
     {
         children["included-task-ids"] = included_task_ids;
@@ -954,14 +956,6 @@ std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_child_b
 {
     if(child_yang_name == "tasks")
     {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks>();
         c->parent = this;
         tasks.push_back(c);
@@ -974,9 +968,14 @@ std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tasks)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1061,6 +1060,7 @@ std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::IncludedTaskIds::Tasks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1179,14 +1179,6 @@ std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::get_child_by_name(c
 {
     if(child_yang_name == "tasks")
     {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Taskgroups::Taskgroup::TaskMap::Tasks>();
         c->parent = this;
         tasks.push_back(c);
@@ -1199,9 +1191,14 @@ std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::TaskMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tasks)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1286,6 +1283,7 @@ std::shared_ptr<Entity> Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Taskgroups::Taskgroup::TaskMap::Tasks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1411,14 +1409,6 @@ std::shared_ptr<Entity> Aaa::Users::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "user")
     {
-        for(auto const & c : user)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Users::User>();
         c->parent = this;
         user.push_back(c);
@@ -1431,9 +1421,14 @@ std::shared_ptr<Entity> Aaa::Users::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : user)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1549,6 +1544,7 @@ std::shared_ptr<Entity> Aaa::Users::User::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(task_map != nullptr)
     {
         children["task-map"] = task_map;
@@ -1670,14 +1666,6 @@ std::shared_ptr<Entity> Aaa::Users::User::TaskMap::get_child_by_name(const std::
 {
     if(child_yang_name == "tasks")
     {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Users::User::TaskMap::Tasks>();
         c->parent = this;
         tasks.push_back(c);
@@ -1690,9 +1678,14 @@ std::shared_ptr<Entity> Aaa::Users::User::TaskMap::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::TaskMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tasks)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1777,6 +1770,7 @@ std::shared_ptr<Entity> Aaa::Users::User::TaskMap::Tasks::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Users::User::TaskMap::Tasks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1902,14 +1896,6 @@ std::shared_ptr<Entity> Aaa::Usergroups::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "usergroup")
     {
-        for(auto const & c : usergroup)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup>();
         c->parent = this;
         usergroup.push_back(c);
@@ -1922,9 +1908,14 @@ std::shared_ptr<Entity> Aaa::Usergroups::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : usergroup)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2024,14 +2015,6 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::get_child_by_name(const std:
 
     if(child_yang_name == "taskgroup")
     {
-        for(auto const & c : taskgroup)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup>();
         c->parent = this;
         taskgroup.push_back(c);
@@ -2044,14 +2027,19 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(task_map != nullptr)
     {
         children["task-map"] = task_map;
     }
 
+    count = 0;
     for (auto const & c : taskgroup)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2142,14 +2130,6 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::get_child_by_name(c
 {
     if(child_yang_name == "tasks")
     {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup::TaskMap::Tasks>();
         c->parent = this;
         tasks.push_back(c);
@@ -2162,9 +2142,14 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::TaskMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tasks)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2249,6 +2234,7 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::TaskMap::Tasks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2392,6 +2378,7 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(included_task_ids != nullptr)
     {
         children["included-task-ids"] = included_task_ids;
@@ -2480,14 +2467,6 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::
 {
     if(child_yang_name == "tasks")
     {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks>();
         c->parent = this;
         tasks.push_back(c);
@@ -2500,9 +2479,14 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tasks)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2587,6 +2571,7 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::IncludedTaskIds::Tasks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2705,14 +2690,6 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_chil
 {
     if(child_yang_name == "tasks")
     {
-        for(auto const & c : tasks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks>();
         c->parent = this;
         tasks.push_back(c);
@@ -2725,9 +2702,14 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tasks)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2812,6 +2794,7 @@ std::shared_ptr<Entity> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::g
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Usergroups::Usergroup::Taskgroup::TaskMap::Tasks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2967,6 +2950,7 @@ std::shared_ptr<Entity> Aaa::AuthenMethod::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Aaa::AuthenMethod::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3108,6 +3092,7 @@ std::shared_ptr<Entity> Aaa::CurrentUsergroup::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Aaa::CurrentUsergroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3343,6 +3328,7 @@ std::shared_ptr<Entity> Aaa::Diameter::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gy != nullptr)
     {
         children["gy"] = gy;
@@ -3474,6 +3460,7 @@ std::shared_ptr<Entity> Aaa::Diameter::Gy::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Gy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3701,6 +3688,7 @@ std::shared_ptr<Entity> Aaa::Diameter::GxStatistics::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4102,6 +4090,7 @@ std::shared_ptr<Entity> Aaa::Diameter::Gx::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Gx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4243,14 +4232,6 @@ std::shared_ptr<Entity> Aaa::Diameter::Peers::get_child_by_name(const std::strin
 {
     if(child_yang_name == "peer")
     {
-        for(auto const & c : peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Diameter::Peers::Peer>();
         c->parent = this;
         peer.push_back(c);
@@ -4263,9 +4244,14 @@ std::shared_ptr<Entity> Aaa::Diameter::Peers::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Peers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4675,6 +4661,7 @@ std::shared_ptr<Entity> Aaa::Diameter::Peers::Peer::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Peers::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5374,14 +5361,6 @@ std::shared_ptr<Entity> Aaa::Diameter::Nas::get_child_by_name(const std::string 
 {
     if(child_yang_name == "list-of-nas")
     {
-        for(auto const & c : list_of_nas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Diameter::Nas::ListOfNas>();
         c->parent = this;
         list_of_nas.push_back(c);
@@ -5394,9 +5373,14 @@ std::shared_ptr<Entity> Aaa::Diameter::Nas::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Nas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list_of_nas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5522,6 +5506,7 @@ std::shared_ptr<Entity> Aaa::Diameter::Nas::ListOfNas::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::Nas::ListOfNas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5893,6 +5878,7 @@ std::shared_ptr<Entity> Aaa::Diameter::NasSummary::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6448,14 +6434,6 @@ std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::get_child_by_name(const std
 {
     if(child_yang_name == "gy-session-id")
     {
-        for(auto const & c : gy_session_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Diameter::GySessionIds::GySessionId>();
         c->parent = this;
         gy_session_id.push_back(c);
@@ -6468,9 +6446,14 @@ std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GySessionIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : gy_session_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6574,6 +6557,7 @@ std::shared_ptr<Entity> Aaa::Diameter::GySessionIds::GySessionId::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GySessionIds::GySessionId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6847,6 +6831,7 @@ std::shared_ptr<Entity> Aaa::Diameter::GyStatistics::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GyStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7232,14 +7217,6 @@ std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::get_child_by_name(const std
 {
     if(child_yang_name == "gx-session-id")
     {
-        for(auto const & c : gx_session_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Diameter::GxSessionIds::GxSessionId>();
         c->parent = this;
         gx_session_id.push_back(c);
@@ -7252,9 +7229,14 @@ std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxSessionIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : gx_session_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7354,6 +7336,7 @@ std::shared_ptr<Entity> Aaa::Diameter::GxSessionIds::GxSessionId::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::GxSessionIds::GxSessionId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7503,14 +7486,6 @@ std::shared_ptr<Entity> Aaa::Diameter::NasSession::get_child_by_name(const std::
 {
     if(child_yang_name == "list-of-nas")
     {
-        for(auto const & c : list_of_nas)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Diameter::NasSession::ListOfNas>();
         c->parent = this;
         list_of_nas.push_back(c);
@@ -7523,9 +7498,14 @@ std::shared_ptr<Entity> Aaa::Diameter::NasSession::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list_of_nas)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7651,6 +7631,7 @@ std::shared_ptr<Entity> Aaa::Diameter::NasSession::ListOfNas::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Diameter::NasSession::ListOfNas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7869,6 +7850,7 @@ std::shared_ptr<Entity> Aaa::Radius::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(servers != nullptr)
     {
         children["servers"] = servers;
@@ -7959,14 +7941,6 @@ std::shared_ptr<Entity> Aaa::Radius::Servers::get_child_by_name(const std::strin
 {
     if(child_yang_name == "server")
     {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Radius::Servers::Server>();
         c->parent = this;
         server.push_back(c);
@@ -7979,9 +7953,14 @@ std::shared_ptr<Entity> Aaa::Radius::Servers::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Servers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8405,6 +8384,7 @@ std::shared_ptr<Entity> Aaa::Radius::Servers::Server::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Servers::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9360,14 +9340,6 @@ std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::get_child_by_name(co
 {
     if(child_yang_name == "list-of-source-interface")
     {
-        for(auto const & c : list_of_source_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface>();
         c->parent = this;
         list_of_source_interface.push_back(c);
@@ -9380,9 +9352,14 @@ std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list_of_source_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9470,6 +9447,7 @@ std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterfac
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9595,6 +9573,7 @@ std::shared_ptr<Entity> Aaa::Radius::Global::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9743,6 +9722,7 @@ std::shared_ptr<Entity> Aaa::Tacacs::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(requests != nullptr)
     {
         children["requests"] = requests;
@@ -9833,14 +9813,6 @@ std::shared_ptr<Entity> Aaa::Tacacs::Requests::get_child_by_name(const std::stri
 {
     if(child_yang_name == "request")
     {
-        for(auto const & c : request)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Tacacs::Requests::Request>();
         c->parent = this;
         request.push_back(c);
@@ -9853,9 +9825,14 @@ std::shared_ptr<Entity> Aaa::Tacacs::Requests::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Requests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : request)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9933,14 +9910,6 @@ std::shared_ptr<Entity> Aaa::Tacacs::Requests::Request::get_child_by_name(const 
 {
     if(child_yang_name == "tacacs-requestbag")
     {
-        for(auto const & c : tacacs_requestbag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Tacacs::Requests::Request::TacacsRequestbag>();
         c->parent = this;
         tacacs_requestbag.push_back(c);
@@ -9953,9 +9922,14 @@ std::shared_ptr<Entity> Aaa::Tacacs::Requests::Request::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Requests::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tacacs_requestbag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10059,6 +10033,7 @@ std::shared_ptr<Entity> Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Requests::Request::TacacsRequestbag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10214,14 +10189,6 @@ std::shared_ptr<Entity> Aaa::Tacacs::Servers::get_child_by_name(const std::strin
 {
     if(child_yang_name == "server")
     {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Tacacs::Servers::Server>();
         c->parent = this;
         server.push_back(c);
@@ -10234,9 +10201,14 @@ std::shared_ptr<Entity> Aaa::Tacacs::Servers::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Servers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10384,6 +10356,7 @@ std::shared_ptr<Entity> Aaa::Tacacs::Servers::Server::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::Servers::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10649,14 +10622,6 @@ std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::get_child_by_name(const std::
 {
     if(child_yang_name == "server-group")
     {
-        for(auto const & c : server_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup>();
         c->parent = this;
         server_group.push_back(c);
@@ -10669,9 +10634,14 @@ std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10761,14 +10731,6 @@ std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::get_child_by_nam
 {
     if(child_yang_name == "server")
     {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aaa::Tacacs::ServerGroups::ServerGroup::Server>();
         c->parent = this;
         server.push_back(c);
@@ -10781,9 +10743,14 @@ std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10961,6 +10928,7 @@ std::shared_ptr<Entity> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Aaa::Tacacs::ServerGroups::ServerGroup::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

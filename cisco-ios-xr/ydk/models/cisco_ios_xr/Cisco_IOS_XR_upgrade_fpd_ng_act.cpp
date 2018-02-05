@@ -68,6 +68,7 @@ std::shared_ptr<Entity> UpgradeFpd::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> UpgradeFpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -179,6 +180,7 @@ std::shared_ptr<Entity> UpgradeFpd::Input::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> UpgradeFpd::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

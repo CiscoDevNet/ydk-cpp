@@ -94,6 +94,7 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ceextphysicalprocessortable != nullptr)
     {
         children["ceExtPhysicalProcessorTable"] = ceextphysicalprocessortable;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_chil
 {
     if(child_yang_name == "ceExtPhysicalProcessorEntry")
     {
-        for(auto const & c : ceextphysicalprocessorentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry>();
         c->parent = this;
         ceextphysicalprocessorentry.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceextphysicalprocessorentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -327,6 +325,7 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphy
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -462,14 +461,6 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextconfigregtable::get_child_by_nam
 {
     if(child_yang_name == "ceExtConfigRegEntry")
     {
-        for(auto const & c : ceextconfigregentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry>();
         c->parent = this;
         ceextconfigregentry.push_back(c);
@@ -482,9 +473,14 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextconfigregtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextconfigregtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceextconfigregentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -576,6 +572,7 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregen
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -701,14 +698,6 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextentityledtable::get_child_by_nam
 {
     if(child_yang_name == "ceExtEntityLEDEntry")
     {
-        for(auto const & c : ceextentityledentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry>();
         c->parent = this;
         ceextentityledentry.push_back(c);
@@ -721,9 +710,14 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextentityledtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextentityledtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceextentityledentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -807,6 +801,7 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityleden
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

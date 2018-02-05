@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Components::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "component")
     {
-        for(auto const & c : component)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Components::Component>();
         c->parent = this;
         component.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Components::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Components::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : component)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -276,6 +273,7 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -387,6 +385,7 @@ std::shared_ptr<Entity> Components::Component::Config::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -491,6 +490,7 @@ std::shared_ptr<Entity> Components::Component::State::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -639,14 +639,6 @@ std::shared_ptr<Entity> Components::Component::Properties::get_child_by_name(con
 {
     if(child_yang_name == "property")
     {
-        for(auto const & c : property)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Components::Component::Properties::Property>();
         c->parent = this;
         property.push_back(c);
@@ -659,9 +651,14 @@ std::shared_ptr<Entity> Components::Component::Properties::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : property)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -757,6 +754,7 @@ std::shared_ptr<Entity> Components::Component::Properties::Property::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::Property::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -847,6 +845,7 @@ std::shared_ptr<Entity> Components::Component::Properties::Property::Config::get
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::Property::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -941,6 +940,7 @@ std::shared_ptr<Entity> Components::Component::Properties::Property::State::get_
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::Property::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1039,14 +1039,6 @@ std::shared_ptr<Entity> Components::Component::Subcomponents::get_child_by_name(
 {
     if(child_yang_name == "subcomponent")
     {
-        for(auto const & c : subcomponent)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Components::Component::Subcomponents::Subcomponent>();
         c->parent = this;
         subcomponent.push_back(c);
@@ -1059,9 +1051,14 @@ std::shared_ptr<Entity> Components::Component::Subcomponents::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subcomponent)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1157,6 +1154,7 @@ std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::get_
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::Subcomponent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1243,6 +1241,7 @@ std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::Conf
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::Subcomponent::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1319,6 +1318,7 @@ std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::Stat
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::Subcomponent::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1417,6 +1417,7 @@ std::shared_ptr<Entity> Components::Component::OpticalPort::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1493,6 +1494,7 @@ std::shared_ptr<Entity> Components::Component::OpticalPort::Config::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1600,6 +1602,7 @@ std::shared_ptr<Entity> Components::Component::OpticalPort::State::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input_power != nullptr)
     {
         children["input-power"] = input_power;
@@ -1708,6 +1711,7 @@ std::shared_ptr<Entity> Components::Component::OpticalPort::State::InputPower::g
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::InputPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1826,6 +1830,7 @@ std::shared_ptr<Entity> Components::Component::OpticalPort::State::OutputPower::
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::OutputPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1967,6 +1972,7 @@ std::shared_ptr<Entity> Components::Component::Transceiver::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2052,6 +2058,7 @@ std::shared_ptr<Entity> Components::Component::Transceiver::Config::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2190,6 +2197,7 @@ std::shared_ptr<Entity> Components::Component::Transceiver::State::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2398,14 +2406,6 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::ge
 {
     if(child_yang_name == "channel")
     {
-        for(auto const & c : channel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel>();
         c->parent = this;
         channel.push_back(c);
@@ -2418,9 +2418,14 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::ge
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : channel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2516,6 +2521,7 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Ch
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2614,6 +2620,7 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Ch
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2776,6 +2783,7 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Ch
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output_power != nullptr)
     {
         children["output-power"] = output_power;
@@ -2919,6 +2927,7 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Ch
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3037,6 +3046,7 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Ch
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3155,6 +3165,7 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Ch
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3283,6 +3294,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3371,6 +3383,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::Config::get_child
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3585,6 +3598,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::State::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output_power != nullptr)
     {
         children["output-power"] = output_power;
@@ -3748,6 +3762,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::State::OutputPowe
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::OutputPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3866,6 +3881,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::State::InputPower
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::InputPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3984,6 +4000,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::State::LaserBiasC
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::LaserBiasCurrent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4102,6 +4119,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::State::ChromaticD
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::ChromaticDispersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4220,6 +4238,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::State::Polarizati
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4338,6 +4357,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::State::SecondOrde
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4456,6 +4476,7 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::State::Polarizati
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> ClearOspfv3Routes::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Routes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -185,6 +186,7 @@ std::shared_ptr<Entity> ClearOspfv3Routes::Input::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Routes::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -273,6 +275,7 @@ std::shared_ptr<Entity> ClearOspfv3Routes::Input::Instance::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Routes::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -358,6 +361,7 @@ std::shared_ptr<Entity> ClearOspfv3Redistribution::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Redistribution::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -475,6 +479,7 @@ std::shared_ptr<Entity> ClearOspfv3Redistribution::Input::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Redistribution::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -563,6 +568,7 @@ std::shared_ptr<Entity> ClearOspfv3Redistribution::Input::Instance::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Redistribution::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -648,6 +654,7 @@ std::shared_ptr<Entity> ClearOspfv3Process::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Process::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -765,6 +772,7 @@ std::shared_ptr<Entity> ClearOspfv3Process::Input::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Process::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -853,6 +861,7 @@ std::shared_ptr<Entity> ClearOspfv3Process::Input::Instance::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Process::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -938,6 +947,7 @@ std::shared_ptr<Entity> ClearOspfv3StatisticsNeighbor::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3StatisticsNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1063,6 +1073,7 @@ std::shared_ptr<Entity> ClearOspfv3StatisticsNeighbor::Input::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3StatisticsNeighbor::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -1146,6 +1157,7 @@ std::shared_ptr<Entity> ClearOspfv3StatisticsNeighbor::Input::Instance::get_chil
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3StatisticsNeighbor::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1233,6 +1245,7 @@ std::shared_ptr<Entity> ClearOspfv3StatisticsNeighbor::Input::Neighbor::get_chil
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3StatisticsNeighbor::Input::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1328,6 +1341,7 @@ std::shared_ptr<Entity> ClearOspfv3Statistics::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1453,6 +1467,7 @@ std::shared_ptr<Entity> ClearOspfv3Statistics::Input::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Statistics::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -1561,6 +1576,7 @@ std::shared_ptr<Entity> ClearOspfv3Statistics::Input::Instance::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3Statistics::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1646,6 +1662,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1758,6 +1775,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instance != nullptr)
     {
         children["instance"] = instance;
@@ -1876,6 +1894,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf != nullptr)
     {
         children["vrf"] = vrf;
@@ -2000,6 +2019,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::Vrf::get_child_
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stats != nullptr)
     {
         children["stats"] = stats;
@@ -2136,6 +2156,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::get
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor != nullptr)
     {
         children["neighbor"] = neighbor;
@@ -2248,6 +2269,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Nei
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -2336,6 +2358,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Nei
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2441,6 +2464,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::All::get_child_
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stats != nullptr)
     {
         children["stats"] = stats;
@@ -2567,6 +2591,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::All::Stats::get
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::All::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor != nullptr)
     {
         children["neighbor"] = neighbor;
@@ -2679,6 +2704,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Nei
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -2767,6 +2793,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Nei
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2872,6 +2899,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::g
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stats != nullptr)
     {
         children["stats"] = stats;
@@ -2998,6 +3026,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::S
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor != nullptr)
     {
         children["neighbor"] = neighbor;
@@ -3110,6 +3139,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::S
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -3198,6 +3228,7 @@ std::shared_ptr<Entity> ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::S
 std::map<std::string, std::shared_ptr<Entity>> ClearOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

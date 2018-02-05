@@ -185,6 +185,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cipsisakmpgroup != nullptr)
     {
         children["cipsIsakmpGroup"] = cipsisakmpgroup;
@@ -345,6 +346,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsisakmpgroup::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsisakmpgroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -478,6 +480,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsipsecglobals::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsipsecglobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -619,6 +622,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsipsecstatistics::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsipsecstatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -726,6 +730,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipssyscapacitygroup::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipssyscapacitygroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -843,6 +848,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipstrapcntlgroup::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipstrapcntlgroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -988,14 +994,6 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsisakmppolicytable::get_child_by_name(
 {
     if(child_yang_name == "cipsIsakmpPolicyEntry")
     {
-        for(auto const & c : cipsisakmppolicyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry>();
         c->parent = this;
         cipsisakmppolicyentry.push_back(c);
@@ -1008,9 +1006,14 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsisakmppolicytable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsisakmppolicytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsisakmppolicyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1106,6 +1109,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyen
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1241,14 +1245,6 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomapsettable::get_child_by
 {
     if(child_yang_name == "cipsStaticCryptomapSetEntry")
     {
-        for(auto const & c : cipsstaticcryptomapsetentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry>();
         c->parent = this;
         cipsstaticcryptomapsetentry.push_back(c);
@@ -1261,9 +1257,14 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomapsettable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsstaticcryptomapsettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsstaticcryptomapsetentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1367,6 +1368,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcr
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1522,14 +1524,6 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsdynamiccryptomapsettable::get_child_b
 {
     if(child_yang_name == "cipsDynamicCryptomapSetEntry")
     {
-        for(auto const & c : cipsdynamiccryptomapsetentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry>();
         c->parent = this;
         cipsdynamiccryptomapsetentry.push_back(c);
@@ -1542,9 +1536,14 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsdynamiccryptomapsettable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsdynamiccryptomapsettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsdynamiccryptomapsetentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1628,6 +1627,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamic
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1733,14 +1733,6 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomaptable::get_child_by_na
 {
     if(child_yang_name == "cipsStaticCryptomapEntry")
     {
-        for(auto const & c : cipsstaticcryptomapentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry>();
         c->parent = this;
         cipsstaticcryptomapentry.push_back(c);
@@ -1753,9 +1745,14 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomaptable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsstaticcryptomaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsstaticcryptomapentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1867,6 +1864,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcrypt
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2042,14 +2040,6 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipscryptomapsetiftable::get_child_by_nam
 {
     if(child_yang_name == "cipsCryptomapSetIfEntry")
     {
-        for(auto const & c : cipscryptomapsetifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry>();
         c->parent = this;
         cipscryptomapsetifentry.push_back(c);
@@ -2062,9 +2052,14 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipscryptomapsetiftable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipscryptomapsetiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipscryptomapsetifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2152,6 +2147,7 @@ std::shared_ptr<Entity> CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapset
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

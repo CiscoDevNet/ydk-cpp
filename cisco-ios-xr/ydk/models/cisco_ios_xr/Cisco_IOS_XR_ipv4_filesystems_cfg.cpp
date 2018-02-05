@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Rcp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Rcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rcp_client != nullptr)
     {
         children["rcp-client"] = rcp_client;
@@ -175,6 +176,7 @@ std::shared_ptr<Entity> Rcp::RcpClient::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Rcp::RcpClient::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -270,6 +272,7 @@ std::shared_ptr<Entity> Ftp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Ftp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ftp_client != nullptr)
     {
         children["ftp-client"] = ftp_client;
@@ -389,6 +392,7 @@ std::shared_ptr<Entity> Ftp::FtpClient::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Ftp::FtpClient::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -514,6 +518,7 @@ std::shared_ptr<Entity> Tftp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Tftp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tftp_client != nullptr)
     {
         children["tftp-client"] = tftp_client;
@@ -639,6 +644,7 @@ std::shared_ptr<Entity> Tftp::TftpClient::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Tftp::TftpClient::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -749,14 +755,6 @@ std::shared_ptr<Entity> Tftp::TftpClient::Vrfs::get_child_by_name(const std::str
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tftp::TftpClient::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -769,9 +767,14 @@ std::shared_ptr<Entity> Tftp::TftpClient::Vrfs::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Tftp::TftpClient::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -859,6 +862,7 @@ std::shared_ptr<Entity> Tftp::TftpClient::Vrfs::Vrf::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Tftp::TftpClient::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

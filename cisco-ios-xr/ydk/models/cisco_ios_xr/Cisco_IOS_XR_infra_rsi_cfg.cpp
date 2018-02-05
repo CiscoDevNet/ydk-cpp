@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Vrfs::get_child_by_name(const std::string & child_yang_n
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Vrfs::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -243,6 +240,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vpn_id != nullptr)
     {
         children["vpn-id"] = vpn_id;
@@ -388,6 +386,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::VpnId::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::VpnId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -476,14 +475,6 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "af")
     {
-        for(auto const & c : af)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af>();
         c->parent = this;
         af.push_back(c);
@@ -496,9 +487,14 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : af)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -605,6 +601,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum_prefix != nullptr)
     {
         children["Cisco-IOS-XR-ip-rib-cfg:maximum-prefix"] = maximum_prefix;
@@ -725,6 +722,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -883,6 +881,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(import_route_targets != nullptr)
     {
         children["import-route-targets"] = import_route_targets;
@@ -1013,6 +1012,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_targets != nullptr)
     {
         children["route-targets"] = route_targets;
@@ -1086,14 +1086,6 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
 {
     if(child_yang_name == "route-target")
     {
-        for(auto const & c : route_target)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget>();
         c->parent = this;
         route_target.push_back(c);
@@ -1106,9 +1098,14 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route_target)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1193,14 +1190,6 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
 {
     if(child_yang_name == "as-or-four-byte-as")
     {
-        for(auto const & c : as_or_four_byte_as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs>();
         c->parent = this;
         as_or_four_byte_as.push_back(c);
@@ -1209,14 +1198,6 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
 
     if(child_yang_name == "ipv4-address")
     {
-        for(auto const & c : ipv4_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address>();
         c->parent = this;
         ipv4_address.push_back(c);
@@ -1229,14 +1210,23 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : as_or_four_byte_as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv4_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1327,6 +1317,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1441,6 +1432,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1546,6 +1538,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_targets != nullptr)
     {
         children["route-targets"] = route_targets;
@@ -1619,14 +1612,6 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
 {
     if(child_yang_name == "route-target")
     {
-        for(auto const & c : route_target)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget>();
         c->parent = this;
         route_target.push_back(c);
@@ -1639,9 +1624,14 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route_target)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1726,14 +1716,6 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
 {
     if(child_yang_name == "as-or-four-byte-as")
     {
-        for(auto const & c : as_or_four_byte_as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs>();
         c->parent = this;
         as_or_four_byte_as.push_back(c);
@@ -1742,14 +1724,6 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
 
     if(child_yang_name == "ipv4-address")
     {
-        for(auto const & c : ipv4_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address>();
         c->parent = this;
         ipv4_address.push_back(c);
@@ -1762,14 +1736,23 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : as_or_four_byte_as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv4_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1860,6 +1843,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1974,6 +1958,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2074,6 +2059,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::g
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2164,6 +2150,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportVrfOptions::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ExportVrfOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2254,6 +2241,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::g
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2362,6 +2350,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::MulticastHost::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::MulticastHost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -2438,6 +2427,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::MulticastHost::Ipv4::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::MulticastHost::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2514,6 +2504,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::MulticastHost::Ipv6::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::MulticastHost::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2599,6 +2590,7 @@ std::shared_ptr<Entity> GlobalAf::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> GlobalAf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(afs != nullptr)
     {
         children["afs"] = afs;
@@ -2704,14 +2696,6 @@ std::shared_ptr<Entity> GlobalAf::Afs::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "af")
     {
-        for(auto const & c : af)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<GlobalAf::Afs::Af>();
         c->parent = this;
         af.push_back(c);
@@ -2724,9 +2708,14 @@ std::shared_ptr<Entity> GlobalAf::Afs::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : af)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2814,6 +2803,7 @@ std::shared_ptr<Entity> GlobalAf::Afs::Af::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2973,6 +2963,7 @@ std::shared_ptr<Entity> Srlg::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Srlg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -3103,14 +3094,6 @@ std::shared_ptr<Entity> Srlg::Interfaces::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srlg::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -3123,9 +3106,14 @@ std::shared_ptr<Entity> Srlg::Interfaces::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3258,6 +3246,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(include_optical != nullptr)
     {
         children["include-optical"] = include_optical;
@@ -3368,6 +3357,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::IncludeOptical::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::IncludeOptical::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3468,6 +3458,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::InterfaceGroup::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::InterfaceGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_names != nullptr)
     {
         children["group-names"] = group_names;
@@ -3551,14 +3542,6 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::InterfaceGroup::GroupNames:
 {
     if(child_yang_name == "group-name")
     {
-        for(auto const & c : group_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName>();
         c->parent = this;
         group_name.push_back(c);
@@ -3571,9 +3554,14 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::InterfaceGroup::GroupNames:
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3650,6 +3638,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::InterfaceGroup::GroupNames:
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3748,15 +3737,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::Values::get_child_by_name(c
 {
     if(child_yang_name == "value")
     {
-        for(auto const & c : value_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Srlg::Interfaces::Interface::Values::Value_>();
+        auto c = std::make_shared<Srlg::Interfaces::Interface::Values::Value>();
         c->parent = this;
         value_.push_back(c);
         return c;
@@ -3768,9 +3749,14 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::Values::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::Values::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : value_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3791,7 +3777,7 @@ bool Srlg::Interfaces::Interface::Values::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Srlg::Interfaces::Interface::Values::Value_::Value_()
+Srlg::Interfaces::Interface::Values::Value::Value()
     :
     srlg_index{YType::uint32, "srlg-index"},
     srlg_value{YType::uint32, "srlg-value"},
@@ -3801,18 +3787,18 @@ Srlg::Interfaces::Interface::Values::Value_::Value_()
     yang_name = "value"; yang_parent_name = "values"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Srlg::Interfaces::Interface::Values::Value_::~Value_()
+Srlg::Interfaces::Interface::Values::Value::~Value()
 {
 }
 
-bool Srlg::Interfaces::Interface::Values::Value_::has_data() const
+bool Srlg::Interfaces::Interface::Values::Value::has_data() const
 {
     return srlg_index.is_set
 	|| srlg_value.is_set
 	|| srlg_priority.is_set;
 }
 
-bool Srlg::Interfaces::Interface::Values::Value_::has_operation() const
+bool Srlg::Interfaces::Interface::Values::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(srlg_index.yfilter)
@@ -3820,14 +3806,14 @@ bool Srlg::Interfaces::Interface::Values::Value_::has_operation() const
 	|| ydk::is_set(srlg_priority.yfilter);
 }
 
-std::string Srlg::Interfaces::Interface::Values::Value_::get_segment_path() const
+std::string Srlg::Interfaces::Interface::Values::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value" <<"[srlg-index='" <<srlg_index <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Srlg::Interfaces::Interface::Values::Value_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Srlg::Interfaces::Interface::Values::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3839,18 +3825,19 @@ std::vector<std::pair<std::string, LeafData> > Srlg::Interfaces::Interface::Valu
 
 }
 
-std::shared_ptr<Entity> Srlg::Interfaces::Interface::Values::Value_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Srlg::Interfaces::Interface::Values::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::Values::Value_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::Values::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Srlg::Interfaces::Interface::Values::Value_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Srlg::Interfaces::Interface::Values::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "srlg-index")
     {
@@ -3872,7 +3859,7 @@ void Srlg::Interfaces::Interface::Values::Value_::set_value(const std::string & 
     }
 }
 
-void Srlg::Interfaces::Interface::Values::Value_::set_filter(const std::string & value_path, YFilter yfilter)
+void Srlg::Interfaces::Interface::Values::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "srlg-index")
     {
@@ -3888,7 +3875,7 @@ void Srlg::Interfaces::Interface::Values::Value_::set_filter(const std::string &
     }
 }
 
-bool Srlg::Interfaces::Interface::Values::Value_::has_leaf_or_child_of_name(const std::string & name) const
+bool Srlg::Interfaces::Interface::Values::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "srlg-index" || name == "srlg-value" || name == "srlg-priority")
         return true;
@@ -3945,14 +3932,6 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::InterfaceSrlgNames::get_chi
 {
     if(child_yang_name == "interface-srlg-name")
     {
-        for(auto const & c : interface_srlg_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName>();
         c->parent = this;
         interface_srlg_name.push_back(c);
@@ -3965,9 +3944,14 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::InterfaceSrlgNames::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::InterfaceSrlgNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_srlg_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4036,6 +4020,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::InterfaceSrlgNames::Interfa
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4121,14 +4106,6 @@ std::shared_ptr<Entity> Srlg::SrlgNames::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "srlg-name")
     {
-        for(auto const & c : srlg_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srlg::SrlgNames::SrlgName>();
         c->parent = this;
         srlg_name.push_back(c);
@@ -4141,9 +4118,14 @@ std::shared_ptr<Entity> Srlg::SrlgNames::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Srlg::SrlgNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : srlg_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4223,6 +4205,7 @@ std::shared_ptr<Entity> Srlg::SrlgNames::SrlgName::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Srlg::SrlgNames::SrlgName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4318,14 +4301,6 @@ std::shared_ptr<Entity> Srlg::Groups::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srlg::Groups::Group>();
         c->parent = this;
         group.push_back(c);
@@ -4338,9 +4313,14 @@ std::shared_ptr<Entity> Srlg::Groups::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Groups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4434,6 +4414,7 @@ std::shared_ptr<Entity> Srlg::Groups::Group::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Groups::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_values != nullptr)
     {
         children["group-values"] = group_values;
@@ -4527,14 +4508,6 @@ std::shared_ptr<Entity> Srlg::Groups::Group::GroupValues::get_child_by_name(cons
 {
     if(child_yang_name == "group-value")
     {
-        for(auto const & c : group_value)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srlg::Groups::Group::GroupValues::GroupValue>();
         c->parent = this;
         group_value.push_back(c);
@@ -4547,9 +4520,14 @@ std::shared_ptr<Entity> Srlg::Groups::Group::GroupValues::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Groups::Group::GroupValues::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group_value)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4626,6 +4604,7 @@ std::shared_ptr<Entity> Srlg::Groups::Group::GroupValues::GroupValue::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Srlg::Groups::Group::GroupValues::GroupValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4731,14 +4710,6 @@ std::shared_ptr<Entity> Srlg::InheritNodes::get_child_by_name(const std::string 
 {
     if(child_yang_name == "inherit-node")
     {
-        for(auto const & c : inherit_node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srlg::InheritNodes::InheritNode>();
         c->parent = this;
         inherit_node.push_back(c);
@@ -4751,9 +4722,14 @@ std::shared_ptr<Entity> Srlg::InheritNodes::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Srlg::InheritNodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inherit_node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4847,6 +4823,7 @@ std::shared_ptr<Entity> Srlg::InheritNodes::InheritNode::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Srlg::InheritNodes::InheritNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inherit_node_values != nullptr)
     {
         children["inherit-node-values"] = inherit_node_values;
@@ -4940,14 +4917,6 @@ std::shared_ptr<Entity> Srlg::InheritNodes::InheritNode::InheritNodeValues::get_
 {
     if(child_yang_name == "inherit-node-value")
     {
-        for(auto const & c : inherit_node_value)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue>();
         c->parent = this;
         inherit_node_value.push_back(c);
@@ -4960,9 +4929,14 @@ std::shared_ptr<Entity> Srlg::InheritNodes::InheritNode::InheritNodeValues::get_
 std::map<std::string, std::shared_ptr<Entity>> Srlg::InheritNodes::InheritNode::InheritNodeValues::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inherit_node_value)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5039,6 +5013,7 @@ std::shared_ptr<Entity> Srlg::InheritNodes::InheritNode::InheritNodeValues::Inhe
 std::map<std::string, std::shared_ptr<Entity>> Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5137,14 +5112,6 @@ std::shared_ptr<Entity> VrfGroups::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "vrf-group")
     {
-        for(auto const & c : vrf_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<VrfGroups::VrfGroup>();
         c->parent = this;
         vrf_group.push_back(c);
@@ -5157,9 +5124,14 @@ std::shared_ptr<Entity> VrfGroups::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> VrfGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5278,6 +5250,7 @@ std::shared_ptr<Entity> VrfGroups::VrfGroup::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> VrfGroups::VrfGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -5371,14 +5344,6 @@ std::shared_ptr<Entity> VrfGroups::VrfGroup::Vrfs::get_child_by_name(const std::
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<VrfGroups::VrfGroup::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -5391,9 +5356,14 @@ std::shared_ptr<Entity> VrfGroups::VrfGroup::Vrfs::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> VrfGroups::VrfGroup::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5462,6 +5432,7 @@ std::shared_ptr<Entity> VrfGroups::VrfGroup::Vrfs::Vrf::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> VrfGroups::VrfGroup::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5538,6 +5509,7 @@ std::shared_ptr<Entity> SelectiveVrfDownload::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> SelectiveVrfDownload::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

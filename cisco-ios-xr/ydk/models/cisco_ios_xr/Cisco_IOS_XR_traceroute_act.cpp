@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Traceroute::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -224,6 +225,7 @@ std::shared_ptr<Entity> Traceroute::Input::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -356,6 +358,7 @@ std::shared_ptr<Entity> Traceroute::Input::Destination::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Input::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -585,6 +588,7 @@ std::shared_ptr<Entity> Traceroute::Input::Ipv4::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Input::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -802,6 +806,7 @@ std::shared_ptr<Entity> Traceroute::Input::Ipv6::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Input::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1004,6 +1009,7 @@ std::shared_ptr<Entity> Traceroute::Output::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traceroute_response != nullptr)
     {
         children["traceroute-response"] = traceroute_response;
@@ -1104,6 +1110,7 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteResponse::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -1197,14 +1204,6 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv4::get_child_
 {
     if(child_yang_name == "hops")
     {
-        for(auto const & c : hops)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops>();
         c->parent = this;
         hops.push_back(c);
@@ -1217,9 +1216,14 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv4::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteResponse::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hops)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1329,14 +1333,6 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv4::Hops::get_
 {
     if(child_yang_name == "probes")
     {
-        for(auto const & c : probes)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes>();
         c->parent = this;
         probes.push_back(c);
@@ -1349,9 +1345,14 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv4::Hops::get_
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteResponse::Ipv4::Hops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : probes)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1466,6 +1467,7 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv4::Hops::Prob
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteResponse::Ipv4::Hops::Probes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1599,14 +1601,6 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv6::get_child_
 {
     if(child_yang_name == "hops")
     {
-        for(auto const & c : hops)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops>();
         c->parent = this;
         hops.push_back(c);
@@ -1619,9 +1613,14 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv6::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteResponse::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hops)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1731,14 +1730,6 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv6::Hops::get_
 {
     if(child_yang_name == "probes")
     {
-        for(auto const & c : probes)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes>();
         c->parent = this;
         probes.push_back(c);
@@ -1751,9 +1742,14 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv6::Hops::get_
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteResponse::Ipv6::Hops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : probes)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1868,6 +1864,7 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv6::Hops::Prob
 std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteResponse::Ipv6::Hops::Probes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

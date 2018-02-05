@@ -94,6 +94,7 @@ std::shared_ptr<Entity> CISCOENTITYSENSORMIB::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYSENSORMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(entsensorglobalobjects != nullptr)
     {
         children["entSensorGlobalObjects"] = entsensorglobalobjects;
@@ -207,6 +208,7 @@ std::shared_ptr<Entity> CISCOENTITYSENSORMIB::Entsensorglobalobjects::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYSENSORMIB::Entsensorglobalobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -292,14 +294,6 @@ std::shared_ptr<Entity> CISCOENTITYSENSORMIB::Entsensorvaluetable::get_child_by_
 {
     if(child_yang_name == "entSensorValueEntry")
     {
-        for(auto const & c : entsensorvalueentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry>();
         c->parent = this;
         entsensorvalueentry.push_back(c);
@@ -312,9 +306,14 @@ std::shared_ptr<Entity> CISCOENTITYSENSORMIB::Entsensorvaluetable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYSENSORMIB::Entsensorvaluetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entsensorvalueentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -422,6 +421,7 @@ std::shared_ptr<Entity> CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalu
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYSENSORMIB::Entsensorvaluetable::Entsensorvalueentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -587,14 +587,6 @@ std::shared_ptr<Entity> CISCOENTITYSENSORMIB::Entsensorthresholdtable::get_child
 {
     if(child_yang_name == "entSensorThresholdEntry")
     {
-        for(auto const & c : entsensorthresholdentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry>();
         c->parent = this;
         entsensorthresholdentry.push_back(c);
@@ -607,9 +599,14 @@ std::shared_ptr<Entity> CISCOENTITYSENSORMIB::Entsensorthresholdtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYSENSORMIB::Entsensorthresholdtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entsensorthresholdentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -709,6 +706,7 @@ std::shared_ptr<Entity> CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensor
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYSENSORMIB::Entsensorthresholdtable::Entsensorthresholdentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

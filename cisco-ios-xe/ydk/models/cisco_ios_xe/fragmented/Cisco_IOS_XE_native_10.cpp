@@ -89,6 +89,7 @@ std::shared_ptr<Entity> Native::Ip::Nbar::Custom::Transport::UdpTcp::Port::PortN
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Nbar::Custom::Transport::UdpTcp::Port::PortNumbers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -239,6 +240,7 @@ std::shared_ptr<Entity> Native::Ip::Nbar::Custom::Transport::UdpTcp::Port::Range
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Nbar::Custom::Transport::UdpTcp::Port::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -334,14 +336,6 @@ std::shared_ptr<Entity> Native::Ip::Nbar::ProtocolPack::get_child_by_name(const 
 {
     if(child_yang_name == "filepath")
     {
-        for(auto const & c : filepath)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Nbar::ProtocolPack::Filepath>();
         c->parent = this;
         filepath.push_back(c);
@@ -354,9 +348,14 @@ std::shared_ptr<Entity> Native::Ip::Nbar::ProtocolPack::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Nbar::ProtocolPack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : filepath)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -436,6 +435,7 @@ std::shared_ptr<Entity> Native::Ip::Nbar::ProtocolPack::Filepath::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Nbar::ProtocolPack::Filepath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -550,6 +550,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -672,6 +673,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor != nullptr)
     {
         children["neighbor"] = neighbor;
@@ -817,6 +819,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_list != nullptr)
     {
         children["access-list"] = access_list;
@@ -912,14 +915,6 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::
 {
     if(child_yang_name == "number")
     {
-        for(auto const & c : number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Rsvp::Authentication::Neighbor::AccessList::Number>();
         c->parent = this;
         number.push_back(c);
@@ -928,14 +923,6 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::
 
     if(child_yang_name == "name")
     {
-        for(auto const & c : name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Rsvp::Authentication::Neighbor::AccessList::Name>();
         c->parent = this;
         name.push_back(c);
@@ -948,14 +935,23 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1061,6 +1057,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::Number::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lifetime != nullptr)
     {
         children["lifetime"] = lifetime;
@@ -1182,6 +1179,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::Number::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1295,6 +1293,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lifetime != nullptr)
     {
         children["lifetime"] = lifetime;
@@ -1416,6 +1415,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Neighbor::AccessList::Name::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1501,14 +1501,6 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::Address::get
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Rsvp::Authentication::Neighbor::Address::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -1521,9 +1513,14 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::Address::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Neighbor::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1629,6 +1626,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::Address::Ipv
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Neighbor::Address::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lifetime != nullptr)
     {
         children["lifetime"] = lifetime;
@@ -1750,6 +1748,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Neighbor::Address::Ipv
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Neighbor::Address::Ipv4::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1833,6 +1832,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Authentication::Lifetime::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Authentication::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1980,6 +1980,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fast_local_repair != nullptr)
     {
         children["fast-local-repair"] = fast_local_repair;
@@ -2092,6 +2093,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::FastLocalRepair::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::FastLocalRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2203,6 +2205,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::Hello::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::Hello::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(graceful_restart != nullptr)
     {
         children["graceful-restart"] = graceful_restart;
@@ -2341,6 +2344,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::Hello::GracefulRestart::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::Hello::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode != nullptr)
     {
         children["mode"] = mode;
@@ -2443,6 +2447,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::Hello::GracefulRestart::Mo
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::Hello::GracefulRestart::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2540,6 +2545,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::Hello::GracefulRestart::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::Hello::GracefulRestart::Refresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2633,6 +2639,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::Hello::GracefulRestart::Se
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::Hello::GracefulRestart::Send::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2724,6 +2731,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::Patherr::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::Patherr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(state_removal != nullptr)
     {
         children["state-removal"] = state_removal;
@@ -2802,6 +2810,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::Patherr::StateRemoval::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::Patherr::StateRemoval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2897,6 +2906,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::RateLimit::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::RateLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3027,6 +3037,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::Refresh::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::Refresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reduction != nullptr)
     {
         children["reduction"] = reduction;
@@ -3125,6 +3136,7 @@ std::shared_ptr<Entity> Native::Ip::Rsvp::Signalling::Refresh::Reduction::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Rsvp::Signalling::Refresh::Reduction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3249,14 +3261,6 @@ std::shared_ptr<Entity> Native::Ip::Sla::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "entry")
     {
-        for(auto const & c : entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Sla::Entry>();
         c->parent = this;
         entry.push_back(c);
@@ -3301,14 +3305,6 @@ std::shared_ptr<Entity> Native::Ip::Sla::get_child_by_name(const std::string & c
 
     if(child_yang_name == "schedule")
     {
-        for(auto const & c : schedule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Sla::Schedule>();
         c->parent = this;
         schedule.push_back(c);
@@ -3317,14 +3313,6 @@ std::shared_ptr<Entity> Native::Ip::Sla::get_child_by_name(const std::string & c
 
     if(child_yang_name == "reaction-configuration")
     {
-        for(auto const & c : reaction_configuration)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Sla::ReactionConfiguration>();
         c->parent = this;
         reaction_configuration.push_back(c);
@@ -3346,9 +3334,14 @@ std::shared_ptr<Entity> Native::Ip::Sla::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(enable != nullptr)
@@ -3371,14 +3364,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::get_children() c
         children["group"] = group;
     }
 
+    count = 0;
     for (auto const & c : schedule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : reaction_configuration)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(server != nullptr)
@@ -3551,6 +3552,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(icmp_echo != nullptr)
     {
         children["icmp-echo"] = icmp_echo;
@@ -3724,6 +3726,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::IcmpEcho::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::IcmpEcho::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(history != nullptr)
     {
         children["history"] = history;
@@ -3959,6 +3962,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::IcmpEcho::History::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::IcmpEcho::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enhanced != nullptr)
     {
         children["enhanced"] = enhanced;
@@ -4094,6 +4098,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::IcmpEcho::History::Enhanced::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::IcmpEcho::History::Enhanced::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4196,6 +4201,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::PathEcho::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::PathEcho::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4279,7 +4285,7 @@ Native::Ip::Sla::Entry::PathJitter::PathJitter()
     verify_data{YType::empty, "verify-data"},
     vrf{YType::str, "vrf"}
     	,
-    default_(std::make_shared<Native::Ip::Sla::Entry::PathJitter::Default_>())
+    default_(std::make_shared<Native::Ip::Sla::Entry::PathJitter::Default>())
 {
     default_->parent = this;
 
@@ -4369,7 +4375,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::PathJitter::get_child_by_name(co
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Ip::Sla::Entry::PathJitter::Default_>();
+            default_ = std::make_shared<Native::Ip::Sla::Entry::PathJitter::Default>();
         }
         return default_;
     }
@@ -4380,6 +4386,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::PathJitter::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::PathJitter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -4521,7 +4528,7 @@ bool Native::Ip::Sla::Entry::PathJitter::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-Native::Ip::Sla::Entry::PathJitter::Default_::Default_()
+Native::Ip::Sla::Entry::PathJitter::Default::Default()
     :
     frequency{YType::empty, "frequency"},
     lsr_path{YType::empty, "lsr-path"},
@@ -4538,11 +4545,11 @@ Native::Ip::Sla::Entry::PathJitter::Default_::Default_()
     yang_name = "default"; yang_parent_name = "path-jitter"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Ip::Sla::Entry::PathJitter::Default_::~Default_()
+Native::Ip::Sla::Entry::PathJitter::Default::~Default()
 {
 }
 
-bool Native::Ip::Sla::Entry::PathJitter::Default_::has_data() const
+bool Native::Ip::Sla::Entry::PathJitter::Default::has_data() const
 {
     return frequency.is_set
 	|| lsr_path.is_set
@@ -4556,7 +4563,7 @@ bool Native::Ip::Sla::Entry::PathJitter::Default_::has_data() const
 	|| vrf.is_set;
 }
 
-bool Native::Ip::Sla::Entry::PathJitter::Default_::has_operation() const
+bool Native::Ip::Sla::Entry::PathJitter::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(frequency.yfilter)
@@ -4571,14 +4578,14 @@ bool Native::Ip::Sla::Entry::PathJitter::Default_::has_operation() const
 	|| ydk::is_set(vrf.yfilter);
 }
 
-std::string Native::Ip::Sla::Entry::PathJitter::Default_::get_segment_path() const
+std::string Native::Ip::Sla::Entry::PathJitter::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ip::Sla::Entry::PathJitter::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ip::Sla::Entry::PathJitter::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4597,18 +4604,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Ip::Sla::Entry::PathJitte
 
 }
 
-std::shared_ptr<Entity> Native::Ip::Sla::Entry::PathJitter::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ip::Sla::Entry::PathJitter::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::PathJitter::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::PathJitter::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Ip::Sla::Entry::PathJitter::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ip::Sla::Entry::PathJitter::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frequency")
     {
@@ -4672,7 +4680,7 @@ void Native::Ip::Sla::Entry::PathJitter::Default_::set_value(const std::string &
     }
 }
 
-void Native::Ip::Sla::Entry::PathJitter::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ip::Sla::Entry::PathJitter::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "frequency")
     {
@@ -4716,7 +4724,7 @@ void Native::Ip::Sla::Entry::PathJitter::Default_::set_filter(const std::string 
     }
 }
 
-bool Native::Ip::Sla::Entry::PathJitter::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ip::Sla::Entry::PathJitter::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frequency" || name == "lsr-path" || name == "owner" || name == "request-data-size" || name == "tag" || name == "threshold" || name == "timeout" || name == "tos" || name == "verify-data" || name == "vrf")
         return true;
@@ -4783,6 +4791,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::UdpEcho::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::UdpEcho::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4951,6 +4960,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::UdpJitter::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::UdpJitter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(history != nullptr)
     {
         children["history"] = history;
@@ -5174,6 +5184,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::UdpJitter::History::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::UdpJitter::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enhanced != nullptr)
     {
         children["enhanced"] = enhanced;
@@ -5279,6 +5290,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::UdpJitter::History::Enhanced::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::UdpJitter::History::Enhanced::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5400,6 +5412,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::Http::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::Http::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(get != nullptr)
     {
         children["get"] = get;
@@ -5518,6 +5531,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::Http::Get::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::Http::Get::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5636,6 +5650,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::Http::Raw::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::Http::Raw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5746,6 +5761,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Entry::Dhcp::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Entry::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5839,6 +5855,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Enable::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Enable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5944,6 +5961,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Responder::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Responder::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(udp_echo != nullptr)
     {
         children["udp-echo"] = udp_echo;
@@ -6033,14 +6051,6 @@ std::shared_ptr<Entity> Native::Ip::Sla::Responder::UdpEcho::get_child_by_name(c
 {
     if(child_yang_name == "ipaddress")
     {
-        for(auto const & c : ipaddress)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Sla::Responder::UdpEcho::Ipaddress>();
         c->parent = this;
         ipaddress.push_back(c);
@@ -6053,9 +6063,14 @@ std::shared_ptr<Entity> Native::Ip::Sla::Responder::UdpEcho::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Responder::UdpEcho::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipaddress)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6145,6 +6160,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Responder::UdpEcho::Ipaddress::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Responder::UdpEcho::Ipaddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6244,14 +6260,6 @@ std::shared_ptr<Entity> Native::Ip::Sla::Responder::TcpConnect::get_child_by_nam
 {
     if(child_yang_name == "ipaddress")
     {
-        for(auto const & c : ipaddress)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Sla::Responder::TcpConnect::Ipaddress>();
         c->parent = this;
         ipaddress.push_back(c);
@@ -6264,9 +6272,14 @@ std::shared_ptr<Entity> Native::Ip::Sla::Responder::TcpConnect::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Responder::TcpConnect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipaddress)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6356,6 +6369,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Responder::TcpConnect::Ipaddress::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Responder::TcpConnect::Ipaddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6449,6 +6463,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Logging::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6534,14 +6549,6 @@ std::shared_ptr<Entity> Native::Ip::Sla::Group::get_child_by_name(const std::str
 {
     if(child_yang_name == "schedule")
     {
-        for(auto const & c : schedule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Sla::Group::Schedule>();
         c->parent = this;
         schedule.push_back(c);
@@ -6554,9 +6561,14 @@ std::shared_ptr<Entity> Native::Ip::Sla::Group::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : schedule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6638,14 +6650,6 @@ std::shared_ptr<Entity> Native::Ip::Sla::Group::Schedule::get_child_by_name(cons
 {
     if(child_yang_name == "probe-ids")
     {
-        for(auto const & c : probe_ids)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Sla::Group::Schedule::ProbeIds>();
         c->parent = this;
         probe_ids.push_back(c);
@@ -6658,9 +6662,14 @@ std::shared_ptr<Entity> Native::Ip::Sla::Group::Schedule::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Group::Schedule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : probe_ids)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6753,6 +6762,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Group::Schedule::ProbeIds::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Group::Schedule::ProbeIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(schedule_period != nullptr)
     {
         children["schedule-period"] = schedule_period;
@@ -6865,6 +6875,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeri
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frequency != nullptr)
     {
         children["frequency"] = frequency;
@@ -6965,6 +6976,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeri
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod::Frequency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7051,6 +7063,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeri
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Group::Schedule::ProbeIds::SchedulePeriod::StartTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7160,6 +7173,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Schedule::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Schedule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_time != nullptr)
     {
         children["start-time"] = start_time;
@@ -7291,6 +7305,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Schedule::StartTime::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Schedule::StartTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7438,6 +7453,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::ReactionConfiguration::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::ReactionConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(react != nullptr)
     {
         children["react"] = react;
@@ -7539,6 +7555,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::ReactionConfiguration::React::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::ReactionConfiguration::React::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connectionloss != nullptr)
     {
         children["connectionLoss"] = connectionloss;
@@ -7624,6 +7641,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::ReactionConfiguration::React::Connectio
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::ReactionConfiguration::React::Connectionloss::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold_type != nullptr)
     {
         children["threshold-type"] = threshold_type;
@@ -7704,6 +7722,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::ReactionConfiguration::React::Connectio
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::ReactionConfiguration::React::Connectionloss::ThresholdType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(xofy != nullptr)
     {
         children["xOfy"] = xofy;
@@ -7783,6 +7802,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::ReactionConfiguration::React::Connectio
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::ReactionConfiguration::React::Connectionloss::ThresholdType::Xofy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7888,6 +7908,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::ReactionConfiguration::React::Rtt::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::ReactionConfiguration::React::Rtt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold_value != nullptr)
     {
         children["threshold-value"] = threshold_value;
@@ -7971,6 +7992,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::ReactionConfiguration::React::Rtt::Thre
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::ReactionConfiguration::React::Rtt::ThresholdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8092,6 +8114,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Server::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(twamp != nullptr)
     {
         children["twamp"] = twamp;
@@ -8166,6 +8189,7 @@ std::shared_ptr<Entity> Native::Ip::Sla::Server::Twamp::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Sla::Server::Twamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8262,14 +8286,6 @@ std::shared_ptr<Entity> Native::Ip::Wccp::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Wccp::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -8296,14 +8312,6 @@ std::shared_ptr<Entity> Native::Ip::Wccp::get_child_by_name(const std::string & 
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Wccp::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -8316,9 +8324,14 @@ std::shared_ptr<Entity> Native::Ip::Wccp::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -8331,9 +8344,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::get_children() 
         children["check"] = check;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8453,6 +8470,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::WccpList::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -8588,6 +8606,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::WccpList::Password::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::WccpList::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8711,6 +8730,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::WebCache::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -8843,6 +8863,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::WebCache::Password::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::WebCache::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8958,6 +8979,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::Check::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::Check::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(acl != nullptr)
     {
         children["acl"] = acl;
@@ -9041,6 +9063,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::Check::Acl::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::Check::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9124,6 +9147,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::Check::Services::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::Check::Services::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9222,14 +9246,6 @@ std::shared_ptr<Entity> Native::Ip::Wccp::Vrf::get_child_by_name(const std::stri
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ip::Wccp::Vrf::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -9251,9 +9267,14 @@ std::shared_ptr<Entity> Native::Ip::Wccp::Vrf::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -9381,6 +9402,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::Vrf::WccpList::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::Vrf::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -9516,6 +9538,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::Vrf::WccpList::Password::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::Vrf::WccpList::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9632,6 +9655,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::Vrf::WebCache::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::Vrf::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -9757,6 +9781,7 @@ std::shared_ptr<Entity> Native::Ip::Wccp::Vrf::WebCache::Password::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ip::Wccp::Vrf::WebCache::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9852,14 +9877,6 @@ std::shared_ptr<Entity> Native::Mka::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "Cisco-IOS-XE-mka:policy")
     {
-        for(auto const & c : policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Mka::Policy>();
         c->parent = this;
         policy.push_back(c);
@@ -9872,9 +9889,14 @@ std::shared_ptr<Entity> Native::Mka::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Native::Mka::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9968,6 +9990,7 @@ std::shared_ptr<Entity> Native::Mka::Policy::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Mka::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_cipher_suite != nullptr)
     {
         children["macsec-cipher-suite"] = macsec_cipher_suite;
@@ -10063,6 +10086,7 @@ std::shared_ptr<Entity> Native::Mka::Policy::MacsecCipherSuite::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Mka::Policy::MacsecCipherSuite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10104,7 +10128,7 @@ bool Native::Mka::Policy::MacsecCipherSuite::has_leaf_or_child_of_name(const std
 Native::Macro::Macro()
     :
     global(std::make_shared<Native::Macro::Global>())
-	,auto_(std::make_shared<Native::Macro::Auto_>())
+	,auto_(std::make_shared<Native::Macro::Auto>())
 {
     global->parent = this;
     auto_->parent = this;
@@ -10167,7 +10191,7 @@ std::shared_ptr<Entity> Native::Macro::get_child_by_name(const std::string & chi
     {
         if(auto_ == nullptr)
         {
-            auto_ = std::make_shared<Native::Macro::Auto_>();
+            auto_ = std::make_shared<Native::Macro::Auto>();
         }
         return auto_;
     }
@@ -10178,6 +10202,7 @@ std::shared_ptr<Entity> Native::Macro::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Macro::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -10261,6 +10286,7 @@ std::shared_ptr<Entity> Native::Macro::Global::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Macro::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10289,41 +10315,41 @@ bool Native::Macro::Global::has_leaf_or_child_of_name(const std::string & name) 
     return false;
 }
 
-Native::Macro::Auto_::Auto_()
+Native::Macro::Auto::Auto()
 {
 
     yang_name = "auto"; yang_parent_name = "macro"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Macro::Auto_::~Auto_()
+Native::Macro::Auto::~Auto()
 {
 }
 
-bool Native::Macro::Auto_::has_data() const
+bool Native::Macro::Auto::has_data() const
 {
     return false;
 }
 
-bool Native::Macro::Auto_::has_operation() const
+bool Native::Macro::Auto::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Macro::Auto_::get_absolute_path() const
+std::string Native::Macro::Auto::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/macro/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Macro::Auto_::get_segment_path() const
+std::string Native::Macro::Auto::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auto";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Macro::Auto_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Macro::Auto::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10332,26 +10358,27 @@ std::vector<std::pair<std::string, LeafData> > Native::Macro::Auto_::get_name_le
 
 }
 
-std::shared_ptr<Entity> Native::Macro::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Macro::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Macro::Auto_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Macro::Auto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Macro::Auto_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Macro::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Macro::Auto_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Macro::Auto::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Macro::Auto_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Macro::Auto::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
@@ -10592,14 +10619,6 @@ std::shared_ptr<Entity> Native::Ipv6::get_child_by_name(const std::string & chil
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -10639,6 +10658,7 @@ std::shared_ptr<Entity> Native::Ipv6::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source_guard != nullptr)
     {
         children["source-guard"] = source_guard;
@@ -10699,9 +10719,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::get_children() cons
         children["prefix-list"] = prefix_list;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(mld != nullptr)
@@ -10824,14 +10848,6 @@ std::shared_ptr<Entity> Native::Ipv6::SourceGuard::get_child_by_name(const std::
 {
     if(child_yang_name == "policy")
     {
-        for(auto const & c : policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::SourceGuard::Policy>();
         c->parent = this;
         policy.push_back(c);
@@ -10844,9 +10860,14 @@ std::shared_ptr<Entity> Native::Ipv6::SourceGuard::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::SourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10962,6 +10983,7 @@ std::shared_ptr<Entity> Native::Ipv6::SourceGuard::Policy::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::SourceGuard::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(validate != nullptr)
     {
         children["validate"] = validate;
@@ -11057,6 +11079,7 @@ std::shared_ptr<Entity> Native::Ipv6::SourceGuard::Policy::Validate::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::SourceGuard::Policy::Validate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11143,6 +11166,7 @@ std::shared_ptr<Entity> Native::Ipv6::SourceGuard::Policy::Deny::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::SourceGuard::Policy::Deny::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11219,6 +11243,7 @@ std::shared_ptr<Entity> Native::Ipv6::SourceGuard::Policy::Permit::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::SourceGuard::Policy::Permit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11304,14 +11329,6 @@ std::shared_ptr<Entity> Native::Ipv6::DestinationGuard::get_child_by_name(const 
 {
     if(child_yang_name == "policy")
     {
-        for(auto const & c : policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::DestinationGuard::Policy>();
         c->parent = this;
         policy.push_back(c);
@@ -11324,9 +11341,14 @@ std::shared_ptr<Entity> Native::Ipv6::DestinationGuard::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::DestinationGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11416,6 +11438,7 @@ std::shared_ptr<Entity> Native::Ipv6::DestinationGuard::Policy::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::DestinationGuard::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enforcement != nullptr)
     {
         children["enforcement"] = enforcement;
@@ -11501,6 +11524,7 @@ std::shared_ptr<Entity> Native::Ipv6::DestinationGuard::Policy::Enforcement::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::DestinationGuard::Policy::Enforcement::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11622,14 +11646,6 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::get_child_by_name(const std::string 
 
     if(child_yang_name == "Cisco-IOS-XE-dhcp:pool")
     {
-        for(auto const & c : pool)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::Dhcp::Pool>();
         c->parent = this;
         pool.push_back(c);
@@ -11642,6 +11658,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(server != nullptr)
     {
         children["Cisco-IOS-XE-dhcp:server"] = server;
@@ -11652,9 +11669,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::get_children(
         children["Cisco-IOS-XE-dhcp:guard"] = guard;
     }
 
+    count = 0;
     for (auto const & c : pool)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11739,6 +11760,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Server::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf != nullptr)
     {
         children["vrf"] = vrf;
@@ -11817,6 +11839,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Server::Vrf::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Server::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11902,14 +11925,6 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Guard::get_child_by_name(const std::
 {
     if(child_yang_name == "policy")
     {
-        for(auto const & c : policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::Dhcp::Guard::Policy>();
         c->parent = this;
         policy.push_back(c);
@@ -11922,9 +11937,14 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Guard::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Guard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12027,6 +12047,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Guard::Policy::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Guard::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(device_role != nullptr)
     {
         children["device-role"] = device_role;
@@ -12117,6 +12138,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Guard::Policy::DeviceRole::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Guard::Policy::DeviceRole::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12212,6 +12234,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Guard::Policy::Match::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Guard::Policy::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(server != nullptr)
     {
         children["server"] = server;
@@ -12283,6 +12306,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Guard::Policy::Match::Server::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Guard::Policy::Match::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12408,14 +12432,6 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Pool::get_child_by_name(const std::s
 
     if(child_yang_name == "link-address")
     {
-        for(auto const & c : link_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::Dhcp::Pool::LinkAddress>();
         c->parent = this;
         link_address.push_back(c);
@@ -12428,14 +12444,19 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Pool::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Pool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
     }
 
+    count = 0;
     for (auto const & c : link_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12544,14 +12565,6 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Pool::Address::get_child_by_name(con
 {
     if(child_yang_name == "prefix")
     {
-        for(auto const & c : prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::Dhcp::Pool::Address::Prefix>();
         c->parent = this;
         prefix.push_back(c);
@@ -12564,9 +12577,14 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Pool::Address::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Pool::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12649,6 +12667,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Pool::Address::Prefix::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Pool::Address::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lifetime != nullptr)
     {
         children["lifetime"] = lifetime;
@@ -12734,6 +12753,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Pool::Address::Prefix::Lifetime::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Pool::Address::Prefix::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12820,6 +12840,7 @@ std::shared_ptr<Entity> Native::Ipv6::Dhcp::Pool::LinkAddress::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Dhcp::Pool::LinkAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12924,14 +12945,6 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::get_child_by_name(const std::s
 {
     if(child_yang_name == "Cisco-IOS-XE-acl:named-acl")
     {
-        for(auto const & c : named_acl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::AccessList::NamedAcl>();
         c->parent = this;
         named_acl.push_back(c);
@@ -12940,14 +12953,6 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::get_child_by_name(const std::s
 
     if(child_yang_name == "Cisco-IOS-XE-acl:named-rb-acl")
     {
-        for(auto const & c : named_rb_acl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::AccessList::NamedRbAcl>();
         c->parent = this;
         named_rb_acl.push_back(c);
@@ -12969,14 +12974,23 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : named_acl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : named_rb_acl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(log_update != nullptr)
@@ -13016,7 +13030,7 @@ Native::Ipv6::AccessList::NamedAcl::NamedAcl()
     :
     name{YType::str, "name"}
     	,
-    default_(std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default_>())
+    default_(std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default>())
 {
     default_->parent = this;
 
@@ -13078,14 +13092,6 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::get_child_by_name(co
 {
     if(child_yang_name == "access-list-seq-rule")
     {
-        for(auto const & c : access_list_seq_rule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule>();
         c->parent = this;
         access_list_seq_rule.push_back(c);
@@ -13096,7 +13102,7 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::get_child_by_name(co
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default_>();
+            default_ = std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default>();
         }
         return default_;
     }
@@ -13107,9 +13113,14 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_list_seq_rule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(default_ != nullptr)
@@ -13211,6 +13222,7 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ace_rule != nullptr)
     {
         children["ace-rule"] = ace_rule;
@@ -13486,6 +13498,7 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::A
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13974,17 +13987,17 @@ bool Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule::has_leaf_or
     return false;
 }
 
-Native::Ipv6::AccessList::NamedAcl::Default_::Default_()
+Native::Ipv6::AccessList::NamedAcl::Default::Default()
 {
 
     yang_name = "default"; yang_parent_name = "named-acl"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Ipv6::AccessList::NamedAcl::Default_::~Default_()
+Native::Ipv6::AccessList::NamedAcl::Default::~Default()
 {
 }
 
-bool Native::Ipv6::AccessList::NamedAcl::Default_::has_data() const
+bool Native::Ipv6::AccessList::NamedAcl::Default::has_data() const
 {
     for (std::size_t index=0; index<access_list_seq_rule.size(); index++)
     {
@@ -13994,7 +14007,7 @@ bool Native::Ipv6::AccessList::NamedAcl::Default_::has_data() const
     return false;
 }
 
-bool Native::Ipv6::AccessList::NamedAcl::Default_::has_operation() const
+bool Native::Ipv6::AccessList::NamedAcl::Default::has_operation() const
 {
     for (std::size_t index=0; index<access_list_seq_rule.size(); index++)
     {
@@ -14004,14 +14017,14 @@ bool Native::Ipv6::AccessList::NamedAcl::Default_::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::Ipv6::AccessList::NamedAcl::Default_::get_segment_path() const
+std::string Native::Ipv6::AccessList::NamedAcl::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedAcl::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedAcl::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14020,19 +14033,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedAc
 
 }
 
-std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-list-seq-rule")
     {
-        for(auto const & c : access_list_seq_rule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule>();
+        auto c = std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule>();
         c->parent = this;
         access_list_seq_rule.push_back(c);
         return c;
@@ -14041,56 +14046,61 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::Default_::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAcl::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAcl::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_list_seq_rule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Ipv6::AccessList::NamedAcl::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ipv6::AccessList::NamedAcl::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Ipv6::AccessList::NamedAcl::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ipv6::AccessList::NamedAcl::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Ipv6::AccessList::NamedAcl::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ipv6::AccessList::NamedAcl::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "access-list-seq-rule")
         return true;
     return false;
 }
 
-Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AccessListSeqRule()
+Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AccessListSeqRule()
     :
     sequence{YType::uint64, "sequence"},
     remark{YType::str, "remark"}
     	,
-    ace_rule(std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule>())
+    ace_rule(std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule>())
 {
     ace_rule->parent = this;
 
     yang_name = "access-list-seq-rule"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::~AccessListSeqRule()
+Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::~AccessListSeqRule()
 {
 }
 
-bool Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::has_data() const
+bool Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::has_data() const
 {
     return sequence.is_set
 	|| remark.is_set
 	|| (ace_rule !=  nullptr && ace_rule->has_data());
 }
 
-bool Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::has_operation() const
+bool Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sequence.yfilter)
@@ -14098,14 +14108,14 @@ bool Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::has_operat
 	|| (ace_rule !=  nullptr && ace_rule->has_operation());
 }
 
-std::string Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::get_segment_path() const
+std::string Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list-seq-rule" <<"[sequence='" <<sequence <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14116,13 +14126,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedAc
 
 }
 
-std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ace-rule")
     {
         if(ace_rule == nullptr)
         {
-            ace_rule = std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule>();
+            ace_rule = std::make_shared<Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule>();
         }
         return ace_rule;
     }
@@ -14130,9 +14140,10 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::Default_::AccessList
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ace_rule != nullptr)
     {
         children["ace-rule"] = ace_rule;
@@ -14141,7 +14152,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAc
     return children;
 }
 
-void Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sequence")
     {
@@ -14157,7 +14168,7 @@ void Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::set_value(
     }
 }
 
-void Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sequence")
     {
@@ -14169,14 +14180,14 @@ void Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::set_filter
     }
 }
 
-bool Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ace-rule" || name == "sequence" || name == "remark")
         return true;
     return false;
 }
 
-Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::AceRule()
+Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::AceRule()
     :
     action{YType::enumeration, "action"},
     protocol{YType::str, "protocol"},
@@ -14230,11 +14241,11 @@ Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::AceRul
     yang_name = "ace-rule"; yang_parent_name = "access-list-seq-rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::~AceRule()
+Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::~AceRule()
 {
 }
 
-bool Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::has_data() const
+bool Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::has_data() const
 {
     return action.is_set
 	|| protocol.is_set
@@ -14285,7 +14296,7 @@ bool Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::h
 	|| named_msg_type.is_set;
 }
 
-bool Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::has_operation() const
+bool Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(action.yfilter)
@@ -14337,14 +14348,14 @@ bool Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::h
 	|| ydk::is_set(named_msg_type.yfilter);
 }
 
-std::string Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::get_segment_path() const
+std::string Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ace-rule";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14400,18 +14411,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedAc
 
 }
 
-std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action")
     {
@@ -14697,7 +14709,7 @@ void Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::s
     }
 }
 
-void Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action")
     {
@@ -14889,7 +14901,7 @@ void Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::s
     }
 }
 
-bool Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action" || name == "protocol" || name == "source-host" || name == "source-address" || name == "source-wildcard-bits" || name == "source-prefix" || name == "any" || name == "src-eq" || name == "src-gt" || name == "src-lt" || name == "src-neq" || name == "src-range1" || name == "src-range2" || name == "destination-host" || name == "destination-address" || name == "destination-wildcard-bits" || name == "destination-prefix" || name == "destination-any" || name == "dst-eq" || name == "dst-gt" || name == "dst-lt" || name == "dst-neq" || name == "dst-range1" || name == "dst-range2" || name == "auth" || name == "dest-option" || name == "dscp" || name == "flow-label" || name == "fragments" || name == "hbh" || name == "log" || name == "log-input" || name == "mobility" || name == "mobility-type" || name == "routing" || name == "routing-type" || name == "time-range" || name == "ack" || name == "fin" || name == "psh" || name == "rst" || name == "syn" || name == "urg" || name == "established" || name == "msg-type-case" || name == "msg-code" || name == "named-msg-type")
         return true;
@@ -14901,7 +14913,7 @@ Native::Ipv6::AccessList::NamedRbAcl::NamedRbAcl()
     name{YType::str, "name"},
     role_based{YType::empty, "role-based"}
     	,
-    default_(std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default_>())
+    default_(std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default>())
 {
     default_->parent = this;
 
@@ -14966,14 +14978,6 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::get_child_by_name(
 {
     if(child_yang_name == "access-list-seq-rule")
     {
-        for(auto const & c : access_list_seq_rule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule>();
         c->parent = this;
         access_list_seq_rule.push_back(c);
@@ -14984,7 +14988,7 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::get_child_by_name(
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default_>();
+            default_ = std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default>();
         }
         return default_;
     }
@@ -14995,9 +14999,14 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRbAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_list_seq_rule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(default_ != nullptr)
@@ -15109,6 +15118,7 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ace_rule != nullptr)
     {
         children["ace-rule"] = ace_rule;
@@ -15384,6 +15394,7 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15872,17 +15883,17 @@ bool Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule::has_leaf_
     return false;
 }
 
-Native::Ipv6::AccessList::NamedRbAcl::Default_::Default_()
+Native::Ipv6::AccessList::NamedRbAcl::Default::Default()
 {
 
     yang_name = "default"; yang_parent_name = "named-rb-acl"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Ipv6::AccessList::NamedRbAcl::Default_::~Default_()
+Native::Ipv6::AccessList::NamedRbAcl::Default::~Default()
 {
 }
 
-bool Native::Ipv6::AccessList::NamedRbAcl::Default_::has_data() const
+bool Native::Ipv6::AccessList::NamedRbAcl::Default::has_data() const
 {
     for (std::size_t index=0; index<access_list_seq_rule.size(); index++)
     {
@@ -15892,7 +15903,7 @@ bool Native::Ipv6::AccessList::NamedRbAcl::Default_::has_data() const
     return false;
 }
 
-bool Native::Ipv6::AccessList::NamedRbAcl::Default_::has_operation() const
+bool Native::Ipv6::AccessList::NamedRbAcl::Default::has_operation() const
 {
     for (std::size_t index=0; index<access_list_seq_rule.size(); index++)
     {
@@ -15902,14 +15913,14 @@ bool Native::Ipv6::AccessList::NamedRbAcl::Default_::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::Ipv6::AccessList::NamedRbAcl::Default_::get_segment_path() const
+std::string Native::Ipv6::AccessList::NamedRbAcl::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedRbAcl::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedRbAcl::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15918,19 +15929,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedRb
 
 }
 
-std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-list-seq-rule")
     {
-        for(auto const & c : access_list_seq_rule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule>();
+        auto c = std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule>();
         c->parent = this;
         access_list_seq_rule.push_back(c);
         return c;
@@ -15939,56 +15942,61 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::Default_::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRbAcl::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRbAcl::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_list_seq_rule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Ipv6::AccessList::NamedRbAcl::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ipv6::AccessList::NamedRbAcl::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Ipv6::AccessList::NamedRbAcl::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ipv6::AccessList::NamedRbAcl::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Ipv6::AccessList::NamedRbAcl::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ipv6::AccessList::NamedRbAcl::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "access-list-seq-rule")
         return true;
     return false;
 }
 
-Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AccessListSeqRule()
+Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AccessListSeqRule()
     :
     sequence{YType::uint64, "sequence"},
     remark{YType::str, "remark"}
     	,
-    ace_rule(std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule>())
+    ace_rule(std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule>())
 {
     ace_rule->parent = this;
 
     yang_name = "access-list-seq-rule"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::~AccessListSeqRule()
+Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::~AccessListSeqRule()
 {
 }
 
-bool Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::has_data() const
+bool Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::has_data() const
 {
     return sequence.is_set
 	|| remark.is_set
 	|| (ace_rule !=  nullptr && ace_rule->has_data());
 }
 
-bool Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::has_operation() const
+bool Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sequence.yfilter)
@@ -15996,14 +16004,14 @@ bool Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::has_oper
 	|| (ace_rule !=  nullptr && ace_rule->has_operation());
 }
 
-std::string Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::get_segment_path() const
+std::string Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "access-list-seq-rule" <<"[sequence='" <<sequence <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16014,13 +16022,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedRb
 
 }
 
-std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ace-rule")
     {
         if(ace_rule == nullptr)
         {
-            ace_rule = std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule>();
+            ace_rule = std::make_shared<Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule>();
         }
         return ace_rule;
     }
@@ -16028,9 +16036,10 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ace_rule != nullptr)
     {
         children["ace-rule"] = ace_rule;
@@ -16039,7 +16048,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRb
     return children;
 }
 
-void Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sequence")
     {
@@ -16055,7 +16064,7 @@ void Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::set_valu
     }
 }
 
-void Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sequence")
     {
@@ -16067,14 +16076,14 @@ void Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::set_filt
     }
 }
 
-bool Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ace-rule" || name == "sequence" || name == "remark")
         return true;
     return false;
 }
 
-Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::AceRule()
+Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::AceRule()
     :
     action{YType::enumeration, "action"},
     protocol{YType::str, "protocol"},
@@ -16128,11 +16137,11 @@ Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::AceR
     yang_name = "ace-rule"; yang_parent_name = "access-list-seq-rule"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::~AceRule()
+Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::~AceRule()
 {
 }
 
-bool Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::has_data() const
+bool Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::has_data() const
 {
     return action.is_set
 	|| protocol.is_set
@@ -16183,7 +16192,7 @@ bool Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule:
 	|| named_msg_type.is_set;
 }
 
-bool Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::has_operation() const
+bool Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(action.yfilter)
@@ -16235,14 +16244,14 @@ bool Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule:
 	|| ydk::is_set(named_msg_type.yfilter);
 }
 
-std::string Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::get_segment_path() const
+std::string Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ace-rule";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16298,18 +16307,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Ipv6::AccessList::NamedRb
 
 }
 
-std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action")
     {
@@ -16595,7 +16605,7 @@ void Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule:
     }
 }
 
-void Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action")
     {
@@ -16787,7 +16797,7 @@ void Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule:
     }
 }
 
-bool Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action" || name == "protocol" || name == "source-host" || name == "source-address" || name == "source-wildcard-bits" || name == "source-prefix" || name == "any" || name == "src-eq" || name == "src-gt" || name == "src-lt" || name == "src-neq" || name == "src-range1" || name == "src-range2" || name == "destination-host" || name == "destination-address" || name == "destination-wildcard-bits" || name == "destination-prefix" || name == "destination-any" || name == "dst-eq" || name == "dst-gt" || name == "dst-lt" || name == "dst-neq" || name == "dst-range1" || name == "dst-range2" || name == "auth" || name == "dest-option" || name == "dscp" || name == "flow-label" || name == "fragments" || name == "hbh" || name == "log" || name == "log-input" || name == "mobility" || name == "mobility-type" || name == "routing" || name == "routing-type" || name == "time-range" || name == "ack" || name == "fin" || name == "psh" || name == "rst" || name == "syn" || name == "urg" || name == "established" || name == "msg-type-case" || name == "msg-code" || name == "named-msg-type")
         return true;
@@ -16849,6 +16859,7 @@ std::shared_ptr<Entity> Native::Ipv6::AccessList::LogUpdate::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::AccessList::LogUpdate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16946,6 +16957,7 @@ std::shared_ptr<Entity> Native::Ipv6::Multicast::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rpf != nullptr)
     {
         children["Cisco-IOS-XE-multicast:rpf"] = rpf;
@@ -17048,6 +17060,7 @@ std::shared_ptr<Entity> Native::Ipv6::Multicast::Rpf::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Multicast::Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(backoff != nullptr)
     {
         children["backoff"] = backoff;
@@ -17140,6 +17153,7 @@ std::shared_ptr<Entity> Native::Ipv6::Multicast::Rpf::Backoff::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Multicast::Rpf::Backoff::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17286,6 +17300,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accounting != nullptr)
     {
         children["Cisco-IOS-XE-cef:accounting"] = accounting;
@@ -17401,6 +17416,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::Accounting::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17523,6 +17539,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::Optimize::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::Optimize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor != nullptr)
     {
         children["neighbor"] = neighbor;
@@ -17601,6 +17618,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::Optimize::Neighbor::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::Optimize::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17688,6 +17706,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::TrafficStatistics::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::TrafficStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17803,6 +17822,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(algorithm != nullptr)
     {
         children["algorithm"] = algorithm;
@@ -17933,6 +17953,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::Algorithm::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::Algorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tunnel != nullptr)
     {
         children["tunnel"] = tunnel;
@@ -18030,6 +18051,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::Algorithm::Tunnel::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::Algorithm::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18127,6 +18149,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::Algorithm::Universal::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::Algorithm::Universal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18220,6 +18243,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::Algorithm::Original::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::Algorithm::Original::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18323,6 +18347,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -18406,6 +18431,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18502,6 +18528,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -18603,6 +18630,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts::Source::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gtp != nullptr)
     {
         children["gtp"] = gtp;
@@ -18691,6 +18719,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::Algorithm::IncludePorts::Source::Destination::Gtp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18770,6 +18799,7 @@ std::shared_ptr<Entity> Native::Ipv6::Cef::LoadSharing::KeyControl::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Cef::LoadSharing::KeyControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18889,6 +18919,7 @@ std::shared_ptr<Entity> Native::Ipv6::Nd::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Nd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inspection != nullptr)
     {
         children["Cisco-IOS-XE-nd:inspection"] = inspection;
@@ -18984,14 +19015,6 @@ std::shared_ptr<Entity> Native::Ipv6::Nd::Inspection::get_child_by_name(const st
 {
     if(child_yang_name == "policy")
     {
-        for(auto const & c : policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ipv6::Nd::Inspection::Policy>();
         c->parent = this;
         policy.push_back(c);
@@ -19004,9 +19027,14 @@ std::shared_ptr<Entity> Native::Ipv6::Nd::Inspection::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Nd::Inspection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19156,6 +19184,7 @@ std::shared_ptr<Entity> Native::Ipv6::Nd::Inspection::Policy::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Nd::Inspection::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(device_role != nullptr)
     {
         children["device-role"] = device_role;
@@ -19289,6 +19318,7 @@ std::shared_ptr<Entity> Native::Ipv6::Nd::Inspection::Policy::DeviceRole::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Nd::Inspection::Policy::DeviceRole::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19395,6 +19425,7 @@ std::shared_ptr<Entity> Native::Ipv6::Nd::Inspection::Policy::Limit::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Nd::Inspection::Policy::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19471,6 +19502,7 @@ std::shared_ptr<Entity> Native::Ipv6::Nd::Inspection::Policy::SecLevel::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Nd::Inspection::Policy::SecLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19567,6 +19599,7 @@ std::shared_ptr<Entity> Native::Ipv6::Nd::Inspection::Policy::Tracking::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Nd::Inspection::Policy::Tracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(disable != nullptr)
     {
         children["disable"] = disable;
@@ -19652,6 +19685,7 @@ std::shared_ptr<Entity> Native::Ipv6::Nd::Inspection::Policy::Tracking::Disable:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ipv6::Nd::Inspection::Policy::Tracking::Disable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stale_lifetime != nullptr)
     {
         children["stale-lifetime"] = stale_lifetime;
@@ -19788,53 +19822,53 @@ const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule
 const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule::NamedMsgType::time_exceeded {32, "time-exceeded"};
 const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::AccessListSeqRule::AceRule::NamedMsgType::unreachable {33, "unreachable"};
 
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Action::deny {0, "deny"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Action::permit {1, "permit"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Action::deny {0, "deny"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Action::permit {1, "permit"};
 
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol::ahp {0, "ahp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol::esp {1, "esp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol::hbh {2, "hbh"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol::icmp {3, "icmp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol::ipv6 {4, "ipv6"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol::pcp {5, "pcp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol::sctp {6, "sctp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol::tcp {7, "tcp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::Protocol::udp {8, "udp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol::ahp {0, "ahp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol::esp {1, "esp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol::hbh {2, "hbh"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol::icmp {3, "icmp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol::ipv6 {4, "ipv6"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol::pcp {5, "pcp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol::sctp {6, "sctp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol::tcp {7, "tcp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::Protocol::udp {8, "udp"};
 
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::beyond_scope {0, "beyond-scope"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::destination_unreachable {1, "destination-unreachable"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::dhaad_reply {2, "dhaad-reply"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::dhaad_request {3, "dhaad-request"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::echo_reply {4, "echo-reply"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::echo_request {5, "echo-request"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::header {6, "header"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::hop_limit {7, "hop-limit"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mld_query {8, "mld-query"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mld_reduction {9, "mld-reduction"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mld_report {10, "mld-report"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mpd_advertisement {11, "mpd-advertisement"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mpd_solicitation {12, "mpd-solicitation"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::nd_na {13, "nd-na"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::nd_ns {14, "nd-ns"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::next_header {15, "next-header"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::no_admin {16, "no-admin"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::no_route {17, "no-route"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::packet_too_big {18, "packet-too-big"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::parameter_option {19, "parameter-option"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::parameter_problem {20, "parameter-problem"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::port_unreachable {21, "port-unreachable"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::reassembly_timeout {22, "reassembly-timeout"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::redirect {23, "redirect"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::reject_route {24, "reject-route"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::renum_command {25, "renum-command"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::renum_result {26, "renum-result"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::renum_seq_number {27, "renum-seq-number"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::router_advertisement {28, "router-advertisement"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::router_renumbering {29, "router-renumbering"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::router_solicitation {30, "router-solicitation"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::source_policy {31, "source-policy"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::time_exceeded {32, "time-exceeded"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::unreachable {33, "unreachable"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::beyond_scope {0, "beyond-scope"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::destination_unreachable {1, "destination-unreachable"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::dhaad_reply {2, "dhaad-reply"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::dhaad_request {3, "dhaad-request"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::echo_reply {4, "echo-reply"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::echo_request {5, "echo-request"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::header {6, "header"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::hop_limit {7, "hop-limit"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mld_query {8, "mld-query"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mld_reduction {9, "mld-reduction"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mld_report {10, "mld-report"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mpd_advertisement {11, "mpd-advertisement"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mpd_solicitation {12, "mpd-solicitation"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::nd_na {13, "nd-na"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::nd_ns {14, "nd-ns"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::next_header {15, "next-header"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::no_admin {16, "no-admin"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::no_route {17, "no-route"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::packet_too_big {18, "packet-too-big"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::parameter_option {19, "parameter-option"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::parameter_problem {20, "parameter-problem"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::port_unreachable {21, "port-unreachable"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::reassembly_timeout {22, "reassembly-timeout"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::redirect {23, "redirect"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::reject_route {24, "reject-route"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::renum_command {25, "renum-command"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::renum_result {26, "renum-result"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::renum_seq_number {27, "renum-seq-number"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::router_advertisement {28, "router-advertisement"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::router_renumbering {29, "router-renumbering"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::router_solicitation {30, "router-solicitation"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::source_policy {31, "source-policy"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::time_exceeded {32, "time-exceeded"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::unreachable {33, "unreachable"};
 
 const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule::Action::deny {0, "deny"};
 const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule::Action::permit {1, "permit"};
@@ -19884,53 +19918,53 @@ const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRu
 const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule::NamedMsgType::time_exceeded {32, "time-exceeded"};
 const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::AccessListSeqRule::AceRule::NamedMsgType::unreachable {33, "unreachable"};
 
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Action::deny {0, "deny"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Action::permit {1, "permit"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Action::deny {0, "deny"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Action::permit {1, "permit"};
 
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol::ahp {0, "ahp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol::esp {1, "esp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol::hbh {2, "hbh"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol::icmp {3, "icmp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol::ipv6 {4, "ipv6"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol::pcp {5, "pcp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol::sctp {6, "sctp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol::tcp {7, "tcp"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::Protocol::udp {8, "udp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol::ahp {0, "ahp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol::esp {1, "esp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol::hbh {2, "hbh"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol::icmp {3, "icmp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol::ipv6 {4, "ipv6"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol::pcp {5, "pcp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol::sctp {6, "sctp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol::tcp {7, "tcp"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::Protocol::udp {8, "udp"};
 
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::beyond_scope {0, "beyond-scope"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::destination_unreachable {1, "destination-unreachable"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::dhaad_reply {2, "dhaad-reply"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::dhaad_request {3, "dhaad-request"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::echo_reply {4, "echo-reply"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::echo_request {5, "echo-request"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::header {6, "header"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::hop_limit {7, "hop-limit"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mld_query {8, "mld-query"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mld_reduction {9, "mld-reduction"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mld_report {10, "mld-report"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mpd_advertisement {11, "mpd-advertisement"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::mpd_solicitation {12, "mpd-solicitation"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::nd_na {13, "nd-na"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::nd_ns {14, "nd-ns"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::next_header {15, "next-header"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::no_admin {16, "no-admin"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::no_route {17, "no-route"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::packet_too_big {18, "packet-too-big"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::parameter_option {19, "parameter-option"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::parameter_problem {20, "parameter-problem"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::port_unreachable {21, "port-unreachable"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::reassembly_timeout {22, "reassembly-timeout"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::redirect {23, "redirect"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::reject_route {24, "reject-route"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::renum_command {25, "renum-command"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::renum_result {26, "renum-result"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::renum_seq_number {27, "renum-seq-number"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::router_advertisement {28, "router-advertisement"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::router_renumbering {29, "router-renumbering"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::router_solicitation {30, "router-solicitation"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::source_policy {31, "source-policy"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::time_exceeded {32, "time-exceeded"};
-const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default_::AccessListSeqRule::AceRule::NamedMsgType::unreachable {33, "unreachable"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::beyond_scope {0, "beyond-scope"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::destination_unreachable {1, "destination-unreachable"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::dhaad_reply {2, "dhaad-reply"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::dhaad_request {3, "dhaad-request"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::echo_reply {4, "echo-reply"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::echo_request {5, "echo-request"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::header {6, "header"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::hop_limit {7, "hop-limit"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mld_query {8, "mld-query"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mld_reduction {9, "mld-reduction"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mld_report {10, "mld-report"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mpd_advertisement {11, "mpd-advertisement"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::mpd_solicitation {12, "mpd-solicitation"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::nd_na {13, "nd-na"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::nd_ns {14, "nd-ns"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::next_header {15, "next-header"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::no_admin {16, "no-admin"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::no_route {17, "no-route"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::packet_too_big {18, "packet-too-big"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::parameter_option {19, "parameter-option"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::parameter_problem {20, "parameter-problem"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::port_unreachable {21, "port-unreachable"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::reassembly_timeout {22, "reassembly-timeout"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::redirect {23, "redirect"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::reject_route {24, "reject-route"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::renum_command {25, "renum-command"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::renum_result {26, "renum-result"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::renum_seq_number {27, "renum-seq-number"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::router_advertisement {28, "router-advertisement"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::router_renumbering {29, "router-renumbering"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::router_solicitation {30, "router-solicitation"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::source_policy {31, "source-policy"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::time_exceeded {32, "time-exceeded"};
+const Enum::YLeaf Native::Ipv6::AccessList::NamedRbAcl::Default::AccessListSeqRule::AceRule::NamedMsgType::unreachable {33, "unreachable"};
 
 
 }

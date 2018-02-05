@@ -120,6 +120,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cdpglobal != nullptr)
     {
         children["cdpGlobal"] = cdpglobal;
@@ -267,6 +268,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpglobal::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpglobal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -410,14 +412,6 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfacetable::get_child_by_name(const 
 {
     if(child_yang_name == "cdpInterfaceEntry")
     {
-        for(auto const & c : cdpinterfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry>();
         c->parent = this;
         cdpinterfaceentry.push_back(c);
@@ -430,9 +424,14 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfacetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdpinterfaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -528,6 +527,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfacetable::Cdpinterfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -663,14 +663,6 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfaceexttable::get_child_by_name(con
 {
     if(child_yang_name == "cdpInterfaceExtEntry")
     {
-        for(auto const & c : cdpinterfaceextentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry>();
         c->parent = this;
         cdpinterfaceextentry.push_back(c);
@@ -683,9 +675,14 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfaceexttable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfaceexttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdpinterfaceextentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -769,6 +766,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpinterfaceexttable::Cdpinterfaceextentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -874,14 +872,6 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpcachetable::get_child_by_name(const std:
 {
     if(child_yang_name == "cdpCacheEntry")
     {
-        for(auto const & c : cdpcacheentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCDPMIB::Cdpcachetable::Cdpcacheentry>();
         c->parent = this;
         cdpcacheentry.push_back(c);
@@ -894,9 +884,14 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpcachetable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpcachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdpcacheentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1064,6 +1059,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpcachetable::Cdpcacheentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1379,14 +1375,6 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpctaddresstable::get_child_by_name(const 
 {
     if(child_yang_name == "cdpCtAddressEntry")
     {
-        for(auto const & c : cdpctaddressentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry>();
         c->parent = this;
         cdpctaddressentry.push_back(c);
@@ -1399,9 +1387,14 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpctaddresstable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpctaddresstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdpctaddressentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1493,6 +1486,7 @@ std::shared_ptr<Entity> CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::Cdpctaddresstable::Cdpctaddressentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -1435,11 +1435,11 @@ class Native::Diagnostic::Monitor : public ydk::Entity
 
         ydk::YLeaf syslog; //type: empty
         class Interval; //type: Native::Diagnostic::Monitor::Interval
-        class Switch_; //type: Native::Diagnostic::Monitor::Switch_
+        class Switch; //type: Native::Diagnostic::Monitor::Switch
         class Threshold; //type: Native::Diagnostic::Monitor::Threshold
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval> interval;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Switch_> > switch_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Switch> > switch_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold> threshold;
         
 }; // Native::Diagnostic::Monitor
@@ -1462,14 +1462,38 @@ class Native::Diagnostic::Monitor::Interval : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Switch_; //type: Native::Diagnostic::Monitor::Interval::Switch_
+        class Switch; //type: Native::Diagnostic::Monitor::Interval::Switch
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch_> switch_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch> switch_;
         
 }; // Native::Diagnostic::Monitor::Interval
 
 
-class Native::Diagnostic::Monitor::Interval::Switch_ : public ydk::Entity
+class Native::Diagnostic::Monitor::Interval::Switch : public ydk::Entity
+{
+    public:
+        Switch();
+        ~Switch();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Switch_; //type: Native::Diagnostic::Monitor::Interval::Switch::Switch_
+
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch::Switch_> > switch_;
+        
+}; // Native::Diagnostic::Monitor::Interval::Switch
+
+
+class Native::Diagnostic::Monitor::Interval::Switch::Switch_ : public ydk::Entity
 {
     public:
         Switch_();
@@ -1486,39 +1510,15 @@ class Native::Diagnostic::Monitor::Interval::Switch_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Switch__; //type: Native::Diagnostic::Monitor::Interval::Switch_::Switch__
-
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch_::Switch__> > switch_;
-        
-}; // Native::Diagnostic::Monitor::Interval::Switch_
-
-
-class Native::Diagnostic::Monitor::Interval::Switch_::Switch__ : public ydk::Entity
-{
-    public:
-        Switch__();
-        ~Switch__();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
         ydk::YLeaf number; //type: uint8
-        class Test; //type: Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test
+        class Test; //type: Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test> test;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test> test;
         
-}; // Native::Diagnostic::Monitor::Interval::Switch_::Switch__
+}; // Native::Diagnostic::Monitor::Interval::Switch::Switch_
 
 
-class Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test : public ydk::Entity
+class Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test : public ydk::Entity
 {
     public:
         Test();
@@ -1534,16 +1534,16 @@ class Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class TestIds; //type: Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds
-        class All; //type: Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All
+        class TestIds; //type: Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds
+        class All; //type: Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds> > test_ids;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All> all;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds> > test_ids;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All> all;
         
-}; // Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test
+}; // Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test
 
 
-class Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds : public ydk::Entity
+class Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds : public ydk::Entity
 {
     public:
         TestIds();
@@ -1564,10 +1564,10 @@ class Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds : 
         ydk::YLeaf milli_seconds; //type: uint16
         ydk::YLeaf number_of_days; //type: uint16
 
-}; // Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds
+}; // Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds
 
 
-class Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All : public ydk::Entity
+class Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All : public ydk::Entity
 {
     public:
         All();
@@ -1587,14 +1587,14 @@ class Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All : publ
         ydk::YLeaf milli_seconds; //type: uint16
         ydk::YLeaf number_of_days; //type: uint16
 
-}; // Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All
+}; // Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All
 
 
-class Native::Diagnostic::Monitor::Switch_ : public ydk::Entity
+class Native::Diagnostic::Monitor::Switch : public ydk::Entity
 {
     public:
-        Switch_();
-        ~Switch_();
+        Switch();
+        ~Switch();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1608,14 +1608,14 @@ class Native::Diagnostic::Monitor::Switch_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf number; //type: uint8
-        class Test; //type: Native::Diagnostic::Monitor::Switch_::Test
+        class Test; //type: Native::Diagnostic::Monitor::Switch::Test
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Switch_::Test> test;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Switch::Test> test;
         
-}; // Native::Diagnostic::Monitor::Switch_
+}; // Native::Diagnostic::Monitor::Switch
 
 
-class Native::Diagnostic::Monitor::Switch_::Test : public ydk::Entity
+class Native::Diagnostic::Monitor::Switch::Test : public ydk::Entity
 {
     public:
         Test();
@@ -1634,7 +1634,7 @@ class Native::Diagnostic::Monitor::Switch_::Test : public ydk::Entity
         ydk::YLeaf id; //type: string
         ydk::YLeaf all; //type: empty
 
-}; // Native::Diagnostic::Monitor::Switch_::Test
+}; // Native::Diagnostic::Monitor::Switch::Test
 
 
 class Native::Diagnostic::Monitor::Threshold : public ydk::Entity
@@ -1654,18 +1654,18 @@ class Native::Diagnostic::Monitor::Threshold : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Switch_; //type: Native::Diagnostic::Monitor::Threshold::Switch_
+        class Switch; //type: Native::Diagnostic::Monitor::Threshold::Switch
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch_> > switch_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch> > switch_;
         
 }; // Native::Diagnostic::Monitor::Threshold
 
 
-class Native::Diagnostic::Monitor::Threshold::Switch_ : public ydk::Entity
+class Native::Diagnostic::Monitor::Threshold::Switch : public ydk::Entity
 {
     public:
-        Switch_();
-        ~Switch_();
+        Switch();
+        ~Switch();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1679,14 +1679,14 @@ class Native::Diagnostic::Monitor::Threshold::Switch_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf number; //type: uint8
-        class Test; //type: Native::Diagnostic::Monitor::Threshold::Switch_::Test
+        class Test; //type: Native::Diagnostic::Monitor::Threshold::Switch::Test
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch_::Test> test;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch::Test> test;
         
-}; // Native::Diagnostic::Monitor::Threshold::Switch_
+}; // Native::Diagnostic::Monitor::Threshold::Switch
 
 
-class Native::Diagnostic::Monitor::Threshold::Switch_::Test : public ydk::Entity
+class Native::Diagnostic::Monitor::Threshold::Switch::Test : public ydk::Entity
 {
     public:
         Test();
@@ -1702,16 +1702,16 @@ class Native::Diagnostic::Monitor::Threshold::Switch_::Test : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class TestIds; //type: Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds
-        class All; //type: Native::Diagnostic::Monitor::Threshold::Switch_::Test::All
+        class TestIds; //type: Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds
+        class All; //type: Native::Diagnostic::Monitor::Threshold::Switch::Test::All
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds> > test_ids;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch_::Test::All> all;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds> > test_ids;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch::Test::All> all;
         
-}; // Native::Diagnostic::Monitor::Threshold::Switch_::Test
+}; // Native::Diagnostic::Monitor::Threshold::Switch::Test
 
 
-class Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds : public ydk::Entity
+class Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds : public ydk::Entity
 {
     public:
         TestIds();
@@ -1728,14 +1728,14 @@ class Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        class Failure; //type: Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure
+        class Failure; //type: Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure> failure;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure> failure;
         
-}; // Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds
+}; // Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds
 
 
-class Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure : public ydk::Entity
+class Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure : public ydk::Entity
 {
     public:
         Failure();
@@ -1751,14 +1751,14 @@ class Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Count; //type: Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count
+        class Count; //type: Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count> > count;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count> > count;
         
-}; // Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure
+}; // Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure
 
 
-class Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count : public ydk::Entity
+class Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count : public ydk::Entity
 {
     public:
         Count();
@@ -1782,10 +1782,10 @@ class Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::C
         ydk::YLeaf runs; //type: uint16
         ydk::YLeaf seconds; //type: uint32
 
-}; // Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count
+}; // Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count
 
 
-class Native::Diagnostic::Monitor::Threshold::Switch_::Test::All : public ydk::Entity
+class Native::Diagnostic::Monitor::Threshold::Switch::Test::All : public ydk::Entity
 {
     public:
         All();
@@ -1801,14 +1801,14 @@ class Native::Diagnostic::Monitor::Threshold::Switch_::Test::All : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Failure; //type: Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure
+        class Failure; //type: Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure> failure;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure> failure;
         
-}; // Native::Diagnostic::Monitor::Threshold::Switch_::Test::All
+}; // Native::Diagnostic::Monitor::Threshold::Switch::Test::All
 
 
-class Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure : public ydk::Entity
+class Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure : public ydk::Entity
 {
     public:
         Failure();
@@ -1824,14 +1824,14 @@ class Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Count; //type: Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count
+        class Count; //type: Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count> > count;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count> > count;
         
-}; // Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure
+}; // Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure
 
 
-class Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count : public ydk::Entity
+class Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count : public ydk::Entity
 {
     public:
         Count();
@@ -1855,7 +1855,7 @@ class Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count
         ydk::YLeaf runs; //type: uint16
         ydk::YLeaf seconds; //type: uint32
 
-}; // Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count
+}; // Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count
 
 
 class Native::Diagnostic::Schedule : public ydk::Entity
@@ -1875,18 +1875,18 @@ class Native::Diagnostic::Schedule : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Switch_; //type: Native::Diagnostic::Schedule::Switch_
+        class Switch; //type: Native::Diagnostic::Schedule::Switch
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_> > switch_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch> > switch_;
         
 }; // Native::Diagnostic::Schedule
 
 
-class Native::Diagnostic::Schedule::Switch_ : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch : public ydk::Entity
 {
     public:
-        Switch_();
-        ~Switch_();
+        Switch();
+        ~Switch();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1900,14 +1900,14 @@ class Native::Diagnostic::Schedule::Switch_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf switch_number; //type: uint8
-        class Test; //type: Native::Diagnostic::Schedule::Switch_::Test
+        class Test; //type: Native::Diagnostic::Schedule::Switch::Test
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test> test;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test> test;
         
-}; // Native::Diagnostic::Schedule::Switch_
+}; // Native::Diagnostic::Schedule::Switch
 
 
-class Native::Diagnostic::Schedule::Switch_::Test : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test : public ydk::Entity
 {
     public:
         Test();
@@ -1923,26 +1923,26 @@ class Native::Diagnostic::Schedule::Switch_::Test : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class TestIds; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds
-        class All; //type: Native::Diagnostic::Schedule::Switch_::Test::All
-        class Basic; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic
-        class Complete; //type: Native::Diagnostic::Schedule::Switch_::Test::Complete
-        class Minimal; //type: Native::Diagnostic::Schedule::Switch_::Test::Minimal
-        class NonDisruptive; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive
-        class PerPort; //type: Native::Diagnostic::Schedule::Switch_::Test::PerPort
+        class TestIds; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds
+        class All; //type: Native::Diagnostic::Schedule::Switch::Test::All
+        class Basic; //type: Native::Diagnostic::Schedule::Switch::Test::Basic
+        class Complete; //type: Native::Diagnostic::Schedule::Switch::Test::Complete
+        class Minimal; //type: Native::Diagnostic::Schedule::Switch::Test::Minimal
+        class NonDisruptive; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive
+        class PerPort; //type: Native::Diagnostic::Schedule::Switch::Test::PerPort
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds> > test_ids;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All> all;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic> basic;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Complete> complete;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Minimal> minimal;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive> non_disruptive;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::PerPort> per_port;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds> > test_ids;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All> all;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic> basic;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Complete> complete;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Minimal> minimal;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive> non_disruptive;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::PerPort> per_port;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test
+}; // Native::Diagnostic::Schedule::Switch::Test
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds : public ydk::Entity
 {
     public:
         TestIds();
@@ -1959,20 +1959,20 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly
-        class Port; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly
+        class Port; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly> weekly;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port> port;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port> port;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -1990,10 +1990,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily : public ydk::
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::On : public ydk::Entity
 {
     public:
         On();
@@ -2014,10 +2014,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::On : public ydk::Ent
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::On
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2036,10 +2036,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly : public ydk:
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port : public ydk::Entity
 {
     public:
         Port();
@@ -2055,18 +2055,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class InterfacePortNumber; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber
-        class PortNumberList; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList
-        class All; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All
+        class InterfacePortNumber; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber
+        class PortNumberList; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList
+        class All; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber> > interface_port_number;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList> > port_number_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All> all;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber> > interface_port_number;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList> > port_number_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All> all;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber : public ydk::Entity
 {
     public:
         InterfacePortNumber();
@@ -2083,18 +2083,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortN
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -2112,10 +2112,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortN
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On : public ydk::Entity
 {
     public:
         On();
@@ -2136,10 +2136,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortN
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2158,10 +2158,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortN
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList : public ydk::Entity
 {
     public:
         PortNumberList();
@@ -2178,18 +2178,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number_list; //type: string
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -2207,10 +2207,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On : public ydk::Entity
 {
     public:
         On();
@@ -2231,10 +2231,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2253,10 +2253,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All : public ydk::Entity
 {
     public:
         All();
@@ -2272,18 +2272,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -2301,10 +2301,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily : p
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On : public ydk::Entity
 {
     public:
         On();
@@ -2325,10 +2325,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On : publ
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2347,10 +2347,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly : 
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All : public ydk::Entity
 {
     public:
         All();
@@ -2366,20 +2366,20 @@ class Native::Diagnostic::Schedule::Switch_::Test::All : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::All::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Weekly
-        class Port; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::All::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::All::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::All::Weekly
+        class Port; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Weekly> weekly;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port> port;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port> port;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::All
+}; // Native::Diagnostic::Schedule::Switch::Test::All
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -2397,10 +2397,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Daily : public ydk::Enti
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::On : public ydk::Entity
 {
     public:
         On();
@@ -2421,10 +2421,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::On : public ydk::Entity
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::On
+}; // Native::Diagnostic::Schedule::Switch::Test::All::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2443,10 +2443,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Weekly : public ydk::Ent
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port : public ydk::Entity
 {
     public:
         Port();
@@ -2462,18 +2462,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class InterfacePortNumber; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
-        class PortNumberList; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList
-        class All_; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_
+        class InterfacePortNumber; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber
+        class PortNumberList; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList
+        class All_; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::All_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber> > interface_port_number;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList> > port_number_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_> all;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber> > interface_port_number;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList> > port_number_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::All_> all;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber : public ydk::Entity
 {
     public:
         InterfacePortNumber();
@@ -2490,18 +2490,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumbe
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -2519,10 +2519,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumbe
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On : public ydk::Entity
 {
     public:
         On();
@@ -2543,10 +2543,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumbe
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2565,10 +2565,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumbe
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList : public ydk::Entity
 {
     public:
         PortNumberList();
@@ -2585,18 +2585,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number_list; //type: string
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -2614,10 +2614,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Da
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On : public ydk::Entity
 {
     public:
         On();
@@ -2638,10 +2638,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2660,10 +2660,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::We
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_ : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::All_ : public ydk::Entity
 {
     public:
         All_();
@@ -2679,18 +2679,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_ : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::All_
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -2708,10 +2708,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily : publ
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On : public ydk::Entity
 {
     public:
         On();
@@ -2732,10 +2732,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On : public 
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2754,10 +2754,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly : pub
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic : public ydk::Entity
 {
     public:
         Basic();
@@ -2773,20 +2773,20 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly
-        class Port; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly
+        class Port; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly> weekly;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port> port;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port> port;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -2804,10 +2804,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily : public ydk::En
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::On : public ydk::Entity
 {
     public:
         On();
@@ -2828,10 +2828,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::On : public ydk::Entit
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::On
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2850,10 +2850,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly : public ydk::E
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port : public ydk::Entity
 {
     public:
         Port();
@@ -2869,18 +2869,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class InterfacePortNumber; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber
-        class PortNumberList; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList
-        class All; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All
+        class InterfacePortNumber; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber
+        class PortNumberList; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList
+        class All; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber> > interface_port_number;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList> > port_number_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All> all;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber> > interface_port_number;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList> > port_number_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All> all;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber : public ydk::Entity
 {
     public:
         InterfacePortNumber();
@@ -2897,18 +2897,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNum
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -2926,10 +2926,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNum
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On : public ydk::Entity
 {
     public:
         On();
@@ -2950,10 +2950,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNum
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -2972,10 +2972,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNum
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList : public ydk::Entity
 {
     public:
         PortNumberList();
@@ -2992,18 +2992,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number_list; //type: string
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -3021,10 +3021,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On : public ydk::Entity
 {
     public:
         On();
@@ -3045,10 +3045,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -3067,10 +3067,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All : public ydk::Entity
 {
     public:
         All();
@@ -3086,18 +3086,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -3115,10 +3115,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily : pub
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On : public ydk::Entity
 {
     public:
         On();
@@ -3139,10 +3139,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On : public
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -3161,10 +3161,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly : pu
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Complete : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Complete : public ydk::Entity
 {
     public:
         Complete();
@@ -3180,18 +3180,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::Complete : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::Complete::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::Complete::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::Complete::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Complete::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Complete::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Complete::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::Complete
+}; // Native::Diagnostic::Schedule::Switch::Test::Complete
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Complete::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -3209,10 +3209,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily : public ydk:
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::Complete::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Complete::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Complete::On : public ydk::Entity
 {
     public:
         On();
@@ -3233,10 +3233,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Complete::On : public ydk::En
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Complete::On
+}; // Native::Diagnostic::Schedule::Switch::Test::Complete::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -3255,10 +3255,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly : public ydk
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Minimal : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Minimal : public ydk::Entity
 {
     public:
         Minimal();
@@ -3274,18 +3274,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::Minimal : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::Minimal::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::Minimal::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Minimal::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Minimal::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::Minimal
+}; // Native::Diagnostic::Schedule::Switch::Test::Minimal
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -3303,10 +3303,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily : public ydk::
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Minimal::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Minimal::On : public ydk::Entity
 {
     public:
         On();
@@ -3327,10 +3327,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Minimal::On : public ydk::Ent
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Minimal::On
+}; // Native::Diagnostic::Schedule::Switch::Test::Minimal::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -3349,10 +3349,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly : public ydk:
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive : public ydk::Entity
 {
     public:
         NonDisruptive();
@@ -3368,20 +3368,20 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly
-        class Port; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly
+        class Port; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly> weekly;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port> port;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port> port;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -3399,10 +3399,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily : public
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On : public ydk::Entity
 {
     public:
         On();
@@ -3423,10 +3423,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On : public yd
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -3445,10 +3445,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly : publi
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port : public ydk::Entity
 {
     public:
         Port();
@@ -3464,18 +3464,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class InterfacePortNumber; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber
-        class PortNumberList; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList
-        class All; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All
+        class InterfacePortNumber; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber
+        class PortNumberList; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList
+        class All; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber> > interface_port_number;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList> > port_number_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All> all;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber> > interface_port_number;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList> > port_number_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All> all;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber : public ydk::Entity
 {
     public:
         InterfacePortNumber();
@@ -3492,18 +3492,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interfac
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -3521,10 +3521,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interfac
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On : public ydk::Entity
 {
     public:
         On();
@@ -3545,10 +3545,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interfac
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -3567,10 +3567,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interfac
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList : public ydk::Entity
 {
     public:
         PortNumberList();
@@ -3587,18 +3587,18 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumb
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number_list; //type: string
-        class Daily; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily
-        class On; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On
-        class Weekly; //type: Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly
+        class Daily; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily
+        class On; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On
+        class Weekly; //type: Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily> daily;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On> on;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly> weekly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily> daily;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On> on;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly> weekly;
         
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily : public ydk::Entity
 {
     public:
         Daily();
@@ -3616,10 +3616,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumb
 
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On : public ydk::Entity
 {
     public:
         On();
@@ -3640,10 +3640,10 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumb
         ydk::YLeaf year; //type: uint16
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On
 
 
-class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly : public ydk::Entity
+class Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly : public ydk::Entity
 {
     public:
         Weekly();
@@ -3662,7 +3662,7 @@ class Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumb
         ydk::YLeaf day; //type: WeekdayType
         ydk::YLeaf hh_mm; //type: string
 
-}; // Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly
+}; // Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly
 
 class Native::Arp::ArpEntry::ArpType : public ydk::Enum
 {

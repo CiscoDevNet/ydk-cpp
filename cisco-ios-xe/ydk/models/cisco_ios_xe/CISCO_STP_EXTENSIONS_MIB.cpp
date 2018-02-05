@@ -445,6 +445,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stpxuplinkfastobjects != nullptr)
     {
         children["stpxUplinkFastObjects"] = stpxuplinkfastobjects;
@@ -709,6 +710,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -856,6 +858,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1019,6 +1022,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1150,6 +1154,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1233,6 +1238,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1324,6 +1330,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1427,6 +1434,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1538,6 +1546,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstobjects::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1691,6 +1700,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1798,6 +1808,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1943,14 +1954,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::get_child_by_n
 {
     if(child_yang_name == "stpxPVSTVlanEntry")
     {
-        for(auto const & c : stpxpvstvlanentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry>();
         c->parent = this;
         stpxpvstvlanentry.push_back(c);
@@ -1963,9 +1966,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxpvstvlanentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2045,6 +2053,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanen
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2140,14 +2149,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::get_child
 {
     if(child_yang_name == "stpxInconsistencyEntry")
     {
-        for(auto const & c : stpxinconsistencyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry>();
         c->parent = this;
         stpxinconsistencyentry.push_back(c);
@@ -2160,9 +2161,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxinconsistencyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2246,6 +2252,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxincon
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2349,14 +2356,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::get_chi
 {
     if(child_yang_name == "stpxRootGuardConfigEntry")
     {
-        for(auto const & c : stpxrootguardconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry>();
         c->parent = this;
         stpxrootguardconfigentry.push_back(c);
@@ -2369,9 +2368,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxrootguardconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2451,6 +2455,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxroo
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2546,14 +2551,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::get_c
 {
     if(child_yang_name == "stpxRootInconsistencyEntry")
     {
-        for(auto const & c : stpxrootinconsistencyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry>();
         c->parent = this;
         stpxrootinconsistencyentry.push_back(c);
@@ -2566,9 +2563,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxrootinconsistencyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2652,6 +2654,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxr
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2757,14 +2760,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::get_child
 {
     if(child_yang_name == "stpxMISTPInstanceEntry")
     {
-        for(auto const & c : stpxmistpinstanceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry>();
         c->parent = this;
         stpxmistpinstanceentry.push_back(c);
@@ -2777,9 +2772,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxmistpinstanceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2875,6 +2875,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistp
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3010,14 +3011,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::get_chi
 {
     if(child_yang_name == "stpxLoopGuardConfigEntry")
     {
-        for(auto const & c : stpxloopguardconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry>();
         c->parent = this;
         stpxloopguardconfigentry.push_back(c);
@@ -3030,9 +3023,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxloopguardconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3116,6 +3114,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloo
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3221,14 +3220,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::get_c
 {
     if(child_yang_name == "stpxLoopInconsistencyEntry")
     {
-        for(auto const & c : stpxloopinconsistencyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry>();
         c->parent = this;
         stpxloopinconsistencyentry.push_back(c);
@@ -3241,9 +3232,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxloopinconsistencyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3327,6 +3323,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxl
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3432,14 +3429,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::get_child
 {
     if(child_yang_name == "stpxFastStartPortEntry")
     {
-        for(auto const & c : stpxfaststartportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry>();
         c->parent = this;
         stpxfaststartportentry.push_back(c);
@@ -3452,9 +3441,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxfaststartportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3546,6 +3540,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfasts
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3671,14 +3666,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::get_c
 {
     if(child_yang_name == "stpxFastStartOperModeEntry")
     {
-        for(auto const & c : stpxfaststartopermodeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry>();
         c->parent = this;
         stpxfaststartopermodeentry.push_back(c);
@@ -3691,9 +3678,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxfaststartopermodeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3777,6 +3769,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxf
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3882,14 +3875,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::get_child_b
 {
     if(child_yang_name == "stpxBpduSkewingEntry")
     {
-        for(auto const & c : stpxbpduskewingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry>();
         c->parent = this;
         stpxbpduskewingentry.push_back(c);
@@ -3902,9 +3887,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxbpduskewingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3996,6 +3986,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduske
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4121,14 +4112,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::get_child_b
 {
     if(child_yang_name == "stpxMSTInstanceEntry")
     {
-        for(auto const & c : stpxmstinstanceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry>();
         c->parent = this;
         stpxmstinstanceentry.push_back(c);
@@ -4141,9 +4124,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxmstinstanceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4239,6 +4227,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinst
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4374,14 +4363,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::get_chi
 {
     if(child_yang_name == "stpxMSTInstanceEditEntry")
     {
-        for(auto const & c : stpxmstinstanceeditentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry>();
         c->parent = this;
         stpxmstinstanceeditentry.push_back(c);
@@ -4394,9 +4375,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxmstinstanceeditentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4488,6 +4474,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmst
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4613,14 +4600,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstporttable::get_child_by_na
 {
     if(child_yang_name == "stpxMSTPortEntry")
     {
-        for(auto const & c : stpxmstportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry>();
         c->parent = this;
         stpxmstportentry.push_back(c);
@@ -4633,9 +4612,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstporttable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxmstportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4727,6 +4711,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentr
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4850,14 +4835,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::get_child_b
 {
     if(child_yang_name == "stpxMSTPortRoleEntry")
     {
-        for(auto const & c : stpxmstportroleentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry>();
         c->parent = this;
         stpxmstportroleentry.push_back(c);
@@ -4870,9 +4847,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxmstportroleentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4956,6 +4938,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstport
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5061,14 +5044,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::get_child_by_n
 {
     if(child_yang_name == "stpxRSTPPortEntry")
     {
-        for(auto const & c : stpxrstpportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry>();
         c->parent = this;
         stpxrstpportentry.push_back(c);
@@ -5081,9 +5056,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxrstpportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5171,6 +5151,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpporten
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5286,14 +5267,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::get_child_
 {
     if(child_yang_name == "stpxRSTPPortRoleEntry")
     {
-        for(auto const & c : stpxrstpportroleentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry>();
         c->parent = this;
         stpxrstpportroleentry.push_back(c);
@@ -5306,9 +5279,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxrstpportroleentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5392,6 +5370,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstppo
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5497,14 +5476,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::get_child_by_
 {
     if(child_yang_name == "stpxRPVSTPortEntry")
     {
-        for(auto const & c : stpxrpvstportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry>();
         c->parent = this;
         stpxrpvstportentry.push_back(c);
@@ -5517,9 +5488,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxrpvstportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5603,6 +5579,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstport
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5706,14 +5683,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::get_child_
 {
     if(child_yang_name == "stpxSMSTInstanceEntry")
     {
-        for(auto const & c : stpxsmstinstanceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry>();
         c->parent = this;
         stpxsmstinstanceentry.push_back(c);
@@ -5726,9 +5695,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxsmstinstanceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5824,6 +5798,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstin
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5959,14 +5934,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::get_ch
 {
     if(child_yang_name == "stpxSMSTInstanceEditEntry")
     {
-        for(auto const & c : stpxsmstinstanceeditentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry>();
         c->parent = this;
         stpxsmstinstanceeditentry.push_back(c);
@@ -5979,9 +5946,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxsmstinstanceeditentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6069,6 +6041,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsm
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6184,14 +6157,6 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::get_child_by_n
 {
     if(child_yang_name == "stpxSMSTPortEntry")
     {
-        for(auto const & c : stpxsmstportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry>();
         c->parent = this;
         stpxsmstportentry.push_back(c);
@@ -6204,9 +6169,14 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stpxsmstportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6306,6 +6276,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstporten
 std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

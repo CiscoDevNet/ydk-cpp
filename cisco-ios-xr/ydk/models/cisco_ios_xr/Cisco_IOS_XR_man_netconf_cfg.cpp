@@ -68,6 +68,7 @@ std::shared_ptr<Entity> NetconfYang::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> NetconfYang::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(agent != nullptr)
     {
         children["agent"] = agent;
@@ -198,6 +199,7 @@ std::shared_ptr<Entity> NetconfYang::Agent::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ssh != nullptr)
     {
         children["ssh"] = ssh;
@@ -291,6 +293,7 @@ std::shared_ptr<Entity> NetconfYang::Agent::Ssh::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::Ssh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -382,6 +385,7 @@ std::shared_ptr<Entity> NetconfYang::Agent::Session::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

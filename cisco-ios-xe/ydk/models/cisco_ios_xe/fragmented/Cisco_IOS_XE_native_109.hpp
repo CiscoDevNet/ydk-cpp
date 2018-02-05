@@ -912,7 +912,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Neighbor::DistributeList 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf inout; //type: Inout
-        ydk::YLeaf accesslist; //type: one of string, uint16
+        ydk::YLeaf accesslist; //type: one of uint16, string
         class Inout;
 
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Neighbor::DistributeList
@@ -1924,7 +1924,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute : public ydk
         class Ospf; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Ospf
         class Ospfv3; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Ospfv3
         class Rip; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Rip
-        class Static_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_
+        class Static; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Application> application; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Bgp_> bgp;
@@ -1939,7 +1939,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute : public ydk
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Ospf> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Ospfv3> > ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static> static_; // presence node
         
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute
 
@@ -2097,10 +2097,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class IsisArea; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::IsisArea
-        class Default_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default_
+        class Default; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::IsisArea> > isis_area;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default> default_;
         
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis
 
@@ -2132,11 +2132,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::IsisA
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::IsisArea
 
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default_ : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2155,7 +2155,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Defau
         ydk::YLeaf route_map; //type: string
         class Routes;
 
-}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default_
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default
 
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Lisp : public ydk::Entity
@@ -2198,10 +2198,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class IsoIgrpArea; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::IsoIgrpArea
-        class Default_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::Default_
+        class Default; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::IsoIgrpArea> > iso_igrp_area;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::Default> default_;
         
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp
 
@@ -2229,11 +2229,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::Is
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::IsoIgrpArea
 
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::Default_ : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2248,7 +2248,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::De
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf metric; //type: uint32
 
-}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::Default_
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::IsoIgrp::Default
 
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Mobile : public ydk::Entity
@@ -2493,11 +2493,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Rip : publi
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Rip
 
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2511,16 +2511,16 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_ : p
 
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf route_map; //type: string
-        class Clns; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Clns
-        class Ip; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Ip
+        class Clns; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static::Clns
+        class Ip; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Clns> clns; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Ip> ip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static::Clns> clns; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static::Ip> ip; // presence node
         
-}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static
 
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Clns : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static::Clns : public ydk::Entity
 {
     public:
         Clns();
@@ -2539,10 +2539,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Cl
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf metric; //type: uint32
 
-}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Clns
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static::Clns
 
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Ip : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -2561,7 +2561,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Ip
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static_::Ip
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Static::Ip
 
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::TableMap : public ydk::Entity
@@ -2842,7 +2842,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_ : public ydk::Entity
         class Confederation; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation
         class ConsistencyChecker; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker
         class Dampening; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening
-        class Default_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_
+        class Default; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default
         class GracefulRestart; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::GracefulRestart
         class HaMode; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode
         class InjectMap; //type: Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::InjectMap
@@ -2863,7 +2863,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_ : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Confederation> confederation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::ConsistencyChecker> consistency_checker;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening> dampening; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::GracefulRestart> graceful_restart; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::HaMode> ha_mode;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::InjectMap> > inject_map;
@@ -3545,11 +3545,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening::Dampen :
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Dampening::Dampen
 
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_ : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3567,7 +3567,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_ : public y
         ydk::YLeaf route_target; //type: RouteTarget
         class RouteTarget;
 
-}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default
 
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::GracefulRestart : public ydk::Entity
@@ -3764,7 +3764,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::IsisA
 
 };
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default_::Routes : public ydk::Enum
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv4::Redistribute::Isis::Default::Routes : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level_1;
@@ -3780,7 +3780,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Bestpath::AsPath : 
 
 };
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default_::RouteTarget : public ydk::Enum
+class Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Default::RouteTarget : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf filter;

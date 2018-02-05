@@ -2344,18 +2344,18 @@ class Native::Interface::TenGigabitEthernet::Power : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Inline_; //type: Native::Interface::TenGigabitEthernet::Power::Inline_
+        class Inline; //type: Native::Interface::TenGigabitEthernet::Power::Inline
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline_> inline_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline> inline_;
         
 }; // Native::Interface::TenGigabitEthernet::Power
 
 
-class Native::Interface::TenGigabitEthernet::Power::Inline_ : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Power::Inline : public ydk::Entity
 {
     public:
-        Inline_();
-        ~Inline_();
+        Inline();
+        ~Inline();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2369,26 +2369,26 @@ class Native::Interface::TenGigabitEthernet::Power::Inline_ : public ydk::Entity
 
         ydk::YLeaf consumption; //type: uint16
         ydk::YLeaf never; //type: empty
-        class Auto_; //type: Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_
-        class FourPair; //type: Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair
-        class Police; //type: Native::Interface::TenGigabitEthernet::Power::Inline_::Police
-        class Port; //type: Native::Interface::TenGigabitEthernet::Power::Inline_::Port
-        class Static_; //type: Native::Interface::TenGigabitEthernet::Power::Inline_::Static_
+        class Auto; //type: Native::Interface::TenGigabitEthernet::Power::Inline::Auto
+        class FourPair; //type: Native::Interface::TenGigabitEthernet::Power::Inline::FourPair
+        class Police; //type: Native::Interface::TenGigabitEthernet::Power::Inline::Police
+        class Port; //type: Native::Interface::TenGigabitEthernet::Power::Inline::Port
+        class Static; //type: Native::Interface::TenGigabitEthernet::Power::Inline::Static
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_> auto_; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair> four_pair;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline_::Police> police; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline_::Port> port;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline_::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline::Auto> auto_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline::FourPair> four_pair;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline::Police> police; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline::Port> port;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline::Static> static_; // presence node
         
-}; // Native::Interface::TenGigabitEthernet::Power::Inline_
+}; // Native::Interface::TenGigabitEthernet::Power::Inline
 
 
-class Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_ : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Power::Inline::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2402,10 +2402,10 @@ class Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_ : public ydk:
 
         ydk::YLeaf max; //type: int32
 
-}; // Native::Interface::TenGigabitEthernet::Power::Inline_::Auto_
+}; // Native::Interface::TenGigabitEthernet::Power::Inline::Auto
 
 
-class Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Power::Inline::FourPair : public ydk::Entity
 {
     public:
         FourPair();
@@ -2423,10 +2423,10 @@ class Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair : public y
 
         ydk::YLeaf forced; //type: empty
 
-}; // Native::Interface::TenGigabitEthernet::Power::Inline_::FourPair
+}; // Native::Interface::TenGigabitEthernet::Power::Inline::FourPair
 
 
-class Native::Interface::TenGigabitEthernet::Power::Inline_::Police : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Power::Inline::Police : public ydk::Entity
 {
     public:
         Police();
@@ -2442,14 +2442,14 @@ class Native::Interface::TenGigabitEthernet::Power::Inline_::Police : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Action; //type: Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action
+        class Action; //type: Native::Interface::TenGigabitEthernet::Power::Inline::Police::Action
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action> action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Power::Inline::Police::Action> action;
         
-}; // Native::Interface::TenGigabitEthernet::Power::Inline_::Police
+}; // Native::Interface::TenGigabitEthernet::Power::Inline::Police
 
 
-class Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Power::Inline::Police::Action : public ydk::Entity
 {
     public:
         Action();
@@ -2468,10 +2468,10 @@ class Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action : pu
         ydk::YLeaf errdisable; //type: empty
         ydk::YLeaf log; //type: empty
 
-}; // Native::Interface::TenGigabitEthernet::Power::Inline_::Police::Action
+}; // Native::Interface::TenGigabitEthernet::Power::Inline::Police::Action
 
 
-class Native::Interface::TenGigabitEthernet::Power::Inline_::Port : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Power::Inline::Port : public ydk::Entity
 {
     public:
         Port();
@@ -2490,14 +2490,14 @@ class Native::Interface::TenGigabitEthernet::Power::Inline_::Port : public ydk::
         ydk::YLeaf poe_ha; //type: empty
         ydk::YLeaf two_event; //type: empty
 
-}; // Native::Interface::TenGigabitEthernet::Power::Inline_::Port
+}; // Native::Interface::TenGigabitEthernet::Power::Inline::Port
 
 
-class Native::Interface::TenGigabitEthernet::Power::Inline_::Static_ : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Power::Inline::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2511,7 +2511,7 @@ class Native::Interface::TenGigabitEthernet::Power::Inline_::Static_ : public yd
 
         ydk::YLeaf max; //type: int32
 
-}; // Native::Interface::TenGigabitEthernet::Power::Inline_::Static_
+}; // Native::Interface::TenGigabitEthernet::Power::Inline::Static
 
 
 class Native::Interface::TenGigabitEthernet::Authentication : public ydk::Entity
@@ -2985,20 +2985,20 @@ class Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Value_
+        class Value; //type: Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Value
         class Server; //type: Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Server
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Value_> value_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Value> value_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Server> server; // presence node
         
 }; // Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity
 
 
-class Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Value_ : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3013,7 +3013,7 @@ class Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::
         ydk::YLeaf value_; //type: uint16
         ydk::YLeaf dynamic; //type: empty
 
-}; // Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Value_
+}; // Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Value
 
 
 class Native::Interface::TenGigabitEthernet::Authentication::Timer::Inactivity::Server : public ydk::Entity
@@ -3603,8 +3603,8 @@ class Native::Interface::TwentyFiveGigabitEthernet::Backup::Delay : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 

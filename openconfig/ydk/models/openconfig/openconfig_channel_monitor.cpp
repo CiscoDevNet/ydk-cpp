@@ -61,14 +61,6 @@ std::shared_ptr<Entity> ChannelMonitors::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "channel-monitor")
     {
-        for(auto const & c : channel_monitor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ChannelMonitors::ChannelMonitor>();
         c->parent = this;
         channel_monitor.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> ChannelMonitors::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : channel_monitor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -224,6 +221,7 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -319,6 +317,7 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Config::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -409,6 +408,7 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::State::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -497,14 +497,6 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Channels::get_child_by_
 {
     if(child_yang_name == "channel")
     {
-        for(auto const & c : channel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ChannelMonitors::ChannelMonitor::Channels::Channel>();
         c->parent = this;
         channel.push_back(c);
@@ -517,9 +509,14 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Channels::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Channels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : channel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -606,6 +603,7 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Channels::Channel::get_
 std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Channels::Channel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(state != nullptr)
     {
         children["state"] = state;
@@ -705,6 +703,7 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Channels::Channel::Stat
 std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Channels::Channel::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

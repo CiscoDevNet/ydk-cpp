@@ -1478,18 +1478,18 @@ class Native::Interface::Tunnel::Peer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Default_; //type: Native::Interface::Tunnel::Peer::Default_
+        class Default; //type: Native::Interface::Tunnel::Peer::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default> default_;
         
 }; // Native::Interface::Tunnel::Peer
 
 
-class Native::Interface::Tunnel::Peer::Default_ : public ydk::Entity
+class Native::Interface::Tunnel::Peer::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1501,14 +1501,14 @@ class Native::Interface::Tunnel::Peer::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Interface::Tunnel::Peer::Default_::Ip
+        class Ip; //type: Native::Interface::Tunnel::Peer::Default::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default_::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default::Ip> ip;
         
-}; // Native::Interface::Tunnel::Peer::Default_
+}; // Native::Interface::Tunnel::Peer::Default
 
 
-class Native::Interface::Tunnel::Peer::Default_::Ip : public ydk::Entity
+class Native::Interface::Tunnel::Peer::Default::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -1524,14 +1524,14 @@ class Native::Interface::Tunnel::Peer::Default_::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Interface::Tunnel::Peer::Default_::Ip::Address
+        class Address; //type: Native::Interface::Tunnel::Peer::Default::Ip::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default_::Ip::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default::Ip::Address> address;
         
-}; // Native::Interface::Tunnel::Peer::Default_::Ip
+}; // Native::Interface::Tunnel::Peer::Default::Ip
 
 
-class Native::Interface::Tunnel::Peer::Default_::Ip::Address : public ydk::Entity
+class Native::Interface::Tunnel::Peer::Default::Ip::Address : public ydk::Entity
 {
     public:
         Address();
@@ -1548,16 +1548,16 @@ class Native::Interface::Tunnel::Peer::Default_::Ip::Address : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dhcp; //type: empty
-        class DhcpPool; //type: Native::Interface::Tunnel::Peer::Default_::Ip::Address::DhcpPool
-        class Pool; //type: Native::Interface::Tunnel::Peer::Default_::Ip::Address::Pool
+        class DhcpPool; //type: Native::Interface::Tunnel::Peer::Default::Ip::Address::DhcpPool
+        class Pool; //type: Native::Interface::Tunnel::Peer::Default::Ip::Address::Pool
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default_::Ip::Address::DhcpPool> dhcp_pool; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default_::Ip::Address::Pool> pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default::Ip::Address::DhcpPool> dhcp_pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer::Default::Ip::Address::Pool> pool; // presence node
         
-}; // Native::Interface::Tunnel::Peer::Default_::Ip::Address
+}; // Native::Interface::Tunnel::Peer::Default::Ip::Address
 
 
-class Native::Interface::Tunnel::Peer::Default_::Ip::Address::DhcpPool : public ydk::Entity
+class Native::Interface::Tunnel::Peer::Default::Ip::Address::DhcpPool : public ydk::Entity
 {
     public:
         DhcpPool();
@@ -1575,10 +1575,10 @@ class Native::Interface::Tunnel::Peer::Default_::Ip::Address::DhcpPool : public 
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::Tunnel::Peer::Default_::Ip::Address::DhcpPool
+}; // Native::Interface::Tunnel::Peer::Default::Ip::Address::DhcpPool
 
 
-class Native::Interface::Tunnel::Peer::Default_::Ip::Address::Pool : public ydk::Entity
+class Native::Interface::Tunnel::Peer::Default::Ip::Address::Pool : public ydk::Entity
 {
     public:
         Pool();
@@ -1596,7 +1596,7 @@ class Native::Interface::Tunnel::Peer::Default_::Ip::Address::Pool : public ydk:
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::Tunnel::Peer::Default_::Ip::Address::Pool
+}; // Native::Interface::Tunnel::Peer::Default::Ip::Address::Pool
 
 
 class Native::Interface::Tunnel::PmPath : public ydk::Entity
@@ -3297,11 +3297,11 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working 
 
         ydk::YLeaf id; //type: uint32
         class Dynamic; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Dynamic
-        class Explicit_; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit_
+        class Explicit; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit
         class SegmentRouting; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::SegmentRouting
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Dynamic> dynamic; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit_> explicit_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit> explicit_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::SegmentRouting> segment_routing; // presence node
         
 }; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working
@@ -3386,11 +3386,11 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working:
 }; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Dynamic::Bandwidth
 
 
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit_ : public ydk::Entity
+class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit : public ydk::Entity
 {
     public:
-        Explicit_();
-        ~Explicit_();
+        Explicit();
+        ~Explicit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3409,14 +3409,14 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working:
         ydk::YLeaf attributes; //type: string
         ydk::YLeaf lockdown; //type: empty
         ydk::YLeaf sticky; //type: empty
-        class Bandwidth; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth
+        class Bandwidth; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth> bandwidth;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth> bandwidth;
         
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit_
+}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit
 
 
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth : public ydk::Entity
+class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth : public ydk::Entity
 {
     public:
         Bandwidth();
@@ -3435,7 +3435,7 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working:
         ydk::YLeaf bandwidth; //type: uint32
         ydk::YLeaf sub_pool; //type: uint32
 
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth
+}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth
 
 
 class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::SegmentRouting : public ydk::Entity
@@ -3479,11 +3479,11 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect 
         //type: uint32 (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Working::id)
         ydk::YLeaf id;
         class Diverse; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Diverse
-        class Explicit_; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit_
+        class Explicit; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit
         class List; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::List
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Diverse> diverse;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit_> explicit_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit> explicit_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::List> list;
         
 }; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect
@@ -3543,11 +3543,11 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect:
 }; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Diverse::Bandwidth
 
 
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit_ : public ydk::Entity
+class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit : public ydk::Entity
 {
     public:
-        Explicit_();
-        ~Explicit_();
+        Explicit();
+        ~Explicit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3565,14 +3565,14 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect:
         ydk::YLeaf non_revertive; //type: empty
         ydk::YLeaf verbatim; //type: empty
         ydk::YLeaf attributes; //type: string
-        class Bandwidth; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth
+        class Bandwidth; //type: Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth> bandwidth;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth> bandwidth;
         
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit_
+}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit
 
 
-class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth : public ydk::Entity
+class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth : public ydk::Entity
 {
     public:
         Bandwidth();
@@ -3591,7 +3591,7 @@ class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect:
         ydk::YLeaf bandwidth; //type: uint32
         ydk::YLeaf sub_pool; //type: uint32
 
-}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth
+}; // Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth
 
 
 class Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::List : public ydk::Entity

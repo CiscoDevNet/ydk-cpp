@@ -94,6 +94,7 @@ std::shared_ptr<Entity> MplsStatic::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -334,6 +332,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsps != nullptr)
     {
         children["lsps"] = lsps;
@@ -422,14 +421,6 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::get_child_by_name(const std
 {
     if(child_yang_name == "lsp")
     {
-        for(auto const & c : lsp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp>();
         c->parent = this;
         lsp.push_back(c);
@@ -442,9 +433,14 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lsp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -531,6 +527,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label != nullptr)
     {
         children["label"] = label;
@@ -702,14 +699,6 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_child_by_na
 
     if(child_yang_name == "path-info")
     {
-        for(auto const & c : path_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo>();
         c->parent = this;
         path_info.push_back(c);
@@ -718,14 +707,6 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_child_by_na
 
     if(child_yang_name == "backup-path-info")
     {
-        for(auto const & c : backup_path_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo>();
         c->parent = this;
         backup_path_info.push_back(c);
@@ -738,6 +719,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix != nullptr)
     {
         children["prefix"] = prefix;
@@ -753,14 +735,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp:
         children["backup-pathset-resolve-nh"] = backup_pathset_resolve_nh;
     }
 
+    count = 0;
     for (auto const & c : path_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : backup_path_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -913,6 +903,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::get_chi
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix != nullptr)
     {
         children["prefix"] = prefix;
@@ -1002,6 +993,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1106,6 +1098,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveN
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1210,6 +1203,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetRe
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1340,6 +1334,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -1493,6 +1488,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexth
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1602,6 +1598,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexth
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1732,6 +1729,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo:
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -1885,6 +1883,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo:
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1994,6 +1993,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo:
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2092,14 +2092,6 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::get_child_by_name(co
 {
     if(child_yang_name == "local-label")
     {
-        for(auto const & c : local_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel>();
         c->parent = this;
         local_label.push_back(c);
@@ -2112,9 +2104,14 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2267,14 +2264,6 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_chil
 
     if(child_yang_name == "path-info")
     {
-        for(auto const & c : path_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo>();
         c->parent = this;
         path_info.push_back(c);
@@ -2283,14 +2272,6 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_chil
 
     if(child_yang_name == "backup-path-info")
     {
-        for(auto const & c : backup_path_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo>();
         c->parent = this;
         backup_path_info.push_back(c);
@@ -2303,6 +2284,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_chil
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix != nullptr)
     {
         children["prefix"] = prefix;
@@ -2318,14 +2300,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabel
         children["backup-pathset-resolve-nh"] = backup_pathset_resolve_nh;
     }
 
+    count = 0;
     for (auto const & c : path_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : backup_path_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2488,6 +2478,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix != nullptr)
     {
         children["prefix"] = prefix;
@@ -2577,6 +2568,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2681,6 +2673,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetR
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2785,6 +2778,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPa
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2915,6 +2909,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -3068,6 +3063,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -3177,6 +3173,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3307,6 +3304,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPa
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -3460,6 +3458,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPa
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -3569,6 +3568,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPa
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3728,6 +3728,7 @@ std::shared_ptr<Entity> MplsStatic::Summary::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3953,14 +3954,6 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::get_child_by_name(const std::st
 {
     if(child_yang_name == "local-label")
     {
-        for(auto const & c : local_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::LocalLabels::LocalLabel>();
         c->parent = this;
         local_label.push_back(c);
@@ -3973,9 +3966,14 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4135,14 +4133,6 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::get_child_by_name(c
 
     if(child_yang_name == "path-info")
     {
-        for(auto const & c : path_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::LocalLabels::LocalLabel::PathInfo>();
         c->parent = this;
         path_info.push_back(c);
@@ -4151,14 +4141,6 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::get_child_by_name(c
 
     if(child_yang_name == "backup-path-info")
     {
-        for(auto const & c : backup_path_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsStatic::LocalLabels::LocalLabel::BackupPathInfo>();
         c->parent = this;
         backup_path_info.push_back(c);
@@ -4171,6 +4153,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix != nullptr)
     {
         children["prefix"] = prefix;
@@ -4186,14 +4169,22 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLab
         children["backup-pathset-resolve-nh"] = backup_pathset_resolve_nh;
     }
 
+    count = 0;
     for (auto const & c : path_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : backup_path_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4356,6 +4347,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::Prefix::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix != nullptr)
     {
         children["prefix"] = prefix;
@@ -4445,6 +4437,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4549,6 +4542,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::g
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4653,6 +4647,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolv
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4783,6 +4778,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::get_child
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::PathInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -4936,6 +4932,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -5045,6 +5042,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5175,6 +5173,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::get
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nexthop != nullptr)
     {
         children["nexthop"] = nexthop;
@@ -5328,6 +5327,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nex
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -5437,6 +5437,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nex
 std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

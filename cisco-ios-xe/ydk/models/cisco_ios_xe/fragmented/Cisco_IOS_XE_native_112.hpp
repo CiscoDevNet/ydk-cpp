@@ -176,7 +176,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_ : public ydk::Entit
         class Confederation; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Confederation
         class ConsistencyChecker; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::ConsistencyChecker
         class Dampening; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Dampening
-        class Default_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default_
+        class Default; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default
         class GracefulRestart; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::GracefulRestart
         class HaMode; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::HaMode
         class InjectMap; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::InjectMap
@@ -197,7 +197,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_ : public ydk::Entit
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Confederation> confederation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::ConsistencyChecker> consistency_checker;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Dampening> dampening; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::GracefulRestart> graceful_restart; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::HaMode> ha_mode;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::InjectMap> > inject_map;
@@ -879,11 +879,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Dampening::Dampen 
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Dampening::Dampen
 
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default_ : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -901,7 +901,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default_ : public 
         ydk::YLeaf route_target; //type: RouteTarget
         class RouteTarget;
 
-}; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default_
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default
 
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::GracefulRestart : public ydk::Entity
@@ -1372,7 +1372,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Distance::AdmDistance : 
         ydk::YLeaf distance; //type: uint16
         ydk::YLeaf srcip; //type: string
         ydk::YLeaf wildbits; //type: string
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
 
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Distance::AdmDistance
 
@@ -1393,7 +1393,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::DistributeList : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint16
+        ydk::YLeaf id; //type: one of uint16, string
         class In; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::DistributeList::In
         class Out; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::DistributeList::Out
 
@@ -2390,7 +2390,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Neighbor::DistributeList
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf inout; //type: Inout
-        ydk::YLeaf accesslist; //type: one of string, uint16
+        ydk::YLeaf accesslist; //type: one of uint16, string
         class Inout;
 
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Neighbor::DistributeList
@@ -3402,7 +3402,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute : public yd
         class Ospf; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Ospf
         class Ospfv3; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Ospfv3
         class Rip; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Rip
-        class Static_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Static_
+        class Static; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Application> application; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Bgp_> bgp;
@@ -3417,7 +3417,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute : public yd
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Ospf> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Ospfv3> > ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Static> static_; // presence node
         
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute
 
@@ -3575,10 +3575,10 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class IsisArea; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::IsisArea
-        class Default_; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default_
+        class Default; //type: Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::IsisArea> > isis_area;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default> default_;
         
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis
 
@@ -3610,11 +3610,11 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Isis
 }; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::IsisArea
 
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default_ : public ydk::Entity
+class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3633,7 +3633,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Defa
         ydk::YLeaf route_map; //type: string
         class Routes;
 
-}; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default_
+}; // Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default
 
 
 class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Lisp : public ydk::Entity
@@ -3674,7 +3674,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Bestpath::AsPath :
 
 };
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default_::RouteTarget : public ydk::Enum
+class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Bgp_::Default::RouteTarget : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf filter;
@@ -3762,7 +3762,7 @@ class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Isis
 
 };
 
-class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default_::Routes : public ydk::Enum
+class Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Redistribute::Isis::Default::Routes : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level_1;

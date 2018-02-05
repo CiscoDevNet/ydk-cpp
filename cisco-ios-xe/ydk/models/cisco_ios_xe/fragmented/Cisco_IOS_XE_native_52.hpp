@@ -572,18 +572,18 @@ class Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Static_; //type: Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_
+        class Static; //type: Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static> static_;
         
 }; // Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy
 
 
-class Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_ : public ydk::Entity
+class Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -598,7 +598,7 @@ class Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_ : pu
         ydk::YLeaf sgt; //type: uint16
         ydk::YLeaf trusted; //type: empty
 
-}; // Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_
+}; // Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static
 
 
 class Native::Interface::FortyGigabitEthernet::Cts::Manual::Sap : public ydk::Entity
@@ -1396,8 +1396,8 @@ class Native::Interface::HundredGigE::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -1562,8 +1562,8 @@ class Native::Interface::HundredGigE::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -2315,7 +2315,7 @@ class Native::Interface::HundredGigE::Ip : public ydk::Entity
 
         ydk::YLeaf admission; //type: string
         ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf directed_broadcast; //type: one of string, uint16
+        ydk::YLeaf directed_broadcast; //type: one of uint16, string
         ydk::YLeaf local_proxy_arp; //type: empty
         ydk::YLeaf proxy_arp; //type: boolean
         ydk::YLeaf redirects; //type: boolean
@@ -2432,7 +2432,7 @@ class Native::Interface::HundredGigE::Ip::AccessGroup::In::CommonAcl : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of string, uint16
+        ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::HundredGigE::Ip::AccessGroup::In::CommonAcl
@@ -2454,7 +2454,7 @@ class Native::Interface::HundredGigE::Ip::AccessGroup::In::Acl : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of string, uint16
+        ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::HundredGigE::Ip::AccessGroup::In::Acl
@@ -2501,7 +2501,7 @@ class Native::Interface::HundredGigE::Ip::AccessGroup::Out::CommonAcl : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of string, uint16
+        ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::HundredGigE::Ip::AccessGroup::Out::CommonAcl
@@ -2523,7 +2523,7 @@ class Native::Interface::HundredGigE::Ip::AccessGroup::Out::Acl : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of string, uint16
+        ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::HundredGigE::Ip::AccessGroup::Out::Acl

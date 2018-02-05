@@ -709,5 +709,12 @@ module ydktest-sanity {
           type string;
        }
     }
+
+    list no-key-list {
+        config false;
+        leaf test {
+            type string;
+        }
+    }
   }
 }

@@ -41,11 +41,11 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Rip : publ
 }; // Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Rip
 
 
-class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_ : public ydk::Entity
+class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -61,17 +61,17 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_ : 
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf metric_type; //type: MetricType
         ydk::YLeaf route_map; //type: string
-        class Clns; //type: Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Clns
-        class Ip; //type: Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Ip
+        class Clns; //type: Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Clns
+        class Ip; //type: Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Clns> clns; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Ip> ip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Clns> clns; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Ip> ip; // presence node
                 class MetricType;
 
-}; // Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_
+}; // Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static
 
 
-class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Clns : public ydk::Entity
+class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Clns : public ydk::Entity
 {
     public:
         Clns();
@@ -93,10 +93,10 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::C
         ydk::YLeaf route_map; //type: string
         class MetricType;
 
-}; // Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Clns
+}; // Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Clns
 
 
-class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Ip : public ydk::Entity
+class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -118,7 +118,7 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::I
         ydk::YLeaf route_map; //type: string
         class MetricType;
 
-}; // Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Ip
+}; // Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Ip
 
 
 class Native::Router::IsisContainer::Isis::SetAttachedBit : public ydk::Entity
@@ -2558,7 +2558,7 @@ class Native::Router::Eigrp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of string, uint16
+        ydk::YLeaf id; //type: one of uint16, string
         ydk::YLeaf auto_summary; //type: empty
         ydk::YLeaf maximum_paths; //type: uint8
         ydk::YLeaf nsf; //type: empty
@@ -3351,7 +3351,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::DistributeList::EigFilt : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf eig_filt; //type: one of string, uint16
+        ydk::YLeaf eig_filt; //type: one of uint16, string
         class In; //type: Native::Router::Eigrp::AddressFamily::AfIpList::DistributeList::EigFilt::In
         class Out; //type: Native::Router::Eigrp::AddressFamily::AfIpList::DistributeList::EigFilt::Out
 
@@ -3671,7 +3671,7 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Rip::Metri
 
 };
 
-class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::MetricType : public ydk::Enum
+class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;
@@ -3681,7 +3681,7 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::M
 
 };
 
-class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Clns::MetricType : public ydk::Enum
+class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Clns::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;
@@ -3691,7 +3691,7 @@ class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::C
 
 };
 
-class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static_::Ip::MetricType : public ydk::Enum
+class Native::Router::IsisContainer::Isis::Redistribute::Vrf::Global::Static::Ip::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf external;

@@ -211,6 +211,7 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lldpconfiguration != nullptr)
     {
         children["lldpConfiguration"] = lldpconfiguration;
@@ -385,6 +386,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldpconfiguration::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpconfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -524,6 +526,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldpstatistics::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -667,6 +670,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldplocalsystemdata::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocalsystemdata::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -798,14 +802,6 @@ std::shared_ptr<Entity> LLDPMIB::Lldpportconfigtable::get_child_by_name(const st
 {
     if(child_yang_name == "lldpPortConfigEntry")
     {
-        for(auto const & c : lldpportconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LLDPMIB::Lldpportconfigtable::Lldpportconfigentry>();
         c->parent = this;
         lldpportconfigentry.push_back(c);
@@ -818,9 +814,14 @@ std::shared_ptr<Entity> LLDPMIB::Lldpportconfigtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpportconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldpportconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -908,6 +909,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1021,14 +1023,6 @@ std::shared_ptr<Entity> LLDPMIB::Lldpstatstxporttable::get_child_by_name(const s
 {
     if(child_yang_name == "lldpStatsTxPortEntry")
     {
-        for(auto const & c : lldpstatstxportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry>();
         c->parent = this;
         lldpstatstxportentry.push_back(c);
@@ -1041,9 +1035,14 @@ std::shared_ptr<Entity> LLDPMIB::Lldpstatstxporttable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatstxporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldpstatstxportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1123,6 +1122,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::get
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1218,14 +1218,6 @@ std::shared_ptr<Entity> LLDPMIB::Lldpstatsrxporttable::get_child_by_name(const s
 {
     if(child_yang_name == "lldpStatsRxPortEntry")
     {
-        for(auto const & c : lldpstatsrxportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry>();
         c->parent = this;
         lldpstatsrxportentry.push_back(c);
@@ -1238,9 +1230,14 @@ std::shared_ptr<Entity> LLDPMIB::Lldpstatsrxporttable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatsrxporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldpstatsrxportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1340,6 +1337,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::get
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1485,14 +1483,6 @@ std::shared_ptr<Entity> LLDPMIB::Lldplocporttable::get_child_by_name(const std::
 {
     if(child_yang_name == "lldpLocPortEntry")
     {
-        for(auto const & c : lldplocportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LLDPMIB::Lldplocporttable::Lldplocportentry>();
         c->parent = this;
         lldplocportentry.push_back(c);
@@ -1505,9 +1495,14 @@ std::shared_ptr<Entity> LLDPMIB::Lldplocporttable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldplocportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1595,6 +1590,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldplocporttable::Lldplocportentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocporttable::Lldplocportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1710,14 +1706,6 @@ std::shared_ptr<Entity> LLDPMIB::Lldplocmanaddrtable::get_child_by_name(const st
 {
     if(child_yang_name == "lldpLocManAddrEntry")
     {
-        for(auto const & c : lldplocmanaddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry>();
         c->parent = this;
         lldplocmanaddrentry.push_back(c);
@@ -1730,9 +1718,14 @@ std::shared_ptr<Entity> LLDPMIB::Lldplocmanaddrtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocmanaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldplocmanaddrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1832,6 +1825,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1977,14 +1971,6 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremtable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "lldpRemEntry")
     {
-        for(auto const & c : lldprementry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LLDPMIB::Lldpremtable::Lldprementry>();
         c->parent = this;
         lldprementry.push_back(c);
@@ -1997,9 +1983,14 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremtable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldprementry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2119,6 +2110,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremtable::Lldprementry::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremtable::Lldprementry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2310,14 +2302,6 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremmanaddrtable::get_child_by_name(const st
 {
     if(child_yang_name == "lldpRemManAddrEntry")
     {
-        for(auto const & c : lldpremmanaddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry>();
         c->parent = this;
         lldpremmanaddrentry.push_back(c);
@@ -2330,9 +2314,14 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremmanaddrtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremmanaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldpremmanaddrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2436,6 +2425,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2591,14 +2581,6 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremunknowntlvtable::get_child_by_name(const
 {
     if(child_yang_name == "lldpRemUnknownTLVEntry")
     {
-        for(auto const & c : lldpremunknowntlventry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry>();
         c->parent = this;
         lldpremunknowntlventry.push_back(c);
@@ -2611,9 +2593,14 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremunknowntlvtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremunknowntlvtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldpremunknowntlventry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2705,6 +2692,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry:
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2830,14 +2818,6 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremorgdefinfotable::get_child_by_name(const
 {
     if(child_yang_name == "lldpRemOrgDefInfoEntry")
     {
-        for(auto const & c : lldpremorgdefinfoentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry>();
         c->parent = this;
         lldpremorgdefinfoentry.push_back(c);
@@ -2850,9 +2830,14 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremorgdefinfotable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremorgdefinfotable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldpremorgdefinfoentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2952,6 +2937,7 @@ std::shared_ptr<Entity> LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry:
 std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

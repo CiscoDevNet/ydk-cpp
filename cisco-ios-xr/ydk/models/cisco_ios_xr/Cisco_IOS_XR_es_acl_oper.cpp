@@ -68,6 +68,7 @@ std::shared_ptr<Entity> EsAcl::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active != nullptr)
     {
         children["active"] = active;
@@ -219,6 +220,7 @@ std::shared_ptr<Entity> EsAcl::Active::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(oor != nullptr)
     {
         children["oor"] = oor;
@@ -321,6 +323,7 @@ std::shared_ptr<Entity> EsAcl::Active::Oor::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(acl_summary != nullptr)
     {
         children["acl-summary"] = acl_summary;
@@ -408,6 +411,7 @@ std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -498,6 +502,7 @@ std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::Details::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -620,6 +625,7 @@ std::shared_ptr<Entity> EsAcl::Active::List::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(acls != nullptr)
     {
         children["acls"] = acls;
@@ -700,14 +706,6 @@ std::shared_ptr<Entity> EsAcl::Active::List::Acls::get_child_by_name(const std::
 {
     if(child_yang_name == "acl")
     {
-        for(auto const & c : acl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EsAcl::Active::List::Acls::Acl>();
         c->parent = this;
         acl.push_back(c);
@@ -720,9 +718,14 @@ std::shared_ptr<Entity> EsAcl::Active::List::Acls::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : acl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -812,6 +815,7 @@ std::shared_ptr<Entity> EsAcl::Active::List::Acls::Acl::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(acl_sequence_numbers != nullptr)
     {
         children["acl-sequence-numbers"] = acl_sequence_numbers;
@@ -895,14 +899,6 @@ std::shared_ptr<Entity> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_
 {
     if(child_yang_name == "acl-sequence-number")
     {
-        for(auto const & c : acl_sequence_number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber>();
         c->parent = this;
         acl_sequence_number.push_back(c);
@@ -915,9 +911,14 @@ std::shared_ptr<Entity> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : acl_sequence_number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1074,6 +1075,7 @@ std::shared_ptr<Entity> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclS
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1379,14 +1381,6 @@ std::shared_ptr<Entity> EsAcl::Active::OorAcls::get_child_by_name(const std::str
 {
     if(child_yang_name == "oor-acl")
     {
-        for(auto const & c : oor_acl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EsAcl::Active::OorAcls::OorAcl>();
         c->parent = this;
         oor_acl.push_back(c);
@@ -1399,9 +1393,14 @@ std::shared_ptr<Entity> EsAcl::Active::OorAcls::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::OorAcls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : oor_acl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1493,6 +1492,7 @@ std::shared_ptr<Entity> EsAcl::Active::OorAcls::OorAcl::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::OorAcls::OorAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1618,14 +1618,6 @@ std::shared_ptr<Entity> EsAcl::Active::Usages::get_child_by_name(const std::stri
 {
     if(child_yang_name == "usage")
     {
-        for(auto const & c : usage)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EsAcl::Active::Usages::Usage>();
         c->parent = this;
         usage.push_back(c);
@@ -1638,9 +1630,14 @@ std::shared_ptr<Entity> EsAcl::Active::Usages::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Usages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : usage)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1728,6 +1725,7 @@ std::shared_ptr<Entity> EsAcl::Active::Usages::Usage::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Usages::Usage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

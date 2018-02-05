@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Udp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Udp::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Udp::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Udp::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> Udp::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -388,6 +387,7 @@ std::shared_ptr<Entity> Udp::Nodes::Node::Statistics::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::Node::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_traffic != nullptr)
     {
         children["ipv4-traffic"] = ipv4_traffic;
@@ -484,6 +484,7 @@ std::shared_ptr<Entity> Udp::Nodes::Node::Statistics::Ipv4Traffic::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::Node::Statistics::Ipv4Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -630,6 +631,7 @@ std::shared_ptr<Entity> Udp::Nodes::Node::Statistics::Ipv6Traffic::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Udp::Nodes::Node::Statistics::Ipv6Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -765,6 +767,7 @@ std::shared_ptr<Entity> UdpConnection::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -870,14 +873,6 @@ std::shared_ptr<Entity> UdpConnection::Nodes::get_child_by_name(const std::strin
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UdpConnection::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -890,9 +885,14 @@ std::shared_ptr<Entity> UdpConnection::Nodes::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1021,6 +1021,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -1152,6 +1153,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clients != nullptr)
     {
         children["clients"] = clients;
@@ -1235,14 +1237,6 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::Clients::get_chi
 {
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Statistics::Clients::Client>();
         c->parent = this;
         client.push_back(c);
@@ -1255,9 +1249,14 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::Clients::get_chi
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::Clients::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1350,6 +1349,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::Clients::Client:
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::Clients::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1522,6 +1522,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::Summary::get_chi
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1690,14 +1691,6 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::g
 {
     if(child_yang_name == "pcb-statistic")
     {
-        for(auto const & c : pcb_statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic>();
         c->parent = this;
         pcb_statistic.push_back(c);
@@ -1710,9 +1703,14 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::g
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::PcbStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pcb_statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1816,6 +1814,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(send != nullptr)
     {
         children["send"] = send;
@@ -1942,6 +1941,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2084,6 +2084,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Statistics::PcbStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Receive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2209,6 +2210,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queries != nullptr)
     {
         children["queries"] = queries;
@@ -2282,14 +2284,6 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::get_child_by_
 {
     if(child_yang_name == "query")
     {
-        for(auto const & c : query)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query>();
         c->parent = this;
         query.push_back(c);
@@ -2302,9 +2296,14 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : query)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2387,6 +2386,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::get_ch
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pcbs != nullptr)
     {
         children["pcbs"] = pcbs;
@@ -2470,14 +2470,6 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 {
     if(child_yang_name == "pcb")
     {
-        for(auto const & c : pcb)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb>();
         c->parent = this;
         pcb.push_back(c);
@@ -2490,9 +2482,14 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pcb)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2613,6 +2610,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_address != nullptr)
     {
         children["local-address"] = local_address;
@@ -2742,6 +2740,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::LocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2846,6 +2845,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::ForeignAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2956,6 +2956,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lpts_pcb != nullptr)
     {
         children["lpts-pcb"] = lpts_pcb;
@@ -3087,14 +3088,6 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 
     if(child_yang_name == "filter")
     {
-        for(auto const & c : filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter>();
         c->parent = this;
         filter.push_back(c);
@@ -3107,6 +3100,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(options != nullptr)
     {
         children["options"] = options;
@@ -3122,9 +3116,13 @@ std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts:
         children["accept-mask"] = accept_mask;
     }
 
+    count = 0;
     for (auto const & c : filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3217,6 +3215,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Options::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3311,6 +3310,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::LptsFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3427,6 +3427,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::AcceptMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3621,6 +3622,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(packet_type != nullptr)
     {
         children["packet-type"] = packet_type;
@@ -3798,6 +3800,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::PacketType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3922,6 +3925,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::RemoteAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4026,6 +4030,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common::LptsPcb::Filter::LocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4124,14 +4129,6 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::get_child_by_nam
 {
     if(child_yang_name == "pcb-detail")
     {
-        for(auto const & c : pcb_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UdpConnection::Nodes::Node::PcbDetails::PcbDetail>();
         c->parent = this;
         pcb_detail.push_back(c);
@@ -4144,9 +4141,14 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pcb_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4270,6 +4272,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_c
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_address != nullptr)
     {
         children["local-address"] = local_address;
@@ -4434,6 +4437,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::Local
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::LocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4538,6 +4542,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::Forei
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbDetails::PcbDetail::ForeignAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4636,14 +4641,6 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::get_child_by_name
 {
     if(child_yang_name == "pcb-brief")
     {
-        for(auto const & c : pcb_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UdpConnection::Nodes::Node::PcbBriefs::PcbBrief>();
         c->parent = this;
         pcb_brief.push_back(c);
@@ -4656,9 +4653,14 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbBriefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pcb_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4778,6 +4780,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_chi
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_address != nullptr)
     {
         children["local-address"] = local_address;
@@ -4932,6 +4935,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAd
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::LocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5036,6 +5040,7 @@ std::shared_ptr<Entity> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::Foreign
 std::map<std::string, std::shared_ptr<Entity>> UdpConnection::Nodes::Node::PcbBriefs::PcbBrief::ForeignAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

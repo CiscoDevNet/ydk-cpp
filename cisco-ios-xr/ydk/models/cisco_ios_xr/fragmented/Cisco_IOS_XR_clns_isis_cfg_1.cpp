@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRet
 {
     if(child_yang_name == "lsp-retransmit-throttle-interval")
     {
-        for(auto const & c : lsp_retransmit_throttle_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval>();
         c->parent = this;
         lsp_retransmit_throttle_interval.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRet
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lsp_retransmit_throttle_interval)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -156,6 +153,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRet
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -244,14 +242,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRet
 {
     if(child_yang_name == "lsp-retransmit-interval")
     {
-        for(auto const & c : lsp_retransmit_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval>();
         c->parent = this;
         lsp_retransmit_interval.push_back(c);
@@ -264,9 +254,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRet
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lsp_retransmit_interval)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -339,6 +334,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRet
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -437,6 +433,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Bfd::g
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -545,14 +542,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Priori
 {
     if(child_yang_name == "priority")
     {
-        for(auto const & c : priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority>();
         c->parent = this;
         priority.push_back(c);
@@ -565,9 +554,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Priori
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::Priorities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -640,6 +634,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Priori
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -728,14 +723,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloA
 {
     if(child_yang_name == "hello-accept-password")
     {
-        for(auto const & c : hello_accept_password)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword>();
         c->parent = this;
         hello_accept_password.push_back(c);
@@ -748,9 +735,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloA
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hello_accept_password)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -823,6 +815,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloA
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -911,14 +904,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloP
 {
     if(child_yang_name == "hello-password")
     {
-        for(auto const & c : hello_password)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword>();
         c->parent = this;
         hello_password.push_back(c);
@@ -931,9 +916,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloP
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hello_password)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1014,6 +1004,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloP
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1122,14 +1113,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloP
 {
     if(child_yang_name == "hello-padding")
     {
-        for(auto const & c : hello_padding)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding>();
         c->parent = this;
         hello_padding.push_back(c);
@@ -1142,9 +1125,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloP
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hello_padding)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1217,6 +1205,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloP
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1305,14 +1294,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloM
 {
     if(child_yang_name == "hello-multiplier")
     {
-        for(auto const & c : hello_multiplier)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier>();
         c->parent = this;
         hello_multiplier.push_back(c);
@@ -1325,9 +1306,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloM
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hello_multiplier)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1400,6 +1386,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloM
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1488,14 +1475,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspFas
 {
     if(child_yang_name == "lsp-fast-flood-threshold")
     {
-        for(auto const & c : lsp_fast_flood_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThreshold>();
         c->parent = this;
         lsp_fast_flood_threshold.push_back(c);
@@ -1508,9 +1487,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspFas
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lsp_fast_flood_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1583,6 +1567,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspFas
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1671,14 +1656,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Prefix
 {
     if(child_yang_name == "prefix-attribute-n-flag-clear")
     {
-        for(auto const & c : prefix_attribute_n_flag_clear)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::PrefixAttributeNFlagClear>();
         c->parent = this;
         prefix_attribute_n_flag_clear.push_back(c);
@@ -1691,9 +1668,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_attribute_n_flag_clear)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1762,6 +1744,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::PrefixAttributeNFlagClear::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1840,14 +1823,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloI
 {
     if(child_yang_name == "hello-interval")
     {
-        for(auto const & c : hello_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval>();
         c->parent = this;
         hello_interval.push_back(c);
@@ -1860,9 +1835,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloI
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hello_interval)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1935,6 +1915,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloI
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2023,14 +2004,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "interface-af")
     {
-        for(auto const & c : interface_af)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf>();
         c->parent = this;
         interface_af.push_back(c);
@@ -2043,9 +2016,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_af)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2138,14 +2116,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 
     if(child_yang_name == "topology-name")
     {
-        for(auto const & c : topology_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName>();
         c->parent = this;
         topology_name.push_back(c);
@@ -2158,14 +2128,19 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_af_data != nullptr)
     {
         children["interface-af-data"] = interface_af_data;
     }
 
+    count = 0;
     for (auto const & c : topology_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2386,6 +2361,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_sid != nullptr)
     {
         children["prefix-sid"] = prefix_sid;
@@ -2538,6 +2514,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2754,6 +2731,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frrlfa_candidate_interfaces != nullptr)
     {
         children["frrlfa-candidate-interfaces"] = frrlfa_candidate_interfaces;
@@ -2862,14 +2840,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frrlfa-candidate-interface")
     {
-        for(auto const & c : frrlfa_candidate_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface>();
         c->parent = this;
         frrlfa_candidate_interface.push_back(c);
@@ -2882,9 +2852,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frrlfa_candidate_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2961,6 +2936,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3059,14 +3035,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frr-remote-lfa-max-metric")
     {
-        for(auto const & c : frr_remote_lfa_max_metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric>();
         c->parent = this;
         frr_remote_lfa_max_metric.push_back(c);
@@ -3079,9 +3047,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frr_remote_lfa_max_metric)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3154,6 +3127,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3242,14 +3216,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frr-type")
     {
-        for(auto const & c : frr_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrType>();
         c->parent = this;
         frr_type.push_back(c);
@@ -3262,9 +3228,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frr_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3337,6 +3308,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3425,14 +3397,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frr-remote-lfa-type")
     {
-        for(auto const & c : frr_remote_lfa_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType>();
         c->parent = this;
         frr_remote_lfa_type.push_back(c);
@@ -3445,9 +3409,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frr_remote_lfa_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3520,6 +3489,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3608,14 +3578,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "interface-frr-tiebreaker-default")
     {
-        for(auto const & c : interface_frr_tiebreaker_default)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault>();
         c->parent = this;
         interface_frr_tiebreaker_default.push_back(c);
@@ -3628,9 +3590,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_frr_tiebreaker_default)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3699,6 +3666,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3777,14 +3745,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frrtilfa-type")
     {
-        for(auto const & c : frrtilfa_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType>();
         c->parent = this;
         frrtilfa_type.push_back(c);
@@ -3797,9 +3757,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frrtilfa_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3868,6 +3833,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3946,14 +3912,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frr-exclude-interface")
     {
-        for(auto const & c : frr_exclude_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface>();
         c->parent = this;
         frr_exclude_interface.push_back(c);
@@ -3966,9 +3924,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frr_exclude_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4045,6 +4008,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4143,14 +4107,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "interface-frr-tiebreaker")
     {
-        for(auto const & c : interface_frr_tiebreaker)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker>();
         c->parent = this;
         interface_frr_tiebreaker.push_back(c);
@@ -4163,9 +4119,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_frr_tiebreaker)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4242,6 +4203,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4338,6 +4300,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4430,6 +4393,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSspfsid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4548,14 +4512,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "auto-metric")
     {
-        for(auto const & c : auto_metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric>();
         c->parent = this;
         auto_metric.push_back(c);
@@ -4568,9 +4524,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : auto_metric)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4643,6 +4604,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4731,14 +4693,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "admin-tag")
     {
-        for(auto const & c : admin_tag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag>();
         c->parent = this;
         admin_tag.push_back(c);
@@ -4751,9 +4705,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : admin_tag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4826,6 +4785,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4916,6 +4876,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceLinkGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5004,14 +4965,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "manual-adj-sid")
     {
-        for(auto const & c : manual_adj_sid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::ManualAdjSid>();
         c->parent = this;
         manual_adj_sid.push_back(c);
@@ -5024,9 +4977,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : manual_adj_sid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5107,6 +5065,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::ManualAdjSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5215,14 +5174,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "metric")
     {
-        for(auto const & c : metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric>();
         c->parent = this;
         metric.push_back(c);
@@ -5235,9 +5186,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : metric)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5310,6 +5266,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5398,14 +5355,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "weight")
     {
-        for(auto const & c : weight)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weight>();
         c->parent = this;
         weight.push_back(c);
@@ -5418,9 +5367,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : weight)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5493,6 +5447,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5715,6 +5670,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_sid != nullptr)
     {
         children["prefix-sid"] = prefix_sid;
@@ -5877,6 +5833,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6093,6 +6050,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frrlfa_candidate_interfaces != nullptr)
     {
         children["frrlfa-candidate-interfaces"] = frrlfa_candidate_interfaces;
@@ -6201,14 +6159,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frrlfa-candidate-interface")
     {
-        for(auto const & c : frrlfa_candidate_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface>();
         c->parent = this;
         frrlfa_candidate_interface.push_back(c);
@@ -6221,9 +6171,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frrlfa_candidate_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6300,6 +6255,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6398,14 +6354,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frr-remote-lfa-max-metric")
     {
-        for(auto const & c : frr_remote_lfa_max_metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric>();
         c->parent = this;
         frr_remote_lfa_max_metric.push_back(c);
@@ -6418,9 +6366,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frr_remote_lfa_max_metric)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6493,6 +6446,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6581,14 +6535,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frr-type")
     {
-        for(auto const & c : frr_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrType>();
         c->parent = this;
         frr_type.push_back(c);
@@ -6601,9 +6547,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frr_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6676,6 +6627,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6764,14 +6716,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frr-remote-lfa-type")
     {
-        for(auto const & c : frr_remote_lfa_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType>();
         c->parent = this;
         frr_remote_lfa_type.push_back(c);
@@ -6784,9 +6728,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frr_remote_lfa_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6859,6 +6808,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6947,14 +6897,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "interface-frr-tiebreaker-default")
     {
-        for(auto const & c : interface_frr_tiebreaker_default)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault>();
         c->parent = this;
         interface_frr_tiebreaker_default.push_back(c);
@@ -6967,9 +6909,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_frr_tiebreaker_default)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7038,6 +6985,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7116,14 +7064,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frrtilfa-type")
     {
-        for(auto const & c : frrtilfa_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType>();
         c->parent = this;
         frrtilfa_type.push_back(c);
@@ -7136,9 +7076,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frrtilfa_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7207,6 +7152,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7285,14 +7231,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "frr-exclude-interface")
     {
-        for(auto const & c : frr_exclude_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface>();
         c->parent = this;
         frr_exclude_interface.push_back(c);
@@ -7305,9 +7243,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frr_exclude_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7384,6 +7327,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7482,14 +7426,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "interface-frr-tiebreaker")
     {
-        for(auto const & c : interface_frr_tiebreaker)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker>();
         c->parent = this;
         interface_frr_tiebreaker.push_back(c);
@@ -7502,9 +7438,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_frr_tiebreaker)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7581,6 +7522,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7677,6 +7619,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::MplsLdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7769,6 +7712,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSspfsid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7887,14 +7831,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "auto-metric")
     {
-        for(auto const & c : auto_metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetric>();
         c->parent = this;
         auto_metric.push_back(c);
@@ -7907,9 +7843,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : auto_metric)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7982,6 +7923,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8070,14 +8012,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "admin-tag")
     {
-        for(auto const & c : admin_tag)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTag>();
         c->parent = this;
         admin_tag.push_back(c);
@@ -8090,9 +8024,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : admin_tag)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8165,6 +8104,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8255,6 +8195,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceLinkGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8343,14 +8284,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "manual-adj-sid")
     {
-        for(auto const & c : manual_adj_sid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::ManualAdjSid>();
         c->parent = this;
         manual_adj_sid.push_back(c);
@@ -8363,9 +8296,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : manual_adj_sid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8446,6 +8384,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::ManualAdjSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8554,14 +8493,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "metric")
     {
-        for(auto const & c : metric)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric>();
         c->parent = this;
         metric.push_back(c);
@@ -8574,9 +8505,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : metric)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8649,6 +8585,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8737,14 +8674,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 {
     if(child_yang_name == "weight")
     {
-        for(auto const & c : weight)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weight>();
         c->parent = this;
         weight.push_back(c);
@@ -8757,9 +8686,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : weight)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8832,6 +8766,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8920,14 +8855,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::CsnpIn
 {
     if(child_yang_name == "csnp-interval")
     {
-        for(auto const & c : csnp_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval>();
         c->parent = this;
         csnp_interval.push_back(c);
@@ -8940,9 +8867,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::CsnpIn
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csnp_interval)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9015,6 +8947,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::CsnpIn
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9103,14 +9036,6 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspInt
 {
     if(child_yang_name == "lsp-interval")
     {
-        for(auto const & c : lsp_interval)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval>();
         c->parent = this;
         lsp_interval.push_back(c);
@@ -9123,9 +9048,14 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspInt
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspIntervals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lsp_interval)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9198,6 +9128,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspInt
 std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> SdrInventoryVm::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> SdrInventoryVm::Nodes::get_child_by_name(const std::stri
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SdrInventoryVm::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> SdrInventoryVm::Nodes::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> SdrInventoryVm::Nodes::Node::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_entries != nullptr)
     {
         children["node-entries"] = node_entries;
@@ -368,14 +367,6 @@ std::shared_ptr<Entity> SdrInventoryVm::Nodes::Node::NodeEntries::get_child_by_n
 {
     if(child_yang_name == "node-entry")
     {
-        for(auto const & c : node_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry>();
         c->parent = this;
         node_entry.push_back(c);
@@ -388,9 +379,14 @@ std::shared_ptr<Entity> SdrInventoryVm::Nodes::Node::NodeEntries::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::Node::NodeEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -519,6 +515,7 @@ std::shared_ptr<Entity> SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::get
 std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

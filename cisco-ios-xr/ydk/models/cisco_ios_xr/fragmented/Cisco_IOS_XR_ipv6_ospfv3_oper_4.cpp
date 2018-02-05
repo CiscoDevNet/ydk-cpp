@@ -130,6 +130,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -358,6 +359,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -586,6 +588,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -888,14 +891,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 
     if(child_yang_name == "link")
     {
-        for(auto const & c : link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link>();
         c->parent = this;
         link.push_back(c);
@@ -908,6 +903,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -923,9 +919,13 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
         children["rpf-path"] = rpf_path;
     }
 
+    count = 0;
     for (auto const & c : link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1036,6 +1036,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1264,6 +1265,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1524,6 +1526,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1626,6 +1629,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1779,6 +1783,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -1895,6 +1900,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2123,6 +2129,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2414,6 +2421,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -2552,6 +2560,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2780,6 +2789,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3063,6 +3073,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -3181,6 +3192,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3409,6 +3421,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3720,6 +3733,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -3908,6 +3922,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4136,6 +4151,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4447,6 +4463,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -4635,6 +4652,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4863,6 +4881,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5176,14 +5195,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 
     if(child_yang_name == "prefix")
     {
-        for(auto const & c : prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix>();
         c->parent = this;
         prefix.push_back(c);
@@ -5196,6 +5207,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -5206,9 +5218,13 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
         children["lsa-detail"] = lsa_detail;
     }
 
+    count = 0;
     for (auto const & c : prefix)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5379,6 +5395,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5607,6 +5624,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5879,6 +5897,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6036,14 +6055,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 
     if(child_yang_name == "prefix")
     {
-        for(auto const & c : prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix>();
         c->parent = this;
         prefix.push_back(c);
@@ -6056,6 +6067,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -6066,9 +6078,13 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
         children["lsa-detail"] = lsa_detail;
     }
 
+    count = 0;
     for (auto const & c : prefix)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6199,6 +6215,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6427,6 +6444,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6699,6 +6717,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6846,6 +6865,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -6974,6 +6994,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7202,6 +7223,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7501,6 +7523,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -7659,6 +7682,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7887,6 +7911,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8186,6 +8211,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -8344,6 +8370,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8572,6 +8599,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8871,6 +8899,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -9029,6 +9058,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9257,6 +9287,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9556,6 +9587,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa_header != nullptr)
     {
         children["lsa-header"] = lsa_header;
@@ -9714,6 +9746,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9942,6 +9975,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10207,6 +10241,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database_summary != nullptr)
     {
         children["database-summary"] = database_summary;
@@ -10302,14 +10337,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 
     if(child_yang_name == "area-database")
     {
-        for(auto const & c : area_database)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase>();
         c->parent = this;
         area_database.push_back(c);
@@ -10322,14 +10349,19 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database_counters != nullptr)
     {
         children["database-counters"] = database_counters;
     }
 
+    count = 0;
     for (auto const & c : area_database)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10471,6 +10503,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10583,6 +10616,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(area_database_summary != nullptr)
     {
         children["area-database-summary"] = area_database_summary;
@@ -10717,6 +10751,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::Dat
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10817,14 +10852,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::
 {
     if(child_yang_name == "internal-route")
     {
-        for(auto const & c : internal_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute>();
         c->parent = this;
         internal_route.push_back(c);
@@ -10837,9 +10864,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : internal_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10946,14 +10978,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::
 
     if(child_yang_name == "route-source")
     {
-        for(auto const & c : route_source)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteSource>();
         c->parent = this;
         route_source.push_back(c);
@@ -10962,14 +10986,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -10982,19 +10998,28 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_topology != nullptr)
     {
         children["route-topology"] = route_topology;
     }
 
+    count = 0;
     for (auto const & c : route_source)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11105,6 +11130,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteTopology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11219,6 +11245,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteSource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11337,6 +11364,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_backup_path != nullptr)
     {
         children["route-backup-path"] = route_backup_path;
@@ -11470,6 +11498,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11628,14 +11657,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::g
 {
     if(child_yang_name == "protocol-area")
     {
-        for(auto const & c : protocol_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea>();
         c->parent = this;
         protocol_area.push_back(c);
@@ -11648,9 +11669,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::g
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11733,14 +11759,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::P
 {
     if(child_yang_name == "protocol-interface")
     {
-        for(auto const & c : protocol_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolInterface>();
         c->parent = this;
         protocol_interface.push_back(c);
@@ -11753,9 +11771,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::P
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11858,6 +11881,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::P
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11946,14 +11970,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes:
 {
     if(child_yang_name == "connected-route")
     {
-        for(auto const & c : connected_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute>();
         c->parent = this;
         connected_route.push_back(c);
@@ -11966,9 +11982,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes:
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : connected_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12061,14 +12082,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes:
 
     if(child_yang_name == "route-path")
     {
-        for(auto const & c : route_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath>();
         c->parent = this;
         route_path.push_back(c);
@@ -12081,14 +12094,19 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes:
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_topology != nullptr)
     {
         children["route-topology"] = route_topology;
     }
 
+    count = 0;
     for (auto const & c : route_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12189,6 +12207,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes:
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RouteTopology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12317,6 +12336,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes:
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(route_backup_path != nullptr)
     {
         children["route-backup-path"] = route_backup_path;
@@ -12450,6 +12470,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes:
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12667,6 +12688,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::g
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protocol_stats != nullptr)
     {
         children["protocol-stats"] = protocol_stats;
@@ -12760,14 +12782,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::P
 {
     if(child_yang_name == "protocol-stat")
     {
-        for(auto const & c : protocol_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStat>();
         c->parent = this;
         protocol_stat.push_back(c);
@@ -12780,9 +12794,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12943,6 +12962,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13264,14 +13284,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 
     if(child_yang_name == "spf-runtime")
     {
-        for(auto const & c : spf_runtime)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime>();
         c->parent = this;
         spf_runtime.push_back(c);
@@ -13284,14 +13296,19 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spf_header != nullptr)
     {
         children["spf-header"] = spf_header;
     }
 
+    count = 0;
     for (auto const & c : spf_runtime)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13370,14 +13387,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 {
     if(child_yang_name == "area-summary")
     {
-        for(auto const & c : area_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary>();
         c->parent = this;
         area_summary.push_back(c);
@@ -13390,9 +13399,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area_summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13485,6 +13499,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13617,14 +13632,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 
     if(child_yang_name == "lsa")
     {
-        for(auto const & c : lsa)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::Lsa>();
         c->parent = this;
         lsa.push_back(c);
@@ -13633,14 +13640,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 
     if(child_yang_name == "area-stat")
     {
-        for(auto const & c : area_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat>();
         c->parent = this;
         area_stat.push_back(c);
@@ -13653,19 +13652,28 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_time != nullptr)
     {
         children["global-time"] = global_time;
     }
 
+    count = 0;
     for (auto const & c : lsa)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : area_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13816,6 +13824,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13988,6 +13997,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14132,6 +14142,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spf_stat_time != nullptr)
     {
         children["spf-stat-time"] = spf_stat_time;
@@ -14253,6 +14264,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::S
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14485,6 +14497,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::R
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14763,6 +14776,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::P
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPriorityStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14905,6 +14919,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::V
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBatchStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15106,6 +15121,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protocol != nullptr)
     {
         children["protocol"] = protocol;
@@ -15207,6 +15223,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Protoco
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15555,14 +15572,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 
     if(child_yang_name == "stub-router")
     {
-        for(auto const & c : stub_router)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter>();
         c->parent = this;
         stub_router.push_back(c);
@@ -15571,14 +15580,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 
     if(child_yang_name == "ipfrr-tiebreakers")
     {
-        for(auto const & c : ipfrr_tiebreakers)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers>();
         c->parent = this;
         ipfrr_tiebreakers.push_back(c);
@@ -15591,19 +15592,28 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(domain_id != nullptr)
     {
         children["domain-id"] = domain_id;
     }
 
+    count = 0;
     for (auto const & c : stub_router)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipfrr_tiebreakers)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16177,14 +16187,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 
     if(child_yang_name == "secondary-domain-id")
     {
-        for(auto const & c : secondary_domain_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::SecondaryDomainId>();
         c->parent = this;
         secondary_domain_id.push_back(c);
@@ -16197,14 +16199,19 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(primary_domain_id != nullptr)
     {
         children["primary-domain-id"] = primary_domain_id;
     }
 
+    count = 0;
     for (auto const & c : secondary_domain_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16277,6 +16284,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16367,6 +16375,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16531,14 +16540,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 
     if(child_yang_name == "trigger")
     {
-        for(auto const & c : trigger)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger>();
         c->parent = this;
         trigger.push_back(c);
@@ -16551,6 +16552,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unset_time != nullptr)
     {
         children["unset-time"] = unset_time;
@@ -16566,9 +16568,13 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
         children["abr-resume-time"] = abr_resume_time;
     }
 
+    count = 0;
     for (auto const & c : trigger)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16731,6 +16737,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::UnsetTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16821,6 +16828,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::StartTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16911,6 +16919,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17036,6 +17045,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unset_time != nullptr)
     {
         children["unset-time"] = unset_time;
@@ -17156,6 +17166,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17246,6 +17257,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17336,6 +17348,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17462,6 +17475,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Summary::Route::
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Summary::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17640,14 +17654,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::RetransmissionLi
 {
     if(child_yang_name == "retransmission")
     {
-        for(auto const & c : retransmission)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission>();
         c->parent = this;
         retransmission.push_back(c);
@@ -17660,9 +17666,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::RetransmissionLi
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : retransmission)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17789,14 +17800,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::RetransmissionLi
 {
     if(child_yang_name == "retransmissionvirtual-link-db")
     {
-        for(auto const & c : retransmissionvirtual_link_db)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb>();
         c->parent = this;
         retransmissionvirtual_link_db.push_back(c);
@@ -17805,14 +17808,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::RetransmissionLi
 
     if(child_yang_name == "retransmission-area-db")
     {
-        for(auto const & c : retransmission_area_db)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb>();
         c->parent = this;
         retransmission_area_db.push_back(c);
@@ -17821,14 +17816,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::RetransmissionLi
 
     if(child_yang_name == "retransmission-asdb")
     {
-        for(auto const & c : retransmission_asdb)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb>();
         c->parent = this;
         retransmission_asdb.push_back(c);
@@ -17841,19 +17828,32 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::RetransmissionLi
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : retransmissionvirtual_link_db)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : retransmission_area_db)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : retransmission_asdb)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18028,6 +18028,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::RetransmissionLi
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18160,6 +18161,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::RetransmissionLi
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18292,6 +18294,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::RetransmissionLi
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18410,14 +18413,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::BadChecksums::ge
 {
     if(child_yang_name == "bad-checksum")
     {
-        for(auto const & c : bad_checksum)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum>();
         c->parent = this;
         bad_checksum.push_back(c);
@@ -18430,9 +18425,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::BadChecksums::ge
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::BadChecksums::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bad_checksum)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18527,6 +18527,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::BadChecksums::Ba
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timestamp != nullptr)
     {
         children["timestamp"] = timestamp;
@@ -18642,6 +18643,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::BadChecksums::Ba
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Timestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18737,6 +18739,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database_summary != nullptr)
     {
         children["database-summary"] = database_summary;
@@ -18832,14 +18835,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryT
 
     if(child_yang_name == "area-database")
     {
-        for(auto const & c : area_database)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase>();
         c->parent = this;
         area_database.push_back(c);
@@ -18852,14 +18847,19 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database_counters != nullptr)
     {
         children["database-counters"] = database_counters;
     }
 
+    count = 0;
     for (auto const & c : area_database)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19001,6 +19001,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19113,6 +19114,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(area_database_summary != nullptr)
     {
         children["area-database-summary"] = area_database_summary;
@@ -19247,6 +19249,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19347,14 +19350,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessT
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -19367,9 +19362,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19513,6 +19513,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor_detail != nullptr)
     {
         children["neighbor-detail"] = neighbor_detail;
@@ -19773,6 +19774,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor_retransmission != nullptr)
     {
         children["neighbor-retransmission"] = neighbor_retransmission;
@@ -20042,6 +20044,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20342,6 +20345,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessT
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20430,14 +20434,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::FastReroutes::ge
 {
     if(child_yang_name == "fast-reroute")
     {
-        for(auto const & c : fast_reroute)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute>();
         c->parent = this;
         fast_reroute.push_back(c);
@@ -20450,9 +20446,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::FastReroutes::ge
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::FastReroutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fast_reroute)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20543,14 +20544,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::FastReroutes::Fa
 {
     if(child_yang_name == "ipfrr-topo")
     {
-        for(auto const & c : ipfrr_topo)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTopo>();
         c->parent = this;
         ipfrr_topo.push_back(c);
@@ -20563,9 +20556,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::FastReroutes::Fa
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipfrr_topo)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20708,6 +20706,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::FastReroutes::Fa
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTopo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20846,14 +20845,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefPr
 {
     if(child_yang_name == "interface-brief")
     {
-        for(auto const & c : interface_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBrief>();
         c->parent = this;
         interface_brief.push_back(c);
@@ -20866,9 +20857,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefPr
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20961,6 +20957,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefPr
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21099,14 +21096,6 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailPr
 {
     if(child_yang_name == "neighbor-detail")
     {
-        for(auto const & c : neighbor_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail>();
         c->parent = this;
         neighbor_detail.push_back(c);
@@ -21119,9 +21108,14 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailPr
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21265,6 +21259,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailPr
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor_detail != nullptr)
     {
         children["neighbor-detail"] = neighbor_detail;
@@ -21525,6 +21520,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailPr
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbor_retransmission != nullptr)
     {
         children["neighbor-retransmission"] = neighbor_retransmission;
@@ -21794,6 +21790,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailPr
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22094,6 +22091,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailPr
 std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

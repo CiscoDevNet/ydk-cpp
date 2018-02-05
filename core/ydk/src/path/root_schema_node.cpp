@@ -302,13 +302,13 @@ ydk::path::RootSchemaNodeImpl::find(const std::string& path)
 
     if(path.empty()) {
         YLOG_ERROR("Path is empty");
-        throw(YCPPInvalidArgumentError{"path is empty"});
+        throw(YInvalidArgumentError{"path is empty"});
     }
 
     //has to be a relative path
     if(path.at(0) == '/') {
         YLOG_ERROR("Path must be a relative path");
-        throw(YCPPInvalidArgumentError{"path must be a relative path"});
+        throw(YInvalidArgumentError{"path must be a relative path"});
     }
 
     std::vector<SchemaNode*> ret;
@@ -355,7 +355,7 @@ ydk::path::RootSchemaNodeImpl::create_rpc(const std::string& path)
 {
     auto c = find(path);
     if(c.empty()){
-        throw(YCPPInvalidArgumentError{"Path is invalid: "+ path});
+        throw(YInvalidArgumentError{"Path is invalid: "+ path});
     }
 
     bool found = false;
@@ -372,12 +372,12 @@ ydk::path::RootSchemaNodeImpl::create_rpc(const std::string& path)
 
     if(!found){
         YLOG_ERROR("Path {} does not refer to an rpc node.", path);
-        throw(YCPPInvalidArgumentError{"Path does not refer to an rpc node"});
+        throw(YInvalidArgumentError{"Path does not refer to an rpc node"});
     }
     SchemaNodeImpl* sn = dynamic_cast<SchemaNodeImpl*>(rpc_sn);
     if(!sn){
         YLOG_ERROR("Schema Node case failed");
-        throw(YCPPIllegalStateError("Internal error occurred"));
+        throw(YIllegalStateError("Internal error occurred"));
     }
 
     return std::make_shared<RpcImpl>(*sn, m_ctx, m_priv_repo);

@@ -94,6 +94,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -225,6 +226,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::Global::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pbb != nullptr)
     {
         children["pbb"] = pbb;
@@ -323,6 +325,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::Global::Pbb::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::Global::Pbb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -408,14 +411,6 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeGroups::get_child_by_name(cons
 {
     if(child_yang_name == "bridge-group")
     {
-        for(auto const & c : bridge_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainConfig::BridgeGroups::BridgeGroup>();
         c->parent = this;
         bridge_group.push_back(c);
@@ -428,9 +423,14 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeGroups::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bridge_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -506,6 +506,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeGroups::BridgeGroup::get_child
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeGroups::BridgeGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -591,14 +592,6 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::get_child_by_name(con
 {
     if(child_yang_name == "bridge-domain")
     {
-        for(auto const & c : bridge_domain)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain>();
         c->parent = this;
         bridge_domain.push_back(c);
@@ -611,9 +604,14 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bridge_domain)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -812,6 +810,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::get_chi
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(members != nullptr)
     {
         children["members"] = members;
@@ -994,14 +993,6 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 {
     if(child_yang_name == "ac-member")
     {
-        for(auto const & c : ac_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember>();
         c->parent = this;
         ac_member.push_back(c);
@@ -1010,14 +1001,6 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 
     if(child_yang_name == "vfi-member")
     {
-        for(auto const & c : vfi_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember>();
         c->parent = this;
         vfi_member.push_back(c);
@@ -1039,14 +1022,23 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ac_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : vfi_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(access_pw_member != nullptr)
@@ -1237,6 +1229,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(split_horizon_group != nullptr)
     {
         children["split-horizon-group"] = split_horizon_group;
@@ -1358,6 +1351,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::SplitHorizonGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1487,6 +1481,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(limit != nullptr)
     {
         children["limit"] = limit;
@@ -1591,6 +1586,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1691,6 +1687,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Aging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1777,6 +1774,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::PortDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1861,6 +1859,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Mac::Secure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1957,6 +1956,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IgmpSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2033,6 +2033,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::MldSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2109,6 +2110,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DhcpIpv4Snooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2189,6 +2191,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::Flooding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2281,14 +2284,6 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 {
     if(child_yang_name == "thresholds")
     {
-        for(auto const & c : thresholds)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds>();
         c->parent = this;
         thresholds.push_back(c);
@@ -2301,9 +2296,14 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : thresholds)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2390,6 +2390,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::Thresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2503,6 +2504,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address_validation != nullptr)
     {
         children["address-validation"] = address_validation;
@@ -2602,6 +2604,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::DynamicArpInspection::AddressValidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2702,6 +2705,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AcMember::IpSourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2788,6 +2792,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::VfiMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2876,14 +2881,6 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 {
     if(child_yang_name == "access-pw-if-member")
     {
-        for(auto const & c : access_pw_if_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember>();
         c->parent = this;
         access_pw_if_member.push_back(c);
@@ -2892,14 +2889,6 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 
     if(child_yang_name == "pw-neighbor-spec")
     {
-        for(auto const & c : pw_neighbor_spec)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec>();
         c->parent = this;
         pw_neighbor_spec.push_back(c);
@@ -2912,14 +2901,23 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_pw_if_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : pw_neighbor_spec)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2988,6 +2986,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::AccessPwIfMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3201,6 +3200,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(static_label != nullptr)
     {
         children["static-label"] = static_label;
@@ -3376,6 +3376,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StaticLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3462,6 +3463,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::SplitHorizonGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3591,6 +3593,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(limit != nullptr)
     {
         children["limit"] = limit;
@@ -3695,6 +3698,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3795,6 +3799,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Aging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3881,6 +3886,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::PortDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3965,6 +3971,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Mac::Secure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4061,6 +4068,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::IgmpSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4137,6 +4145,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::MldSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4213,6 +4222,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::DhcpIpv4Snooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4293,6 +4303,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Flooding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4385,14 +4396,6 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 {
     if(child_yang_name == "thresholds")
     {
-        for(auto const & c : thresholds)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds>();
         c->parent = this;
         thresholds.push_back(c);
@@ -4405,9 +4408,14 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : thresholds)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4494,6 +4502,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::StormControl::Thresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4598,6 +4607,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Members::AccessPwMember::PwNeighborSpec::Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4655,7 +4665,7 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Mac()
 	,port_down(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown>())
 	,flooding(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding>())
 	,secure(nullptr) // presence node
-	,static_(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_>())
+	,static_(std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static>())
 {
     limit->parent = this;
     aging->parent = this;
@@ -4761,7 +4771,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::ge
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_>();
+            static_ = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static>();
         }
         return static_;
     }
@@ -4772,6 +4782,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::ge
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(limit != nullptr)
     {
         children["limit"] = limit;
@@ -4886,6 +4897,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Li
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4986,6 +4998,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Ag
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5072,6 +5085,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Po
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5152,6 +5166,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Fl
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5242,6 +5257,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Se
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5280,17 +5296,17 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure::has_leaf_or_c
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::Static_()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::Static()
 {
 
     yang_name = "static"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::~Static_()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::~Static()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::has_data() const
 {
     for (std::size_t index=0; index<mac_addresses.size(); index++)
     {
@@ -5300,7 +5316,7 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_data() c
     return false;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::has_operation() const
 {
     for (std::size_t index=0; index<mac_addresses.size(); index++)
     {
@@ -5310,14 +5326,14 @@ bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_operatio
     return is_set(yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5326,19 +5342,11 @@ std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-addresses")
     {
-        for(auto const & c : mac_addresses)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses>();
+        auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses>();
         c->parent = this;
         mac_addresses.push_back(c);
         return c;
@@ -5347,33 +5355,38 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::St
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mac_addresses)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-addresses")
         return true;
     return false;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::MacAddresses()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::MacAddresses()
     :
     mac_addr{YType::str, "mac-addr"},
     drop{YType::boolean, "drop"}
@@ -5382,31 +5395,31 @@ BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::Mac
     yang_name = "mac-addresses"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::~MacAddresses()
+BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::~MacAddresses()
 {
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::has_data() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::has_data() const
 {
     return mac_addr.is_set
 	|| drop.is_set;
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::has_operation() const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_addr.yfilter)
 	|| ydk::is_set(drop.yfilter);
 }
 
-std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_segment_path() const
+std::string BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-addresses" <<"[mac-addr='" <<mac_addr <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5417,18 +5430,19 @@ std::vector<std::pair<std::string, LeafData> > BridgeDomainConfig::BridgeDomains
 
 }
 
-std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-addr")
     {
@@ -5444,7 +5458,7 @@ void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses
     }
 }
 
-void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-addr")
     {
@@ -5456,7 +5470,7 @@ void BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses
     }
 }
 
-bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses::has_leaf_or_child_of_name(const std::string & name) const
+bool BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-addr" || name == "drop")
         return true;
@@ -5524,6 +5538,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Dynamic
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address_validation != nullptr)
     {
         children["address-validation"] = address_validation;
@@ -5613,6 +5628,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::Dynamic
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection::AddressValidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5709,6 +5725,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourc
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::IpSourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5791,14 +5808,6 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::StormCo
 {
     if(child_yang_name == "thresholds")
     {
-        for(auto const & c : thresholds)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds>();
         c->parent = this;
         thresholds.push_back(c);
@@ -5811,9 +5820,14 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::StormCo
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : thresholds)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5900,6 +5914,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::StormCo
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::StormControl::Thresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6000,6 +6015,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSno
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::IgmpSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6086,6 +6102,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnoo
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::MldSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6162,6 +6179,7 @@ std::shared_ptr<Entity> BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainConfig::BridgeDomains::BridgeDomain::DhcpIpv4Snooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6279,14 +6297,6 @@ std::shared_ptr<Entity> BridgeDomainState::get_child_by_name(const std::string &
 
     if(child_yang_name == "mac-table")
     {
-        for(auto const & c : mac_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainState::MacTable>();
         c->parent = this;
         mac_table.push_back(c);
@@ -6299,6 +6309,7 @@ std::shared_ptr<Entity> BridgeDomainState::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_capabilities != nullptr)
     {
         children["system-capabilities"] = system_capabilities;
@@ -6314,9 +6325,13 @@ std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::get_children()
         children["bridge-domains"] = bridge_domains;
     }
 
+    count = 0;
     for (auto const & c : mac_table)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6437,6 +6452,7 @@ std::shared_ptr<Entity> BridgeDomainState::SystemCapabilities::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::SystemCapabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6572,14 +6588,6 @@ std::shared_ptr<Entity> BridgeDomainState::ModuleCapabilities::get_child_by_name
 {
     if(child_yang_name == "modules")
     {
-        for(auto const & c : modules)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainState::ModuleCapabilities::Modules>();
         c->parent = this;
         modules.push_back(c);
@@ -6592,9 +6600,14 @@ std::shared_ptr<Entity> BridgeDomainState::ModuleCapabilities::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::ModuleCapabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : modules)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6698,6 +6711,7 @@ std::shared_ptr<Entity> BridgeDomainState::ModuleCapabilities::Modules::get_chil
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::ModuleCapabilities::Modules::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6853,14 +6867,6 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::get_child_by_name(cons
 {
     if(child_yang_name == "bridge-domain")
     {
-        for(auto const & c : bridge_domain)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain>();
         c->parent = this;
         bridge_domain.push_back(c);
@@ -6873,9 +6879,14 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bridge_domain)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6985,6 +6996,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::get_chil
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(members != nullptr)
     {
         children["members"] = members;
@@ -7138,14 +7150,6 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 {
     if(child_yang_name == "ac-member")
     {
-        for(auto const & c : ac_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember>();
         c->parent = this;
         ac_member.push_back(c);
@@ -7154,14 +7158,6 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 
     if(child_yang_name == "vfi-member")
     {
-        for(auto const & c : vfi_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember>();
         c->parent = this;
         vfi_member.push_back(c);
@@ -7170,14 +7166,6 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 
     if(child_yang_name == "access-pw-member")
     {
-        for(auto const & c : access_pw_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember>();
         c->parent = this;
         access_pw_member.push_back(c);
@@ -7190,19 +7178,32 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ac_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : vfi_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : access_pw_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7315,6 +7316,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dai_stats != nullptr)
     {
         children["dai-stats"] = dai_stats;
@@ -7420,6 +7422,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::DaiStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7510,6 +7513,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::IpsgStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7598,14 +7602,6 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 {
     if(child_yang_name == "drop-counter")
     {
-        for(auto const & c : drop_counter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter>();
         c->parent = this;
         drop_counter.push_back(c);
@@ -7618,9 +7614,14 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : drop_counter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7697,6 +7698,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::AcMember::StormControl::DropCounter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7807,6 +7809,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flooding != nullptr)
     {
         children["flooding"] = flooding;
@@ -7890,14 +7893,6 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 {
     if(child_yang_name == "status")
     {
-        for(auto const & c : status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status>();
         c->parent = this;
         status.push_back(c);
@@ -7910,9 +7905,14 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : status)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7985,6 +7985,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::VfiMember::Flooding::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8089,6 +8090,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flooding != nullptr)
     {
         children["flooding"] = flooding;
@@ -8182,14 +8184,6 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 {
     if(child_yang_name == "status")
     {
-        for(auto const & c : status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status>();
         c->parent = this;
         status.push_back(c);
@@ -8202,9 +8196,14 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : status)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8277,6 +8276,7 @@ std::shared_ptr<Entity> BridgeDomainState::BridgeDomains::BridgeDomain::Members:
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::BridgeDomains::BridgeDomain::Members::AccessPwMember::Flooding::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8398,6 +8398,7 @@ std::shared_ptr<Entity> BridgeDomainState::MacTable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> BridgeDomainState::MacTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8566,6 +8567,7 @@ std::shared_ptr<Entity> ClearBridgeDomain::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> ClearBridgeDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -8682,6 +8684,7 @@ std::shared_ptr<Entity> ClearBridgeDomain::Input::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ClearBridgeDomain::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8785,6 +8788,7 @@ std::shared_ptr<Entity> ClearBridgeDomain::Output::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ClearBridgeDomain::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8883,6 +8887,7 @@ std::shared_ptr<Entity> ClearMacAddress::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> ClearMacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -9009,6 +9014,7 @@ std::shared_ptr<Entity> ClearMacAddress::Input::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> ClearMacAddress::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bridge_domain != nullptr)
     {
         children["bridge-domain"] = bridge_domain;
@@ -9111,6 +9117,7 @@ std::shared_ptr<Entity> ClearMacAddress::Input::BridgeDomain::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ClearMacAddress::Input::BridgeDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9204,6 +9211,7 @@ std::shared_ptr<Entity> ClearMacAddress::Output::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> ClearMacAddress::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9302,6 +9310,7 @@ std::shared_ptr<Entity> CreateParameterizedBridgeDomains::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CreateParameterizedBridgeDomains::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -9416,14 +9425,6 @@ std::shared_ptr<Entity> CreateParameterizedBridgeDomains::Input::get_child_by_na
 {
     if(child_yang_name == "member")
     {
-        for(auto const & c : member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CreateParameterizedBridgeDomains::Input::Member>();
         c->parent = this;
         member.push_back(c);
@@ -9436,9 +9437,14 @@ std::shared_ptr<Entity> CreateParameterizedBridgeDomains::Input::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CreateParameterizedBridgeDomains::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9524,6 +9530,7 @@ std::shared_ptr<Entity> CreateParameterizedBridgeDomains::Input::Member::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CreateParameterizedBridgeDomains::Input::Member::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9607,6 +9614,7 @@ std::shared_ptr<Entity> CreateParameterizedBridgeDomains::Output::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CreateParameterizedBridgeDomains::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

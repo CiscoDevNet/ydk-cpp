@@ -2498,18 +2498,18 @@ class Native::Interface::Vasiright::Peer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Default_; //type: Native::Interface::Vasiright::Peer::Default_
+        class Default; //type: Native::Interface::Vasiright::Peer::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default> default_;
         
 }; // Native::Interface::Vasiright::Peer
 
 
-class Native::Interface::Vasiright::Peer::Default_ : public ydk::Entity
+class Native::Interface::Vasiright::Peer::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2521,14 +2521,14 @@ class Native::Interface::Vasiright::Peer::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Interface::Vasiright::Peer::Default_::Ip
+        class Ip; //type: Native::Interface::Vasiright::Peer::Default::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default_::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default::Ip> ip;
         
-}; // Native::Interface::Vasiright::Peer::Default_
+}; // Native::Interface::Vasiright::Peer::Default
 
 
-class Native::Interface::Vasiright::Peer::Default_::Ip : public ydk::Entity
+class Native::Interface::Vasiright::Peer::Default::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -2544,14 +2544,14 @@ class Native::Interface::Vasiright::Peer::Default_::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Interface::Vasiright::Peer::Default_::Ip::Address
+        class Address; //type: Native::Interface::Vasiright::Peer::Default::Ip::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default_::Ip::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default::Ip::Address> address;
         
-}; // Native::Interface::Vasiright::Peer::Default_::Ip
+}; // Native::Interface::Vasiright::Peer::Default::Ip
 
 
-class Native::Interface::Vasiright::Peer::Default_::Ip::Address : public ydk::Entity
+class Native::Interface::Vasiright::Peer::Default::Ip::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2568,16 +2568,16 @@ class Native::Interface::Vasiright::Peer::Default_::Ip::Address : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dhcp; //type: empty
-        class DhcpPool; //type: Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool
-        class Pool; //type: Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool
+        class DhcpPool; //type: Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool
+        class Pool; //type: Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool> dhcp_pool; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool> pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool> dhcp_pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool> pool; // presence node
         
-}; // Native::Interface::Vasiright::Peer::Default_::Ip::Address
+}; // Native::Interface::Vasiright::Peer::Default::Ip::Address
 
 
-class Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool : public ydk::Entity
+class Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool : public ydk::Entity
 {
     public:
         DhcpPool();
@@ -2595,10 +2595,10 @@ class Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool : publ
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool
+}; // Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool
 
 
-class Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool : public ydk::Entity
+class Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool : public ydk::Entity
 {
     public:
         Pool();
@@ -2616,7 +2616,7 @@ class Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool : public y
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool
+}; // Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool
 
 
 class Native::Interface::Vasiright::PmPath : public ydk::Entity
@@ -2955,7 +2955,7 @@ class Native::RouteMap::RouteMapSeq::Set : public ydk::Entity
         class Community; //type: Native::RouteMap::RouteMapSeq::Set::Community
         class CommList; //type: Native::RouteMap::RouteMapSeq::Set::CommList
         class Dampening; //type: Native::RouteMap::RouteMapSeq::Set::Dampening
-        class Default_; //type: Native::RouteMap::RouteMapSeq::Set::Default_
+        class Default; //type: Native::RouteMap::RouteMapSeq::Set::Default
         class ExtcommList; //type: Native::RouteMap::RouteMapSeq::Set::ExtcommList
         class Extcommunity; //type: Native::RouteMap::RouteMapSeq::Set::Extcommunity
         class Interface; //type: Native::RouteMap::RouteMapSeq::Set::Interface
@@ -2972,7 +2972,7 @@ class Native::RouteMap::RouteMapSeq::Set : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Community> community;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::CommList> comm_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Dampening> dampening;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::ExtcommList> extcomm_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Extcommunity> extcommunity;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Interface> interface;
@@ -3205,7 +3205,7 @@ class Native::RouteMap::RouteMapSeq::Set::Community::CommunityWellKnown : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList community_list; //type: list of  one of union, enumeration
+        ydk::YLeafList community_list; //type: list of  one of enumeration, union
 
 }; // Native::RouteMap::RouteMapSeq::Set::Community::CommunityWellKnown
 
@@ -3281,11 +3281,11 @@ class Native::RouteMap::RouteMapSeq::Set::Dampening::DampeningList : public ydk:
 }; // Native::RouteMap::RouteMapSeq::Set::Dampening::DampeningList
 
 
-class Native::RouteMap::RouteMapSeq::Set::Default_ : public ydk::Entity
+class Native::RouteMap::RouteMapSeq::Set::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3297,14 +3297,14 @@ class Native::RouteMap::RouteMapSeq::Set::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Interface; //type: Native::RouteMap::RouteMapSeq::Set::Default_::Interface
+        class Interface; //type: Native::RouteMap::RouteMapSeq::Set::Default::Interface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default_::Interface> interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default::Interface> interface;
         
-}; // Native::RouteMap::RouteMapSeq::Set::Default_
+}; // Native::RouteMap::RouteMapSeq::Set::Default
 
 
-class Native::RouteMap::RouteMapSeq::Set::Default_::Interface : public ydk::Entity
+class Native::RouteMap::RouteMapSeq::Set::Default::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -3349,20 +3349,20 @@ class Native::RouteMap::RouteMapSeq::Set::Default_::Interface : public ydk::Enti
         ydk::YLeaf virtualportgroup; //type: uint16
         ydk::YLeaf vasileft; //type: uint16
         ydk::YLeaf vasiright; //type: uint16
-        class ATMSubinterface; //type: Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface
-        class ATMACRsubinterface; //type: Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface
-        class LISPSubinterface; //type: Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface
-        class PortChannelSubinterface; //type: Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface
+        class ATMSubinterface; //type: Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface
+        class ATMACRsubinterface; //type: Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface
+        class LISPSubinterface; //type: Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface
+        class PortChannelSubinterface; //type: Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface> atm_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface> atm_acrsubinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface> lisp_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface> port_channel_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface> atm_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface> atm_acrsubinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface> lisp_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface> port_channel_subinterface;
         
-}; // Native::RouteMap::RouteMapSeq::Set::Default_::Interface
+}; // Native::RouteMap::RouteMapSeq::Set::Default::Interface
 
 
-class Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface : public ydk::Entity
+class Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface : public ydk::Entity
 {
     public:
         ATMSubinterface();
@@ -3380,10 +3380,10 @@ class Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface :
 
         ydk::YLeaf atm; //type: string
 
-}; // Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface
+}; // Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface
 
 
-class Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface : public ydk::Entity
+class Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface : public ydk::Entity
 {
     public:
         ATMACRsubinterface();
@@ -3401,10 +3401,10 @@ class Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterfac
 
         ydk::YLeaf atm_acr; //type: string
 
-}; // Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface
+}; // Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface
 
 
-class Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface : public ydk::Entity
+class Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface : public ydk::Entity
 {
     public:
         LISPSubinterface();
@@ -3422,10 +3422,10 @@ class Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface 
 
         ydk::YLeaf lisp; //type: string
 
-}; // Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface
+}; // Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface
 
 
-class Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface : public ydk::Entity
+class Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface : public ydk::Entity
 {
     public:
         PortChannelSubinterface();
@@ -3443,7 +3443,7 @@ class Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubint
 
         ydk::YLeaf port_channel; //type: string
 
-}; // Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface
+}; // Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface
 
 
 class Native::RouteMap::RouteMapSeq::Set::ExtcommList : public ydk::Entity

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> ENTITYSENSORMIB::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(entphysensortable != nullptr)
     {
         children["entPhySensorTable"] = entphysensortable;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> ENTITYSENSORMIB::Entphysensortable::get_child_by_name(co
 {
     if(child_yang_name == "entPhySensorEntry")
     {
-        for(auto const & c : entphysensorentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ENTITYSENSORMIB::Entphysensortable::Entphysensorentry>();
         c->parent = this;
         entphysensorentry.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> ENTITYSENSORMIB::Entphysensortable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::Entphysensortable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entphysensorentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -303,6 +301,7 @@ std::shared_ptr<Entity> ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::g
 std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::Entphysensortable::Entphysensorentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

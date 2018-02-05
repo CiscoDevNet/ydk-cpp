@@ -81,6 +81,7 @@ std::shared_ptr<Entity> CISCOFTPCLIENTMIB::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cfcrequest != nullptr)
     {
         children["cfcRequest"] = cfcrequest;
@@ -201,6 +202,7 @@ std::shared_ptr<Entity> CISCOFTPCLIENTMIB::Cfcrequest::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::Cfcrequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -316,14 +318,6 @@ std::shared_ptr<Entity> CISCOFTPCLIENTMIB::Cfcrequesttable::get_child_by_name(co
 {
     if(child_yang_name == "cfcRequestEntry")
     {
-        for(auto const & c : cfcrequestentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry>();
         c->parent = this;
         cfcrequestentry.push_back(c);
@@ -336,9 +330,14 @@ std::shared_ptr<Entity> CISCOFTPCLIENTMIB::Cfcrequesttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::Cfcrequesttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cfcrequestentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -458,6 +457,7 @@ std::shared_ptr<Entity> CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

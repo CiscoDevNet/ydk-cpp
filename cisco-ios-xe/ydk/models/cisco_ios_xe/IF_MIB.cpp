@@ -120,6 +120,7 @@ std::shared_ptr<Entity> IFMIB::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> IFMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -243,6 +244,7 @@ std::shared_ptr<Entity> IFMIB::Interfaces::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> IFMIB::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -330,6 +332,7 @@ std::shared_ptr<Entity> IFMIB::Ifmibobjects::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifmibobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -425,14 +428,6 @@ std::shared_ptr<Entity> IFMIB::Iftable::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "ifEntry")
     {
-        for(auto const & c : ifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IFMIB::Iftable::Ifentry>();
         c->parent = this;
         ifentry.push_back(c);
@@ -445,9 +440,14 @@ std::shared_ptr<Entity> IFMIB::Iftable::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> IFMIB::Iftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -707,6 +707,7 @@ std::shared_ptr<Entity> IFMIB::Iftable::Ifentry::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> IFMIB::Iftable::Ifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1252,14 +1253,6 @@ std::shared_ptr<Entity> IFMIB::Ifstacktable::get_child_by_name(const std::string
 {
     if(child_yang_name == "ifStackEntry")
     {
-        for(auto const & c : ifstackentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IFMIB::Ifstacktable::Ifstackentry>();
         c->parent = this;
         ifstackentry.push_back(c);
@@ -1272,9 +1265,14 @@ std::shared_ptr<Entity> IFMIB::Ifstacktable::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifstacktable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ifstackentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1358,6 +1356,7 @@ std::shared_ptr<Entity> IFMIB::Ifstacktable::Ifstackentry::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifstacktable::Ifstackentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1463,14 +1462,6 @@ std::shared_ptr<Entity> IFMIB::Ifrcvaddresstable::get_child_by_name(const std::s
 {
     if(child_yang_name == "ifRcvAddressEntry")
     {
-        for(auto const & c : ifrcvaddressentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IFMIB::Ifrcvaddresstable::Ifrcvaddressentry>();
         c->parent = this;
         ifrcvaddressentry.push_back(c);
@@ -1483,9 +1474,14 @@ std::shared_ptr<Entity> IFMIB::Ifrcvaddresstable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifrcvaddresstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ifrcvaddressentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1573,6 +1569,7 @@ std::shared_ptr<Entity> IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -94,6 +94,7 @@ std::shared_ptr<Entity> SNMPTARGETMIB::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(snmptargetobjects != nullptr)
     {
         children["snmpTargetObjects"] = snmptargetobjects;
@@ -215,6 +216,7 @@ std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetobjects::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -320,14 +322,6 @@ std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetaddrtable::get_child_by_name(co
 {
     if(child_yang_name == "snmpTargetAddrEntry")
     {
-        for(auto const & c : snmptargetaddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry>();
         c->parent = this;
         snmptargetaddrentry.push_back(c);
@@ -340,9 +334,14 @@ std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetaddrtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : snmptargetaddrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -450,6 +449,7 @@ std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry:
 std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -615,14 +615,6 @@ std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetparamstable::get_child_by_name(
 {
     if(child_yang_name == "snmpTargetParamsEntry")
     {
-        for(auto const & c : snmptargetparamsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry>();
         c->parent = this;
         snmptargetparamsentry.push_back(c);
@@ -635,9 +627,14 @@ std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetparamstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetparamstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : snmptargetparamsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -737,6 +734,7 @@ std::shared_ptr<Entity> SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsen
 std::map<std::string, std::shared_ptr<Entity>> SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -3559,20 +3559,20 @@ class Native::Interface::PortChannel::Authentication::Timer::Inactivity : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: Native::Interface::PortChannel::Authentication::Timer::Inactivity::Value_
+        class Value; //type: Native::Interface::PortChannel::Authentication::Timer::Inactivity::Value
         class Server; //type: Native::Interface::PortChannel::Authentication::Timer::Inactivity::Server
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Authentication::Timer::Inactivity::Value_> value_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Authentication::Timer::Inactivity::Value> value_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Authentication::Timer::Inactivity::Server> server; // presence node
         
 }; // Native::Interface::PortChannel::Authentication::Timer::Inactivity
 
 
-class Native::Interface::PortChannel::Authentication::Timer::Inactivity::Value_ : public ydk::Entity
+class Native::Interface::PortChannel::Authentication::Timer::Inactivity::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3587,7 +3587,7 @@ class Native::Interface::PortChannel::Authentication::Timer::Inactivity::Value_ 
         ydk::YLeaf value_; //type: uint16
         ydk::YLeaf dynamic; //type: empty
 
-}; // Native::Interface::PortChannel::Authentication::Timer::Inactivity::Value_
+}; // Native::Interface::PortChannel::Authentication::Timer::Inactivity::Value
 
 
 class Native::Interface::PortChannel::Authentication::Timer::Inactivity::Server : public ydk::Entity

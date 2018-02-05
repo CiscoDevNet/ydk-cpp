@@ -81,14 +81,6 @@ std::shared_ptr<Entity> Classifiers::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "classifier-entry")
     {
-        for(auto const & c : classifier_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Classifiers::ClassifierEntry>();
         c->parent = this;
         classifier_entry.push_back(c);
@@ -101,9 +93,14 @@ std::shared_ptr<Entity> Classifiers::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : classifier_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -218,14 +215,6 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::get_child_by_name(const st
 {
     if(child_yang_name == "filter-entry")
     {
-        for(auto const & c : filter_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry>();
         c->parent = this;
         filter_entry.push_back(c);
@@ -238,9 +227,14 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : filter_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -399,14 +393,6 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
 {
     if(child_yang_name == "dscp-cfg")
     {
-        for(auto const & c : dscp_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DscpCfg>();
         c->parent = this;
         dscp_cfg.push_back(c);
@@ -415,14 +401,6 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
 
     if(child_yang_name == "source-ip-address-cfg")
     {
-        for(auto const & c : source_ip_address_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg>();
         c->parent = this;
         source_ip_address_cfg.push_back(c);
@@ -431,14 +409,6 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
 
     if(child_yang_name == "destination-ip-address-cfg")
     {
-        for(auto const & c : destination_ip_address_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg>();
         c->parent = this;
         destination_ip_address_cfg.push_back(c);
@@ -447,14 +417,6 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
 
     if(child_yang_name == "source-port-cfg")
     {
-        for(auto const & c : source_port_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg>();
         c->parent = this;
         source_port_cfg.push_back(c);
@@ -463,14 +425,6 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
 
     if(child_yang_name == "destination-port-cfg")
     {
-        for(auto const & c : destination_port_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg>();
         c->parent = this;
         destination_port_cfg.push_back(c);
@@ -479,14 +433,6 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
 
     if(child_yang_name == "protocol-cfg")
     {
-        for(auto const & c : protocol_cfg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg>();
         c->parent = this;
         protocol_cfg.push_back(c);
@@ -499,34 +445,59 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dscp_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : source_ip_address_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : destination_ip_address_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : source_port_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : destination_port_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : protocol_cfg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -619,6 +590,7 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -705,6 +677,7 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddre
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -781,6 +754,7 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationIp
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -861,6 +835,7 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -951,6 +926,7 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationPo
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1041,6 +1017,7 @@ std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::
 std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

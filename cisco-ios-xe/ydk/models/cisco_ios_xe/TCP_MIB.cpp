@@ -107,6 +107,7 @@ std::shared_ptr<Entity> TCPMIB::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> TCPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tcp != nullptr)
     {
         children["tcp"] = tcp;
@@ -285,6 +286,7 @@ std::shared_ptr<Entity> TCPMIB::Tcp::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> TCPMIB::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -520,14 +522,6 @@ std::shared_ptr<Entity> TCPMIB::Tcpconntable::get_child_by_name(const std::strin
 {
     if(child_yang_name == "tcpConnEntry")
     {
-        for(auto const & c : tcpconnentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TCPMIB::Tcpconntable::Tcpconnentry>();
         c->parent = this;
         tcpconnentry.push_back(c);
@@ -540,9 +534,14 @@ std::shared_ptr<Entity> TCPMIB::Tcpconntable::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> TCPMIB::Tcpconntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tcpconnentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -634,6 +633,7 @@ std::shared_ptr<Entity> TCPMIB::Tcpconntable::Tcpconnentry::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> TCPMIB::Tcpconntable::Tcpconnentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -759,14 +759,6 @@ std::shared_ptr<Entity> TCPMIB::Tcpconnectiontable::get_child_by_name(const std:
 {
     if(child_yang_name == "tcpConnectionEntry")
     {
-        for(auto const & c : tcpconnectionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TCPMIB::Tcpconnectiontable::Tcpconnectionentry>();
         c->parent = this;
         tcpconnectionentry.push_back(c);
@@ -779,9 +771,14 @@ std::shared_ptr<Entity> TCPMIB::Tcpconnectiontable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> TCPMIB::Tcpconnectiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tcpconnectionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -885,6 +882,7 @@ std::shared_ptr<Entity> TCPMIB::Tcpconnectiontable::Tcpconnectionentry::get_chil
 std::map<std::string, std::shared_ptr<Entity>> TCPMIB::Tcpconnectiontable::Tcpconnectionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1040,14 +1038,6 @@ std::shared_ptr<Entity> TCPMIB::Tcplistenertable::get_child_by_name(const std::s
 {
     if(child_yang_name == "tcpListenerEntry")
     {
-        for(auto const & c : tcplistenerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TCPMIB::Tcplistenertable::Tcplistenerentry>();
         c->parent = this;
         tcplistenerentry.push_back(c);
@@ -1060,9 +1050,14 @@ std::shared_ptr<Entity> TCPMIB::Tcplistenertable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> TCPMIB::Tcplistenertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tcplistenerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1150,6 +1145,7 @@ std::shared_ptr<Entity> TCPMIB::Tcplistenertable::Tcplistenerentry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> TCPMIB::Tcplistenertable::Tcplistenerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

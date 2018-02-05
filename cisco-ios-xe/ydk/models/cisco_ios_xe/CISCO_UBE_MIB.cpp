@@ -68,6 +68,7 @@ std::shared_ptr<Entity> CISCOUBEMIB::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CISCOUBEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ciscoubemibobjects != nullptr)
     {
         children["ciscoUbeMIBObjects"] = ciscoubemibobjects;
@@ -179,6 +180,7 @@ std::shared_ptr<Entity> CISCOUBEMIB::Ciscoubemibobjects::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOUBEMIB::Ciscoubemibobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

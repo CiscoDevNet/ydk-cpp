@@ -185,9 +185,9 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1Ad : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList dot1q; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::BDI::Service::Instance::Encapsulation::Dot1Ad::Cos2
 
@@ -238,9 +238,9 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1Q : public y
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList second_dot1q; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::BDI::Service::Instance::Encapsulation::Dot1Q::Cos2
 
@@ -383,7 +383,7 @@ class Native::Interface::BDI::Service::Instance::Ip::Acl : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of string, uint16
+        ydk::YLeaf access_group; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
         ydk::YLeaf out; //type: empty
 
@@ -3460,8 +3460,8 @@ class Native::Interface::EmbeddedServiceEngine::Backup::Delay : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -3626,8 +3626,8 @@ class Native::Interface::EmbeddedServiceEngine::Backup::Load : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

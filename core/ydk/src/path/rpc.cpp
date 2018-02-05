@@ -44,7 +44,7 @@ ydk::path::RpcImpl::RpcImpl(SchemaNodeImpl& sn, struct ly_ctx* ctx, const std::s
 
     if(!dnode){
         YLOG_ERROR("Cannot find RPC with path {}", sn.get_path());
-        throw(YCPPModelError{"Invalid RPC"});
+        throw(YModelError{"Invalid RPC"});
     }
 
     data_node = std::make_unique<DataNodeImpl>(nullptr, dnode, m_priv_repo);

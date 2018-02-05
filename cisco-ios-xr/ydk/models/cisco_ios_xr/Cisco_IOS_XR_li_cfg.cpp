@@ -59,6 +59,7 @@ std::shared_ptr<Entity> LawfulIntercept::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> LawfulIntercept::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -94,6 +94,7 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(groups != nullptr)
     {
         children["groups"] = groups;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::Groups::get_child_by_name(c
 {
     if(child_yang_name == "group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyManager::Groups::Group>();
         c->parent = this;
         group.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::Groups::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Groups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -359,6 +357,7 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::Groups::Group::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Groups::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -632,6 +631,7 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::Summary::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -867,14 +867,6 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::Interfaces::get_child_by_na
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyManager::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -887,9 +879,14 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::Interfaces::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -985,6 +982,7 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::Interfaces::Interface::get_
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1120,6 +1118,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -1225,14 +1224,6 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::get_child_by_name(cons
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -1245,9 +1236,14 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1376,6 +1372,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_id_xr != nullptr)
     {
         children["group-id-xr"] = group_id_xr;
@@ -1474,14 +1471,6 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::get_c
 {
     if(child_yang_name == "group-id")
     {
-        for(auto const & c : group_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId>();
         c->parent = this;
         group_id.push_back(c);
@@ -1494,9 +1483,14 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::get_c
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1621,14 +1615,6 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::Group
 {
     if(child_yang_name == "session-detailed-information")
     {
-        for(auto const & c : session_detailed_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation>();
         c->parent = this;
         session_detailed_information.push_back(c);
@@ -1637,14 +1623,6 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::Group
 
     if(child_yang_name == "session-sync-error-information")
     {
-        for(auto const & c : session_sync_error_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation>();
         c->parent = this;
         session_sync_error_information.push_back(c);
@@ -1657,14 +1635,23 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::Group
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : session_detailed_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : session_sync_error_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1859,6 +1846,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::Group
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1983,6 +1971,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::Group
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2081,14 +2070,6 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::get_
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -2101,9 +2082,14 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::get_
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2249,14 +2235,6 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Inte
 
     if(child_yang_name == "client-status")
     {
-        for(auto const & c : client_status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus>();
         c->parent = this;
         client_status.push_back(c);
@@ -2269,6 +2247,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Inte
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_oper != nullptr)
     {
         children["interface-oper"] = interface_oper;
@@ -2279,9 +2258,13 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
         children["interface-status"] = interface_status;
     }
 
+    count = 0;
     for (auto const & c : client_status)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2486,6 +2469,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Inte
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2630,6 +2614,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Inte
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2788,6 +2773,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Inte
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2896,14 +2882,6 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::
 {
     if(child_yang_name == "group-summary")
     {
-        for(auto const & c : group_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary>();
         c->parent = this;
         group_summary.push_back(c);
@@ -2916,9 +2894,14 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group_summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3035,6 +3018,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3233,14 +3217,6 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::get_ch
 {
     if(child_yang_name == "group-id")
     {
-        for(auto const & c : group_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId>();
         c->parent = this;
         group_id.push_back(c);
@@ -3253,9 +3229,14 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::get_ch
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3482,14 +3463,6 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupI
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -3502,9 +3475,14 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupI
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3975,6 +3953,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupI
 std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

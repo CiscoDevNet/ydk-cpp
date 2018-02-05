@@ -68,6 +68,7 @@ std::shared_ptr<Entity> MemorySummary::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> MemorySummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> MemorySummary::Nodes::get_child_by_name(const std::strin
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MemorySummary::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> MemorySummary::Nodes::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -298,6 +296,7 @@ std::shared_ptr<Entity> MemorySummary::Nodes::Node::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -420,6 +419,7 @@ std::shared_ptr<Entity> MemorySummary::Nodes::Node::Summary::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -652,14 +652,6 @@ std::shared_ptr<Entity> MemorySummary::Nodes::Node::Detail::get_child_by_name(co
 {
     if(child_yang_name == "shared-window")
     {
-        for(auto const & c : shared_window)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MemorySummary::Nodes::Node::Detail::SharedWindow>();
         c->parent = this;
         shared_window.push_back(c);
@@ -672,9 +664,14 @@ std::shared_ptr<Entity> MemorySummary::Nodes::Node::Detail::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : shared_window)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -907,6 +904,7 @@ std::shared_ptr<Entity> MemorySummary::Nodes::Node::Detail::SharedWindow::get_ch
 std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Detail::SharedWindow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

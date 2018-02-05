@@ -68,6 +68,7 @@ std::shared_ptr<Entity> PfilterMa::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> PfilterMa::Nodes::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PfilterMa::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> PfilterMa::Nodes::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(process != nullptr)
     {
         children["process"] = process;
@@ -388,6 +387,7 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
@@ -473,6 +473,7 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(acl_info_table != nullptr)
     {
         children["acl-info-table"] = acl_info_table;
@@ -553,6 +554,7 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_infos != nullptr)
     {
         children["interface-infos"] = interface_infos;
@@ -626,14 +628,6 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::Int
 {
     if(child_yang_name == "interface-info")
     {
-        for(auto const & c : interface_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo>();
         c->parent = this;
         interface_info.push_back(c);
@@ -646,9 +640,14 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::Int
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -721,6 +720,7 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::Int
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -816,6 +816,7 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(acl_info_table != nullptr)
     {
         children["acl-info-table"] = acl_info_table;
@@ -896,6 +897,7 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_infos != nullptr)
     {
         children["interface-infos"] = interface_infos;
@@ -969,14 +971,6 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::Int
 {
     if(child_yang_name == "interface-info")
     {
-        for(auto const & c : interface_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo>();
         c->parent = this;
         interface_info.push_back(c);
@@ -989,9 +983,14 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::Int
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1064,6 +1063,7 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::Int
 std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

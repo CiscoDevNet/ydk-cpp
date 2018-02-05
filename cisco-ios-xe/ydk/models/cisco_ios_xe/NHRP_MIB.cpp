@@ -198,6 +198,7 @@ std::shared_ptr<Entity> NHRPMIB::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nhrpgeneralobjects != nullptr)
     {
         children["nhrpGeneralObjects"] = nhrpgeneralobjects;
@@ -351,6 +352,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpgeneralobjects::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpgeneralobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -436,14 +438,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpcachetable::get_child_by_name(const std::st
 {
     if(child_yang_name == "nhrpCacheEntry")
     {
-        for(auto const & c : nhrpcacheentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrpcachetable::Nhrpcacheentry>();
         c->parent = this;
         nhrpcacheentry.push_back(c);
@@ -456,9 +450,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpcachetable::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpcachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrpcacheentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -598,6 +597,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpcachetable::Nhrpcacheentry::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpcachetable::Nhrpcacheentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -843,14 +843,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrppurgereqtable::get_child_by_name(const std:
 {
     if(child_yang_name == "nhrpPurgeReqEntry")
     {
-        for(auto const & c : nhrppurgereqentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry>();
         c->parent = this;
         nhrppurgereqentry.push_back(c);
@@ -863,9 +855,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrppurgereqtable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrppurgereqtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrppurgereqentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -961,6 +958,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrppurgereqtable::Nhrppurgereqentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1096,14 +1094,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclienttable::get_child_by_name(const std::s
 {
     if(child_yang_name == "nhrpClientEntry")
     {
-        for(auto const & c : nhrpcliententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrpclienttable::Nhrpcliententry>();
         c->parent = this;
         nhrpcliententry.push_back(c);
@@ -1116,9 +1106,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclienttable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclienttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrpcliententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1250,6 +1245,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclienttable::Nhrpcliententry::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclienttable::Nhrpcliententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1475,14 +1471,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclientregistrationtable::get_child_by_name(
 {
     if(child_yang_name == "nhrpClientRegistrationEntry")
     {
-        for(auto const & c : nhrpclientregistrationentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry>();
         c->parent = this;
         nhrpclientregistrationentry.push_back(c);
@@ -1495,9 +1483,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclientregistrationtable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientregistrationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrpclientregistrationentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1589,6 +1582,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistra
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientregistrationtable::Nhrpclientregistrationentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1714,14 +1708,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclientnhstable::get_child_by_name(const std
 {
     if(child_yang_name == "nhrpClientNhsEntry")
     {
-        for(auto const & c : nhrpclientnhsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry>();
         c->parent = this;
         nhrpclientnhsentry.push_back(c);
@@ -1734,9 +1720,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclientnhstable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientnhstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrpclientnhsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1844,6 +1835,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientnhstable::Nhrpclientnhsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2009,14 +2001,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclientstattable::get_child_by_name(const st
 {
     if(child_yang_name == "nhrpClientStatEntry")
     {
-        for(auto const & c : nhrpclientstatentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry>();
         c->parent = this;
         nhrpclientstatentry.push_back(c);
@@ -2029,9 +2013,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclientstattable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientstattable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrpclientstatentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2207,6 +2196,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpclientstattable::Nhrpclientstatentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2542,14 +2532,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpservertable::get_child_by_name(const std::s
 {
     if(child_yang_name == "nhrpServerEntry")
     {
-        for(auto const & c : nhrpserverentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrpservertable::Nhrpserverentry>();
         c->parent = this;
         nhrpserverentry.push_back(c);
@@ -2562,9 +2544,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpservertable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrpserverentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2668,6 +2655,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpservertable::Nhrpserverentry::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservertable::Nhrpserverentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2823,14 +2811,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpservercachetable::get_child_by_name(const s
 {
     if(child_yang_name == "nhrpServerCacheEntry")
     {
-        for(auto const & c : nhrpservercacheentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry>();
         c->parent = this;
         nhrpservercacheentry.push_back(c);
@@ -2843,9 +2823,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpservercachetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservercachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrpservercacheentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2941,6 +2926,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::get
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservercachetable::Nhrpservercacheentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3076,14 +3062,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpservernhctable::get_child_by_name(const std
 {
     if(child_yang_name == "nhrpServerNhcEntry")
     {
-        for(auto const & c : nhrpservernhcentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry>();
         c->parent = this;
         nhrpservernhcentry.push_back(c);
@@ -3096,9 +3074,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpservernhctable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservernhctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrpservernhcentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3210,6 +3193,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpservernhctable::Nhrpservernhcentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3385,14 +3369,6 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpserverstattable::get_child_by_name(const st
 {
     if(child_yang_name == "nhrpServerStatEntry")
     {
-        for(auto const & c : nhrpserverstatentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry>();
         c->parent = this;
         nhrpserverstatentry.push_back(c);
@@ -3405,9 +3381,14 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpserverstattable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpserverstattable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhrpserverstatentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3643,6 +3624,7 @@ std::shared_ptr<Entity> NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> NHRPMIB::Nhrpserverstattable::Nhrpserverstatentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

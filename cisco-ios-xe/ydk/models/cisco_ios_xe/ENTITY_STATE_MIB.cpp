@@ -68,6 +68,7 @@ std::shared_ptr<Entity> ENTITYSTATEMIB::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> ENTITYSTATEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(entstatetable != nullptr)
     {
         children["entStateTable"] = entstatetable;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> ENTITYSTATEMIB::Entstatetable::get_child_by_name(const s
 {
     if(child_yang_name == "entStateEntry")
     {
-        for(auto const & c : entstateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ENTITYSTATEMIB::Entstatetable::Entstateentry>();
         c->parent = this;
         entstateentry.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> ENTITYSTATEMIB::Entstatetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ENTITYSTATEMIB::Entstatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entstateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -295,6 +293,7 @@ std::shared_ptr<Entity> ENTITYSTATEMIB::Entstatetable::Entstateentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> ENTITYSTATEMIB::Entstatetable::Entstateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

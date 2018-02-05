@@ -78,6 +78,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSou
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -193,14 +194,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Paths::get_child_by_name(cons
 {
     if(child_yang_name == "path")
     {
-        for(auto const & c : path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::Paths::Path>();
         c->parent = this;
         path.push_back(c);
@@ -213,9 +206,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Paths::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Paths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -309,6 +307,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Paths::Path::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Paths::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -414,6 +413,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::AllowRp::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AllowRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -511,6 +511,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Convergence::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Convergence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

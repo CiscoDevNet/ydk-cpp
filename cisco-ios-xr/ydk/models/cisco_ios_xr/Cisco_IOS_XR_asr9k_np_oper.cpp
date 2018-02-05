@@ -68,6 +68,7 @@ std::shared_ptr<Entity> HardwareModuleNp::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::get_child_by_name(const std::st
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nps != nullptr)
     {
         children["nps"] = nps;
@@ -368,14 +367,6 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::get_child_by_name(co
 {
     if(child_yang_name == "np")
     {
-        for(auto const & c : np)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np>();
         c->parent = this;
         np.push_back(c);
@@ -388,9 +379,14 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : np)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -512,6 +508,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chn_load != nullptr)
     {
         children["chn-load"] = chn_load;
@@ -610,14 +607,6 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::get_chi
 {
     if(child_yang_name == "np-chn-load")
     {
-        for(auto const & c : np_chn_load)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad>();
         c->parent = this;
         np_chn_load.push_back(c);
@@ -630,9 +619,14 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::get_chi
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : np_chn_load)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -721,6 +715,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLo
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -869,6 +864,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::get
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(internal_tcam_info != nullptr)
     {
         children["internal-tcam-info"] = internal_tcam_info;
@@ -973,14 +969,6 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 
     if(child_yang_name == "tcam-lt-l2")
     {
-        for(auto const & c : tcam_lt_l2)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2>();
         c->parent = this;
         tcam_lt_l2.push_back(c);
@@ -993,6 +981,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tcam_lt_ods2 != nullptr)
     {
         children["tcam-lt-ods2"] = tcam_lt_ods2;
@@ -1003,9 +992,13 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
         children["tcam-lt-ods8"] = tcam_lt_ods8;
     }
 
+    count = 0;
     for (auto const & c : tcam_lt_l2)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1170,6 +1163,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(app_id_ifib != nullptr)
     {
         children["app-id-ifib"] = app_id_ifib;
@@ -1299,6 +1293,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1403,6 +1398,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1507,6 +1503,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1611,6 +1608,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1715,6 +1713,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1819,6 +1818,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1923,6 +1923,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2115,6 +2116,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(app_id_ifib != nullptr)
     {
         children["app-id-ifib"] = app_id_ifib;
@@ -2244,6 +2246,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2348,6 +2351,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2452,6 +2456,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2556,6 +2561,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2660,6 +2666,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2764,6 +2771,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2868,6 +2876,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2972,6 +2981,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3096,14 +3106,6 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 
     if(child_yang_name == "tcam-lt-l2")
     {
-        for(auto const & c : tcam_lt_l2)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2>();
         c->parent = this;
         tcam_lt_l2.push_back(c);
@@ -3116,6 +3118,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tcam_lt_ods2 != nullptr)
     {
         children["tcam-lt-ods2"] = tcam_lt_ods2;
@@ -3126,9 +3129,13 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
         children["tcam-lt-ods8"] = tcam_lt_ods8;
     }
 
+    count = 0;
     for (auto const & c : tcam_lt_l2)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3306,6 +3313,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(acl_common != nullptr)
     {
         children["acl-common"] = acl_common;
@@ -3436,6 +3444,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3530,6 +3539,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3634,6 +3644,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3738,6 +3749,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3842,6 +3854,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3946,6 +3959,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4050,6 +4064,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4154,6 +4169,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4359,6 +4375,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(acl_common != nullptr)
     {
         children["acl-common"] = acl_common;
@@ -4489,6 +4506,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4583,6 +4601,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4687,6 +4706,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4791,6 +4811,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4895,6 +4916,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4999,6 +5021,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5103,6 +5126,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5207,6 +5231,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5315,6 +5340,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5423,14 +5449,6 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_ch
 {
     if(child_yang_name == "np-counter")
     {
-        for(auto const & c : np_counter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter>();
         c->parent = this;
         np_counter.push_back(c);
@@ -5443,9 +5461,14 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_ch
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : np_counter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5530,6 +5553,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCoun
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5648,14 +5672,6 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_ch
 {
     if(child_yang_name == "np-fast-drop")
     {
-        for(auto const & c : np_fast_drop)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop>();
         c->parent = this;
         np_fast_drop.push_back(c);
@@ -5668,9 +5684,14 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_ch
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : np_fast_drop)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5743,6 +5764,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFast
 std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

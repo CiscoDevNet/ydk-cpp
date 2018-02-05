@@ -94,6 +94,7 @@ std::shared_ptr<Entity> Context::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Context::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(context_numbers != nullptr)
     {
         children["context-numbers"] = context_numbers;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::get_child_by_name(const std::st
 {
     if(child_yang_name == "context-number")
     {
-        for(auto const & c : context_number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber>();
         c->parent = this;
         context_number.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> Context::ContextNumbers::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context_number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -334,6 +332,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(locations != nullptr)
     {
         children["locations"] = locations;
@@ -422,14 +421,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::get_c
 {
     if(child_yang_name == "location")
     {
-        for(auto const & c : location)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location>();
         c->parent = this;
         location.push_back(c);
@@ -442,9 +433,14 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::get_c
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::Locations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : location)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -527,6 +523,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::Locations::Location::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enter != nullptr)
     {
         children["enter"] = enter;
@@ -610,14 +607,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 {
     if(child_yang_name == "crash-info")
     {
-        for(auto const & c : crash_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo>();
         c->parent = this;
         crash_info.push_back(c);
@@ -630,9 +619,14 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::Locations::Location::Enter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : crash_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -717,14 +711,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 {
     if(child_yang_name == "context-info")
     {
-        for(auto const & c : context_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo>();
         c->parent = this;
         context_info.push_back(c);
@@ -733,14 +719,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 
     if(child_yang_name == "crash-package-information")
     {
-        for(auto const & c : crash_package_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::CrashPackageInformation>();
         c->parent = this;
         crash_package_information.push_back(c);
@@ -753,14 +731,23 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : crash_package_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -895,14 +882,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 {
     if(child_yang_name == "stack-trace")
     {
-        for(auto const & c : stack_trace)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
         stack_trace.push_back(c);
@@ -911,14 +890,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 
     if(child_yang_name == "dll-info")
     {
-        for(auto const & c : dll_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
         dll_info.push_back(c);
@@ -931,14 +902,23 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stack_trace)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dll_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1117,6 +1097,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::StackTrace::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1213,6 +1194,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::ContextInfo::DllInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1343,6 +1325,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::Locations::Locat
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::Locations::Location::Enter::CrashInfo::CrashPackageInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1431,14 +1414,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::get_child_b
 {
     if(child_yang_name == "crash-info")
     {
-        for(auto const & c : crash_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo>();
         c->parent = this;
         crash_info.push_back(c);
@@ -1451,9 +1426,14 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : crash_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1538,14 +1518,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
 {
     if(child_yang_name == "context-info")
     {
-        for(auto const & c : context_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo>();
         c->parent = this;
         context_info.push_back(c);
@@ -1554,14 +1526,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
 
     if(child_yang_name == "crash-package-information")
     {
-        for(auto const & c : crash_package_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInformation>();
         c->parent = this;
         crash_package_information.push_back(c);
@@ -1574,14 +1538,23 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::All::CrashInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : crash_package_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1716,14 +1689,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
 {
     if(child_yang_name == "stack-trace")
     {
-        for(auto const & c : stack_trace)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
         stack_trace.push_back(c);
@@ -1732,14 +1697,6 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
 
     if(child_yang_name == "dll-info")
     {
-        for(auto const & c : dll_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
         dll_info.push_back(c);
@@ -1752,14 +1709,23 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stack_trace)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dll_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1938,6 +1904,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::StackTrace::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2034,6 +2001,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::All::CrashInfo::ContextInfo::DllInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2164,6 +2132,7 @@ std::shared_ptr<Entity> Context::ContextNumbers::ContextNumber::All::CrashInfo::
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextNumbers::ContextNumber::All::CrashInfo::CrashPackageInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2259,14 +2228,6 @@ std::shared_ptr<Entity> Context::ContextLocations::get_child_by_name(const std::
 {
     if(child_yang_name == "context-location")
     {
-        for(auto const & c : context_location)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation>();
         c->parent = this;
         context_location.push_back(c);
@@ -2279,9 +2240,14 @@ std::shared_ptr<Entity> Context::ContextLocations::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context_location)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2384,6 +2350,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(numbers != nullptr)
     {
         children["numbers"] = numbers;
@@ -2472,14 +2439,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::get
 {
     if(child_yang_name == "number")
     {
-        for(auto const & c : number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number>();
         c->parent = this;
         number.push_back(c);
@@ -2492,9 +2451,14 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::get
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::Numbers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2577,6 +2541,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::Numbers::Number::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enter != nullptr)
     {
         children["enter"] = enter;
@@ -2660,14 +2625,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 {
     if(child_yang_name == "crash-info")
     {
-        for(auto const & c : crash_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo>();
         c->parent = this;
         crash_info.push_back(c);
@@ -2680,9 +2637,14 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::Numbers::Number::Enter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : crash_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2767,14 +2729,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 {
     if(child_yang_name == "context-info")
     {
-        for(auto const & c : context_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo>();
         c->parent = this;
         context_info.push_back(c);
@@ -2783,14 +2737,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 
     if(child_yang_name == "crash-package-information")
     {
-        for(auto const & c : crash_package_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::CrashPackageInformation>();
         c->parent = this;
         crash_package_information.push_back(c);
@@ -2803,14 +2749,23 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : crash_package_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2945,14 +2900,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 {
     if(child_yang_name == "stack-trace")
     {
-        for(auto const & c : stack_trace)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
         stack_trace.push_back(c);
@@ -2961,14 +2908,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 
     if(child_yang_name == "dll-info")
     {
-        for(auto const & c : dll_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
         dll_info.push_back(c);
@@ -2981,14 +2920,23 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stack_trace)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dll_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3167,6 +3115,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::StackTrace::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3263,6 +3212,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::ContextInfo::DllInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3393,6 +3343,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::Numbers::Num
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::Numbers::Number::Enter::CrashInfo::CrashPackageInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3481,14 +3432,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::get_chi
 {
     if(child_yang_name == "crash-info")
     {
-        for(auto const & c : crash_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo>();
         c->parent = this;
         crash_info.push_back(c);
@@ -3501,9 +3444,14 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : crash_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3588,14 +3536,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
 {
     if(child_yang_name == "context-info")
     {
-        for(auto const & c : context_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo>();
         c->parent = this;
         context_info.push_back(c);
@@ -3604,14 +3544,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
 
     if(child_yang_name == "crash-package-information")
     {
-        for(auto const & c : crash_package_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInformation>();
         c->parent = this;
         crash_package_information.push_back(c);
@@ -3624,14 +3556,23 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::All::CrashInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : crash_package_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3766,14 +3707,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
 {
     if(child_yang_name == "stack-trace")
     {
-        for(auto const & c : stack_trace)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
         stack_trace.push_back(c);
@@ -3782,14 +3715,6 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
 
     if(child_yang_name == "dll-info")
     {
-        for(auto const & c : dll_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
         dll_info.push_back(c);
@@ -3802,14 +3727,23 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stack_trace)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dll_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3988,6 +3922,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::StackTrace::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4084,6 +4019,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::All::CrashInfo::ContextInfo::DllInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4214,6 +4150,7 @@ std::shared_ptr<Entity> Context::ContextLocations::ContextLocation::All::CrashIn
 std::map<std::string, std::shared_ptr<Entity>> Context::ContextLocations::ContextLocation::All::CrashInfo::CrashPackageInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4309,14 +4246,6 @@ std::shared_ptr<Entity> Context::All::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "crash-info")
     {
-        for(auto const & c : crash_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::All::CrashInfo>();
         c->parent = this;
         crash_info.push_back(c);
@@ -4329,9 +4258,14 @@ std::shared_ptr<Entity> Context::All::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Context::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : crash_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4423,14 +4357,6 @@ std::shared_ptr<Entity> Context::All::CrashInfo::get_child_by_name(const std::st
 {
     if(child_yang_name == "context-info")
     {
-        for(auto const & c : context_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::All::CrashInfo::ContextInfo>();
         c->parent = this;
         context_info.push_back(c);
@@ -4439,14 +4365,6 @@ std::shared_ptr<Entity> Context::All::CrashInfo::get_child_by_name(const std::st
 
     if(child_yang_name == "crash-package-information")
     {
-        for(auto const & c : crash_package_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::All::CrashInfo::CrashPackageInformation>();
         c->parent = this;
         crash_package_information.push_back(c);
@@ -4459,14 +4377,23 @@ std::shared_ptr<Entity> Context::All::CrashInfo::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Context::All::CrashInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : crash_package_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4608,14 +4535,6 @@ std::shared_ptr<Entity> Context::All::CrashInfo::ContextInfo::get_child_by_name(
 {
     if(child_yang_name == "stack-trace")
     {
-        for(auto const & c : stack_trace)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::All::CrashInfo::ContextInfo::StackTrace>();
         c->parent = this;
         stack_trace.push_back(c);
@@ -4624,14 +4543,6 @@ std::shared_ptr<Entity> Context::All::CrashInfo::ContextInfo::get_child_by_name(
 
     if(child_yang_name == "dll-info")
     {
-        for(auto const & c : dll_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Context::All::CrashInfo::ContextInfo::DllInfo>();
         c->parent = this;
         dll_info.push_back(c);
@@ -4644,14 +4555,23 @@ std::shared_ptr<Entity> Context::All::CrashInfo::ContextInfo::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Context::All::CrashInfo::ContextInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stack_trace)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dll_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4837,6 +4757,7 @@ std::shared_ptr<Entity> Context::All::CrashInfo::ContextInfo::StackTrace::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Context::All::CrashInfo::ContextInfo::StackTrace::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4940,6 +4861,7 @@ std::shared_ptr<Entity> Context::All::CrashInfo::ContextInfo::DllInfo::get_child
 std::map<std::string, std::shared_ptr<Entity>> Context::All::CrashInfo::ContextInfo::DllInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5077,6 +4999,7 @@ std::shared_ptr<Entity> Context::All::CrashInfo::CrashPackageInformation::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Context::All::CrashInfo::CrashPackageInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

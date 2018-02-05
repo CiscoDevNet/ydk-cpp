@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Wanphy::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Wanphy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(controllers != nullptr)
     {
         children["controllers"] = controllers;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Wanphy::Controllers::get_child_by_name(const std::string
 {
     if(child_yang_name == "controller")
     {
-        for(auto const & c : controller)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Wanphy::Controllers::Controller>();
         c->parent = this;
         controller.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Wanphy::Controllers::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Wanphy::Controllers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : controller)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> Wanphy::Controllers::Controller::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Wanphy::Controllers::Controller::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(info != nullptr)
     {
         children["info"] = info;
@@ -542,6 +541,7 @@ std::shared_ptr<Entity> Wanphy::Controllers::Controller::Info::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Wanphy::Controllers::Controller::Info::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -61,14 +61,6 @@ std::shared_ptr<Entity> NodePath::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NodePath::Node>();
         c->parent = this;
         node.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> NodePath::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> NodePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -198,6 +195,7 @@ std::shared_ptr<Entity> NodePath::Node::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> NodePath::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slice_ids != nullptr)
     {
         children["slice-ids"] = slice_ids;
@@ -281,14 +279,6 @@ std::shared_ptr<Entity> NodePath::Node::SliceIds::get_child_by_name(const std::s
 {
     if(child_yang_name == "slice-id")
     {
-        for(auto const & c : slice_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NodePath::Node::SliceIds::SliceId>();
         c->parent = this;
         slice_id.push_back(c);
@@ -301,9 +291,14 @@ std::shared_ptr<Entity> NodePath::Node::SliceIds::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> NodePath::Node::SliceIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slice_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -384,6 +379,7 @@ std::shared_ptr<Entity> NodePath::Node::SliceIds::SliceId::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> NodePath::Node::SliceIds::SliceId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

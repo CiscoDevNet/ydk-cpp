@@ -81,6 +81,7 @@ std::shared_ptr<Entity> HwModule::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> HwModule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slice_ids != nullptr)
     {
         children["slice-ids"] = slice_ids;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> HwModule::SliceIds::get_child_by_name(const std::string 
 {
     if(child_yang_name == "slice-id")
     {
-        for(auto const & c : slice_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModule::SliceIds::SliceId>();
         c->parent = this;
         slice_id.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> HwModule::SliceIds::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slice_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -295,14 +293,6 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::get_child_by_name(const std
 {
     if(child_yang_name == "slice-info")
     {
-        for(auto const & c : slice_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModule::SliceIds::SliceId::SliceInfo>();
         c->parent = this;
         slice_info.push_back(c);
@@ -315,9 +305,14 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slice_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -434,14 +429,6 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::get_child_by_nam
 {
     if(child_yang_name == "client-port")
     {
-        for(auto const & c : client_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModule::SliceIds::SliceId::SliceInfo::ClientPort>();
         c->parent = this;
         client_port.push_back(c);
@@ -454,9 +441,14 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::SliceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client_port)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -625,14 +617,6 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_
 {
     if(child_yang_name == "trunk-port")
     {
-        for(auto const & c : trunk_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort>();
         c->parent = this;
         trunk_port.push_back(c);
@@ -645,9 +629,14 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_
 std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : trunk_port)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -744,6 +733,7 @@ std::shared_ptr<Entity> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::Trun
 std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceIds::SliceId::SliceInfo::ClientPort::TrunkPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -849,14 +839,6 @@ std::shared_ptr<Entity> HwModule::SliceAll::get_child_by_name(const std::string 
 {
     if(child_yang_name == "slice-info")
     {
-        for(auto const & c : slice_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModule::SliceAll::SliceInfo>();
         c->parent = this;
         slice_info.push_back(c);
@@ -869,9 +851,14 @@ std::shared_ptr<Entity> HwModule::SliceAll::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceAll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slice_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -985,14 +972,6 @@ std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::get_child_by_name(const s
 {
     if(child_yang_name == "client-port")
     {
-        for(auto const & c : client_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModule::SliceAll::SliceInfo::ClientPort>();
         c->parent = this;
         client_port.push_back(c);
@@ -1005,9 +984,14 @@ std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceAll::SliceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client_port)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1183,14 +1167,6 @@ std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::ClientPort::get_child_by_
 {
     if(child_yang_name == "trunk-port")
     {
-        for(auto const & c : trunk_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort>();
         c->parent = this;
         trunk_port.push_back(c);
@@ -1203,9 +1179,14 @@ std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::ClientPort::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceAll::SliceInfo::ClientPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : trunk_port)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1309,6 +1290,7 @@ std::shared_ptr<Entity> HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::ge
 std::map<std::string, std::shared_ptr<Entity>> HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

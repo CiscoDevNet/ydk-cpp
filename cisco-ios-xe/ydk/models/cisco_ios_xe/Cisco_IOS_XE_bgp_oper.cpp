@@ -107,6 +107,7 @@ std::shared_ptr<Entity> BgpStateData::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbors != nullptr)
     {
         children["neighbors"] = neighbors;
@@ -227,14 +228,6 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::get_child_by_name(const std::st
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -247,9 +240,14 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -445,6 +443,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(negotiated_keepalive_timers != nullptr)
     {
         children["negotiated-keepalive-timers"] = negotiated_keepalive_timers;
@@ -658,6 +657,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::NegotiatedKeepaliveTi
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::NegotiatedKeepaliveTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -775,6 +775,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sent != nullptr)
     {
         children["sent"] = sent;
@@ -887,6 +888,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Sent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1019,6 +1021,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Received::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1155,6 +1158,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::Connection::get_child
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1301,6 +1305,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::Transport::get_child_
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1449,6 +1454,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::PrefixActivity::get_c
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::PrefixActivity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sent != nullptr)
     {
         children["sent"] = sent;
@@ -1545,6 +1551,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::PrefixActivity::Sent:
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::PrefixActivity::Sent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1691,6 +1698,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::Neighbor::PrefixActivity::Recei
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::Neighbor::PrefixActivity::Received::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1826,14 +1834,6 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::get_child_by_name(const s
 {
     if(child_yang_name == "address-family")
     {
-        for(auto const & c : address_family)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::AddressFamilies::AddressFamily>();
         c->parent = this;
         address_family.push_back(c);
@@ -1846,9 +1846,14 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address_family)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2036,6 +2041,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::get_child_
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::AddressFamily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefixes != nullptr)
     {
         children["prefixes"] = prefixes;
@@ -2201,6 +2207,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::Prefixes::
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::AddressFamily::Prefixes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2291,6 +2298,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::Path::get_
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::AddressFamily::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2381,6 +2389,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::AsPath::ge
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::AddressFamily::AsPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2471,6 +2480,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::RouteMap::
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::AddressFamily::RouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2561,6 +2571,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::FilterList
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::AddressFamily::FilterList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2655,6 +2666,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::Activities
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::AddressFamily::Activities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2753,14 +2765,6 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::BgpNeighbo
 {
     if(child_yang_name == "bgp-neighbor-summary")
     {
-        for(auto const & c : bgp_neighbor_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary>();
         c->parent = this;
         bgp_neighbor_summary.push_back(c);
@@ -2773,9 +2777,14 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::BgpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_neighbor_summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2884,6 +2893,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::BgpNeighbo
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3069,14 +3079,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::get_child_by_name(const std:
 {
     if(child_yang_name == "bgp-route-vrf")
     {
-        for(auto const & c : bgp_route_vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf>();
         c->parent = this;
         bgp_route_vrf.push_back(c);
@@ -3089,9 +3091,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_route_vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3181,6 +3188,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_route_afs != nullptr)
     {
         children["bgp-route-afs"] = bgp_route_afs;
@@ -3264,14 +3272,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::ge
 {
     if(child_yang_name == "bgp-route-af")
     {
-        for(auto const & c : bgp_route_af)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf>();
         c->parent = this;
         bgp_route_af.push_back(c);
@@ -3284,9 +3284,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::ge
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_route_af)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3395,6 +3400,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_route_filters != nullptr)
     {
         children["bgp-route-filters"] = bgp_route_filters;
@@ -3488,14 +3494,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 {
     if(child_yang_name == "bgp-route-filter")
     {
-        for(auto const & c : bgp_route_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter>();
         c->parent = this;
         bgp_route_filter.push_back(c);
@@ -3508,9 +3506,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_route_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3593,6 +3596,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_route_entries != nullptr)
     {
         children["bgp-route-entries"] = bgp_route_entries;
@@ -3676,14 +3680,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 {
     if(child_yang_name == "bgp-route-entry")
     {
-        for(auto const & c : bgp_route_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry>();
         c->parent = this;
         bgp_route_entry.push_back(c);
@@ -3696,9 +3692,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_route_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3793,6 +3794,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_path_entries != nullptr)
     {
         children["bgp-path-entries"] = bgp_path_entries;
@@ -3906,14 +3908,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 {
     if(child_yang_name == "bgp-path-entry")
     {
-        for(auto const & c : bgp_path_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry>();
         c->parent = this;
         bgp_path_entry.push_back(c);
@@ -3926,9 +3920,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_path_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4099,6 +4098,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path_status != nullptr)
     {
         children["path-status"] = path_status;
@@ -4456,6 +4456,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::PathStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4674,14 +4675,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 {
     if(child_yang_name == "bgp-route-neighbor")
     {
-        for(auto const & c : bgp_route_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor>();
         c->parent = this;
         bgp_route_neighbor.push_back(c);
@@ -4694,9 +4687,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_route_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4779,6 +4777,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_neighbor_route_filters != nullptr)
     {
         children["bgp-neighbor-route-filters"] = bgp_neighbor_route_filters;
@@ -4862,14 +4861,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 {
     if(child_yang_name == "bgp-neighbor-route-filter")
     {
-        for(auto const & c : bgp_neighbor_route_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter>();
         c->parent = this;
         bgp_neighbor_route_filter.push_back(c);
@@ -4882,9 +4873,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_neighbor_route_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4967,6 +4963,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_neighbor_route_entries != nullptr)
     {
         children["bgp-neighbor-route-entries"] = bgp_neighbor_route_entries;
@@ -5050,14 +5047,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 {
     if(child_yang_name == "bgp-neighbor-route-entry")
     {
-        for(auto const & c : bgp_neighbor_route_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry>();
         c->parent = this;
         bgp_neighbor_route_entry.push_back(c);
@@ -5070,9 +5059,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_neighbor_route_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5167,6 +5161,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_neighbor_path_entries != nullptr)
     {
         children["bgp-neighbor-path-entries"] = bgp_neighbor_path_entries;
@@ -5280,14 +5275,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 {
     if(child_yang_name == "bgp-neighbor-path-entry")
     {
-        for(auto const & c : bgp_neighbor_path_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry>();
         c->parent = this;
         bgp_neighbor_path_entry.push_back(c);
@@ -5300,9 +5287,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_neighbor_path_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5473,6 +5465,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path_status != nullptr)
     {
         children["path-status"] = path_status;
@@ -5830,6 +5823,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6048,14 +6042,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 {
     if(child_yang_name == "bgp-peer-group")
     {
-        for(auto const & c : bgp_peer_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup>();
         c->parent = this;
         bgp_peer_group.push_back(c);
@@ -6068,9 +6054,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_peer_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6233,6 +6224,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6526,14 +6518,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::get_child_by_name(const std::
 {
     if(child_yang_name == "bgp-route-rd")
     {
-        for(auto const & c : bgp_route_rd)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd>();
         c->parent = this;
         bgp_route_rd.push_back(c);
@@ -6546,9 +6530,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_route_rd)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6638,6 +6627,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_rd_route_afs != nullptr)
     {
         children["bgp-rd-route-afs"] = bgp_rd_route_afs;
@@ -6721,14 +6711,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::ge
 {
     if(child_yang_name == "bgp-rd-route-af")
     {
-        for(auto const & c : bgp_rd_route_af)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf>();
         c->parent = this;
         bgp_rd_route_af.push_back(c);
@@ -6741,9 +6723,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::ge
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_rd_route_af)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6839,6 +6826,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_rd_route_filters != nullptr)
     {
         children["bgp-rd-route-filters"] = bgp_rd_route_filters;
@@ -6927,14 +6915,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 {
     if(child_yang_name == "bgp-rd-route-filter")
     {
-        for(auto const & c : bgp_rd_route_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter>();
         c->parent = this;
         bgp_rd_route_filter.push_back(c);
@@ -6947,9 +6927,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_rd_route_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7032,6 +7017,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_rd_route_entries != nullptr)
     {
         children["bgp-rd-route-entries"] = bgp_rd_route_entries;
@@ -7115,14 +7101,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 {
     if(child_yang_name == "bgp-rd-route-entry")
     {
-        for(auto const & c : bgp_rd_route_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry>();
         c->parent = this;
         bgp_rd_route_entry.push_back(c);
@@ -7135,9 +7113,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_rd_route_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7232,6 +7215,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_rd_path_entries != nullptr)
     {
         children["bgp-rd-path-entries"] = bgp_rd_path_entries;
@@ -7345,14 +7329,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 {
     if(child_yang_name == "bgp-rd-path-entry")
     {
-        for(auto const & c : bgp_rd_path_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry>();
         c->parent = this;
         bgp_rd_path_entry.push_back(c);
@@ -7365,9 +7341,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_rd_path_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7538,6 +7519,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path_status != nullptr)
     {
         children["path-status"] = path_status;
@@ -7895,6 +7877,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8113,14 +8096,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 {
     if(child_yang_name == "bgp-rd-route-neighbor")
     {
-        for(auto const & c : bgp_rd_route_neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor>();
         c->parent = this;
         bgp_rd_route_neighbor.push_back(c);
@@ -8133,9 +8108,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_rd_route_neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8218,6 +8198,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_rd_neighbor_route_filters != nullptr)
     {
         children["bgp-rd-neighbor-route-filters"] = bgp_rd_neighbor_route_filters;
@@ -8301,14 +8282,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 {
     if(child_yang_name == "bgp-rd-neighbor-route-filter")
     {
-        for(auto const & c : bgp_rd_neighbor_route_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter>();
         c->parent = this;
         bgp_rd_neighbor_route_filter.push_back(c);
@@ -8321,9 +8294,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_rd_neighbor_route_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8406,6 +8384,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_rd_neighbor_route_entries != nullptr)
     {
         children["bgp-rd-neighbor-route-entries"] = bgp_rd_neighbor_route_entries;
@@ -8489,14 +8468,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 {
     if(child_yang_name == "bgp-rd-neighbor-route-entry")
     {
-        for(auto const & c : bgp_rd_neighbor_route_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry>();
         c->parent = this;
         bgp_rd_neighbor_route_entry.push_back(c);
@@ -8509,9 +8480,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_rd_neighbor_route_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8606,6 +8582,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_rd_neighbor_path_entries != nullptr)
     {
         children["bgp-rd-neighbor-path-entries"] = bgp_rd_neighbor_path_entries;
@@ -8719,14 +8696,6 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 {
     if(child_yang_name == "bgp-rd-neighbor-path-entry")
     {
-        for(auto const & c : bgp_rd_neighbor_path_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry>();
         c->parent = this;
         bgp_rd_neighbor_path_entry.push_back(c);
@@ -8739,9 +8708,14 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp_rd_neighbor_path_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8912,6 +8886,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path_status != nullptr)
     {
         children["path-status"] = path_status;
@@ -9269,6 +9244,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
 std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

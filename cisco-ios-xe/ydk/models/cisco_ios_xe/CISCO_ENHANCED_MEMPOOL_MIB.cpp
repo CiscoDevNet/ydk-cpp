@@ -107,6 +107,7 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cempnotificationconfig != nullptr)
     {
         children["cempNotificationConfig"] = cempnotificationconfig;
@@ -225,6 +226,7 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -310,14 +312,6 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::get_child_by_
 {
     if(child_yang_name == "cempMemPoolEntry")
     {
-        for(auto const & c : cempmempoolentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry>();
         c->parent = this;
         cempmempoolentry.push_back(c);
@@ -330,9 +324,14 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cempmempoolentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -520,6 +519,7 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolen
 std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -885,14 +885,6 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::get_chi
 {
     if(child_yang_name == "cempMemBufferPoolEntry")
     {
-        for(auto const & c : cempmembufferpoolentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry>();
         c->parent = this;
         cempmembufferpoolentry.push_back(c);
@@ -905,9 +897,14 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cempmembufferpoolentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1071,6 +1068,7 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmem
 std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1376,14 +1374,6 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::ge
 {
     if(child_yang_name == "cempMemBufferCachePoolEntry")
     {
-        for(auto const & c : cempmembuffercachepoolentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry>();
         c->parent = this;
         cempmembuffercachepoolentry.push_back(c);
@@ -1396,9 +1386,14 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cempmembuffercachepoolentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1506,6 +1501,7 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Ce
 std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

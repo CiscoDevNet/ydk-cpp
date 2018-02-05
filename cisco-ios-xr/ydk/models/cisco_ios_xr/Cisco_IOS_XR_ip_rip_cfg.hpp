@@ -129,14 +129,14 @@ class Rip::DefaultVrf::Redistribution : public ydk::Entity
         class Bgps; //type: Rip::DefaultVrf::Redistribution::Bgps
         class Isises; //type: Rip::DefaultVrf::Redistribution::Isises
         class EigrpS; //type: Rip::DefaultVrf::Redistribution::EigrpS
-        class Static_; //type: Rip::DefaultVrf::Redistribution::Static_
+        class Static; //type: Rip::DefaultVrf::Redistribution::Static
         class Ospfs; //type: Rip::DefaultVrf::Redistribution::Ospfs
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::Connected> connected; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::Bgps> bgps;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::Isises> isises;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::EigrpS> eigrp_s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::Ospfs> ospfs;
         
 }; // Rip::DefaultVrf::Redistribution
@@ -310,11 +310,11 @@ class Rip::DefaultVrf::Redistribution::EigrpS::Eigrp : public ydk::Entity
 }; // Rip::DefaultVrf::Redistribution::EigrpS::Eigrp
 
 
-class Rip::DefaultVrf::Redistribution::Static_ : public ydk::Entity
+class Rip::DefaultVrf::Redistribution::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -330,7 +330,7 @@ class Rip::DefaultVrf::Redistribution::Static_ : public ydk::Entity
         ydk::YLeaf route_policy_name; //type: string
         ydk::YLeaf route_type; //type: DefaultRedistRoute
 
-}; // Rip::DefaultVrf::Redistribution::Static_
+}; // Rip::DefaultVrf::Redistribution::Static
 
 
 class Rip::DefaultVrf::Redistribution::Ospfs : public ydk::Entity
@@ -771,14 +771,14 @@ class Rip::Vrfs::Vrf::Redistribution : public ydk::Entity
         class Bgps; //type: Rip::Vrfs::Vrf::Redistribution::Bgps
         class Isises; //type: Rip::Vrfs::Vrf::Redistribution::Isises
         class EigrpS; //type: Rip::Vrfs::Vrf::Redistribution::EigrpS
-        class Static_; //type: Rip::Vrfs::Vrf::Redistribution::Static_
+        class Static; //type: Rip::Vrfs::Vrf::Redistribution::Static
         class Ospfs; //type: Rip::Vrfs::Vrf::Redistribution::Ospfs
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::Connected> connected; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::Bgps> bgps;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::Isises> isises;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::EigrpS> eigrp_s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::Ospfs> ospfs;
         
 }; // Rip::Vrfs::Vrf::Redistribution
@@ -945,11 +945,11 @@ class Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp : public ydk::Entity
 }; // Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp
 
 
-class Rip::Vrfs::Vrf::Redistribution::Static_ : public ydk::Entity
+class Rip::Vrfs::Vrf::Redistribution::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -964,7 +964,7 @@ class Rip::Vrfs::Vrf::Redistribution::Static_ : public ydk::Entity
         ydk::YLeaf route_policy_name; //type: string
         ydk::YLeaf route_type; //type: DefaultRedistRoute
 
-}; // Rip::Vrfs::Vrf::Redistribution::Static_
+}; // Rip::Vrfs::Vrf::Redistribution::Static
 
 
 class Rip::Vrfs::Vrf::Redistribution::Ospfs : public ydk::Entity

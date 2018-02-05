@@ -81,6 +81,7 @@ std::shared_ptr<Entity> RoutingPolicy::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(defined_sets != nullptr)
     {
         children["defined-sets"] = defined_sets;
@@ -237,6 +238,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_sets != nullptr)
     {
         children["prefix-sets"] = prefix_sets;
@@ -332,14 +334,6 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::get_child_by_nam
 {
     if(child_yang_name == "prefix-set")
     {
-        for(auto const & c : prefix_set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet>();
         c->parent = this;
         prefix_set.push_back(c);
@@ -352,9 +346,14 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::PrefixSets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -470,6 +469,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::get_c
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -561,6 +561,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Confi
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -637,6 +638,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::State
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -715,14 +717,6 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefi
 {
     if(child_yang_name == "prefix")
     {
-        for(auto const & c : prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix>();
         c->parent = this;
         prefix.push_back(c);
@@ -735,9 +729,14 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefi
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -837,6 +836,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefi
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -937,6 +937,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefi
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1027,6 +1028,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefi
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1122,14 +1124,6 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::NeighborSets::get_child_by_n
 {
     if(child_yang_name == "neighbor-set")
     {
-        for(auto const & c : neighbor_set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::DefinedSets::NeighborSets::NeighborSet>();
         c->parent = this;
         neighbor_set.push_back(c);
@@ -1142,9 +1136,14 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::NeighborSets::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::NeighborSets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor_set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1247,6 +1246,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::g
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1347,6 +1347,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::C
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1445,6 +1446,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::S
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1538,14 +1540,6 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::TagSets::get_child_by_name(c
 {
     if(child_yang_name == "tag-set")
     {
-        for(auto const & c : tag_set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::DefinedSets::TagSets::TagSet>();
         c->parent = this;
         tag_set.push_back(c);
@@ -1558,9 +1552,14 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::TagSets::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::TagSets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tag_set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1663,6 +1662,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::TagSets::TagSet::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::TagSets::TagSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1763,6 +1763,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::TagSets::TagSet::Config::get
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::TagSets::TagSet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1861,6 +1862,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::TagSets::TagSet::State::get_
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::TagSets::TagSet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1987,6 +1989,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(community_sets != nullptr)
     {
         children["community-sets"] = community_sets;
@@ -2077,14 +2080,6 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySet
 {
     if(child_yang_name == "community-set")
     {
-        for(auto const & c : community_set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet>();
         c->parent = this;
         community_set.push_back(c);
@@ -2097,9 +2092,14 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySet
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : community_set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2202,6 +2202,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySet
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2302,6 +2303,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySet
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2400,6 +2402,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySet
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2493,14 +2496,6 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunity
 {
     if(child_yang_name == "ext-community-set")
     {
-        for(auto const & c : ext_community_set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet>();
         c->parent = this;
         ext_community_set.push_back(c);
@@ -2513,9 +2508,14 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunity
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ext_community_set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2618,6 +2618,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunity
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2718,6 +2719,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunity
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2816,6 +2818,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunity
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2909,14 +2912,6 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::
 {
     if(child_yang_name == "as-path-set")
     {
-        for(auto const & c : as_path_set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet>();
         c->parent = this;
         as_path_set.push_back(c);
@@ -2929,9 +2924,14 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : as_path_set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3034,6 +3034,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3134,6 +3135,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3232,6 +3234,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3325,14 +3328,6 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::get_child_by_name(cons
 {
     if(child_yang_name == "policy-definition")
     {
-        for(auto const & c : policy_definition)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition>();
         c->parent = this;
         policy_definition.push_back(c);
@@ -3345,9 +3340,14 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_definition)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3463,6 +3463,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::get_
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3554,6 +3555,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Conf
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3630,6 +3632,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3708,14 +3711,6 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 {
     if(child_yang_name == "statement")
     {
-        for(auto const & c : statement)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement>();
         c->parent = this;
         statement.push_back(c);
@@ -3728,9 +3723,14 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : statement)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3852,6 +3852,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3948,6 +3949,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4024,6 +4026,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4200,6 +4203,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4310,6 +4314,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4400,6 +4405,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4508,6 +4514,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4588,6 +4595,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4678,6 +4686,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4786,6 +4795,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4866,6 +4876,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4956,6 +4967,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5064,6 +5076,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -5144,6 +5157,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5234,6 +5248,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5342,6 +5357,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -5422,6 +5438,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5512,6 +5529,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5594,6 +5612,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5745,6 +5764,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -5886,6 +5906,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6049,6 +6070,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6194,6 +6216,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -6274,6 +6297,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6364,6 +6388,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6472,6 +6497,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -6552,6 +6578,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6642,6 +6669,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6750,6 +6778,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -6830,6 +6859,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6920,6 +6950,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7028,6 +7059,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7108,6 +7140,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7198,6 +7231,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7306,6 +7340,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7386,6 +7421,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7476,6 +7512,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7610,6 +7647,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7700,6 +7738,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7790,6 +7829,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7898,6 +7938,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7974,6 +8015,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8050,6 +8092,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8187,6 +8230,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -8290,6 +8334,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8408,6 +8453,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8536,6 +8582,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -8612,6 +8659,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8688,6 +8736,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8720,7 +8769,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Config>())
 	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::State>())
-	,inline_(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_>())
+	,inline_(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline>())
 	,reference(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference>())
 {
     config->parent = this;
@@ -8792,7 +8841,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
     {
         if(inline_ == nullptr)
         {
-            inline_ = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_>();
+            inline_ = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline>();
         }
         return inline_;
     }
@@ -8812,6 +8861,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -8902,6 +8952,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8992,6 +9043,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9030,10 +9082,10 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Inline_()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Inline()
     :
-    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State>())
+    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config>())
+	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State>())
 {
     config->parent = this;
     state->parent = this;
@@ -9041,31 +9093,31 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     yang_name = "inline"; yang_parent_name = "set-community"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::~Inline_()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::~Inline()
 {
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::has_data() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::has_data() const
 {
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::has_operation() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::has_operation() const
 {
     return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
 
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::get_segment_path() const
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inline";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9074,13 +9126,13 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions:
 
 }
 
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
         if(config == nullptr)
         {
-            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config>();
+            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config>();
         }
         return config;
     }
@@ -9089,7 +9141,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
     {
         if(state == nullptr)
         {
-            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State>();
+            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State>();
         }
         return state;
     }
@@ -9097,9 +9149,10 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9113,22 +9166,22 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions:
     return children;
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::set_filter(const std::string & value_path, YFilter yfilter)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::has_leaf_or_child_of_name(const std::string & name) const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "config" || name == "state")
         return true;
     return false;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::Config()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::Config()
     :
     communities{YType::str, "communities"}
 {
@@ -9136,11 +9189,11 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     yang_name = "config"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::~Config()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::~Config()
 {
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::has_data() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::has_data() const
 {
     for (auto const & leaf : communities.getYLeafs())
     {
@@ -9150,7 +9203,7 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::has_operation() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::has_operation() const
 {
     for (auto const & leaf : communities.getYLeafs())
     {
@@ -9161,14 +9214,14 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| ydk::is_set(communities.yfilter);
 }
 
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::get_segment_path() const
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9179,18 +9232,19 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions:
 
 }
 
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "communities")
     {
@@ -9198,7 +9252,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     }
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::set_filter(const std::string & value_path, YFilter yfilter)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "communities")
     {
@@ -9206,14 +9260,14 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     }
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::Config::has_leaf_or_child_of_name(const std::string & name) const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "communities")
         return true;
     return false;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::State()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::State()
     :
     communities{YType::str, "communities"}
 {
@@ -9221,11 +9275,11 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     yang_name = "state"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::~State()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::~State()
 {
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::has_data() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::has_data() const
 {
     for (auto const & leaf : communities.getYLeafs())
     {
@@ -9235,7 +9289,7 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::has_operation() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::has_operation() const
 {
     for (auto const & leaf : communities.getYLeafs())
     {
@@ -9246,14 +9300,14 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| ydk::is_set(communities.yfilter);
 }
 
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::get_segment_path() const
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9264,18 +9318,19 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions:
 
 }
 
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "communities")
     {
@@ -9283,7 +9338,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     }
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::set_filter(const std::string & value_path, YFilter yfilter)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "communities")
     {
@@ -9291,7 +9346,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     }
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline_::State::has_leaf_or_child_of_name(const std::string & name) const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "communities")
         return true;
@@ -9368,6 +9423,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9444,6 +9500,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9520,6 +9577,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9552,7 +9610,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Config>())
 	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::State>())
-	,inline_(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_>())
+	,inline_(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline>())
 	,reference(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference>())
 {
     config->parent = this;
@@ -9624,7 +9682,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
     {
         if(inline_ == nullptr)
         {
-            inline_ = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_>();
+            inline_ = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline>();
         }
         return inline_;
     }
@@ -9644,6 +9702,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9734,6 +9793,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9824,6 +9884,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9862,10 +9923,10 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Inline_()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Inline()
     :
-    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State>())
+    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config>())
+	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State>())
 {
     config->parent = this;
     state->parent = this;
@@ -9873,31 +9934,31 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     yang_name = "inline"; yang_parent_name = "set-ext-community"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::~Inline_()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::~Inline()
 {
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::has_data() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::has_data() const
 {
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::has_operation() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::has_operation() const
 {
     return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
 
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::get_segment_path() const
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inline";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9906,13 +9967,13 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions:
 
 }
 
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
         if(config == nullptr)
         {
-            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config>();
+            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config>();
         }
         return config;
     }
@@ -9921,7 +9982,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
     {
         if(state == nullptr)
         {
-            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State>();
+            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State>();
         }
         return state;
     }
@@ -9929,9 +9990,10 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9945,22 +10007,22 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions:
     return children;
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::set_filter(const std::string & value_path, YFilter yfilter)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::has_leaf_or_child_of_name(const std::string & name) const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "config" || name == "state")
         return true;
     return false;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::Config()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::Config()
     :
     communities{YType::str, "communities"}
 {
@@ -9968,11 +10030,11 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     yang_name = "config"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::~Config()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::~Config()
 {
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::has_data() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::has_data() const
 {
     for (auto const & leaf : communities.getYLeafs())
     {
@@ -9982,7 +10044,7 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::has_operation() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::has_operation() const
 {
     for (auto const & leaf : communities.getYLeafs())
     {
@@ -9993,14 +10055,14 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| ydk::is_set(communities.yfilter);
 }
 
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::get_segment_path() const
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10011,18 +10073,19 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions:
 
 }
 
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "communities")
     {
@@ -10030,7 +10093,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     }
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::set_filter(const std::string & value_path, YFilter yfilter)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "communities")
     {
@@ -10038,14 +10101,14 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     }
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::Config::has_leaf_or_child_of_name(const std::string & name) const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "communities")
         return true;
     return false;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::State()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::State()
     :
     communities{YType::str, "communities"}
 {
@@ -10053,11 +10116,11 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     yang_name = "state"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::~State()
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::~State()
 {
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::has_data() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::has_data() const
 {
     for (auto const & leaf : communities.getYLeafs())
     {
@@ -10067,7 +10130,7 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::has_operation() const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::has_operation() const
 {
     for (auto const & leaf : communities.getYLeafs())
     {
@@ -10078,14 +10141,14 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| ydk::is_set(communities.yfilter);
 }
 
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::get_segment_path() const
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10096,18 +10159,19 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions:
 
 }
 
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "communities")
     {
@@ -10115,7 +10179,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     }
 }
 
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::set_filter(const std::string & value_path, YFilter yfilter)
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "communities")
     {
@@ -10123,7 +10187,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     }
 }
 
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline_::State::has_leaf_or_child_of_name(const std::string & name) const
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "communities")
         return true;
@@ -10200,6 +10264,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -10276,6 +10341,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10352,6 +10418,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

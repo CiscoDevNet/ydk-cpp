@@ -85,7 +85,7 @@ path::RootSchemaNode& CodecServiceProvider::get_root_schema_for_bundle(const std
     if(m_root_schema_table.find(bundle_name) == m_root_schema_table.end())
     {
         YLOG_ERROR("Root schema not created");
-        throw(YCPPServiceProviderError("Root schema not created"));
+        throw(YServiceProviderError("Root schema not created"));
     }
 
     auto const & val = m_root_schema_table[bundle_name];

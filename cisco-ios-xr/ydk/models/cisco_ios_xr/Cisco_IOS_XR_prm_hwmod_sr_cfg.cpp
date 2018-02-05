@@ -68,6 +68,7 @@ std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(segment_routing != nullptr)
     {
         children["segment-routing"] = segment_routing;
@@ -180,6 +181,7 @@ std::shared_ptr<Entity> HardwareModule::SegmentRouting::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::SegmentRouting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reserve != nullptr)
     {
         children["reserve"] = reserve;
@@ -267,6 +269,7 @@ std::shared_ptr<Entity> HardwareModule::SegmentRouting::Reserve::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::SegmentRouting::Reserve::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_label != nullptr)
     {
         children["service-label"] = service_label;
@@ -345,6 +348,7 @@ std::shared_ptr<Entity> HardwareModule::SegmentRouting::Reserve::ServiceLabel::g
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::SegmentRouting::Reserve::ServiceLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

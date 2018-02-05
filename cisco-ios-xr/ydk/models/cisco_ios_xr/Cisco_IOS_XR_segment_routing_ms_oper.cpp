@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Srms::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Srms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mapping != nullptr)
     {
         children["mapping"] = mapping;
@@ -211,6 +212,7 @@ std::shared_ptr<Entity> Srms::Mapping::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mapping_ipv4 != nullptr)
     {
         children["mapping-ipv4"] = mapping_ipv4;
@@ -296,14 +298,6 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv4::get_child_by_name(const std:
 {
     if(child_yang_name == "mapping-mi")
     {
-        for(auto const & c : mapping_mi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srms::Mapping::MappingIpv4::MappingMi>();
         c->parent = this;
         mapping_mi.push_back(c);
@@ -316,9 +310,14 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv4::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mapping_mi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -448,6 +447,7 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv4::MappingMi::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv4::MappingMi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addr != nullptr)
     {
         children["addr"] = addr;
@@ -644,6 +644,7 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv4::MappingMi::Addr::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv4::MappingMi::Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -749,14 +750,6 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv6::get_child_by_name(const std:
 {
     if(child_yang_name == "mapping-mi")
     {
-        for(auto const & c : mapping_mi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srms::Mapping::MappingIpv6::MappingMi>();
         c->parent = this;
         mapping_mi.push_back(c);
@@ -769,9 +762,14 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv6::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mapping_mi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -901,6 +899,7 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv6::MappingMi::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv6::MappingMi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addr != nullptr)
     {
         children["addr"] = addr;
@@ -1097,6 +1096,7 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv6::MappingMi::Addr::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv6::MappingMi::Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1222,6 +1222,7 @@ std::shared_ptr<Entity> Srms::Policy::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy_ipv4 != nullptr)
     {
         children["policy-ipv4"] = policy_ipv4;
@@ -1327,6 +1328,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy_ipv4_backup != nullptr)
     {
         children["policy-ipv4-backup"] = policy_ipv4_backup;
@@ -1412,14 +1414,6 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_child_by
 {
     if(child_yang_name == "policy-mi")
     {
-        for(auto const & c : policy_mi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi>();
         c->parent = this;
         policy_mi.push_back(c);
@@ -1432,9 +1426,14 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_mi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1560,6 +1559,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::ge
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addr != nullptr)
     {
         children["addr"] = addr;
@@ -1739,6 +1739,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Ad
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1844,14 +1845,6 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_child_by
 {
     if(child_yang_name == "policy-mi")
     {
-        for(auto const & c : policy_mi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi>();
         c->parent = this;
         policy_mi.push_back(c);
@@ -1864,9 +1857,14 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_mi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1992,6 +1990,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::ge
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addr != nullptr)
     {
         children["addr"] = addr;
@@ -2171,6 +2170,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Ad
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2296,6 +2296,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy_ipv6_backup != nullptr)
     {
         children["policy-ipv6-backup"] = policy_ipv6_backup;
@@ -2381,14 +2382,6 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_child_by
 {
     if(child_yang_name == "policy-mi")
     {
-        for(auto const & c : policy_mi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi>();
         c->parent = this;
         policy_mi.push_back(c);
@@ -2401,9 +2394,14 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_mi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2529,6 +2527,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::ge
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addr != nullptr)
     {
         children["addr"] = addr;
@@ -2708,6 +2707,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Ad
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2813,14 +2813,6 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_child_by
 {
     if(child_yang_name == "policy-mi")
     {
-        for(auto const & c : policy_mi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi>();
         c->parent = this;
         policy_mi.push_back(c);
@@ -2833,9 +2825,14 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_mi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2961,6 +2958,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::ge
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addr != nullptr)
     {
         children["addr"] = addr;
@@ -3140,6 +3138,7 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Ad
 std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

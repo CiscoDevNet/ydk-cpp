@@ -165,6 +165,7 @@ std::shared_ptr<Entity> Install::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Install::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(configuration_registers != nullptr)
     {
         children["configuration-registers"] = configuration_registers;
@@ -315,14 +316,6 @@ std::shared_ptr<Entity> Install::ConfigurationRegisters::get_child_by_name(const
 {
     if(child_yang_name == "configuration-register")
     {
-        for(auto const & c : configuration_register)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::ConfigurationRegisters::ConfigurationRegister>();
         c->parent = this;
         configuration_register.push_back(c);
@@ -335,9 +328,14 @@ std::shared_ptr<Entity> Install::ConfigurationRegisters::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Install::ConfigurationRegisters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : configuration_register)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -417,6 +415,7 @@ std::shared_ptr<Entity> Install::ConfigurationRegisters::ConfigurationRegister::
 std::map<std::string, std::shared_ptr<Entity>> Install::ConfigurationRegisters::ConfigurationRegister::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -512,14 +511,6 @@ std::shared_ptr<Entity> Install::RequestStatuses::get_child_by_name(const std::s
 {
     if(child_yang_name == "request-status")
     {
-        for(auto const & c : request_status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::RequestStatuses::RequestStatus>();
         c->parent = this;
         request_status.push_back(c);
@@ -532,9 +523,14 @@ std::shared_ptr<Entity> Install::RequestStatuses::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : request_status)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -686,14 +682,6 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::get_child_by_na
 
     if(child_yang_name == "issu-message")
     {
-        for(auto const & c : issu_message)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::RequestStatuses::RequestStatus::IssuMessage>();
         c->parent = this;
         issu_message.push_back(c);
@@ -702,14 +690,6 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::get_child_by_na
 
     if(child_yang_name == "message")
     {
-        for(auto const & c : message)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::RequestStatuses::RequestStatus::Message>();
         c->parent = this;
         message.push_back(c);
@@ -722,6 +702,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::RequestStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(request_information != nullptr)
     {
         children["request-information"] = request_information;
@@ -737,14 +718,22 @@ std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::Request
         children["incremental-install-information"] = incremental_install_information;
     }
 
+    count = 0;
     for (auto const & c : issu_message)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : message)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -893,6 +882,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::RequestInformat
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::RequestStatus::RequestInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1023,6 +1013,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::AbortStatus::ge
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::RequestStatus::AbortStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1119,14 +1110,6 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::IncrementalInst
 {
     if(child_yang_name == "nodes")
     {
-        for(auto const & c : nodes)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes>();
         c->parent = this;
         nodes.push_back(c);
@@ -1139,9 +1122,14 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::IncrementalInst
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nodes)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1234,6 +1222,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::IncrementalInst
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1338,6 +1327,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::IssuMessage::ge
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::RequestStatus::IssuMessage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scope != nullptr)
     {
         children["scope"] = scope;
@@ -1433,6 +1423,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::IssuMessage::Sc
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::RequestStatus::IssuMessage::Scope::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1537,6 +1528,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::Message::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::RequestStatus::Message::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scope != nullptr)
     {
         children["scope"] = scope;
@@ -1632,6 +1624,7 @@ std::shared_ptr<Entity> Install::RequestStatuses::RequestStatus::Message::Scope:
 std::map<std::string, std::shared_ptr<Entity>> Install::RequestStatuses::RequestStatus::Message::Scope::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1727,14 +1720,6 @@ std::shared_ptr<Entity> Install::BootVariables::get_child_by_name(const std::str
 {
     if(child_yang_name == "boot-variable")
     {
-        for(auto const & c : boot_variable)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::BootVariables::BootVariable>();
         c->parent = this;
         boot_variable.push_back(c);
@@ -1747,9 +1732,14 @@ std::shared_ptr<Entity> Install::BootVariables::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Install::BootVariables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : boot_variable)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1829,6 +1819,7 @@ std::shared_ptr<Entity> Install::BootVariables::BootVariable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Install::BootVariables::BootVariable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1957,6 +1948,7 @@ std::shared_ptr<Entity> Install::Software::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(alias_devices != nullptr)
     {
         children["alias-devices"] = alias_devices;
@@ -2047,14 +2039,6 @@ std::shared_ptr<Entity> Install::Software::AliasDevices::get_child_by_name(const
 {
     if(child_yang_name == "alias-device")
     {
-        for(auto const & c : alias_device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Software::AliasDevices::AliasDevice>();
         c->parent = this;
         alias_device.push_back(c);
@@ -2067,9 +2051,14 @@ std::shared_ptr<Entity> Install::Software::AliasDevices::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::AliasDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alias_device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2159,6 +2148,7 @@ std::shared_ptr<Entity> Install::Software::AliasDevices::AliasDevice::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::AliasDevices::AliasDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aliases != nullptr)
     {
         children["aliases"] = aliases;
@@ -2242,14 +2232,6 @@ std::shared_ptr<Entity> Install::Software::AliasDevices::AliasDevice::Aliases::g
 {
     if(child_yang_name == "alias")
     {
-        for(auto const & c : alias)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Software::AliasDevices::AliasDevice::Aliases::Alias>();
         c->parent = this;
         alias.push_back(c);
@@ -2262,9 +2244,14 @@ std::shared_ptr<Entity> Install::Software::AliasDevices::AliasDevice::Aliases::g
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::AliasDevices::AliasDevice::Aliases::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alias)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2337,6 +2324,7 @@ std::shared_ptr<Entity> Install::Software::AliasDevices::AliasDevice::Aliases::A
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::AliasDevices::AliasDevice::Aliases::Alias::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2432,14 +2420,6 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::get_child_by_name(con
 {
     if(child_yang_name == "package-device")
     {
-        for(auto const & c : package_device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Software::PackageDevices::PackageDevice>();
         c->parent = this;
         package_device.push_back(c);
@@ -2452,9 +2432,14 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::PackageDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : package_device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2544,6 +2529,7 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::PackageDevice::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::PackageDevices::PackageDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(packages != nullptr)
     {
         children["packages"] = packages;
@@ -2627,14 +2613,6 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::PackageDevice::Packag
 {
     if(child_yang_name == "package")
     {
-        for(auto const & c : package)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Software::PackageDevices::PackageDevice::Packages::Package>();
         c->parent = this;
         package.push_back(c);
@@ -2647,9 +2625,14 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::PackageDevice::Packag
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::PackageDevices::PackageDevice::Packages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : package)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2802,14 +2785,6 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::PackageDevice::Packag
 {
     if(child_yang_name == "sub-pkg")
     {
-        for(auto const & c : sub_pkg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg>();
         c->parent = this;
         sub_pkg.push_back(c);
@@ -2822,9 +2797,14 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::PackageDevice::Packag
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::PackageDevices::PackageDevice::Packages::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sub_pkg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3075,6 +3055,7 @@ std::shared_ptr<Entity> Install::Software::PackageDevices::PackageDevice::Packag
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3170,14 +3151,6 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::get_child_by_name(c
 {
     if(child_yang_name == "component-device")
     {
-        for(auto const & c : component_device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Software::ComponentDevices::ComponentDevice>();
         c->parent = this;
         component_device.push_back(c);
@@ -3190,9 +3163,14 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::ComponentDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : component_device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3282,6 +3260,7 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::ComponentDevice::ge
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::ComponentDevices::ComponentDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(component_packages != nullptr)
     {
         children["component-packages"] = component_packages;
@@ -3365,14 +3344,6 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::ComponentDevice::Co
 {
     if(child_yang_name == "component-package")
     {
-        for(auto const & c : component_package)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage>();
         c->parent = this;
         component_package.push_back(c);
@@ -3385,9 +3356,14 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::ComponentDevice::Co
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : component_package)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3462,14 +3438,6 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::ComponentDevice::Co
 {
     if(child_yang_name == "component")
     {
-        for(auto const & c : component)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component>();
         c->parent = this;
         component.push_back(c);
@@ -3482,9 +3450,14 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::ComponentDevice::Co
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : component)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3593,6 +3566,7 @@ std::shared_ptr<Entity> Install::Software::ComponentDevices::ComponentDevice::Co
 std::map<std::string, std::shared_ptr<Entity>> Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3772,6 +3746,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(committed != nullptr)
     {
         children["committed"] = committed;
@@ -3887,6 +3862,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -4008,14 +3984,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::get_chil
 
     if(child_yang_name == "sdr-load-path")
     {
-        for(auto const & c : sdr_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::SdrLoadPath>();
         c->parent = this;
         sdr_load_path.push_back(c);
@@ -4024,14 +3992,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::get_chil
 
     if(child_yang_name == "location-load-path")
     {
-        for(auto const & c : location_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::LocationLoadPath>();
         c->parent = this;
         location_load_path.push_back(c);
@@ -4044,6 +4004,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_load_path != nullptr)
     {
         children["default-load-path"] = default_load_path;
@@ -4054,14 +4015,22 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Commi
         children["admin-load-path"] = admin_load_path;
     }
 
+    count = 0;
     for (auto const & c : sdr_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : location_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4171,14 +4140,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::DefaultL
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -4187,14 +4148,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::DefaultL
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -4207,14 +4160,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::DefaultL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4336,6 +4298,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::DefaultL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -4438,6 +4401,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::DefaultL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4549,6 +4513,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::DefaultL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -4651,6 +4616,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::DefaultL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4760,14 +4726,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::AdminLoa
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -4776,14 +4734,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::AdminLoa
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -4796,14 +4746,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::AdminLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::AdminLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4907,6 +4866,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::AdminLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -5009,6 +4969,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::AdminLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5120,6 +5081,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::AdminLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -5222,6 +5184,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::AdminLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5335,14 +5298,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::SdrLoadP
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -5351,14 +5306,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::SdrLoadP
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -5371,14 +5318,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::SdrLoadP
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::SdrLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5492,6 +5448,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::SdrLoadP
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -5594,6 +5551,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::SdrLoadP
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5705,6 +5663,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::SdrLoadP
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -5807,6 +5766,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::SdrLoadP
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5924,14 +5884,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::Location
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -5940,14 +5892,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::Location
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -5960,14 +5904,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::Location
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::LocationLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6091,6 +6044,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::Location
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -6193,6 +6147,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::Location
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6304,6 +6259,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::Location
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -6406,6 +6362,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Summary::Location
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6501,14 +6458,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Inventories::get_
 {
     if(child_yang_name == "inventory")
     {
-        for(auto const & c : inventory)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Inventories::Inventory>();
         c->parent = this;
         inventory.push_back(c);
@@ -6521,9 +6470,14 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Inventories::get_
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Inventories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inventory)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6547,7 +6501,7 @@ bool Install::SoftwareInventory::Committed::Inventories::has_leaf_or_child_of_na
 Install::SoftwareInventory::Committed::Inventories::Inventory::Inventory()
     :
     node_name{YType::str, "node-name"},
-    major{YType::uint32, "major"},
+    major_{YType::uint32, "major"},
     minor{YType::uint32, "minor"},
     boot_image_name{YType::str, "boot-image-name"},
     node_type{YType::uint64, "node-type"},
@@ -6569,7 +6523,7 @@ bool Install::SoftwareInventory::Committed::Inventories::Inventory::has_data() c
             return true;
     }
     return node_name.is_set
-	|| major.is_set
+	|| major_.is_set
 	|| minor.is_set
 	|| boot_image_name.is_set
 	|| node_type.is_set
@@ -6585,7 +6539,7 @@ bool Install::SoftwareInventory::Committed::Inventories::Inventory::has_operatio
     }
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
-	|| ydk::is_set(major.yfilter)
+	|| ydk::is_set(major_.yfilter)
 	|| ydk::is_set(minor.yfilter)
 	|| ydk::is_set(boot_image_name.yfilter)
 	|| ydk::is_set(node_type.yfilter)
@@ -6611,7 +6565,7 @@ std::vector<std::pair<std::string, LeafData> > Install::SoftwareInventory::Commi
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (major.is_set || is_set(major.yfilter)) leaf_name_data.push_back(major.get_name_leafdata());
+    if (major_.is_set || is_set(major_.yfilter)) leaf_name_data.push_back(major_.get_name_leafdata());
     if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
     if (boot_image_name.is_set || is_set(boot_image_name.yfilter)) leaf_name_data.push_back(boot_image_name.get_name_leafdata());
     if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
@@ -6625,14 +6579,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Inventories::Inve
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -6645,9 +6591,14 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Inventories::Inve
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Inventories::Inventory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6663,9 +6614,9 @@ void Install::SoftwareInventory::Committed::Inventories::Inventory::set_value(co
     }
     if(value_path == "major")
     {
-        major = value;
-        major.value_namespace = name_space;
-        major.value_namespace_prefix = name_space_prefix;
+        major_ = value;
+        major_.value_namespace = name_space;
+        major_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minor")
     {
@@ -6701,7 +6652,7 @@ void Install::SoftwareInventory::Committed::Inventories::Inventory::set_filter(c
     }
     if(value_path == "major")
     {
-        major.yfilter = yfilter;
+        major_.yfilter = yfilter;
     }
     if(value_path == "minor")
     {
@@ -6794,6 +6745,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Inventories::Inve
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -6889,6 +6841,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Committed::Inventories::Inve
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7004,6 +6957,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -7125,14 +7079,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::get_child
 
     if(child_yang_name == "sdr-load-path")
     {
-        for(auto const & c : sdr_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::SdrLoadPath>();
         c->parent = this;
         sdr_load_path.push_back(c);
@@ -7141,14 +7087,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::get_child
 
     if(child_yang_name == "location-load-path")
     {
-        for(auto const & c : location_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::LocationLoadPath>();
         c->parent = this;
         location_load_path.push_back(c);
@@ -7161,6 +7099,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::get_child
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_load_path != nullptr)
     {
         children["default-load-path"] = default_load_path;
@@ -7171,14 +7110,22 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inact
         children["admin-load-path"] = admin_load_path;
     }
 
+    count = 0;
     for (auto const & c : sdr_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : location_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7288,14 +7235,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::DefaultLo
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -7304,14 +7243,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::DefaultLo
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -7324,14 +7255,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::DefaultLo
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7453,6 +7393,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::DefaultLo
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -7555,6 +7496,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::DefaultLo
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7666,6 +7608,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::DefaultLo
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -7768,6 +7711,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::DefaultLo
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7877,14 +7821,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::AdminLoad
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -7893,14 +7829,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::AdminLoad
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -7913,14 +7841,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::AdminLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8024,6 +7961,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::AdminLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -8126,6 +8064,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::AdminLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8237,6 +8176,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::AdminLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -8339,6 +8279,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::AdminLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8452,14 +8393,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::SdrLoadPa
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -8468,14 +8401,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::SdrLoadPa
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -8488,14 +8413,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::SdrLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8609,6 +8543,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::SdrLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -8711,6 +8646,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::SdrLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8822,6 +8758,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::SdrLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -8924,6 +8861,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::SdrLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9041,14 +8979,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::LocationL
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -9057,14 +8987,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::LocationL
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -9077,14 +8999,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::LocationL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9208,6 +9139,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::LocationL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -9310,6 +9242,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::LocationL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9421,6 +9354,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::LocationL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -9523,6 +9457,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Summary::LocationL
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9618,14 +9553,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Inventories::get_c
 {
     if(child_yang_name == "inventory")
     {
-        for(auto const & c : inventory)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Inventories::Inventory>();
         c->parent = this;
         inventory.push_back(c);
@@ -9638,9 +9565,14 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Inventories::get_c
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Inventories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inventory)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9664,7 +9596,7 @@ bool Install::SoftwareInventory::Inactive::Inventories::has_leaf_or_child_of_nam
 Install::SoftwareInventory::Inactive::Inventories::Inventory::Inventory()
     :
     node_name{YType::str, "node-name"},
-    major{YType::uint32, "major"},
+    major_{YType::uint32, "major"},
     minor{YType::uint32, "minor"},
     boot_image_name{YType::str, "boot-image-name"},
     node_type{YType::uint64, "node-type"},
@@ -9686,7 +9618,7 @@ bool Install::SoftwareInventory::Inactive::Inventories::Inventory::has_data() co
             return true;
     }
     return node_name.is_set
-	|| major.is_set
+	|| major_.is_set
 	|| minor.is_set
 	|| boot_image_name.is_set
 	|| node_type.is_set
@@ -9702,7 +9634,7 @@ bool Install::SoftwareInventory::Inactive::Inventories::Inventory::has_operation
     }
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
-	|| ydk::is_set(major.yfilter)
+	|| ydk::is_set(major_.yfilter)
 	|| ydk::is_set(minor.yfilter)
 	|| ydk::is_set(boot_image_name.yfilter)
 	|| ydk::is_set(node_type.yfilter)
@@ -9728,7 +9660,7 @@ std::vector<std::pair<std::string, LeafData> > Install::SoftwareInventory::Inact
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (major.is_set || is_set(major.yfilter)) leaf_name_data.push_back(major.get_name_leafdata());
+    if (major_.is_set || is_set(major_.yfilter)) leaf_name_data.push_back(major_.get_name_leafdata());
     if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
     if (boot_image_name.is_set || is_set(boot_image_name.yfilter)) leaf_name_data.push_back(boot_image_name.get_name_leafdata());
     if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
@@ -9742,14 +9674,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Inventories::Inven
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -9762,9 +9686,14 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Inventories::Inven
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Inventories::Inventory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9780,9 +9709,9 @@ void Install::SoftwareInventory::Inactive::Inventories::Inventory::set_value(con
     }
     if(value_path == "major")
     {
-        major = value;
-        major.value_namespace = name_space;
-        major.value_namespace_prefix = name_space_prefix;
+        major_ = value;
+        major_.value_namespace = name_space;
+        major_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minor")
     {
@@ -9818,7 +9747,7 @@ void Install::SoftwareInventory::Inactive::Inventories::Inventory::set_filter(co
     }
     if(value_path == "major")
     {
-        major.yfilter = yfilter;
+        major_.yfilter = yfilter;
     }
     if(value_path == "minor")
     {
@@ -9911,6 +9840,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Inventories::Inven
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -10006,6 +9936,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Inactive::Inventories::Inven
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10108,6 +10039,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Requests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(requests != nullptr)
     {
         children["requests"] = requests;
@@ -10188,14 +10120,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::get_chi
 {
     if(child_yang_name == "request")
     {
-        for(auto const & c : request)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request>();
         c->parent = this;
         request.push_back(c);
@@ -10208,9 +10132,14 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Requests::Requests_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : request)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10300,6 +10229,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Requests::Requests_::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inventories != nullptr)
     {
         children["inventories"] = inventories;
@@ -10383,14 +10313,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request
 {
     if(child_yang_name == "inventory")
     {
-        for(auto const & c : inventory)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory>();
         c->parent = this;
         inventory.push_back(c);
@@ -10403,9 +10325,14 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Requests::Requests_::Request::Inventories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inventory)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10429,7 +10356,7 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::has_
 Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::Inventory()
     :
     node_name{YType::str, "node-name"},
-    major{YType::uint32, "major"},
+    major_{YType::uint32, "major"},
     minor{YType::uint32, "minor"},
     boot_image_name{YType::str, "boot-image-name"},
     node_type{YType::uint64, "node-type"},
@@ -10451,7 +10378,7 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inve
             return true;
     }
     return node_name.is_set
-	|| major.is_set
+	|| major_.is_set
 	|| minor.is_set
 	|| boot_image_name.is_set
 	|| node_type.is_set
@@ -10467,7 +10394,7 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inve
     }
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
-	|| ydk::is_set(major.yfilter)
+	|| ydk::is_set(major_.yfilter)
 	|| ydk::is_set(minor.yfilter)
 	|| ydk::is_set(boot_image_name.yfilter)
 	|| ydk::is_set(node_type.yfilter)
@@ -10486,7 +10413,7 @@ std::vector<std::pair<std::string, LeafData> > Install::SoftwareInventory::Reque
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (major.is_set || is_set(major.yfilter)) leaf_name_data.push_back(major.get_name_leafdata());
+    if (major_.is_set || is_set(major_.yfilter)) leaf_name_data.push_back(major_.get_name_leafdata());
     if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
     if (boot_image_name.is_set || is_set(boot_image_name.yfilter)) leaf_name_data.push_back(boot_image_name.get_name_leafdata());
     if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
@@ -10500,14 +10427,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -10520,9 +10439,14 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10538,9 +10462,9 @@ void Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inve
     }
     if(value_path == "major")
     {
-        major = value;
-        major.value_namespace = name_space;
-        major.value_namespace_prefix = name_space_prefix;
+        major_ = value;
+        major_.value_namespace = name_space;
+        major_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minor")
     {
@@ -10576,7 +10500,7 @@ void Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inve
     }
     if(value_path == "major")
     {
-        major.yfilter = yfilter;
+        major_.yfilter = yfilter;
     }
     if(value_path == "minor")
     {
@@ -10669,6 +10593,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -10764,6 +10689,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Requests::Requests_::Request
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10879,6 +10805,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -11000,14 +10927,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::get_child_b
 
     if(child_yang_name == "sdr-load-path")
     {
-        for(auto const & c : sdr_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::SdrLoadPath>();
         c->parent = this;
         sdr_load_path.push_back(c);
@@ -11016,14 +10935,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::get_child_b
 
     if(child_yang_name == "location-load-path")
     {
-        for(auto const & c : location_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::LocationLoadPath>();
         c->parent = this;
         location_load_path.push_back(c);
@@ -11036,6 +10947,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_load_path != nullptr)
     {
         children["default-load-path"] = default_load_path;
@@ -11046,14 +10958,22 @@ std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Activ
         children["admin-load-path"] = admin_load_path;
     }
 
+    count = 0;
     for (auto const & c : sdr_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : location_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11163,14 +11083,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::DefaultLoad
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -11179,14 +11091,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::DefaultLoad
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -11199,14 +11103,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::DefaultLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::DefaultLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11328,6 +11241,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::DefaultLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -11430,6 +11344,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::DefaultLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11541,6 +11456,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::DefaultLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -11643,6 +11559,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::DefaultLoad
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11752,14 +11669,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::AdminLoadPa
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -11768,14 +11677,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::AdminLoadPa
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -11788,14 +11689,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::AdminLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::AdminLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11899,6 +11809,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::AdminLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -12001,6 +11912,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::AdminLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12112,6 +12024,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::AdminLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -12214,6 +12127,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::AdminLoadPa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12327,14 +12241,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::SdrLoadPath
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -12343,14 +12249,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::SdrLoadPath
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -12363,14 +12261,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::SdrLoadPath
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::SdrLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12484,6 +12391,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::SdrLoadPath
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -12586,6 +12494,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::SdrLoadPath
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12697,6 +12606,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::SdrLoadPath
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -12799,6 +12709,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::SdrLoadPath
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12916,14 +12827,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::LocationLoa
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -12932,14 +12835,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::LocationLoa
 
     if(child_yang_name == "standby-load-path")
     {
-        for(auto const & c : standby_load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath>();
         c->parent = this;
         standby_load_path.push_back(c);
@@ -12952,14 +12847,23 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::LocationLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::LocationLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : standby_load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13083,6 +12987,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::LocationLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -13185,6 +13090,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::LocationLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13296,6 +13202,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::LocationLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -13398,6 +13305,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Summary::LocationLoa
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13493,14 +13401,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Inventories::get_chi
 {
     if(child_yang_name == "inventory")
     {
-        for(auto const & c : inventory)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Inventories::Inventory>();
         c->parent = this;
         inventory.push_back(c);
@@ -13513,9 +13413,14 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Inventories::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Inventories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inventory)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13539,7 +13444,7 @@ bool Install::SoftwareInventory::Active::Inventories::has_leaf_or_child_of_name(
 Install::SoftwareInventory::Active::Inventories::Inventory::Inventory()
     :
     node_name{YType::str, "node-name"},
-    major{YType::uint32, "major"},
+    major_{YType::uint32, "major"},
     minor{YType::uint32, "minor"},
     boot_image_name{YType::str, "boot-image-name"},
     node_type{YType::uint64, "node-type"},
@@ -13561,7 +13466,7 @@ bool Install::SoftwareInventory::Active::Inventories::Inventory::has_data() cons
             return true;
     }
     return node_name.is_set
-	|| major.is_set
+	|| major_.is_set
 	|| minor.is_set
 	|| boot_image_name.is_set
 	|| node_type.is_set
@@ -13577,7 +13482,7 @@ bool Install::SoftwareInventory::Active::Inventories::Inventory::has_operation()
     }
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
-	|| ydk::is_set(major.yfilter)
+	|| ydk::is_set(major_.yfilter)
 	|| ydk::is_set(minor.yfilter)
 	|| ydk::is_set(boot_image_name.yfilter)
 	|| ydk::is_set(node_type.yfilter)
@@ -13603,7 +13508,7 @@ std::vector<std::pair<std::string, LeafData> > Install::SoftwareInventory::Activ
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (major.is_set || is_set(major.yfilter)) leaf_name_data.push_back(major.get_name_leafdata());
+    if (major_.is_set || is_set(major_.yfilter)) leaf_name_data.push_back(major_.get_name_leafdata());
     if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
     if (boot_image_name.is_set || is_set(boot_image_name.yfilter)) leaf_name_data.push_back(boot_image_name.get_name_leafdata());
     if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
@@ -13617,14 +13522,6 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Inventories::Invento
 {
     if(child_yang_name == "load-path")
     {
-        for(auto const & c : load_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath>();
         c->parent = this;
         load_path.push_back(c);
@@ -13637,9 +13534,14 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Inventories::Invento
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Inventories::Inventory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13655,9 +13557,9 @@ void Install::SoftwareInventory::Active::Inventories::Inventory::set_value(const
     }
     if(value_path == "major")
     {
-        major = value;
-        major.value_namespace = name_space;
-        major.value_namespace_prefix = name_space_prefix;
+        major_ = value;
+        major_.value_namespace = name_space;
+        major_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minor")
     {
@@ -13693,7 +13595,7 @@ void Install::SoftwareInventory::Active::Inventories::Inventory::set_filter(cons
     }
     if(value_path == "major")
     {
-        major.yfilter = yfilter;
+        major_.yfilter = yfilter;
     }
     if(value_path == "minor")
     {
@@ -13786,6 +13688,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Inventories::Invento
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(package != nullptr)
     {
         children["package"] = package;
@@ -13881,6 +13784,7 @@ std::shared_ptr<Entity> Install::SoftwareInventory::Active::Inventories::Invento
 std::map<std::string, std::shared_ptr<Entity>> Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13996,6 +13900,7 @@ std::shared_ptr<Entity> Install::Issu::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Install::Issu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(card_inventories != nullptr)
     {
         children["card-inventories"] = card_inventories;
@@ -14081,14 +13986,6 @@ std::shared_ptr<Entity> Install::Issu::CardInventories::get_child_by_name(const 
 {
     if(child_yang_name == "card-inventory")
     {
-        for(auto const & c : card_inventory)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Issu::CardInventories::CardInventory>();
         c->parent = this;
         card_inventory.push_back(c);
@@ -14101,9 +13998,14 @@ std::shared_ptr<Entity> Install::Issu::CardInventories::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Install::Issu::CardInventories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : card_inventory)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14185,14 +14087,6 @@ std::shared_ptr<Entity> Install::Issu::CardInventories::CardInventory::get_child
 {
     if(child_yang_name == "summary")
     {
-        for(auto const & c : summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Issu::CardInventories::CardInventory::Summary>();
         c->parent = this;
         summary.push_back(c);
@@ -14205,9 +14099,14 @@ std::shared_ptr<Entity> Install::Issu::CardInventories::CardInventory::get_child
 std::map<std::string, std::shared_ptr<Entity>> Install::Issu::CardInventories::CardInventory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14330,6 +14229,7 @@ std::shared_ptr<Entity> Install::Issu::CardInventories::CardInventory::Summary::
 std::map<std::string, std::shared_ptr<Entity>> Install::Issu::CardInventories::CardInventory::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14616,6 +14516,7 @@ std::shared_ptr<Entity> Install::Issu::Stage::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Install::Issu::Stage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_in_progress != nullptr)
     {
         children["node-in-progress"] = node_in_progress;
@@ -14830,6 +14731,7 @@ std::shared_ptr<Entity> Install::Issu::Stage::NodeInProgress::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Install::Issu::Stage::NodeInProgress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14922,6 +14824,7 @@ std::shared_ptr<Entity> Install::Issu::Stage::NodesInLoad::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Install::Issu::Stage::NodesInLoad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15014,6 +14917,7 @@ std::shared_ptr<Entity> Install::Issu::Stage::NodesInRun::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Install::Issu::Stage::NodesInRun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15106,6 +15010,7 @@ std::shared_ptr<Entity> Install::Issu::Stage::NcNodes::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Install::Issu::Stage::NcNodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15187,6 +15092,7 @@ std::shared_ptr<Entity> Install::BootImage::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Install::BootImage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15272,14 +15178,6 @@ std::shared_ptr<Entity> Install::Logs::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "log")
     {
-        for(auto const & c : log)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Logs::Log>();
         c->parent = this;
         log.push_back(c);
@@ -15292,9 +15190,14 @@ std::shared_ptr<Entity> Install::Logs::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : log)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15426,14 +15329,6 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
 {
     if(child_yang_name == "header")
     {
-        for(auto const & c : header)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Logs::Log::Header>();
         c->parent = this;
         header.push_back(c);
@@ -15442,14 +15337,6 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
 
     if(child_yang_name == "summary")
     {
-        for(auto const & c : summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Logs::Log::Summary>();
         c->parent = this;
         summary.push_back(c);
@@ -15458,14 +15345,6 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
 
     if(child_yang_name == "message")
     {
-        for(auto const & c : message)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Logs::Log::Message>();
         c->parent = this;
         message.push_back(c);
@@ -15474,14 +15353,6 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
 
     if(child_yang_name == "change")
     {
-        for(auto const & c : change)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Logs::Log::Change>();
         c->parent = this;
         change.push_back(c);
@@ -15490,14 +15361,6 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
 
     if(child_yang_name == "detail")
     {
-        for(auto const & c : detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Logs::Log::Detail>();
         c->parent = this;
         detail.push_back(c);
@@ -15506,14 +15369,6 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
 
     if(child_yang_name == "communication")
     {
-        for(auto const & c : communication)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Install::Logs::Log::Communication>();
         c->parent = this;
         communication.push_back(c);
@@ -15526,34 +15381,59 @@ std::shared_ptr<Entity> Install::Logs::Log::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : header)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : message)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : change)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : communication)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15641,6 +15521,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Header::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(log_contents != nullptr)
     {
         children["log-contents"] = log_contents;
@@ -15726,6 +15607,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Header::LogContents::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Header::LogContents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(v3 != nullptr)
     {
         children["v3"] = v3;
@@ -15825,6 +15707,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Header::LogContents::V3::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Header::LogContents::V3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scope != nullptr)
     {
         children["scope"] = scope;
@@ -15920,6 +15803,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Header::LogContents::V3::Scope::get_
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Header::LogContents::V3::Scope::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16015,6 +15899,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Summary::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(log_contents != nullptr)
     {
         children["log-contents"] = log_contents;
@@ -16100,6 +15985,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Summary::LogContents::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Summary::LogContents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(v3 != nullptr)
     {
         children["v3"] = v3;
@@ -16199,6 +16085,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Summary::LogContents::V3::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Summary::LogContents::V3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scope != nullptr)
     {
         children["scope"] = scope;
@@ -16294,6 +16181,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Summary::LogContents::V3::Scope::get
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Summary::LogContents::V3::Scope::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16389,6 +16277,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Message::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Message::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(log_contents != nullptr)
     {
         children["log-contents"] = log_contents;
@@ -16474,6 +16363,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Message::LogContents::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Message::LogContents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(v3 != nullptr)
     {
         children["v3"] = v3;
@@ -16573,6 +16463,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Message::LogContents::V3::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Message::LogContents::V3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scope != nullptr)
     {
         children["scope"] = scope;
@@ -16668,6 +16559,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Message::LogContents::V3::Scope::get
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Message::LogContents::V3::Scope::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16763,6 +16655,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Change::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Change::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(log_contents != nullptr)
     {
         children["log-contents"] = log_contents;
@@ -16848,6 +16741,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Change::LogContents::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Change::LogContents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(v3 != nullptr)
     {
         children["v3"] = v3;
@@ -16947,6 +16841,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Change::LogContents::V3::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Change::LogContents::V3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scope != nullptr)
     {
         children["scope"] = scope;
@@ -17042,6 +16937,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Change::LogContents::V3::Scope::get_
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Change::LogContents::V3::Scope::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17137,6 +17033,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Detail::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(log_contents != nullptr)
     {
         children["log-contents"] = log_contents;
@@ -17222,6 +17119,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Detail::LogContents::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Detail::LogContents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(v3 != nullptr)
     {
         children["v3"] = v3;
@@ -17321,6 +17219,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Detail::LogContents::V3::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Detail::LogContents::V3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scope != nullptr)
     {
         children["scope"] = scope;
@@ -17416,6 +17315,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Detail::LogContents::V3::Scope::get_
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Detail::LogContents::V3::Scope::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17511,6 +17411,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Communication::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(log_contents != nullptr)
     {
         children["log-contents"] = log_contents;
@@ -17596,6 +17497,7 @@ std::shared_ptr<Entity> Install::Logs::Log::Communication::LogContents::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication::LogContents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(v3 != nullptr)
     {
         children["v3"] = v3;

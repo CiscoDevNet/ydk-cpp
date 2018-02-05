@@ -151,18 +151,18 @@ class HardwareModule::Nodes::Node::Np::Cpu::Indexes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Index_; //type: HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_
+        class Index; //type: HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_> > index_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index> > index_;
         
 }; // HardwareModule::Nodes::Node::Np::Cpu::Indexes
 
 
-class HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_ : public ydk::Entity
+class HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index : public ydk::Entity
 {
     public:
-        Index_();
-        ~Index_();
+        Index();
+        ~Index();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -183,7 +183,7 @@ class HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_ : public ydk::Entity
         ydk::YLeaf accepted; //type: uint64
         ydk::YLeaf dropped; //type: uint64
 
-}; // HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_
+}; // HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index
 
 
 class HardwareModule::Nodes::Node::Np::PlatformDrop : public ydk::Entity
@@ -451,18 +451,18 @@ class Prm::Nodes::Node::Server::Resource::Indexes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Index_; //type: Prm::Nodes::Node::Server::Resource::Indexes::Index_
+        class Index; //type: Prm::Nodes::Node::Server::Resource::Indexes::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::Prm::Nodes::Node::Server::Resource::Indexes::Index_> > index_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::Prm::Nodes::Node::Server::Resource::Indexes::Index> > index_;
         
 }; // Prm::Nodes::Node::Server::Resource::Indexes
 
 
-class Prm::Nodes::Node::Server::Resource::Indexes::Index_ : public ydk::Entity
+class Prm::Nodes::Node::Server::Resource::Indexes::Index : public ydk::Entity
 {
     public:
-        Index_();
-        ~Index_();
+        Index();
+        ~Index();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -485,7 +485,7 @@ class Prm::Nodes::Node::Server::Resource::Indexes::Index_ : public ydk::Entity
         ydk::YLeaf flags; //type: uint8
         ydk::YLeaf inconsistent; //type: boolean
 
-}; // Prm::Nodes::Node::Server::Resource::Indexes::Index_
+}; // Prm::Nodes::Node::Server::Resource::Indexes::Index
 
 
 }

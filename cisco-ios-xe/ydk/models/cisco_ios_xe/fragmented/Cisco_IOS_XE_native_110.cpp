@@ -64,6 +64,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Listen::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -150,6 +151,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::R
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::RouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -247,6 +249,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::S
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detection != nullptr)
     {
         children["detection"] = detection;
@@ -327,6 +330,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::S
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::Detection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -421,6 +425,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::S
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic != nullptr)
     {
         children["dynamic"] = dynamic;
@@ -492,6 +497,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::S
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -577,6 +583,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::U
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(split != nullptr)
     {
         children["split"] = split;
@@ -648,6 +655,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::U
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::UpdateGroup::Split::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -738,6 +746,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::N
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(trigger != nullptr)
     {
         children["trigger"] = trigger;
@@ -823,6 +832,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::N
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Nexthop::Trigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -909,6 +919,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::R
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Regexp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -985,6 +996,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::T
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Bgp_::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1061,6 +1073,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Default
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1152,14 +1165,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distanc
 
     if(child_yang_name == "adm-distance")
     {
-        for(auto const & c : adm_distance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::AdmDistance>();
         c->parent = this;
         adm_distance.push_back(c);
@@ -1172,14 +1177,19 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distanc
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp != nullptr)
     {
         children["bgp"] = bgp;
     }
 
+    count = 0;
     for (auto const & c : adm_distance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1256,6 +1266,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distanc
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::Bgp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1364,6 +1375,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distanc
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distance::AdmDistance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1495,6 +1507,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distrib
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in != nullptr)
     {
         children["in"] = in;
@@ -1581,6 +1594,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distrib
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::In::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1657,6 +1671,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Distrib
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::DistributeList::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1773,6 +1788,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Maximum
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(max_path != nullptr)
     {
         children["max-path"] = max_path;
@@ -1864,6 +1880,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Maximum
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::MaxPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1940,6 +1957,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Maximum
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::ExternalRtfilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2020,6 +2038,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Maximum
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::MaximumPaths::Ibgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2414,14 +2433,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 
     if(child_yang_name == "distribute-list")
     {
-        for(auto const & c : distribute_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DistributeList>();
         c->parent = this;
         distribute_list.push_back(c);
@@ -2448,14 +2459,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 
     if(child_yang_name == "filter-list")
     {
-        for(auto const & c : filter_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FilterList>();
         c->parent = this;
         filter_list.push_back(c);
@@ -2509,14 +2512,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -2543,14 +2538,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 
     if(child_yang_name == "route-map")
     {
-        for(auto const & c : route_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::RouteMap>();
         c->parent = this;
         route_map.push_back(c);
@@ -2644,6 +2631,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer_group != nullptr)
     {
         children["peer-group"] = peer_group;
@@ -2699,9 +2687,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamil
         children["default-originate"] = default_originate;
     }
 
+    count = 0;
     for (auto const & c : distribute_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(ebgp_multihop != nullptr)
@@ -2714,9 +2706,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamil
         children["fall-over"] = fall_over;
     }
 
+    count = 0;
     for (auto const & c : filter_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(inherit != nullptr)
@@ -2744,9 +2740,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamil
         children["password"] = password;
     }
 
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(path_attribute != nullptr)
@@ -2759,9 +2759,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamil
         children["remove-private-as"] = remove_private_as;
     }
 
+    count = 0;
     for (auto const & c : route_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(send_community != nullptr)
@@ -3055,6 +3059,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PeerGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3143,6 +3148,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LocalAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3266,6 +3272,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(send != nullptr)
     {
         children["send"] = send;
@@ -3357,6 +3364,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdditionalPaths::Send::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3460,6 +3468,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(additional_paths != nullptr)
     {
         children["additional-paths"] = additional_paths;
@@ -3579,6 +3588,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all != nullptr)
     {
         children["all"] = all;
@@ -3681,6 +3691,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(best != nullptr)
     {
         children["best"] = best;
@@ -3759,14 +3770,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 {
     if(child_yang_name == "best-range")
     {
-        for(auto const & c : best_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange>();
         c->parent = this;
         best_range.push_back(c);
@@ -3779,9 +3782,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : best_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3854,6 +3862,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3940,6 +3949,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::All::GroupBest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4018,14 +4028,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 {
     if(child_yang_name == "best-range")
     {
-        for(auto const & c : best_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange>();
         c->parent = this;
         best_range.push_back(c);
@@ -4038,9 +4040,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : best_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4126,6 +4133,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_best != nullptr)
     {
         children["group-best"] = group_best;
@@ -4217,6 +4225,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4297,6 +4306,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::AdditionalPaths::GroupBest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4396,6 +4406,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(backup != nullptr)
     {
         children["backup"] = backup;
@@ -4477,6 +4488,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Advertise::DiversePath::Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4555,14 +4567,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 {
     if(child_yang_name == "name")
     {
-        for(auto const & c : name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap::Name>();
         c->parent = this;
         name.push_back(c);
@@ -4575,9 +4579,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4654,6 +4663,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AdvertiseMap::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4759,6 +4769,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(send != nullptr)
     {
         children["send"] = send;
@@ -4844,6 +4855,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cost_community != nullptr)
     {
         children["cost-community"] = cost_community;
@@ -4927,14 +4939,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 {
     if(child_yang_name == "cc-range")
     {
-        for(auto const & c : cc_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange>();
         c->parent = this;
         cc_range.push_back(c);
@@ -4947,9 +4951,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cc_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5032,6 +5041,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(poi != nullptr)
     {
         children["poi"] = poi;
@@ -5133,6 +5143,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp_cost != nullptr)
     {
         children["igp-cost"] = igp_cost;
@@ -5209,6 +5220,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::IgpCost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5285,6 +5297,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Aigp::Send::CostCommunity::CcRange::Poi::PreBestpath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5370,6 +5383,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rpki != nullptr)
     {
         children["rpki"] = rpki;
@@ -5441,6 +5455,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Announce::Rpki::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5517,6 +5532,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AllowasIn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5593,6 +5609,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::AsOverride::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5678,6 +5695,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(orf != nullptr)
     {
         children["orf"] = orf;
@@ -5760,6 +5778,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Capability::Orf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5834,6 +5853,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DefaultOriginate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5914,6 +5934,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::DistributeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6000,6 +6021,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::EbgpMultihop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6084,6 +6106,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bfd != nullptr)
     {
         children["bfd"] = bfd;
@@ -6151,6 +6174,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FallOver::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6219,6 +6243,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::FilterList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6309,6 +6334,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Inherit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6395,6 +6421,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::LogNeighborChanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6483,6 +6510,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::MaximumPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6589,6 +6617,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::NextHopSelf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6669,6 +6698,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6759,6 +6789,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6867,6 +6898,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(discard != nullptr)
     {
         children["discard"] = discard;
@@ -6965,6 +6997,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attibute_type != nullptr)
     {
         children["attibute_type"] = attibute_type;
@@ -7045,6 +7078,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::AttibuteType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7139,6 +7173,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::Discard::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7257,6 +7292,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attibute_type != nullptr)
     {
         children["attibute_type"] = attibute_type;
@@ -7337,6 +7373,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::AttibuteType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7431,6 +7468,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::PathAttribute::TreatAsWithdraw::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7535,6 +7573,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::RemovePrivateAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all != nullptr)
     {
         children["all"] = all;
@@ -7606,6 +7645,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::RemovePrivateAs::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7686,6 +7726,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::RouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7772,6 +7813,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7848,6 +7890,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SendLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7945,6 +7988,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detection != nullptr)
     {
         children["detection"] = detection;
@@ -8021,6 +8065,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::Detection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8105,6 +8150,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic != nullptr)
     {
         children["dynamic"] = dynamic;
@@ -8176,6 +8222,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8260,6 +8307,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8365,6 +8413,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -8444,6 +8493,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multicast != nullptr)
     {
         children["multicast"] = multicast;
@@ -8515,6 +8565,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TranslateUpdate::Ipv4::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8608,6 +8659,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path_mtu_discovery != nullptr)
     {
         children["path-mtu-discovery"] = path_mtu_discovery;
@@ -8699,6 +8751,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::Transport::PathMtuDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8775,6 +8828,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9016,6 +9070,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -9392,6 +9447,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9468,6 +9524,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9544,6 +9601,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9620,6 +9678,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::UpdateSource::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9716,6 +9775,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(graceful_restart != nullptr)
     {
         children["graceful-restart"] = graceful_restart;
@@ -9792,6 +9852,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9868,6 +9929,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Neighbor::HaMode::Sso::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9956,6 +10018,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Network
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10204,14 +10267,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 
     if(child_yang_name == "ospf")
     {
-        for(auto const & c : ospf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf>();
         c->parent = this;
         ospf.push_back(c);
@@ -10220,14 +10275,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 
     if(child_yang_name == "ospfv3")
     {
-        for(auto const & c : ospfv3)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospfv3>();
         c->parent = this;
         ospfv3.push_back(c);
@@ -10247,7 +10294,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_>();
+            static_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static>();
         }
         return static_;
     }
@@ -10258,6 +10305,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(application != nullptr)
     {
         children["application"] = application;
@@ -10308,14 +10356,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamil
         children["odr"] = odr;
     }
 
+    count = 0;
     for (auto const & c : ospf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ospfv3)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(rip != nullptr)
@@ -10396,14 +10452,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 {
     if(child_yang_name == "name")
     {
-        for(auto const & c : name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application::Name>();
         c->parent = this;
         name.push_back(c);
@@ -10416,9 +10464,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10495,6 +10548,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Application::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10599,6 +10653,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Bgp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10699,6 +10754,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10789,6 +10845,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Dvmrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10883,6 +10940,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10933,7 +10991,7 @@ bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Eigrp::has_l
 
 Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Isis()
     :
-    default_(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_>())
+    default_(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default>())
 {
     default_->parent = this;
 
@@ -10985,14 +11043,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 {
     if(child_yang_name == "isis-area")
     {
-        for(auto const & c : isis_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisArea>();
         c->parent = this;
         isis_area.push_back(c);
@@ -11003,7 +11053,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_>();
+            default_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default>();
         }
         return default_;
     }
@@ -11014,9 +11064,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(default_ != nullptr)
@@ -11110,6 +11165,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11188,7 +11244,7 @@ bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisAr
     return false;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::Default_()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::Default()
     :
     ip{YType::empty, "ip"},
     clns{YType::empty, "clns"},
@@ -11200,11 +11256,11 @@ Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::D
     yang_name = "default"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::~Default_()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::~Default()
 {
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::has_data() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::has_data() const
 {
     return ip.is_set
 	|| clns.is_set
@@ -11213,7 +11269,7 @@ bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Defaul
 	|| route_map.is_set;
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::has_operation() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip.yfilter)
@@ -11223,14 +11279,14 @@ bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Defaul
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::get_segment_path() const
+std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11244,18 +11300,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip")
     {
@@ -11289,7 +11346,7 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Defaul
     }
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ip")
     {
@@ -11313,7 +11370,7 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Defaul
     }
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip" || name == "clns" || name == "routes" || name == "metric" || name == "route-map")
         return true;
@@ -11376,6 +11433,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11426,7 +11484,7 @@ bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Lisp::has_le
 
 Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::IsoIgrp()
     :
-    default_(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_>())
+    default_(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default>())
 {
     default_->parent = this;
 
@@ -11478,14 +11536,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 {
     if(child_yang_name == "iso-igrp-area")
     {
-        for(auto const & c : iso_igrp_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::IsoIgrpArea>();
         c->parent = this;
         iso_igrp_area.push_back(c);
@@ -11496,7 +11546,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_>();
+            default_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default>();
         }
         return default_;
     }
@@ -11507,9 +11557,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : iso_igrp_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(default_ != nullptr)
@@ -11591,6 +11646,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::IsoIgrpArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11639,7 +11695,7 @@ bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Iso
     return false;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::Default_()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::Default()
     :
     route_map{YType::str, "route-map"},
     metric{YType::uint32, "metric"}
@@ -11648,31 +11704,31 @@ Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_
     yang_name = "default"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::~Default_()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::~Default()
 {
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::has_data() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::has_data() const
 {
     return route_map.is_set
 	|| metric.is_set;
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::has_operation() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(metric.yfilter);
 }
 
-std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::get_segment_path() const
+std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11683,18 +11739,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -11710,7 +11767,7 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Def
     }
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -11722,7 +11779,7 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Def
     }
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::IsoIgrp::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "metric")
         return true;
@@ -11781,6 +11838,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11871,6 +11929,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Odr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11968,14 +12027,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -11997,9 +12048,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(non_vrf != nullptr)
@@ -12105,6 +12161,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -12202,6 +12259,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::Vrf::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12284,6 +12342,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::NonVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -12395,6 +12454,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospf::NonVrf::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12543,6 +12603,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -12664,6 +12725,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Ospfv3::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12798,6 +12860,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12846,7 +12909,7 @@ bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Rip::has_lea
     return false;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Static_()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Static()
     :
     metric{YType::uint32, "metric"},
     route_map{YType::str, "route-map"}
@@ -12858,11 +12921,11 @@ Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Static_(
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::~Static_()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::has_data() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::has_data() const
 {
     return metric.is_set
 	|| route_map.is_set
@@ -12870,7 +12933,7 @@ bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::has
 	|| (ip !=  nullptr && ip->has_data());
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::has_operation() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric.yfilter)
@@ -12879,14 +12942,14 @@ bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::has
 	|| (ip !=  nullptr && ip->has_operation());
 }
 
-std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12897,13 +12960,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clns")
     {
         if(clns == nullptr)
         {
-            clns = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns>();
+            clns = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns>();
         }
         return clns;
     }
@@ -12912,7 +12975,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
     {
         if(ip == nullptr)
         {
-            ip = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip>();
+            ip = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip>();
         }
         return ip;
     }
@@ -12920,9 +12983,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clns != nullptr)
     {
         children["clns"] = clns;
@@ -12936,7 +13000,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamil
     return children;
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric")
     {
@@ -12952,7 +13016,7 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::set
     }
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric")
     {
@@ -12964,14 +13028,14 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::set
     }
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clns" || name == "ip" || name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::Clns()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::Clns()
     :
     route_map{YType::str, "route-map"},
     metric{YType::uint32, "metric"}
@@ -12980,31 +13044,31 @@ Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::Cl
     yang_name = "clns"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::~Clns()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::~Clns()
 {
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::has_data() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::has_data() const
 {
     return route_map.is_set
 	|| metric.is_set;
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::has_operation() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| ydk::is_set(metric.yfilter);
 }
 
-std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::get_segment_path() const
+std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13015,18 +13079,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -13042,7 +13107,7 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Cln
     }
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -13054,14 +13119,14 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Cln
     }
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Clns::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Clns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-map" || name == "metric")
         return true;
     return false;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::Ip()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::Ip()
     :
     metric{YType::uint32, "metric"},
     route_map{YType::str, "route-map"}
@@ -13070,31 +13135,31 @@ Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::Ip()
     yang_name = "ip"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::~Ip()
+Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::~Ip()
 {
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::has_data() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::has_data() const
 {
     return metric.is_set
 	|| route_map.is_set;
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::has_operation() const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric.yfilter)
 	|| ydk::is_set(route_map.yfilter);
 }
 
-std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::get_segment_path() const
+std::string Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13105,18 +13170,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric")
     {
@@ -13132,7 +13198,7 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip:
     }
 }
 
-void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric")
     {
@@ -13144,7 +13210,7 @@ void Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip:
     }
 }
 
-bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static_::Ip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Static::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
@@ -13203,6 +13269,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::TableMa
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::TableMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13298,6 +13365,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Snmp::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(context != nullptr)
     {
         children["context"] = context;
@@ -13371,14 +13439,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Snmp::C
 {
     if(child_yang_name == "context_word")
     {
-        for(auto const & c : context_word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Snmp::Context::ContextWord>();
         c->parent = this;
         context_word.push_back(c);
@@ -13391,9 +13451,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Snmp::C
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Snmp::Context::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context_word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13462,6 +13527,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Snmp::C
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Snmp::Context::ContextWord::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13643,14 +13709,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::get_ch
 
     if(child_yang_name == "distribute-list")
     {
-        for(auto const & c : distribute_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::DistributeList>();
         c->parent = this;
         distribute_list.push_back(c);
@@ -13668,14 +13726,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::get_ch
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -13684,14 +13734,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::get_ch
 
     if(child_yang_name == "network")
     {
-        for(auto const & c : network)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Network>();
         c->parent = this;
         network.push_back(c);
@@ -13731,6 +13773,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(import != nullptr)
     {
         children["import"] = import;
@@ -13751,9 +13794,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamil
         children["distance"] = distance;
     }
 
+    count = 0;
     for (auto const & c : distribute_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(maximum_paths != nullptr)
@@ -13761,14 +13808,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamil
         children["maximum-paths"] = maximum_paths;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : network)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(redistribute != nullptr)
@@ -13901,6 +13956,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Import
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Import::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(path != nullptr)
     {
         children["path"] = path;
@@ -13986,6 +14042,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Import
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Import::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(selection != nullptr)
     {
         children["selection"] = selection;
@@ -14067,6 +14124,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Import
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Import::Path::Selection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14126,7 +14184,7 @@ Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::Bgp_()
 	,confederation(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::Confederation>())
 	,consistency_checker(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::ConsistencyChecker>())
 	,dampening(nullptr) // presence node
-	,default_(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::Default_>())
+	,default_(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::Default>())
 	,graceful_restart(nullptr) // presence node
 	,ha_mode(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::HaMode>())
 	,listen(std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::Listen>())
@@ -14379,7 +14437,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::Default_>();
+            default_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::Default>();
         }
         return default_;
     }
@@ -14404,14 +14462,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 
     if(child_yang_name == "inject-map")
     {
-        for(auto const & c : inject_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::InjectMap>();
         c->parent = this;
         inject_map.push_back(c);
@@ -14487,6 +14537,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(asnotation != nullptr)
     {
         children["asnotation"] = asnotation;
@@ -14547,9 +14598,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamil
         children["ha-mode"] = ha_mode;
     }
 
+    count = 0;
     for (auto const & c : inject_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(listen != nullptr)
@@ -14843,6 +14898,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::Asnotation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14931,6 +14987,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::NopeerupDelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15037,6 +15094,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::Recursion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15143,6 +15201,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(select != nullptr)
     {
         children["select"] = select;
@@ -15296,6 +15355,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all != nullptr)
     {
         children["all"] = all;
@@ -15408,6 +15468,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(best != nullptr)
     {
         children["best"] = best;
@@ -15486,14 +15547,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::All::Best::Range>();
         c->parent = this;
         range.push_back(c);
@@ -15506,9 +15559,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::All::Best::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15581,6 +15639,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::All::Best::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15667,6 +15726,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::All::GroupBest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15743,6 +15803,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15821,14 +15882,6 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::Best::Range>();
         c->parent = this;
         range.push_back(c);
@@ -15841,9 +15894,14 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::Best::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15929,6 +15987,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::Best::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_best != nullptr)
     {
         children["group-best"] = group_best;
@@ -16020,6 +16079,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::Best::Range::GroupBest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16096,6 +16156,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::BestExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16176,6 +16237,7 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::Bgp_::AdditionalPaths::Select::GroupBest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16245,9 +16307,9 @@ const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute:
 const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisArea::Routes::level_2 {1, "level-2"};
 const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::IsisArea::Routes::level_1_2 {2, "level-1-2"};
 
-const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::Routes::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::Routes::level_2 {1, "level-2"};
-const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default_::Routes::level_1_2 {2, "level-1-2"};
+const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::Routes::level_1 {0, "level-1"};
+const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::Routes::level_2 {1, "level-2"};
+const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Ipv6::Redistribute::Isis::Default::Routes::level_1_2 {2, "level-1-2"};
 
 const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::AfName::unicast {0, "unicast"};
 const Enum::YLeaf Native::Router::Bgp::AddressFamily::NoVrf::Vpnv4::AfName::multicast {1, "multicast"};

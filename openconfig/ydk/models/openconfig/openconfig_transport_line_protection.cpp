@@ -78,6 +78,7 @@ std::shared_ptr<Entity> Aps::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Aps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aps_modules != nullptr)
     {
         children["aps-modules"] = aps_modules;
@@ -183,14 +184,6 @@ std::shared_ptr<Entity> Aps::ApsModules::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "aps-module")
     {
-        for(auto const & c : aps_module)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Aps::ApsModules::ApsModule>();
         c->parent = this;
         aps_module.push_back(c);
@@ -203,9 +196,14 @@ std::shared_ptr<Entity> Aps::ApsModules::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : aps_module)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -321,6 +319,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -432,6 +431,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Config::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -582,6 +582,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::State::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -792,6 +793,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(line_primary_in != nullptr)
     {
         children["line-primary-in"] = line_primary_in;
@@ -910,6 +912,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -990,6 +993,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1098,6 +1102,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State:
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(optical_power != nullptr)
     {
         children["optical-power"] = optical_power;
@@ -1211,6 +1216,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State:
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1339,6 +1345,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::get_c
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1415,6 +1422,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Confi
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1509,6 +1517,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(optical_power != nullptr)
     {
         children["optical-power"] = optical_power;
@@ -1612,6 +1621,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1740,6 +1750,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::get_
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1820,6 +1831,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Conf
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1928,6 +1940,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Stat
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(optical_power != nullptr)
     {
         children["optical-power"] = optical_power;
@@ -2041,6 +2054,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Stat
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2169,6 +2183,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::get
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2245,6 +2260,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Con
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2339,6 +2355,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Sta
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(optical_power != nullptr)
     {
         children["optical-power"] = optical_power;
@@ -2442,6 +2459,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Sta
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2570,6 +2588,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2650,6 +2669,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::Config::get
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2758,6 +2778,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::State::get_
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(optical_power != nullptr)
     {
         children["optical-power"] = optical_power;
@@ -2871,6 +2892,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::State::Opti
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2999,6 +3021,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3075,6 +3098,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::Config:
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3169,6 +3193,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(optical_power != nullptr)
     {
         children["optical-power"] = optical_power;
@@ -3272,6 +3297,7 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::
 std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

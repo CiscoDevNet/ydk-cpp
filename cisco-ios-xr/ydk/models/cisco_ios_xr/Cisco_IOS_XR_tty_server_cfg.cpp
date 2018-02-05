@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Tty::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Tty::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tty_lines != nullptr)
     {
         children["tty-lines"] = tty_lines;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Tty::TtyLines::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "tty-line")
     {
-        for(auto const & c : tty_line)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tty::TtyLines::TtyLine>();
         c->parent = this;
         tty_line.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Tty::TtyLines::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tty_line)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -350,6 +348,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general != nullptr)
     {
         children["general"] = general;
@@ -464,6 +463,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::General::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::General::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -560,6 +560,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Telnet::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -697,6 +698,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(user_groups != nullptr)
     {
         children["user-groups"] = user_groups;
@@ -815,14 +817,6 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_child_by_na
 {
     if(child_yang_name == "user-group")
     {
-        for(auto const & c : user_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup>();
         c->parent = this;
         user_group.push_back(c);
@@ -835,9 +829,14 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : user_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -910,6 +909,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1004,6 +1004,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Authorization::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1100,6 +1101,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Authentication::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1180,6 +1182,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Accounting::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1279,6 +1282,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timeout != nullptr)
     {
         children["timeout"] = timeout;
@@ -1364,6 +1368,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::Timeout::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1512,6 +1517,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transport_input != nullptr)
     {
         children["transport-input"] = transport_input;
@@ -1675,6 +1681,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::TransportInput::get_
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::TransportInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1793,6 +1800,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::TransportOutput::get
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::TransportOutput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1903,6 +1911,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1989,6 +1998,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::ExecMode::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::ExecMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -367,6 +367,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rttmonappl != nullptr)
     {
         children["rttMonAppl"] = rttmonappl;
@@ -625,6 +626,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonappl::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonappl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -810,14 +812,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::get_ch
 {
     if(child_yang_name == "rttMonApplSupportedRttTypesEntry")
     {
-        for(auto const & c : rttmonapplsupportedrtttypesentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry>();
         c->parent = this;
         rttmonapplsupportedrtttypesentry.push_back(c);
@@ -830,9 +824,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonapplsupportedrtttypesentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -912,6 +911,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmon
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplsupportedrtttypestable::Rttmonapplsupportedrtttypesentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1007,14 +1007,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::get_c
 {
     if(child_yang_name == "rttMonApplSupportedProtocolsEntry")
     {
-        for(auto const & c : rttmonapplsupportedprotocolsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry>();
         c->parent = this;
         rttmonapplsupportedprotocolsentry.push_back(c);
@@ -1027,9 +1019,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonapplsupportedprotocolsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1109,6 +1106,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmo
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplsupportedprotocolstable::Rttmonapplsupportedprotocolsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1204,14 +1202,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplpreconfigedtable::get_child_by
 {
     if(child_yang_name == "rttMonApplPreConfigedEntry")
     {
-        for(auto const & c : rttmonapplpreconfigedentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry>();
         c->parent = this;
         rttmonapplpreconfigedentry.push_back(c);
@@ -1224,9 +1214,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplpreconfigedtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplpreconfigedtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonapplpreconfigedentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1310,6 +1305,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpr
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplpreconfigedtable::Rttmonapplpreconfigedentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1415,14 +1411,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplauthtable::get_child_by_name(c
 {
     if(child_yang_name == "rttMonApplAuthEntry")
     {
-        for(auto const & c : rttmonapplauthentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry>();
         c->parent = this;
         rttmonapplauthentry.push_back(c);
@@ -1435,9 +1423,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplauthtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplauthtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonapplauthentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1541,6 +1534,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonapplauthtable::Rttmonapplauthentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1696,14 +1690,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonctrladmintable::get_child_by_name(
 {
     if(child_yang_name == "rttMonCtrlAdminEntry")
     {
-        for(auto const & c : rttmonctrladminentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry>();
         c->parent = this;
         rttmonctrladminentry.push_back(c);
@@ -1716,9 +1702,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonctrladmintable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonctrladmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonctrladminentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1990,6 +1981,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminent
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonctrladmintable::Rttmonctrladminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2565,14 +2557,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechoadmintable::get_child_by_name(
 {
     if(child_yang_name == "rttMonEchoAdminEntry")
     {
-        for(auto const & c : rttmonechoadminentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry>();
         c->parent = this;
         rttmonechoadminentry.push_back(c);
@@ -2585,9 +2569,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechoadmintable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonechoadmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonechoadminentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2967,6 +2956,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminent
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonechoadmintable::Rttmonechoadminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3812,14 +3802,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonfileioadmintable::get_child_by_nam
 {
     if(child_yang_name == "rttMonFileIOAdminEntry")
     {
-        for(auto const & c : rttmonfileioadminentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry>();
         c->parent = this;
         rttmonfileioadminentry.push_back(c);
@@ -3832,9 +3814,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonfileioadmintable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonfileioadmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonfileioadminentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3922,6 +3909,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadmi
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonfileioadmintable::Rttmonfileioadminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4037,14 +4025,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonscriptadmintable::get_child_by_nam
 {
     if(child_yang_name == "rttMonScriptAdminEntry")
     {
-        for(auto const & c : rttmonscriptadminentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry>();
         c->parent = this;
         rttmonscriptadminentry.push_back(c);
@@ -4057,9 +4037,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonscriptadmintable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonscriptadmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonscriptadminentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4143,6 +4128,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadmi
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonscriptadmintable::Rttmonscriptadminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4248,14 +4234,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttriggeradmintable::get_child_
 {
     if(child_yang_name == "rttMonReactTriggerAdminEntry")
     {
-        for(auto const & c : rttmonreacttriggeradminentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry>();
         c->parent = this;
         rttmonreacttriggeradminentry.push_back(c);
@@ -4268,9 +4246,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttriggeradmintable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonreacttriggeradmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonreacttriggeradminentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4358,6 +4341,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreac
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonreacttriggeradmintable::Rttmonreacttriggeradminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4473,14 +4457,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechopathadmintable::get_child_by_n
 {
     if(child_yang_name == "rttMonEchoPathAdminEntry")
     {
-        for(auto const & c : rttmonechopathadminentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry>();
         c->parent = this;
         rttmonechopathadminentry.push_back(c);
@@ -4493,9 +4469,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechopathadmintable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonechopathadmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonechopathadminentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4579,6 +4560,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopath
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonechopathadmintable::Rttmonechopathadminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4684,14 +4666,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongrpscheduleadmintable::get_child_b
 {
     if(child_yang_name == "rttMonGrpScheduleAdminEntry")
     {
-        for(auto const & c : rttmongrpscheduleadminentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry>();
         c->parent = this;
         rttmongrpscheduleadminentry.push_back(c);
@@ -4704,9 +4678,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongrpscheduleadmintable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmongrpscheduleadmintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmongrpscheduleadminentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4830,6 +4809,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpsc
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmongrpscheduleadmintable::Rttmongrpscheduleadminentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5035,14 +5015,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmplsvpnmonctrltable::get_child_by_nam
 {
     if(child_yang_name == "rttMplsVpnMonCtrlEntry")
     {
-        for(auto const & c : rttmplsvpnmonctrlentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry>();
         c->parent = this;
         rttmplsvpnmonctrlentry.push_back(c);
@@ -5055,9 +5027,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmplsvpnmonctrltable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmplsvpnmonctrltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmplsvpnmonctrlentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5301,6 +5278,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctr
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmplsvpnmonctrltable::Rttmplsvpnmonctrlentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5806,14 +5784,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttable::get_child_by_name(cons
 {
     if(child_yang_name == "rttMonReactEntry")
     {
-        for(auto const & c : rttmonreactentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry>();
         c->parent = this;
         rttmonreactentry.push_back(c);
@@ -5826,9 +5796,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonreacttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonreactentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5948,6 +5923,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonreacttable::Rttmonreactentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6143,14 +6119,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongeneratedopertable::get_child_by_n
 {
     if(child_yang_name == "rttMonGeneratedOperEntry")
     {
-        for(auto const & c : rttmongeneratedoperentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry>();
         c->parent = this;
         rttmongeneratedoperentry.push_back(c);
@@ -6163,9 +6131,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongeneratedopertable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmongeneratedopertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmongeneratedoperentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6253,6 +6226,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongenerate
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmongeneratedopertable::Rttmongeneratedoperentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6368,14 +6342,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscapturetable::get_child_by_na
 {
     if(child_yang_name == "rttMonStatsCaptureEntry")
     {
-        for(auto const & c : rttmonstatscaptureentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry>();
         c->parent = this;
         rttmonstatscaptureentry.push_back(c);
@@ -6388,9 +6354,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscapturetable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatscapturetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonstatscaptureentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6510,6 +6481,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscapt
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatscapturetable::Rttmonstatscaptureentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6705,14 +6677,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscollecttable::get_child_by_na
 {
     if(child_yang_name == "rttMonStatsCollectEntry")
     {
-        for(auto const & c : rttmonstatscollectentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry>();
         c->parent = this;
         rttmonstatscollectentry.push_back(c);
@@ -6725,9 +6689,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscollecttable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatscollecttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonstatscollectentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6863,6 +6832,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscoll
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatscollecttable::Rttmonstatscollectentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7098,14 +7068,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatstotalstable::get_child_by_nam
 {
     if(child_yang_name == "rttMonStatsTotalsEntry")
     {
-        for(auto const & c : rttmonstatstotalsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry>();
         c->parent = this;
         rttmonstatstotalsentry.push_back(c);
@@ -7118,9 +7080,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatstotalstable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatstotalstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonstatstotalsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7208,6 +7175,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotal
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonstatstotalstable::Rttmonstatstotalsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7323,14 +7291,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhttpstatstable::get_child_by_name(
 {
     if(child_yang_name == "rttMonHTTPStatsEntry")
     {
-        for(auto const & c : rttmonhttpstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry>();
         c->parent = this;
         rttmonhttpstatsentry.push_back(c);
@@ -7343,9 +7303,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhttpstatstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonhttpstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonhttpstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7497,6 +7462,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsent
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonhttpstatstable::Rttmonhttpstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7772,14 +7738,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonjitterstatstable::get_child_by_nam
 {
     if(child_yang_name == "rttMonJitterStatsEntry")
     {
-        for(auto const & c : rttmonjitterstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry>();
         c->parent = this;
         rttmonjitterstatsentry.push_back(c);
@@ -7792,9 +7750,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonjitterstatstable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonjitterstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonjitterstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8142,6 +8105,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstat
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonjitterstatstable::Rttmonjitterstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8907,14 +8871,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlpdgrpstatstable::get_child_by_nam
 {
     if(child_yang_name == "rttMonLpdGrpStatsEntry")
     {
-        for(auto const & c : rttmonlpdgrpstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry>();
         c->parent = this;
         rttmonlpdgrpstatsentry.push_back(c);
@@ -8927,9 +8883,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlpdgrpstatstable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlpdgrpstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonlpdgrpstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9081,6 +9042,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstat
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlpdgrpstatstable::Rttmonlpdgrpstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9356,14 +9318,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhistorycollectiontable::get_child_
 {
     if(child_yang_name == "rttMonHistoryCollectionEntry")
     {
-        for(auto const & c : rttmonhistorycollectionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry>();
         c->parent = this;
         rttmonhistorycollectionentry.push_back(c);
@@ -9376,9 +9330,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhistorycollectiontable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonhistorycollectiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonhistorycollectionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9490,6 +9449,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhist
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonhistorycollectiontable::Rttmonhistorycollectionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9665,14 +9625,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatesthttpopertable::get_child_by_
 {
     if(child_yang_name == "rttMonLatestHTTPOperEntry")
     {
-        for(auto const & c : rttmonlatesthttpoperentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry>();
         c->parent = this;
         rttmonlatesthttpoperentry.push_back(c);
@@ -9685,9 +9637,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatesthttpopertable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlatesthttpopertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonlatesthttpoperentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9791,6 +9748,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesth
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlatesthttpopertable::Rttmonlatesthttpoperentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9946,14 +9904,6 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatestjitteropertable::get_child_b
 {
     if(child_yang_name == "rttMonLatestJitterOperEntry")
     {
-        for(auto const & c : rttmonlatestjitteroperentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry>();
         c->parent = this;
         rttmonlatestjitteroperentry.push_back(c);
@@ -9966,9 +9916,14 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatestjitteropertable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlatestjitteropertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rttmonlatestjitteroperentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10276,6 +10231,7 @@ std::shared_ptr<Entity> CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlates
 std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::Rttmonlatestjitteropertable::Rttmonlatestjitteroperentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

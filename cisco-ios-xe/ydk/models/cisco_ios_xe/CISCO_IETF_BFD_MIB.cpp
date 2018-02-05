@@ -120,6 +120,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ciscobfdscalarobjects != nullptr)
     {
         children["ciscoBfdScalarObjects"] = ciscobfdscalarobjects;
@@ -251,6 +252,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdscalarobjects::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdscalarobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -356,14 +358,6 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsesstable::get_child_by_name(co
 {
     if(child_yang_name == "ciscoBfdSessEntry")
     {
-        for(auto const & c : ciscobfdsessentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry>();
         c->parent = this;
         ciscobfdsessentry.push_back(c);
@@ -376,9 +370,14 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsesstable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsesstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscobfdsessentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -586,6 +585,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::g
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsesstable::Ciscobfdsessentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1001,14 +1001,6 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessmaptable::get_child_by_name
 {
     if(child_yang_name == "ciscoBfdSessMapEntry")
     {
-        for(auto const & c : ciscobfdsessmapentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry>();
         c->parent = this;
         ciscobfdsessmapentry.push_back(c);
@@ -1021,9 +1013,14 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessmaptable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscobfdsessmapentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1115,6 +1112,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapen
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessmaptable::Ciscobfdsessmapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1240,14 +1238,6 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::get_child_by_
 {
     if(child_yang_name == "ciscoBfdSessDiscMapEntry")
     {
-        for(auto const & c : ciscobfdsessdiscmapentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry>();
         c->parent = this;
         ciscobfdsessdiscmapentry.push_back(c);
@@ -1260,9 +1250,14 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscobfdsessdiscmapentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1342,6 +1337,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessd
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessdiscmaptable::Ciscobfdsessdiscmapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1437,14 +1433,6 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessipmaptable::get_child_by_na
 {
     if(child_yang_name == "ciscoBfdSessIpMapEntry")
     {
-        for(auto const & c : ciscobfdsessipmapentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry>();
         c->parent = this;
         ciscobfdsessipmapentry.push_back(c);
@@ -1457,9 +1445,14 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessipmaptable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessipmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscobfdsessipmapentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1547,6 +1540,7 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipm
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::Ciscobfdsessipmaptable::Ciscobfdsessipmapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

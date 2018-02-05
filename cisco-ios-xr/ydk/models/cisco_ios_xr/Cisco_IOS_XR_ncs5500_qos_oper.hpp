@@ -239,18 +239,18 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Class_; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_
+        class Class; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class> > class_;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_ : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -282,40 +282,40 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf hardware_policer_peak_rate_kbps; //type: uint32
         ydk::YLeaf hardware_policer_conform_burst_bytes; //type: uint32
         ydk::YLeaf hardware_policer_excess_burst_bytes; //type: uint32
-        class ConfigMaxRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigMaxRate
-        class ConfigMinRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigMinRate
-        class ConfigQueueLimit; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigQueueLimit
-        class ConfigPolicerAverageRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerAverageRate
-        class ConfigPolicerPeakRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerPeakRate
-        class ConfigPolicerConformBurst; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerConformBurst
-        class ConfigPolicerExcessBurst; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerExcessBurst
-        class ConformAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConformAction
-        class ExceedAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ExceedAction
-        class ViolateAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ViolateAction
-        class IpMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::IpMark
-        class CommonMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::CommonMark
-        class MplsMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::MplsMark
-        class Wred; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred
+        class ConfigMaxRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigMaxRate
+        class ConfigMinRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigMinRate
+        class ConfigQueueLimit; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigQueueLimit
+        class ConfigPolicerAverageRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerAverageRate
+        class ConfigPolicerPeakRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerPeakRate
+        class ConfigPolicerConformBurst; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerConformBurst
+        class ConfigPolicerExcessBurst; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerExcessBurst
+        class ConformAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConformAction
+        class ExceedAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction
+        class ViolateAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction
+        class IpMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::IpMark
+        class CommonMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::CommonMark
+        class MplsMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::MplsMark
+        class Wred; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigMaxRate> config_max_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigMinRate> config_min_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigQueueLimit> config_queue_limit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerAverageRate> config_policer_average_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerPeakRate> config_policer_peak_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerConformBurst> config_policer_conform_burst;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerExcessBurst> config_policer_excess_burst;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConformAction> conform_action;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ExceedAction> exceed_action;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ViolateAction> violate_action;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::IpMark> > ip_mark;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::CommonMark> > common_mark;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::MplsMark> > mpls_mark;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred> > wred;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigMaxRate> config_max_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigMinRate> config_min_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigQueueLimit> config_queue_limit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerAverageRate> config_policer_average_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerPeakRate> config_policer_peak_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerConformBurst> config_policer_conform_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerExcessBurst> config_policer_excess_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction> violate_action;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::IpMark> > ip_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::CommonMark> > common_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::MplsMark> > mpls_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred> > wred;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigMaxRate : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigMaxRate : public ydk::Entity
 {
     public:
         ConfigMaxRate();
@@ -334,10 +334,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigMaxRate
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigMaxRate
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigMinRate : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigMinRate : public ydk::Entity
 {
     public:
         ConfigMinRate();
@@ -356,10 +356,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigMinRate
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigMinRate
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigQueueLimit : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigQueueLimit : public ydk::Entity
 {
     public:
         ConfigQueueLimit();
@@ -378,10 +378,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigQueueLimit
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigQueueLimit
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerAverageRate : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerAverageRate : public ydk::Entity
 {
     public:
         ConfigPolicerAverageRate();
@@ -400,10 +400,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerAverageRate
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerAverageRate
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerPeakRate : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerPeakRate : public ydk::Entity
 {
     public:
         ConfigPolicerPeakRate();
@@ -422,10 +422,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerPeakRate
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerPeakRate
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerConformBurst : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerConformBurst : public ydk::Entity
 {
     public:
         ConfigPolicerConformBurst();
@@ -444,10 +444,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerConformBurst
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerConformBurst
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerExcessBurst : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerExcessBurst : public ydk::Entity
 {
     public:
         ConfigPolicerExcessBurst();
@@ -466,10 +466,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConfigPolicerExcessBurst
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConfigPolicerExcessBurst
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConformAction : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -486,14 +486,14 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action_type; //type: DnxQoseaShowAction
-        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConformAction::Mark
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConformAction::Mark
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConformAction::Mark> > mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConformAction::Mark> > mark;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConformAction
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConformAction
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConformAction::Mark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConformAction::Mark : public ydk::Entity
 {
     public:
         Mark();
@@ -512,10 +512,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ConformAction::Mark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ConformAction::Mark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ExceedAction : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -532,14 +532,14 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action_type; //type: DnxQoseaShowAction
-        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ExceedAction::Mark
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction::Mark
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ExceedAction::Mark> > mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction::Mark> > mark;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ExceedAction
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ExceedAction::Mark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction::Mark : public ydk::Entity
 {
     public:
         Mark();
@@ -558,10 +558,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ExceedAction::Mark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ExceedAction::Mark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ViolateAction : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -578,14 +578,14 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action_type; //type: DnxQoseaShowAction
-        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ViolateAction::Mark
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction::Mark
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ViolateAction::Mark> > mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction::Mark> > mark;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ViolateAction
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ViolateAction::Mark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction::Mark : public ydk::Entity
 {
     public:
         Mark();
@@ -604,10 +604,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::ViolateAction::Mark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::ViolateAction::Mark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::IpMark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::IpMark : public ydk::Entity
 {
     public:
         IpMark();
@@ -626,10 +626,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::IpMark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::IpMark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::CommonMark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::CommonMark : public ydk::Entity
 {
     public:
         CommonMark();
@@ -648,10 +648,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::CommonMark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::CommonMark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::MplsMark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::MplsMark : public ydk::Entity
 {
     public:
         MplsMark();
@@ -670,10 +670,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::MplsMark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::MplsMark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred : public ydk::Entity
 {
     public:
         Wred();
@@ -694,18 +694,18 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf hardware_max_threshold_bytes; //type: uint32
         ydk::YLeaf first_segment; //type: uint16
         ydk::YLeaf segment_size; //type: uint32
-        class WredMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::WredMatchValue
-        class ConfigMinThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::ConfigMinThreshold
-        class ConfigMaxThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::ConfigMaxThreshold
+        class WredMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue
+        class ConfigMinThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMinThreshold
+        class ConfigMaxThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMaxThreshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::WredMatchValue> wred_match_value;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::ConfigMinThreshold> config_min_threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::ConfigMaxThreshold> config_max_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue> wred_match_value;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMinThreshold> config_min_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMaxThreshold> config_max_threshold;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::WredMatchValue : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue : public ydk::Entity
 {
     public:
         WredMatchValue();
@@ -721,14 +721,14 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class DnxQoseaShowRedMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+        class DnxQoseaShowRedMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue> > dnx_qosea_show_red_match_value;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue> > dnx_qosea_show_red_match_value;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::WredMatchValue
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue : public ydk::Entity
 {
     public:
         DnxQoseaShowRedMatchValue();
@@ -747,10 +747,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf range_start; //type: uint8
         ydk::YLeaf range_end; //type: uint8
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::ConfigMinThreshold : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMinThreshold : public ydk::Entity
 {
     public:
         ConfigMinThreshold();
@@ -769,10 +769,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::ConfigMinThreshold
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMinThreshold
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::ConfigMaxThreshold : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMaxThreshold : public ydk::Entity
 {
     public:
         ConfigMaxThreshold();
@@ -791,7 +791,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::ConfigMaxThreshold
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class::Wred::ConfigMaxThreshold
 
 
 class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::PolicyDetails : public ydk::Entity
@@ -840,18 +840,18 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Class_; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_
+        class Class; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class> > class_;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_ : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -883,40 +883,40 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf hardware_policer_peak_rate_kbps; //type: uint32
         ydk::YLeaf hardware_policer_conform_burst_bytes; //type: uint32
         ydk::YLeaf hardware_policer_excess_burst_bytes; //type: uint32
-        class ConfigMaxRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigMaxRate
-        class ConfigMinRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigMinRate
-        class ConfigQueueLimit; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigQueueLimit
-        class ConfigPolicerAverageRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerAverageRate
-        class ConfigPolicerPeakRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerPeakRate
-        class ConfigPolicerConformBurst; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerConformBurst
-        class ConfigPolicerExcessBurst; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerExcessBurst
-        class ConformAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConformAction
-        class ExceedAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ExceedAction
-        class ViolateAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ViolateAction
-        class IpMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::IpMark
-        class CommonMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::CommonMark
-        class MplsMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::MplsMark
-        class Wred; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred
+        class ConfigMaxRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigMaxRate
+        class ConfigMinRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigMinRate
+        class ConfigQueueLimit; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigQueueLimit
+        class ConfigPolicerAverageRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerAverageRate
+        class ConfigPolicerPeakRate; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerPeakRate
+        class ConfigPolicerConformBurst; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerConformBurst
+        class ConfigPolicerExcessBurst; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerExcessBurst
+        class ConformAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConformAction
+        class ExceedAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ExceedAction
+        class ViolateAction; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ViolateAction
+        class IpMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::IpMark
+        class CommonMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::CommonMark
+        class MplsMark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::MplsMark
+        class Wred; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigMaxRate> config_max_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigMinRate> config_min_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigQueueLimit> config_queue_limit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerAverageRate> config_policer_average_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerPeakRate> config_policer_peak_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerConformBurst> config_policer_conform_burst;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerExcessBurst> config_policer_excess_burst;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConformAction> conform_action;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ExceedAction> exceed_action;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ViolateAction> violate_action;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::IpMark> > ip_mark;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::CommonMark> > common_mark;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::MplsMark> > mpls_mark;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred> > wred;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigMaxRate> config_max_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigMinRate> config_min_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigQueueLimit> config_queue_limit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerAverageRate> config_policer_average_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerPeakRate> config_policer_peak_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerConformBurst> config_policer_conform_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerExcessBurst> config_policer_excess_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ViolateAction> violate_action;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::IpMark> > ip_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::CommonMark> > common_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::MplsMark> > mpls_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred> > wred;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigMaxRate : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigMaxRate : public ydk::Entity
 {
     public:
         ConfigMaxRate();
@@ -935,10 +935,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigMaxRate
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigMaxRate
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigMinRate : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigMinRate : public ydk::Entity
 {
     public:
         ConfigMinRate();
@@ -957,10 +957,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigMinRate
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigMinRate
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigQueueLimit : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigQueueLimit : public ydk::Entity
 {
     public:
         ConfigQueueLimit();
@@ -979,10 +979,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigQueueLimit
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigQueueLimit
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerAverageRate : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerAverageRate : public ydk::Entity
 {
     public:
         ConfigPolicerAverageRate();
@@ -1001,10 +1001,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerAverageRate
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerAverageRate
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerPeakRate : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerPeakRate : public ydk::Entity
 {
     public:
         ConfigPolicerPeakRate();
@@ -1023,10 +1023,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerPeakRate
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerPeakRate
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerConformBurst : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerConformBurst : public ydk::Entity
 {
     public:
         ConfigPolicerConformBurst();
@@ -1045,10 +1045,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerConformBurst
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerConformBurst
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerExcessBurst : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerExcessBurst : public ydk::Entity
 {
     public:
         ConfigPolicerExcessBurst();
@@ -1067,10 +1067,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConfigPolicerExcessBurst
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConfigPolicerExcessBurst
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConformAction : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1087,14 +1087,14 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action_type; //type: DnxQoseaShowAction
-        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConformAction::Mark
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConformAction::Mark
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConformAction::Mark> > mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConformAction::Mark> > mark;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConformAction
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConformAction
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConformAction::Mark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConformAction::Mark : public ydk::Entity
 {
     public:
         Mark();
@@ -1113,10 +1113,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ConformAction::Mark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ConformAction::Mark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ExceedAction : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -1133,14 +1133,14 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action_type; //type: DnxQoseaShowAction
-        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ExceedAction::Mark
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ExceedAction::Mark
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ExceedAction::Mark> > mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ExceedAction::Mark> > mark;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ExceedAction
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ExceedAction
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ExceedAction::Mark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ExceedAction::Mark : public ydk::Entity
 {
     public:
         Mark();
@@ -1159,10 +1159,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ExceedAction::Mark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ExceedAction::Mark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ViolateAction : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -1179,14 +1179,14 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action_type; //type: DnxQoseaShowAction
-        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ViolateAction::Mark
+        class Mark; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ViolateAction::Mark
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ViolateAction::Mark> > mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ViolateAction::Mark> > mark;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ViolateAction
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ViolateAction
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ViolateAction::Mark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ViolateAction::Mark : public ydk::Entity
 {
     public:
         Mark();
@@ -1205,10 +1205,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::ViolateAction::Mark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::ViolateAction::Mark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::IpMark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::IpMark : public ydk::Entity
 {
     public:
         IpMark();
@@ -1227,10 +1227,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::IpMark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::IpMark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::CommonMark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::CommonMark : public ydk::Entity
 {
     public:
         CommonMark();
@@ -1249,10 +1249,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::CommonMark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::CommonMark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::MplsMark : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::MplsMark : public ydk::Entity
 {
     public:
         MplsMark();
@@ -1271,10 +1271,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::MplsMark
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::MplsMark
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred : public ydk::Entity
 {
     public:
         Wred();
@@ -1295,18 +1295,18 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf hardware_max_threshold_bytes; //type: uint32
         ydk::YLeaf first_segment; //type: uint16
         ydk::YLeaf segment_size; //type: uint32
-        class WredMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::WredMatchValue
-        class ConfigMinThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::ConfigMinThreshold
-        class ConfigMaxThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::ConfigMaxThreshold
+        class WredMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::WredMatchValue
+        class ConfigMinThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::ConfigMinThreshold
+        class ConfigMaxThreshold; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::ConfigMaxThreshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::WredMatchValue> wred_match_value;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::ConfigMinThreshold> config_min_threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::ConfigMaxThreshold> config_max_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::WredMatchValue> wred_match_value;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::ConfigMinThreshold> config_min_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::ConfigMaxThreshold> config_max_threshold;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::WredMatchValue : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::WredMatchValue : public ydk::Entity
 {
     public:
         WredMatchValue();
@@ -1322,14 +1322,14 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class DnxQoseaShowRedMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+        class DnxQoseaShowRedMatchValue; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue> > dnx_qosea_show_red_match_value;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue> > dnx_qosea_show_red_match_value;
         
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::WredMatchValue
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::WredMatchValue
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue : public ydk::Entity
 {
     public:
         DnxQoseaShowRedMatchValue();
@@ -1348,10 +1348,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf range_start; //type: uint8
         ydk::YLeaf range_end; //type: uint8
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::ConfigMinThreshold : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::ConfigMinThreshold : public ydk::Entity
 {
     public:
         ConfigMinThreshold();
@@ -1370,10 +1370,10 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::ConfigMinThreshold
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::ConfigMinThreshold
 
 
-class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::ConfigMaxThreshold : public ydk::Entity
+class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::ConfigMaxThreshold : public ydk::Entity
 {
     public:
         ConfigMaxThreshold();
@@ -1392,7 +1392,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Clas
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::ConfigMaxThreshold
+}; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class::Wred::ConfigMaxThreshold
 
 
 class PlatformQos::Nodes::Node::Interfaces : public ydk::Entity
@@ -1491,18 +1491,18 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Class_; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_
+        class Class; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class> > class_;
         
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_ : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1534,40 +1534,40 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_ : public 
         ydk::YLeaf hardware_policer_peak_rate_kbps; //type: uint32
         ydk::YLeaf hardware_policer_conform_burst_bytes; //type: uint32
         ydk::YLeaf hardware_policer_excess_burst_bytes; //type: uint32
-        class ConfigMaxRate; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMaxRate
-        class ConfigMinRate; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMinRate
-        class ConfigQueueLimit; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigQueueLimit
-        class ConfigPolicerAverageRate; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerAverageRate
-        class ConfigPolicerPeakRate; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerPeakRate
-        class ConfigPolicerConformBurst; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerConformBurst
-        class ConfigPolicerExcessBurst; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerExcessBurst
-        class ConformAction; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformAction
-        class ExceedAction; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAction
-        class ViolateAction; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateAction
-        class IpMark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::IpMark
-        class CommonMark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::CommonMark
-        class MplsMark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::MplsMark
-        class Wred; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred
+        class ConfigMaxRate; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigMaxRate
+        class ConfigMinRate; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigMinRate
+        class ConfigQueueLimit; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigQueueLimit
+        class ConfigPolicerAverageRate; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerAverageRate
+        class ConfigPolicerPeakRate; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerPeakRate
+        class ConfigPolicerConformBurst; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerConformBurst
+        class ConfigPolicerExcessBurst; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerExcessBurst
+        class ConformAction; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConformAction
+        class ExceedAction; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ExceedAction
+        class ViolateAction; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ViolateAction
+        class IpMark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::IpMark
+        class CommonMark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::CommonMark
+        class MplsMark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::MplsMark
+        class Wred; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMaxRate> config_max_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMinRate> config_min_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigQueueLimit> config_queue_limit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerAverageRate> config_policer_average_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerPeakRate> config_policer_peak_rate;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerConformBurst> config_policer_conform_burst;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerExcessBurst> config_policer_excess_burst;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformAction> conform_action;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAction> exceed_action;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateAction> violate_action;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::IpMark> > ip_mark;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::CommonMark> > common_mark;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::MplsMark> > mpls_mark;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred> > wred;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigMaxRate> config_max_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigMinRate> config_min_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigQueueLimit> config_queue_limit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerAverageRate> config_policer_average_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerPeakRate> config_policer_peak_rate;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerConformBurst> config_policer_conform_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerExcessBurst> config_policer_excess_burst;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ViolateAction> violate_action;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::IpMark> > ip_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::CommonMark> > common_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::MplsMark> > mpls_mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred> > wred;
         
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMaxRate : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigMaxRate : public ydk::Entity
 {
     public:
         ConfigMaxRate();
@@ -1586,10 +1586,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMa
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMaxRate
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigMaxRate
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMinRate : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigMinRate : public ydk::Entity
 {
     public:
         ConfigMinRate();
@@ -1608,10 +1608,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMi
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigMinRate
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigMinRate
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigQueueLimit : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigQueueLimit : public ydk::Entity
 {
     public:
         ConfigQueueLimit();
@@ -1630,10 +1630,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigQu
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigQueueLimit
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigQueueLimit
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerAverageRate : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerAverageRate : public ydk::Entity
 {
     public:
         ConfigPolicerAverageRate();
@@ -1652,10 +1652,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPo
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerAverageRate
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerAverageRate
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerPeakRate : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerPeakRate : public ydk::Entity
 {
     public:
         ConfigPolicerPeakRate();
@@ -1674,10 +1674,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPo
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerPeakRate
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerPeakRate
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerConformBurst : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerConformBurst : public ydk::Entity
 {
     public:
         ConfigPolicerConformBurst();
@@ -1696,10 +1696,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPo
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerConformBurst
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerConformBurst
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerExcessBurst : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerExcessBurst : public ydk::Entity
 {
     public:
         ConfigPolicerExcessBurst();
@@ -1718,10 +1718,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPo
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConfigPolicerExcessBurst
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConfigPolicerExcessBurst
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformAction : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1738,14 +1738,14 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action_type; //type: DnxQoseaShowAction
-        class Mark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformAction::Mark
+        class Mark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConformAction::Mark
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformAction::Mark> > mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConformAction::Mark> > mark;
         
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformAction
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConformAction
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformAction::Mark : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConformAction::Mark : public ydk::Entity
 {
     public:
         Mark();
@@ -1764,10 +1764,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformA
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ConformAction::Mark
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ConformAction::Mark
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAction : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -1784,14 +1784,14 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAc
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action_type; //type: DnxQoseaShowAction
-        class Mark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAction::Mark
+        class Mark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ExceedAction::Mark
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAction::Mark> > mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ExceedAction::Mark> > mark;
         
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAction
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ExceedAction
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAction::Mark : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ExceedAction::Mark : public ydk::Entity
 {
     public:
         Mark();
@@ -1810,10 +1810,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAc
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ExceedAction::Mark
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ExceedAction::Mark
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateAction : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -1830,14 +1830,14 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action_type; //type: DnxQoseaShowAction
-        class Mark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateAction::Mark
+        class Mark; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ViolateAction::Mark
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateAction::Mark> > mark;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ViolateAction::Mark> > mark;
         
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateAction
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ViolateAction
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateAction::Mark : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ViolateAction::Mark : public ydk::Entity
 {
     public:
         Mark();
@@ -1856,10 +1856,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateA
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::ViolateAction::Mark
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::ViolateAction::Mark
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::IpMark : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::IpMark : public ydk::Entity
 {
     public:
         IpMark();
@@ -1878,10 +1878,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::IpMark :
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::IpMark
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::IpMark
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::CommonMark : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::CommonMark : public ydk::Entity
 {
     public:
         CommonMark();
@@ -1900,10 +1900,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::CommonMa
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::CommonMark
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::CommonMark
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::MplsMark : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::MplsMark : public ydk::Entity
 {
     public:
         MplsMark();
@@ -1922,10 +1922,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::MplsMark
         ydk::YLeaf mark_type; //type: DnxQoseaShowMark
         ydk::YLeaf mark_value; //type: uint16
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::MplsMark
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::MplsMark
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred : public ydk::Entity
 {
     public:
         Wred();
@@ -1946,18 +1946,18 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred : p
         ydk::YLeaf hardware_max_threshold_bytes; //type: uint32
         ydk::YLeaf first_segment; //type: uint16
         ydk::YLeaf segment_size; //type: uint32
-        class WredMatchValue; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::WredMatchValue
-        class ConfigMinThreshold; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::ConfigMinThreshold
-        class ConfigMaxThreshold; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::ConfigMaxThreshold
+        class WredMatchValue; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::WredMatchValue
+        class ConfigMinThreshold; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::ConfigMinThreshold
+        class ConfigMaxThreshold; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::ConfigMaxThreshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::WredMatchValue> wred_match_value;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::ConfigMinThreshold> config_min_threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::ConfigMaxThreshold> config_max_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::WredMatchValue> wred_match_value;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::ConfigMinThreshold> config_min_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::ConfigMaxThreshold> config_max_threshold;
         
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::WredMatchValue : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::WredMatchValue : public ydk::Entity
 {
     public:
         WredMatchValue();
@@ -1973,14 +1973,14 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::Wr
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class DnxQoseaShowRedMatchValue; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+        class DnxQoseaShowRedMatchValue; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue> > dnx_qosea_show_red_match_value;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs5500_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue> > dnx_qosea_show_red_match_value;
         
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::WredMatchValue
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::WredMatchValue
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue : public ydk::Entity
 {
     public:
         DnxQoseaShowRedMatchValue();
@@ -1999,10 +1999,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::Wr
         ydk::YLeaf range_start; //type: uint8
         ydk::YLeaf range_end; //type: uint8
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::WredMatchValue::DnxQoseaShowRedMatchValue
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::ConfigMinThreshold : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::ConfigMinThreshold : public ydk::Entity
 {
     public:
         ConfigMinThreshold();
@@ -2021,10 +2021,10 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::Co
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::ConfigMinThreshold
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::ConfigMinThreshold
 
 
-class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::ConfigMaxThreshold : public ydk::Entity
+class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::ConfigMaxThreshold : public ydk::Entity
 {
     public:
         ConfigMaxThreshold();
@@ -2043,7 +2043,7 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::Co
         ydk::YLeaf policy_value; //type: uint32
         ydk::YLeaf policy_unit; //type: PolicyParamUnit
 
-}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::ConfigMaxThreshold
+}; // PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class::Wred::ConfigMaxThreshold
 
 
 class PlatformQos::Nodes::Node::RemoteInterfaces : public ydk::Entity

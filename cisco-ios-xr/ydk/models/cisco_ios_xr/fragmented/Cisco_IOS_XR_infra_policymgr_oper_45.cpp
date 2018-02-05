@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_policymgr_oper_45.hpp"
-#include "Cisco_IOS_XR_infra_policymgr_oper_46.hpp"
 #include "Cisco_IOS_XR_infra_policymgr_oper_68.hpp"
+#include "Cisco_IOS_XR_infra_policymgr_oper_46.hpp"
 
 using namespace ydk;
 
@@ -105,6 +105,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(buffer_size != nullptr)
     {
         children["buffer-size"] = buffer_size;
@@ -210,6 +211,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::BufferSize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -300,6 +302,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::PauseThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -390,6 +393,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::ResumeThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -488,6 +492,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::FlowParm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -633,6 +638,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip_bit_rate != nullptr)
     {
         children["ip-bit-rate"] = ip_bit_rate;
@@ -753,6 +759,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::IpBitRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -843,6 +850,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::MediaBitRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -951,14 +959,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "clock-rate")
     {
-        for(auto const & c : clock_rate)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Rtp::ClockRate>();
         c->parent = this;
         clock_rate.push_back(c);
@@ -971,9 +971,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Rtp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clock_rate)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1096,6 +1101,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Rtp::ClockRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1204,14 +1210,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "clock-rate")
     {
-        for(auto const & c : clock_rate)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpMmr::ClockRate>();
         c->parent = this;
         clock_rate.push_back(c);
@@ -1224,9 +1222,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpMmr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clock_rate)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1349,6 +1352,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpMmr::ClockRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1457,14 +1461,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "clock-rate")
     {
-        for(auto const & c : clock_rate)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate>();
         c->parent = this;
         clock_rate.push_back(c);
@@ -1477,9 +1473,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clock_rate)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1602,6 +1603,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1710,14 +1712,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "clock-rate")
     {
-        for(auto const & c : clock_rate)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpVoice::ClockRate>();
         c->parent = this;
         clock_rate.push_back(c);
@@ -1730,9 +1724,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpVoice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clock_rate)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1855,6 +1854,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpVoice::ClockRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1977,6 +1977,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Mdi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip_bit_rate != nullptr)
     {
         children["ip-bit-rate"] = ip_bit_rate;
@@ -2090,6 +2091,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Mdi::IpBitRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2212,6 +2214,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::MdiRtp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip_bit_rate != nullptr)
     {
         children["ip-bit-rate"] = ip_bit_rate;
@@ -2325,6 +2328,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::MdiRtp::IpBitRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2411,6 +2415,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Fmm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2489,14 +2494,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "action-pbf-info-array")
     {
-        for(auto const & c : action_pbf_info_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::ActionPbfInfoArray>();
         c->parent = this;
         action_pbf_info_array.push_back(c);
@@ -2509,9 +2506,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : action_pbf_info_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2592,6 +2594,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::ActionPbfInfoArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2700,14 +2703,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "action-ipv4-nh-info-array")
     {
-        for(auto const & c : action_ipv4_nh_info_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::ActionIpv4NhInfoArray>();
         c->parent = this;
         action_ipv4_nh_info_array.push_back(c);
@@ -2720,9 +2715,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : action_ipv4_nh_info_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2795,6 +2795,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::ActionIpv4NhInfoArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2883,14 +2884,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "action-ipv6-nh-info-array")
     {
-        for(auto const & c : action_ipv6_nh_info_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::ActionIpv6NhInfoArray>();
         c->parent = this;
         action_ipv6_nh_info_array.push_back(c);
@@ -2903,9 +2896,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : action_ipv6_nh_info_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2978,6 +2976,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::ActionIpv6NhInfoArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3066,14 +3065,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "policy-map-detail")
     {
-        for(auto const & c : policy_map_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail>();
         c->parent = this;
         policy_map_detail.push_back(c);
@@ -3086,9 +3077,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_map_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3195,14 +3191,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "reference")
     {
-        for(auto const & c : reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Reference>();
         c->parent = this;
         reference.push_back(c);
@@ -3211,14 +3199,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 
     if(child_yang_name == "objects")
     {
-        for(auto const & c : objects)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Objects>();
         c->parent = this;
         objects.push_back(c);
@@ -3227,14 +3207,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 
     if(child_yang_name == "class-map-reference")
     {
-        for(auto const & c : class_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference>();
         c->parent = this;
         class_map_reference.push_back(c);
@@ -3247,19 +3219,32 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : objects)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : class_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3376,6 +3361,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3472,6 +3458,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Objects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3554,14 +3541,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 {
     if(child_yang_name == "policy-map-reference")
     {
-        for(auto const & c : policy_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::PolicyMapReference>();
         c->parent = this;
         policy_map_reference.push_back(c);
@@ -3574,9 +3553,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3659,6 +3643,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::PolicyMapTypes::Policy
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::PolicyMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3754,14 +3739,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 {
     if(child_yang_name == "transient-policy-map-type")
     {
-        for(auto const & c : transient_policy_map_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType>();
         c->parent = this;
         transient_policy_map_type.push_back(c);
@@ -3774,9 +3751,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : transient_policy_map_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3866,6 +3848,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transient_list_unuseds != nullptr)
     {
         children["transient-list-unuseds"] = transient_list_unuseds;
@@ -3949,14 +3932,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 {
     if(child_yang_name == "transient-list-unused")
     {
-        for(auto const & c : transient_list_unused)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused>();
         c->parent = this;
         transient_list_unused.push_back(c);
@@ -3969,9 +3944,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : transient_list_unused)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4078,14 +4058,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 {
     if(child_yang_name == "reference")
     {
-        for(auto const & c : reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Reference>();
         c->parent = this;
         reference.push_back(c);
@@ -4094,14 +4066,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 
     if(child_yang_name == "objects")
     {
-        for(auto const & c : objects)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Objects>();
         c->parent = this;
         objects.push_back(c);
@@ -4110,14 +4074,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 
     if(child_yang_name == "class-map-reference")
     {
-        for(auto const & c : class_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference>();
         c->parent = this;
         class_map_reference.push_back(c);
@@ -4130,19 +4086,32 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : objects)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : class_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4259,6 +4228,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4355,6 +4325,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Objects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4437,14 +4408,6 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 {
     if(child_yang_name == "policy-map-reference")
     {
-        for(auto const & c : policy_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::PolicyMapReference>();
         c->parent = this;
         policy_map_reference.push_back(c);
@@ -4457,9 +4420,14 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4542,6 +4510,7 @@ std::shared_ptr<Entity> PolicyManager::Global::PolicyMap::TransientPolicyMapType
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::PolicyMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4663,14 +4632,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::get_child_by_name(const 
 {
     if(child_yang_name == "class-maps")
     {
-        for(auto const & c : class_maps)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::ClassMaps>();
         c->parent = this;
         class_maps.push_back(c);
@@ -4679,14 +4640,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::get_child_by_name(const 
 
     if(child_yang_name == "policy-maps")
     {
-        for(auto const & c : policy_maps)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::PolicyMaps>();
         c->parent = this;
         policy_maps.push_back(c);
@@ -4699,14 +4652,23 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_maps)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : policy_maps)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4856,14 +4818,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::ClassMaps::get_child_by_
 {
     if(child_yang_name == "reference")
     {
-        for(auto const & c : reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::ClassMaps::Reference>();
         c->parent = this;
         reference.push_back(c);
@@ -4872,14 +4826,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::ClassMaps::get_child_by_
 
     if(child_yang_name == "objects")
     {
-        for(auto const & c : objects)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::ClassMaps::Objects>();
         c->parent = this;
         objects.push_back(c);
@@ -4888,14 +4834,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::ClassMaps::get_child_by_
 
     if(child_yang_name == "class-map-reference")
     {
-        for(auto const & c : class_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::ClassMaps::ClassMapReference>();
         c->parent = this;
         class_map_reference.push_back(c);
@@ -4908,19 +4846,32 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::ClassMaps::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::ClassMaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : objects)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : class_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5034,6 +4985,7 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::ClassMaps::Reference::ge
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::ClassMaps::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5137,6 +5089,7 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::ClassMaps::Objects::get_
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::ClassMaps::Objects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5226,14 +5179,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::ClassMaps::ClassMapRefer
 {
     if(child_yang_name == "policy-map-reference")
     {
-        for(auto const & c : policy_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::ClassMaps::ClassMapReference::PolicyMapReference>();
         c->parent = this;
         policy_map_reference.push_back(c);
@@ -5246,9 +5191,14 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::ClassMaps::ClassMapRefer
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::ClassMaps::ClassMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5338,6 +5288,7 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::ClassMaps::ClassMapRefer
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::ClassMaps::ClassMapReference::PolicyMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5465,14 +5416,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::PolicyMaps::get_child_by
 {
     if(child_yang_name == "reference")
     {
-        for(auto const & c : reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::PolicyMaps::Reference>();
         c->parent = this;
         reference.push_back(c);
@@ -5481,14 +5424,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::PolicyMaps::get_child_by
 
     if(child_yang_name == "objects")
     {
-        for(auto const & c : objects)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::PolicyMaps::Objects>();
         c->parent = this;
         objects.push_back(c);
@@ -5497,14 +5432,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::PolicyMaps::get_child_by
 
     if(child_yang_name == "class-map-reference")
     {
-        for(auto const & c : class_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::PolicyMaps::ClassMapReference>();
         c->parent = this;
         class_map_reference.push_back(c);
@@ -5517,19 +5444,32 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::PolicyMaps::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::PolicyMaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : objects)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : class_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5643,6 +5583,7 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::PolicyMaps::Reference::g
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::PolicyMaps::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5746,6 +5687,7 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::PolicyMaps::Objects::get
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::PolicyMaps::Objects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5835,14 +5777,6 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::PolicyMaps::ClassMapRefe
 {
     if(child_yang_name == "policy-map-reference")
     {
-        for(auto const & c : policy_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Global::Summary::PolicyMaps::ClassMapReference::PolicyMapReference>();
         c->parent = this;
         policy_map_reference.push_back(c);
@@ -5855,9 +5789,14 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::PolicyMaps::ClassMapRefe
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::PolicyMaps::ClassMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5947,6 +5886,7 @@ std::shared_ptr<Entity> PolicyManager::Global::Summary::PolicyMaps::ClassMapRefe
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Global::Summary::PolicyMaps::ClassMapReference::PolicyMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6042,14 +5982,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::get_child_by_name(const std::strin
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -6062,9 +5994,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6193,6 +6130,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(target_policy_map_types != nullptr)
     {
         children["target-policy-map-types"] = target_policy_map_types;
@@ -6291,14 +6229,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::get_ch
 {
     if(child_yang_name == "target-policy-map-type")
     {
-        for(auto const & c : target_policy_map_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::TargetPolicyMapTypes::TargetPolicyMapType>();
         c->parent = this;
         target_policy_map_type.push_back(c);
@@ -6311,9 +6241,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::get_ch
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::TargetPolicyMapTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : target_policy_map_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6422,6 +6357,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::Target
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::TargetPolicyMapTypes::TargetPolicyMapType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy_map_targets != nullptr)
     {
         children["policy-map-targets"] = policy_map_targets;
@@ -6515,14 +6451,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::Target
 {
     if(child_yang_name == "policy-map-target")
     {
-        for(auto const & c : policy_map_target)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::TargetPolicyMapTypes::TargetPolicyMapType::PolicyMapTargets::PolicyMapTarget>();
         c->parent = this;
         policy_map_target.push_back(c);
@@ -6535,9 +6463,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::Target
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::TargetPolicyMapTypes::TargetPolicyMapType::PolicyMapTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_map_target)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6634,6 +6567,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::Target
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::TargetPolicyMapTypes::TargetPolicyMapType::PolicyMapTargets::PolicyMapTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6746,6 +6680,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::Target
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::TargetPolicyMapTypes::TargetPolicyMapType::PolicyMapTargetSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6874,14 +6809,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::Target
 {
     if(child_yang_name == "target-summary-per-policy-map")
     {
-        for(auto const & c : target_summary_per_policy_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::TargetPolicyMapTypes::TargetPolicyMapType::TargetSummaryPerPolicyMaps::TargetSummaryPerPolicyMap>();
         c->parent = this;
         target_summary_per_policy_map.push_back(c);
@@ -6894,9 +6821,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::Target
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::TargetPolicyMapTypes::TargetPolicyMapType::TargetSummaryPerPolicyMaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : target_summary_per_policy_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6989,6 +6921,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::TargetPolicyMapTypes::Target
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::TargetPolicyMapTypes::TargetPolicyMapType::TargetSummaryPerPolicyMaps::TargetSummaryPerPolicyMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7134,6 +7067,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(class_map_types != nullptr)
     {
         children["class-map-types"] = class_map_types;
@@ -7207,14 +7141,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::get
 {
     if(child_yang_name == "class-map-type")
     {
-        for(auto const & c : class_map_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType>();
         c->parent = this;
         class_map_type.push_back(c);
@@ -7227,9 +7153,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::get
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_map_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7338,6 +7269,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(class_map_details != nullptr)
     {
         children["class-map-details"] = class_map_details;
@@ -7431,14 +7363,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "class-map-detail")
     {
-        for(auto const & c : class_map_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail>();
         c->parent = this;
         class_map_detail.push_back(c);
@@ -7451,9 +7375,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_map_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7560,14 +7489,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "reference")
     {
-        for(auto const & c : reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail::Reference>();
         c->parent = this;
         reference.push_back(c);
@@ -7576,14 +7497,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 
     if(child_yang_name == "objects")
     {
-        for(auto const & c : objects)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail::Objects>();
         c->parent = this;
         objects.push_back(c);
@@ -7592,14 +7505,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 
     if(child_yang_name == "class-map-reference")
     {
-        for(auto const & c : class_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail::ClassMapReference>();
         c->parent = this;
         class_map_reference.push_back(c);
@@ -7612,19 +7517,32 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : objects)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : class_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7741,6 +7659,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7837,6 +7756,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail::Objects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7919,14 +7839,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "policy-map-reference")
     {
-        for(auto const & c : policy_map_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail::ClassMapReference::PolicyMapReference>();
         c->parent = this;
         policy_map_reference.push_back(c);
@@ -7939,9 +7851,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail::ClassMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : policy_map_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8024,6 +7941,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMapDetails::ClassMapDetail::ClassMapReference::PolicyMapReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8112,14 +8030,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "class-map")
     {
-        for(auto const & c : class_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_>();
         c->parent = this;
         class_map.push_back(c);
@@ -8132,9 +8042,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8209,14 +8124,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "class-map-bg")
     {
-        for(auto const & c : class_map_bg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg>();
         c->parent = this;
         class_map_bg.push_back(c);
@@ -8229,9 +8136,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_map_bg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8336,6 +8248,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match_infop != nullptr)
     {
         children["match-infop"] = match_infop;
@@ -8449,14 +8362,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "class-match-info-st")
     {
-        for(auto const & c : class_match_info_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt>();
         c->parent = this;
         class_match_info_st.push_back(c);
@@ -8469,9 +8374,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_match_info_st)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8554,6 +8464,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match_data != nullptr)
     {
         children["match-data"] = match_data;
@@ -9744,6 +9655,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_dscp != nullptr)
     {
         children["ipv4-dscp"] = ipv4_dscp;
@@ -10282,14 +10194,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint8_rng_array")
     {
-        for(auto const & c : uint8_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::Uint8RngArray>();
         c->parent = this;
         uint8_rng_array.push_back(c);
@@ -10302,9 +10206,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint8_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10377,6 +10286,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Dscp::Uint8RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10465,14 +10375,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint8_rng_array")
     {
-        for(auto const & c : uint8_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::Uint8RngArray>();
         c->parent = this;
         uint8_rng_array.push_back(c);
@@ -10485,9 +10387,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint8_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10560,6 +10467,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Dscp::Uint8RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10648,14 +10556,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint8_rng_array")
     {
-        for(auto const & c : uint8_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::Uint8RngArray>();
         c->parent = this;
         uint8_rng_array.push_back(c);
@@ -10668,9 +10568,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint8_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10743,6 +10648,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Dscp::Uint8RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10840,6 +10746,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Prec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10925,6 +10832,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Prec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11010,6 +10918,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Prec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11095,6 +11004,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DiscardClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11171,14 +11081,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint16_rng_array")
     {
-        for(auto const & c : uint16_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::Uint16RngArray>();
         c->parent = this;
         uint16_rng_array.push_back(c);
@@ -11191,9 +11093,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint16_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11266,6 +11173,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::QosGroup::Uint16RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11354,14 +11262,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint8_rng_array")
     {
-        for(auto const & c : uint8_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::Uint8RngArray>();
         c->parent = this;
         uint8_rng_array.push_back(c);
@@ -11374,9 +11274,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint8_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11449,6 +11354,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::TrafficClass::Uint8RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11537,14 +11443,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint16_rng_array")
     {
-        for(auto const & c : uint16_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Proto::Uint16RngArray>();
         c->parent = this;
         uint16_rng_array.push_back(c);
@@ -11557,9 +11455,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Proto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint16_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11632,6 +11535,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Proto::Uint16RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11722,6 +11626,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11812,6 +11717,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::IcmpV6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11900,14 +11806,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint16_rng_array")
     {
-        for(auto const & c : uint16_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::Uint16RngArray>();
         c->parent = this;
         uint16_rng_array.push_back(c);
@@ -11920,9 +11818,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint16_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11995,6 +11898,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4PacketLen::Uint16RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12083,14 +11987,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint16_rng_array")
     {
-        for(auto const & c : uint16_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::Uint16RngArray>();
         c->parent = this;
         uint16_rng_array.push_back(c);
@@ -12103,9 +11999,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint16_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12178,6 +12079,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6PacketLen::Uint16RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12266,14 +12168,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint16_rng_array")
     {
-        for(auto const & c : uint16_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::Uint16RngArray>();
         c->parent = this;
         uint16_rng_array.push_back(c);
@@ -12286,9 +12180,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint16_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12361,6 +12260,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::PacketLen::Uint16RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12449,14 +12349,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint8_rng_array")
     {
-        for(auto const & c : uint8_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::Uint8RngArray>();
         c->parent = this;
         uint8_rng_array.push_back(c);
@@ -12469,9 +12361,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint8_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12544,6 +12441,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FlowTag::Uint8RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12634,6 +12532,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::TcpFlag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12722,14 +12621,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint8_rng_array")
     {
-        for(auto const & c : uint8_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::Uint8RngArray>();
         c->parent = this;
         uint8_rng_array.push_back(c);
@@ -12742,9 +12633,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint8_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12817,6 +12713,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Type::Uint8RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12905,14 +12802,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint8_rng_array")
     {
-        for(auto const & c : uint8_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::Uint8RngArray>();
         c->parent = this;
         uint8_rng_array.push_back(c);
@@ -12925,9 +12814,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint8_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13000,6 +12894,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv4Code::Uint8RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13088,14 +12983,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint8_rng_array")
     {
-        for(auto const & c : uint8_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::Uint8RngArray>();
         c->parent = this;
         uint8_rng_array.push_back(c);
@@ -13108,9 +12995,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint8_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13183,6 +13075,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Type::Uint8RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13271,14 +13164,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint8_rng_array")
     {
-        for(auto const & c : uint8_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::Uint8RngArray>();
         c->parent = this;
         uint8_rng_array.push_back(c);
@@ -13291,9 +13176,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint8_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13366,6 +13256,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Icmpv6Code::Uint8RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13463,6 +13354,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::MplsExp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13548,6 +13440,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::MplsExpImp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13633,6 +13526,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv4Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13718,6 +13612,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::MplsDispIpv6Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13794,14 +13689,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint32_rng_array")
     {
-        for(auto const & c : uint32_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::Uint32RngArray>();
         c->parent = this;
         uint32_rng_array.push_back(c);
@@ -13814,9 +13701,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint32_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13889,6 +13781,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::MplsTopLabel::Uint32RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13986,6 +13879,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Cos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14071,6 +13965,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::CosInr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14145,6 +14040,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Dei::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14221,6 +14117,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DeiInr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14299,14 +14196,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "vlan-id-array")
     {
-        for(auto const & c : vlan_id_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::VlanIdArray>();
         c->parent = this;
         vlan_id_array.push_back(c);
@@ -14319,9 +14208,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan_id_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14398,6 +14292,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Vlan::VlanIdArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14496,14 +14391,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint16_rng_array")
     {
-        for(auto const & c : uint16_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::Uint16RngArray>();
         c->parent = this;
         uint16_rng_array.push_back(c);
@@ -14516,9 +14403,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint16_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14591,6 +14483,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::VlanInr::Uint16RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14679,14 +14572,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "uint16_rng_array")
     {
-        for(auto const & c : uint16_rng_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::Uint16RngArray>();
         c->parent = this;
         uint16_rng_array.push_back(c);
@@ -14699,9 +14584,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : uint16_rng_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14774,6 +14664,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FrDlci::Uint16RngArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14885,6 +14776,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14992,6 +14884,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15085,6 +14978,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::AtmClp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15170,6 +15064,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FrDe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15255,6 +15150,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv4Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15340,6 +15236,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ipv6Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15425,6 +15322,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::EtherServiceAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15510,6 +15408,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::AvailId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15595,6 +15494,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::MediaType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15680,6 +15580,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SubsProtocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15765,6 +15666,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Dnis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15850,6 +15752,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DnisRegex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15926,14 +15829,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "domain-array")
     {
-        for(auto const & c : domain_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Domain::DomainArray>();
         c->parent = this;
         domain_array.push_back(c);
@@ -15946,9 +15841,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Domain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : domain_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16021,6 +15921,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Domain::DomainArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16109,14 +16010,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "domain-array")
     {
-        for(auto const & c : domain_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::DomainArray>();
         c->parent = this;
         domain_array.push_back(c);
@@ -16129,9 +16022,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : domain_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16204,6 +16102,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DomainRegex::DomainArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16292,14 +16191,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "nas-port-array")
     {
-        for(auto const & c : nas_port_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::NasPortArray>();
         c->parent = this;
         nas_port_array.push_back(c);
@@ -16312,9 +16203,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nas_port_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16391,6 +16287,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::NasPort::NasPortArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16498,6 +16395,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::ServiceName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16583,6 +16481,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::ServiceNameRegex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16659,14 +16558,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "ipv4-addr-array")
     {
-        for(auto const & c : ipv4_addr_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::Ipv4AddrArray>();
         c->parent = this;
         ipv4_addr_array.push_back(c);
@@ -16679,9 +16570,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4_addr_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16754,6 +16650,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcAddrIpv4::Ipv4AddrArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16842,14 +16739,6 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 {
     if(child_yang_name == "ipv4-addr-array")
     {
-        for(auto const & c : ipv4_addr_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4::Ipv4AddrArray>();
         c->parent = this;
         ipv4_addr_array.push_back(c);
@@ -16862,9 +16751,14 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::Cla
 std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::ClassMap::ClassMapTypes::ClassMapType::ClassMaps::ClassMap_::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstAddrIpv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4_addr_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;

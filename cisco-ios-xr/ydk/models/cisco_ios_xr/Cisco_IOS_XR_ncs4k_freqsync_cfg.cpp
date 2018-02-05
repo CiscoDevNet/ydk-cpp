@@ -68,6 +68,7 @@ std::shared_ptr<Entity> ClockInterface::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> ClockInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clocks != nullptr)
     {
         children["clocks"] = clocks;
@@ -173,15 +174,7 @@ std::shared_ptr<Entity> ClockInterface::Clocks::get_child_by_name(const std::str
 {
     if(child_yang_name == "clock")
     {
-        for(auto const & c : clock_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ClockInterface::Clocks::Clock_>();
+        auto c = std::make_shared<ClockInterface::Clocks::Clock>();
         c->parent = this;
         clock_.push_back(c);
         return c;
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> ClockInterface::Clocks::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clock_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -216,49 +214,49 @@ bool ClockInterface::Clocks::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-ClockInterface::Clocks::Clock_::Clock_()
+ClockInterface::Clocks::Clock::Clock()
     :
     clock_name{YType::str, "clock-name"}
     	,
-    frequency_synchronization(std::make_shared<ClockInterface::Clocks::Clock_::FrequencySynchronization>())
+    frequency_synchronization(std::make_shared<ClockInterface::Clocks::Clock::FrequencySynchronization>())
 {
     frequency_synchronization->parent = this;
 
     yang_name = "clock"; yang_parent_name = "clocks"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-ClockInterface::Clocks::Clock_::~Clock_()
+ClockInterface::Clocks::Clock::~Clock()
 {
 }
 
-bool ClockInterface::Clocks::Clock_::has_data() const
+bool ClockInterface::Clocks::Clock::has_data() const
 {
     return clock_name.is_set
 	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data());
 }
 
-bool ClockInterface::Clocks::Clock_::has_operation() const
+bool ClockInterface::Clocks::Clock::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clock_name.yfilter)
 	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation());
 }
 
-std::string ClockInterface::Clocks::Clock_::get_absolute_path() const
+std::string ClockInterface::Clocks::Clock::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ncs4k-freqsync-cfg:clock-interface/clocks/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ClockInterface::Clocks::Clock_::get_segment_path() const
+std::string ClockInterface::Clocks::Clock::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock" <<"[clock-name='" <<clock_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -268,13 +266,13 @@ std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::g
 
 }
 
-std::shared_ptr<Entity> ClockInterface::Clocks::Clock_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClockInterface::Clocks::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frequency-synchronization")
     {
         if(frequency_synchronization == nullptr)
         {
-            frequency_synchronization = std::make_shared<ClockInterface::Clocks::Clock_::FrequencySynchronization>();
+            frequency_synchronization = std::make_shared<ClockInterface::Clocks::Clock::FrequencySynchronization>();
         }
         return frequency_synchronization;
     }
@@ -282,9 +280,10 @@ std::shared_ptr<Entity> ClockInterface::Clocks::Clock_::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frequency_synchronization != nullptr)
     {
         children["frequency-synchronization"] = frequency_synchronization;
@@ -293,7 +292,7 @@ std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock_::g
     return children;
 }
 
-void ClockInterface::Clocks::Clock_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ClockInterface::Clocks::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clock-name")
     {
@@ -303,7 +302,7 @@ void ClockInterface::Clocks::Clock_::set_value(const std::string & value_path, c
     }
 }
 
-void ClockInterface::Clocks::Clock_::set_filter(const std::string & value_path, YFilter yfilter)
+void ClockInterface::Clocks::Clock::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clock-name")
     {
@@ -311,14 +310,14 @@ void ClockInterface::Clocks::Clock_::set_filter(const std::string & value_path, 
     }
 }
 
-bool ClockInterface::Clocks::Clock_::has_leaf_or_child_of_name(const std::string & name) const
+bool ClockInterface::Clocks::Clock::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frequency-synchronization" || name == "clock-name")
         return true;
     return false;
 }
 
-ClockInterface::Clocks::Clock_::FrequencySynchronization::FrequencySynchronization()
+ClockInterface::Clocks::Clock::FrequencySynchronization::FrequencySynchronization()
     :
     ssm_disable{YType::empty, "ssm-disable"},
     wait_to_restore_time{YType::uint32, "wait-to-restore-time"},
@@ -326,8 +325,8 @@ ClockInterface::Clocks::Clock_::FrequencySynchronization::FrequencySynchronizati
     priority{YType::uint32, "priority"},
     selection_input{YType::empty, "selection-input"}
     	,
-    input_quality_level(std::make_shared<ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel>())
-	,output_quality_level(std::make_shared<ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel>())
+    input_quality_level(std::make_shared<ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel>())
+	,output_quality_level(std::make_shared<ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel>())
 {
     input_quality_level->parent = this;
     output_quality_level->parent = this;
@@ -335,11 +334,11 @@ ClockInterface::Clocks::Clock_::FrequencySynchronization::FrequencySynchronizati
     yang_name = "frequency-synchronization"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ClockInterface::Clocks::Clock_::FrequencySynchronization::~FrequencySynchronization()
+ClockInterface::Clocks::Clock::FrequencySynchronization::~FrequencySynchronization()
 {
 }
 
-bool ClockInterface::Clocks::Clock_::FrequencySynchronization::has_data() const
+bool ClockInterface::Clocks::Clock::FrequencySynchronization::has_data() const
 {
     return ssm_disable.is_set
 	|| wait_to_restore_time.is_set
@@ -350,7 +349,7 @@ bool ClockInterface::Clocks::Clock_::FrequencySynchronization::has_data() const
 	|| (output_quality_level !=  nullptr && output_quality_level->has_data());
 }
 
-bool ClockInterface::Clocks::Clock_::FrequencySynchronization::has_operation() const
+bool ClockInterface::Clocks::Clock::FrequencySynchronization::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ssm_disable.yfilter)
@@ -362,14 +361,14 @@ bool ClockInterface::Clocks::Clock_::FrequencySynchronization::has_operation() c
 	|| (output_quality_level !=  nullptr && output_quality_level->has_operation());
 }
 
-std::string ClockInterface::Clocks::Clock_::FrequencySynchronization::get_segment_path() const
+std::string ClockInterface::Clocks::Clock::FrequencySynchronization::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frequency-synchronization";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::FrequencySynchronization::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock::FrequencySynchronization::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -383,13 +382,13 @@ std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::F
 
 }
 
-std::shared_ptr<Entity> ClockInterface::Clocks::Clock_::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClockInterface::Clocks::Clock::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input-quality-level")
     {
         if(input_quality_level == nullptr)
         {
-            input_quality_level = std::make_shared<ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel>();
+            input_quality_level = std::make_shared<ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel>();
         }
         return input_quality_level;
     }
@@ -398,7 +397,7 @@ std::shared_ptr<Entity> ClockInterface::Clocks::Clock_::FrequencySynchronization
     {
         if(output_quality_level == nullptr)
         {
-            output_quality_level = std::make_shared<ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel>();
+            output_quality_level = std::make_shared<ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel>();
         }
         return output_quality_level;
     }
@@ -406,9 +405,10 @@ std::shared_ptr<Entity> ClockInterface::Clocks::Clock_::FrequencySynchronization
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock_::FrequencySynchronization::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock::FrequencySynchronization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input_quality_level != nullptr)
     {
         children["input-quality-level"] = input_quality_level;
@@ -422,7 +422,7 @@ std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock_::F
     return children;
 }
 
-void ClockInterface::Clocks::Clock_::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ClockInterface::Clocks::Clock::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ssm-disable")
     {
@@ -456,7 +456,7 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::set_value(const s
     }
 }
 
-void ClockInterface::Clocks::Clock_::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
+void ClockInterface::Clocks::Clock::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ssm-disable")
     {
@@ -480,14 +480,14 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::set_filter(const 
     }
 }
 
-bool ClockInterface::Clocks::Clock_::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
+bool ClockInterface::Clocks::Clock::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "input-quality-level" || name == "output-quality-level" || name == "ssm-disable" || name == "wait-to-restore-time" || name == "time-of-day-priority" || name == "priority" || name == "selection-input")
         return true;
     return false;
 }
 
-ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::InputQualityLevel()
+ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::InputQualityLevel()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
@@ -498,11 +498,11 @@ ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::Inp
     yang_name = "input-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::~InputQualityLevel()
+ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::~InputQualityLevel()
 {
 }
 
-bool ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_data() const
+bool ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::has_data() const
 {
     return quality_level_option.is_set
 	|| exact_quality_level_value.is_set
@@ -510,7 +510,7 @@ bool ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel
 	|| max_quality_level_value.is_set;
 }
 
-bool ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_operation() const
+bool ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -519,14 +519,14 @@ bool ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel
 	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
-std::string ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_segment_path() const
+std::string ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input-quality-level";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -539,18 +539,19 @@ std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::F
 
 }
 
-std::shared_ptr<Entity> ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -578,7 +579,7 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel
     }
 }
 
-void ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -598,14 +599,14 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel
     }
 }
 
-bool ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
     return false;
 }
 
-ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
+ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
@@ -616,11 +617,11 @@ ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::Ou
     yang_name = "output-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()
+ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()
 {
 }
 
-bool ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_data() const
+bool ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::has_data() const
 {
     return quality_level_option.is_set
 	|| exact_quality_level_value.is_set
@@ -628,7 +629,7 @@ bool ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLeve
 	|| max_quality_level_value.is_set;
 }
 
-bool ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_operation() const
+bool ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -637,14 +638,14 @@ bool ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLeve
 	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
-std::string ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_segment_path() const
+std::string ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output-quality-level";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -657,18 +658,19 @@ std::vector<std::pair<std::string, LeafData> > ClockInterface::Clocks::Clock_::F
 
 }
 
-std::shared_ptr<Entity> ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -696,7 +698,7 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLeve
     }
 }
 
-void ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -716,7 +718,7 @@ void ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLeve
     }
 }
 
-bool ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
@@ -787,6 +789,7 @@ std::shared_ptr<Entity> FrequencySynchronization::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

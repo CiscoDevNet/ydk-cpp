@@ -780,20 +780,20 @@ class Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf percent; //type: uint16
-        class Value_; //type: Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Value_
+        class Value; //type: Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Value
         class Mam; //type: Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Mam
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Value_> value_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Value> value_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Mam> mam;
         
 }; // Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth
 
 
-class Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Value_ : public ydk::Entity
+class Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -808,7 +808,7 @@ class Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Value_ : public ydk:
         ydk::YLeaf value_; //type: uint32
         ydk::YLeaf sub_pool; //type: uint32
 
-}; // Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Value_
+}; // Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Value
 
 
 class Native::Interface::FastEthernet::Ip::Rsvp::Bandwidth::Mam : public ydk::Entity

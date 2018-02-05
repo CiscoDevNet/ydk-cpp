@@ -239,7 +239,7 @@ class Native::Interface::LISPSubinterface::LISP::Ip : public ydk::Entity
 
         ydk::YLeaf admission; //type: string
         ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf directed_broadcast; //type: one of string, uint16
+        ydk::YLeaf directed_broadcast; //type: one of uint16, string
         ydk::YLeaf local_proxy_arp; //type: empty
         ydk::YLeaf proxy_arp; //type: boolean
         ydk::YLeaf redirects; //type: boolean
@@ -356,7 +356,7 @@ class Native::Interface::LISPSubinterface::LISP::Ip::AccessGroup::In::CommonAcl 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of string, uint16
+        ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::LISPSubinterface::LISP::Ip::AccessGroup::In::CommonAcl
@@ -378,7 +378,7 @@ class Native::Interface::LISPSubinterface::LISP::Ip::AccessGroup::In::Acl : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of string, uint16
+        ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::LISPSubinterface::LISP::Ip::AccessGroup::In::Acl
@@ -425,7 +425,7 @@ class Native::Interface::LISPSubinterface::LISP::Ip::AccessGroup::Out::CommonAcl
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of string, uint16
+        ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::LISPSubinterface::LISP::Ip::AccessGroup::Out::CommonAcl
@@ -447,7 +447,7 @@ class Native::Interface::LISPSubinterface::LISP::Ip::AccessGroup::Out::Acl : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of string, uint16
+        ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::LISPSubinterface::LISP::Ip::AccessGroup::Out::Acl
@@ -2903,18 +2903,18 @@ class Native::Interface::LISPSubinterface::LISP::Peer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Default_; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default_
+        class Default; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default> default_;
         
 }; // Native::Interface::LISPSubinterface::LISP::Peer
 
 
-class Native::Interface::LISPSubinterface::LISP::Peer::Default_ : public ydk::Entity
+class Native::Interface::LISPSubinterface::LISP::Peer::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2926,14 +2926,14 @@ class Native::Interface::LISPSubinterface::LISP::Peer::Default_ : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip
+        class Ip; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip> ip;
         
-}; // Native::Interface::LISPSubinterface::LISP::Peer::Default_
+}; // Native::Interface::LISPSubinterface::LISP::Peer::Default
 
 
-class Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip : public ydk::Entity
+class Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -2949,14 +2949,14 @@ class Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address
+        class Address; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address> address;
         
-}; // Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip
+}; // Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip
 
 
-class Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address : public ydk::Entity
+class Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2973,16 +2973,16 @@ class Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dhcp; //type: empty
-        class DhcpPool; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::DhcpPool
-        class Pool; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::Pool
+        class DhcpPool; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address::DhcpPool
+        class Pool; //type: Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address::Pool
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::DhcpPool> dhcp_pool; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::Pool> pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address::DhcpPool> dhcp_pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address::Pool> pool; // presence node
         
-}; // Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address
+}; // Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address
 
 
-class Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::DhcpPool : public ydk::Entity
+class Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address::DhcpPool : public ydk::Entity
 {
     public:
         DhcpPool();
@@ -3000,10 +3000,10 @@ class Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::Dh
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::DhcpPool
+}; // Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address::DhcpPool
 
 
-class Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::Pool : public ydk::Entity
+class Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address::Pool : public ydk::Entity
 {
     public:
         Pool();
@@ -3021,7 +3021,7 @@ class Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::Po
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::LISPSubinterface::LISP::Peer::Default_::Ip::Address::Pool
+}; // Native::Interface::LISPSubinterface::LISP::Peer::Default::Ip::Address::Pool
 
 
 class Native::Interface::LISPSubinterface::LISP::PmPath : public ydk::Entity
@@ -3433,22 +3433,22 @@ class Native::Interface::Nve::Member::Vni : public ydk::Entity
 
         ydk::YLeaf vni_range; //type: string
         ydk::YLeaf ingress_replication; //type: string
-        class Default_; //type: Native::Interface::Nve::Member::Vni::Default_
+        class Default; //type: Native::Interface::Nve::Member::Vni::Default
         class McastGroup; //type: Native::Interface::Nve::Member::Vni::McastGroup
         class No; //type: Native::Interface::Nve::Member::Vni::No
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Nve::Member::Vni::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Nve::Member::Vni::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Nve::Member::Vni::McastGroup> mcast_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Nve::Member::Vni::No> no;
         
 }; // Native::Interface::Nve::Member::Vni
 
 
-class Native::Interface::Nve::Member::Vni::Default_ : public ydk::Entity
+class Native::Interface::Nve::Member::Vni::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3461,14 +3461,14 @@ class Native::Interface::Nve::Member::Vni::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ingress_replication; //type: string
-        class McastGroup; //type: Native::Interface::Nve::Member::Vni::Default_::McastGroup
+        class McastGroup; //type: Native::Interface::Nve::Member::Vni::Default::McastGroup
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Nve::Member::Vni::Default_::McastGroup> mcast_group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Nve::Member::Vni::Default::McastGroup> mcast_group;
         
-}; // Native::Interface::Nve::Member::Vni::Default_
+}; // Native::Interface::Nve::Member::Vni::Default
 
 
-class Native::Interface::Nve::Member::Vni::Default_::McastGroup : public ydk::Entity
+class Native::Interface::Nve::Member::Vni::Default::McastGroup : public ydk::Entity
 {
     public:
         McastGroup();
@@ -3487,7 +3487,7 @@ class Native::Interface::Nve::Member::Vni::Default_::McastGroup : public ydk::En
         ydk::YLeaf multicast_group_min; //type: string
         ydk::YLeaf multicast_group_max; //type: string
 
-}; // Native::Interface::Nve::Member::Vni::Default_::McastGroup
+}; // Native::Interface::Nve::Member::Vni::Default::McastGroup
 
 
 class Native::Interface::Nve::Member::Vni::McastGroup : public ydk::Entity

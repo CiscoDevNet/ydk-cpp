@@ -68,6 +68,7 @@ std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> HardwareModule::Nodes::get_child_by_name(const std::stri
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModule::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> HardwareModule::Nodes::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -275,6 +273,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

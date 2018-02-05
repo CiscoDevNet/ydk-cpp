@@ -81,6 +81,7 @@ std::shared_ptr<Entity> GetConfig::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> GetConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -207,6 +208,7 @@ std::shared_ptr<Entity> GetConfig::Input::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> GetConfig::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source != nullptr)
     {
         children["source"] = source;
@@ -313,6 +315,7 @@ std::shared_ptr<Entity> GetConfig::Input::Source::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> GetConfig::Input::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -416,6 +419,7 @@ std::shared_ptr<Entity> GetConfig::Output::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> GetConfig::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -501,6 +505,7 @@ std::shared_ptr<Entity> EditConfig::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> EditConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -634,6 +639,7 @@ std::shared_ptr<Entity> EditConfig::Input::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> EditConfig::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(target != nullptr)
     {
         children["target"] = target;
@@ -766,6 +772,7 @@ std::shared_ptr<Entity> EditConfig::Input::Target::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> EditConfig::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -861,6 +868,7 @@ std::shared_ptr<Entity> CopyConfig::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> CopyConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -991,6 +999,7 @@ std::shared_ptr<Entity> CopyConfig::Input::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CopyConfig::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(target != nullptr)
     {
         children["target"] = target;
@@ -1096,6 +1105,7 @@ std::shared_ptr<Entity> CopyConfig::Input::Target::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CopyConfig::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1225,6 +1235,7 @@ std::shared_ptr<Entity> CopyConfig::Input::Source::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CopyConfig::Input::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1350,6 +1361,7 @@ std::shared_ptr<Entity> DeleteConfig::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> DeleteConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1462,6 +1474,7 @@ std::shared_ptr<Entity> DeleteConfig::Input::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> DeleteConfig::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(target != nullptr)
     {
         children["target"] = target;
@@ -1544,6 +1557,7 @@ std::shared_ptr<Entity> DeleteConfig::Input::Target::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> DeleteConfig::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1639,6 +1653,7 @@ std::shared_ptr<Entity> Lock::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Lock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1751,6 +1766,7 @@ std::shared_ptr<Entity> Lock::Input::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Lock::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(target != nullptr)
     {
         children["target"] = target;
@@ -1837,6 +1853,7 @@ std::shared_ptr<Entity> Lock::Input::Target::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Lock::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1942,6 +1959,7 @@ std::shared_ptr<Entity> Unlock::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Unlock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2054,6 +2072,7 @@ std::shared_ptr<Entity> Unlock::Input::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Unlock::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(target != nullptr)
     {
         children["target"] = target;
@@ -2140,6 +2159,7 @@ std::shared_ptr<Entity> Unlock::Input::Target::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Unlock::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2258,6 +2278,7 @@ std::shared_ptr<Entity> Get::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Get::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2370,6 +2391,7 @@ std::shared_ptr<Entity> Get::Input::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Get::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2463,6 +2485,7 @@ std::shared_ptr<Entity> Get::Output::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Get::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2535,6 +2558,7 @@ std::shared_ptr<Entity> CloseSession::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CloseSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2633,6 +2657,7 @@ std::shared_ptr<Entity> KillSession::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> KillSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2736,6 +2761,7 @@ std::shared_ptr<Entity> KillSession::Input::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> KillSession::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2821,6 +2847,7 @@ std::shared_ptr<Entity> Commit::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Commit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2936,6 +2963,7 @@ std::shared_ptr<Entity> Commit::Input::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Commit::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3038,6 +3066,7 @@ std::shared_ptr<Entity> DiscardChanges::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> DiscardChanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3136,6 +3165,7 @@ std::shared_ptr<Entity> CancelCommit::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CancelCommit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3239,6 +3269,7 @@ std::shared_ptr<Entity> CancelCommit::Input::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CancelCommit::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3324,6 +3355,7 @@ std::shared_ptr<Entity> Validate::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Validate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3436,6 +3468,7 @@ std::shared_ptr<Entity> Validate::Input::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Validate::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source != nullptr)
     {
         children["source"] = source;
@@ -3530,6 +3563,7 @@ std::shared_ptr<Entity> Validate::Input::Source::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Validate::Input::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

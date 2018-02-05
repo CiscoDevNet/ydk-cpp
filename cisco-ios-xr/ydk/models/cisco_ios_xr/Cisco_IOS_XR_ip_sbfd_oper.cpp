@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Sbfd::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Sbfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(target_identifier != nullptr)
     {
         children["target-identifier"] = target_identifier;
@@ -193,6 +194,7 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote_vrfs != nullptr)
     {
         children["remote-vrfs"] = remote_vrfs;
@@ -278,14 +280,6 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::get_child_by_name(co
 {
     if(child_yang_name == "remote-vrf")
     {
-        for(auto const & c : remote_vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf>();
         c->parent = this;
         remote_vrf.push_back(c);
@@ -298,9 +292,14 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -382,14 +381,6 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_child
 {
     if(child_yang_name == "remote-discriminator")
     {
-        for(auto const & c : remote_discriminator)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator>();
         c->parent = this;
         remote_discriminator.push_back(c);
@@ -402,9 +393,14 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_child
 std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_discriminator)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -525,6 +521,7 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDis
 std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip_address != nullptr)
     {
         children["ip-address"] = ip_address;
@@ -688,6 +685,7 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDis
 std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -803,14 +801,6 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::get_child_by_name(con
 {
     if(child_yang_name == "local-vrf")
     {
-        for(auto const & c : local_vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf>();
         c->parent = this;
         local_vrf.push_back(c);
@@ -823,9 +813,14 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -907,14 +902,6 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_child_b
 {
     if(child_yang_name == "local-discriminator")
     {
-        for(auto const & c : local_discriminator)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator>();
         c->parent = this;
         local_discriminator.push_back(c);
@@ -927,9 +914,14 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_discriminator)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1032,6 +1024,7 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscri
 std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

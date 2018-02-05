@@ -112,18 +112,18 @@ class LocalRoutes::StaticRoutes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Static_; //type: LocalRoutes::StaticRoutes::Static_
+        class Static; //type: LocalRoutes::StaticRoutes::Static
 
-        std::vector<std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_> > static_;
+        std::vector<std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static> > static_;
         
 }; // LocalRoutes::StaticRoutes
 
 
-class LocalRoutes::StaticRoutes::Static_ : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -136,20 +136,20 @@ class LocalRoutes::StaticRoutes::Static_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: union (refers to openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::Config::prefix)
+        //type: union (refers to openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::Config::prefix)
         ydk::YLeaf prefix;
-        class Config; //type: LocalRoutes::StaticRoutes::Static_::Config
-        class State; //type: LocalRoutes::StaticRoutes::Static_::State
-        class NextHops; //type: LocalRoutes::StaticRoutes::Static_::NextHops
+        class Config; //type: LocalRoutes::StaticRoutes::Static::Config
+        class State; //type: LocalRoutes::StaticRoutes::Static::State
+        class NextHops; //type: LocalRoutes::StaticRoutes::Static::NextHops
 
-        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::Config> config;
-        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::State> state;
-        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::NextHops> next_hops;
+        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::Config> config;
+        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::State> state;
+        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::NextHops> next_hops;
         
-}; // LocalRoutes::StaticRoutes::Static_
+}; // LocalRoutes::StaticRoutes::Static
 
 
-class LocalRoutes::StaticRoutes::Static_::Config : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static::Config : public ydk::Entity
 {
     public:
         Config();
@@ -166,12 +166,12 @@ class LocalRoutes::StaticRoutes::Static_::Config : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf set_tag; //type: one of uint32, string
+        ydk::YLeaf set_tag; //type: one of string, uint32
 
-}; // LocalRoutes::StaticRoutes::Static_::Config
+}; // LocalRoutes::StaticRoutes::Static::Config
 
 
-class LocalRoutes::StaticRoutes::Static_::State : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static::State : public ydk::Entity
 {
     public:
         State();
@@ -188,12 +188,12 @@ class LocalRoutes::StaticRoutes::Static_::State : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf set_tag; //type: one of uint32, string
+        ydk::YLeaf set_tag; //type: one of string, uint32
 
-}; // LocalRoutes::StaticRoutes::Static_::State
+}; // LocalRoutes::StaticRoutes::Static::State
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static::NextHops : public ydk::Entity
 {
     public:
         NextHops();
@@ -209,14 +209,14 @@ class LocalRoutes::StaticRoutes::Static_::NextHops : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class NextHop; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop
+        class NextHop; //type: LocalRoutes::StaticRoutes::Static::NextHops::NextHop
 
-        std::vector<std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::NextHops::NextHop> > next_hop;
+        std::vector<std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::NextHops::NextHop> > next_hop;
         
-}; // LocalRoutes::StaticRoutes::Static_::NextHops
+}; // LocalRoutes::StaticRoutes::Static::NextHops
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static::NextHops::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -232,20 +232,20 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        //type: string (refers to openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::index_)
+        //type: string (refers to openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config::index_)
         ydk::YLeaf index_;
-        class Config; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config
-        class State; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State
-        class InterfaceRef; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef
+        class Config; //type: LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config
+        class State; //type: LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State
+        class InterfaceRef; //type: LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef
 
-        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config> config;
-        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State> state;
-        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef> interface_ref;
+        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config> config;
+        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State> state;
+        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef> interface_ref;
         
-}; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop
+}; // LocalRoutes::StaticRoutes::Static::NextHops::NextHop
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config : public ydk::Entity
 {
     public:
         Config();
@@ -262,14 +262,14 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf index_; //type: string
-        ydk::YLeaf next_hop; //type: one of identityref, union
+        ydk::YLeaf next_hop; //type: one of union, identityref
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf recurse; //type: boolean
 
-}; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config
+}; // LocalRoutes::StaticRoutes::Static::NextHops::NextHop::Config
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State : public ydk::Entity
 {
     public:
         State();
@@ -286,14 +286,14 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf index_; //type: string
-        ydk::YLeaf next_hop; //type: one of identityref, union
+        ydk::YLeaf next_hop; //type: one of union, identityref
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf recurse; //type: boolean
 
-}; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State
+}; // LocalRoutes::StaticRoutes::Static::NextHops::NextHop::State
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef : public ydk::Entity
 {
     public:
         InterfaceRef();
@@ -309,16 +309,16 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config
-        class State; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State
+        class Config; //type: LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config
+        class State; //type: LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State
 
-        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config> config;
-        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State> state;
+        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config> config;
+        std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State> state;
         
-}; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef
+}; // LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config : public ydk::Entity
 {
     public:
         Config();
@@ -339,10 +339,10 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Confi
         //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
         ydk::YLeaf subinterface;
 
-}; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config
+}; // LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State : public ydk::Entity
+class LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State : public ydk::Entity
 {
     public:
         State();
@@ -363,7 +363,7 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State
         //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
         ydk::YLeaf subinterface;
 
-}; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State
+}; // LocalRoutes::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State
 
 
 class LocalRoutes::LocalAggregates : public ydk::Entity
@@ -436,7 +436,7 @@ class LocalRoutes::LocalAggregates::Aggregate::Config : public ydk::Entity
 
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf discard; //type: boolean
-        ydk::YLeaf set_tag; //type: one of uint32, string
+        ydk::YLeaf set_tag; //type: one of string, uint32
 
 }; // LocalRoutes::LocalAggregates::Aggregate::Config
 
@@ -459,7 +459,7 @@ class LocalRoutes::LocalAggregates::Aggregate::State : public ydk::Entity
 
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf discard; //type: boolean
-        ydk::YLeaf set_tag; //type: one of uint32, string
+        ydk::YLeaf set_tag; //type: one of string, uint32
 
 }; // LocalRoutes::LocalAggregates::Aggregate::State
 

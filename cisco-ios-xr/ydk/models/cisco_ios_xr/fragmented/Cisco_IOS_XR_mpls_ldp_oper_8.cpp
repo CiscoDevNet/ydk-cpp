@@ -86,6 +86,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_hello_data != nullptr)
     {
         children["link-hello-data"] = link_hello_data;
@@ -176,6 +177,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -289,6 +291,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_address != nullptr)
     {
         children["local-address"] = local_address;
@@ -387,6 +390,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -505,6 +509,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -620,6 +625,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(adjacency_group != nullptr)
     {
         children["adjacency-group"] = adjacency_group;
@@ -718,6 +724,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_hello_data != nullptr)
     {
         children["link-hello-data"] = link_hello_data;
@@ -808,6 +815,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -921,6 +929,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_address != nullptr)
     {
         children["local-address"] = local_address;
@@ -1019,6 +1028,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1137,6 +1147,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::Ld
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1251,6 +1262,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1349,14 +1361,6 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::get_child_b
 {
     if(child_yang_name == "statistic")
     {
-        for(auto const & c : statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic>();
         c->parent = this;
         statistic.push_back(c);
@@ -1369,9 +1373,14 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1475,6 +1484,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(message_out != nullptr)
     {
         children["message-out"] = message_out;
@@ -1637,6 +1647,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1909,6 +1920,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2183,6 +2195,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DiscoverySummaryAll::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DiscoverySummaryAll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf != nullptr)
     {
         children["vrf"] = vrf;
@@ -2378,6 +2391,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::get_chil
 std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

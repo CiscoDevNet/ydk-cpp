@@ -68,6 +68,7 @@ std::shared_ptr<Entity> MplsEa::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> MplsEa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> MplsEa::Nodes::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsEa::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> MplsEa::Nodes::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> MplsEa::Nodes::Node::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -368,14 +367,6 @@ std::shared_ptr<Entity> MplsEa::Nodes::Node::Interfaces::get_child_by_name(const
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsEa::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -388,9 +379,14 @@ std::shared_ptr<Entity> MplsEa::Nodes::Node::Interfaces::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::Node::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -475,6 +471,7 @@ std::shared_ptr<Entity> MplsEa::Nodes::Node::Interfaces::Interface::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::Node::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -600,6 +597,7 @@ std::shared_ptr<Entity> MplsMa::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> MplsMa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -705,14 +703,6 @@ std::shared_ptr<Entity> MplsMa::Nodes::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsMa::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -725,9 +715,14 @@ std::shared_ptr<Entity> MplsMa::Nodes::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -817,6 +812,7 @@ std::shared_ptr<Entity> MplsMa::Nodes::Node::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -900,14 +896,6 @@ std::shared_ptr<Entity> MplsMa::Nodes::Node::Interfaces::get_child_by_name(const
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsMa::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -920,9 +908,14 @@ std::shared_ptr<Entity> MplsMa::Nodes::Node::Interfaces::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::Node::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1007,6 +1000,7 @@ std::shared_ptr<Entity> MplsMa::Nodes::Node::Interfaces::Interface::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::Node::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

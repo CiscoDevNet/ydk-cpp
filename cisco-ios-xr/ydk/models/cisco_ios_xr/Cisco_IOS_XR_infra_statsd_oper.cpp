@@ -68,6 +68,7 @@ std::shared_ptr<Entity> InfraStatistics::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::get_child_by_name(const std
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -363,6 +361,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache != nullptr)
     {
         children["cache"] = cache;
@@ -522,6 +521,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Cache::get_child
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Cache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protocols != nullptr)
     {
         children["protocols"] = protocols;
@@ -610,14 +610,6 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Cache::Protocols
 {
     if(child_yang_name == "protocol")
     {
-        for(auto const & c : protocol)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol>();
         c->parent = this;
         protocol.push_back(c);
@@ -630,9 +622,14 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Cache::Protocols
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Cache::Protocols::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -741,6 +738,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Cache::Protocols
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1057,6 +1055,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Cache::Interface
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1531,6 +1530,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Cache::DataRate:
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Cache::DataRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1867,6 +1867,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Cache::GenericCo
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Cache::GenericCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2341,6 +2342,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Latest::get_chil
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Latest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protocols != nullptr)
     {
         children["protocols"] = protocols;
@@ -2429,14 +2431,6 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Latest::Protocol
 {
     if(child_yang_name == "protocol")
     {
-        for(auto const & c : protocol)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol>();
         c->parent = this;
         protocol.push_back(c);
@@ -2449,9 +2443,14 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Latest::Protocol
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Latest::Protocols::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2560,6 +2559,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Latest::Protocol
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2876,6 +2876,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Latest::Interfac
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3350,6 +3351,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Latest::DataRate
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Latest::DataRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3686,6 +3688,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Latest::GenericC
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Latest::GenericCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4160,6 +4163,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Total::get_child
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Total::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protocols != nullptr)
     {
         children["protocols"] = protocols;
@@ -4248,14 +4252,6 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Total::Protocols
 {
     if(child_yang_name == "protocol")
     {
-        for(auto const & c : protocol)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol>();
         c->parent = this;
         protocol.push_back(c);
@@ -4268,9 +4264,14 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Total::Protocols
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Total::Protocols::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4379,6 +4380,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Total::Protocols
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4695,6 +4697,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Total::Interface
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5169,6 +5172,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Total::DataRate:
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Total::DataRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5505,6 +5509,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Total::GenericCo
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Total::GenericCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5933,14 +5938,6 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Protocols::get_c
 {
     if(child_yang_name == "protocol")
     {
-        for(auto const & c : protocol)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InfraStatistics::Interfaces::Interface::Protocols::Protocol>();
         c->parent = this;
         protocol.push_back(c);
@@ -5953,9 +5950,14 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Protocols::get_c
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Protocols::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : protocol)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6064,6 +6066,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::Protocols::Proto
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::Protocols::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6380,6 +6383,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::InterfacesMibCou
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::InterfacesMibCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6854,6 +6858,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::DataRate::get_ch
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::DataRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7190,6 +7195,7 @@ std::shared_ptr<Entity> InfraStatistics::Interfaces::Interface::GenericCounters:
 std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Interface::GenericCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

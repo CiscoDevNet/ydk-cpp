@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Cfm::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Cfm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> Cfm::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> Cfm::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -342,6 +340,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_aises != nullptr)
     {
         children["interface-aises"] = interface_aises;
@@ -440,14 +439,6 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::get_child_by_name(cons
 {
     if(child_yang_name == "interface-ais")
     {
-        for(auto const & c : interface_ais)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis>();
         c->parent = this;
         interface_ais.push_back(c);
@@ -460,9 +451,14 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_ais)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -565,6 +561,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -753,6 +750,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statisti
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(defects != nullptr)
     {
         children["defects"] = defects;
@@ -925,6 +923,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statisti
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote_meps_defects != nullptr)
     {
         children["remote-meps-defects"] = remote_meps_defects;
@@ -1090,6 +1089,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statisti
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1230,6 +1230,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statisti
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1318,14 +1319,6 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceStatistics::get_child_by_name
 {
     if(child_yang_name == "interface-statistic")
     {
-        for(auto const & c : interface_statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic>();
         c->parent = this;
         interface_statistic.push_back(c);
@@ -1338,9 +1331,14 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceStatistics::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1427,6 +1425,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatisti
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -1530,6 +1529,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatisti
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1736,6 +1736,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::Summary::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2064,14 +2065,6 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::CcmLearningDatabases::get_child_by_nam
 {
     if(child_yang_name == "ccm-learning-database")
     {
-        for(auto const & c : ccm_learning_database)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase>();
         c->parent = this;
         ccm_learning_database.push_back(c);
@@ -2084,9 +2077,14 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::CcmLearningDatabases::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::CcmLearningDatabases::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccm_learning_database)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2191,6 +2189,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatab
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2451,6 +2450,7 @@ std::shared_ptr<Entity> Cfm::Global::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(incomplete_traceroutes != nullptr)
     {
         children["incomplete-traceroutes"] = incomplete_traceroutes;
@@ -2561,14 +2561,6 @@ std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::get_child_by_name(co
 {
     if(child_yang_name == "incomplete-traceroute")
     {
-        for(auto const & c : incomplete_traceroute)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute>();
         c->parent = this;
         incomplete_traceroute.push_back(c);
@@ -2581,9 +2573,14 @@ std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : incomplete_traceroute)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2693,6 +2690,7 @@ std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traceroute_information != nullptr)
     {
         children["traceroute-information"] = traceroute_information;
@@ -2882,6 +2880,7 @@ std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(options != nullptr)
     {
         children["options"] = options;
@@ -3100,6 +3099,7 @@ std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_options != nullptr)
     {
         children["basic-options"] = basic_options;
@@ -3190,6 +3190,7 @@ std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3284,6 +3285,7 @@ std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3389,14 +3391,6 @@ std::shared_ptr<Entity> Cfm::Global::MaintenancePoints::get_child_by_name(const 
 {
     if(child_yang_name == "maintenance-point")
     {
-        for(auto const & c : maintenance_point)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::MaintenancePoints::MaintenancePoint>();
         c->parent = this;
         maintenance_point.push_back(c);
@@ -3409,9 +3403,14 @@ std::shared_ptr<Entity> Cfm::Global::MaintenancePoints::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MaintenancePoints::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : maintenance_point)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3517,6 +3516,7 @@ std::shared_ptr<Entity> Cfm::Global::MaintenancePoints::MaintenancePoint::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MaintenancePoints::MaintenancePoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maintenance_point != nullptr)
     {
         children["maintenance-point"] = maintenance_point;
@@ -3658,6 +3658,7 @@ std::shared_ptr<Entity> Cfm::Global::MaintenancePoints::MaintenancePoint::Mainte
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3793,14 +3794,6 @@ std::shared_ptr<Entity> Cfm::Global::GlobalConfigurationErrors::get_child_by_nam
 {
     if(child_yang_name == "global-configuration-error")
     {
-        for(auto const & c : global_configuration_error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError>();
         c->parent = this;
         global_configuration_error.push_back(c);
@@ -3813,9 +3806,14 @@ std::shared_ptr<Entity> Cfm::Global::GlobalConfigurationErrors::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::GlobalConfigurationErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : global_configuration_error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3929,6 +3927,7 @@ std::shared_ptr<Entity> Cfm::Global::GlobalConfigurationErrors::GlobalConfigurat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bridge_domain_id != nullptr)
     {
         children["bridge-domain-id"] = bridge_domain_id;
@@ -4090,6 +4089,7 @@ std::shared_ptr<Entity> Cfm::Global::GlobalConfigurationErrors::GlobalConfigurat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4225,14 +4225,6 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::get_child_by_name(c
 {
     if(child_yang_name == "mep-configuration-error")
     {
-        for(auto const & c : mep_configuration_error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError>();
         c->parent = this;
         mep_configuration_error.push_back(c);
@@ -4245,9 +4237,14 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mep_configuration_error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4488,6 +4485,7 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationErr
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mep != nullptr)
     {
         children["mep"] = mep;
@@ -4884,6 +4882,7 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationErr
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5030,6 +5029,7 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationErr
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5176,6 +5176,7 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationErr
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5337,6 +5338,7 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationErr
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(loopback != nullptr)
     {
         children["loopback"] = loopback;
@@ -5422,6 +5424,7 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationErr
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5512,6 +5515,7 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationErr
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5602,6 +5606,7 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::MepConfigurationErr
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5697,14 +5702,6 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::get_child_by_name(const s
 {
     if(child_yang_name == "traceroute-cache")
     {
-        for(auto const & c : traceroute_cache)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache>();
         c->parent = this;
         traceroute_cache.push_back(c);
@@ -5717,9 +5714,14 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : traceroute_cache)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5845,14 +5847,6 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::get_chil
 
     if(child_yang_name == "linktrace-reply")
     {
-        for(auto const & c : linktrace_reply)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply>();
         c->parent = this;
         linktrace_reply.push_back(c);
@@ -5861,14 +5855,6 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::get_chil
 
     if(child_yang_name == "exploratory-linktrace-reply")
     {
-        for(auto const & c : exploratory_linktrace_reply)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply>();
         c->parent = this;
         exploratory_linktrace_reply.push_back(c);
@@ -5881,19 +5867,28 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traceroute_information != nullptr)
     {
         children["traceroute-information"] = traceroute_information;
     }
 
+    count = 0;
     for (auto const & c : linktrace_reply)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : exploratory_linktrace_reply)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6080,6 +6075,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Tracerou
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(options != nullptr)
     {
         children["options"] = options;
@@ -6298,6 +6294,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Tracerou
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_options != nullptr)
     {
         children["basic-options"] = basic_options;
@@ -6388,6 +6385,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Tracerou
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6482,6 +6480,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Tracerou
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6673,14 +6672,6 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 
     if(child_yang_name == "organization-specific-tlv")
     {
-        for(auto const & c : organization_specific_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv>();
         c->parent = this;
         organization_specific_tlv.push_back(c);
@@ -6689,14 +6680,6 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 
     if(child_yang_name == "unknown-tlv")
     {
-        for(auto const & c : unknown_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv>();
         c->parent = this;
         unknown_tlv.push_back(c);
@@ -6709,6 +6692,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -6739,14 +6723,22 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::Tr
         children["last-hop"] = last_hop;
     }
 
+    count = 0;
     for (auto const & c : organization_specific_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : unknown_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6853,6 +6845,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7017,6 +7010,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chassis_id != nullptr)
     {
         children["chassis-id"] = chassis_id;
@@ -7130,6 +7124,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chassis_id_value != nullptr)
     {
         children["chassis-id-value"] = chassis_id_value;
@@ -7243,6 +7238,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7371,6 +7367,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_egress_id != nullptr)
     {
         children["last-egress-id"] = last_egress_id;
@@ -7451,6 +7448,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7541,6 +7539,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7645,6 +7644,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_id != nullptr)
     {
         children["port-id"] = port_id;
@@ -7758,6 +7758,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_id_value != nullptr)
     {
         children["port-id-value"] = port_id_value;
@@ -7871,6 +7872,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7995,6 +7997,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_id != nullptr)
     {
         children["port-id"] = port_id;
@@ -8108,6 +8111,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_id_value != nullptr)
     {
         children["port-id-value"] = port_id_value;
@@ -8221,6 +8225,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8345,6 +8350,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(egress_id != nullptr)
     {
         children["egress-id"] = egress_id;
@@ -8440,6 +8446,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8534,6 +8541,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8634,6 +8642,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8802,14 +8811,6 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 
     if(child_yang_name == "organization-specific-tlv")
     {
-        for(auto const & c : organization_specific_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv>();
         c->parent = this;
         organization_specific_tlv.push_back(c);
@@ -8818,14 +8819,6 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 
     if(child_yang_name == "unknown-tlv")
     {
-        for(auto const & c : unknown_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv>();
         c->parent = this;
         unknown_tlv.push_back(c);
@@ -8838,6 +8831,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -8863,14 +8857,22 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::Tr
         children["last-hop"] = last_hop;
     }
 
+    count = 0;
     for (auto const & c : organization_specific_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : unknown_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8985,6 +8987,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9169,6 +9172,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chassis_id != nullptr)
     {
         children["chassis-id"] = chassis_id;
@@ -9282,6 +9286,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chassis_id_value != nullptr)
     {
         children["chassis-id-value"] = chassis_id_value;
@@ -9395,6 +9400,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9545,6 +9551,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_egress_id != nullptr)
     {
         children["last-egress-id"] = last_egress_id;
@@ -9650,6 +9657,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9740,6 +9748,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9848,6 +9857,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_id_value != nullptr)
     {
         children["port-id-value"] = port_id_value;
@@ -9961,6 +9971,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10111,6 +10122,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_egress_id != nullptr)
     {
         children["last-egress-id"] = last_egress_id;
@@ -10216,6 +10228,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10306,6 +10319,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10414,6 +10428,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_id_value != nullptr)
     {
         children["port-id-value"] = port_id_value;
@@ -10527,6 +10542,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10651,6 +10667,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(egress_id != nullptr)
     {
         children["egress-id"] = egress_id;
@@ -10746,6 +10763,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10840,6 +10858,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10940,6 +10959,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11035,14 +11055,6 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::get_child_by_name(const std::str
 {
     if(child_yang_name == "local-mep")
     {
-        for(auto const & c : local_mep)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::LocalMeps::LocalMep>();
         c->parent = this;
         local_mep.push_back(c);
@@ -11055,9 +11067,14 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_mep)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11305,6 +11322,7 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -11834,6 +11852,7 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::Statistics::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12227,6 +12246,7 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sending_start != nullptr)
     {
         children["sending-start"] = sending_start;
@@ -12367,6 +12387,7 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::AisStatistics::Sending
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12457,6 +12478,7 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::AisStatistics::Receivi
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12581,6 +12603,7 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::Defects::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::Defects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote_meps_defects != nullptr)
     {
         children["remote-meps-defects"] = remote_meps_defects;
@@ -12746,6 +12769,7 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDef
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12891,14 +12915,6 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::get_child_by_name(const std::st
 {
     if(child_yang_name == "peer-me-pv2")
     {
-        for(auto const & c : peer_me_pv2)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2>();
         c->parent = this;
         peer_me_pv2.push_back(c);
@@ -12911,9 +12927,14 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer_me_pv2)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13051,6 +13072,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer_mep != nullptr)
     {
         children["peer-mep"] = peer_mep;
@@ -13321,6 +13343,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(error_state != nullptr)
     {
         children["error-state"] = error_state;
@@ -13481,6 +13504,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState:
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13621,6 +13645,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownT
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13775,14 +13800,6 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 
     if(child_yang_name == "organization-specific-tlv")
     {
-        for(auto const & c : organization_specific_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv>();
         c->parent = this;
         organization_specific_tlv.push_back(c);
@@ -13791,14 +13808,6 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 
     if(child_yang_name == "unknown-tlv")
     {
-        for(auto const & c : unknown_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv>();
         c->parent = this;
         unknown_tlv.push_back(c);
@@ -13811,6 +13820,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -13826,14 +13836,22 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
         children["mep-name"] = mep_name;
     }
 
+    count = 0;
     for (auto const & c : organization_specific_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : unknown_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13997,6 +14015,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mdid != nullptr)
     {
         children["mdid"] = mdid;
@@ -14179,6 +14198,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_name != nullptr)
     {
         children["mac-name"] = mac_name;
@@ -14294,6 +14314,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14414,6 +14435,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vpn_id_name != nullptr)
     {
         children["vpn-id-name"] = vpn_id_name;
@@ -14549,6 +14571,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14653,6 +14676,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chassis_id != nullptr)
     {
         children["chassis-id"] = chassis_id;
@@ -14766,6 +14790,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chassis_id_value != nullptr)
     {
         children["chassis-id-value"] = chassis_id_value;
@@ -14879,6 +14904,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14985,6 +15011,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15069,6 +15096,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15169,6 +15197,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15301,6 +15330,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics:
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_ccm_received_time != nullptr)
     {
         children["last-ccm-received-time"] = last_ccm_received_time;
@@ -15466,6 +15496,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics:
 std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

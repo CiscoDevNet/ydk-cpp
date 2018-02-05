@@ -95,6 +95,7 @@ std::shared_ptr<Entity> PceLspData::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tunnel_infos != nullptr)
     {
         children["tunnel-infos"] = tunnel_infos;
@@ -210,14 +211,6 @@ std::shared_ptr<Entity> PceLspData::TunnelInfos::get_child_by_name(const std::st
 {
     if(child_yang_name == "tunnel-info")
     {
-        for(auto const & c : tunnel_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelInfos::TunnelInfo>();
         c->parent = this;
         tunnel_info.push_back(c);
@@ -230,9 +223,14 @@ std::shared_ptr<Entity> PceLspData::TunnelInfos::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tunnel_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -330,14 +328,6 @@ std::shared_ptr<Entity> PceLspData::TunnelInfos::TunnelInfo::get_child_by_name(c
 {
     if(child_yang_name == "brief-lsp-information")
     {
-        for(auto const & c : brief_lsp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelInfos::TunnelInfo::BriefLspInformation>();
         c->parent = this;
         brief_lsp_information.push_back(c);
@@ -350,9 +340,14 @@ std::shared_ptr<Entity> PceLspData::TunnelInfos::TunnelInfo::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelInfos::TunnelInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : brief_lsp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -499,6 +494,7 @@ std::shared_ptr<Entity> PceLspData::TunnelInfos::TunnelInfo::BriefLspInformation
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelInfos::TunnelInfo::BriefLspInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -667,14 +663,6 @@ std::shared_ptr<Entity> PceLspData::LspSummary::get_child_by_name(const std::str
 
     if(child_yang_name == "peer-ls-ps-info")
     {
-        for(auto const & c : peer_ls_ps_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::LspSummary::PeerLsPsInfo>();
         c->parent = this;
         peer_ls_ps_info.push_back(c);
@@ -687,14 +675,19 @@ std::shared_ptr<Entity> PceLspData::LspSummary::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::LspSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all_ls_ps != nullptr)
     {
         children["all-ls-ps"] = all_ls_ps;
     }
 
+    count = 0;
     for (auto const & c : peer_ls_ps_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -786,6 +779,7 @@ std::shared_ptr<Entity> PceLspData::LspSummary::AllLsPs::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::LspSummary::AllLsPs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -923,6 +917,7 @@ std::shared_ptr<Entity> PceLspData::LspSummary::PeerLsPsInfo::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::LspSummary::PeerLsPsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsp_summary != nullptr)
     {
         children["lsp-summary"] = lsp_summary;
@@ -1027,6 +1022,7 @@ std::shared_ptr<Entity> PceLspData::LspSummary::PeerLsPsInfo::LspSummary_::get_c
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::LspSummary::PeerLsPsInfo::LspSummary_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1152,14 +1148,6 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::get_child_by_name(const s
 {
     if(child_yang_name == "tunnel-detail-info")
     {
-        for(auto const & c : tunnel_detail_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelDetailInfos::TunnelDetailInfo>();
         c->parent = this;
         tunnel_detail_info.push_back(c);
@@ -1172,9 +1160,14 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tunnel_detail_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1286,14 +1279,6 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::get_chi
 
     if(child_yang_name == "detail-lsp-information")
     {
-        for(auto const & c : detail_lsp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation>();
         c->parent = this;
         detail_lsp_information.push_back(c);
@@ -1306,14 +1291,19 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::get_chi
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(private_lsp_information != nullptr)
     {
         children["private-lsp-information"] = private_lsp_information;
     }
 
+    count = 0;
     for (auto const & c : detail_lsp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1434,14 +1424,6 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::Private
 {
     if(child_yang_name == "event-buffer")
     {
-        for(auto const & c : event_buffer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffer>();
         c->parent = this;
         event_buffer.push_back(c);
@@ -1454,9 +1436,14 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::Private
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : event_buffer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1529,6 +1516,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::Private
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1733,14 +1721,6 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 
     if(child_yang_name == "rro")
     {
-        for(auto const & c : rro)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro>();
         c->parent = this;
         rro.push_back(c);
@@ -1753,6 +1733,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(brief_lsp_information != nullptr)
     {
         children["brief-lsp-information"] = brief_lsp_information;
@@ -1778,9 +1759,13 @@ std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::Tu
         children["lsp-attributes"] = lsp_attributes;
     }
 
+    count = 0;
     for (auto const & c : rro)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1975,6 +1960,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2173,14 +2159,6 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 {
     if(child_yang_name == "reported-rsvp-path")
     {
-        for(auto const & c : reported_rsvp_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedRsvpPath>();
         c->parent = this;
         reported_rsvp_path.push_back(c);
@@ -2189,14 +2167,6 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 
     if(child_yang_name == "reported-sr-path")
     {
-        for(auto const & c : reported_sr_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedSrPath>();
         c->parent = this;
         reported_sr_path.push_back(c);
@@ -2205,14 +2175,6 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 
     if(child_yang_name == "computed-rsvp-path")
     {
-        for(auto const & c : computed_rsvp_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath>();
         c->parent = this;
         computed_rsvp_path.push_back(c);
@@ -2221,14 +2183,6 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 
     if(child_yang_name == "computed-sr-path")
     {
-        for(auto const & c : computed_sr_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath>();
         c->parent = this;
         computed_sr_path.push_back(c);
@@ -2241,24 +2195,41 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reported_rsvp_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : reported_sr_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : computed_rsvp_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : computed_sr_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2377,6 +2348,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedRsvpPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2465,6 +2437,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedSrPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2571,6 +2544,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2659,6 +2633,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2799,6 +2774,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvp_error != nullptr)
     {
         children["rsvp-error"] = rsvp_error;
@@ -2942,6 +2918,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3056,6 +3033,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3172,6 +3150,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3324,6 +3303,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sr_rro != nullptr)
     {
         children["sr-rro"] = sr_rro;
@@ -3447,6 +3427,7 @@ std::shared_ptr<Entity> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailL
 std::map<std::string, std::shared_ptr<Entity>> PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::SrRro::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3575,6 +3556,7 @@ std::shared_ptr<Entity> PcePeer::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer_detail_infos != nullptr)
     {
         children["peer-detail-infos"] = peer_detail_infos;
@@ -3685,14 +3667,6 @@ std::shared_ptr<Entity> PcePeer::PeerDetailInfos::get_child_by_name(const std::s
 {
     if(child_yang_name == "peer-detail-info")
     {
-        for(auto const & c : peer_detail_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PcePeer::PeerDetailInfos::PeerDetailInfo>();
         c->parent = this;
         peer_detail_info.push_back(c);
@@ -3705,9 +3679,14 @@ std::shared_ptr<Entity> PcePeer::PeerDetailInfos::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::PeerDetailInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer_detail_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3805,6 +3784,7 @@ std::shared_ptr<Entity> PcePeer::PeerDetailInfos::PeerDetailInfo::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::PeerDetailInfos::PeerDetailInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail_pcep_information != nullptr)
     {
         children["detail-pcep-information"] = detail_pcep_information;
@@ -4058,6 +4038,7 @@ std::shared_ptr<Entity> PcePeer::PeerDetailInfos::PeerDetailInfo::DetailPcepInfo
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(brief_pcep_information != nullptr)
     {
         children["brief-pcep-information"] = brief_pcep_information;
@@ -4457,6 +4438,7 @@ std::shared_ptr<Entity> PcePeer::PeerDetailInfos::PeerDetailInfo::DetailPcepInfo
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::BriefPcepInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4607,6 +4589,7 @@ std::shared_ptr<Entity> PcePeer::PeerDetailInfos::PeerDetailInfo::DetailPcepInfo
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::LastErrorRx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4697,6 +4680,7 @@ std::shared_ptr<Entity> PcePeer::PeerDetailInfos::PeerDetailInfo::DetailPcepInfo
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::LastErrorTx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4792,14 +4776,6 @@ std::shared_ptr<Entity> PcePeer::PeerInfos::get_child_by_name(const std::string 
 {
     if(child_yang_name == "peer-info")
     {
-        for(auto const & c : peer_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PcePeer::PeerInfos::PeerInfo>();
         c->parent = this;
         peer_info.push_back(c);
@@ -4812,9 +4788,14 @@ std::shared_ptr<Entity> PcePeer::PeerInfos::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::PeerInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4912,6 +4893,7 @@ std::shared_ptr<Entity> PcePeer::PeerInfos::PeerInfo::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::PeerInfos::PeerInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(brief_pcep_information != nullptr)
     {
         children["brief-pcep-information"] = brief_pcep_information;
@@ -5041,6 +5023,7 @@ std::shared_ptr<Entity> PcePeer::PeerInfos::PeerInfo::BriefPcepInformation::get_
 std::map<std::string, std::shared_ptr<Entity>> PcePeer::PeerInfos::PeerInfo::BriefPcepInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5222,6 +5205,7 @@ std::shared_ptr<Entity> PceTopology::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(topology_summary != nullptr)
     {
         children["topology-summary"] = topology_summary;
@@ -5397,6 +5381,7 @@ std::shared_ptr<Entity> PceTopology::TopologySummary::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologySummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stats_topology_update != nullptr)
     {
         children["stats-topology-update"] = stats_topology_update;
@@ -5625,6 +5610,7 @@ std::shared_ptr<Entity> PceTopology::TopologySummary::StatsTopologyUpdate::get_c
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologySummary::StatsTopologyUpdate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5760,14 +5746,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::get_child_by_name(const std:
 {
     if(child_yang_name == "topology-node")
     {
-        for(auto const & c : topology_node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode>();
         c->parent = this;
         topology_node.push_back(c);
@@ -5780,9 +5758,14 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology_node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5906,14 +5889,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::get_child_by_n
 
     if(child_yang_name == "prefix-sid")
     {
-        for(auto const & c : prefix_sid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::PrefixSid>();
         c->parent = this;
         prefix_sid.push_back(c);
@@ -5922,14 +5897,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::get_child_by_n
 
     if(child_yang_name == "ipv4-link")
     {
-        for(auto const & c : ipv4_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::Ipv4Link>();
         c->parent = this;
         ipv4_link.push_back(c);
@@ -5938,14 +5905,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::get_child_by_n
 
     if(child_yang_name == "ipv6-link")
     {
-        for(auto const & c : ipv6_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::Ipv6Link>();
         c->parent = this;
         ipv6_link.push_back(c);
@@ -5958,24 +5917,37 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_protocol_identifier != nullptr)
     {
         children["node-protocol-identifier"] = node_protocol_identifier;
     }
 
+    count = 0;
     for (auto const & c : prefix_sid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv4_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv6_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6106,14 +6078,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 {
     if(child_yang_name == "igp-information")
     {
-        for(auto const & c : igp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
         igp_information.push_back(c);
@@ -6122,14 +6086,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 
     if(child_yang_name == "srgb-information")
     {
-        for(auto const & c : srgb_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation>();
         c->parent = this;
         srgb_information.push_back(c);
@@ -6142,14 +6098,23 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : igp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : srgb_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6286,6 +6251,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp != nullptr)
     {
         children["igp"] = igp;
@@ -6417,6 +6383,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -6512,6 +6479,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6602,6 +6570,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6692,6 +6661,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6796,6 +6766,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp_srgb != nullptr)
     {
         children["igp-srgb"] = igp_srgb;
@@ -6927,6 +6898,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -7022,6 +6994,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7112,6 +7085,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7202,6 +7176,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::NodeProtocolId
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7334,6 +7309,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::PrefixSid::get
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::PrefixSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sid_prefix != nullptr)
     {
         children["sid-prefix"] = sid_prefix;
@@ -7503,6 +7479,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::PrefixSid::Sid
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7666,14 +7643,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::get_
 
     if(child_yang_name == "adjacency-sid")
     {
-        for(auto const & c : adjacency_sid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid>();
         c->parent = this;
         adjacency_sid.push_back(c);
@@ -7686,6 +7655,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::get_
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_igp_information != nullptr)
     {
         children["local-igp-information"] = local_igp_information;
@@ -7696,9 +7666,13 @@ std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::Topol
         children["remote-node-protocol-identifier"] = remote_node_protocol_identifier;
     }
 
+    count = 0;
     for (auto const & c : adjacency_sid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7853,6 +7827,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp != nullptr)
     {
         children["igp"] = igp;
@@ -7984,6 +7959,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -8079,6 +8055,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8169,6 +8146,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8259,6 +8237,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8377,14 +8356,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 {
     if(child_yang_name == "igp-information")
     {
-        for(auto const & c : igp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
         igp_information.push_back(c);
@@ -8393,14 +8364,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 
     if(child_yang_name == "srgb-information")
     {
-        for(auto const & c : srgb_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation>();
         c->parent = this;
         srgb_information.push_back(c);
@@ -8413,14 +8376,23 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : igp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : srgb_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8557,6 +8529,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp != nullptr)
     {
         children["igp"] = igp;
@@ -8688,6 +8661,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -8783,6 +8757,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8873,6 +8848,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8963,6 +8939,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9067,6 +9044,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp_srgb != nullptr)
     {
         children["igp-srgb"] = igp_srgb;
@@ -9198,6 +9176,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -9293,6 +9272,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9383,6 +9363,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9473,6 +9454,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9605,6 +9587,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Adja
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sid_prefix != nullptr)
     {
         children["sid-prefix"] = sid_prefix;
@@ -9774,6 +9757,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::Adja
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9923,14 +9907,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::get_
 
     if(child_yang_name == "adjacency-sid")
     {
-        for(auto const & c : adjacency_sid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid>();
         c->parent = this;
         adjacency_sid.push_back(c);
@@ -9943,6 +9919,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::get_
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_igp_information != nullptr)
     {
         children["local-igp-information"] = local_igp_information;
@@ -9953,9 +9930,13 @@ std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::Topol
         children["remote-node-protocol-identifier"] = remote_node_protocol_identifier;
     }
 
+    count = 0;
     for (auto const & c : adjacency_sid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10102,6 +10083,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp != nullptr)
     {
         children["igp"] = igp;
@@ -10233,6 +10215,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -10328,6 +10311,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10418,6 +10402,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10508,6 +10493,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Loca
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10626,14 +10612,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 {
     if(child_yang_name == "igp-information")
     {
-        for(auto const & c : igp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
         igp_information.push_back(c);
@@ -10642,14 +10620,6 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 
     if(child_yang_name == "srgb-information")
     {
-        for(auto const & c : srgb_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation>();
         c->parent = this;
         srgb_information.push_back(c);
@@ -10662,14 +10632,23 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : igp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : srgb_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10806,6 +10785,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp != nullptr)
     {
         children["igp"] = igp;
@@ -10937,6 +10917,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -11032,6 +11013,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11122,6 +11104,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11212,6 +11195,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11316,6 +11300,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp_srgb != nullptr)
     {
         children["igp-srgb"] = igp_srgb;
@@ -11447,6 +11432,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -11542,6 +11528,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11632,6 +11619,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11722,6 +11710,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Remo
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11854,6 +11843,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Adja
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sid_prefix != nullptr)
     {
         children["sid-prefix"] = sid_prefix;
@@ -12023,6 +12013,7 @@ std::shared_ptr<Entity> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::Adja
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12128,14 +12119,6 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::get_child_by_name(const std::s
 {
     if(child_yang_name == "prefix-info")
     {
-        for(auto const & c : prefix_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::PrefixInfos::PrefixInfo>();
         c->parent = this;
         prefix_info.push_back(c);
@@ -12148,9 +12131,14 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12250,14 +12238,6 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::get_child_by_name(
 
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::PrefixInfos::PrefixInfo::Address>();
         c->parent = this;
         address.push_back(c);
@@ -12270,14 +12250,19 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_protocol_identifier != nullptr)
     {
         children["node-protocol-identifier"] = node_protocol_identifier;
     }
 
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12398,14 +12383,6 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 {
     if(child_yang_name == "igp-information")
     {
-        for(auto const & c : igp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
         igp_information.push_back(c);
@@ -12414,14 +12391,6 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 
     if(child_yang_name == "srgb-information")
     {
-        for(auto const & c : srgb_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation>();
         c->parent = this;
         srgb_information.push_back(c);
@@ -12434,14 +12403,23 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : igp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : srgb_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12578,6 +12556,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp != nullptr)
     {
         children["igp"] = igp;
@@ -12709,6 +12688,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -12804,6 +12784,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12894,6 +12875,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12984,6 +12966,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13088,6 +13071,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp_srgb != nullptr)
     {
         children["igp-srgb"] = igp_srgb;
@@ -13219,6 +13203,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -13314,6 +13299,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13404,6 +13390,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13494,6 +13481,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdenti
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13588,6 +13576,7 @@ std::shared_ptr<Entity> PceTopology::PrefixInfos::PrefixInfo::Address::get_child
 std::map<std::string, std::shared_ptr<Entity>> PceTopology::PrefixInfos::PrefixInfo::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13810,6 +13799,7 @@ std::shared_ptr<Entity> Pce::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Pce::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(association_infos != nullptr)
     {
         children["association-infos"] = association_infos;
@@ -13960,14 +13950,6 @@ std::shared_ptr<Entity> Pce::AssociationInfos::get_child_by_name(const std::stri
 {
     if(child_yang_name == "association-info")
     {
-        for(auto const & c : association_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::AssociationInfos::AssociationInfo>();
         c->parent = this;
         association_info.push_back(c);
@@ -13980,9 +13962,14 @@ std::shared_ptr<Entity> Pce::AssociationInfos::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Pce::AssociationInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : association_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14096,14 +14083,6 @@ std::shared_ptr<Entity> Pce::AssociationInfos::AssociationInfo::get_child_by_nam
 {
     if(child_yang_name == "association-lsp")
     {
-        for(auto const & c : association_lsp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::AssociationInfos::AssociationInfo::AssociationLsp>();
         c->parent = this;
         association_lsp.push_back(c);
@@ -14116,9 +14095,14 @@ std::shared_ptr<Entity> Pce::AssociationInfos::AssociationInfo::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Pce::AssociationInfos::AssociationInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : association_lsp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14297,6 +14281,7 @@ std::shared_ptr<Entity> Pce::AssociationInfos::AssociationInfo::AssociationLsp::
 std::map<std::string, std::shared_ptr<Entity>> Pce::AssociationInfos::AssociationInfo::AssociationLsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14439,6 +14424,7 @@ std::shared_ptr<Entity> Pce::Cspf::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Pce::Cspf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cspf_paths != nullptr)
     {
         children["cspf-paths"] = cspf_paths;
@@ -14519,14 +14505,6 @@ std::shared_ptr<Entity> Pce::Cspf::CspfPaths::get_child_by_name(const std::strin
 {
     if(child_yang_name == "cspf-path")
     {
-        for(auto const & c : cspf_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::Cspf::CspfPaths::CspfPath>();
         c->parent = this;
         cspf_path.push_back(c);
@@ -14539,9 +14517,14 @@ std::shared_ptr<Entity> Pce::Cspf::CspfPaths::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Pce::Cspf::CspfPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cspf_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14663,14 +14646,6 @@ std::shared_ptr<Entity> Pce::Cspf::CspfPaths::CspfPath::get_child_by_name(const 
 {
     if(child_yang_name == "output-path")
     {
-        for(auto const & c : output_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath>();
         c->parent = this;
         output_path.push_back(c);
@@ -14683,9 +14658,14 @@ std::shared_ptr<Entity> Pce::Cspf::CspfPaths::CspfPath::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Pce::Cspf::CspfPaths::CspfPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : output_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14897,14 +14877,6 @@ std::shared_ptr<Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::get_child_by
 
     if(child_yang_name == "hops")
     {
-        for(auto const & c : hops)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops>();
         c->parent = this;
         hops.push_back(c);
@@ -14917,6 +14889,7 @@ std::shared_ptr<Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Pce::Cspf::CspfPaths::CspfPath::OutputPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source != nullptr)
     {
         children["source"] = source;
@@ -14927,9 +14900,13 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::Cspf::CspfPaths::CspfPath::O
         children["destination"] = destination;
     }
 
+    count = 0;
     for (auto const & c : hops)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15016,6 +14993,7 @@ std::shared_ptr<Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::get_
 std::map<std::string, std::shared_ptr<Entity>> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15120,6 +15098,7 @@ std::shared_ptr<Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination:
 std::map<std::string, std::shared_ptr<Entity>> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15224,6 +15203,7 @@ std::shared_ptr<Entity> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15389,6 +15369,7 @@ std::shared_ptr<Entity> Pce::TopologySummary::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologySummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stats_topology_update != nullptr)
     {
         children["stats-topology-update"] = stats_topology_update;
@@ -15617,6 +15598,7 @@ std::shared_ptr<Entity> Pce::TopologySummary::StatsTopologyUpdate::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologySummary::StatsTopologyUpdate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15752,14 +15734,6 @@ std::shared_ptr<Entity> Pce::TunnelInfos::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "tunnel-info")
     {
-        for(auto const & c : tunnel_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TunnelInfos::TunnelInfo>();
         c->parent = this;
         tunnel_info.push_back(c);
@@ -15772,9 +15746,14 @@ std::shared_ptr<Entity> Pce::TunnelInfos::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tunnel_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15872,14 +15851,6 @@ std::shared_ptr<Entity> Pce::TunnelInfos::TunnelInfo::get_child_by_name(const st
 {
     if(child_yang_name == "brief-lsp-information")
     {
-        for(auto const & c : brief_lsp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TunnelInfos::TunnelInfo::BriefLspInformation>();
         c->parent = this;
         brief_lsp_information.push_back(c);
@@ -15892,9 +15863,14 @@ std::shared_ptr<Entity> Pce::TunnelInfos::TunnelInfo::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelInfos::TunnelInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : brief_lsp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16041,6 +16017,7 @@ std::shared_ptr<Entity> Pce::TunnelInfos::TunnelInfo::BriefLspInformation::get_c
 std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelInfos::TunnelInfo::BriefLspInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16196,14 +16173,6 @@ std::shared_ptr<Entity> Pce::PeerDetailInfos::get_child_by_name(const std::strin
 {
     if(child_yang_name == "peer-detail-info")
     {
-        for(auto const & c : peer_detail_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::PeerDetailInfos::PeerDetailInfo>();
         c->parent = this;
         peer_detail_info.push_back(c);
@@ -16216,9 +16185,14 @@ std::shared_ptr<Entity> Pce::PeerDetailInfos::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Pce::PeerDetailInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer_detail_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16316,6 +16290,7 @@ std::shared_ptr<Entity> Pce::PeerDetailInfos::PeerDetailInfo::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Pce::PeerDetailInfos::PeerDetailInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail_pcep_information != nullptr)
     {
         children["detail-pcep-information"] = detail_pcep_information;
@@ -16569,6 +16544,7 @@ std::shared_ptr<Entity> Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformat
 std::map<std::string, std::shared_ptr<Entity>> Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(brief_pcep_information != nullptr)
     {
         children["brief-pcep-information"] = brief_pcep_information;
@@ -16968,6 +16944,7 @@ std::shared_ptr<Entity> Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformat
 std::map<std::string, std::shared_ptr<Entity>> Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::BriefPcepInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17118,6 +17095,7 @@ std::shared_ptr<Entity> Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformat
 std::map<std::string, std::shared_ptr<Entity>> Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::LastErrorRx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17208,6 +17186,7 @@ std::shared_ptr<Entity> Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformat
 std::map<std::string, std::shared_ptr<Entity>> Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::LastErrorTx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17303,14 +17282,6 @@ std::shared_ptr<Entity> Pce::TopologyNodes::get_child_by_name(const std::string 
 {
     if(child_yang_name == "topology-node")
     {
-        for(auto const & c : topology_node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TopologyNodes::TopologyNode>();
         c->parent = this;
         topology_node.push_back(c);
@@ -17323,9 +17294,14 @@ std::shared_ptr<Entity> Pce::TopologyNodes::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : topology_node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17449,14 +17425,6 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::get_child_by_name(cons
 
     if(child_yang_name == "prefix-sid")
     {
-        for(auto const & c : prefix_sid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TopologyNodes::TopologyNode::PrefixSid>();
         c->parent = this;
         prefix_sid.push_back(c);
@@ -17465,14 +17433,6 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::get_child_by_name(cons
 
     if(child_yang_name == "ipv4-link")
     {
-        for(auto const & c : ipv4_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TopologyNodes::TopologyNode::Ipv4Link>();
         c->parent = this;
         ipv4_link.push_back(c);
@@ -17481,14 +17441,6 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::get_child_by_name(cons
 
     if(child_yang_name == "ipv6-link")
     {
-        for(auto const & c : ipv6_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TopologyNodes::TopologyNode::Ipv6Link>();
         c->parent = this;
         ipv6_link.push_back(c);
@@ -17501,24 +17453,37 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_protocol_identifier != nullptr)
     {
         children["node-protocol-identifier"] = node_protocol_identifier;
     }
 
+    count = 0;
     for (auto const & c : prefix_sid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv4_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv6_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17649,14 +17614,6 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 {
     if(child_yang_name == "igp-information")
     {
-        for(auto const & c : igp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
         igp_information.push_back(c);
@@ -17665,14 +17622,6 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 
     if(child_yang_name == "srgb-information")
     {
-        for(auto const & c : srgb_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation>();
         c->parent = this;
         srgb_information.push_back(c);
@@ -17685,14 +17634,23 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : igp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : srgb_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17829,6 +17787,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp != nullptr)
     {
         children["igp"] = igp;
@@ -17960,6 +17919,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -18055,6 +18015,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18145,6 +18106,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18235,6 +18197,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18339,6 +18302,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp_srgb != nullptr)
     {
         children["igp-srgb"] = igp_srgb;
@@ -18470,6 +18434,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -18565,6 +18530,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18655,6 +18621,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18745,6 +18712,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18877,6 +18845,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::PrefixSid::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::PrefixSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sid_prefix != nullptr)
     {
         children["sid-prefix"] = sid_prefix;
@@ -19046,6 +19015,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19209,14 +19179,6 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::get_child_by
 
     if(child_yang_name == "adjacency-sid")
     {
-        for(auto const & c : adjacency_sid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid>();
         c->parent = this;
         adjacency_sid.push_back(c);
@@ -19229,6 +19191,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::Ipv4Link::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local_igp_information != nullptr)
     {
         children["local-igp-information"] = local_igp_information;
@@ -19239,9 +19202,13 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
         children["remote-node-protocol-identifier"] = remote_node_protocol_identifier;
     }
 
+    count = 0;
     for (auto const & c : adjacency_sid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19396,6 +19363,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInfo
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp != nullptr)
     {
         children["igp"] = igp;
@@ -19527,6 +19495,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInfo
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -19622,6 +19591,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInfo
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19712,6 +19682,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInfo
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19802,6 +19773,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInfo
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19920,14 +19892,6 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodePr
 {
     if(child_yang_name == "igp-information")
     {
-        for(auto const & c : igp_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
         igp_information.push_back(c);
@@ -19936,14 +19900,6 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodePr
 
     if(child_yang_name == "srgb-information")
     {
-        for(auto const & c : srgb_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation>();
         c->parent = this;
         srgb_information.push_back(c);
@@ -19956,14 +19912,23 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodePr
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : igp_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : srgb_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20100,6 +20065,7 @@ std::shared_ptr<Entity> Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodePr
 std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igp != nullptr)
     {
         children["igp"] = igp;

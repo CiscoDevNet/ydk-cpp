@@ -172,6 +172,7 @@ std::shared_ptr<Entity> Snmp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(trap_servers != nullptr)
     {
         children["trap-servers"] = trap_servers;
@@ -317,14 +318,6 @@ std::shared_ptr<Entity> Snmp::TrapServers::get_child_by_name(const std::string &
 {
     if(child_yang_name == "trap-server")
     {
-        for(auto const & c : trap_server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::TrapServers::TrapServer>();
         c->parent = this;
         trap_server.push_back(c);
@@ -337,9 +330,14 @@ std::shared_ptr<Entity> Snmp::TrapServers::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : trap_server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -435,6 +433,7 @@ std::shared_ptr<Entity> Snmp::TrapServers::TrapServer::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapServers::TrapServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -889,6 +888,7 @@ std::shared_ptr<Entity> Snmp::Information::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hosts != nullptr)
     {
         children["hosts"] = hosts;
@@ -1089,14 +1089,6 @@ std::shared_ptr<Entity> Snmp::Information::Hosts::get_child_by_name(const std::s
 {
     if(child_yang_name == "host")
     {
-        for(auto const & c : host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Hosts::Host>();
         c->parent = this;
         host.push_back(c);
@@ -1109,9 +1101,14 @@ std::shared_ptr<Entity> Snmp::Information::Hosts::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Hosts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : host)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1193,14 +1190,6 @@ std::shared_ptr<Entity> Snmp::Information::Hosts::Host::get_child_by_name(const 
 {
     if(child_yang_name == "host-information")
     {
-        for(auto const & c : host_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Hosts::Host::HostInformation>();
         c->parent = this;
         host_information.push_back(c);
@@ -1213,9 +1202,14 @@ std::shared_ptr<Entity> Snmp::Information::Hosts::Host::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Hosts::Host::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : host_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1318,6 +1312,7 @@ std::shared_ptr<Entity> Snmp::Information::Hosts::Host::HostInformation::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Hosts::Host::HostInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1461,6 +1456,7 @@ std::shared_ptr<Entity> Snmp::Information::SystemUpTime::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SystemUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1546,14 +1542,6 @@ std::shared_ptr<Entity> Snmp::Information::NmsAddresses::get_child_by_name(const
 {
     if(child_yang_name == "nms-address")
     {
-        for(auto const & c : nms_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::NmsAddresses::NmsAddress>();
         c->parent = this;
         nms_address.push_back(c);
@@ -1566,9 +1554,14 @@ std::shared_ptr<Entity> Snmp::Information::NmsAddresses::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmsAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nms_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1668,6 +1661,7 @@ std::shared_ptr<Entity> Snmp::Information::NmsAddresses::NmsAddress::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmsAddresses::NmsAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1811,6 +1805,7 @@ std::shared_ptr<Entity> Snmp::Information::EngineId::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::EngineId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1934,14 +1929,6 @@ std::shared_ptr<Entity> Snmp::Information::RxQueue::get_child_by_name(const std:
 {
     if(child_yang_name == "incoming-q")
     {
-        for(auto const & c : incoming_q)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::RxQueue::IncomingQ>();
         c->parent = this;
         incoming_q.push_back(c);
@@ -1950,14 +1937,6 @@ std::shared_ptr<Entity> Snmp::Information::RxQueue::get_child_by_name(const std:
 
     if(child_yang_name == "pending-q")
     {
-        for(auto const & c : pending_q)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::RxQueue::PendingQ>();
         c->parent = this;
         pending_q.push_back(c);
@@ -1970,14 +1949,23 @@ std::shared_ptr<Entity> Snmp::Information::RxQueue::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RxQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : incoming_q)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : pending_q)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2131,6 +2119,7 @@ std::shared_ptr<Entity> Snmp::Information::RxQueue::IncomingQ::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RxQueue::IncomingQ::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2242,6 +2231,7 @@ std::shared_ptr<Entity> Snmp::Information::RxQueue::PendingQ::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RxQueue::PendingQ::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2345,6 +2335,7 @@ std::shared_ptr<Entity> Snmp::Information::SystemName::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SystemName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2437,6 +2428,7 @@ std::shared_ptr<Entity> Snmp::Information::RequestTypeDetail::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RequestTypeDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nms_addresses != nullptr)
     {
         children["nms-addresses"] = nms_addresses;
@@ -2517,14 +2509,6 @@ std::shared_ptr<Entity> Snmp::Information::RequestTypeDetail::NmsAddresses::get_
 {
     if(child_yang_name == "nms-address")
     {
-        for(auto const & c : nms_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress>();
         c->parent = this;
         nms_address.push_back(c);
@@ -2537,9 +2521,14 @@ std::shared_ptr<Entity> Snmp::Information::RequestTypeDetail::NmsAddresses::get_
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RequestTypeDetail::NmsAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nms_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2639,6 +2628,7 @@ std::shared_ptr<Entity> Snmp::Information::RequestTypeDetail::NmsAddresses::NmsA
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2822,6 +2812,7 @@ std::shared_ptr<Entity> Snmp::Information::DuplicateDrop::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::DuplicateDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3007,14 +2998,6 @@ std::shared_ptr<Entity> Snmp::Information::BulkStatsTransfers::get_child_by_name
 {
     if(child_yang_name == "bulk-stats-transfer")
     {
-        for(auto const & c : bulk_stats_transfer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::BulkStatsTransfers::BulkStatsTransfer>();
         c->parent = this;
         bulk_stats_transfer.push_back(c);
@@ -3027,9 +3010,14 @@ std::shared_ptr<Entity> Snmp::Information::BulkStatsTransfers::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::BulkStatsTransfers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bulk_stats_transfer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3129,6 +3117,7 @@ std::shared_ptr<Entity> Snmp::Information::BulkStatsTransfers::BulkStatsTransfer
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3274,14 +3263,6 @@ std::shared_ptr<Entity> Snmp::Information::TrapInfos::get_child_by_name(const st
 {
     if(child_yang_name == "trap-info")
     {
-        for(auto const & c : trap_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::TrapInfos::TrapInfo>();
         c->parent = this;
         trap_info.push_back(c);
@@ -3294,9 +3275,14 @@ std::shared_ptr<Entity> Snmp::Information::TrapInfos::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : trap_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3394,14 +3380,6 @@ std::shared_ptr<Entity> Snmp::Information::TrapInfos::TrapInfo::get_child_by_nam
 {
     if(child_yang_name == "trap-oi-dinfo")
     {
-        for(auto const & c : trap_oi_dinfo)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo>();
         c->parent = this;
         trap_oi_dinfo.push_back(c);
@@ -3414,9 +3392,14 @@ std::shared_ptr<Entity> Snmp::Information::TrapInfos::TrapInfo::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapInfos::TrapInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : trap_oi_dinfo)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3562,6 +3545,7 @@ std::shared_ptr<Entity> Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::get
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3697,14 +3681,6 @@ std::shared_ptr<Entity> Snmp::Information::PollOids::get_child_by_name(const std
 {
     if(child_yang_name == "poll-oid")
     {
-        for(auto const & c : poll_oid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::PollOids::PollOid>();
         c->parent = this;
         poll_oid.push_back(c);
@@ -3717,9 +3693,14 @@ std::shared_ptr<Entity> Snmp::Information::PollOids::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::PollOids::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : poll_oid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3827,6 +3808,7 @@ std::shared_ptr<Entity> Snmp::Information::PollOids::PollOid::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::PollOids::PollOid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3938,14 +3920,6 @@ std::shared_ptr<Entity> Snmp::Information::InfomDetails::get_child_by_name(const
 {
     if(child_yang_name == "infom-detail")
     {
-        for(auto const & c : infom_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::InfomDetails::InfomDetail>();
         c->parent = this;
         infom_detail.push_back(c);
@@ -3958,9 +3932,14 @@ std::shared_ptr<Entity> Snmp::Information::InfomDetails::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::InfomDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : infom_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4058,14 +4037,6 @@ std::shared_ptr<Entity> Snmp::Information::InfomDetails::InfomDetail::get_child_
 {
     if(child_yang_name == "trap-oi-dinfo")
     {
-        for(auto const & c : trap_oi_dinfo)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo>();
         c->parent = this;
         trap_oi_dinfo.push_back(c);
@@ -4078,9 +4049,14 @@ std::shared_ptr<Entity> Snmp::Information::InfomDetails::InfomDetail::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::InfomDetails::InfomDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : trap_oi_dinfo)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4226,6 +4202,7 @@ std::shared_ptr<Entity> Snmp::Information::InfomDetails::InfomDetail::TrapOiDinf
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4475,6 +4452,7 @@ std::shared_ptr<Entity> Snmp::Information::Statistics::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4854,14 +4832,6 @@ std::shared_ptr<Entity> Snmp::Information::IncomingQueue::get_child_by_name(cons
 {
     if(child_yang_name == "inq-entry")
     {
-        for(auto const & c : inq_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::IncomingQueue::InqEntry>();
         c->parent = this;
         inq_entry.push_back(c);
@@ -4874,9 +4844,14 @@ std::shared_ptr<Entity> Snmp::Information::IncomingQueue::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::IncomingQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inq_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4978,6 +4953,7 @@ std::shared_ptr<Entity> Snmp::Information::IncomingQueue::InqEntry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::IncomingQueue::InqEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5103,14 +5079,6 @@ std::shared_ptr<Entity> Snmp::Information::ContextMapping::get_child_by_name(con
 {
     if(child_yang_name == "contex-mapping")
     {
-        for(auto const & c : contex_mapping)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::ContextMapping::ContexMapping>();
         c->parent = this;
         contex_mapping.push_back(c);
@@ -5123,9 +5091,14 @@ std::shared_ptr<Entity> Snmp::Information::ContextMapping::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::ContextMapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : contex_mapping)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5217,6 +5190,7 @@ std::shared_ptr<Entity> Snmp::Information::ContextMapping::ContexMapping::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::ContextMapping::ContexMapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5342,14 +5316,6 @@ std::shared_ptr<Entity> Snmp::Information::TrapOids::get_child_by_name(const std
 {
     if(child_yang_name == "trap-oid")
     {
-        for(auto const & c : trap_oid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::TrapOids::TrapOid>();
         c->parent = this;
         trap_oid.push_back(c);
@@ -5362,9 +5328,14 @@ std::shared_ptr<Entity> Snmp::Information::TrapOids::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapOids::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : trap_oid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5448,6 +5419,7 @@ std::shared_ptr<Entity> Snmp::Information::TrapOids::TrapOid::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapOids::TrapOid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5553,14 +5525,6 @@ std::shared_ptr<Entity> Snmp::Information::NmSpackets::get_child_by_name(const s
 {
     if(child_yang_name == "nm-spacket")
     {
-        for(auto const & c : nm_spacket)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::NmSpackets::NmSpacket>();
         c->parent = this;
         nm_spacket.push_back(c);
@@ -5573,9 +5537,14 @@ std::shared_ptr<Entity> Snmp::Information::NmSpackets::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmSpackets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nm_spacket)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5667,6 +5636,7 @@ std::shared_ptr<Entity> Snmp::Information::NmSpackets::NmSpacket::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmSpackets::NmSpacket::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5792,14 +5762,6 @@ std::shared_ptr<Entity> Snmp::Information::Mibs::get_child_by_name(const std::st
 {
     if(child_yang_name == "mib")
     {
-        for(auto const & c : mib)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Mibs::Mib>();
         c->parent = this;
         mib.push_back(c);
@@ -5812,9 +5774,14 @@ std::shared_ptr<Entity> Snmp::Information::Mibs::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mib)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5917,6 +5884,7 @@ std::shared_ptr<Entity> Snmp::Information::Mibs::Mib::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(oids != nullptr)
     {
         children["oids"] = oids;
@@ -6005,14 +5973,6 @@ std::shared_ptr<Entity> Snmp::Information::Mibs::Mib::Oids::get_child_by_name(co
 {
     if(child_yang_name == "oid")
     {
-        for(auto const & c : oid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Mibs::Mib::Oids::Oid>();
         c->parent = this;
         oid.push_back(c);
@@ -6025,9 +5985,14 @@ std::shared_ptr<Entity> Snmp::Information::Mibs::Mib::Oids::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::Mib::Oids::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : oid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6100,6 +6065,7 @@ std::shared_ptr<Entity> Snmp::Information::Mibs::Mib::Oids::Oid::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::Mib::Oids::Oid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6214,6 +6180,7 @@ std::shared_ptr<Entity> Snmp::Information::Mibs::Mib::MibInformation::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::Mib::MibInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6369,14 +6336,6 @@ std::shared_ptr<Entity> Snmp::Information::SerialNumbers::get_child_by_name(cons
 {
     if(child_yang_name == "serial-number")
     {
-        for(auto const & c : serial_number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::SerialNumbers::SerialNumber>();
         c->parent = this;
         serial_number.push_back(c);
@@ -6389,9 +6348,14 @@ std::shared_ptr<Entity> Snmp::Information::SerialNumbers::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SerialNumbers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : serial_number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6515,6 +6479,7 @@ std::shared_ptr<Entity> Snmp::Information::SerialNumbers::SerialNumber::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SerialNumbers::SerialNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6720,14 +6685,6 @@ std::shared_ptr<Entity> Snmp::Information::DropNmsAddresses::get_child_by_name(c
 {
     if(child_yang_name == "drop-nms-address")
     {
-        for(auto const & c : drop_nms_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::DropNmsAddresses::DropNmsAddress>();
         c->parent = this;
         drop_nms_address.push_back(c);
@@ -6740,9 +6697,14 @@ std::shared_ptr<Entity> Snmp::Information::DropNmsAddresses::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::DropNmsAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : drop_nms_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6858,6 +6820,7 @@ std::shared_ptr<Entity> Snmp::Information::DropNmsAddresses::DropNmsAddress::get
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::DropNmsAddresses::DropNmsAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7043,14 +7006,6 @@ std::shared_ptr<Entity> Snmp::Information::Views::get_child_by_name(const std::s
 {
     if(child_yang_name == "view")
     {
-        for(auto const & c : view)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Views::View>();
         c->parent = this;
         view.push_back(c);
@@ -7063,9 +7018,14 @@ std::shared_ptr<Entity> Snmp::Information::Views::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Views::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : view)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7147,14 +7107,6 @@ std::shared_ptr<Entity> Snmp::Information::Views::View::get_child_by_name(const 
 {
     if(child_yang_name == "view-information")
     {
-        for(auto const & c : view_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Views::View::ViewInformation>();
         c->parent = this;
         view_information.push_back(c);
@@ -7167,9 +7119,14 @@ std::shared_ptr<Entity> Snmp::Information::Views::View::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Views::View::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : view_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7260,6 +7217,7 @@ std::shared_ptr<Entity> Snmp::Information::Views::View::ViewInformation::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Views::View::ViewInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7373,6 +7331,7 @@ std::shared_ptr<Entity> Snmp::Information::SystemDescr::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SystemDescr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7478,6 +7437,7 @@ std::shared_ptr<Entity> Snmp::Information::Tables::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(groups != nullptr)
     {
         children["groups"] = groups;
@@ -7563,14 +7523,6 @@ std::shared_ptr<Entity> Snmp::Information::Tables::Groups::get_child_by_name(con
 {
     if(child_yang_name == "group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Tables::Groups::Group>();
         c->parent = this;
         group.push_back(c);
@@ -7583,9 +7535,14 @@ std::shared_ptr<Entity> Snmp::Information::Tables::Groups::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7675,6 +7632,7 @@ std::shared_ptr<Entity> Snmp::Information::Tables::Groups::Group::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_informations != nullptr)
     {
         children["group-informations"] = group_informations;
@@ -7758,14 +7716,6 @@ std::shared_ptr<Entity> Snmp::Information::Tables::Groups::Group::GroupInformati
 {
     if(child_yang_name == "group-information")
     {
-        for(auto const & c : group_information)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation>();
         c->parent = this;
         group_information.push_back(c);
@@ -7778,9 +7728,14 @@ std::shared_ptr<Entity> Snmp::Information::Tables::Groups::Group::GroupInformati
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups::Group::GroupInformations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group_information)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7869,6 +7824,7 @@ std::shared_ptr<Entity> Snmp::Information::Tables::Groups::Group::GroupInformati
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8004,14 +7960,6 @@ std::shared_ptr<Entity> Snmp::Information::Tables::UserEngineIds::get_child_by_n
 {
     if(child_yang_name == "user-engine-id")
     {
-        for(auto const & c : user_engine_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Tables::UserEngineIds::UserEngineId>();
         c->parent = this;
         user_engine_id.push_back(c);
@@ -8024,9 +7972,14 @@ std::shared_ptr<Entity> Snmp::Information::Tables::UserEngineIds::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::UserEngineIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : user_engine_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8108,14 +8061,6 @@ std::shared_ptr<Entity> Snmp::Information::Tables::UserEngineIds::UserEngineId::
 {
     if(child_yang_name == "user-name")
     {
-        for(auto const & c : user_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName>();
         c->parent = this;
         user_name.push_back(c);
@@ -8128,9 +8073,14 @@ std::shared_ptr<Entity> Snmp::Information::Tables::UserEngineIds::UserEngineId::
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::UserEngineIds::UserEngineId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : user_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8217,6 +8167,7 @@ std::shared_ptr<Entity> Snmp::Information::Tables::UserEngineIds::UserEngineId::
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8320,6 +8271,7 @@ std::shared_ptr<Entity> Snmp::Information::SystemOid::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SystemOid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8417,14 +8369,6 @@ std::shared_ptr<Entity> Snmp::Information::TrapQueue::get_child_by_name(const st
 {
     if(child_yang_name == "trap-q")
     {
-        for(auto const & c : trap_q)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Information::TrapQueue::TrapQ>();
         c->parent = this;
         trap_q.push_back(c);
@@ -8437,9 +8381,14 @@ std::shared_ptr<Entity> Snmp::Information::TrapQueue::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : trap_q)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8553,6 +8502,7 @@ std::shared_ptr<Entity> Snmp::Information::TrapQueue::TrapQ::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapQueue::TrapQ::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8658,14 +8608,6 @@ std::shared_ptr<Entity> Snmp::Interfaces::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -8678,9 +8620,14 @@ std::shared_ptr<Entity> Snmp::Interfaces::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8760,6 +8707,7 @@ std::shared_ptr<Entity> Snmp::Interfaces::Interface::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8901,6 +8849,7 @@ std::shared_ptr<Entity> Snmp::Correlator::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rule_details != nullptr)
     {
         children["rule-details"] = rule_details;
@@ -8996,14 +8945,6 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::get_child_by_name(const s
 {
     if(child_yang_name == "rule-detail")
     {
-        for(auto const & c : rule_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail>();
         c->parent = this;
         rule_detail.push_back(c);
@@ -9016,9 +8957,14 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rule_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9141,14 +9087,6 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::get_child_by_
 
     if(child_yang_name == "non-rootcaus")
     {
-        for(auto const & c : non_rootcaus)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus>();
         c->parent = this;
         non_rootcaus.push_back(c);
@@ -9157,14 +9095,6 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::get_child_by_
 
     if(child_yang_name == "apply-host")
     {
-        for(auto const & c : apply_host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost>();
         c->parent = this;
         apply_host.push_back(c);
@@ -9177,6 +9107,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::RuleDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rule_summary != nullptr)
     {
         children["rule-summary"] = rule_summary;
@@ -9187,14 +9118,22 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
         children["root-cause"] = root_cause;
     }
 
+    count = 0;
     for (auto const & c : non_rootcaus)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : apply_host)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9291,6 +9230,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9393,14 +9333,6 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::RootCause::ge
 {
     if(child_yang_name == "var-bind")
     {
-        for(auto const & c : var_bind)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind>();
         c->parent = this;
         var_bind.push_back(c);
@@ -9413,9 +9345,14 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::RootCause::ge
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::RuleDetail::RootCause::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : var_bind)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9502,6 +9439,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::RootCause::Va
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9604,14 +9542,6 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::
 {
     if(child_yang_name == "var-bind")
     {
-        for(auto const & c : var_bind)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind>();
         c->parent = this;
         var_bind.push_back(c);
@@ -9624,9 +9554,14 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : var_bind)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9713,6 +9648,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9813,6 +9749,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::ge
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9910,6 +9847,7 @@ std::shared_ptr<Entity> Snmp::Correlator::BufferStatus::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::BufferStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10005,14 +9943,6 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleSetDetails::get_child_by_name(cons
 {
     if(child_yang_name == "rule-set-detail")
     {
-        for(auto const & c : rule_set_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Correlator::RuleSetDetails::RuleSetDetail>();
         c->parent = this;
         rule_set_detail.push_back(c);
@@ -10025,9 +9955,14 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleSetDetails::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleSetDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rule_set_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10113,14 +10048,6 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleSetDetails::RuleSetDetail::get_chi
 {
     if(child_yang_name == "rules")
     {
-        for(auto const & c : rules)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules>();
         c->parent = this;
         rules.push_back(c);
@@ -10133,9 +10060,14 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleSetDetails::RuleSetDetail::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleSetDetails::RuleSetDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rules)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10232,6 +10164,7 @@ std::shared_ptr<Entity> Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10337,14 +10270,6 @@ std::shared_ptr<Entity> Snmp::Correlator::Traps::get_child_by_name(const std::st
 {
     if(child_yang_name == "trap")
     {
-        for(auto const & c : trap)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Correlator::Traps::Trap>();
         c->parent = this;
         trap.push_back(c);
@@ -10357,9 +10282,14 @@ std::shared_ptr<Entity> Snmp::Correlator::Traps::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : trap)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10461,6 +10391,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Traps::Trap::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::Trap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(trap_info != nullptr)
     {
         children["trap-info"] = trap_info;
@@ -10586,14 +10517,6 @@ std::shared_ptr<Entity> Snmp::Correlator::Traps::Trap::TrapInfo::get_child_by_na
 {
     if(child_yang_name == "var-bind")
     {
-        for(auto const & c : var_bind)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Correlator::Traps::Trap::TrapInfo::VarBind>();
         c->parent = this;
         var_bind.push_back(c);
@@ -10606,9 +10529,14 @@ std::shared_ptr<Entity> Snmp::Correlator::Traps::Trap::TrapInfo::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::Trap::TrapInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : var_bind)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10711,6 +10639,7 @@ std::shared_ptr<Entity> Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10806,14 +10735,6 @@ std::shared_ptr<Entity> Snmp::InterfaceIndexes::get_child_by_name(const std::str
 {
     if(child_yang_name == "interface-index")
     {
-        for(auto const & c : interface_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::InterfaceIndexes::InterfaceIndex>();
         c->parent = this;
         interface_index.push_back(c);
@@ -10826,9 +10747,14 @@ std::shared_ptr<Entity> Snmp::InterfaceIndexes::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceIndexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_index)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10908,6 +10834,7 @@ std::shared_ptr<Entity> Snmp::InterfaceIndexes::InterfaceIndex::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceIndexes::InterfaceIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11003,14 +10930,6 @@ std::shared_ptr<Entity> Snmp::IfIndexes::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "if-index")
     {
-        for(auto const & c : if_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::IfIndexes::IfIndex>();
         c->parent = this;
         if_index.push_back(c);
@@ -11023,9 +10942,14 @@ std::shared_ptr<Entity> Snmp::IfIndexes::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Snmp::IfIndexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : if_index)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11105,6 +11029,7 @@ std::shared_ptr<Entity> Snmp::IfIndexes::IfIndex::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Snmp::IfIndexes::IfIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11207,6 +11132,7 @@ std::shared_ptr<Entity> Snmp::EntityMib::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Snmp::EntityMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(entity_physical_indexes != nullptr)
     {
         children["entity-physical-indexes"] = entity_physical_indexes;
@@ -11287,14 +11213,6 @@ std::shared_ptr<Entity> Snmp::EntityMib::EntityPhysicalIndexes::get_child_by_nam
 {
     if(child_yang_name == "entity-physical-index")
     {
-        for(auto const & c : entity_physical_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex>();
         c->parent = this;
         entity_physical_index.push_back(c);
@@ -11307,9 +11225,14 @@ std::shared_ptr<Entity> Snmp::EntityMib::EntityPhysicalIndexes::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Snmp::EntityMib::EntityPhysicalIndexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entity_physical_index)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11425,6 +11348,7 @@ std::shared_ptr<Entity> Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIn
 std::map<std::string, std::shared_ptr<Entity>> Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11669,6 +11593,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -11769,14 +11694,6 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::Interfaces::get_child_by_name(const 
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::InterfaceMib::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -11789,9 +11706,14 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::Interfaces::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11871,6 +11793,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::Interfaces::Interface::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11966,14 +11889,6 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceConnectors::get_child_by_na
 {
     if(child_yang_name == "interface-connector")
     {
-        for(auto const & c : interface_connector)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector>();
         c->parent = this;
         interface_connector.push_back(c);
@@ -11986,9 +11901,14 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceConnectors::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceConnectors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_connector)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12068,6 +11988,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnec
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12163,14 +12084,6 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceAliases::get_child_by_name(
 {
     if(child_yang_name == "interface-alias")
     {
-        for(auto const & c : interface_alias)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias>();
         c->parent = this;
         interface_alias.push_back(c);
@@ -12183,9 +12096,14 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceAliases::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceAliases::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_alias)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12265,6 +12183,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::ge
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12360,14 +12279,6 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::NotificationInterfaces::get_child_by
 {
     if(child_yang_name == "notification-interface")
     {
-        for(auto const & c : notification_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface>();
         c->parent = this;
         notification_interface.push_back(c);
@@ -12380,9 +12291,14 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::NotificationInterfaces::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::NotificationInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : notification_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12462,6 +12378,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::NotificationInterfaces::Notification
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12557,14 +12474,6 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceStackStatuses::get_child_by
 {
     if(child_yang_name == "interface-stack-status")
     {
-        for(auto const & c : interface_stack_status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus>();
         c->parent = this;
         interface_stack_status.push_back(c);
@@ -12577,9 +12486,14 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceStackStatuses::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceStackStatuses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_stack_status)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12667,6 +12581,7 @@ std::shared_ptr<Entity> Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceSta
 std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12802,6 +12717,7 @@ std::shared_ptr<Entity> Snmp::SensorMib::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(physical_indexes != nullptr)
     {
         children["physical-indexes"] = physical_indexes;
@@ -12887,14 +12803,6 @@ std::shared_ptr<Entity> Snmp::SensorMib::PhysicalIndexes::get_child_by_name(cons
 {
     if(child_yang_name == "physical-index")
     {
-        for(auto const & c : physical_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::SensorMib::PhysicalIndexes::PhysicalIndex>();
         c->parent = this;
         physical_index.push_back(c);
@@ -12907,9 +12815,14 @@ std::shared_ptr<Entity> Snmp::SensorMib::PhysicalIndexes::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : physical_index)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12999,6 +12912,7 @@ std::shared_ptr<Entity> Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold_indexes != nullptr)
     {
         children["threshold-indexes"] = threshold_indexes;
@@ -13082,14 +12996,6 @@ std::shared_ptr<Entity> Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::Thresho
 {
     if(child_yang_name == "threshold-index")
     {
-        for(auto const & c : threshold_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex>();
         c->parent = this;
         threshold_index.push_back(c);
@@ -13102,9 +13008,14 @@ std::shared_ptr<Entity> Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::Thresho
 std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : threshold_index)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13197,6 +13108,7 @@ std::shared_ptr<Entity> Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::Thresho
 std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13342,14 +13254,6 @@ std::shared_ptr<Entity> Snmp::SensorMib::EntPhyIndexes::get_child_by_name(const 
 {
     if(child_yang_name == "ent-phy-index")
     {
-        for(auto const & c : ent_phy_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::SensorMib::EntPhyIndexes::EntPhyIndex>();
         c->parent = this;
         ent_phy_index.push_back(c);
@@ -13362,9 +13266,14 @@ std::shared_ptr<Entity> Snmp::SensorMib::EntPhyIndexes::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::EntPhyIndexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ent_phy_index)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13492,6 +13401,7 @@ std::shared_ptr<Entity> Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

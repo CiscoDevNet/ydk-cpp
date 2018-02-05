@@ -96,18 +96,18 @@ class MplsTe::DiffServTrafficEngineering::Classes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Class_; //type: MplsTe::DiffServTrafficEngineering::Classes::Class_
+        class Class; //type: MplsTe::DiffServTrafficEngineering::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::DiffServTrafficEngineering::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::DiffServTrafficEngineering::Classes::Class> > class_;
         
 }; // MplsTe::DiffServTrafficEngineering::Classes
 
 
-class MplsTe::DiffServTrafficEngineering::Classes::Class_ : public ydk::Entity
+class MplsTe::DiffServTrafficEngineering::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -125,7 +125,7 @@ class MplsTe::DiffServTrafficEngineering::Classes::Class_ : public ydk::Entity
         ydk::YLeaf class_priority; //type: uint32
         ydk::YLeaf unused; //type: boolean
 
-}; // MplsTe::DiffServTrafficEngineering::Classes::Class_
+}; // MplsTe::DiffServTrafficEngineering::Classes::Class
 
 
 class MplsTe::NamedTunnels : public ydk::Entity
@@ -3537,18 +3537,18 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Index_; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_
+        class Index; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_> > index_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index> > index_;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_ : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index : public ydk::Entity
 {
     public:
-        Index_();
-        ~Index_();
+        Index();
+        ~Index();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3564,7 +3564,7 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
         ydk::YLeaf prepend_type; //type: SrPrepend
         ydk::YLeaf mpls_label; //type: int32
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index_
+}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index
 
 
 class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation : public ydk::Entity

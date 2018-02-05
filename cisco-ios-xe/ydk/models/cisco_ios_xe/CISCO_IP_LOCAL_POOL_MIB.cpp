@@ -133,6 +133,7 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ciplocalpoolconfig != nullptr)
     {
         children["cIpLocalPoolConfig"] = ciplocalpoolconfig;
@@ -261,6 +262,7 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -346,14 +348,6 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::get_child_
 {
     if(child_yang_name == "cIpLocalPoolConfigEntry")
     {
-        for(auto const & c : ciplocalpoolconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry>();
         c->parent = this;
         ciplocalpoolconfigentry.push_back(c);
@@ -366,9 +360,14 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciplocalpoolconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -476,6 +475,7 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpo
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -641,14 +641,6 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::get
 {
     if(child_yang_name == "cIpLocalPoolGroupContainsEntry")
     {
-        for(auto const & c : ciplocalpoolgroupcontainsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry>();
         c->parent = this;
         ciplocalpoolgroupcontainsentry.push_back(c);
@@ -661,9 +653,14 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciplocalpoolgroupcontainsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -743,6 +740,7 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::Cip
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -838,14 +836,6 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::get_child_b
 {
     if(child_yang_name == "cIpLocalPoolGroupEntry")
     {
-        for(auto const & c : ciplocalpoolgroupentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry>();
         c->parent = this;
         ciplocalpoolgroupentry.push_back(c);
@@ -858,9 +848,14 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciplocalpoolgroupentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -944,6 +939,7 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::Ciplocalpoo
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1049,14 +1045,6 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::get_child_b
 {
     if(child_yang_name == "cIpLocalPoolStatsEntry")
     {
-        for(auto const & c : ciplocalpoolstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry>();
         c->parent = this;
         ciplocalpoolstatsentry.push_back(c);
@@ -1069,9 +1057,14 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciplocalpoolstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1175,6 +1168,7 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoo
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1330,14 +1324,6 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_child_b
 {
     if(child_yang_name == "cIpLocalPoolAllocEntry")
     {
-        for(auto const & c : ciplocalpoolallocentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry>();
         c->parent = this;
         ciplocalpoolallocentry.push_back(c);
@@ -1350,9 +1336,14 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciplocalpoolallocentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1444,6 +1435,7 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoo
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
